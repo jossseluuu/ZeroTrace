@@ -10,6 +10,7 @@
     - Solo acepta cambios en es/, en/, data/ e index.html. Cualquier otro cambio detiene la publicación.
     - El mensaje de commit no puede contener saltos de línea ni atribuciones de terceros.
     - El commit se firma siempre (-S). Si la firma falla, no se publica nada.
+    - Tras publicar, borra drafts\<fecha> y el aviso publicar.fallido.json, si existen.
     - Este script se instala en %LOCALAPPDATA%\ZeroTrace, fuera del repositorio,
       para que nada que llegue al repositorio pueda cambiar lo que se ejecuta.
 #>
@@ -77,6 +78,17 @@ try {
 
   $hash = (Invoke-Git rev-parse --short HEAD | Select-Object -First 1).ToString().Trim()
   Remove-Item -LiteralPath $marca -Force
+
+  # Limpieza tras publicar: el borrador de esa fecha y el aviso de un fallo anterior ya no sirven.
+  # Si algo no se puede borrar, se anota en el registro, pero la publicación sigue contando como correcta.
+  $fallido  = Join-Path $estado 'publicar.fallido.json'
+  $borrador = Join-Path (Join-Path $Repo 'drafts') $fecha
+  foreach ($resto in @($fallido, $borrador)) {
+    if (Test-Path -LiteralPath $resto) {
+      try   { Remove-Item -LiteralPath $resto -Recurse -Force; Escribir-Log "BORRADO $resto" }
+      catch { Escribir-Log "AVISO No se ha podido borrar ${resto}: $($_.Exception.Message)" }
+    }
+  }
   [ordered]@{ estado = 'publicado'; fecha = $fecha; commit = $hash; hora = (Get-Date -Format 'yyyy-MM-ddTHH:mm:ss') } |
     ConvertTo-Json | Set-Content -LiteralPath $resultado -Encoding UTF8
   Escribir-Log "PUBLICADO $fecha $hash"
