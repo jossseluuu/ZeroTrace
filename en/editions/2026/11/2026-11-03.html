@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="What automatic content recognition is, why it works even with your console or laptop plugged in over HDMI, and how to turn it off in five minutes.">
+<title>Your TV knows what you&#x27;re watching · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-03.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-03.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Tuesday, November 3, 2026 · 📺 Smart TVs</p>
+<h1>Your TV knows what you're watching</h1><p class="sub">What automatic content recognition is, why it works even with your console or laptop plugged in over HDMI, and how to turn it off in five minutes.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 10 min</li><li>📺 Smart TV</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta rojo" id="2026-11-03-ivanti-connect-secure">
+<header><span class="pill rojo">Critical</span><h3>Ivanti Connect Secure: corporate VPN hit by chained flaws</h3></header>
+<dl><dt>Who it affects</dt><dd>Organizations using this VPN. If you work remotely through it, give your IT team a heads-up.</dd>
+<dt>What to do</dt><dd>Update Connect Secure to <strong>22.8R2.6, 25.1.1.3, or 25.1.3.1</strong> (or later, depending on the branch) <strong>and check for compromise</strong>: patching isn't enough if attackers already got in.</dd>
+<dt class="deep">Details</dt><dd class="deep">On October 30, CISA added two of the flaws to its Known Exploited Vulnerabilities catalog (<button type="button" class="term" popovertarget="g-kev">KEV</button>); the third, an authentication bypass, had been listed since October 13. Chained together, they were used as zero-days. Volexity warns that Ivanti's Integrity Checker Tool doesn't catch this activity, so a clean result doesn't rule out compromise. Federal agencies face deadlines of November 2 and November 13.<div class="cves"><code>CVE-2026-104935</code><code>CVE-2026-111357</code><code>CVE-2026-118527</code></div></dd></dl>
+<p class="src"><a href="https://www.cyber.gc.ca/en/alerts-advisories/ivanti-security-advisory-av26-1035" rel="noopener noreferrer">Canadian Centre for Cyber Security: Ivanti advisory AV26-1035</a> · <a href="https://www.helpnetsecurity.com/2026/11/02/cisa-to-federal-agencies-remediate-exploited-ivanti-connect-secure-vulnerabilities-cve-2026-111357-cve-2026-118527/" rel="noopener noreferrer">Help Net Security: CISA orders fixes for Ivanti Connect Secure</a></p></article><article class="alerta rojo" id="2026-11-03-php2shell">
+<header><span class="pill rojo">Critical</span><h3>PHP2Shell: two critical PHP flaws added to the exploited list</h3></header>
+<dl><dt>Who it affects</dt><dd>Anyone running a website or server on PHP: WordPress, online stores, forums, hosting control panels.</dd>
+<dt>What to do</dt><dd>Update PHP to <strong>8.5.12, 8.4.27, 8.3.36, or 8.2.35</strong> (or later) and restart every worker. On shared hosting, ask your provider whether it's done.</dd>
+<dt class="deep">Details</dt><dd class="deep">They let an attacker run code on the server without logging in; PHP considers mod_php setups the most exposed. Fixes shipped on October 21, and CISA added both flaws to its <button type="button" class="term" popovertarget="g-kev">KEV</button> catalog on October 26 based on evidence of exploitation. Thousands of attack attempts have been reported.<div class="cves"><code>CVE-2026-109618</code><code>CVE-2026-109619</code></div></dd></dl>
+<p class="src"><a href="https://www.php.net/" rel="noopener noreferrer">PHP: security advisory and fixed releases</a> · <a href="https://www.cisa.gov/news-events/alerts/2026/10/26/cisa-adds-two-known-exploited-vulnerability-catalog" rel="noopener noreferrer">CISA: Two Known Exploited Vulnerabilities added to catalog (Oct. 26)</a> · <a href="https://therecord.media/php-vulnerabilities-cisa-kev" rel="noopener noreferrer">The Record: CISA confirms PHP flaws are being targeted</a></p></article><article class="alerta amarillo" id="2026-11-03-android-noviembre">
+<header><span class="pill amarillo">Heads-up</span><h3>Android: November patch fixes a critical zero-click flaw</h3></header>
+<dl><dt>Who it affects</dt><dd>Android phones, tablets, and other devices, as each manufacturer rolls out the update.</dd>
+<dt>What to do</dt><dd>When it reaches you, install security patch level <strong>2026-11-01 or 2026-11-05</strong> from the update section of Settings (the name varies by manufacturer).</dd>
+<dt class="deep">Details</dt><dd class="deep">The bulletin, published November 2, fixes a critical flaw in the Framework component that allows remote code execution with no user interaction. Google doesn't report active exploitation, so it's important but not an emergency.<div class="cves"><code>CVE-2026-58868</code></div></dd></dl>
+<p class="src"><a href="https://source.android.com/docs/security/bulletin/2026/2026-11-01" rel="noopener noreferrer">Android Security Bulletin: November 2026</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>Many smart TVs ship with a feature called <button type="button" class="term" popovertarget="g-acr">automatic content recognition (ACR)</button>: the TV <strong>analyzes what's on screen, identifies it, and reports it back to the manufacturer</strong>.</p><p>It isn't limited to the TV's own apps. According to an academic study of Samsung and LG TVs, ACR <strong>also works with antenna TV and when you use the TV as a plain display</strong> for a game console, a laptop, or a player connected over <button type="button" class="term" popovertarget="g-hdmi">HDMI</button>.</p><p>It's not malware or a security hole: it's advertising. That data feeds recommendations and ads targeted at your household. The good news is that <strong>you can turn it off</strong>, and according to the same study, doing so stops the data from being sent.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>Turn off content recognition: on Samsung it's "Viewing Information Services"; on LG, "Live Plus."</li><li>When setting up a new TV, don't hit "Agree to all": check which agreements are optional.</li><li>Reset or delete the TV's advertising ID.</li><li>If you only use it as a screen, it doesn't need to be online.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>No attacker required: if you accepted every agreement when you set up the TV, it's most likely on.</p></div><div class="medidor"><div class="top"><span>Impact: low</span>
+<span class="barras bajo" aria-hidden="true"><i></i><i></i><i></i></span></div><p>It doesn't give anyone access to your accounts or files. It's a privacy issue: your viewing habits, including what you watch over HDMI, end up in advertising profiles.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>What ACR actually does</h3><p>The TV periodically samples the picture (and in some cases the audio), turns those samples into a compact <button type="button" class="term" popovertarget="g-huella">fingerprint</button>, and sends it to a server that matches it against a database of shows, movies, and ads. If there's a match, the manufacturer knows what you were watching and when.</p><p>Consumer Reports puts it this way: ACR tries to identify every show you watch, including what comes in over cable, antenna, streaming services, and even Blu-ray discs. The data powers recommendations and <strong>can be used to target ads to you and your family</strong>.</p><h3>Why it also "sees" what comes in over HDMI</h3><p>ACR works on the picture already on the screen, not on a particular app. That's why the study presented at IMC 2024 (UCL and other universities) found traffic to ACR servers while watching linear TV and <strong>while using the TV as an external display over HDMI</strong>, for example with a laptop.</p><p>In its UK tests, it found no such traffic when using Netflix or YouTube from the TV's own apps, possibly for copyright reasons. In the US the behavior differed: ACR stayed active even with some streaming apps.</p><h3>How it gets turned on without you noticing</h3><p>ACR is usually tied to one of the agreements the TV shows you during setup. If you hit "Agree to all" to start watching sooner, you've turned it on.</p><p>The names don't help: Samsung calls it "Viewing Information Services," and LG ties it to "Live Plus." One of the study's authors noted that the label "doesn't really indicate what it is."</p><h3>What ACR is not</h3><p>It's not a camera or a microphone recording you: it identifies <strong>what's on the screen</strong>. Voice recognition is a separate feature with its own settings.</p><p>It's also not a security risk in the strict sense: nobody gets into your network because ACR is on. So the proportionate move is to turn it off and keep using your TV normally, not to distrust it entirely.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>Initial setup</strong><p>You plug in your new TV, an agreements screen pops up, and you hit "Agree to all." One of those agreements turns on content recognition.</p></li><li><strong>Capture</strong><p>While you watch antenna TV, play on your console, or mirror your laptop, the TV periodically samples the picture and computes fingerprints of what's on screen.</p></li><li><strong>Upload</strong><p>It batches those fingerprints and sends them to the servers of the manufacturer or its ACR partner, every few seconds or minutes depending on the brand.</p></li><li><strong>Identification</strong><p>The server matches the fingerprints against its catalog of shows and ads and logs what was watched, when, and on which TV.</p></li><li><strong>Use</strong><p>That history is linked to the TV's advertising ID and feeds personalized recommendations and ads.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Know which shows, movies, and ads you watch, including antenna TV and devices connected over HDMI.</li><li>Know when and for how long you use the TV.</li><li>Link those habits to the TV's advertising ID to personalize ads.</li><li>Keep collecting basic usage data even after you turn off ACR: switching it off cuts collection sharply, but doesn't eliminate it entirely.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>See or hear you: ACR analyzes the screen, not a camera or microphone.</li><li>Get into your accounts, your files, or other devices on your network.</li><li>Keep sending ACR data once you turn it off: the study confirmed that traffic to those servers stops.</li><li>Do anything if the TV isn't connected to the internet.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Turn off content recognition</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>This is the setting that actually stops your viewing from being reported. Names and menu paths vary by year, model, and region: if you can't find it right away, look for the privacy or user agreements section.</p><div class="plataformas"><div class="plataforma"><h4>Samsung (Tizen)</h4><ol><li>Press <strong>Home</strong> &gt; go to <strong>Menu</strong> &gt; <strong>Privacy Choices</strong> (on some models, under Settings &gt; <strong>Terms &amp; Privacy</strong>).</li><li>Open <strong>Terms &amp; Conditions, Privacy Policy</strong> &gt; <em>View details</em>.</li><li>Withdraw your agreement to <strong>Viewing Information Services</strong> and to interest-based advertising.</li></ol></div><div class="plataforma"><h4>LG (webOS)</h4><ol><li>Press the Settings button on the remote &gt; <strong>Settings</strong> &gt; <strong>General</strong> &gt; <strong>System</strong> &gt; <strong>Additional Settings</strong>.</li><li>Turn <strong>Live Plus</strong> off.</li></ol></div><div class="plataforma"><h4>Google TV and other brands</h4><ol><li>Settings &gt; <strong>Privacy</strong>: review the user agreements and withdraw any optional ones that mention using viewing information. On TCL Google TVs: Settings &gt; Privacy &gt; <strong>User Agreements</strong>.</li></ol></div></div></article><article class="medida"><h3>Don't agree to everything on day one</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>Initial setup is when almost everything gets switched on. Accept only what's required to use the TV, and leave anything about viewing information, personalized ads, or voice recognition unchecked if you won't use it.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>On the agreements screen, skip "Agree to all" and review each box.</li><li>If you get it wrong, no problem: you can withdraw it later from the privacy settings.</li></ol></div></div></article><article class="medida"><h3>Reset your advertising ID</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: everyone</li></ul>
+<p>This is the tag that connects your viewing habits to ads. Resetting it breaks the link to the history collected so far; deleting it, where allowed, keeps a new one from being created.</p><div class="plataformas"><div class="plataforma"><h4>Google TV</h4><ol><li>Settings &gt; <strong>Privacy</strong> &gt; <strong>Ads</strong>: reset or delete your advertising ID.</li></ol></div><div class="plataforma"><h4>Amazon Fire TV</h4><ol><li>Settings &gt; <strong>Preferences</strong> &gt; <strong>Privacy Settings</strong>: turn off <strong>Interest-Based Ads</strong> and <strong>Collect App and Over-the-Air Usage</strong>.</li></ol></div><div class="plataforma"><h4>Other brands</h4><ol><li>Look in the privacy settings for personalized or interest-based advertising and turn it off.</li></ol></div></div></article><article class="medida deep"><h3>If it's just a screen, keep it offline<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: medium</li>
+<li>⏱ 5 min</li><li>For: advanced</li></ul>
+<p>If you watch everything through a console, an external player, or a laptop, the TV doesn't need a connection. No internet means no ACR and no ads in the menus. The trade-off: it won't get automatic updates, so connect it now and then to bring it up to date.</p><div class="plataformas"><div class="plataforma"><h4>Any brand</h4><ol><li>Settings &gt; Network: forget the Wi-Fi network and unplug the Ethernet cable.</li><li>On Google TV, you can choose <strong>Basic TV</strong> during setup, which doesn't require signing in or an internet connection.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>Your TV's list of agreements</h3><p>In the privacy settings, check which agreements you've accepted. If <strong>Viewing Information Services</strong> is accepted (Samsung) or <strong>Live Plus</strong> is on (LG), ACR is running.</p></div><div class="fila"><h3>Ads on the home screen</h3><p>If you turn on the TV and see recommendations that echo what you watched over antenna or HDMI, that's a sign content recognition is active.</p></div><div class="fila"><h3>The TV's traffic (for technical readers)</h3><p>Your router's dashboard or a home DNS filter shows which domains the TV connects to. After you turn off ACR, the periodic connections to recognition servers should disappear.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Replacing your TV or buying a "dumb" one</h3><p>Turning off ACR and personalized ads removes most of the collection. There's no need to replace the set.</p></div><div class="fila"><h3>Covering the TV or distrusting every feature</h3><p>ACR analyzes the screen; it doesn't record you. If your model has a camera or microphone, review those settings separately, without panic.</p></div><div class="fila"><h3>Running a VPN on the TV</h3><p>A VPN hides your traffic from your internet provider, not from the manufacturer: the ACR data still reaches them. The effective fix is to turn it off in settings.</p></div><div class="fila"><h3>Checking it every week</h3><p>Do it at setup, and take a quick look after a major system update or a factory reset.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"I only use my TV for my game console, so it doesn't know what I watch."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>The study of Samsung and LG TVs found ACR traffic <strong>even when the TV was used as an external display over HDMI</strong>. The feature works on whatever's on screen, wherever it comes from. To stop it, turn it off in settings or keep the TV offline.</p><p class="src"><a href="https://arxiv.org/html/2409.06203v1" rel="noopener noreferrer">Anselmi et al. (IMC 2024): ACR tracking in smart TVs</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>Fingerprints, not video</h3><p>ACR doesn't upload the full picture. The TV computes a fingerprint of the frames (and, on some systems, the audio) and sends that summary, which the server matches against its catalog. That's why the traffic volume is small and hard to notice.</p><p>According to the documentation cited in the study, LG's ACR captures frames every 10 ms and Samsung's every 500 ms. What showed up on the network were batched uploads: every 15 seconds on LG and roughly every minute on Samsung.</p><h3>What the study measured</h3><p>The researchers analyzed traffic from a Samsung TV and an LG TV in the UK and the US across several scenarios: antenna TV, streaming apps, and use as an HDMI display. The TVs contacted different domains depending on the country.</p><p>Key findings: ACR works even when the TV is used as a "dumb" display, behavior differs between countries, and <strong>opting out stops traffic to ACR servers</strong>. When the researchers requested their data under the GDPR, the response was, in their words, vague and didn't match the volume they had observed.</p><h3>An agreement you can withdraw</h3><p>On the TVs studied, ACR is tied to a specific agreement on the terms screen, separate from the ones required to use the TV. Samsung, for example, lets you withdraw your agreement to each adjustable item from <em>Privacy Choices</em>. Withdrawing it doesn't stop you from using the TV or its apps. In the US, the FTC sued Vizio in 2017 for using ACR without viewers' consent.</p><h3>Blocking it at the network level</h3><p>A home DNS filter can block ACR domains, but they vary by brand, country, and firmware, and an overly aggressive blocklist can break updates or apps. For most people, turning it off in settings is more reliable; network blocking makes sense as an extra layer for technical users.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>ACR (automatic content recognition)</dt><dd>Smart TV technology that identifies what&#x27;s on screen and reports it to the manufacturer, usually for advertising.</dd><dt>HDMI</dt><dd>The connector that carries picture and sound to your TV from consoles, laptops, cable boxes, and players.</dd><dt>Fingerprint</dt><dd>A compact mathematical summary of a snippet of video or audio that lets a server recognize it without receiving the full content.</dd><dt>Advertising ID</dt><dd>A code tied to your device that platforms use to personalize ads. It can be reset or, on some systems, deleted.</dd><dt>KEV</dt><dd>The Known Exploited Vulnerabilities catalog maintained by CISA, the US cybersecurity agency. If a flaw is listed there, it&#x27;s being attacked in the real world.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://www.consumerreports.org/electronics/privacy/how-to-turn-off-smart-tv-snooping-features-a4840102036/" rel="noopener noreferrer">Consumer Reports: How to turn off smart TV snooping features</a></li><li><a href="https://www.ucl.ac.uk/news/2024/nov/smart-tv-tracking-raises-privacy-concerns/" rel="noopener noreferrer">UCL: Smart TV tracking raises privacy concerns (Nov. 10, 2024)</a></li><li><a href="https://arxiv.org/html/2409.06203v1" rel="noopener noreferrer">Anselmi et al.: A first look at ACR tracking in smart TVs (IMC 2024)</a></li><li><a href="https://www.samsung.com/hk_en/support/tv-audio-video/how-to-adjust-privacy-settings-on-your-samsung-smart-tv/" rel="noopener noreferrer">Samsung: How to adjust privacy settings on your Samsung smart TV</a></li><li><a href="https://www.pocket-lint.com/lg-tv-turn-off-live-plus/" rel="noopener noreferrer">Pocket-lint: How to turn off LG Live Plus</a></li><li><a href="https://support.google.com/googletv/answer/10408998" rel="noopener noreferrer">Google: Use Basic TV on a Google TV device</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-acr" class="gl-pop"><strong>ACR (automatic content recognition)</strong>Smart TV technology that identifies what&#x27;s on screen and reports it to the manufacturer, usually for advertising.</div><div popover id="g-hdmi" class="gl-pop"><strong>HDMI</strong>The connector that carries picture and sound to your TV from consoles, laptops, cable boxes, and players.</div><div popover id="g-huella" class="gl-pop"><strong>Fingerprint</strong>A compact mathematical summary of a snippet of video or audio that lets a server recognize it without receiving the full content.</div><div popover id="g-idpub" class="gl-pop"><strong>Advertising ID</strong>A code tied to your device that platforms use to personalize ads. It can be reset or, on some systems, deleted.</div><div popover id="g-kev" class="gl-pop"><strong>KEV</strong>The Known Exploited Vulnerabilities catalog maintained by CISA, the US cybersecurity agency. If a flaw is listed there, it&#x27;s being attacked in the real world.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

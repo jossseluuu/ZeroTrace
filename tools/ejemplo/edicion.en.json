@@ -1,0 +1,199 @@
+{
+  "fecha": "2026-11-04",
+  "idioma": "en",
+  "foco": "smartphones",
+  "concepto": "wifi-away-from-home",
+  "titulo": "Your phone's Wi-Fi when you leave home",
+  "subtitulo": "What your phone does while it hunts for networks, how an attacker takes advantage, and the few changes that shut the door.",
+  "dispositivos": ["smartphone", "tablet"],
+  "lectura": {"basico": 3, "fondo": 10},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-04-php2shell", "2026-11-04-ivanti-connect-secure", "2026-11-04-ios-26-7-1"]
+  },
+  "basico": {
+    "parrafos": [
+      "When you leave home with Wi-Fi on, your phone never rests: **it keeps scanning for networks and joins any one it already knows, automatically**.",
+      "The catch is that anyone can set up a network with the same name as an open Wi-Fi you once used: the airport, a coffee chain, your hotel. Your phone recognizes it and **joins without asking**.",
+      "The real danger isn't someone \"reading your WhatsApp\"—that's encrypted. It's a fake sign-in page popping up and **you typing your main account password into it**."
+    ],
+    "esencial": [
+      "Delete the open networks your phone has saved.",
+      "Turn off Auto-Join for any network you don't fully trust.",
+      "Always keep the private Wi-Fi address turned on.",
+      "Never type your Google, Apple, or Microsoft password into a Wi-Fi sign-in page."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "medio", "texto": "Someone has to be physically nearby with the gear ready. It's most likely at airports, hotels, train stations, and conferences."},
+    "impacto": {"nivel": "alto", "texto": "Fall for a fake portal and you may hand over your main account password—and with it your email, photos, and backups."}
+  },
+  "fondo": [
+    {
+      "titulo": "What your phone does while it scans",
+      "parrafos": [
+        "To find networks, your phone listens for the ones broadcasting their name ([[ssid|SSID]]) and also sends out small [[probe|probe requests]] asking what's nearby. It does this even when you're not using it, every few seconds or minutes depending on the system and battery.",
+        "When it finds a network whose name and security type match one it has saved, it connects. **It doesn't check that it's the same physical network**: only that the name matches and, if there's a password, that the access point knows it.",
+        "Modern systems usually no longer include your list of known networks in their probes. **The exception is hidden networks**: since they don't broadcast their name, your phone has to keep asking for it wherever you go."
+      ]
+    },
+    {
+      "titulo": "Why open networks are the weak link",
+      "parrafos": [
+        "On a password-protected network, a fake access point needs that password for your phone to connect. On an **open** network there's nothing to verify: copying the name is enough.",
+        "So a saved open network with Auto-Join on is, in practice, an open invitation to anyone who knows its name—and the names of the most common public networks are easy to guess."
+      ]
+    },
+    {
+      "titulo": "Tracking through your MAC address",
+      "parrafos": [
+        "Every device identifies itself to a network with a [[mac|MAC address]]. If it never changed, any network or sensor could follow you from place to place and know when you come back. Some shopping malls have used this to map how customers move.",
+        "That's why iOS 14 and Android 10 and later use **a different private address for each network**. On iOS 18 and later there are three modes: *Off*, *Fixed* (the default on WPA2 or stronger networks), and *Rotating*, which changes every two weeks and is the default on open or weak networks. Android uses a persistent randomized address per network by default.",
+        "Turning it off makes you trackable. It only makes sense on specific networks that require it, such as some workplace networks or per-device parental controls."
+      ]
+    },
+    {
+      "titulo": "Why you shouldn't hide your home Wi-Fi",
+      "parrafos": [
+        "It sounds safer, but it's the opposite. A [[oculta|hidden network]] forces your devices to **ask for its name everywhere**: on the street, on the subway, at work. Anyone listening learns what your home network is called.",
+        "Apple says so explicitly in its router recommendations: hiding the name doesn't keep the network from being detected or protect it from unauthorized access, and it can expose information that identifies you. What protects your network is **WPA3 Personal** (or WPA2/WPA3 Transitional if you have older devices) with a long password."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "Setup", "texto": "The attacker brings a laptop or a device the size of a travel router to a busy spot and creates an open network with a familiar name: the airport's, a coffee chain's, or the hotel's."},
+    {"titulo": "Your phone joins on its own", "texto": "If you ever used a network with that name and it's still saved with Auto-Join on, your phone connects without telling you—even in your pocket."},
+    {"titulo": "The portal appears", "texto": "Your phone detects a sign-in page and opens it automatically. The attacker shows a copy of \"Sign in with Google,\" or a hotel page asking for your room number and card."},
+    {"titulo": "The harvest", "texto": "If you type your password, they have it. If you don't have two-step verification turned on, they can sign in to your account from anywhere."},
+    {"titulo": "What comes next", "texto": "Redirecting sites that don't use HTTPS, offering fake \"updates\" to download, or logging which services you connect to."}
+  ],
+  "atacante": {
+    "puede": [
+      "See which services you connect to by name (your bank's domain, for example), unless you use encrypted DNS or a VPN.",
+      "Show you fake pages, especially the Wi-Fi sign-in portal.",
+      "Tamper with websites and downloads that don't use HTTPS.",
+      "Try to reach services open on your device, like file sharing or AirDrop set to Everyone."
+    ],
+    "no_puede": [
+      "Read your WhatsApp, Signal, or iMessage conversations, which are end-to-end encrypted.",
+      "See what you do inside websites and apps with properly implemented HTTPS, like your bank's.",
+      "Get into accounts protected with passkeys or a hardware security key, even with your password.",
+      "Install anything on an up-to-date phone unless you accept a download or a profile."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Forget open networks you no longer use",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "Every saved open network is a door someone can imitate. Go through the list and keep only the ones you actually use.",
+      "pasos": {
+        "iPhone / iPad": ["Settings > Wi-Fi > **Edit** (top right).", "Tap the red button next to each open network, then **Delete**."],
+        "Android": ["Settings > Network & internet > Internet > **Saved networks**.", "Tap each open network and choose **Forget**."]
+      }
+    },
+    {
+      "titulo": "Stop it from joining on its own",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "For networks you want to keep but don't fully trust, turn off automatic joining. You'll connect only when you choose to.",
+      "pasos": {
+        "iPhone / iPad": ["Settings > Wi-Fi > (i) next to the network > turn off **Auto-Join**.", "In Settings > Wi-Fi, set **Ask to Join Networks** to *Ask*."],
+        "Android": ["Saved networks > network > turn off **Auto-connect**.", "Internet > Network preferences > turn off **Turn on Wi-Fi automatically**."]
+      }
+    },
+    {
+      "titulo": "Keep the private address on",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "It's on by default, but it's worth checking that nothing (an app or a workplace network) has turned it off.",
+      "pasos": {
+        "iPhone / iPad": ["Settings > Wi-Fi > (i) next to the network > **Private Wi-Fi Address**: *Fixed* or *Rotating*, never *Off*."],
+        "Android": ["Saved networks > network > **Privacy** > *Use randomized MAC*."]
+      }
+    },
+    {
+      "titulo": "Don't trust the sign-in portal",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "habit", "para": "todos",
+      "texto": "This is where the attack turns into theft. A legitimate portal asks, at most, for you to accept terms, enter a code, or give your room number.",
+      "pasos": {
+        "Always": ["If a Wi-Fi portal asks for your Google, Apple, or Microsoft password, **close it and disconnect**.", "Don't download anything a portal offers: no \"certificates,\" profiles, or apps.", "For banking, shopping, or changing passwords, use **cellular data**."]
+      }
+    },
+    {
+      "titulo": "Really turn Wi-Fi off when you leave",
+      "impacto": "medio", "esfuerzo": "medio", "tiempo": "5 min", "para": "avanzado",
+      "texto": "If you want to go further, have Wi-Fi switch off when you leave home and stop your phone from scanning networks to locate you.",
+      "pasos": {
+        "iPhone / iPad": ["Turn it off in **Settings > Wi-Fi**, not Control Center (see \"Myth and reality\").", "To automate it: **Shortcuts** app > Automation > *Leave* home > *Turn Wi-Fi off*."],
+        "Android": ["Location > Location services > turn off **Wi-Fi scanning**, which lets the phone scan even with Wi-Fi off."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "Your iPhone's warnings", "texto": "In Settings > Wi-Fi, you may see **Weak Security** or **Privacy Warning** under a network's name. It means the network uses an outdated or open protocol, your private address is off, or the network blocks encrypted DNS."},
+    {"titulo": "Your list of saved networks", "texto": "On iPhone, Settings > Wi-Fi > Edit shows every known network. On Android, it's Saved networks. Any that don't show WPA2 or WPA3 security are open: delete those first."},
+    {"titulo": "Your home router", "texto": "In the router's admin page, security should be **WPA3 Personal** or **WPA2/WPA3 Transitional**, with the hidden-network option turned off. Avoid WEP, TKIP, WPA/WPA2 mixed mode, and \"None.\""}
+  ],
+  "innecesario": [
+    {"titulo": "Giving up public Wi-Fi", "texto": "With HTTPS and up-to-date apps, reading the news or watching videos on public Wi-Fi is reasonably safe. The risk is typing passwords into portals and downloading what they offer."},
+    {"titulo": "Running a VPN for everything", "texto": "At home or on cellular data it adds little security. Save it for public networks when you need to sign in. Be wary of free VPNs: they see all your traffic, and that's their business model."},
+    {"titulo": "Changing your home password every month", "texto": "If it's long and unique, change it only when you've shared it with someone who shouldn't have it anymore."},
+    {"titulo": "Turning Wi-Fi off at home or at work", "texto": "These steps are for outside your trusted networks. On the networks you use every day, let it run."}
+  ],
+  "mito": {
+    "mito": "\"I turned Wi-Fi off from Control Center on my iPhone.\"",
+    "realidad": "That button only **disconnects** you from networks: Wi-Fi stays available for AirDrop, Location Services, and other features, and reconnects on its own the next day, when you change locations, or when you restart. To really turn it off, go to **Settings > Wi-Fi**.",
+    "fuente": {"titulo": "Apple: Use Bluetooth and Wi-Fi in Control Center", "url": "https://support.apple.com/102412"}
+  },
+  "tecnico": [
+    {
+      "titulo": "KARMA and MANA: when the attacker doesn't need to guess",
+      "parrafos": [
+        "KARMA (2004) answered directed probes—the ones where a device asks for a specific network—and pretended to be that network. It mostly stopped working once operating systems stopped sending directed probes.",
+        "MANA (SensePost, 2014) extended it: it also answers broadcast probes and, in *loud* mode, offers every nearby device the network names it has learned from any of them. That's why it only takes **one** person nearby revealing a network for every other phone with it saved to be at risk."
+      ]
+    },
+    {
+      "titulo": "A password on the wall doesn't protect you",
+      "parrafos": [
+        "On WPA2-Personal, anyone who knows the password (the one on the coffee shop sign, say) can run an identical access point: a shared password doesn't identify who operates the network.",
+        "WPA3-Personal (SAE) prevents captured traffic from being decrypted later even if the password is known, but it doesn't stop someone who knows it from impersonating the network either."
+      ]
+    },
+    {
+      "titulo": "Enhanced Open (OWE): encryption without identity",
+      "parrafos": [
+        "OWE encrypts open networks against passive eavesdropping and requires protected management frames. But it **doesn't verify who operates the access point**: against an evil twin, its risk is nearly the same as an open network's."
+      ]
+    },
+    {
+      "titulo": "Protected management frames (PMF, 802.11w)",
+      "parrafos": [
+        "They're mandatory in WPA3 and OWE. They stop an attacker from forcibly disconnecting clients with forged deauthentication frames to push them onto a rogue network. If your router allows it, set PMF to *required*, not just *optional*."
+      ]
+    },
+    {
+      "titulo": "Workplace and campus networks (802.1X, eduroam)",
+      "parrafos": [
+        "If the network profile doesn't validate the server certificate and its domain, an evil twin with the same name can capture your username and data derived from your password. Always set these networks up with the CA certificate and domain your organization provides, and never choose *Don't validate*."
+      ]
+    }
+  ],
+  "glosario": {
+    "ssid": ["SSID", "A Wi-Fi network's name, the one you see in the list when you look for networks."],
+    "probe": ["Probe request", "A message your device sends out to ask which Wi-Fi networks are nearby."],
+    "gemela": ["Evil twin", "A fake network set up with the same name as a legitimate one so devices join it by mistake."],
+    "portal": ["Captive portal", "The page some public Wi-Fi networks show to accept terms or sign in. It's easy to fake."],
+    "mac": ["MAC address", "The identifier of a device's network card. If it never changes, it lets networks recognize the device anywhere."],
+    "oculta": ["Hidden network", "A Wi-Fi network that doesn't broadcast its name. Devices have to ask for it to find it."],
+    "vpn": ["VPN", "Virtual private network: an encrypted tunnel between your device and a trusted server, so the local network can't see your traffic."],
+    "kev": ["KEV", "The Known Exploited Vulnerabilities catalog kept by CISA, the U.S. cybersecurity agency. If a flaw is listed there, it's being used in real attacks."]
+  },
+  "fuentes": [
+    {"titulo": "FTC: Tips for wise use of Wi-Fi networks", "url": "https://www.ftc.gov/news-events/news/press-releases/2011/02/ftc-offers-tips-wise-use-wi-fi-networks"},
+    {"titulo": "Apple: Recommended settings for Wi-Fi routers and access points", "url": "https://support.apple.com/102766"},
+    {"titulo": "Apple: Use private Wi-Fi addresses on Apple devices", "url": "https://support.apple.com/en-us/102509"},
+    {"titulo": "Apple Platform Security: Wi-Fi privacy", "url": "https://support.apple.com/guide/security/sec31e483abf/web"},
+    {"titulo": "Android: MAC randomization behavior", "url": "https://source.android.com/docs/core/connect/wifi-mac-randomization-behavior"},
+    {"titulo": "SensePost: KARMA and MANA attack theory", "url": "https://github.com/sensepost/hostapd-mana/wiki/KARMA---MANA-Attack-Theory"},
+    {"titulo": "SpecterOps: Attacks against WPA3's Enhanced Open (OWE)", "url": "https://specterops.io/blog/2020/02/12/war-never-changes-attacks-against-wpa3s-enhanced-open-part-3-owe-nearly-indistinguishable-from-open-wireless-in-terms-of-risk/"}
+  ]
+}

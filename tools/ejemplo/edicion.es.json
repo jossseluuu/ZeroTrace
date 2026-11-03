@@ -1,0 +1,200 @@
+{
+  "fecha": "2026-11-04",
+  "idioma": "es",
+  "foco": "smartphones",
+  "concepto": "wifi-fuera-de-casa",
+  "titulo": "La wifi de tu móvil fuera de casa",
+  "subtitulo": "Qué hace tu teléfono mientras busca redes, cómo se aprovecha un atacante y qué basta con cambiar para cerrarle la puerta.",
+  "dispositivos": ["smartphone", "tablet"],
+  "lectura": {"basico": 3, "fondo": 10},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-04-php2shell", "2026-11-04-ivanti-connect-secure", "2026-11-04-ios-26-7-1"]
+  },
+  "basico": {
+    "parrafos": [
+      "Cuando sales de casa con la wifi encendida, tu móvil no descansa: **busca redes sin parar y se conecta solo a cualquiera que ya conozca**.",
+      "El problema es que cualquiera puede crear una red con el mismo nombre que una wifi abierta que usaste alguna vez: la del aeropuerto, la de una cadena de cafeterías, la del hotel. Tu móvil la reconoce y **se conecta sin preguntarte**.",
+      "El peligro real no es que «te lean el WhatsApp», que va cifrado. Es que te aparezca una página de acceso falsa y **escribas en ella la contraseña de tu cuenta principal**."
+    ],
+    "esencial": [
+      "Borra las redes abiertas que tengas guardadas.",
+      "Desactiva la conexión automática en las redes que no sean de confianza.",
+      "Deja siempre activada la dirección wifi privada.",
+      "Nunca escribas la contraseña de Google, Apple o Microsoft en la página de acceso de una wifi."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "medio", "texto": "Requiere que alguien esté físicamente cerca con el equipo preparado. Es más probable en aeropuertos, hoteles, estaciones y congresos."},
+    "impacto": {"nivel": "alto", "texto": "Si caes en un portal falso puedes entregar la contraseña de tu cuenta principal, y con ella tu correo, tus fotos y tus copias de seguridad."}
+  },
+  "fondo": [
+    {
+      "titulo": "Qué hace tu móvil mientras busca",
+      "parrafos": [
+        "Para encontrar redes, el móvil escucha las que anuncian su nombre ([[ssid|SSID]]) y además envía pequeñas [[probe|peticiones de sondeo]] preguntando qué hay alrededor. Lo hace aunque no lo estés usando, cada pocos segundos o minutos según el sistema y la batería.",
+        "Cuando encuentra una red cuyo nombre y tipo de seguridad coinciden con una que tiene guardada, se conecta. **No comprueba que sea la misma red física**: solo que se llama igual y que, si tiene contraseña, el punto de acceso la conoce.",
+        "Los sistemas actuales ya no suelen incluir en sus sondeos la lista de redes que conoces. **La excepción son las redes ocultas**: como no anuncian su nombre, tu móvil tiene que ir preguntando por él allá donde vas."
+      ]
+    },
+    {
+      "titulo": "Por qué las redes abiertas son el eslabón débil",
+      "parrafos": [
+        "En una red con contraseña, el punto de acceso falso necesita conocer esa contraseña para que tu móvil se conecte. En una red **abierta** no hay nada que comprobar: basta con copiar el nombre.",
+        "Por eso una red abierta guardada con conexión automática es, en la práctica, una invitación a cualquiera que sepa su nombre. Y los nombres de las redes públicas más comunes son fáciles de adivinar."
+      ]
+    },
+    {
+      "titulo": "El rastreo por la dirección MAC",
+      "parrafos": [
+        "Cada dispositivo se identifica ante la red con una [[mac|dirección MAC]]. Si fuera siempre la misma, cualquier red o sensor podría seguirte de un sitio a otro y saber cuándo vuelves. Algunos centros comerciales lo han usado para medir recorridos de clientes.",
+        "Por eso iOS 14 y Android 10 en adelante usan **direcciones privadas distintas para cada red**. En iOS 18 y posteriores hay tres modos: *Desactivada*, *Fija* (por defecto en redes con WPA2 o superior) y *Rotativa*, que cambia cada dos semanas y es la opción por defecto en redes abiertas o débiles. Android usa por defecto una dirección aleatoria persistente por red.",
+        "Desactivarla te vuelve rastreable. Solo tiene sentido en redes concretas que la exijan, como algunas de empresa o con control parental por dispositivo."
+      ]
+    },
+    {
+      "titulo": "Por qué no conviene ocultar la wifi de casa",
+      "parrafos": [
+        "Parece más seguro, pero es al revés. Una [[oculta|red oculta]] obliga a tus dispositivos a **preguntar por su nombre en todas partes**: en la calle, en el metro, en el trabajo. Cualquiera que escuche sabe cómo se llama tu red de casa.",
+        "Apple lo dice expresamente en sus recomendaciones para routers: ocultar el nombre no impide detectar la red ni la protege de accesos no autorizados, y puede exponer información que te identifica. Lo que protege tu red es **WPA3 Personal** (o WPA2/WPA3 de transición si tienes aparatos antiguos) con una contraseña larga."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "Preparación", "texto": "El atacante lleva un portátil o un aparato del tamaño de un router de viaje a un sitio concurrido y crea una red abierta con un nombre conocido: el del aeropuerto, el de una cadena de cafeterías o el del hotel."},
+    {"titulo": "Tu móvil se conecta solo", "texto": "Si alguna vez usaste una red con ese nombre y sigue guardada con conexión automática, tu móvil se une sin avisarte, aunque lo lleves en el bolsillo."},
+    {"titulo": "Aparece el portal", "texto": "El sistema detecta una página de acceso y la abre automáticamente. El atacante muestra una copia de «Inicia sesión con Google», o la página del hotel pidiendo tu número de habitación y tu tarjeta."},
+    {"titulo": "La recogida", "texto": "Si escribes la contraseña, ya la tiene. Si además no tienes activada la verificación en dos pasos, puede entrar en tu cuenta desde cualquier lugar."},
+    {"titulo": "Lo que intenta después", "texto": "Redirigir webs que no usen HTTPS, ofrecerte «actualizaciones» falsas para descargar o anotar a qué servicios te conectas."}
+  ],
+  "atacante": {
+    "puede": [
+      "Ver a qué servicios te conectas por su nombre (por ejemplo, el dominio de tu banco), salvo que uses DNS cifrado o una VPN.",
+      "Mostrarte páginas falsas, sobre todo el portal de acceso de la wifi.",
+      "Manipular webs y descargas que no usen HTTPS.",
+      "Intentar llegar a servicios que tengas abiertos en el dispositivo, como compartir archivos o AirDrop abierto a todo el mundo."
+    ],
+    "no_puede": [
+      "Leer tus conversaciones de WhatsApp, Signal o iMessage, que van cifradas de extremo a extremo.",
+      "Ver lo que haces dentro de webs y apps con HTTPS bien implementado, como la de tu banco.",
+      "Entrar en tus cuentas protegidas con passkeys o con una llave física, aunque consiga tu contraseña.",
+      "Instalar nada en un móvil actualizado si tú no aceptas una descarga o un perfil."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Olvida las redes abiertas que ya no uses",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "Cada red abierta guardada es una puerta que alguien puede imitar. Revisa la lista y deja solo las que uses de verdad.",
+      "pasos": {
+        "iPhone / iPad": ["Ajustes > Wi-Fi > **Editar** (arriba a la derecha).", "Pulsa el botón rojo junto a cada red abierta y elige **Eliminar**."],
+        "Android": ["Ajustes > Redes e Internet > Internet > **Redes guardadas**.", "Toca cada red abierta y elige **Olvidar**."]
+      }
+    },
+    {
+      "titulo": "Que no se conecte sola",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Para las redes que quieras conservar pero que no sean de confianza, desactiva la conexión automática. Te conectarás solo cuando tú lo pidas.",
+      "pasos": {
+        "iPhone / iPad": ["Ajustes > Wi-Fi > botón (i) de la red > desactiva **Acceso automático**.", "En Ajustes > Wi-Fi, deja **Preguntar al acceder a redes** en *Preguntar*."],
+        "Android": ["Redes guardadas > red > desactiva **Conectar automáticamente**.", "Internet > Preferencias de red > desactiva **Activar Wi-Fi automáticamente**."]
+      }
+    },
+    {
+      "titulo": "Mantén la dirección privada activada",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Viene activada de serie, pero conviene comprobar que nadie (ni una app ni una red de empresa) la ha desactivado.",
+      "pasos": {
+        "iPhone / iPad": ["Ajustes > Wi-Fi > botón (i) de la red > **Dirección Wi-Fi privada**: *Fija* o *Rotativa*, nunca *Desactivada*."],
+        "Android": ["Redes guardadas > red > **Privacidad** > *Usar MAC aleatoria*."]
+      }
+    },
+    {
+      "titulo": "Desconfía del portal de acceso",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "hábito", "para": "todos",
+      "texto": "Es el punto donde el ataque se convierte en robo. Un portal legítimo pide como mucho aceptar condiciones, un código o tu número de habitación.",
+      "pasos": {
+        "Siempre": ["Si un portal de wifi te pide la contraseña de Google, Apple o Microsoft, **ciérralo y desconéctate**.", "No descargues nada que te ofrezca un portal: ni «certificados», ni perfiles, ni apps.", "Para banca, compras o cambios de contraseña, usa **datos móviles**."]
+      }
+    },
+    {
+      "titulo": "Apaga la wifi de verdad al salir",
+      "impacto": "medio", "esfuerzo": "medio", "tiempo": "5 min", "para": "avanzado",
+      "texto": "Si quieres ir un paso más allá, haz que la wifi se apague al salir de casa y que el móvil deje de buscar redes para ubicarte.",
+      "pasos": {
+        "iPhone / iPad": ["Apágala desde **Ajustes > Wi-Fi**, no desde el Centro de control (ver «Mito y realidad»).", "Para automatizarlo: app **Atajos** > Automatización > *Al salir* de casa > *Desactivar Wi-Fi*."],
+        "Android": ["Ubicación > Servicios de ubicación > desactiva **Búsqueda de redes Wi-Fi**, que permite escanear aunque la wifi esté apagada."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "Los avisos de tu iPhone", "texto": "En Ajustes > Wi-Fi, debajo del nombre de una red puede aparecer **Seguridad débil** o **Advertencia de privacidad**. Significa que la red usa un protocolo obsoleto o abierto, que tienes desactivada la dirección privada o que la red bloquea el DNS cifrado."},
+    {"titulo": "Tu lista de redes guardadas", "texto": "En iPhone, Ajustes > Wi-Fi > Editar muestra todas las redes conocidas. En Android, Redes guardadas. Las que no indican seguridad WPA2 o WPA3 son abiertas: son las primeras que debes borrar."},
+    {"titulo": "Tu router de casa", "texto": "En el panel del router, la seguridad debe ser **WPA3 Personal** o **WPA2/WPA3 de transición**, y la opción de ocultar la red, desactivada. Evita WEP, TKIP, WPA/WPA2 mixto y «Ninguna»."}
+  ],
+  "innecesario": [
+    {"titulo": "Renunciar a la wifi pública", "texto": "Con HTTPS y apps actualizadas, leer noticias o ver vídeos en una red pública es razonablemente seguro. El riesgo está en escribir contraseñas en portales y en descargar lo que te ofrezcan."},
+    {"titulo": "Usar una VPN para todo", "texto": "En casa o con datos móviles aporta poco a tu seguridad. Resérvala para redes públicas cuando tengas que iniciar sesión. Ojo con las VPN gratuitas: ven todo tu tráfico y ese es su negocio."},
+    {"titulo": "Cambiar la contraseña de casa cada mes", "texto": "Si es larga y única, basta con cambiarla cuando se la hayas dado a alguien que ya no debería tenerla."},
+    {"titulo": "Apagar la wifi en casa o en el trabajo", "texto": "Estas medidas son para fuera de tus redes de confianza. En tus redes habituales, déjala funcionar."}
+  ],
+  "mito": {
+    "mito": "«He apagado la wifi desde el Centro de control del iPhone.»",
+    "realidad": "Ese botón solo te **desconecta** de las redes: la wifi sigue disponible para AirDrop, la ubicación y otras funciones, y vuelve a conectarse sola al día siguiente, al cambiar de ubicación o al reiniciar. Para apagarla de verdad, ve a **Ajustes > Wi-Fi**.",
+    "fuente": {"titulo": "Apple: usar el Bluetooth y la Wi-Fi en el Centro de control", "url": "https://support.apple.com/es-es/102412"}
+  },
+  "tecnico": [
+    {
+      "titulo": "KARMA y MANA: cuando el atacante no necesita adivinar",
+      "parrafos": [
+        "KARMA (2004) respondía a los sondeos dirigidos, aquellos en los que el dispositivo pregunta por una red concreta, y fingía ser esa red. Dejó de funcionar casi siempre cuando los sistemas dejaron de enviar sondeos dirigidos.",
+        "MANA (SensePost, 2014) lo amplió: responde también a sondeos genéricos y, en su modo *loud*, ofrece a todos los dispositivos cercanos los nombres de red que ha aprendido de cualquiera de ellos. Por eso basta con que **una** persona cercana revele una red para que el resto de móviles que la tengan guardada puedan caer."
+      ]
+    },
+    {
+      "titulo": "Una contraseña en la pared no te protege",
+      "parrafos": [
+        "En WPA2-Personal, cualquiera que conozca la contraseña (la del cartel de la cafetería, por ejemplo) puede montar un punto de acceso idéntico: la contraseña compartida no identifica a quién gestiona la red.",
+        "WPA3-Personal (SAE) impide descifrar después el tráfico capturado aunque se conozca la contraseña, pero tampoco evita que quien la conozca suplante la red."
+      ]
+    },
+    {
+      "titulo": "Enhanced Open (OWE): cifrado sin identidad",
+      "parrafos": [
+        "OWE cifra las redes abiertas para evitar escuchas pasivas y obliga a usar tramas de gestión protegidas. Pero **no verifica quién opera el punto de acceso**: frente a una red gemela, su riesgo es casi el mismo que el de una red abierta."
+      ]
+    },
+    {
+      "titulo": "Tramas de gestión protegidas (PMF, 802.11w)",
+      "parrafos": [
+        "Son obligatorias en WPA3 y en OWE. Impiden que un atacante desconecte a la fuerza a los clientes con tramas de desautenticación falsas para empujarlos a su red. Si tu router lo permite, actívalas como *obligatorias* y no solo *opcionales*."
+      ]
+    },
+    {
+      "titulo": "Redes de empresa y universidad (802.1X, eduroam)",
+      "parrafos": [
+        "Si el perfil de la red no valida el certificado del servidor y su dominio, una red gemela con el mismo nombre puede quedarse con tu usuario y con datos derivados de tu contraseña. Configura siempre estas redes indicando el certificado de la autoridad y el dominio que te facilite tu organización, y nunca elijas *No validar*."
+      ]
+    }
+  ],
+  "glosario": {
+    "ssid": ["SSID", "El nombre de una red wifi, el que ves en la lista al buscar redes."],
+    "probe": ["Petición de sondeo (probe request)", "Mensaje que tu dispositivo emite para preguntar qué redes wifi hay cerca."],
+    "gemela": ["Red gemela (evil twin)", "Red falsa creada con el mismo nombre que una red legítima para que los dispositivos se conecten a ella por error."],
+    "portal": ["Portal cautivo", "Página que aparece al conectarte a algunas wifi públicas para aceptar condiciones o iniciar sesión. Es fácil de falsificar."],
+    "mac": ["Dirección MAC", "Identificador de la tarjeta de red de un dispositivo. Si no cambia, permite reconocerlo en distintas redes."],
+    "oculta": ["Red oculta", "Red wifi que no anuncia su nombre. Los dispositivos deben preguntar por ella para encontrarla."],
+    "vpn": ["VPN", "Red privada virtual: crea un túnel cifrado entre tu dispositivo y un servidor de confianza, de modo que la red local no ve tu tráfico."],
+    "kev": ["KEV", "Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales."]
+  },
+  "fuentes": [
+    {"titulo": "INCIBE: redes wifi públicas o abiertas", "url": "https://www.incibe.es/node/506666"},
+    {"titulo": "INCIBE: políticas de seguridad para la pyme, uso de wifi y redes externas (PDF)", "url": "https://www.incibe.es/sites/default/files/contenidos/politicas/documentos/uso-wifis-y-redes-externas.pdf"},
+    {"titulo": "Apple: ajustes recomendados para routers y puntos de acceso Wi-Fi", "url": "https://support.apple.com/es-es/102766"},
+    {"titulo": "Apple: usar direcciones Wi-Fi privadas", "url": "https://support.apple.com/es-es/102509"},
+    {"titulo": "Apple: privacidad de la Wi-Fi en los dispositivos Apple", "url": "https://support.apple.com/guide/security/sec31e483abf/web"},
+    {"titulo": "Android: comportamiento de la aleatorización de MAC", "url": "https://source.android.com/docs/core/connect/wifi-mac-randomization-behavior"},
+    {"titulo": "SensePost: teoría de los ataques KARMA y MANA", "url": "https://github.com/sensepost/hostapd-mana/wiki/KARMA---MANA-Attack-Theory"},
+    {"titulo": "SpecterOps: ataques contra Enhanced Open (OWE)", "url": "https://specterops.io/blog/2020/02/12/war-never-changes-attacks-against-wpa3s-enhanced-open-part-3-owe-nearly-indistinguishable-from-open-wireless-in-terms-of-risk/"}
+  ]
+}

@@ -1,7 +1,28 @@
 {
-  "actualizado": "2026-11-03T01:29:11+01:00",
+  "actualizado": "2026-11-03T07:48:54+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
-  "focos_recientes": [],
-  "conceptos_por_foco": {},
-  "ediciones": []
+  "focos_recientes": [
+    "smart-tv"
+  ],
+  "conceptos_por_foco": {
+    "smart-tv": [
+      {
+        "fecha": "2026-11-03",
+        "concepto": "tele-que-reconoce-lo-que-ves"
+      }
+    ]
+  },
+  "ediciones": [
+    {
+      "fecha": "2026-11-03",
+      "foco": "smart-tv",
+      "concepto": "tele-que-reconoce-lo-que-ves",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-03-ivanti-connect-secure",
+        "2026-11-03-php2shell",
+        "2026-11-03-android-noviembre"
+      ]
+    }
+  ]
 }

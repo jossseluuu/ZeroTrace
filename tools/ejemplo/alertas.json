@@ -1,0 +1,116 @@
+[
+  {
+    "id": "2026-11-04-php2shell",
+    "fecha": "2026-11-04",
+    "nivel": "rojo",
+    "cves": [
+      "CVE-2026-109618",
+      "CVE-2026-109619"
+    ],
+    "dispositivos": [
+      "servidor"
+    ],
+    "es": {
+      "titulo": "PHP2Shell: dos fallos críticos en PHP explotados activamente",
+      "afecta": "Quien tenga una web o un servidor con PHP: WordPress, tiendas online, foros, paneles de hosting.",
+      "accion": "Actualiza PHP a **8.5.12, 8.4.27, 8.3.36 u 8.2.35** (o superior) y reinicia los procesos. En hosting compartido, pregunta a tu proveedor si ya lo ha aplicado.",
+      "detalle": "Permiten ejecutar código en el servidor sin iniciar sesión. PHP publicó los parches el 21 de octubre y CISA añadió ambos fallos a su catálogo de vulnerabilidades explotadas ([[kev|KEV]]). Las mitigaciones temporales reducen el riesgo, pero no sustituyen a la actualización."
+    },
+    "en": {
+      "titulo": "PHP2Shell: two critical PHP flaws under active attack",
+      "afecta": "Anyone running a website or server on PHP: WordPress, online stores, forums, hosting control panels.",
+      "accion": "Update PHP to **8.5.12, 8.4.27, 8.3.36, or 8.2.35** (or later) and restart every worker. On shared hosting, ask your provider whether it's done.",
+      "detalle": "They let an attacker run code on the server without logging in. PHP shipped the fixes on October 21, and CISA added both to its Known Exploited Vulnerabilities catalog ([[kev|KEV]]). Temporary mitigations lower the risk but don't replace the update."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "BleepingComputer: PHP publica parches de emergencia para PHP2Shell",
+          "en": "BleepingComputer: PHP ships emergency patches for PHP2Shell"
+        },
+        "url": "https://bleepingcomputer.com/news/security/php-ships-emergency-patches-for-critical-php2shell-flaws"
+      },
+      {
+        "titulo": {
+          "es": "Viakoo: CISA añade PHP2Shell al catálogo KEV",
+          "en": "Viakoo: CISA adds PHP2Shell to KEV"
+        },
+        "url": "https://viakoo.com/blog/daily-ot-security-news-november-02-2026"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-04-ivanti-connect-secure",
+    "fecha": "2026-11-04",
+    "nivel": "rojo",
+    "cves": [
+      "CVE-2026-111357",
+      "CVE-2026-118527",
+      "CVE-2026-104935"
+    ],
+    "dispositivos": [
+      "empresa"
+    ],
+    "es": {
+      "titulo": "Ivanti Connect Secure: VPN corporativa atacada con zero-days",
+      "afecta": "Empresas que usan esta VPN. Si teletrabajas con ella, avisa a tu equipo de IT.",
+      "accion": "Aplicar las actualizaciones de Ivanti **y revisar si hubo intrusión**: parchear no basta si el atacante ya estaba dentro.",
+      "detalle": "Encadenados, estos fallos dieron acceso total a equipos que estaban al día. Los atacantes buscaban credenciales de Active Directory, contraseñas LAPS y claves de recuperación de BitLocker."
+    },
+    "en": {
+      "titulo": "Ivanti Connect Secure: corporate VPN hit by zero-days",
+      "afecta": "Organizations using this VPN. If you work remotely through it, give your IT team a heads-up.",
+      "accion": "Apply Ivanti's updates **and check for compromise**: patching isn't enough if attackers already got in.",
+      "detalle": "Chained together, these flaws gave attackers full control of fully patched appliances. They went after Active Directory credentials, LAPS passwords, and BitLocker recovery keys. Federal agencies face remediation deadlines of November 2 and November 13."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Help Net Security: CISA ordena corregir Ivanti Connect Secure",
+          "en": "Help Net Security: CISA orders fixes for Ivanti Connect Secure"
+        },
+        "url": "https://www.helpnetsecurity.com/2026/11/02/cisa-to-federal-agencies-remediate-exploited-ivanti-connect-secure-vulnerabilities-cve-2026-111357-cve-2026-118527/"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-04-ios-26-7-1",
+    "fecha": "2026-11-04",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-86950"
+    ],
+    "dispositivos": [
+      "smartphone",
+      "tablet"
+    ],
+    "es": {
+      "titulo": "iPhone que sigue en iOS 26: parche pendiente",
+      "afecta": "Quien no haya pasado todavía a iOS 27.",
+      "accion": "**Ajustes > General > Actualización de software**: instala iOS 26.7.1 o pasa directamente a iOS 27.",
+      "detalle": "Apple corrigió un fallo que pudo usarse en ataques muy dirigidos contra personas concretas. El riesgo para el usuario medio es bajo, pero la actualización es gratuita y rápida."
+    },
+    "en": {
+      "titulo": "iPhones still on iOS 26: a patch is waiting",
+      "afecta": "Anyone who hasn't moved to iOS 27 yet.",
+      "accion": "**Settings > General > Software Update**: install iOS 26.7.1, or jump straight to iOS 27.",
+      "detalle": "Apple fixed a flaw that may have been used in highly targeted attacks against specific individuals. The risk for the average user is low, but the update is free and quick."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Apple: actualizaciones de seguridad",
+          "en": "Apple: security releases"
+        },
+        "url": "https://support.apple.com/100100"
+      },
+      {
+        "titulo": {
+          "es": "TechRepublic: Apple admite que el fallo de iOS 26 pudo explotarse",
+          "en": "TechRepublic: Apple says iOS 26 flaw may have been exploited"
+        },
+        "url": "https://www.techrepublic.com/fr/article/news-apple-iphone-ios-26-security-flaw-exploited/"
+      }
+    ]
+  }
+]

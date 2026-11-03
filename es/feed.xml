@@ -6,6 +6,14 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Tue, 03 Nov 2026 01:29:11 +0100</lastBuildDate>
+  <lastBuildDate>Tue, 03 Nov 2026 07:48:54 +0100</lastBuildDate>
+  <item>
+    <title>Tu tele sabe lo que estás viendo</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-03.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-03.html</guid>
+    <pubDate>Tue, 03 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Smart TV</category>
+    <description>Qué es el reconocimiento automático de contenido, por qué funciona incluso con la consola o el portátil enchufados por HDMI y cómo apagarlo en cinco minutos. — Crítico: Ivanti Connect Secure: la VPN corporativa, atacada con fallos encadenados | Crítico: PHP2Shell: dos fallos críticos de PHP en el catálogo de explotados | Atención: Android: parche de noviembre con un fallo crítico sin interacción</description>
+  </item>
 </channel>
 </rss>

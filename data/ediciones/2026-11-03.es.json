@@ -1,0 +1,179 @@
+{
+  "fecha": "2026-11-03",
+  "idioma": "es",
+  "foco": "smart-tv",
+  "concepto": "tele-que-reconoce-lo-que-ves",
+  "titulo": "Tu tele sabe lo que estás viendo",
+  "subtitulo": "Qué es el reconocimiento automático de contenido, por qué funciona incluso con la consola o el portátil enchufados por HDMI y cómo apagarlo en cinco minutos.",
+  "dispositivos": ["tv"],
+  "lectura": {"basico": 3, "fondo": 10},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-03-ivanti-connect-secure", "2026-11-03-php2shell", "2026-11-03-android-noviembre"]
+  },
+  "basico": {
+    "parrafos": [
+      "Muchas smart TV llevan de serie una función llamada [[acr|reconocimiento automático de contenido (ACR)]]: la tele **analiza lo que aparece en pantalla, lo identifica y se lo comunica al fabricante**.",
+      "No se limita a sus propias apps. Según un estudio académico sobre televisores Samsung y LG, el ACR **también funciona con la TDT y cuando usas la tele como simple pantalla** para la consola, el portátil o un reproductor conectado por [[hdmi|HDMI]].",
+      "No es un virus ni un fallo de seguridad: es publicidad. Con esos datos se elaboran recomendaciones y anuncios dirigidos a tu hogar. Lo bueno es que **se puede desactivar** y, según ese mismo estudio, al hacerlo el envío de datos se detiene."
+    ],
+    "esencial": [
+      "Desactiva el reconocimiento de contenido: en Samsung, «Viewing Information Services»; en LG, «Live Plus».",
+      "Al configurar una tele nueva, no pulses «Aceptar todo»: lee qué acuerdos son opcionales.",
+      "Restablece o elimina el identificador de publicidad de la tele.",
+      "Si solo la usas como pantalla, no hace falta conectarla a internet."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "alto", "texto": "No depende de ningún atacante: si aceptaste todos los acuerdos al configurar la tele, lo más probable es que esté activado."},
+    "impacto": {"nivel": "bajo", "texto": "No da acceso a tus cuentas ni a tus archivos. Es un problema de privacidad: tus hábitos de consumo, incluido lo que ves por HDMI, acaban en perfiles publicitarios."}
+  },
+  "fondo": [
+    {
+      "titulo": "Qué hace exactamente el ACR",
+      "parrafos": [
+        "La tele toma muestras de la imagen (y en algunos casos del sonido) de forma periódica, calcula con ellas una [[huella|huella]] compacta y la envía a un servidor que la compara con una base de datos de programas, películas y anuncios. Si coincide, el fabricante sabe qué estabas viendo y cuándo.",
+        "Consumer Reports lo resume así: el ACR intenta identificar todo lo que ves, también lo que llega por cable, por antena, por plataformas de streaming e incluso desde un Blu-ray. Los datos sirven para recomendaciones y **para dirigir anuncios a ti y a tu familia**."
+      ]
+    },
+    {
+      "titulo": "Por qué también «ve» lo que llega por HDMI",
+      "parrafos": [
+        "El ACR trabaja sobre la imagen ya mostrada en pantalla, no sobre una app concreta. Por eso el estudio presentado en IMC 2024 (UCL y otras universidades) detectó tráfico hacia los servidores de ACR al ver la televisión lineal y **al usar la tele como pantalla externa por HDMI**, por ejemplo con un portátil.",
+        "En cambio, en sus pruebas en Reino Unido no detectó ese tráfico al usar Netflix o YouTube desde las apps de la propia tele, posiblemente por motivos de derechos. En EE. UU. el comportamiento fue distinto: allí el ACR seguía activo incluso con algunas apps de streaming."
+      ]
+    },
+    {
+      "titulo": "Cómo se activa sin que te des cuenta",
+      "parrafos": [
+        "El ACR suele ir ligado a uno de los acuerdos que la tele te presenta al configurarla. Si pulsas «Aceptar todo» para empezar a verla cuanto antes, lo has activado.",
+        "Además, el nombre no ayuda: Samsung lo llama «Viewing Information Services» y LG lo asocia a «Live Plus». Uno de los autores del estudio señaló que esa etiqueta «no indica realmente lo que es». En Samsung, estos acuerdos suelen aparecer en inglés aunque la tele esté en español."
+      ]
+    },
+    {
+      "titulo": "Lo que el ACR no es",
+      "parrafos": [
+        "No es una cámara ni un micrófono grabándote: identifica el **contenido de la pantalla**. El reconocimiento de voz es otra función distinta, con sus propios ajustes.",
+        "Tampoco es un riesgo de seguridad en sentido estricto: nadie entra en tu red por tener el ACR activado. Por eso la medida proporcionada es apagarlo y seguir usando la tele con normalidad, no desconfiar de ella por completo."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "La configuración inicial", "texto": "Enchufas la tele nueva, aparece una pantalla de acuerdos y pulsas «Aceptar todo». Entre ellos va el que activa el reconocimiento de contenido."},
+    {"titulo": "La captura", "texto": "Mientras ves la TDT, juegas a la consola o proyectas el portátil, la tele toma muestras de la imagen de forma periódica y calcula huellas de lo que aparece."},
+    {"titulo": "El envío", "texto": "Agrupa esas huellas y las envía a los servidores del fabricante o de su socio de ACR, cada pocos segundos o minutos según la marca."},
+    {"titulo": "La identificación", "texto": "El servidor compara las huellas con su catálogo de programas y anuncios y anota qué se vio, cuándo y en qué tele."},
+    {"titulo": "El uso", "texto": "Ese historial se vincula al identificador de publicidad del televisor y alimenta recomendaciones y anuncios personalizados."}
+  ],
+  "atacante": {
+    "puede": [
+      "Saber qué programas, películas y anuncios ves, incluidos los de la antena y los de dispositivos conectados por HDMI.",
+      "Saber a qué horas y durante cuánto tiempo usas la tele.",
+      "Vincular esos hábitos al identificador de publicidad de la tele para personalizar anuncios.",
+      "Seguir recogiendo datos de uso básicos aunque desactives el ACR: apagarlo reduce mucho la recogida, pero no la elimina del todo."
+    ],
+    "no_puede": [
+      "Verte ni escucharte: el ACR analiza la pantalla, no una cámara ni el micrófono.",
+      "Entrar en tus cuentas, en tus archivos ni en otros dispositivos de tu red.",
+      "Seguir enviando datos de ACR cuando lo desactivas: el estudio comprobó que el tráfico hacia esos servidores se detiene.",
+      "Hacer nada si la tele no está conectada a internet."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Desactiva el reconocimiento de contenido",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "5 min", "para": "todos",
+      "texto": "Es la medida que de verdad corta el envío de lo que ves. Los nombres y las rutas cambian según el año, el modelo y el país: si no lo encuentras a la primera, busca la sección de privacidad o de acuerdos de usuario.",
+      "pasos": {
+        "Samsung (Tizen)": ["Botón **Inicio** > ve al **Menú** > **Privacy Choices** (en algunos modelos, dentro de Ajustes, en la parte de **Términos y privacidad**).", "Entra en **Terms & Conditions, Privacy Policy** > *View details*.", "Retira la aceptación de **Viewing Information Services** y de la publicidad basada en intereses."],
+        "LG (webOS)": ["Botón de ajustes del mando > **Configuración** > **General** > **Sistema** > **Configuración adicional**.", "Desactiva **Live Plus**."],
+        "Google TV y otras marcas": ["Ajustes > **Privacidad**: revisa los acuerdos de usuario y retira los que sean opcionales y mencionen el uso de la información de visualización."]
+      }
+    },
+    {
+      "titulo": "No aceptes todo al estrenar la tele",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "hábito", "para": "todos",
+      "texto": "La configuración inicial es el momento en que se activa casi todo. Acepta solo lo obligatorio para usar la tele y deja sin marcar lo relacionado con información de visualización, publicidad personalizada o reconocimiento de voz si no lo vas a usar.",
+      "pasos": {
+        "Siempre": ["En la pantalla de acuerdos, evita «Aceptar todo» y revisa cada casilla.", "Si te equivocas, no pasa nada: podrás retirarlo después desde los ajustes de privacidad."]
+      }
+    },
+    {
+      "titulo": "Restablece el identificador de publicidad",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Es la etiqueta que une tus hábitos de visionado con los anuncios. Restablecerlo rompe el vínculo con el historial acumulado; eliminarlo, donde se permite, evita que se cree uno nuevo.",
+      "pasos": {
+        "Google TV": ["Ajustes > **Privacidad** > **Anuncios**: restablece o elimina el ID de publicidad."],
+        "Otras marcas": ["Busca en los ajustes de privacidad la opción de publicidad personalizada o basada en intereses y desactívala."]
+      }
+    },
+    {
+      "titulo": "Si solo es una pantalla, déjala sin internet",
+      "impacto": "alto", "esfuerzo": "medio", "tiempo": "5 min", "para": "avanzado",
+      "texto": "Si ves todo desde una consola, un reproductor externo o un portátil, la tele no necesita conexión. Sin internet no hay ACR, ni anuncios en el menú. A cambio, no recibirá actualizaciones automáticas: conéctala de vez en cuando para ponerla al día.",
+      "pasos": {
+        "Cualquier marca": ["Ajustes > Red: olvida la red wifi y desconecta el cable de red.", "En Google TV, al configurarla puedes elegir el modo **TV básica**, que no requiere iniciar sesión ni conexión a internet."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "La lista de acuerdos de tu tele", "texto": "En los ajustes de privacidad, mira qué acuerdos tienes aceptados. Si aparece **Viewing Information Services** (Samsung) o **Live Plus** está activado (LG), el ACR está funcionando."},
+    {"titulo": "La publicidad del menú de inicio", "texto": "Si al encender ves recomendaciones de programas parecidos a lo que viste por la antena o por HDMI, es una señal de que el reconocimiento de contenido está activo."},
+    {"titulo": "El tráfico de la tele (perfil técnico)", "texto": "En el panel del router o con un filtro DNS doméstico puedes ver a qué dominios se conecta la tele. Tras desactivar el ACR deberían desaparecer las conexiones periódicas a los servidores de reconocimiento."}
+  ],
+  "innecesario": [
+    {"titulo": "Cambiar de tele o comprar una «tonta»", "texto": "Con apagar el ACR y la publicidad personalizada eliminas la mayor parte de la recogida. No hace falta renovar el aparato."},
+    {"titulo": "Tapar la tele o desconfiar de cada función", "texto": "El ACR analiza la pantalla, no te graba. Si tu modelo tiene cámara o micrófono, revisa esos ajustes aparte, sin alarmismo."},
+    {"titulo": "Poner una VPN en la tele", "texto": "La VPN oculta tu tráfico a tu operador, no al fabricante: los datos de ACR le llegan igual. La medida eficaz es desactivarlo en los ajustes."},
+    {"titulo": "Revisarlo cada semana", "texto": "Basta con hacerlo al configurar la tele y echar un vistazo tras una actualización importante del sistema o si la restableces de fábrica."}
+  ],
+  "mito": {
+    "mito": "«Si solo uso la tele para la consola, no sabe lo que veo.»",
+    "realidad": "El estudio sobre televisores Samsung y LG detectó tráfico de ACR **también al usar la tele como pantalla externa por HDMI**. La función trabaja sobre lo que aparece en pantalla, venga de donde venga. Para cortarlo, desactívalo en los ajustes o deja la tele sin internet.",
+    "fuente": {"titulo": "Anselmi et al. (IMC 2024): el rastreo ACR en las smart TV", "url": "https://arxiv.org/html/2409.06203v1"}
+  },
+  "tecnico": [
+    {
+      "titulo": "Huellas, no vídeo",
+      "parrafos": [
+        "El ACR no sube la imagen completa. La tele calcula una huella de los fotogramas (y en algunos sistemas del audio) y envía ese resumen, que el servidor compara con su catálogo. Por eso el volumen de tráfico es pequeño y difícil de notar a simple vista.",
+        "Según la documentación citada en el estudio, el ACR de LG captura fotogramas cada 10 ms y el de Samsung cada 500 ms. Lo que se observó en la red fueron envíos agrupados: cada 15 segundos en LG y aproximadamente cada minuto en Samsung."
+      ]
+    },
+    {
+      "titulo": "Lo que midió el estudio",
+      "parrafos": [
+        "Los investigadores analizaron el tráfico de una tele Samsung y otra LG en Reino Unido y en EE. UU., en distintos escenarios: TDT, apps de streaming y uso como pantalla HDMI. Encontraron que las teles contactaban con dominios distintos según el país.",
+        "Conclusiones clave: el ACR funciona aunque la tele se use como pantalla «tonta», hay diferencias entre países y **desactivarlo detiene el tráfico hacia los servidores de ACR**. Al solicitar sus datos bajo el RGPD, la respuesta que recibieron fue, según los autores, vaga y no se correspondía con el volumen observado."
+      ]
+    },
+    {
+      "titulo": "Un acuerdo que se puede retirar",
+      "parrafos": [
+        "En las teles analizadas, el ACR va ligado a un acuerdo concreto de la pantalla de términos, separado de los imprescindibles para usar el televisor. Samsung, por ejemplo, permite retirar la aceptación de cada elemento ajustable desde *Privacy Choices*. Retirarlo no impide seguir usando la tele ni sus apps."
+      ]
+    },
+    {
+      "titulo": "Bloquearlo en la red",
+      "parrafos": [
+        "Un filtro DNS doméstico puede bloquear los dominios de ACR, pero cambian según la marca, el país y el firmware, y un bloqueo mal ajustado puede romper actualizaciones o apps. Para la mayoría, desactivarlo en los ajustes es más fiable; el bloqueo en red tiene sentido como capa adicional en perfiles técnicos."
+      ]
+    }
+  ],
+  "glosario": {
+    "acr": ["ACR (reconocimiento automático de contenido)", "Tecnología de la smart TV que identifica lo que aparece en pantalla y lo comunica al fabricante, normalmente con fines publicitarios."],
+    "hdmi": ["HDMI", "Conector por el que llegan a la tele la imagen y el sonido de consolas, portátiles, descodificadores o reproductores."],
+    "huella": ["Huella (fingerprint)", "Resumen matemático compacto de un fragmento de imagen o sonido que permite reconocerlo sin enviar el contenido completo."],
+    "idpub": ["Identificador de publicidad", "Código asociado a tu dispositivo que usan las plataformas para personalizar anuncios. Se puede restablecer o, en algunos sistemas, eliminar."],
+    "kev": ["KEV", "Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales."]
+  },
+  "fuentes": [
+    {"titulo": "UCL: el rastreo de las smart TV plantea problemas de privacidad (10/11/2024)", "url": "https://www.ucl.ac.uk/news/2024/nov/smart-tv-tracking-raises-privacy-concerns/"},
+    {"titulo": "Anselmi et al.: primer análisis del rastreo ACR en smart TV (IMC 2024)", "url": "https://arxiv.org/html/2409.06203v1"},
+    {"titulo": "Consumer Reports: cómo desactivar las funciones de rastreo de la smart TV", "url": "https://www.consumerreports.org/electronics/privacy/how-to-turn-off-smart-tv-snooping-features-a4840102036/"},
+    {"titulo": "Samsung: ajustar la privacidad de tu smart TV", "url": "https://www.samsung.com/hk_en/support/tv-audio-video/how-to-adjust-privacy-settings-on-your-samsung-smart-tv/"},
+    {"titulo": "AVPasión: ajustes que conviene desactivar en una tele LG con webOS", "url": "https://www.avpasion.com/5-ajustes-desactivar-televisor-lg-webos-vuele/"},
+    {"titulo": "Xataka Home: qué comparte tu smart TV Samsung y cómo evitarlo", "url": "https://www.xatakahome.com/territorio-samsung/no-tenga-camara-tu-smart-tv-puede-enviar-informacion-esto-todo-que-comparte-asi-puedes-evitarlo-configurarlo"},
+    {"titulo": "Google: usar el modo TV básica en Google TV", "url": "https://support.google.com/googletv/answer/10408998?hl=es"}
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "fecha": "2026-11-03",
+  "idioma": "en",
+  "foco": "smart-tv",
+  "concepto": "tv-that-recognizes-what-you-watch",
+  "titulo": "Your TV knows what you're watching",
+  "subtitulo": "What automatic content recognition is, why it works even with your console or laptop plugged in over HDMI, and how to turn it off in five minutes.",
+  "dispositivos": ["tv"],
+  "lectura": {"basico": 3, "fondo": 10},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-03-ivanti-connect-secure", "2026-11-03-php2shell", "2026-11-03-android-noviembre"]
+  },
+  "basico": {
+    "parrafos": [
+      "Many smart TVs ship with a feature called [[acr|automatic content recognition (ACR)]]: the TV **analyzes what's on screen, identifies it, and reports it back to the manufacturer**.",
+      "It isn't limited to the TV's own apps. According to an academic study of Samsung and LG TVs, ACR **also works with antenna TV and when you use the TV as a plain display** for a game console, a laptop, or a player connected over [[hdmi|HDMI]].",
+      "It's not malware or a security hole: it's advertising. That data feeds recommendations and ads targeted at your household. The good news is that **you can turn it off**, and according to the same study, doing so stops the data from being sent."
+    ],
+    "esencial": [
+      "Turn off content recognition: on Samsung it's \"Viewing Information Services\"; on LG, \"Live Plus.\"",
+      "When setting up a new TV, don't hit \"Agree to all\": check which agreements are optional.",
+      "Reset or delete the TV's advertising ID.",
+      "If you only use it as a screen, it doesn't need to be online."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "alto", "texto": "No attacker required: if you accepted every agreement when you set up the TV, it's most likely on."},
+    "impacto": {"nivel": "bajo", "texto": "It doesn't give anyone access to your accounts or files. It's a privacy issue: your viewing habits, including what you watch over HDMI, end up in advertising profiles."}
+  },
+  "fondo": [
+    {
+      "titulo": "What ACR actually does",
+      "parrafos": [
+        "The TV periodically samples the picture (and in some cases the audio), turns those samples into a compact [[huella|fingerprint]], and sends it to a server that matches it against a database of shows, movies, and ads. If there's a match, the manufacturer knows what you were watching and when.",
+        "Consumer Reports puts it this way: ACR tries to identify every show you watch, including what comes in over cable, antenna, streaming services, and even Blu-ray discs. The data powers recommendations and **can be used to target ads to you and your family**."
+      ]
+    },
+    {
+      "titulo": "Why it also \"sees\" what comes in over HDMI",
+      "parrafos": [
+        "ACR works on the picture already on the screen, not on a particular app. That's why the study presented at IMC 2024 (UCL and other universities) found traffic to ACR servers while watching linear TV and **while using the TV as an external display over HDMI**, for example with a laptop.",
+        "In its UK tests, it found no such traffic when using Netflix or YouTube from the TV's own apps, possibly for copyright reasons. In the US the behavior differed: ACR stayed active even with some streaming apps."
+      ]
+    },
+    {
+      "titulo": "How it gets turned on without you noticing",
+      "parrafos": [
+        "ACR is usually tied to one of the agreements the TV shows you during setup. If you hit \"Agree to all\" to start watching sooner, you've turned it on.",
+        "The names don't help: Samsung calls it \"Viewing Information Services,\" and LG ties it to \"Live Plus.\" One of the study's authors noted that the label \"doesn't really indicate what it is.\""
+      ]
+    },
+    {
+      "titulo": "What ACR is not",
+      "parrafos": [
+        "It's not a camera or a microphone recording you: it identifies **what's on the screen**. Voice recognition is a separate feature with its own settings.",
+        "It's also not a security risk in the strict sense: nobody gets into your network because ACR is on. So the proportionate move is to turn it off and keep using your TV normally, not to distrust it entirely."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "Initial setup", "texto": "You plug in your new TV, an agreements screen pops up, and you hit \"Agree to all.\" One of those agreements turns on content recognition."},
+    {"titulo": "Capture", "texto": "While you watch antenna TV, play on your console, or mirror your laptop, the TV periodically samples the picture and computes fingerprints of what's on screen."},
+    {"titulo": "Upload", "texto": "It batches those fingerprints and sends them to the servers of the manufacturer or its ACR partner, every few seconds or minutes depending on the brand."},
+    {"titulo": "Identification", "texto": "The server matches the fingerprints against its catalog of shows and ads and logs what was watched, when, and on which TV."},
+    {"titulo": "Use", "texto": "That history is linked to the TV's advertising ID and feeds personalized recommendations and ads."}
+  ],
+  "atacante": {
+    "puede": [
+      "Know which shows, movies, and ads you watch, including antenna TV and devices connected over HDMI.",
+      "Know when and for how long you use the TV.",
+      "Link those habits to the TV's advertising ID to personalize ads.",
+      "Keep collecting basic usage data even after you turn off ACR: switching it off cuts collection sharply, but doesn't eliminate it entirely."
+    ],
+    "no_puede": [
+      "See or hear you: ACR analyzes the screen, not a camera or microphone.",
+      "Get into your accounts, your files, or other devices on your network.",
+      "Keep sending ACR data once you turn it off: the study confirmed that traffic to those servers stops.",
+      "Do anything if the TV isn't connected to the internet."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Turn off content recognition",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "5 min", "para": "todos",
+      "texto": "This is the setting that actually stops your viewing from being reported. Names and menu paths vary by year, model, and region: if you can't find it right away, look for the privacy or user agreements section.",
+      "pasos": {
+        "Samsung (Tizen)": ["Press **Home** > go to **Menu** > **Privacy Choices** (on some models, under Settings > **Terms & Privacy**).", "Open **Terms & Conditions, Privacy Policy** > *View details*.", "Withdraw your agreement to **Viewing Information Services** and to interest-based advertising."],
+        "LG (webOS)": ["Press the Settings button on the remote > **Settings** > **General** > **System** > **Additional Settings**.", "Turn **Live Plus** off."],
+        "Google TV and other brands": ["Settings > **Privacy**: review the user agreements and withdraw any optional ones that mention using viewing information. On TCL Google TVs: Settings > Privacy > **User Agreements**."]
+      }
+    },
+    {
+      "titulo": "Don't agree to everything on day one",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "habit", "para": "todos",
+      "texto": "Initial setup is when almost everything gets switched on. Accept only what's required to use the TV, and leave anything about viewing information, personalized ads, or voice recognition unchecked if you won't use it.",
+      "pasos": {
+        "Always": ["On the agreements screen, skip \"Agree to all\" and review each box.", "If you get it wrong, no problem: you can withdraw it later from the privacy settings."]
+      }
+    },
+    {
+      "titulo": "Reset your advertising ID",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "This is the tag that connects your viewing habits to ads. Resetting it breaks the link to the history collected so far; deleting it, where allowed, keeps a new one from being created.",
+      "pasos": {
+        "Google TV": ["Settings > **Privacy** > **Ads**: reset or delete your advertising ID."],
+        "Amazon Fire TV": ["Settings > **Preferences** > **Privacy Settings**: turn off **Interest-Based Ads** and **Collect App and Over-the-Air Usage**."],
+        "Other brands": ["Look in the privacy settings for personalized or interest-based advertising and turn it off."]
+      }
+    },
+    {
+      "titulo": "If it's just a screen, keep it offline",
+      "impacto": "alto", "esfuerzo": "medio", "tiempo": "5 min", "para": "avanzado",
+      "texto": "If you watch everything through a console, an external player, or a laptop, the TV doesn't need a connection. No internet means no ACR and no ads in the menus. The trade-off: it won't get automatic updates, so connect it now and then to bring it up to date.",
+      "pasos": {
+        "Any brand": ["Settings > Network: forget the Wi-Fi network and unplug the Ethernet cable.", "On Google TV, you can choose **Basic TV** during setup, which doesn't require signing in or an internet connection."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "Your TV's list of agreements", "texto": "In the privacy settings, check which agreements you've accepted. If **Viewing Information Services** is accepted (Samsung) or **Live Plus** is on (LG), ACR is running."},
+    {"titulo": "Ads on the home screen", "texto": "If you turn on the TV and see recommendations that echo what you watched over antenna or HDMI, that's a sign content recognition is active."},
+    {"titulo": "The TV's traffic (for technical readers)", "texto": "Your router's dashboard or a home DNS filter shows which domains the TV connects to. After you turn off ACR, the periodic connections to recognition servers should disappear."}
+  ],
+  "innecesario": [
+    {"titulo": "Replacing your TV or buying a \"dumb\" one", "texto": "Turning off ACR and personalized ads removes most of the collection. There's no need to replace the set."},
+    {"titulo": "Covering the TV or distrusting every feature", "texto": "ACR analyzes the screen; it doesn't record you. If your model has a camera or microphone, review those settings separately, without panic."},
+    {"titulo": "Running a VPN on the TV", "texto": "A VPN hides your traffic from your internet provider, not from the manufacturer: the ACR data still reaches them. The effective fix is to turn it off in settings."},
+    {"titulo": "Checking it every week", "texto": "Do it at setup, and take a quick look after a major system update or a factory reset."}
+  ],
+  "mito": {
+    "mito": "\"I only use my TV for my game console, so it doesn't know what I watch.\"",
+    "realidad": "The study of Samsung and LG TVs found ACR traffic **even when the TV was used as an external display over HDMI**. The feature works on whatever's on screen, wherever it comes from. To stop it, turn it off in settings or keep the TV offline.",
+    "fuente": {"titulo": "Anselmi et al. (IMC 2024): ACR tracking in smart TVs", "url": "https://arxiv.org/html/2409.06203v1"}
+  },
+  "tecnico": [
+    {
+      "titulo": "Fingerprints, not video",
+      "parrafos": [
+        "ACR doesn't upload the full picture. The TV computes a fingerprint of the frames (and, on some systems, the audio) and sends that summary, which the server matches against its catalog. That's why the traffic volume is small and hard to notice.",
+        "According to the documentation cited in the study, LG's ACR captures frames every 10 ms and Samsung's every 500 ms. What showed up on the network were batched uploads: every 15 seconds on LG and roughly every minute on Samsung."
+      ]
+    },
+    {
+      "titulo": "What the study measured",
+      "parrafos": [
+        "The researchers analyzed traffic from a Samsung TV and an LG TV in the UK and the US across several scenarios: antenna TV, streaming apps, and use as an HDMI display. The TVs contacted different domains depending on the country.",
+        "Key findings: ACR works even when the TV is used as a \"dumb\" display, behavior differs between countries, and **opting out stops traffic to ACR servers**. When the researchers requested their data under the GDPR, the response was, in their words, vague and didn't match the volume they had observed."
+      ]
+    },
+    {
+      "titulo": "An agreement you can withdraw",
+      "parrafos": [
+        "On the TVs studied, ACR is tied to a specific agreement on the terms screen, separate from the ones required to use the TV. Samsung, for example, lets you withdraw your agreement to each adjustable item from *Privacy Choices*. Withdrawing it doesn't stop you from using the TV or its apps. In the US, the FTC sued Vizio in 2017 for using ACR without viewers' consent."
+      ]
+    },
+    {
+      "titulo": "Blocking it at the network level",
+      "parrafos": [
+        "A home DNS filter can block ACR domains, but they vary by brand, country, and firmware, and an overly aggressive blocklist can break updates or apps. For most people, turning it off in settings is more reliable; network blocking makes sense as an extra layer for technical users."
+      ]
+    }
+  ],
+  "glosario": {
+    "acr": ["ACR (automatic content recognition)", "Smart TV technology that identifies what's on screen and reports it to the manufacturer, usually for advertising."],
+    "hdmi": ["HDMI", "The connector that carries picture and sound to your TV from consoles, laptops, cable boxes, and players."],
+    "huella": ["Fingerprint", "A compact mathematical summary of a snippet of video or audio that lets a server recognize it without receiving the full content."],
+    "idpub": ["Advertising ID", "A code tied to your device that platforms use to personalize ads. It can be reset or, on some systems, deleted."],
+    "kev": ["KEV", "The Known Exploited Vulnerabilities catalog maintained by CISA, the US cybersecurity agency. If a flaw is listed there, it's being attacked in the real world."]
+  },
+  "fuentes": [
+    {"titulo": "Consumer Reports: How to turn off smart TV snooping features", "url": "https://www.consumerreports.org/electronics/privacy/how-to-turn-off-smart-tv-snooping-features-a4840102036/"},
+    {"titulo": "UCL: Smart TV tracking raises privacy concerns (Nov. 10, 2024)", "url": "https://www.ucl.ac.uk/news/2024/nov/smart-tv-tracking-raises-privacy-concerns/"},
+    {"titulo": "Anselmi et al.: A first look at ACR tracking in smart TVs (IMC 2024)", "url": "https://arxiv.org/html/2409.06203v1"},
+    {"titulo": "Samsung: How to adjust privacy settings on your Samsung smart TV", "url": "https://www.samsung.com/hk_en/support/tv-audio-video/how-to-adjust-privacy-settings-on-your-samsung-smart-tv/"},
+    {"titulo": "Pocket-lint: How to turn off LG Live Plus", "url": "https://www.pocket-lint.com/lg-tv-turn-off-live-plus/"},
+    {"titulo": "Google: Use Basic TV on a Google TV device", "url": "https://support.google.com/googletv/answer/10408998"}
+  ]
+}
