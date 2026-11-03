@@ -1,6 +1,6 @@
 # Licencia del contenido · Content license
 
-© 2026 José Luis López
+© 2026 José Luis López.
 
 **ES.** El contenido editorial de ZeroTrace (los textos de las ediciones, el registro de alertas y los datos de `data/ediciones` y `data/alertas.json`) se publica bajo la licencia **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**. Puedes compartirlo y adaptarlo para cualquier fin, también comercial, siempre que cites la autoría («ZeroTrace, José Luis López»), enlaces a la licencia e indiques si has hecho cambios.
 
