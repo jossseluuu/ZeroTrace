@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>ZeroTrace (EN)</title>
+  <link>https://jossseluuu.github.io/ZeroTrace/en/</link>
+  <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
+  <language>en-US</language>
+  <lastBuildDate>Tue, 03 Nov 2026 01:29:11 +0100</lastBuildDate>
+</channel>
+</rss>

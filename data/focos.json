@@ -1,0 +1,17 @@
+{
+  "smartphones":   {"icono": "📱", "es": "Smartphones",              "en": "Smartphones"},
+  "tablets":       {"icono": "📲", "es": "Tablets / iPad",           "en": "Tablets / iPad"},
+  "portatiles":    {"icono": "💻", "es": "Portátiles",               "en": "Laptops"},
+  "sobremesa":     {"icono": "🖥️", "es": "Ordenadores de sobremesa", "en": "Desktop computers"},
+  "smart-tv":      {"icono": "📺", "es": "Smart TV",                 "en": "Smart TVs"},
+  "wearables":     {"icono": "⌚", "es": "Relojes y wearables",      "en": "Smartwatches and wearables"},
+  "iot":           {"icono": "🏠", "es": "Hogar conectado (IoT)",    "en": "Smart home (IoT)"},
+  "router":        {"icono": "📡", "es": "Router y red doméstica",   "en": "Router and home network"},
+  "transito":      {"icono": "🌐", "es": "Datos en tránsito",        "en": "Data in transit"},
+  "identidad":     {"icono": "🔑", "es": "Identidad y cuentas",      "en": "Identity and accounts"},
+  "ingenieria":    {"icono": "🎣", "es": "Ingeniería social",        "en": "Social engineering"},
+  "programacion":  {"icono": "👨‍💻", "es": "Programación segura",      "en": "Secure coding"},
+  "habitos":       {"icono": "🧠", "es": "Hábitos y privacidad",     "en": "Habits and privacy"},
+  "copias":        {"icono": "💾", "es": "Copias y recuperación",    "en": "Backup and recovery"},
+  "incidentes":    {"icono": "🛠️", "es": "Me ha pasado esto",        "en": "It happened to me"}
+}

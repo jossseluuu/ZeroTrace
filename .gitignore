@@ -1,0 +1,14 @@
+# Borradores pendientes de aprobación: nunca salen del ordenador
+drafts/
+
+# Estado del publicador local (marcas, registros y resultados)
+.zerotrace/
+
+# Python
+__pycache__/
+*.pyc
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
