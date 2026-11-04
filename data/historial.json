@@ -1,7 +1,8 @@
 {
-  "actualizado": "2026-11-03T07:48:54+01:00",
+  "actualizado": "2026-11-04T07:49:11+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "portatiles",
     "smart-tv"
   ],
   "conceptos_por_foco": {
@@ -10,9 +11,24 @@
         "fecha": "2026-11-03",
         "concepto": "tele-que-reconoce-lo-que-ves"
       }
+    ],
+    "portatiles": [
+      {
+        "fecha": "2026-11-04",
+        "concepto": "clave-de-recuperacion-del-cifrado"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-04",
+      "foco": "portatiles",
+      "concepto": "clave-de-recuperacion-del-cifrado",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-04-wordpress-core"
+      ]
+    },
     {
       "fecha": "2026-11-03",
       "foco": "smart-tv",

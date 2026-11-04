@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Tue, 03 Nov 2026 07:48:54 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 04 Nov 2026 07:49:11 +0100</lastBuildDate>
+  <item>
+    <title>Tu portátil ya está cifrado: ¿sabes dónde está la llave?</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-04.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-04.html</guid>
+    <pubDate>Wed, 04 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Portátiles</category>
+    <description>Windows y macOS cifran el disco casi sin preguntarte. Eso te protege si te lo roban, pero si un día te pide la clave de recuperación y no la tienes, pierdes tus archivos. — Crítico: WordPress: fallo en el proceso de actualización, ya explotado</description>
+  </item>
   <item>
     <title>Tu tele sabe lo que estás viendo</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-03.html</link>

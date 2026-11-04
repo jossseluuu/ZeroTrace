@@ -120,5 +120,51 @@
         "url": "https://source.android.com/docs/security/bulletin/2026/2026-11-01"
       }
     ]
+  },
+  {
+    "id": "2026-11-04-wordpress-core",
+    "fecha": "2026-11-04",
+    "nivel": "rojo",
+    "cves": [
+      "CVE-2026-119977"
+    ],
+    "dispositivos": [
+      "servidor"
+    ],
+    "es": {
+      "titulo": "WordPress: fallo en el proceso de actualización, ya explotado",
+      "afecta": "Quien tenga una web con WordPress, sea propia o en un hosting. Si la gestiona otra persona o una agencia, pregúntale.",
+      "accion": "Actualiza WordPress a **7.1.4** o a la última versión de seguridad de tu rama, y comprueba en *Escritorio > Actualizaciones* que se ha aplicado. Si tu hosting actualiza solo, confírmalo.",
+      "detalle": "WordPress publicó el 28/10 una versión de seguridad que corrige, entre otros, un fallo del proceso de actualización que puede permitir ejecutar código en el servidor durante la ventana de actualización, y llevó la corrección a las ramas antiguas con soporte. CISA lo añadió el 03/11 a su catálogo [[kev|KEV]] por evidencias de explotación activa, y empresas de seguridad como Wordfence han registrado miles de intentos de ataque."
+    },
+    "en": {
+      "titulo": "WordPress: update-process flaw now under attack",
+      "afecta": "Anyone running a WordPress site, self-hosted or on a hosting plan. If someone else or an agency manages it, ask them.",
+      "accion": "Update WordPress to **7.1.4** or the latest security release for your branch, and confirm under *Dashboard > Updates* that it's applied. If your host auto-updates, verify it.",
+      "detalle": "On October 28, WordPress shipped a security release that fixes, among other issues, a weakness in the upgrade process that can allow code execution on the server during the upgrade window, and backported the fix to older supported branches. CISA added it to its [[kev|KEV]] catalog on November 3 based on evidence of active exploitation, and security firms such as Wordfence have logged thousands of attack attempts."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "WordPress: versión de seguridad 7.1.4",
+          "en": "WordPress: 7.1.4 security release"
+        },
+        "url": "https://wordpress.org/news/2026/10/wordpress-7-1-4/"
+      },
+      {
+        "titulo": {
+          "es": "CISA: alta de una vulnerabilidad en el catálogo KEV (03/11)",
+          "en": "CISA: One Known Exploited Vulnerability added to catalog (Nov. 3)"
+        },
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/03/cisa-adds-one-known-exploited-vulnerability-catalog"
+      },
+      {
+        "titulo": {
+          "es": "The Hacker News: CISA confirma ataques contra el fallo de WordPress",
+          "en": "The Hacker News: CISA confirms attacks on the WordPress core flaw"
+        },
+        "url": "https://thehackernews.com/2026/11/cisa-confirms-hackers-exploiting.html"
+      }
+    ]
   }
 ]

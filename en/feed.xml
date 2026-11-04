@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Tue, 03 Nov 2026 07:48:54 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 04 Nov 2026 07:49:11 +0100</lastBuildDate>
+  <item>
+    <title>Your laptop is already encrypted. Do you know where the key is?</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-04.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-04.html</guid>
+    <pubDate>Wed, 04 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Laptops</category>
+    <description>Windows and macOS encrypt your drive with barely a prompt. That protects you if it&#x27;s stolen, but if it ever asks for the recovery key and you don&#x27;t have it, your files are gone. — Critical: WordPress: update-process flaw now under attack</description>
+  </item>
   <item>
     <title>Your TV knows what you&#x27;re watching</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-03.html</link>

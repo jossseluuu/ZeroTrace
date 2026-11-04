@@ -1,0 +1,339 @@
+{
+  "fecha": "2026-11-04",
+  "idioma": "es",
+  "foco": "portatiles",
+  "concepto": "clave-de-recuperacion-del-cifrado",
+  "titulo": "Tu portátil ya está cifrado: ¿sabes dónde está la llave?",
+  "subtitulo": "Windows y macOS cifran el disco casi sin preguntarte. Eso te protege si te lo roban, pero si un día te pide la clave de recuperación y no la tienes, pierdes tus archivos.",
+  "dispositivos": [
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-04-wordpress-core"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Si tu portátil es más o menos reciente, lo más probable es que **su disco ya esté cifrado**. Windows lo activa solo al configurar el equipo con una cuenta de Microsoft, y los Mac con chip de Apple o chip T2 cifran siempre los datos.",
+      "Eso es una buena noticia: si te lo roban, el ladrón puede sacar el disco y conectarlo a otro ordenador, pero **solo verá datos ilegibles**. Tu contraseña de inicio de sesión, por sí sola, no protegía nada de eso.",
+      "La otra cara: a veces el equipo te pide una **[[clave|clave de recuperación]]** al arrancar, por ejemplo tras actualizar la BIOS o cambiar una pieza. Si no sabes dónde está, **ni Microsoft ni Apple pueden dártela** y la única salida es borrar el disco. El cifrado sin la llave guardada es una caja fuerte de la que no tienes la combinación."
+    ],
+    "esencial": [
+      "Comprueba hoy si tu portátil está cifrado.",
+      "Localiza tu clave de recuperación y guarda una copia fuera del portátil.",
+      "En Windows, usa una cuenta de Microsoft (o de tu empresa) para que la clave quede respaldada.",
+      "En Mac, activa FileVault y elige cómo recuperarlo: con iCloud o con una clave que apuntes."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Los robos y olvidos de portátiles son habituales, y la pantalla de recuperación aparece más de lo que parece: tras cambios de hardware, actualizaciones de firmware o ajustes de la BIOS."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Sin cifrado, quien se lleve el portátil puede leer todos tus archivos. Con cifrado pero sin la clave guardada, el que se queda fuera eres tú: restablecer el equipo borra todo."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Qué cifra Windows sin preguntarte",
+      "parrafos": [
+        "Windows tiene dos variantes. El **[[cifrado|cifrado de dispositivo]]** está disponible incluso en Windows Home y se activa solo: cuando inicias sesión por primera vez con una cuenta de Microsoft (o de trabajo o centro educativo), cifra el disco del sistema y **adjunta la clave de recuperación a esa cuenta**. [[bitlocker|BitLocker]] completo, con más opciones, está en las ediciones Pro, Enterprise y Education.",
+        "Desde Windows 11 24H2, Microsoft ha relajado los requisitos de hardware, así que **muchos más equipos se cifran automáticamente**. Por eso hay quien descubre que tenía BitLocker el día que el portátil le pide la clave.",
+        "El detalle importante: **si configuras el equipo solo con una cuenta local, el cifrado de dispositivo no se activa automáticamente**. Microsoft explica que, en ese caso, el disco puede quedar preparado con la clave sin proteger: los datos están cifrados, pero cualquiera podría abrirlos."
+      ]
+    },
+    {
+      "titulo": "Y en el Mac",
+      "parrafos": [
+        "En un Mac con chip de Apple o con chip T2, **los datos se cifran siempre**. Pero si no activas [[filevault|FileVault]], la llave que protege el disco depende solo del hardware del propio Mac, no de tu contraseña.",
+        "Al activar FileVault, la llave queda ligada también a tu contraseña de inicio de sesión. Para no quedarte fuera si la olvidas, macOS te ofrece dos vías: **desbloquear con tu cuenta de iCloud** o **crear una clave de recuperación** que tú apuntas. Si olvidas la contraseña y pierdes también la clave, Apple advierte de que tus archivos se perderán para siempre."
+      ]
+    },
+    {
+      "titulo": "Por qué el equipo te pide la clave un día cualquiera",
+      "parrafos": [
+        "El cifrado de un portátil normal no te pide nada al encender porque la llave está guardada en el [[tpm|TPM]], un chip de seguridad que solo la entrega si el arranque es el de siempre.",
+        "Si cambia algo en esa cadena (la configuración de la BIOS o UEFI, los archivos de arranque, el propio TPM o una pieza del equipo), el TPM no entrega la llave y Windows entra en **modo de recuperación**. Es una protección, no un fallo: impide que alguien manipule el arranque para quedarse con tu llave. Pero en ese momento necesitas la clave de 48 dígitos."
+      ]
+    },
+    {
+      "titulo": "Dónde suele estar tu clave",
+      "parrafos": [
+        "En Windows con cuenta de Microsoft, en **aka.ms/myrecoverykey** (iniciando sesión con la cuenta que usaste en ese portátil). En equipos del trabajo, la tiene tu departamento de IT. También puede estar en un papel impreso o en una memoria USB, si la guardaste así al activarlo.",
+        "La pantalla de recuperación muestra un **identificador de clave**: sus primeros 8 dígitos te dicen cuál de tus claves es la buena si tienes varios equipos."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "El robo",
+      "texto": "Alguien se lleva tu portátil de una cafetería, del coche o de una habitación de hotel. No conoce tu contraseña de Windows ni la de macOS."
+    },
+    {
+      "titulo": "Saltarse el inicio de sesión",
+      "texto": "En vez de adivinar la contraseña, saca el disco y lo conecta a otro ordenador, o arranca el portátil desde un USB con otro sistema. Sin cifrado, tus documentos, fotos y archivos quedan a la vista."
+    },
+    {
+      "titulo": "Con cifrado activo",
+      "texto": "Lo que ve es ruido. Para leer el disco necesita la llave, que está en el TPM y solo se entrega con el arranque legítimo, o la clave de recuperación, que no está en el portátil."
+    },
+    {
+      "titulo": "El atacante con tiempo y laboratorio",
+      "texto": "Contra la configuración por defecto, un atacante muy preparado con acceso físico prolongado puede intentar abrir el equipo y atacar el hardware. Es caro y dirigido: no es lo que hace el ladrón de una cafetería."
+    },
+    {
+      "titulo": "El escenario más probable",
+      "texto": "En la práctica, quien más a menudo se queda fuera de un disco cifrado es su dueño: tras una actualización de firmware aparece la pantalla de recuperación y nadie sabe dónde está la clave."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Leer todo el disco de un portátil sin cifrar, aunque tenga contraseña de inicio de sesión.",
+      "Leer el disco si encuentra la clave de recuperación guardada junto al portátil (una nota en la funda, un archivo en el escritorio).",
+      "Entrar en tu sesión si te roba el portátil encendido o en reposo y sin bloquear.",
+      "Revender el equipo tras borrarlo: el cifrado protege tus datos, no el aparato."
+    ],
+    "no_puede": [
+      "Leer un disco cifrado conectándolo a otro ordenador.",
+      "Obtener la llave arrancando otro sistema desde un USB: el TPM no la entrega si el arranque cambia.",
+      "Pedir tu clave a Microsoft o a Apple haciéndose pasar por ti, si tu cuenta tiene una contraseña robusta y verificación en dos pasos.",
+      "Descifrar el disco a fuerza bruta en un tiempo razonable."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Comprueba si tu portátil está cifrado",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Es lo primero: saber si tus datos están protegidos ante un robo.",
+      "pasos": {
+        "Windows 11": [
+          "Configuración > **Privacidad y seguridad** > **Cifrado de dispositivo**: debe estar *Activado*.",
+          "Si esa opción no aparece, busca «BitLocker» en el menú Inicio: en ediciones Pro el cifrado se gestiona desde ahí."
+        ],
+        "Mac": [
+          "Menú Apple > Ajustes del Sistema > **Privacidad y seguridad** > **FileVault** (puede que tengas que desplazarte hacia abajo)."
+        ]
+      }
+    },
+    {
+      "titulo": "Localiza tu clave de recuperación",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Hazlo ahora, con el portátil funcionando, y no el día que te la pida. Comprueba que el nombre del equipo coincide con el tuyo.",
+      "pasos": {
+        "Windows": [
+          "Desde otro dispositivo, entra en **aka.ms/myrecoverykey** con la cuenta de Microsoft del portátil.",
+          "Si es un portátil del trabajo, pregunta a tu departamento de IT si tiene la clave respaldada."
+        ],
+        "Mac": [
+          "Si elegiste iCloud, asegúrate de que recuerdas la contraseña de tu Apple Account y tienes la verificación en dos pasos operativa.",
+          "Si elegiste clave de recuperación, comprueba que la tienes apuntada fuera del Mac."
+        ]
+      }
+    },
+    {
+      "titulo": "Guarda una copia fuera del portátil",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "La clave nunca debe vivir solo dentro del equipo que protege. Una copia en tu gestor de contraseñas o en papel en un cajón de casa es suficiente.",
+      "pasos": {
+        "Siempre": [
+          "Guárdala en tu **gestor de contraseñas** o imprímela y guárdala en casa.",
+          "**No** la pegues en el portátil, ni la guardes en la funda, ni en un archivo del propio escritorio."
+        ]
+      }
+    },
+    {
+      "titulo": "Protege la cuenta que guarda la llave",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Tu cuenta de Microsoft o de Apple pasa a ser la llave maestra de tu disco: merece una contraseña única y verificación en dos pasos, o mejor una passkey.",
+      "pasos": {
+        "Siempre": [
+          "Activa la verificación en dos pasos en tu cuenta de Microsoft o Apple.",
+          "Revisa que el correo y el teléfono de recuperación de esa cuenta siguen siendo tuyos."
+        ]
+      }
+    },
+    {
+      "titulo": "Bloquea el portátil al levantarte",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "hábito",
+      "para": "todos",
+      "texto": "El cifrado protege el portátil apagado o bloqueado. Si te lo quitan con la sesión abierta, no sirve de nada.",
+      "pasos": {
+        "Windows": [
+          "Pulsa **Windows + L** antes de levantarte."
+        ],
+        "Mac": [
+          "Pulsa **Control + Comando + Q**."
+        ]
+      }
+    },
+    {
+      "titulo": "PIN de arranque e hibernar en vez de suspender",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "paranoico",
+      "texto": "Solo si tu portátil guarda información muy sensible o te expones a robos dirigidos: Microsoft recomienda para estos casos un PIN previo al arranque (TPM + PIN) e hibernar o apagar el equipo en vez de dejarlo en reposo cuando no lo tengas contigo. Exige ediciones con BitLocker completo y, si olvidas el PIN, volverás a necesitar la clave de recuperación.",
+      "pasos": {
+        "Windows (Pro, Enterprise, Education)": [
+          "Requiere activar la directiva *Requerir autenticación adicional al iniciar* y añadir el protector con `manage-bde -protectors -add C: -TPMAndPIN`.",
+          "Guarda antes la clave de recuperación: es tu salida si olvidas el PIN."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "El icono del disco en Windows",
+      "texto": "En el Explorador de archivos, un disco cifrado con BitLocker muestra un candado. Si ves un **icono de advertencia amarillo**, el cifrado está preparado pero la clave aún no se ha protegido ni respaldado: inicia sesión con una cuenta de Microsoft o actívalo a mano."
+    },
+    {
+      "titulo": "Tu lista de claves",
+      "texto": "En aka.ms/myrecoverykey deberías ver una clave por cada equipo cifrado. Si cambiaste de portátil o reinstalaste Windows, la clave antigua ya no sirve para el equipo nuevo."
+    },
+    {
+      "titulo": "El estado de FileVault",
+      "texto": "En Ajustes del Sistema > Privacidad y seguridad > FileVault debe indicar que está activado para el disco. Si está desactivado y tu Mac tiene chip de Apple, los datos están cifrados, pero la llave no depende de tu contraseña."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Instalar un programa de cifrado de terceros",
+      "texto": "Para un portátil personal, BitLocker o el cifrado de dispositivo en Windows y FileVault en Mac son suficientes y están integrados en el sistema."
+    },
+    {
+      "titulo": "Poner un PIN de arranque en cualquier portátil",
+      "texto": "Microsoft considera que la configuración por defecto (solo TPM) es adecuada frente al ladrón oportunista. El PIN añade fricción y otra cosa más que olvidar."
+    },
+    {
+      "titulo": "Apagar el portátil cada vez que lo cierras",
+      "texto": "Para el uso normal, cerrar la tapa con el equipo bloqueado basta. Apagar o hibernar solo tiene sentido en el escenario de alto riesgo."
+    },
+    {
+      "titulo": "Descifrar el disco por miedo a perder la clave",
+      "texto": "La solución no es quitar el cifrado, sino guardar bien la clave y tener copia de tus archivos. Sin cifrado, un robo expone todo."
+    }
+  ],
+  "mito": {
+    "mito": "«Mi portátil tiene contraseña, así que mis archivos están protegidos.»",
+    "realidad": "La contraseña de inicio de sesión solo impide **entrar en tu sesión**. Si el disco no está cifrado, basta con sacarlo y conectarlo a otro ordenador para leerlo. Por eso existe BitLocker: según Microsoft, protege los datos de un equipo perdido o robado frente a quien traslada el disco a otro dispositivo.",
+    "fuente": {
+      "titulo": "Microsoft: introducción a BitLocker",
+      "url": "https://learn.microsoft.com/es-es/windows/security/operating-system-security/data-protection/bitlocker/"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "TPM, PCR y por qué salta la recuperación",
+      "parrafos": [
+        "BitLocker sella la llave del volumen en el TPM ligada a medidas del arranque (registros [[pcr|PCR]]). Por defecto usa PCR 7, que refleja el estado de Secure Boot. Si esas medidas cambian, el TPM no libera la llave y se pide el protector de recuperación.",
+        "Comprueba el estado con `manage-bde -status` (como administrador): verás el método de cifrado, el porcentaje cifrado y si la protección está *activada*. El cifrado de dispositivo usa por defecto `XTS-AES 128`. Antes de actualizar la BIOS o el firmware, conviene suspender la protección (`manage-bde -protectors -disable C:`) para que el siguiente arranque no pida la clave; la protección se reanuda al reiniciar."
+      ]
+    },
+    {
+      "titulo": "El estado «clave sin proteger»",
+      "parrafos": [
+        "Tras una instalación limpia, Windows inicializa el cifrado con una *clear key*, equivalente a BitLocker suspendido. Solo cuando se crea el protector TPM y la clave de recuperación se respalda (en Entra ID, AD DS o la cuenta de Microsoft) se elimina esa clave en claro. Con cuentas solo locales, el equipo puede quedarse así indefinidamente: cifrado, pero sin protección efectiva."
+      ]
+    },
+    {
+      "titulo": "Qué cubre y qué no la configuración por defecto",
+      "parrafos": [
+        "Microsoft clasifica los atacantes en dos grupos: el oportunista con acceso físico limitado, para el que basta solo TPM, y el atacante con habilidad y acceso físico prolongado, que puede abrir el equipo y soldar. Para este último recomienda TPM + PIN (mejor un PIN mejorado alfanumérico, protegido por el antimartilleo del TPM), desactivar los estados de reposo S1-S3 e hibernar o apagar antes de perder el control del equipo.",
+        "El reposo deja la llave en memoria y no vuelve a pedir el PIN al despertar; la hibernación sí bloquea el volumen. También conviene proteger los puertos DMA y poner contraseña a la BIOS."
+      ]
+    },
+    {
+      "titulo": "FileVault en Apple silicon",
+      "parrafos": [
+        "En Mac con chip de Apple o T2, el volumen se cifra siempre con una llave protegida por el UID del hardware en el Secure Enclave. Activar FileVault añade la contraseña del usuario a esa protección. La clave de recuperación son 24 caracteres; comprueba el estado con `fdesetup status`."
+      ]
+    }
+  ],
+  "glosario": {
+    "clave": [
+      "Clave de recuperación",
+      "Código largo (48 dígitos en BitLocker) que desbloquea un disco cifrado cuando el método normal falla. Es tu llave de repuesto."
+    ],
+    "cifrado": [
+      "Cifrado de dispositivo",
+      "Variante automática de BitLocker disponible también en Windows Home. Cifra el disco del sistema y respalda la clave en tu cuenta."
+    ],
+    "bitlocker": [
+      "BitLocker",
+      "Sistema de cifrado de disco completo de Windows."
+    ],
+    "filevault": [
+      "FileVault",
+      "Sistema de cifrado de disco de macOS que liga la llave del disco a tu contraseña."
+    ],
+    "tpm": [
+      "TPM",
+      "Chip de seguridad del ordenador que guarda claves y solo las entrega si el arranque no ha sido manipulado."
+    ],
+    "pcr": [
+      "PCR",
+      "Registros del TPM donde se anotan medidas del arranque. Si cambian, el TPM no libera las claves selladas."
+    ],
+    "kev": [
+      "KEV",
+      "Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "INCIBE: cifrado y almacenamiento seguro de ficheros paso a paso",
+      "url": "https://www.incibe.es/ciudadania/blog/cifrado-y-almacenamiento-seguro-de-ficheros-paso-paso"
+    },
+    {
+      "titulo": "INCIBE: ¿por qué deberías cifrar tus datos? (infografía, PDF)",
+      "url": "https://incibe.es/sites/default/files/docs/infografia-porque-cifrar-informacion.pdf"
+    },
+    {
+      "titulo": "Microsoft: cifrado de dispositivos en Windows",
+      "url": "https://support.microsoft.com/es-es/windows/cifrado-de-dispositivos-en-windows-cf7e2b6f-3e70-4882-9532-18633605b7df"
+    },
+    {
+      "titulo": "Microsoft: buscar la clave de recuperación de BitLocker",
+      "url": "https://support.microsoft.com/es-es/windows/buscar-la-clave-de-recuperaci%C3%B3n-de-bitlocker-6b71ad27-0b89-ea08-f143-056f5ab347d6"
+    },
+    {
+      "titulo": "Microsoft Learn: introducción a BitLocker",
+      "url": "https://learn.microsoft.com/es-es/windows/security/operating-system-security/data-protection/bitlocker/"
+    },
+    {
+      "titulo": "Microsoft Learn: contramedidas de BitLocker",
+      "url": "https://learn.microsoft.com/es-es/windows/security/operating-system-security/data-protection/bitlocker/countermeasures"
+    },
+    {
+      "titulo": "Apple: proteger los datos del Mac con FileVault",
+      "url": "https://support.apple.com/es-es/guide/mac-help/mh11785/mac"
+    },
+    {
+      "titulo": "Apple: cifrado de volúmenes con FileVault en macOS",
+      "url": "https://support.apple.com/guide/security/volume-encryption-with-filevault-sec4c6dc1b6e/web"
+    }
+  ]
+}

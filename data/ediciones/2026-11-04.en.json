@@ -1,0 +1,335 @@
+{
+  "fecha": "2026-11-04",
+  "idioma": "en",
+  "foco": "portatiles",
+  "concepto": "disk-encryption-recovery-key",
+  "titulo": "Your laptop is already encrypted. Do you know where the key is?",
+  "subtitulo": "Windows and macOS encrypt your drive with barely a prompt. That protects you if it's stolen, but if it ever asks for the recovery key and you don't have it, your files are gone.",
+  "dispositivos": [
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-04-wordpress-core"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "If your laptop is fairly recent, **its drive is most likely encrypted already**. Windows turns it on by itself when you set the computer up with a Microsoft account, and Macs with Apple silicon or a T2 chip always encrypt their data.",
+      "That's good news: if it's stolen, the thief can pull the drive and plug it into another computer, but **all they'll see is unreadable data**. Your sign-in password alone never protected any of that.",
+      "The flip side: sometimes the computer asks for a **[[clave|recovery key]]** at startup, for example after a BIOS update or a hardware change. If you don't know where it is, **neither Microsoft nor Apple can give it to you**, and the only way out is to wipe the drive. Encryption without a saved key is a safe you don't have the combination to."
+    ],
+    "esencial": [
+      "Check today whether your laptop is encrypted.",
+      "Find your recovery key and keep a copy somewhere other than the laptop.",
+      "On Windows, use a Microsoft (or work) account so the key gets backed up.",
+      "On a Mac, turn on FileVault and choose how to recover it: with iCloud or with a key you write down."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Laptops get stolen and left behind all the time, and the recovery screen shows up more often than you'd think: after hardware changes, firmware updates, or BIOS settings changes."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Without encryption, whoever walks off with the laptop can read every file. With encryption but no saved key, you're the one locked out: resetting the computer erases everything."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What Windows encrypts without asking",
+      "parrafos": [
+        "Windows has two flavors. **[[cifrado|Device Encryption]]** is available even on Windows Home and turns on by itself: the first time you sign in with a Microsoft account (or a work or school account), it encrypts the system drive and **attaches the recovery key to that account**. Full [[bitlocker|BitLocker]], with more options, comes with the Pro, Enterprise, and Education editions.",
+        "Starting with Windows 11 version 24H2, Microsoft relaxed the hardware requirements, so **many more computers get encrypted automatically**. That's why some people find out they had BitLocker the day their laptop asks for the key.",
+        "The important detail: **if you set up the computer with only a local account, Device Encryption doesn't turn on automatically**. Microsoft explains that in that case the drive can be left prepared with an unprotected key: the data is encrypted, but anyone could open it."
+      ]
+    },
+    {
+      "titulo": "And on a Mac",
+      "parrafos": [
+        "On a Mac with Apple silicon or a T2 chip, **data is always encrypted**. But if you don't turn on [[filevault|FileVault]], the key protecting the drive depends only on that Mac's hardware, not on your password.",
+        "Turning on FileVault ties the key to your login password too. So you don't get locked out if you forget it, macOS offers two options: **unlock with your iCloud account** or **create a recovery key** that you write down. If you forget your password and also lose the key, Apple warns that your files will be lost forever."
+      ]
+    },
+    {
+      "titulo": "Why your computer asks for the key out of nowhere",
+      "parrafos": [
+        "Encryption on an ordinary laptop doesn't ask for anything at power-on because the key is stored in the [[tpm|TPM]], a security chip that only releases it if the startup looks the way it always does.",
+        "If something in that chain changes (BIOS or UEFI settings, boot files, the TPM itself, or a hardware component), the TPM holds on to the key and Windows goes into **recovery mode**. It's a safeguard, not a bug: it stops someone from tampering with startup to grab your key. But at that moment you need the 48-digit key."
+      ]
+    },
+    {
+      "titulo": "Where your key usually lives",
+      "parrafos": [
+        "On Windows with a Microsoft account, at **aka.ms/myrecoverykey** (sign in with the account you used on that laptop). On work computers, your IT department has it. It might also be on a printout or a USB drive, if you saved it that way when it was turned on.",
+        "The recovery screen shows a **key ID**: its first 8 digits tell you which of your keys is the right one if you have several computers."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The theft",
+      "texto": "Someone grabs your laptop at a coffee shop, from your car, or from a hotel room. They don't know your Windows or macOS password."
+    },
+    {
+      "titulo": "Skipping the sign-in",
+      "texto": "Instead of guessing the password, they pull the drive and connect it to another computer, or boot the laptop from a USB stick with a different system. Without encryption, your documents, photos, and files are wide open."
+    },
+    {
+      "titulo": "With encryption on",
+      "texto": "All they see is noise. To read the drive they need the key, which sits in the TPM and is only released during a legitimate startup, or the recovery key, which isn't on the laptop."
+    },
+    {
+      "titulo": "The attacker with time and a lab",
+      "texto": "Against the default setup, a highly skilled attacker with lengthy physical access can try opening the computer and attacking the hardware. It's expensive and targeted: not what a coffee-shop thief does."
+    },
+    {
+      "titulo": "The most likely scenario",
+      "texto": "In practice, the person most often locked out of an encrypted drive is its owner: after a firmware update the recovery screen appears and nobody knows where the key is."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Read the entire drive of an unencrypted laptop, even if it has a sign-in password.",
+      "Read the drive if they find the recovery key stored with the laptop (a note in the case, a file on the desktop).",
+      "Get into your session if they take the laptop while it's on or asleep and unlocked.",
+      "Resell the device after wiping it: encryption protects your data, not the hardware."
+    ],
+    "no_puede": [
+      "Read an encrypted drive by plugging it into another computer.",
+      "Get the key by booting another system from USB: the TPM won't release it if startup changes.",
+      "Get your key from Microsoft or Apple by pretending to be you, if your account has a strong password and two-step verification.",
+      "Brute-force the drive's encryption in any reasonable amount of time."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Check whether your laptop is encrypted",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "First things first: know whether your data is protected if it's stolen.",
+      "pasos": {
+        "Windows 11": [
+          "Settings > **Privacy & security** > **Device encryption**: it should be *On*.",
+          "If that option isn't there, search for \"BitLocker\" in the Start menu: on Pro editions, encryption is managed there."
+        ],
+        "Mac": [
+          "Apple menu > System Settings > **Privacy & Security** > **FileVault** (you may need to scroll down)."
+        ]
+      }
+    },
+    {
+      "titulo": "Find your recovery key",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Do it now, while the laptop works, not the day it asks. Check that the device name matches yours.",
+      "pasos": {
+        "Windows": [
+          "From another device, go to **aka.ms/myrecoverykey** and sign in with the laptop's Microsoft account.",
+          "If it's a work laptop, ask your IT department whether they have the key backed up."
+        ],
+        "Mac": [
+          "If you chose iCloud, make sure you remember your Apple Account password and that two-factor authentication works.",
+          "If you chose a recovery key, check that you have it written down somewhere other than the Mac."
+        ]
+      }
+    },
+    {
+      "titulo": "Keep a copy off the laptop",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "The key should never live only inside the computer it protects. A copy in your password manager or on paper in a drawer at home is enough.",
+      "pasos": {
+        "Always": [
+          "Save it in your **password manager**, or print it and keep it at home.",
+          "**Don't** tape it to the laptop, keep it in the case, or save it in a file on the laptop's own desktop."
+        ]
+      }
+    },
+    {
+      "titulo": "Protect the account that holds the key",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Your Microsoft or Apple account becomes the master key to your drive: it deserves a unique password and two-step verification, or better yet a passkey.",
+      "pasos": {
+        "Always": [
+          "Turn on two-step verification for your Microsoft or Apple account.",
+          "Make sure that account's recovery email and phone number are still yours."
+        ]
+      }
+    },
+    {
+      "titulo": "Lock your laptop when you step away",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "habit",
+      "para": "todos",
+      "texto": "Encryption protects the laptop when it's off or locked. If someone takes it with your session open, it doesn't help.",
+      "pasos": {
+        "Windows": [
+          "Press **Windows + L** before you get up."
+        ],
+        "Mac": [
+          "Press **Control + Command + Q**."
+        ]
+      }
+    },
+    {
+      "titulo": "Startup PIN, and hibernate instead of sleep",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "paranoico",
+      "texto": "Only if your laptop holds highly sensitive information or you're exposed to targeted theft: for these cases Microsoft recommends a pre-boot PIN (TPM + PIN) and hibernating or shutting down instead of sleeping when the laptop leaves your hands. It requires editions with full BitLocker, and if you forget the PIN you'll need the recovery key again.",
+      "pasos": {
+        "Windows (Pro, Enterprise, Education)": [
+          "It requires enabling the *Require additional authentication at startup* policy and adding the protector with `manage-bde -protectors -add C: -TPMAndPIN`.",
+          "Save your recovery key first: it's your way back in if you forget the PIN."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "The drive icon in Windows",
+      "texto": "In File Explorer, a BitLocker-encrypted drive shows a padlock. If you see a **yellow warning icon**, encryption is prepared but the key hasn't been protected or backed up yet: sign in with a Microsoft account or turn it on manually."
+    },
+    {
+      "titulo": "Your list of keys",
+      "texto": "At aka.ms/myrecoverykey you should see one key per encrypted computer. If you switched laptops or reinstalled Windows, the old key won't work for the new setup."
+    },
+    {
+      "titulo": "FileVault status",
+      "texto": "System Settings > Privacy & Security > FileVault should say it's turned on for the disk. If it's off and your Mac has Apple silicon, the data is encrypted, but the key doesn't depend on your password."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Installing third-party encryption software",
+      "texto": "For a personal laptop, BitLocker or Device Encryption on Windows and FileVault on a Mac are enough, and they're built into the system."
+    },
+    {
+      "titulo": "Adding a startup PIN to every laptop",
+      "texto": "Microsoft considers the default setup (TPM only) appropriate against an opportunistic thief. A PIN adds friction and one more thing to forget."
+    },
+    {
+      "titulo": "Shutting down every time you close the lid",
+      "texto": "For everyday use, closing the lid with the computer locked is fine. Shutting down or hibernating only makes sense in the high-risk scenario."
+    },
+    {
+      "titulo": "Turning off encryption because you're afraid of losing the key",
+      "texto": "The fix isn't removing encryption, it's storing the key properly and backing up your files. Without encryption, a theft exposes everything."
+    }
+  ],
+  "mito": {
+    "mito": "\"My laptop has a password, so my files are protected.\"",
+    "realidad": "Your sign-in password only stops someone from **getting into your session**. If the drive isn't encrypted, pulling it out and connecting it to another computer is enough to read it. That's what BitLocker is for: according to Microsoft, it protects data on lost or stolen devices against someone moving the drive to a different device.",
+    "fuente": {
+      "titulo": "Microsoft: BitLocker overview",
+      "url": "https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "TPM, PCRs, and why recovery kicks in",
+      "parrafos": [
+        "BitLocker seals the volume key in the TPM, bound to boot measurements ([[pcr|PCR]] registers). By default it uses PCR 7, which reflects Secure Boot state. If those measurements change, the TPM won't release the key and the recovery protector is required.",
+        "Check the status with `manage-bde -status` (as administrator): it shows the encryption method, the percentage encrypted, and whether protection is *on*. Device Encryption uses `XTS-AES 128` by default. Before updating the BIOS or firmware, suspend protection (`manage-bde -protectors -disable C:`) so the next startup doesn't ask for the key; protection resumes after the restart."
+      ]
+    },
+    {
+      "titulo": "The \"unprotected key\" state",
+      "parrafos": [
+        "After a clean install, Windows initializes encryption with a *clear key*, the equivalent of suspended BitLocker. Only once the TPM protector is created and the recovery key is backed up (to Entra ID, AD DS, or the Microsoft account) is that clear key removed. With local-only accounts, a device can stay like this indefinitely: encrypted, but without effective protection."
+      ]
+    },
+    {
+      "titulo": "What the default setup covers, and what it doesn't",
+      "parrafos": [
+        "Microsoft sorts attackers into two groups: the opportunist with limited physical access, for whom TPM-only is enough, and the skilled attacker with lengthy physical access, who can open the case and solder. For the latter it recommends TPM + PIN (ideally an alphanumeric enhanced PIN, backed by the TPM's anti-hammering protection), disabling S1-S3 standby states, and hibernating or shutting down before the device leaves your control.",
+        "Sleep keeps the key in memory and doesn't ask for the PIN on wake; hibernation does lock the volume. Protecting DMA ports and setting a BIOS password are also worthwhile."
+      ]
+    },
+    {
+      "titulo": "FileVault on Apple silicon",
+      "parrafos": [
+        "On Macs with Apple silicon or a T2 chip, the volume is always encrypted with a key protected by the hardware UID in the Secure Enclave. Turning on FileVault adds the user's password to that protection. The recovery key is 24 characters; check status with `fdesetup status`."
+      ]
+    }
+  ],
+  "glosario": {
+    "clave": [
+      "Recovery key",
+      "A long code (48 digits for BitLocker) that unlocks an encrypted drive when the normal method fails. It's your spare key."
+    ],
+    "cifrado": [
+      "Device Encryption",
+      "An automatic flavor of BitLocker that's also available on Windows Home. It encrypts the system drive and backs up the key to your account."
+    ],
+    "bitlocker": [
+      "BitLocker",
+      "Windows' full-disk encryption system."
+    ],
+    "filevault": [
+      "FileVault",
+      "macOS's disk encryption system, which ties the drive key to your password."
+    ],
+    "tpm": [
+      "TPM",
+      "A security chip in the computer that stores keys and only releases them if startup hasn't been tampered with."
+    ],
+    "pcr": [
+      "PCR",
+      "TPM registers that record boot measurements. If they change, the TPM won't release sealed keys."
+    ],
+    "kev": [
+      "KEV",
+      "The Known Exploited Vulnerabilities catalog kept by CISA, the U.S. cybersecurity agency. If a flaw is listed there, it's being used in real attacks."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "NIST SP 800-111: Guide to Storage Encryption Technologies for End User Devices",
+      "url": "https://csrc.nist.gov/pubs/sp/800/111/final"
+    },
+    {
+      "titulo": "Microsoft: Device encryption in Windows",
+      "url": "https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df"
+    },
+    {
+      "titulo": "Microsoft: Find your BitLocker recovery key",
+      "url": "https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6"
+    },
+    {
+      "titulo": "Microsoft Learn: BitLocker overview",
+      "url": "https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/"
+    },
+    {
+      "titulo": "Microsoft Learn: BitLocker countermeasures",
+      "url": "https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/countermeasures"
+    },
+    {
+      "titulo": "Apple: Protect data on your Mac with FileVault",
+      "url": "https://support.apple.com/guide/mac-help/protect-data-on-your-mac-with-filevault-mh11785/mac"
+    },
+    {
+      "titulo": "Apple: Volume encryption with FileVault in macOS",
+      "url": "https://support.apple.com/guide/security/volume-encryption-with-filevault-sec4c6dc1b6e/web"
+    }
+  ]
+}

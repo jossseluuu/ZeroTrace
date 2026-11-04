@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Windows and macOS encrypt your drive with barely a prompt. That protects you if it&#x27;s stolen, but if it ever asks for the recovery key and you don&#x27;t have it, your files are gone.">
+<title>Your laptop is already encrypted. Do you know where the key is? · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-04.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-04.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Wednesday, November 4, 2026 · 💻 Laptops</p>
+<h1>Your laptop is already encrypted. Do you know where the key is?</h1><p class="sub">Windows and macOS encrypt your drive with barely a prompt. That protects you if it's stolen, but if it ever asks for the recovery key and you don't have it, your files are gone.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 9 min</li><li>💻 Laptop</li><li>🖥️ Desktop</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta rojo" id="2026-11-04-wordpress-core">
+<header><span class="pill rojo">Critical</span><h3>WordPress: update-process flaw now under attack</h3></header>
+<dl><dt>Who it affects</dt><dd>Anyone running a WordPress site, self-hosted or on a hosting plan. If someone else or an agency manages it, ask them.</dd>
+<dt>What to do</dt><dd>Update WordPress to <strong>7.1.4</strong> or the latest security release for your branch, and confirm under <em>Dashboard &gt; Updates</em> that it's applied. If your host auto-updates, verify it.</dd>
+<dt class="deep">Details</dt><dd class="deep">On October 28, WordPress shipped a security release that fixes, among other issues, a weakness in the upgrade process that can allow code execution on the server during the upgrade window, and backported the fix to older supported branches. CISA added it to its <button type="button" class="term" popovertarget="g-kev">KEV</button> catalog on November 3 based on evidence of active exploitation, and security firms such as Wordfence have logged thousands of attack attempts.<div class="cves"><code>CVE-2026-119977</code></div></dd></dl>
+<p class="src"><a href="https://wordpress.org/news/2026/10/wordpress-7-1-4/" rel="noopener noreferrer">WordPress: 7.1.4 security release</a> · <a href="https://www.cisa.gov/news-events/alerts/2026/11/03/cisa-adds-one-known-exploited-vulnerability-catalog" rel="noopener noreferrer">CISA: One Known Exploited Vulnerability added to catalog (Nov. 3)</a> · <a href="https://thehackernews.com/2026/11/cisa-confirms-hackers-exploiting.html" rel="noopener noreferrer">The Hacker News: CISA confirms attacks on the WordPress core flaw</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>If your laptop is fairly recent, <strong>its drive is most likely encrypted already</strong>. Windows turns it on by itself when you set the computer up with a Microsoft account, and Macs with Apple silicon or a T2 chip always encrypt their data.</p><p>That's good news: if it's stolen, the thief can pull the drive and plug it into another computer, but <strong>all they'll see is unreadable data</strong>. Your sign-in password alone never protected any of that.</p><p>The flip side: sometimes the computer asks for a <strong><button type="button" class="term" popovertarget="g-clave">recovery key</button></strong> at startup, for example after a BIOS update or a hardware change. If you don't know where it is, <strong>neither Microsoft nor Apple can give it to you</strong>, and the only way out is to wipe the drive. Encryption without a saved key is a safe you don't have the combination to.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>Check today whether your laptop is encrypted.</li><li>Find your recovery key and keep a copy somewhere other than the laptop.</li><li>On Windows, use a Microsoft (or work) account so the key gets backed up.</li><li>On a Mac, turn on FileVault and choose how to recover it: with iCloud or with a key you write down.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Laptops get stolen and left behind all the time, and the recovery screen shows up more often than you'd think: after hardware changes, firmware updates, or BIOS settings changes.</p></div><div class="medidor"><div class="top"><span>Impact: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Without encryption, whoever walks off with the laptop can read every file. With encryption but no saved key, you're the one locked out: resetting the computer erases everything.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>What Windows encrypts without asking</h3><p>Windows has two flavors. <strong><button type="button" class="term" popovertarget="g-cifrado">Device Encryption</button></strong> is available even on Windows Home and turns on by itself: the first time you sign in with a Microsoft account (or a work or school account), it encrypts the system drive and <strong>attaches the recovery key to that account</strong>. Full <button type="button" class="term" popovertarget="g-bitlocker">BitLocker</button>, with more options, comes with the Pro, Enterprise, and Education editions.</p><p>Starting with Windows 11 version 24H2, Microsoft relaxed the hardware requirements, so <strong>many more computers get encrypted automatically</strong>. That's why some people find out they had BitLocker the day their laptop asks for the key.</p><p>The important detail: <strong>if you set up the computer with only a local account, Device Encryption doesn't turn on automatically</strong>. Microsoft explains that in that case the drive can be left prepared with an unprotected key: the data is encrypted, but anyone could open it.</p><h3>And on a Mac</h3><p>On a Mac with Apple silicon or a T2 chip, <strong>data is always encrypted</strong>. But if you don't turn on <button type="button" class="term" popovertarget="g-filevault">FileVault</button>, the key protecting the drive depends only on that Mac's hardware, not on your password.</p><p>Turning on FileVault ties the key to your login password too. So you don't get locked out if you forget it, macOS offers two options: <strong>unlock with your iCloud account</strong> or <strong>create a recovery key</strong> that you write down. If you forget your password and also lose the key, Apple warns that your files will be lost forever.</p><h3>Why your computer asks for the key out of nowhere</h3><p>Encryption on an ordinary laptop doesn't ask for anything at power-on because the key is stored in the <button type="button" class="term" popovertarget="g-tpm">TPM</button>, a security chip that only releases it if the startup looks the way it always does.</p><p>If something in that chain changes (BIOS or UEFI settings, boot files, the TPM itself, or a hardware component), the TPM holds on to the key and Windows goes into <strong>recovery mode</strong>. It's a safeguard, not a bug: it stops someone from tampering with startup to grab your key. But at that moment you need the 48-digit key.</p><h3>Where your key usually lives</h3><p>On Windows with a Microsoft account, at <strong>aka.ms/myrecoverykey</strong> (sign in with the account you used on that laptop). On work computers, your IT department has it. It might also be on a printout or a USB drive, if you saved it that way when it was turned on.</p><p>The recovery screen shows a <strong>key ID</strong>: its first 8 digits tell you which of your keys is the right one if you have several computers.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>The theft</strong><p>Someone grabs your laptop at a coffee shop, from your car, or from a hotel room. They don't know your Windows or macOS password.</p></li><li><strong>Skipping the sign-in</strong><p>Instead of guessing the password, they pull the drive and connect it to another computer, or boot the laptop from a USB stick with a different system. Without encryption, your documents, photos, and files are wide open.</p></li><li><strong>With encryption on</strong><p>All they see is noise. To read the drive they need the key, which sits in the TPM and is only released during a legitimate startup, or the recovery key, which isn't on the laptop.</p></li><li><strong>The attacker with time and a lab</strong><p>Against the default setup, a highly skilled attacker with lengthy physical access can try opening the computer and attacking the hardware. It's expensive and targeted: not what a coffee-shop thief does.</p></li><li><strong>The most likely scenario</strong><p>In practice, the person most often locked out of an encrypted drive is its owner: after a firmware update the recovery screen appears and nobody knows where the key is.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Read the entire drive of an unencrypted laptop, even if it has a sign-in password.</li><li>Read the drive if they find the recovery key stored with the laptop (a note in the case, a file on the desktop).</li><li>Get into your session if they take the laptop while it's on or asleep and unlocked.</li><li>Resell the device after wiping it: encryption protects your data, not the hardware.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>Read an encrypted drive by plugging it into another computer.</li><li>Get the key by booting another system from USB: the TPM won't release it if startup changes.</li><li>Get your key from Microsoft or Apple by pretending to be you, if your account has a strong password and two-step verification.</li><li>Brute-force the drive's encryption in any reasonable amount of time.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Check whether your laptop is encrypted</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: everyone</li></ul>
+<p>First things first: know whether your data is protected if it's stolen.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Settings &gt; <strong>Privacy &amp; security</strong> &gt; <strong>Device encryption</strong>: it should be <em>On</em>.</li><li>If that option isn't there, search for "BitLocker" in the Start menu: on Pro editions, encryption is managed there.</li></ol></div><div class="plataforma"><h4>Mac</h4><ol><li>Apple menu &gt; System Settings &gt; <strong>Privacy &amp; Security</strong> &gt; <strong>FileVault</strong> (you may need to scroll down).</li></ol></div></div></article><article class="medida"><h3>Find your recovery key</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>Do it now, while the laptop works, not the day it asks. Check that the device name matches yours.</p><div class="plataformas"><div class="plataforma"><h4>Windows</h4><ol><li>From another device, go to <strong>aka.ms/myrecoverykey</strong> and sign in with the laptop's Microsoft account.</li><li>If it's a work laptop, ask your IT department whether they have the key backed up.</li></ol></div><div class="plataforma"><h4>Mac</h4><ol><li>If you chose iCloud, make sure you remember your Apple Account password and that two-factor authentication works.</li><li>If you chose a recovery key, check that you have it written down somewhere other than the Mac.</li></ol></div></div></article><article class="medida"><h3>Keep a copy off the laptop</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: everyone</li></ul>
+<p>The key should never live only inside the computer it protects. A copy in your password manager or on paper in a drawer at home is enough.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>Save it in your <strong>password manager</strong>, or print it and keep it at home.</li><li><strong>Don't</strong> tape it to the laptop, keep it in the case, or save it in a file on the laptop's own desktop.</li></ol></div></div></article><article class="medida"><h3>Protect the account that holds the key</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>Your Microsoft or Apple account becomes the master key to your drive: it deserves a unique password and two-step verification, or better yet a passkey.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>Turn on two-step verification for your Microsoft or Apple account.</li><li>Make sure that account's recovery email and phone number are still yours.</li></ol></div></div></article><article class="medida"><h3>Lock your laptop when you step away</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>Encryption protects the laptop when it's off or locked. If someone takes it with your session open, it doesn't help.</p><div class="plataformas"><div class="plataforma"><h4>Windows</h4><ol><li>Press <strong>Windows + L</strong> before you get up.</li></ol></div><div class="plataforma"><h4>Mac</h4><ol><li>Press <strong>Control + Command + Q</strong>.</li></ol></div></div></article><article class="medida deep"><h3>Startup PIN, and hibernate instead of sleep<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: medium</li>
+<li>⏱ 15 min</li><li>For: paranoid</li></ul>
+<p>Only if your laptop holds highly sensitive information or you're exposed to targeted theft: for these cases Microsoft recommends a pre-boot PIN (TPM + PIN) and hibernating or shutting down instead of sleeping when the laptop leaves your hands. It requires editions with full BitLocker, and if you forget the PIN you'll need the recovery key again.</p><div class="plataformas"><div class="plataforma"><h4>Windows (Pro, Enterprise, Education)</h4><ol><li>It requires enabling the <em>Require additional authentication at startup</em> policy and adding the protector with <code>manage-bde -protectors -add C: -TPMAndPIN</code>.</li><li>Save your recovery key first: it's your way back in if you forget the PIN.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>The drive icon in Windows</h3><p>In File Explorer, a BitLocker-encrypted drive shows a padlock. If you see a <strong>yellow warning icon</strong>, encryption is prepared but the key hasn't been protected or backed up yet: sign in with a Microsoft account or turn it on manually.</p></div><div class="fila"><h3>Your list of keys</h3><p>At aka.ms/myrecoverykey you should see one key per encrypted computer. If you switched laptops or reinstalled Windows, the old key won't work for the new setup.</p></div><div class="fila"><h3>FileVault status</h3><p>System Settings &gt; Privacy &amp; Security &gt; FileVault should say it's turned on for the disk. If it's off and your Mac has Apple silicon, the data is encrypted, but the key doesn't depend on your password.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Installing third-party encryption software</h3><p>For a personal laptop, BitLocker or Device Encryption on Windows and FileVault on a Mac are enough, and they're built into the system.</p></div><div class="fila"><h3>Adding a startup PIN to every laptop</h3><p>Microsoft considers the default setup (TPM only) appropriate against an opportunistic thief. A PIN adds friction and one more thing to forget.</p></div><div class="fila"><h3>Shutting down every time you close the lid</h3><p>For everyday use, closing the lid with the computer locked is fine. Shutting down or hibernating only makes sense in the high-risk scenario.</p></div><div class="fila"><h3>Turning off encryption because you're afraid of losing the key</h3><p>The fix isn't removing encryption, it's storing the key properly and backing up your files. Without encryption, a theft exposes everything.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"My laptop has a password, so my files are protected."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>Your sign-in password only stops someone from <strong>getting into your session</strong>. If the drive isn't encrypted, pulling it out and connecting it to another computer is enough to read it. That's what BitLocker is for: according to Microsoft, it protects data on lost or stolen devices against someone moving the drive to a different device.</p><p class="src"><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener noreferrer">Microsoft: BitLocker overview</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>TPM, PCRs, and why recovery kicks in</h3><p>BitLocker seals the volume key in the TPM, bound to boot measurements (<button type="button" class="term" popovertarget="g-pcr">PCR</button> registers). By default it uses PCR 7, which reflects Secure Boot state. If those measurements change, the TPM won't release the key and the recovery protector is required.</p><p>Check the status with <code>manage-bde -status</code> (as administrator): it shows the encryption method, the percentage encrypted, and whether protection is <em>on</em>. Device Encryption uses <code>XTS-AES 128</code> by default. Before updating the BIOS or firmware, suspend protection (<code>manage-bde -protectors -disable C:</code>) so the next startup doesn't ask for the key; protection resumes after the restart.</p><h3>The "unprotected key" state</h3><p>After a clean install, Windows initializes encryption with a <em>clear key</em>, the equivalent of suspended BitLocker. Only once the TPM protector is created and the recovery key is backed up (to Entra ID, AD DS, or the Microsoft account) is that clear key removed. With local-only accounts, a device can stay like this indefinitely: encrypted, but without effective protection.</p><h3>What the default setup covers, and what it doesn't</h3><p>Microsoft sorts attackers into two groups: the opportunist with limited physical access, for whom TPM-only is enough, and the skilled attacker with lengthy physical access, who can open the case and solder. For the latter it recommends TPM + PIN (ideally an alphanumeric enhanced PIN, backed by the TPM's anti-hammering protection), disabling S1-S3 standby states, and hibernating or shutting down before the device leaves your control.</p><p>Sleep keeps the key in memory and doesn't ask for the PIN on wake; hibernation does lock the volume. Protecting DMA ports and setting a BIOS password are also worthwhile.</p><h3>FileVault on Apple silicon</h3><p>On Macs with Apple silicon or a T2 chip, the volume is always encrypted with a key protected by the hardware UID in the Secure Enclave. Turning on FileVault adds the user's password to that protection. The recovery key is 24 characters; check status with <code>fdesetup status</code>.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Recovery key</dt><dd>A long code (48 digits for BitLocker) that unlocks an encrypted drive when the normal method fails. It&#x27;s your spare key.</dd><dt>Device Encryption</dt><dd>An automatic flavor of BitLocker that&#x27;s also available on Windows Home. It encrypts the system drive and backs up the key to your account.</dd><dt>BitLocker</dt><dd>Windows&#x27; full-disk encryption system.</dd><dt>FileVault</dt><dd>macOS&#x27;s disk encryption system, which ties the drive key to your password.</dd><dt>TPM</dt><dd>A security chip in the computer that stores keys and only releases them if startup hasn&#x27;t been tampered with.</dd><dt>PCR</dt><dd>TPM registers that record boot measurements. If they change, the TPM won&#x27;t release sealed keys.</dd><dt>KEV</dt><dd>The Known Exploited Vulnerabilities catalog kept by CISA, the U.S. cybersecurity agency. If a flaw is listed there, it&#x27;s being used in real attacks.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://csrc.nist.gov/pubs/sp/800/111/final" rel="noopener noreferrer">NIST SP 800-111: Guide to Storage Encryption Technologies for End User Devices</a></li><li><a href="https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df" rel="noopener noreferrer">Microsoft: Device encryption in Windows</a></li><li><a href="https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6" rel="noopener noreferrer">Microsoft: Find your BitLocker recovery key</a></li><li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener noreferrer">Microsoft Learn: BitLocker overview</a></li><li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/countermeasures" rel="noopener noreferrer">Microsoft Learn: BitLocker countermeasures</a></li><li><a href="https://support.apple.com/guide/mac-help/protect-data-on-your-mac-with-filevault-mh11785/mac" rel="noopener noreferrer">Apple: Protect data on your Mac with FileVault</a></li><li><a href="https://support.apple.com/guide/security/volume-encryption-with-filevault-sec4c6dc1b6e/web" rel="noopener noreferrer">Apple: Volume encryption with FileVault in macOS</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-clave" class="gl-pop"><strong>Recovery key</strong>A long code (48 digits for BitLocker) that unlocks an encrypted drive when the normal method fails. It&#x27;s your spare key.</div><div popover id="g-cifrado" class="gl-pop"><strong>Device Encryption</strong>An automatic flavor of BitLocker that&#x27;s also available on Windows Home. It encrypts the system drive and backs up the key to your account.</div><div popover id="g-bitlocker" class="gl-pop"><strong>BitLocker</strong>Windows&#x27; full-disk encryption system.</div><div popover id="g-filevault" class="gl-pop"><strong>FileVault</strong>macOS&#x27;s disk encryption system, which ties the drive key to your password.</div><div popover id="g-tpm" class="gl-pop"><strong>TPM</strong>A security chip in the computer that stores keys and only releases them if startup hasn&#x27;t been tampered with.</div><div popover id="g-pcr" class="gl-pop"><strong>PCR</strong>TPM registers that record boot measurements. If they change, the TPM won&#x27;t release sealed keys.</div><div popover id="g-kev" class="gl-pop"><strong>KEV</strong>The Known Exploited Vulnerabilities catalog kept by CISA, the U.S. cybersecurity agency. If a flaw is listed there, it&#x27;s being used in real attacks.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>
