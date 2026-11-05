@@ -1,7 +1,8 @@
 {
-  "actualizado": "2026-11-04T07:49:11+01:00",
+  "actualizado": "2026-11-04T21:03:40+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "transito",
     "portatiles",
     "smart-tv"
   ],
@@ -17,9 +18,24 @@
         "fecha": "2026-11-04",
         "concepto": "clave-de-recuperacion-del-cifrado"
       }
+    ],
+    "transito": [
+      {
+        "fecha": "2026-11-05",
+        "concepto": "aviso-de-certificado"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-05",
+      "foco": "transito",
+      "concepto": "aviso-de-certificado",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-05-firefox"
+      ]
+    },
     {
       "fecha": "2026-11-04",
       "foco": "portatiles",

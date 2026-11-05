@@ -1,0 +1,308 @@
+{
+  "fecha": "2026-11-05",
+  "idioma": "en",
+  "foco": "transito",
+  "concepto": "browser-certificate-warning",
+  "titulo": "Don't ignore your browser's certificate warning",
+  "subtitulo": "What “Your connection is not private” means, how an attacker could exploit it, and what to check before you continue.",
+  "dispositivos": [
+    "smartphone",
+    "tablet",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 10
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-05-firefox"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "When a website shows **“Your connection is not private,”** your browser could not properly verify the site’s identity using its certificate. That does not prove the site is a scam, but it does mean **you do not have the usual assurance that you are talking to the right website**.",
+      "The cause could be a website configuration problem, an incorrect date or time on your device, or a network/proxy inspecting connections. It could also be a sign that someone is trying to get between you and the site. You do not need to guess which one it is to act safely: **do not enter passwords, payment details, or verification codes, and do not force your way in**.",
+      "Check that the address is spelled correctly, make sure your device uses automatic date and time, and try another connection (such as cellular data). If only that website fails, wait or contact its owner. If many websites fail, check your device or ask whoever manages the network."
+    ],
+    "esencial": [
+      "Do not click “Continue” or add an exception for a public website, especially a bank, email account, or store.",
+      "Check the full address and make sure your device’s date and time are correct.",
+      "Try another network. If the warning appears on only one website, its certificate may be misconfigured.",
+      "Do not install certificates or profiles offered by a webpage or someone you do not trust."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Certificate warnings caused by configuration or maintenance problems are fairly common. Malicious interception is less common, but the warning matters because the browser cannot validate the remote endpoint."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "If you ignore the warning and submit information over an intercepted connection, credentials, personal details, or payment information could be exposed. The impact depends on the service and the information you send."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What the certificate actually checks",
+      "parrafos": [
+        "When you open an HTTPS website, the browser negotiates an encrypted connection using [[tls|TLS]] and validates the [[certificate|digital certificate]] presented by the server. Among other things, it checks that the certificate matches the domain you visited, is within its validity period, and chains to a trusted certificate authority on your device.",
+        "A certificate does not prove that a business is honest or that its content is safe. Its job is to help the browser authenticate the website and establish an encrypted connection to that endpoint. That is why you should also check the domain name and never trust a site just because it uses HTTPS."
+      ]
+    },
+    {
+      "titulo": "Why the warning appears",
+      "parrafos": [
+        "Some causes are ordinary: an expired or incorrectly installed certificate, a domain-name mismatch, a missing certificate chain, or an incorrect device clock. On public Wi-Fi, a sign-in portal can also interfere until you accept its terms; Google recommends completing the portal sign-in before returning to the secure website.",
+        "If it happens on many websites, there may be a local issue: an incorrect clock, antivirus HTTPS inspection, a corporate proxy, or software intercepting connections. On a work network, that inspection may be intentional and managed by IT, but do not install unknown certificates yourself to “fix” it."
+      ]
+    },
+    {
+      "titulo": "How this fits a man-in-the-middle attack",
+      "parrafos": [
+        "In a [[mitm|man-in-the-middle (MitM) attack]], an attacker tries to position themselves between your device and a service. They may control a network, a compromised router, or a proxy, and try to present a certificate the browser does not recognize as valid for the domain.",
+        "**The warning is the browser telling you that authentication failed.** If the user accepts an exception when the browser allows it, they may continue to an endpoint whose identity could not be validated. That does not prove an attacker is present: the server may simply be misconfigured, but an important check has been removed."
+      ]
+    },
+    {
+      "titulo": "Why some warnings cannot be bypassed",
+      "parrafos": [
+        "Browsers can enforce policies such as [[hsts|HSTS]], which require HTTPS and prevent downgrades to insecure connections. Firefox says some certificate errors cannot be bypassed and warns against ignoring certificate errors on important sites such as banking and email.",
+        "Do not look for a way to turn off the protection. If the website is legitimate, its owner must fix the certificate, or your network administrator must explain an approved corporate inspection. If you cannot confirm the cause, go back."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The entry point",
+      "texto": "The attacker gains control of part of the connection — for example, a compromised local network — or tricks the device into using an untrusted intermediary."
+    },
+    {
+      "titulo": "The website presents an unexpected certificate",
+      "texto": "When the browser tries to open the real website, it receives a certificate it cannot validate for that domain or whose trust chain it does not recognize."
+    },
+    {
+      "titulo": "The browser warns you",
+      "texto": "A page appears, such as “Your connection is not private” or “Warning: Potential Security Risk Ahead.” The warning can have other causes, but it is not just an obstacle to click through."
+    },
+    {
+      "titulo": "The user forces the connection",
+      "texto": "If the browser offers an exception and the user accepts it, the browser may continue even though the server identity was not properly validated."
+    },
+    {
+      "titulo": "What could be exposed",
+      "texto": "If a malicious intermediary is actually present and you send data over that connection, it could access information the session makes available. Properly authenticated and configured connections remain protected against this type of interception."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Try to intercept a connection and present a certificate that does not belong to the website.",
+      "Take advantage of a user accepting an exception to show a website controlled by the attacker.",
+      "View or modify information sent over a connection that is actually intercepted and not properly protected."
+    ],
+    "no_puede": [
+      "Automatically read the contents of every HTTPS website just because they share the same Wi-Fi network.",
+      "Make an invalid certificate valid simply by copying the website name.",
+      "Decrypt a correctly authenticated and configured TLS session without compromising an endpoint or the device’s trust store.",
+      "Turn the warning into conclusive proof of an attack: configuration errors can cause it too."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Stop and do not enter information",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "immediate",
+      "para": "todos",
+      "texto": "If a certificate warning appears on a public website, go back. Do not sign in, pay, or download anything from that page.",
+      "pasos": {
+        "Always": [
+          "Close the tab or go back.",
+          "Do not choose “Continue,” “Accept the Risk,” or “Add Exception.”",
+          "If you need to complete an urgent task, use the official app or try again later from a trusted connection."
+        ]
+      }
+    },
+    {
+      "titulo": "Check the address and your clock",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Rule out two simple causes before investigating further: a mistyped address and an incorrect device clock.",
+      "pasos": {
+        "On any device": [
+          "Check the full domain in the address bar, character by character.",
+          "Turn on automatic date, time, and time zone in your device settings.",
+          "Close and reopen the browser."
+        ]
+      }
+    },
+    {
+      "titulo": "Try another connection",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "Switching from Wi-Fi to cellular data can help determine whether the problem is network-related. It does not automatically make the website legitimate.",
+      "pasos": {
+        "On a phone": [
+          "Disconnect from Wi-Fi and try cellular data."
+        ],
+        "On a computer": [
+          "Try another trusted network, such as a mobile hotspot.",
+          "If you are on public Wi-Fi, complete only its legitimate sign-in portal and then reopen the HTTPS website."
+        ]
+      }
+    },
+    {
+      "titulo": "If many websites fail, get help",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "When the warning appears on different websites, the issue may involve your device, antivirus, or a proxy. Do not install certificates on your own.",
+      "pasos": {
+        "At home": [
+          "Update your browser and operating system.",
+          "Check whether you recently installed an unfamiliar app or network profile."
+        ],
+        "At work or school": [
+          "Ask IT whether managed HTTPS inspection is in use and what the approved process is.",
+          "Do not accept certificates sent by email, messaging, or unfamiliar websites."
+        ]
+      }
+    },
+    {
+      "titulo": "For administrators: fix the root cause",
+      "impacto": "alto",
+      "esfuerzo": "alto",
+      "tiempo": "depends on the service",
+      "para": "avanzado",
+      "texto": "If you manage the website, check the certificate name, validity, intermediate chain, and whether the server delivers the required certificates.",
+      "pasos": {
+        "Web server": [
+          "Install a valid certificate for every published hostname.",
+          "Configure the full chain and renew before expiration.",
+          "Test from outside your network to confirm browsers validate the connection."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "The exact message",
+      "texto": "Chrome may show “Your connection is not private” with codes such as `NET::ERR_CERT_AUTHORITY_INVALID` or `ERR_CERT_DATE_INVALID`. Firefox may show “Warning: Potential Security Risk Ahead.” You can note the error code without accepting the risk."
+    },
+    {
+      "titulo": "Does one website fail, or do they all?",
+      "texto": "If only one domain fails, its certificate may be misconfigured. If many HTTPS websites fail at once, check the clock, network, antivirus, and whether you are using a managed proxy."
+    },
+    {
+      "titulo": "The connection context",
+      "texto": "Are you on public Wi-Fi with a sign-in portal? On a work network? Did you recently install an app, profile, or certificate? These clues help identify the cause without disabling protection."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Install a certificate offered by the website",
+      "texto": "That is not a safe fix. Trusting an unknown certificate authority can let it validate connections your device should reject."
+    },
+    {
+      "titulo": "Turn off certificate checks",
+      "texto": "Do not disable browser protections or change advanced settings just to get in. The warning exists to stop a connection whose identity could not be verified."
+    },
+    {
+      "titulo": "Install a VPN for every warning",
+      "texto": "A VPN does not fix an expired or misconfigured certificate and does not guarantee that a website is legitimate. First identify whether the issue is the website, device, or network."
+    },
+    {
+      "titulo": "Assume every warning means an attack",
+      "texto": "A misconfigured certificate or incorrect clock can also trigger warnings. Be cautious, but you do not need to wipe your device or change every password just because you saw one."
+    }
+  ],
+  "mito": {
+    "mito": "“If the address starts with HTTPS, the website is legitimate and I can trust it.”",
+    "realidad": "HTTPS and a valid certificate protect and authenticate the connection to the stated domain; **they do not certify that the business is honest, the content is safe, or the domain is not an impersonation**. Always check the exact name and be wary of unexpected links.",
+    "fuente": {
+      "titulo": "Google Chrome: Check if a site’s connection is secure",
+      "url": "https://support.google.com/chrome/answer/95617?hl=en"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "What the TLS client validates",
+      "parrafos": [
+        "During the TLS handshake, the server presents a certificate and the client verifies its chain to a trusted root, its validity dates, and whether the requested hostname appears in the certificate (for example, in Subject Alternative Name). Encryption without correct authentication does not provide the same assurance: you may be encrypting directly to an intermediary.",
+        "Errors such as `unknown issuer`, `name mismatch`, and `expired` point to different failures. The right response is to diagnose the cause, not disable validation."
+      ]
+    },
+    {
+      "titulo": "Legitimate interception and added trust",
+      "parrafos": [
+        "Some organizations inspect TLS through a proxy that generates certificates for destinations and signs them with a certificate authority installed on managed devices. In that environment, this may be a legitimate corporate policy, but trust must come through an official channel controlled by IT.",
+        "A root certificate installed by malware, a malicious person, or an untrusted app changes which entities can validate certificates on that device. That is why you should never install a certificate informally just to remove a warning."
+      ]
+    },
+    {
+      "titulo": "HSTS and non-recoverable errors",
+      "parrafos": [
+        "HTTP Strict Transport Security (HSTS) lets a website tell the browser to access it only over HTTPS for a period of time. If the secure connection fails, the browser may prevent the user from continuing through an exception.",
+        "This reduces the chance that a user turns an authentication failure into an insecure connection with one impulsive click. In Firefox, some certificate errors do not offer a way to bypass the warning; behavior depends on the error type and site policy."
+      ]
+    },
+    {
+      "titulo": "The difference between encryption and trust",
+      "parrafos": [
+        "TLS encryption provides confidentiality and integrity for the channel; certificate validation provides server authentication. They are related but distinct properties. An attacker who gets a user to accept an unvalidated certificate may terminate a TLS connection with the browser at their own endpoint, even if the user still sees a lock or secure-connection indicator.",
+        "The essential defense is to keep certificate validation enabled and verify the domain. You do not need to install inspection tools, scan certificates every day, or use a permanent VPN."
+      ]
+    }
+  ],
+  "glosario": {
+    "tls": [
+      "TLS",
+      "A protocol that encrypts and protects communication between an application (such as a browser) and a server."
+    ],
+    "certificate": [
+      "Digital certificate",
+      "An electronic document that binds a public key to a domain name or other identity and helps a browser verify it."
+    ],
+    "mitm": [
+      "Man-in-the-middle (MitM) attack",
+      "An attack in which someone positions themselves between two communicating endpoints and tries to observe or modify the exchange."
+    ],
+    "hsts": [
+      "HSTS",
+      "A web policy that tells a browser to connect to a site using HTTPS and not downgrade to HTTP."
+    ],
+    "ca": [
+      "Certificate authority (CA)",
+      "An entity whose keys are trusted by a device and that can issue or sign certificates."
+    ],
+    "san": [
+      "Subject Alternative Name (SAN)",
+      "A certificate field that identifies the domain names for which the certificate is valid."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Google Chrome: Get help with certificate and connection errors",
+      "url": "https://support.google.com/chrome/answer/95669?hl=en"
+    },
+    {
+      "titulo": "Google Chrome: Check if a site’s connection is secure",
+      "url": "https://support.google.com/chrome/answer/95617?hl=en"
+    },
+    {
+      "titulo": "Mozilla Firefox: Troubleshoot security error codes on secure websites",
+      "url": "https://support.mozilla.org/en-US/kb/error-codes-secure-websites"
+    },
+    {
+      "titulo": "Mozilla Firefox: What do the security warning codes mean?",
+      "url": "https://support.mozilla.org/en-US/kb/what-does-your-connection-is-not-secure-mean"
+    }
+  ]
+}

@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Wed, 04 Nov 2026 07:49:11 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 04 Nov 2026 21:03:40 +0100</lastBuildDate>
+  <item>
+    <title>Don&#x27;t ignore your browser&#x27;s certificate warning</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-05.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-05.html</guid>
+    <pubDate>Thu, 05 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Data in transit</category>
+    <description>What “Your connection is not private” means, how an attacker could exploit it, and what to check before you continue. — Heads-up: Firefox 159.0.1 fixes a high-impact security flaw</description>
+  </item>
   <item>
     <title>Your laptop is already encrypted. Do you know where the key is?</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-04.html</link>

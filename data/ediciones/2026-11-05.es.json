@@ -1,0 +1,312 @@
+{
+  "fecha": "2026-11-05",
+  "idioma": "es",
+  "foco": "transito",
+  "concepto": "aviso-de-certificado",
+  "titulo": "No ignores el aviso de certificado del navegador",
+  "subtitulo": "Qué significa «La conexión no es privada», cómo puede aprovecharlo un atacante y qué comprobar antes de seguir.",
+  "dispositivos": [
+    "smartphone",
+    "tablet",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 10
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-05-firefox"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Cuando una web muestra **«La conexión no es privada»**, el navegador no ha podido comprobar correctamente la identidad del sitio mediante su certificado. No es una prueba de que sea una estafa, pero sí significa que **no tienes la garantía habitual de que estás hablando con la web correcta**.",
+      "Puede ser un fallo del propio sitio, una fecha u hora incorrectas en tu dispositivo o una red/proxy que inspecciona conexiones. También puede ser la señal de que alguien intenta interponerse entre tú y la web. No necesitas adivinar cuál es la causa para actuar con prudencia: **no introduzcas contraseñas, datos bancarios ni códigos y no fuerces la entrada**.",
+      "Comprueba que la dirección está bien escrita, que la fecha y hora del dispositivo son automáticas y prueba con otra conexión (por ejemplo, datos móviles). Si solo falla esa web, espera o avisa a su responsable. Si ocurre en muchas webs, revisa el dispositivo o consulta con quien gestione la red."
+    ],
+    "esencial": [
+      "No pulses «Continuar» ni añadas una excepción para una web pública, especialmente si es tu banco, correo o tienda.",
+      "Comprueba la dirección completa y que la fecha y hora del dispositivo sean correctas.",
+      "Prueba otra red. Si el aviso aparece solo en una web, puede ser un problema de su certificado.",
+      "No instales certificados ni perfiles que te ofrezca una página o un desconocido."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Los errores de certificado por configuración o mantenimiento son relativamente habituales. Una interceptación maliciosa es menos frecuente, pero el aviso merece atención porque el navegador no puede validar el extremo remoto."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Si ignoras el aviso y entregas datos en una conexión interceptada, podrías exponer credenciales, datos personales o información de pago. El impacto depende de qué servicio uses y de qué información envíes."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Qué comprueba realmente el certificado",
+      "parrafos": [
+        "Al abrir una web HTTPS, el navegador negocia una conexión cifrada mediante [[tls|TLS]] y valida el [[certificado|certificado digital]] que presenta el servidor. Entre otras cosas, comprueba que el certificado corresponde al nombre de dominio visitado, que está dentro de su periodo de validez y que encadena hasta una autoridad de confianza del dispositivo.",
+        "El certificado no demuestra que el negocio sea honrado ni que el contenido sea inocuo. Su función es ayudar al navegador a autenticar el sitio y establecer una conexión cifrada con ese extremo. Por eso hay que revisar también el nombre de dominio y no fiarse de una web solo porque use HTTPS."
+      ]
+    },
+    {
+      "titulo": "Por qué aparece la advertencia",
+      "parrafos": [
+        "Las causas pueden ser inocentes: certificado caducado o mal instalado, nombre de dominio que no coincide, cadena de certificados incompleta o reloj del dispositivo incorrecto. En una wifi pública, el portal de acceso también puede interferir hasta que aceptes sus condiciones; Google recomienda completar el acceso al portal antes de volver a la web segura.",
+        "Si ocurre en muchas webs, puede haber un problema local: reloj desajustado, antivirus que inspecciona HTTPS, proxy corporativo o software que intercepta conexiones. En una red de trabajo, esa inspección puede ser intencionada y gestionada por IT, pero no instales tú certificados desconocidos para «arreglarlo»."
+      ]
+    },
+    {
+      "titulo": "Cómo encaja en un ataque de intermediario",
+      "parrafos": [
+        "En un ataque de [[intermediario|intermediario (MitM)]], el atacante intenta situarse entre el dispositivo y el servicio. Puede controlar una red, un router comprometido o un proxy, y tratar de presentar un certificado que el navegador no reconoce como válido para el dominio.",
+        "**La advertencia es la defensa que te está avisando de que la autenticación ha fallado.** Si el usuario acepta una excepción, cuando el navegador lo permita, puede continuar con un extremo cuya identidad no ha podido validar. Eso no garantiza que haya un atacante: también puede ser un error del servidor, pero elimina una comprobación importante."
+      ]
+    },
+    {
+      "titulo": "Por qué algunos avisos no se pueden saltar",
+      "parrafos": [
+        "Los navegadores pueden aplicar políticas como [[hsts|HSTS]] para exigir HTTPS y evitar retrocesos a conexiones inseguras. Firefox indica que ciertos errores de certificado no permiten continuar y que, en sitios importantes como bancos y correo, no se debe ignorar una advertencia.",
+        "No busques una forma de desactivar la protección. Si la web es legítima, su responsable debe corregir el certificado o el administrador de tu red debe explicar una inspección corporativa prevista. Si no puedes confirmar la causa, vuelve atrás."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "El punto de entrada",
+      "texto": "El atacante consigue controlar un tramo de la conexión —por ejemplo, una red local comprometida— o induce al dispositivo a usar un intermediario no confiable."
+    },
+    {
+      "titulo": "La web presenta un certificado inesperado",
+      "texto": "Cuando el navegador intenta abrir la web real, recibe un certificado que no puede validar para ese dominio o cuya cadena de confianza no reconoce."
+    },
+    {
+      "titulo": "El navegador avisa",
+      "texto": "Aparece una pantalla como «La conexión no es privada» o «Warning: Potential Security Risk Ahead». El aviso puede tener otras causas, pero no debe tratarse como un simple obstáculo."
+    },
+    {
+      "titulo": "El usuario fuerza la entrada",
+      "texto": "Si el navegador ofrece una excepción y el usuario la acepta, puede continuar pese a que la identidad del servidor no se haya validado correctamente."
+    },
+    {
+      "titulo": "Qué podría quedar expuesto",
+      "texto": "Si realmente hay un intermediario malicioso y se envían datos a través de esa conexión, podría acceder a la información que la sesión deje al alcance. Las conexiones válidas y correctamente autenticadas siguen protegidas frente a este tipo de interceptación."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Intentar interponerse en una conexión y presentar un certificado que no corresponde al sitio.",
+      "Aprovechar que el usuario acepte una excepción para mostrarle una web controlada por el atacante.",
+      "Ver o modificar información que se envíe por una conexión que haya quedado realmente interceptada y no esté protegida correctamente."
+    ],
+    "no_puede": [
+      "Leer automáticamente el contenido de cualquier web HTTPS solo por compartir la misma wifi.",
+      "Hacer que un certificado inválido sea válido por el mero hecho de copiar el nombre del sitio.",
+      "Descifrar una sesión TLS correctamente autenticada y configurada sin comprometer alguno de sus extremos o la confianza del dispositivo.",
+      "Convertir el aviso en prueba concluyente de un ataque: también puede deberse a un error de configuración."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Detente y no introduzcas datos",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "inmediato",
+      "para": "todos",
+      "texto": "Si aparece una advertencia de certificado en una web pública, vuelve atrás. No inicies sesión, no pagues y no descargues nada desde esa página.",
+      "pasos": {
+        "Siempre": [
+          "Cierra la pestaña o vuelve a una página anterior.",
+          "No elijas «Continuar», «Aceptar el riesgo» ni «Añadir excepción».",
+          "Si necesitas hacer una operación urgente, usa la app oficial o vuelve a intentarlo más tarde desde una conexión conocida."
+        ]
+      }
+    },
+    {
+      "titulo": "Comprueba la dirección y el reloj",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Descarta dos causas sencillas antes de investigar más: una dirección mal escrita y un reloj desajustado.",
+      "pasos": {
+        "En cualquier dispositivo": [
+          "Revisa el dominio completo en la barra de direcciones, letra por letra.",
+          "Activa la fecha, hora y zona horaria automáticas en los ajustes del dispositivo.",
+          "Cierra y vuelve a abrir el navegador."
+        ]
+      }
+    },
+    {
+      "titulo": "Prueba otra conexión",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "Cambiar de wifi a datos móviles ayuda a saber si el problema está relacionado con la red. No convierte automáticamente la web en legítima.",
+      "pasos": {
+        "En móvil": [
+          "Desconéctate de la wifi y prueba con datos móviles."
+        ],
+        "En ordenador": [
+          "Prueba una red de confianza distinta, como un punto de acceso móvil.",
+          "Si estás en una wifi pública, completa únicamente su portal de acceso legítimo y vuelve a abrir la web HTTPS."
+        ]
+      }
+    },
+    {
+      "titulo": "Si ocurre en muchas webs, pide ayuda",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Cuando el aviso aparece en sitios distintos, puede haber un problema del dispositivo, del antivirus o de un proxy. No instales certificados por tu cuenta.",
+      "pasos": {
+        "En casa": [
+          "Actualiza el navegador y el sistema operativo.",
+          "Revisa si has instalado recientemente una aplicación o perfil de red que no reconoces."
+        ],
+        "En el trabajo o centro educativo": [
+          "Pregunta al equipo de IT si existe inspección HTTPS gestionada y cuál es el procedimiento oficial.",
+          "No aceptes certificados enviados por correo, mensajería o páginas desconocidas."
+        ]
+      }
+    },
+    {
+      "titulo": "Para administradores: corrige el origen",
+      "impacto": "alto",
+      "esfuerzo": "alto",
+      "tiempo": "según el servicio",
+      "para": "avanzado",
+      "texto": "Si administras la web, revisa el nombre del certificado, su vigencia, la cadena intermedia y que el servidor entregue los certificados necesarios.",
+      "pasos": {
+        "Servidor web": [
+          "Instala un certificado válido para todos los nombres publicados.",
+          "Configura la cadena completa y renueva antes de la caducidad.",
+          "Comprueba desde fuera de tu red que los navegadores validan la conexión."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "El mensaje exacto",
+      "texto": "Chrome puede mostrar «La conexión no es privada» y códigos como `NET::ERR_CERT_AUTHORITY_INVALID` o `ERR_CERT_DATE_INVALID`. Firefox puede mostrar «Warning: Potential Security Risk Ahead». Anota el código; no es necesario aceptar el riesgo para verlo."
+    },
+    {
+      "titulo": "¿Falla una web o todas?",
+      "texto": "Si solo falla un dominio, puede estar mal configurado su certificado. Si fallan muchas webs HTTPS a la vez, comprueba el reloj, la red, el antivirus y si estás usando un proxy administrado."
+    },
+    {
+      "titulo": "El contexto de la conexión",
+      "texto": "¿Estás en una wifi pública que exige portal? ¿En una red de empresa? ¿Has instalado recientemente un antivirus, perfil o certificado? Estas pistas ayudan a identificar la causa sin desactivar la protección."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Instalar un certificado que te ofrece la web",
+      "texto": "No es una solución segura. Dar confianza a una autoridad desconocida puede permitir que valide conexiones que tu dispositivo debería rechazar."
+    },
+    {
+      "titulo": "Desactivar la comprobación de certificados",
+      "texto": "No desactives las protecciones del navegador ni cambies ajustes avanzados para poder entrar. El aviso existe precisamente para detener una conexión cuya identidad no se ha podido verificar."
+    },
+    {
+      "titulo": "Instalar una VPN por cada aviso",
+      "texto": "Una VPN no corrige un certificado caducado o mal configurado y no garantiza que el sitio sea legítimo. Primero identifica si el problema está en la web, el dispositivo o la red."
+    },
+    {
+      "titulo": "Dar por hecho que hay un ataque",
+      "texto": "Un certificado mal configurado o un reloj incorrecto también provocan avisos. Actúa con prudencia, pero no hace falta formatear el dispositivo ni cambiar todas tus contraseñas solo por ver una advertencia."
+    }
+  ],
+  "mito": {
+    "mito": "«Si la dirección empieza por HTTPS, la web es legítima y puedo fiarme».",
+    "realidad": "HTTPS y un certificado válido protegen y autentican la conexión con el dominio indicado; **no certifican que el negocio sea honrado, que el contenido sea seguro ni que el dominio no imite a otro**. Comprueba siempre el nombre exacto y desconfía de enlaces inesperados.",
+    "fuente": {
+      "titulo": "Google Chrome: cómo comprobar si la conexión de un sitio es segura",
+      "url": "https://support.google.com/chrome/answer/95617?hl=es-EC"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Qué valida el cliente TLS",
+      "parrafos": [
+        "Durante el establecimiento de TLS, el servidor presenta un certificado y el cliente verifica su cadena hasta una raíz de confianza, las fechas de validez y que el nombre solicitado figure en el certificado (por ejemplo, en Subject Alternative Name). Una conexión cifrada sin autenticación correcta no ofrece la misma garantía: podrías estar cifrando directamente con un intermediario.",
+        "Los errores `unknown issuer`, `name mismatch` y `expired` apuntan a fallos distintos. La respuesta correcta es diagnosticar la causa, no deshabilitar la validación."
+      ]
+    },
+    {
+      "titulo": "Intercepción legítima y confianza añadida",
+      "parrafos": [
+        "Algunas organizaciones inspeccionan TLS mediante un proxy que genera certificados para los destinos y los firma con una autoridad instalada de forma administrada en los equipos. En ese entorno puede ser una política corporativa legítima, pero la confianza debe proceder de un canal oficial y controlado por IT.",
+        "Un certificado raíz instalado por malware, una persona maliciosa o una aplicación no confiable cambia el conjunto de entidades capaces de validar certificados en ese dispositivo. Por eso no debe aceptarse una instalación improvisada para quitar un aviso."
+      ]
+    },
+    {
+      "titulo": "HSTS y errores no recuperables",
+      "parrafos": [
+        "HTTP Strict Transport Security (HSTS) permite que un sitio indique al navegador que solo debe accederse mediante HTTPS durante un periodo. Si la conexión segura falla, el navegador puede impedir que el usuario continúe mediante una excepción.",
+        "Esto reduce la posibilidad de que el usuario convierta un error de autenticación en una conexión insegura por un clic impulsivo. En Firefox, algunos errores de certificado no ofrecen opción para saltar la advertencia; el comportamiento depende del tipo de error y de la política del sitio."
+      ]
+    },
+    {
+      "titulo": "Diferencia entre cifrado y confianza",
+      "parrafos": [
+        "El cifrado TLS aporta confidencialidad e integridad al canal; la validación del certificado aporta autenticación del servidor. Son propiedades relacionadas pero distintas. Un atacante que logra que el usuario acepte un certificado no validado puede terminar una conexión TLS con el navegador usando su propio extremo, aunque el usuario siga viendo un candado o indicador de conexión.",
+        "La defensa esencial es conservar la validación de certificados y verificar el dominio. No hace falta instalar herramientas de inspección, escanear certificados a diario ni usar una VPN permanente."
+      ]
+    }
+  ],
+  "glosario": {
+    "tls": [
+      "TLS",
+      "Protocolo que cifra y protege la comunicación entre una aplicación (como el navegador) y un servidor."
+    ],
+    "certificado": [
+      "Certificado digital",
+      "Documento electrónico que vincula una clave pública con un nombre de dominio u otra identidad y permite al navegador comprobarla."
+    ],
+    "intermediario": [
+      "Ataque de intermediario (MitM)",
+      "Ataque en el que alguien se coloca entre dos extremos que se comunican e intenta observar o modificar el intercambio."
+    ],
+    "hsts": [
+      "HSTS",
+      "Política web que indica al navegador que debe conectarse al sitio usando HTTPS y no degradar a HTTP."
+    ],
+    "ca": [
+      "Autoridad de certificación (CA)",
+      "Entidad cuyas claves están reconocidas por el dispositivo y que puede emitir o firmar certificados."
+    ],
+    "san": [
+      "Subject Alternative Name (SAN)",
+      "Campo del certificado que identifica los nombres de dominio para los que es válido."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "INCIBE: qué hacer si el navegador indica que un sitio no es seguro",
+      "url": "https://www.incibe.es/sites/default/files/2023-09/22.09.23%20Bolet%C3%ADn%20Ciberseguridad%20INCIBE.pdf"
+    },
+    {
+      "titulo": "Google Chrome: obtener ayuda con errores de certificado y conexión no privada",
+      "url": "https://support.google.com/chrome/answer/95669?hl=es-ES"
+    },
+    {
+      "titulo": "Google Chrome: cómo comprobar si la conexión de un sitio es segura",
+      "url": "https://support.google.com/chrome/answer/95617?hl=es-EC"
+    },
+    {
+      "titulo": "Mozilla Firefox: qué significa «Su conexión no es segura»",
+      "url": "https://support.mozilla.org/es/kb/que-significa-su-conexion-no-es-segura"
+    },
+    {
+      "titulo": "Mozilla Firefox: cómo solucionar errores de certificado y conexiones seguras",
+      "url": "https://support.mozilla.org/es/kb/fallo-conexion-segura-firefox-no-conecto"
+    }
+  ]
+}

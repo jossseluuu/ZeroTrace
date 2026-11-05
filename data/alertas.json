@@ -166,5 +166,45 @@
         "url": "https://thehackernews.com/2026/11/cisa-confirms-hackers-exploiting.html"
       }
     ]
+  },
+  {
+    "id": "2026-11-05-firefox",
+    "fecha": "2026-11-05",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-120572"
+    ],
+    "dispositivos": [
+      "portatil",
+      "sobremesa"
+    ],
+    "es": {
+      "titulo": "Firefox 159.0.1 corrige un fallo de seguridad de impacto alto",
+      "afecta": "Personas que usan Firefox en ordenadores. No se trata de una alerta para Chrome, Safari u otros navegadores.",
+      "accion": "Actualiza Firefox a **159.0.1** o posterior. En el menú, entra en *Ayuda > Acerca de Firefox*; si hay una actualización, se descargará y podrás reiniciar para aplicarla. Si lo instalaste desde Microsoft Store o el gestor de paquetes de Linux, actualízalo desde ese canal.",
+      "detalle": "Mozilla publicó el aviso MFSA 2026-123 el 03/11 y clasifica el impacto como **alto**. La corrección aborda CVE-2026-120572, descrito como un error en las condiciones de límites del componente Layout: Block and Inline. El aviso identifica Firefox 159.0.1 como versión corregida. Mozilla no indica en ese aviso que el fallo esté siendo explotado activamente."
+    },
+    "en": {
+      "titulo": "Firefox 159.0.1 fixes a high-impact security flaw",
+      "afecta": "People using Firefox on desktop computers. This is not an alert for Chrome, Safari, or other browsers.",
+      "accion": "Update Firefox to **159.0.1** or later. Open the menu and choose *Help > About Firefox*; if an update is available, it will download and you can restart to apply it. If you installed Firefox from the Microsoft Store or a Linux package manager, update it through that channel.",
+      "detalle": "Mozilla published advisory MFSA 2026-123 on November 3 and rates the impact as **high**. The fix addresses CVE-2026-120572, described as incorrect boundary conditions in the Layout: Block and Inline component. The advisory identifies Firefox 159.0.1 as the fixed version. Mozilla does not say in that advisory that the flaw is being actively exploited."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Mozilla: aviso MFSA 2026-123, vulnerabilidad corregida en Firefox 159.0.1",
+          "en": "Mozilla: MFSA 2026-123, security vulnerability fixed in Firefox 159.0.1"
+        },
+        "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2026-123/"
+      },
+      {
+        "titulo": {
+          "es": "Mozilla: actualizar Firefox a la última versión",
+          "en": "Mozilla: update Firefox to the latest version"
+        },
+        "url": "https://support.mozilla.org/es/kb/actualizar-firefox-la-ultima-version"
+      }
+    ]
   }
 ]

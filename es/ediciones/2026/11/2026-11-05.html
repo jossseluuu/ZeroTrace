@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Qué significa «La conexión no es privada», cómo puede aprovecharlo un atacante y qué comprobar antes de seguir.">
+<title>No ignores el aviso de certificado del navegador · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-05.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-05.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Jueves, 5 de noviembre de 2026 · 🌐 Datos en tránsito</p>
+<h1>No ignores el aviso de certificado del navegador</h1><p class="sub">Qué significa «La conexión no es privada», cómo puede aprovecharlo un atacante y qué comprobar antes de seguir.</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 10 min</li><li>📱 Smartphone</li><li>📲 Tablet</li><li>💻 Portátil</li><li>🖥️ Sobremesa</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día de atención"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Día de atención</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-05-firefox">
+<header><span class="pill amarillo">Atención</span><h3>Firefox 159.0.1 corrige un fallo de seguridad de impacto alto</h3></header>
+<dl><dt>A quién afecta</dt><dd>Personas que usan Firefox en ordenadores. No se trata de una alerta para Chrome, Safari u otros navegadores.</dd>
+<dt>Qué hacer</dt><dd>Actualiza Firefox a <strong>159.0.1</strong> o posterior. En el menú, entra en <em>Ayuda &gt; Acerca de Firefox</em>; si hay una actualización, se descargará y podrás reiniciar para aplicarla. Si lo instalaste desde Microsoft Store o el gestor de paquetes de Linux, actualízalo desde ese canal.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Mozilla publicó el aviso MFSA 2026-123 el 03/11 y clasifica el impacto como <strong>alto</strong>. La corrección aborda CVE-2026-120572, descrito como un error en las condiciones de límites del componente Layout: Block and Inline. El aviso identifica Firefox 159.0.1 como versión corregida. Mozilla no indica en ese aviso que el fallo esté siendo explotado activamente.<div class="cves"><code>CVE-2026-120572</code></div></dd></dl>
+<p class="src"><a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-123/" rel="noopener noreferrer">Mozilla: aviso MFSA 2026-123, vulnerabilidad corregida en Firefox 159.0.1</a> · <a href="https://support.mozilla.org/es/kb/actualizar-firefox-la-ultima-version" rel="noopener noreferrer">Mozilla: actualizar Firefox a la última versión</a></p></article></div><p class="nota">El color del día refleja el impacto para el público general. Cada alerta lleva el suyo para las personas a las que afecta. <a href="../../../alertas.html">Ver todas las alertas notificadas</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Cuando una web muestra <strong>«La conexión no es privada»</strong>, el navegador no ha podido comprobar correctamente la identidad del sitio mediante su certificado. No es una prueba de que sea una estafa, pero sí significa que <strong>no tienes la garantía habitual de que estás hablando con la web correcta</strong>.</p><p>Puede ser un fallo del propio sitio, una fecha u hora incorrectas en tu dispositivo o una red/proxy que inspecciona conexiones. También puede ser la señal de que alguien intenta interponerse entre tú y la web. No necesitas adivinar cuál es la causa para actuar con prudencia: <strong>no introduzcas contraseñas, datos bancarios ni códigos y no fuerces la entrada</strong>.</p><p>Comprueba que la dirección está bien escrita, que la fecha y hora del dispositivo son automáticas y prueba con otra conexión (por ejemplo, datos móviles). Si solo falla esa web, espera o avisa a su responsable. Si ocurre en muchas webs, revisa el dispositivo o consulta con quien gestione la red.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>No pulses «Continuar» ni añadas una excepción para una web pública, especialmente si es tu banco, correo o tienda.</li><li>Comprueba la dirección completa y que la fecha y hora del dispositivo sean correctas.</li><li>Prueba otra red. Si el aviso aparece solo en una web, puede ser un problema de su certificado.</li><li>No instales certificados ni perfiles que te ofrezca una página o un desconocido.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: media</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Los errores de certificado por configuración o mantenimiento son relativamente habituales. Una interceptación maliciosa es menos frecuente, pero el aviso merece atención porque el navegador no puede validar el extremo remoto.</p></div><div class="medidor"><div class="top"><span>Impacto: alto</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Si ignoras el aviso y entregas datos en una conexión interceptada, podrías exponer credenciales, datos personales o información de pago. El impacto depende de qué servicio uses y de qué información envíes.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Qué comprueba realmente el certificado</h3><p>Al abrir una web HTTPS, el navegador negocia una conexión cifrada mediante <button type="button" class="term" popovertarget="g-tls">TLS</button> y valida el <button type="button" class="term" popovertarget="g-certificado">certificado digital</button> que presenta el servidor. Entre otras cosas, comprueba que el certificado corresponde al nombre de dominio visitado, que está dentro de su periodo de validez y que encadena hasta una autoridad de confianza del dispositivo.</p><p>El certificado no demuestra que el negocio sea honrado ni que el contenido sea inocuo. Su función es ayudar al navegador a autenticar el sitio y establecer una conexión cifrada con ese extremo. Por eso hay que revisar también el nombre de dominio y no fiarse de una web solo porque use HTTPS.</p><h3>Por qué aparece la advertencia</h3><p>Las causas pueden ser inocentes: certificado caducado o mal instalado, nombre de dominio que no coincide, cadena de certificados incompleta o reloj del dispositivo incorrecto. En una wifi pública, el portal de acceso también puede interferir hasta que aceptes sus condiciones; Google recomienda completar el acceso al portal antes de volver a la web segura.</p><p>Si ocurre en muchas webs, puede haber un problema local: reloj desajustado, antivirus que inspecciona HTTPS, proxy corporativo o software que intercepta conexiones. En una red de trabajo, esa inspección puede ser intencionada y gestionada por IT, pero no instales tú certificados desconocidos para «arreglarlo».</p><h3>Cómo encaja en un ataque de intermediario</h3><p>En un ataque de <button type="button" class="term" popovertarget="g-intermediario">intermediario (MitM)</button>, el atacante intenta situarse entre el dispositivo y el servicio. Puede controlar una red, un router comprometido o un proxy, y tratar de presentar un certificado que el navegador no reconoce como válido para el dominio.</p><p><strong>La advertencia es la defensa que te está avisando de que la autenticación ha fallado.</strong> Si el usuario acepta una excepción, cuando el navegador lo permita, puede continuar con un extremo cuya identidad no ha podido validar. Eso no garantiza que haya un atacante: también puede ser un error del servidor, pero elimina una comprobación importante.</p><h3>Por qué algunos avisos no se pueden saltar</h3><p>Los navegadores pueden aplicar políticas como <button type="button" class="term" popovertarget="g-hsts">HSTS</button> para exigir HTTPS y evitar retrocesos a conexiones inseguras. Firefox indica que ciertos errores de certificado no permiten continuar y que, en sitios importantes como bancos y correo, no se debe ignorar una advertencia.</p><p>No busques una forma de desactivar la protección. Si la web es legítima, su responsable debe corregir el certificado o el administrador de tu red debe explicar una inspección corporativa prevista. Si no puedes confirmar la causa, vuelve atrás.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>El punto de entrada</strong><p>El atacante consigue controlar un tramo de la conexión —por ejemplo, una red local comprometida— o induce al dispositivo a usar un intermediario no confiable.</p></li><li><strong>La web presenta un certificado inesperado</strong><p>Cuando el navegador intenta abrir la web real, recibe un certificado que no puede validar para ese dominio o cuya cadena de confianza no reconoce.</p></li><li><strong>El navegador avisa</strong><p>Aparece una pantalla como «La conexión no es privada» o «Warning: Potential Security Risk Ahead». El aviso puede tener otras causas, pero no debe tratarse como un simple obstáculo.</p></li><li><strong>El usuario fuerza la entrada</strong><p>Si el navegador ofrece una excepción y el usuario la acepta, puede continuar pese a que la identidad del servidor no se haya validado correctamente.</p></li><li><strong>Qué podría quedar expuesto</strong><p>Si realmente hay un intermediario malicioso y se envían datos a través de esa conexión, podría acceder a la información que la sesión deje al alcance. Las conexiones válidas y correctamente autenticadas siguen protegidas frente a este tipo de interceptación.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Intentar interponerse en una conexión y presentar un certificado que no corresponde al sitio.</li><li>Aprovechar que el usuario acepte una excepción para mostrarle una web controlada por el atacante.</li><li>Ver o modificar información que se envíe por una conexión que haya quedado realmente interceptada y no esté protegida correctamente.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Leer automáticamente el contenido de cualquier web HTTPS solo por compartir la misma wifi.</li><li>Hacer que un certificado inválido sea válido por el mero hecho de copiar el nombre del sitio.</li><li>Descifrar una sesión TLS correctamente autenticada y configurada sin comprometer alguno de sus extremos o la confianza del dispositivo.</li><li>Convertir el aviso en prueba concluyente de un ataque: también puede deberse a un error de configuración.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Detente y no introduzcas datos</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ inmediato</li><li>Para: todos</li></ul>
+<p>Si aparece una advertencia de certificado en una web pública, vuelve atrás. No inicies sesión, no pagues y no descargues nada desde esa página.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>Cierra la pestaña o vuelve a una página anterior.</li><li>No elijas «Continuar», «Aceptar el riesgo» ni «Añadir excepción».</li><li>Si necesitas hacer una operación urgente, usa la app oficial o vuelve a intentarlo más tarde desde una conexión conocida.</li></ol></div></div></article><article class="medida"><h3>Comprueba la dirección y el reloj</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 1 min</li><li>Para: todos</li></ul>
+<p>Descarta dos causas sencillas antes de investigar más: una dirección mal escrita y un reloj desajustado.</p><div class="plataformas"><div class="plataforma"><h4>En cualquier dispositivo</h4><ol><li>Revisa el dominio completo en la barra de direcciones, letra por letra.</li><li>Activa la fecha, hora y zona horaria automáticas en los ajustes del dispositivo.</li><li>Cierra y vuelve a abrir el navegador.</li></ol></div></div></article><article class="medida"><h3>Prueba otra conexión</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 2 min</li><li>Para: todos</li></ul>
+<p>Cambiar de wifi a datos móviles ayuda a saber si el problema está relacionado con la red. No convierte automáticamente la web en legítima.</p><div class="plataformas"><div class="plataforma"><h4>En móvil</h4><ol><li>Desconéctate de la wifi y prueba con datos móviles.</li></ol></div><div class="plataforma"><h4>En ordenador</h4><ol><li>Prueba una red de confianza distinta, como un punto de acceso móvil.</li><li>Si estás en una wifi pública, completa únicamente su portal de acceso legítimo y vuelve a abrir la web HTTPS.</li></ol></div></div></article><article class="medida"><h3>Si ocurre en muchas webs, pide ayuda</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: medio</li>
+<li>⏱ 5 min</li><li>Para: todos</li></ul>
+<p>Cuando el aviso aparece en sitios distintos, puede haber un problema del dispositivo, del antivirus o de un proxy. No instales certificados por tu cuenta.</p><div class="plataformas"><div class="plataforma"><h4>En casa</h4><ol><li>Actualiza el navegador y el sistema operativo.</li><li>Revisa si has instalado recientemente una aplicación o perfil de red que no reconoces.</li></ol></div><div class="plataforma"><h4>En el trabajo o centro educativo</h4><ol><li>Pregunta al equipo de IT si existe inspección HTTPS gestionada y cuál es el procedimiento oficial.</li><li>No aceptes certificados enviados por correo, mensajería o páginas desconocidas.</li></ol></div></div></article><article class="medida deep"><h3>Para administradores: corrige el origen<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: alto</li>
+<li>⏱ según el servicio</li><li>Para: avanzado</li></ul>
+<p>Si administras la web, revisa el nombre del certificado, su vigencia, la cadena intermedia y que el servidor entregue los certificados necesarios.</p><div class="plataformas"><div class="plataforma"><h4>Servidor web</h4><ol><li>Instala un certificado válido para todos los nombres publicados.</li><li>Configura la cadena completa y renueva antes de la caducidad.</li><li>Comprueba desde fuera de tu red que los navegadores validan la conexión.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>El mensaje exacto</h3><p>Chrome puede mostrar «La conexión no es privada» y códigos como <code>NET::ERR_CERT_AUTHORITY_INVALID</code> o <code>ERR_CERT_DATE_INVALID</code>. Firefox puede mostrar «Warning: Potential Security Risk Ahead». Anota el código; no es necesario aceptar el riesgo para verlo.</p></div><div class="fila"><h3>¿Falla una web o todas?</h3><p>Si solo falla un dominio, puede estar mal configurado su certificado. Si fallan muchas webs HTTPS a la vez, comprueba el reloj, la red, el antivirus y si estás usando un proxy administrado.</p></div><div class="fila"><h3>El contexto de la conexión</h3><p>¿Estás en una wifi pública que exige portal? ¿En una red de empresa? ¿Has instalado recientemente un antivirus, perfil o certificado? Estas pistas ayudan a identificar la causa sin desactivar la protección.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Instalar un certificado que te ofrece la web</h3><p>No es una solución segura. Dar confianza a una autoridad desconocida puede permitir que valide conexiones que tu dispositivo debería rechazar.</p></div><div class="fila"><h3>Desactivar la comprobación de certificados</h3><p>No desactives las protecciones del navegador ni cambies ajustes avanzados para poder entrar. El aviso existe precisamente para detener una conexión cuya identidad no se ha podido verificar.</p></div><div class="fila"><h3>Instalar una VPN por cada aviso</h3><p>Una VPN no corrige un certificado caducado o mal configurado y no garantiza que el sitio sea legítimo. Primero identifica si el problema está en la web, el dispositivo o la red.</p></div><div class="fila"><h3>Dar por hecho que hay un ataque</h3><p>Un certificado mal configurado o un reloj incorrecto también provocan avisos. Actúa con prudencia, pero no hace falta formatear el dispositivo ni cambiar todas tus contraseñas solo por ver una advertencia.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«Si la dirección empieza por HTTPS, la web es legítima y puedo fiarme».</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>HTTPS y un certificado válido protegen y autentican la conexión con el dominio indicado; <strong>no certifican que el negocio sea honrado, que el contenido sea seguro ni que el dominio no imite a otro</strong>. Comprueba siempre el nombre exacto y desconfía de enlaces inesperados.</p><p class="src"><a href="https://support.google.com/chrome/answer/95617?hl=es-EC" rel="noopener noreferrer">Google Chrome: cómo comprobar si la conexión de un sitio es segura</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>Qué valida el cliente TLS</h3><p>Durante el establecimiento de TLS, el servidor presenta un certificado y el cliente verifica su cadena hasta una raíz de confianza, las fechas de validez y que el nombre solicitado figure en el certificado (por ejemplo, en Subject Alternative Name). Una conexión cifrada sin autenticación correcta no ofrece la misma garantía: podrías estar cifrando directamente con un intermediario.</p><p>Los errores <code>unknown issuer</code>, <code>name mismatch</code> y <code>expired</code> apuntan a fallos distintos. La respuesta correcta es diagnosticar la causa, no deshabilitar la validación.</p><h3>Intercepción legítima y confianza añadida</h3><p>Algunas organizaciones inspeccionan TLS mediante un proxy que genera certificados para los destinos y los firma con una autoridad instalada de forma administrada en los equipos. En ese entorno puede ser una política corporativa legítima, pero la confianza debe proceder de un canal oficial y controlado por IT.</p><p>Un certificado raíz instalado por malware, una persona maliciosa o una aplicación no confiable cambia el conjunto de entidades capaces de validar certificados en ese dispositivo. Por eso no debe aceptarse una instalación improvisada para quitar un aviso.</p><h3>HSTS y errores no recuperables</h3><p>HTTP Strict Transport Security (HSTS) permite que un sitio indique al navegador que solo debe accederse mediante HTTPS durante un periodo. Si la conexión segura falla, el navegador puede impedir que el usuario continúe mediante una excepción.</p><p>Esto reduce la posibilidad de que el usuario convierta un error de autenticación en una conexión insegura por un clic impulsivo. En Firefox, algunos errores de certificado no ofrecen opción para saltar la advertencia; el comportamiento depende del tipo de error y de la política del sitio.</p><h3>Diferencia entre cifrado y confianza</h3><p>El cifrado TLS aporta confidencialidad e integridad al canal; la validación del certificado aporta autenticación del servidor. Son propiedades relacionadas pero distintas. Un atacante que logra que el usuario acepte un certificado no validado puede terminar una conexión TLS con el navegador usando su propio extremo, aunque el usuario siga viendo un candado o indicador de conexión.</p><p>La defensa esencial es conservar la validación de certificados y verificar el dominio. No hace falta instalar herramientas de inspección, escanear certificados a diario ni usar una VPN permanente.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>TLS</dt><dd>Protocolo que cifra y protege la comunicación entre una aplicación (como el navegador) y un servidor.</dd><dt>Certificado digital</dt><dd>Documento electrónico que vincula una clave pública con un nombre de dominio u otra identidad y permite al navegador comprobarla.</dd><dt>Ataque de intermediario (MitM)</dt><dd>Ataque en el que alguien se coloca entre dos extremos que se comunican e intenta observar o modificar el intercambio.</dd><dt>HSTS</dt><dd>Política web que indica al navegador que debe conectarse al sitio usando HTTPS y no degradar a HTTP.</dd><dt>Autoridad de certificación (CA)</dt><dd>Entidad cuyas claves están reconocidas por el dispositivo y que puede emitir o firmar certificados.</dd><dt>Subject Alternative Name (SAN)</dt><dd>Campo del certificado que identifica los nombres de dominio para los que es válido.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://www.incibe.es/sites/default/files/2023-09/22.09.23%20Bolet%C3%ADn%20Ciberseguridad%20INCIBE.pdf" rel="noopener noreferrer">INCIBE: qué hacer si el navegador indica que un sitio no es seguro</a></li><li><a href="https://support.google.com/chrome/answer/95669?hl=es-ES" rel="noopener noreferrer">Google Chrome: obtener ayuda con errores de certificado y conexión no privada</a></li><li><a href="https://support.google.com/chrome/answer/95617?hl=es-EC" rel="noopener noreferrer">Google Chrome: cómo comprobar si la conexión de un sitio es segura</a></li><li><a href="https://support.mozilla.org/es/kb/que-significa-su-conexion-no-es-segura" rel="noopener noreferrer">Mozilla Firefox: qué significa «Su conexión no es segura»</a></li><li><a href="https://support.mozilla.org/es/kb/fallo-conexion-segura-firefox-no-conecto" rel="noopener noreferrer">Mozilla Firefox: cómo solucionar errores de certificado y conexiones seguras</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-tls" class="gl-pop"><strong>TLS</strong>Protocolo que cifra y protege la comunicación entre una aplicación (como el navegador) y un servidor.</div><div popover id="g-certificado" class="gl-pop"><strong>Certificado digital</strong>Documento electrónico que vincula una clave pública con un nombre de dominio u otra identidad y permite al navegador comprobarla.</div><div popover id="g-intermediario" class="gl-pop"><strong>Ataque de intermediario (MitM)</strong>Ataque en el que alguien se coloca entre dos extremos que se comunican e intenta observar o modificar el intercambio.</div><div popover id="g-hsts" class="gl-pop"><strong>HSTS</strong>Política web que indica al navegador que debe conectarse al sitio usando HTTPS y no degradar a HTTP.</div><div popover id="g-ca" class="gl-pop"><strong>Autoridad de certificación (CA)</strong>Entidad cuyas claves están reconocidas por el dispositivo y que puede emitir o firmar certificados.</div><div popover id="g-san" class="gl-pop"><strong>Subject Alternative Name (SAN)</strong>Campo del certificado que identifica los nombres de dominio para los que es válido.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>
