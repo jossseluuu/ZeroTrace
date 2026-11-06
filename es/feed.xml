@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Wed, 04 Nov 2026 21:03:40 +0100</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 10:22:36 +0100</lastBuildDate>
+  <item>
+    <title>Tu PC con Windows 10: comprueba que sigue recibiendo parches</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-06.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-06.html</guid>
+    <pubDate>Fri, 06 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Ordenadores de sobremesa</category>
+    <description>Microsoft da parches de seguridad gratis hasta el 12/10/2027, pero solo a los equipos inscritos. Y muchas torres que «no valen» para Windows 11 solo tienen un ajuste apagado. — Atención: Chrome 157 corrige 213 fallos, siete de ellos críticos</description>
+  </item>
   <item>
     <title>No ignores el aviso de certificado del navegador</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-05.html</link>

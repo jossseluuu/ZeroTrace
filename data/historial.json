@@ -1,7 +1,8 @@
 {
-  "actualizado": "2026-11-04T21:03:40+01:00",
+  "actualizado": "2026-11-06T10:22:36+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "sobremesa",
     "transito",
     "portatiles",
     "smart-tv"
@@ -24,9 +25,24 @@
         "fecha": "2026-11-05",
         "concepto": "aviso-de-certificado"
       }
+    ],
+    "sobremesa": [
+      {
+        "fecha": "2026-11-06",
+        "concepto": "windows-10-esu-y-tpm"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-06",
+      "foco": "sobremesa",
+      "concepto": "windows-10-esu-y-tpm",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-06-chrome-157"
+      ]
+    },
     {
       "fecha": "2026-11-05",
       "foco": "transito",

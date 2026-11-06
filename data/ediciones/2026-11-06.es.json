@@ -1,0 +1,311 @@
+{
+  "fecha": "2026-11-06",
+  "idioma": "es",
+  "foco": "sobremesa",
+  "concepto": "windows-10-esu-y-tpm",
+  "titulo": "Tu PC con Windows 10: comprueba que sigue recibiendo parches",
+  "subtitulo": "Microsoft da parches de seguridad gratis hasta el 12/10/2027, pero solo a los equipos inscritos. Y muchas torres que «no valen» para Windows 11 solo tienen un ajuste apagado.",
+  "dispositivos": [
+    "sobremesa",
+    "portatil"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 10
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-06-chrome-157"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "El soporte de Windows 10 terminó el 14/10/2025. Tu ordenador sigue funcionando igual, pero **si no está inscrito en las Actualizaciones de seguridad extendidas ([[esu|ESU]]) ya no recibe parches de seguridad**, y cada mes que pasa acumula fallos conocidos sin corregir.",
+      "La buena noticia: la inscripción para particulares está abierta **hasta el 12/10/2027** y puede ser gratuita. En el Espacio Económico Europeo basta con iniciar sesión en Windows con tu cuenta de Microsoft. Se activa en dos minutos desde Windows Update.",
+      "Y antes de dar tu torre por perdida: muchas placas base de sobremesa traen el chip de seguridad [[tpm|TPM]] **desactivado de fábrica**. Si es tu caso, activarlo puede bastar para pasar a Windows 11 gratis y olvidarte de fechas."
+    ],
+    "esencial": [
+      "Mira en Configuración > Actualización y seguridad > Windows Update si tu PC está inscrito en ESU.",
+      "Si no lo está, pulsa **Inscribirse ahora**: para particulares puede ser gratis.",
+      "Pasa la app Comprobación de estado del PC: quizá tu equipo sí puede tener Windows 11.",
+      "No instales Windows 11 en equipos no compatibles con trucos: Microsoft no garantiza que reciban parches."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Un Windows sin parches no cae solo por estar encendido: hace falta que abras un archivo, visites una web maliciosa o que algo en tu red lo ataque. Pero cada mes se publican fallos nuevos que ya no se corrigen en tu equipo."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Un fallo del sistema operativo da acceso a todo lo que hay en el equipo: documentos, contraseñas guardadas en el navegador, sesiones abiertas y, a menudo, el resto de la red de casa."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Qué cubre ESU y qué no",
+      "parrafos": [
+        "ESU entrega las actualizaciones de seguridad **críticas e importantes**, según la clasificación del centro de respuesta de seguridad de Microsoft (MSRC), para Windows 10 versión 22H2. No trae funciones nuevas, otras correcciones ni soporte técnico.",
+        "Requisitos para particulares: Windows 10 22H2 en edición Home, Pro, Pro Education o Workstations, con las últimas actualizaciones instaladas, y una cuenta de Microsoft **de administrador** (no vale una cuenta infantil). Una licencia sirve para **hasta 10 dispositivos**.",
+        "No pueden inscribirse por esta vía los equipos en modo quiosco ni los unidos a un dominio de Active Directory o Microsoft Entra o gestionados por MDM: esos equipos de empresa tienen su propio programa."
+      ]
+    },
+    {
+      "titulo": "Gratis, con puntos o pagando: las opciones",
+      "parrafos": [
+        "En el Espacio Económico Europeo (España incluida), la inscripción es gratuita si **sigues iniciando sesión en Windows con la cuenta de Microsoft** con la que te inscribiste. Si dejas de hacerlo, las actualizaciones se interrumpen en un plazo máximo de 60 días.",
+        "Si prefieres seguir con una **cuenta local**, existe una compra única de 30 USD (o su equivalente en moneda local, más impuestos) que cubre el equipo hasta el 12/10/2027.",
+        "Fuera del EEE, Microsoft ofrece además la opción gratuita sincronizando la configuración del PC con Copias de seguridad de Windows o canjeando 1.000 puntos de Microsoft Rewards."
+      ]
+    },
+    {
+      "titulo": "Lo que sigue actualizándose aunque Windows no lo haga",
+      "parrafos": [
+        "Microsoft Edge y WebView2 seguirán recibiendo actualizaciones en Windows 10 22H2 hasta al menos octubre de 2028, con o sin ESU. Las aplicaciones de Microsoft 365 reciben parches de seguridad en Windows 10 hasta el 10/10/2028.",
+        "Esto es importante pero no suficiente: **un navegador al día no tapa los fallos del sistema operativo** que hay debajo. Microsoft lo dice claramente: un antivirus ayuda, pero por sí solo no basta."
+      ]
+    },
+    {
+      "titulo": "Por qué tantas torres «no valen» para Windows 11",
+      "parrafos": [
+        "Windows 11 exige, entre otras cosas, un procesador de 64 bits compatible con 2 núcleos o más, 4 GB de RAM, 64 GB de almacenamiento, firmware UEFI con arranque seguro y **TPM 2.0**.",
+        "Muchos procesadores de los últimos años llevan un TPM integrado en el firmware (Intel PTT o AMD fTPM), pero **la mayoría de las placas base que se venden sueltas, las que se usan para montar un PC, salen de fábrica con el TPM apagado**, según el propio Microsoft. La herramienta de compatibilidad dirá que tu equipo no cumple los requisitos aunque el hardware sí los cumpla.",
+        "Si tu procesador no está en la lista de compatibles, no hay ajuste que lo arregle: ahí la vía razonable es ESU mientras dure y planificar el cambio con calma."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "El parche se publica",
+      "texto": "Microsoft corrige un fallo en Windows 11 y en los Windows 10 con ESU. La descripción del fallo y el propio parche quedan públicos."
+    },
+    {
+      "titulo": "Se estudia la diferencia",
+      "texto": "Los atacantes comparan el sistema antes y después del parche para entender qué se corrigió. A menudo, en días o semanas existe un método para explotarlo."
+    },
+    {
+      "titulo": "Llega por la vía de siempre",
+      "texto": "Un adjunto, un documento descargado, una web comprometida o un programa pirata aprovechan ese fallo en los equipos que no recibieron el parche."
+    },
+    {
+      "titulo": "Toma el control",
+      "texto": "Con un fallo de elevación de privilegios, el código pasa de tener los permisos de tu usuario a los del sistema: puede desactivar protecciones, robar contraseñas guardadas o cifrar tus archivos."
+    },
+    {
+      "titulo": "Y salta a lo demás",
+      "texto": "Desde un PC comprometido es más fácil atacar otros equipos de la red de casa o reutilizar las sesiones abiertas en el navegador."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Aprovechar fallos de Windows ya publicados y corregidos en otros equipos, pero no en el tuyo.",
+      "Saltarse protecciones del sistema si consigue ejecutar algo en tu PC, aunque sea sin permisos de administrador.",
+      "Usar tu equipo como punto de partida contra el resto de dispositivos de tu red."
+    ],
+    "no_puede": [
+      "Entrar en tu PC solo porque Windows 10 esté sin soporte: sigue necesitando una vía de entrada.",
+      "Leer lo que haces en webs con HTTPS mientras el navegador esté al día y el equipo no esté comprometido.",
+      "Saltarse la verificación en dos pasos de tus cuentas con solo atacar el PC (aunque sí podría robar sesiones abiertas).",
+      "Hacer nada contra un equipo inscrito en ESU y al día por los fallos que ESU ya ha corregido."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Comprueba si tu PC está inscrito en ESU",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Es lo primero: si ya está inscrito, no tienes que hacer nada más hasta octubre de 2027.",
+      "pasos": {
+        "Windows 10": [
+          "Configuración > **Actualización y seguridad** > **Windows Update**.",
+          "Lee el estado de la inscripción en ESU. Si aparece el vínculo para inscribirte, todavía no lo estás."
+        ]
+      }
+    },
+    {
+      "titulo": "Inscríbete (gratis en el EEE)",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Antes, instala todas las actualizaciones pendientes y comprueba que tienes Windows 10 22H2 (tecla Windows + R, escribe `winver`).",
+      "pasos": {
+        "Windows 10": [
+          "Configuración > Actualización y seguridad > Windows Update > **Inscribirse ahora**.",
+          "Si usas una cuenta local, se te pedirá iniciar sesión con una cuenta de Microsoft. Para que sea gratis, **mantén esa sesión** en Windows.",
+          "Para otro PC con la misma cuenta, usa **Agregar dispositivo** (máximo 10)."
+        ]
+      }
+    },
+    {
+      "titulo": "Mira si tu equipo puede tener Windows 11",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Si es compatible, pasar a Windows 11 es gratis y te quita el problema de fechas de encima.",
+      "pasos": {
+        "Windows 10": [
+          "Descarga la app **Comprobación de estado del PC** desde aka.ms/GetPCHealthCheckApp y pulsa *Comprobar ahora*.",
+          "Si es compatible, la oferta aparecerá en **Windows Update**."
+        ]
+      }
+    },
+    {
+      "titulo": "Si el problema es el TPM, comprueba si está apagado",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "avanzado",
+      "texto": "Habitual en torres montadas por piezas. Si no ves el procesador de seguridad, puede estar desactivado en el firmware. Si no te ves cómodo tocando la BIOS/UEFI, consulta el soporte del fabricante de tu placa o equipo.",
+      "pasos": {
+        "Windows 10": [
+          "Tecla Windows + R > `tpm.msc`. Si dice *No se puede encontrar TPM compatible*, puede estar desactivado.",
+          "Configuración > Actualización y seguridad > Recuperación > **Inicio avanzado** > *Reiniciar ahora* > Solucionar problemas > Opciones avanzadas > **Configuración de firmware UEFI**.",
+          "Busca una opción llamada *Intel PTT*, *Intel Platform Trust Technology*, *AMD fTPM*, *Security Device Support* o *TPM State*, actívala y guarda."
+        ]
+      }
+    },
+    {
+      "titulo": "Mantén el navegador y las apps al día",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "hábito",
+      "para": "todos",
+      "texto": "Mientras sigas en Windows 10, el navegador es tu principal puerta a internet y sí sigue recibiendo parches. Reinícialo cuando te lo pida.",
+      "pasos": {
+        "Chrome / Edge": [
+          "Menú **⋮** o **…** > Ayuda > **Información de Google Chrome** / **Acerca de Microsoft Edge**.",
+          "Si hay actualización, se descarga sola: pulsa **Reiniciar**."
+        ]
+      }
+    },
+    {
+      "titulo": "Planifica el relevo antes de octubre de 2027",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "30 min",
+      "para": "todos",
+      "texto": "ESU es una prórroga, no una solución permanente. Anota la fecha, haz una copia de seguridad de tus archivos y decide con tiempo: actualizar piezas, cambiar de equipo o darle otro uso a la torre.",
+      "pasos": {
+        "Windows 10": [
+          "Apunta en tu calendario un aviso para **septiembre de 2027**.",
+          "Haz una copia de tus archivos en un disco externo o en la nube antes de cualquier cambio."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Tu versión de Windows",
+      "texto": "Tecla Windows + R > `winver`. Necesitas **Windows 10, versión 22H2** para ESU. Si tienes una versión anterior, instala primero las actualizaciones pendientes."
+    },
+    {
+      "titulo": "El estado de ESU",
+      "texto": "En **Configuración > Actualización y seguridad > Windows Update** verás si el equipo está inscrito. Si lo compraste, también aparece en el historial de pedidos de tu cuenta de Microsoft."
+    },
+    {
+      "titulo": "Tu TPM",
+      "texto": "En `tpm.msc`, bajo *Información del fabricante del TPM*, la versión de especificación debe ser **2.0**."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Tirar el ordenador ya",
+      "texto": "Con ESU tienes parches de seguridad hasta el 12/10/2027. Hay tiempo para decidir sin prisas y sin generar un residuo antes de tiempo."
+    },
+    {
+      "titulo": "Instalar Windows 11 con trucos en un equipo no compatible",
+      "texto": "Funciona, pero Microsoft no lo recomienda y advierte de que esos equipos **no tienen garantizadas las actualizaciones**, ni siquiera las de seguridad. Cambias un problema conocido por otro."
+    },
+    {
+      "titulo": "Comprar un antivirus «para Windows 10 sin soporte»",
+      "texto": "Un antivirus no corrige los fallos del sistema. Lo que te protege de verdad es estar inscrito en ESU o pasar a un sistema con soporte."
+    },
+    {
+      "titulo": "Pagar ESU en España si usas cuenta de Microsoft",
+      "texto": "En el EEE la opción con cuenta de Microsoft es gratuita. Solo tiene sentido pagar si quieres seguir con una cuenta local."
+    }
+  ],
+  "mito": {
+    "mito": "«Si Windows 10 deja de tener soporte, mi PC dejará de funcionar o de conectarse a internet.»",
+    "realidad": "El equipo **sigue funcionando** y conectándose igual. Lo que deja de llegar son los parches de seguridad, salvo que esté inscrito en ESU. Precisamente porque todo parece normal, el riesgo pasa desapercibido.",
+    "fuente": {
+      "titulo": "Microsoft: fin del soporte de Windows 10",
+      "url": "https://www.microsoft.com/es-es/windows/end-of-support"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Cómo se entrega ESU",
+      "parrafos": [
+        "ESU no es otro canal de Windows Update: es una licencia que habilita en el propio equipo la recepción de las actualizaciones acumulativas de seguridad posteriores al 14/10/2025. Por eso exige 22H2 con las últimas actualizaciones instaladas antes de inscribirse.",
+        "En empresas, ESU se contrata por licencias por volumen: 61 USD por dispositivo el primer año, con un precio que se duplica cada año y un máximo de tres años desde el fin de soporte."
+      ]
+    },
+    {
+      "titulo": "fTPM, PTT y TPM discreto",
+      "parrafos": [
+        "Un TPM puede ser un chip independiente en la placa o estar implementado en el firmware del procesador (Intel PTT, AMD fTPM). Para Windows 11 basta con que cumpla la especificación 2.0. Windows lo usa para BitLocker, Windows Hello y el arranque medido.",
+        "Activar el TPM en la UEFI no borra datos. Lo delicado es lo contrario: **borrar o restablecer el TPM** en un equipo con BitLocker activo puede dejarte ante la pantalla de la clave de recuperación. Tenla a mano antes de tocar esos menús."
+      ]
+    },
+    {
+      "titulo": "Arranque seguro y modo de BIOS",
+      "parrafos": [
+        "Windows 11 exige firmware UEFI con capacidad de arranque seguro. Si tu disco usa el esquema MBR y el equipo arranca en modo heredado (CSM), la comprobación fallará aunque la placa sea compatible. Cambiarlo implica convertir el disco a GPT, una operación que conviene hacer con copia de seguridad previa y siguiendo la documentación oficial."
+      ]
+    }
+  ],
+  "glosario": {
+    "esu": [
+      "ESU",
+      "Actualizaciones de seguridad extendidas: programa de Microsoft que sigue enviando parches de seguridad críticos e importantes a Windows 10 después del fin de soporte."
+    ],
+    "tpm": [
+      "TPM",
+      "Módulo de plataforma segura: componente que guarda claves criptográficas y comprueba la integridad del arranque. Windows 11 exige la versión 2.0."
+    ],
+    "uefi": [
+      "UEFI",
+      "El firmware moderno que arranca el ordenador antes que el sistema operativo; sustituye a la antigua BIOS."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Microsoft: fin del soporte de Windows 10",
+      "url": "https://www.microsoft.com/es-es/windows/end-of-support"
+    },
+    {
+      "titulo": "Microsoft: Actualizaciones de seguridad extendidas (ESU) para Windows 10",
+      "url": "https://www.microsoft.com/es-es/windows/extended-security-updates"
+    },
+    {
+      "titulo": "Microsoft: habilitar TPM 2.0 en el equipo",
+      "url": "https://support.microsoft.com/es-es/windows/habilitar-tpm-2-0-en-el-equipo-1fd5a332-360d-4f46-a1e7-ae6b0c90645c"
+    },
+    {
+      "titulo": "Microsoft: cómo usar la aplicación Comprobación de estado del PC",
+      "url": "https://support.microsoft.com/es-es/windows/c%C3%B3mo-usar-la-aplicaci%C3%B3n-comprobaci%C3%B3n-de-estado-del-pc-9c8abd9b-03ba-4e67-81ef-36f37caa7844"
+    },
+    {
+      "titulo": "Microsoft: especificaciones y requisitos de Windows 11",
+      "url": "https://www.microsoft.com/es-es/windows/windows-11-specifications"
+    },
+    {
+      "titulo": "Microsoft Learn: sistemas operativos compatibles con Microsoft Edge",
+      "url": "https://learn.microsoft.com/deployedge/microsoft-edge-supported-operating-systems"
+    },
+    {
+      "titulo": "Microsoft: Windows 11 en dispositivos que no cumplen los requisitos mínimos",
+      "url": "https://support.microsoft.com/en-us/windows/experience/compatibility/windows-11-on-devices-that-don-t-meet-minimum-system-requirements"
+    },
+    {
+      "titulo": "Microsoft Learn: ESU para organizaciones",
+      "url": "https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates"
+    }
+  ]
+}

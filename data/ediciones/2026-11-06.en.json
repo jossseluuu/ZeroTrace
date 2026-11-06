@@ -1,0 +1,306 @@
+{
+  "fecha": "2026-11-06",
+  "idioma": "en",
+  "foco": "sobremesa",
+  "concepto": "windows-10-esu-and-tpm",
+  "titulo": "Your Windows 10 PC: make sure it's still getting patches",
+  "subtitulo": "Microsoft will keep shipping security fixes through October 12, 2027—but only to enrolled PCs. And many desktops that \"can't run\" Windows 11 just have one setting turned off.",
+  "dispositivos": [
+    "sobremesa",
+    "portatil"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 10
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-06-chrome-157"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Windows 10 support ended on October 14, 2025. Your computer still works exactly the same, but **unless it's enrolled in Extended Security Updates ([[esu|ESU]]), it no longer gets security fixes**, and every month it piles up known, unpatched flaws.",
+      "The good news: consumer enrollment is open **through October 12, 2027**, and it can cost nothing—sync your PC settings with Windows Backup, redeem 1,000 Microsoft Rewards points, or pay a one-time $30. It takes two minutes from Windows Update.",
+      "And before you write off that tower: many desktop motherboards ship with the [[tpm|TPM]] security chip **turned off by default**. If that's you, flipping it on may be all it takes to move to Windows 11 for free."
+    ],
+    "esencial": [
+      "Check Settings > Update & Security > Windows Update to see whether your PC is enrolled in ESU.",
+      "If it isn't, select **Enroll now**—there's a free option.",
+      "Run the PC Health Check app: your PC might be able to run Windows 11 after all.",
+      "Don't force Windows 11 onto unsupported hardware: Microsoft doesn't guarantee those PCs get updates."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "An unpatched Windows PC doesn't get hacked just by being on: you still have to open a file, visit a malicious site, or have something on your network attack it. But new flaws come out every month that your PC won't get fixed."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "An operating system flaw gives access to everything on the computer: documents, passwords saved in the browser, signed-in sessions, and often the rest of your home network."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What ESU covers—and what it doesn't",
+      "parrafos": [
+        "ESU delivers **critical and important** security updates, as defined by the Microsoft Security Response Center (MSRC), for Windows 10 version 22H2. No new features, no other fixes, no tech support.",
+        "Consumer requirements: Windows 10 22H2 Home, Pro, Pro Education, or Workstations, fully updated, plus a Microsoft account that's an **administrator** (child accounts don't qualify). One license covers **up to 10 devices**.",
+        "PCs in kiosk mode, joined to Active Directory or Microsoft Entra, or managed with MDM can't use the consumer route—work PCs have their own program."
+      ]
+    },
+    {
+      "titulo": "Free, points, or paid: your options",
+      "parrafos": [
+        "In the US, Microsoft offers three ways in: **at no extra cost if you sync your PC settings** (via Windows Backup), by redeeming 1,000 Microsoft Rewards points, or with a one-time purchase of $30 plus tax. All three cover you through October 12, 2027.",
+        "Signing in with a Microsoft account is part of enrollment; if you use a local account, you'll be asked to sign in. Options and timing differ in other regions, such as Europe."
+      ]
+    },
+    {
+      "titulo": "What keeps updating even when Windows doesn't",
+      "parrafos": [
+        "Microsoft Edge and WebView2 will keep getting updates on Windows 10 22H2 until at least October 2028, with or without ESU. Microsoft 365 apps get security updates on Windows 10 through October 10, 2028.",
+        "That matters, but it isn't enough: **an up-to-date browser doesn't cover operating system flaws underneath it**. Microsoft says so plainly—antivirus helps, but it isn't enough on its own."
+      ]
+    },
+    {
+      "titulo": "Why so many desktops \"can't run\" Windows 11",
+      "parrafos": [
+        "Windows 11 requires, among other things, a compatible 64-bit processor with 2 or more cores, 4 GB of RAM, 64 GB of storage, UEFI firmware with Secure Boot capability, and **TPM 2.0**.",
+        "Many recent processors include a firmware TPM (Intel PTT or AMD fTPM), but according to Microsoft, **most retail motherboards—the kind people use to build their own PC—ship with TPM turned off by default**. The compatibility check will say your PC doesn't qualify even when the hardware does.",
+        "If your processor isn't on the supported list, no setting will fix that: the sensible path is ESU while it lasts and a calm plan to replace the machine."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The patch comes out",
+      "texto": "Microsoft fixes a flaw in Windows 11 and in Windows 10 PCs with ESU. The description and the patch itself become public."
+    },
+    {
+      "titulo": "The diff gets studied",
+      "texto": "Attackers compare the system before and after the patch to see what changed. Often, within days or weeks, there's a way to exploit it."
+    },
+    {
+      "titulo": "It arrives the usual way",
+      "texto": "An attachment, a downloaded document, a compromised website, or pirated software takes advantage of that flaw on PCs that never got the fix."
+    },
+    {
+      "titulo": "It takes over",
+      "texto": "With a privilege-escalation bug, code goes from your user's permissions to the system's: it can turn off protections, steal saved passwords, or encrypt your files."
+    },
+    {
+      "titulo": "Then it spreads",
+      "texto": "From a compromised PC it's easier to attack other devices on your home network or reuse the sessions signed in on your browser."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Exploit Windows flaws that are already public and fixed on other PCs, but not on yours.",
+      "Get around system protections once it runs something on your PC, even without admin rights.",
+      "Use your computer as a launch pad against other devices on your network."
+    ],
+    "no_puede": [
+      "Break into your PC just because Windows 10 is out of support: it still needs a way in.",
+      "Read what you do on HTTPS sites as long as your browser is current and the PC isn't compromised.",
+      "Bypass two-step verification on your accounts just by attacking the PC (though it could steal signed-in sessions).",
+      "Use flaws that ESU has already fixed against an enrolled, up-to-date PC."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Check whether your PC is enrolled in ESU",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Start here: if it's already enrolled, there's nothing else to do until October 2027.",
+      "pasos": {
+        "Windows 10": [
+          "Settings > **Update & Security** > **Windows Update**.",
+          "Look at the ESU enrollment status. If you see a link to enroll, you're not enrolled yet."
+        ]
+      }
+    },
+    {
+      "titulo": "Enroll (there's a free option)",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "First install any pending updates and confirm you're on Windows 10 22H2 (Windows key + R, type `winver`).",
+      "pasos": {
+        "Windows 10": [
+          "Settings > Update & Security > Windows Update > **Enroll now**.",
+          "If you use a local account, you'll be asked to sign in with a Microsoft account. Pick the free option by syncing your PC settings, or use Rewards points or the $30 purchase.",
+          "For another PC on the same account, use **Add device** (up to 10)."
+        ]
+      }
+    },
+    {
+      "titulo": "See whether your PC can run Windows 11",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "If it qualifies, upgrading is free and takes the deadline off your plate.",
+      "pasos": {
+        "Windows 10": [
+          "Download the **PC Health Check** app from aka.ms/GetPCHealthCheckApp and select *Check now*.",
+          "If your PC qualifies, the offer will show up in **Windows Update**."
+        ]
+      }
+    },
+    {
+      "titulo": "If TPM is the problem, check whether it's off",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "avanzado",
+      "texto": "Common on custom-built towers. If you don't see a security processor, it may be disabled in firmware. If you're not comfortable in BIOS/UEFI, check your motherboard or PC maker's support pages.",
+      "pasos": {
+        "Windows 10": [
+          "Windows key + R > `tpm.msc`. If it says *Compatible TPM cannot be found*, it may be disabled.",
+          "Settings > Update & Security > Recovery > **Advanced startup** > *Restart now* > Troubleshoot > Advanced options > **UEFI Firmware Settings**.",
+          "Look for *Intel PTT*, *Intel Platform Trust Technology*, *AMD fTPM*, *Security Device Support*, or *TPM State*, turn it on, and save."
+        ]
+      }
+    },
+    {
+      "titulo": "Keep your browser and apps current",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "habit",
+      "para": "todos",
+      "texto": "While you're on Windows 10, the browser is your main door to the internet—and it does still get patched. Relaunch it when it asks.",
+      "pasos": {
+        "Chrome / Edge": [
+          "Menu **⋮** or **…** > Help > **About Google Chrome** / **About Microsoft Edge**.",
+          "If there's an update, it downloads automatically: select **Relaunch** or **Restart**."
+        ]
+      }
+    },
+    {
+      "titulo": "Plan the handoff before October 2027",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "30 min",
+      "para": "todos",
+      "texto": "ESU buys time; it isn't a permanent fix. Put the date on your calendar, back up your files, and decide early: upgrade parts, replace the PC, or repurpose the tower.",
+      "pasos": {
+        "Windows 10": [
+          "Set a calendar reminder for **September 2027**.",
+          "Back up your files to an external drive or the cloud before any change."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Your Windows version",
+      "texto": "Windows key + R > `winver`. ESU requires **Windows 10, version 22H2**. If you're on something older, install pending updates first."
+    },
+    {
+      "titulo": "Your ESU status",
+      "texto": "**Settings > Update & Security > Windows Update** shows whether the PC is enrolled. If you bought ESU, it also appears in your Microsoft account's Order History."
+    },
+    {
+      "titulo": "Your TPM",
+      "texto": "In `tpm.msc`, under *TPM Manufacturer Information*, the Specification Version should be **2.0**."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Throwing the PC out now",
+      "texto": "ESU gives you security patches through October 12, 2027. There's time to decide without rushing—or creating e-waste early."
+    },
+    {
+      "titulo": "Forcing Windows 11 onto unsupported hardware",
+      "texto": "It works, but Microsoft doesn't recommend it and warns those devices **aren't guaranteed to receive updates**, including security updates. You trade a known problem for another one."
+    },
+    {
+      "titulo": "Buying antivirus \"for unsupported Windows 10\"",
+      "texto": "Antivirus doesn't fix operating system flaws. What actually protects you is ESU enrollment or moving to a supported system."
+    },
+    {
+      "titulo": "Paying when a free option works for you",
+      "texto": "If you're fine signing in with a Microsoft account and syncing your settings, the free route gives you the same updates as the $30 one."
+    }
+  ],
+  "mito": {
+    "mito": "\"Once Windows 10 is out of support, my PC will stop working or stop connecting to the internet.\"",
+    "realidad": "The PC **keeps working** and connecting just like before. What stops is security updates—unless it's enrolled in ESU. Because everything looks normal, the risk goes unnoticed.",
+    "fuente": {
+      "titulo": "Microsoft: Windows 10 end of support",
+      "url": "https://www.microsoft.com/en-us/windows/end-of-support"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "How ESU is delivered",
+      "parrafos": [
+        "ESU isn't a separate Windows Update channel: it's a license that lets the PC receive the cumulative security updates released after October 14, 2025. That's why it requires 22H2 with the latest updates installed before you enroll.",
+        "Organizations buy ESU through volume licensing: $61 per device for year one, with the price doubling each year, for a maximum of three years after end of support."
+      ]
+    },
+    {
+      "titulo": "fTPM, PTT, and discrete TPM",
+      "parrafos": [
+        "A TPM can be a separate chip on the board or implemented in the processor's firmware (Intel PTT, AMD fTPM). For Windows 11, it just has to meet spec 2.0. Windows uses it for BitLocker, Windows Hello, and measured boot.",
+        "Turning TPM on in UEFI doesn't erase data. The risky move is the opposite: **clearing or resetting the TPM** on a PC with BitLocker on can land you at the recovery key screen. Have that key handy before touching those menus."
+      ]
+    },
+    {
+      "titulo": "Secure Boot and BIOS mode",
+      "parrafos": [
+        "Windows 11 requires UEFI firmware capable of Secure Boot. If your drive uses MBR and the PC boots in legacy mode (CSM), the check will fail even on a compatible board. Switching means converting the disk to GPT—something to do with a fresh backup and by following official documentation."
+      ]
+    }
+  ],
+  "glosario": {
+    "esu": [
+      "ESU",
+      "Extended Security Updates: Microsoft's program that keeps sending critical and important security fixes to Windows 10 after end of support."
+    ],
+    "tpm": [
+      "TPM",
+      "Trusted Platform Module: a component that stores cryptographic keys and checks boot integrity. Windows 11 requires version 2.0."
+    ],
+    "uefi": [
+      "UEFI",
+      "The modern firmware that starts the computer before the operating system; it replaced the old BIOS."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Microsoft: Windows 10 end of support",
+      "url": "https://www.microsoft.com/en-us/windows/end-of-support"
+    },
+    {
+      "titulo": "Microsoft: Windows 10 Extended Security Updates (ESU)",
+      "url": "https://www.microsoft.com/en-us/windows/extended-security-updates"
+    },
+    {
+      "titulo": "Microsoft: Enable TPM 2.0 on your PC",
+      "url": "https://support.microsoft.com/en-us/windows/enable-tpm-2-0-on-your-pc-1fd5a332-360d-4f46-a1e7-ae6b0c90645c"
+    },
+    {
+      "titulo": "Microsoft: Windows 11 specifications and system requirements",
+      "url": "https://www.microsoft.com/en-us/windows/windows-11-specifications"
+    },
+    {
+      "titulo": "Microsoft Learn: Microsoft Edge supported operating systems",
+      "url": "https://learn.microsoft.com/deployedge/microsoft-edge-supported-operating-systems"
+    },
+    {
+      "titulo": "Microsoft: Windows 11 on devices that don't meet minimum system requirements",
+      "url": "https://support.microsoft.com/en-us/windows/experience/compatibility/windows-11-on-devices-that-don-t-meet-minimum-system-requirements"
+    },
+    {
+      "titulo": "Microsoft Learn: Extended Security Updates for organizations",
+      "url": "https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates"
+    }
+  ]
+}

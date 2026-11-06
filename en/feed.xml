@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Wed, 04 Nov 2026 21:03:40 +0100</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 10:22:36 +0100</lastBuildDate>
+  <item>
+    <title>Your Windows 10 PC: make sure it&#x27;s still getting patches</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-06.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-06.html</guid>
+    <pubDate>Fri, 06 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Desktop computers</category>
+    <description>Microsoft will keep shipping security fixes through October 12, 2027—but only to enrolled PCs. And many desktops that &quot;can&#x27;t run&quot; Windows 11 just have one setting turned off. — Heads-up: Chrome 157 fixes 213 flaws, seven of them critical</description>
+  </item>
   <item>
     <title>Don&#x27;t ignore your browser&#x27;s certificate warning</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-05.html</link>

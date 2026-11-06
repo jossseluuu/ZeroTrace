@@ -206,5 +206,59 @@
         "url": "https://support.mozilla.org/es/kb/actualizar-firefox-la-ultima-version"
       }
     ]
+  },
+  {
+    "id": "2026-11-06-chrome-157",
+    "fecha": "2026-11-06",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-121229",
+      "CVE-2026-121156",
+      "CVE-2026-121035",
+      "CVE-2026-121246",
+      "CVE-2026-121247",
+      "CVE-2026-121203",
+      "CVE-2026-121126"
+    ],
+    "dispositivos": [
+      "sobremesa",
+      "portatil",
+      "smartphone"
+    ],
+    "es": {
+      "titulo": "Chrome 157 corrige 213 fallos, siete de ellos críticos",
+      "afecta": "Cualquiera que use Google Chrome en Windows, Mac, Linux o Android.",
+      "accion": "Actualiza a **Chrome 157.0.8103.38** o superior (en Windows y Mac también vale la .39) y **reinicia el navegador**: la actualización no se aplica hasta que lo cierras.",
+      "detalle": "Google publicó la versión el 03/11. Entre los fallos críticos hay uno en ANGLE (CVE-2026-121229) que podría permitir ejecutar código fuera del *sandbox*. Google no ha indicado que se esté explotando, pero con siete fallos críticos conviene no esperar. Quien use el canal *Extended Stable* debe pasar a la 156.0.8078.88."
+    },
+    "en": {
+      "titulo": "Chrome 157 fixes 213 flaws, seven of them critical",
+      "afecta": "Anyone using Google Chrome on Windows, Mac, Linux, or Android.",
+      "accion": "Update to **Chrome 157.0.8103.38** or later (.39 also counts on Windows and Mac) and **relaunch the browser**: the update doesn't apply until you do.",
+      "detalle": "Google shipped the release on November 3. One of the critical bugs, in ANGLE (CVE-2026-121229), could let an attacker run code outside the *sandbox*. Google hasn't said any of them is being exploited, but with seven critical flaws it's not worth waiting. Extended Stable users should move to 156.0.8078.88."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Google: notas de versión de Chrome (Stable Channel Update for Desktop, 03/11)",
+          "en": "Google: Chrome Releases (Stable Channel Update for Desktop, Nov 3)"
+        },
+        "url": "https://chromereleases.googleblog.com/"
+      },
+      {
+        "titulo": {
+          "es": "Google: actualización Extended Stable 156.0.8078.88",
+          "en": "Google: Extended Stable update 156.0.8078.88"
+        },
+        "url": "https://chromereleases.googleblog.com/2026/11/extended-stable-update-for-desktop.html"
+      },
+      {
+        "titulo": {
+          "es": "Malwarebytes: Chrome 157 corrige 213 fallos de seguridad",
+          "en": "Malwarebytes: Chrome 157 fixes 213 security issues"
+        },
+        "url": "https://www.malwarebytes.com/blog/bugs/2026/11/chrome-157-fixes-213-security-issues-including-7-critical-flaws"
+      }
+    ]
   }
 ]

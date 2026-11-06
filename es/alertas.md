@@ -4,6 +4,7 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [06/11/2026](ediciones/2026/11/2026-11-06.md) | Atención | Chrome 157 corrige 213 fallos, siete de ellos críticos | CVE-2026-121229, CVE-2026-121156, CVE-2026-121035, CVE-2026-121246, CVE-2026-121247, CVE-2026-121203, CVE-2026-121126 |
 | [05/11/2026](ediciones/2026/11/2026-11-05.md) | Atención | Firefox 159.0.1 corrige un fallo de seguridad de impacto alto | CVE-2026-120572 |
 | [04/11/2026](ediciones/2026/11/2026-11-04.md) | Crítico | WordPress: fallo en el proceso de actualización, ya explotado | CVE-2026-119977 |
 | [03/11/2026](ediciones/2026/11/2026-11-03.md) | Crítico | Ivanti Connect Secure: la VPN corporativa, atacada con fallos encadenados | CVE-2026-104935, CVE-2026-111357, CVE-2026-118527 |
