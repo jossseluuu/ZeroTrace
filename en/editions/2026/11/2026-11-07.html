@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Why your unlock passcode opens far more than the screen, what the theft protections on iPhone and Android actually do, and what to have ready before it happens.">
+<title>If someone steals your phone after watching you type the passcode · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-07.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-07.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Saturday, November 7, 2026 · 📱 Smartphones</p>
+<h1>If someone steals your phone after watching you type the passcode</h1><p class="sub">Why your unlock passcode opens far more than the screen, what the theft protections on iPhone and Android actually do, and what to have ready before it happens.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 10 min</li><li>📱 Smartphone</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta rojo" id="2026-11-07-sonicwall-sslvpn">
+<header><span class="pill rojo">Critical</span><h3>SonicWall: SSL VPN flaw that bypasses SAML, now exploited</h3></header>
+<dl><dt>Who it affects</dt><dd>Organizations with SonicWall Gen 7 or Gen 8 firewalls using SSL VPN with SAML sign-in (often with MFA enforced at the identity provider).</dd>
+<dt>What to do</dt><dd>Update to <strong>SonicOS 7.3.4-7013</strong> or later (Gen 7) or <strong>SonicOS 8.2.3-8015</strong> (Gen 8). No workaround has been published. Gen 6 and older no longer get patches.</dd>
+<dt class="deep">Details</dt><dd class="deep">Affects SonicOS 7.3.3-7015 and earlier and 8.2.2-8015 and earlier. A user with valid credentials for another authentication method can bypass SAML checks, including MFA that depends on them. CISA added it to its Known Exploited Vulnerabilities (KEV) catalog on November 6. If you run this VPN, review recent logins too.<div class="cves"><code>CVE-2026-19868</code></div></dd></dl>
+<p class="src"><a href="https://www.sonicwall.com/support/notices/kA1VN000002eBLN0A2" rel="noopener noreferrer">SonicWall: SonicOS 7.3.4 and 8.2.3 Security Advisory (SNWLID-2026-0014)</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noopener noreferrer">CISA: Known Exploited Vulnerabilities Catalog</a></p></article><article class="alerta amarillo" id="2026-11-07-zyxel-gs1900">
+<header><span class="pill amarillo">Heads-up</span><h3>Zyxel GS1900 switches: exploited flaw that slipped past the earlier patch</h3></header>
+<dl><dt>Who it affects</dt><dd>Small businesses and offices with Zyxel GS1900 series managed switches (GS1900-8, -8HP, -10HP, -16, -24, -24E, -24EP, -24HPv2, -48, and -48HPv2).</dd>
+<dt>What to do</dt><dd>Install firmware <strong>V2.90 Patch 3</strong> (for example, 2.90(AAHH.3)C0 on the GS1900-8) and don't leave the switch's web interface reachable by everyone on the local network.</dd>
+<dt class="deep">Details</dt><dd class="deep">An out-of-bounds write in the web interface lets an attacker on the local network, with no password, run commands on the switch. Zyxel published its advisory on November 3. According to security firm Binarly, this is the flaw actually used in attacks on roughly a thousand switches previously blamed on CVE-2026-7273, and it works even with the June patch installed.<div class="cves"><code>CVE-2026-107441</code></div></dd></dl>
+<p class="src"><a href="https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bounds-write-vulnerability-in-gs1900-series-switches-11-03-2026" rel="noopener noreferrer">Zyxel: security advisory for GS1900 series switches (Nov 3)</a> · <a href="https://www.binarly.io/blog/zyxel-gs1900-rce-cve-2026-107441" rel="noopener noreferrer">Binarly: the Zyxel GS1900 exploit wasn&#x27;t CVE-2026-7273</a> · <a href="https://www.securityweek.com/zyxel-switch-hacks-blamed-on-patched-flaw-actually-exploited-a-zero-day/" rel="noopener noreferrer">SecurityWeek: Zyxel switch hacks actually exploited a zero-day</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>There's a kind of phone theft that doesn't look like the classic grab: someone <strong>watches you enter your passcode</strong> at a bar, on the subway, or at a concert, and then takes the phone. With that passcode, they get more than the home screen.</p><p>On many phones, the same passcode also lets you <strong>change account settings</strong>, view saved passwords, or turn off location tracking. Whoever has it can try to lock you out of your own account before you even react.</p><p>The good news: iPhone and Android both have protections built for exactly this. <strong>They ask for your face or fingerprint</strong> (not the passcode) for sensitive actions when you're away from home, and iPhone adds <strong>a one-hour delay</strong> for the most serious changes. You just need to make sure they're turned on.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>Turn on your phone's theft protection (on iPhone, "Stolen Device Protection"; on Android, "Theft protection").</li><li>Use a passcode of at least 6 digits and shield it when you type it in public.</li><li>Set a SIM PIN so your SIM can't be used in another phone.</li><li>Know where you'd lock your phone without having it: iCloud.com/find or android.com/lock.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>It requires someone to see your passcode and then get hold of the phone. It's more likely in crowded places and at night, when people unlock their phones in plain sight.</p></div><div class="medidor"><div class="top"><span>Impact: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>It's not just losing the device: with the passcode and no protection, a thief can try to take over your main account, your saved passwords, and your payments, and make it hard for you to recover anything.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>Why the passcode is worth more than the phone</h3><p>Your unlock passcode is the phone's <strong>backup key</strong>: when Face ID or your fingerprint fails, or when an action is sensitive, the system asks for it. So without extra protections, anyone who knows the passcode can do almost everything you can.</p><p>That includes actions that reach beyond the device itself: changing security settings on your Apple or Google account, viewing saved passwords, changing the passcode, or turning off location tracking so you can't find the phone.</p><h3>What iPhone does: required biometrics and a one-hour delay</h3><p>Starting with iOS 17.3, <strong>Stolen Device Protection</strong> changes the rules when your iPhone is <strong>away from familiar locations</strong> (home, work, and other places you go regularly). To use saved passwords and passkeys, use payment AutoFill in Safari, turn off Lost Mode, or erase all content, it requires Face ID or Touch ID <strong>with no passcode fallback</strong>.</p><p>For the most serious changes (changing your Apple Account password, signing out, changing the passcode, adding or removing Face ID or Touch ID, resetting all settings, or turning off the protection itself), it adds a <button type="button" class="term" popovertarget="g-espera">security delay</button> of <strong>one hour</strong> and asks for biometrics again at the end. That window is there so you can mark the phone as lost first.</p><p>It requires two-factor authentication on your Apple Account, a passcode, Face ID or Touch ID, and Find My and Significant Locations turned on (that's where "familiar locations" come from). Apple says it might be on by default, but it's worth checking.</p><h3>What Android does: detect the grab and lock</h3><p>Google's <strong>Theft protection</strong> bundles several defenses. <strong>Theft Detection Lock</strong> uses motion sensors to detect someone snatching the phone from your hand and running off, and locks the screen. <strong>Offline Device Lock</strong> locks the screen if the phone goes offline right after a theft. And <strong>Remote Lock</strong> lets you lock it from <button type="button" class="term" popovertarget="g-lock">android.com/lock</button> using just your phone number.</p><p>Google says these three work on Android 10 and up through a Google Play services update, though availability depends on the model. Some devices also have <strong>Identity Check</strong>: outside trusted places, it requires biometrics to change the screen lock, factory reset the phone, turn off Find Hub, or add and remove Google Accounts.</p><h3>The SIM, the back door</h3><p>Even if the phone is locked, the SIM card can be popped out and put into another phone. Without a <button type="button" class="term" popovertarget="g-pin">PIN</button>, the thief gets your calls and texts, including <strong>verification codes</strong> from banks and services that still send them by text.</p><p>A SIM PIN blocks that: when it starts up in another phone, the SIM asks for the PIN before it works. Calling your carrier to <strong>suspend the line</strong> closes the door completely.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>Watching</strong><p>The thief picks out someone unlocking their phone with the passcode in plain view, often at night in a crowded venue. They memorize the passcode or record it.</p></li><li><strong>The theft</strong><p>They take the phone: a snatch, a phone left on the table, or a friendly chat that ends with the phone in someone else's hands.</p></li><li><strong>The race</strong><p>With the passcode, they try, as fast as possible, to turn off location tracking and change account settings so you can't lock or recover the phone.</p></li><li><strong>The looting</strong><p>If that works, they go after saved passwords, banking and payment apps, and use the SIM to receive text-message codes.</p></li><li><strong>Where it stops</strong><p>With theft protection on and away from your familiar locations, sensitive actions require your face or fingerprint, and on iPhone serious changes wait an hour. That time is yours to mark the phone as lost.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Unlock the screen and see anything not protected by another password: photos, messages, open email.</li><li>Pay with Apple Pay using the passcode: Apple says the protection doesn't change that.</li><li>Use the SIM in another phone if it has no PIN and you haven't suspended the line.</li><li>Sell the locked device or its parts, even if they can't fully use it.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>View your saved passwords or erase the iPhone away from familiar locations if the protection is on: it asks for your face or fingerprint.</li><li>Change your Apple Account password on the iPhone without waiting an hour and passing Face ID or Touch ID again.</li><li>Activate an iPhone that's still in Find My as their own: Activation Lock asks for your account.</li><li>Use a factory-reset Android phone without your Google Account password.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Turn on iPhone Stolen Device Protection</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: everyone</li></ul>
+<p>This is the single setting that most changes how this theft ends. It requires iOS 17.3 or later.</p><div class="plataformas"><div class="plataforma"><h4>iPhone</h4><ol><li>Settings &gt; <strong>Face ID &amp; Passcode</strong> (or Touch ID &amp; Passcode) &gt; enter your passcode.</li><li>Turn on <strong>Stolen Device Protection</strong>.</li><li>If you don't see it, turn on two-factor authentication and Find My first.</li></ol></div></div></article><article class="medida"><h3>Turn on Android Theft protection</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>Make sure the lock features are on and set up Remote Lock with your number ahead of time.</p><div class="plataformas"><div class="plataforma"><h4>Android</h4><ol><li>Settings &gt; <strong>Google</strong> &gt; <strong>All services</strong> &gt; <strong>Theft protection</strong>.</li><li>Turn on <strong>Theft Detection Lock</strong> and <strong>Offline Device Lock</strong>.</li><li>Under <strong>Remote Lock</strong>, turn it on and verify your number.</li><li>If your phone offers it, turn on <strong>Identity Check</strong> too.</li></ol></div></div></article><article class="medida"><h3>A better passcode, kept out of sight</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>Every protection assumes your passcode stays private. Use at least 6 digits and avoid dates or obvious patterns.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>When you're out, unlock with your face or fingerprint and save the passcode for home.</li><li>If you have to type it in public, shield the screen with your other hand.</li><li>If you think someone saw it, change it as soon as you're somewhere familiar.</li></ol></div></div></article><article class="medida"><h3>Set a SIM PIN</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>It stops your SIM from working in another phone. You'll need the default PIN from your carrier: <strong>don't try to guess it</strong>, because too many wrong tries lock the SIM and ask for a PUK code.</p><div class="plataformas"><div class="plataforma"><h4>iPhone</h4><ol><li>Settings &gt; <strong>Cellular</strong> &gt; <strong>SIM PIN</strong> &gt; turn it on and enter the current PIN.</li></ol></div><div class="plataforma"><h4>Android</h4><ol><li>Settings &gt; <strong>Security &amp; Privacy</strong> &gt; <strong>More Security Settings</strong> &gt; <strong>SIM Lock</strong> &gt; <strong>Lock SIM</strong>. Names can vary by manufacturer.</li></ol></div></div></article><article class="medida"><h3>Have your plan B ready</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>If your phone is stolen, you won't have it to look up instructions. Write down today where you'd act.</p><div class="plataformas"><div class="plataforma"><h4>iPhone</h4><ol><li>From another device, go to <strong>iCloud.com/find</strong>, choose the iPhone, and select <strong>Mark as Lost</strong>.</li><li>Don't remove it from Find My: that removes Activation Lock.</li><li>If you can't get it back, erase it remotely.</li></ol></div><div class="plataforma"><h4>Android</h4><ol><li>Lock it at <strong>android.com/lock</strong> with your number.</li><li>In <strong>Find Hub</strong>, mark it as lost and, if you can't get it back, use <strong>Factory reset</strong>.</li></ol></div><div class="plataforma"><h4>Always</h4><ol><li>Call your carrier to suspend the line, and report the theft to the police.</li></ol></div></div></article><article class="medida deep"><h3>Make the security delay apply everywhere<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: paranoid</li></ul>
+<p>If you want the one-hour delay to apply at home and at work too (for example, if you share your home or the risk is inside it), tighten the setting. The trade-off: some legitimate changes will cost you an hour as well.</p><div class="plataformas"><div class="plataforma"><h4>iPhone</h4><ol><li>Settings &gt; Face ID &amp; Passcode &gt; <strong>Stolen Device Protection</strong> &gt; under <strong>Require Security Delay</strong>, choose <strong>Always</strong>.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>That the protection is on</h3><p>On iPhone, Settings &gt; Face ID &amp; Passcode should show <strong>Stolen Device Protection</strong> turned on. On Android, Settings &gt; Google &gt; All services &gt; Theft protection.</p></div><div class="fila"><h3>That Find My or Find Hub works</h3><p>Open <strong>iCloud.com/find</strong> or Google's <strong>Find Hub</strong> from another device and check that your phone shows up on the map.</p></div><div class="fila"><h3>That your SIM asks for a PIN</h3><p>Restart the phone: before it gets a signal, it should ask for the SIM PIN.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Installing third-party anti-theft apps</h3><p>Apple's and Google's built-in features already lock, locate, and erase, and they're more tightly integrated with the system than any app.</p></div><div class="fila"><h3>Not using your phone in public</h3><p>Just unlock it with your face or fingerprint and don't type the passcode where people can see.</p></div><div class="fila"><h3>Changing your passcode every month</h3><p>Change it only if you think someone saw it. A long, well-kept passcode doesn't expire.</p></div><div class="fila"><h3>Setting the security delay to "Always" by default</h3><p>For most people, the standard option (only away from familiar locations) gives almost all the protection without making life harder at home.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"With Face ID, nobody can use my phone."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>Face ID and fingerprints are convenient, but <strong>the passcode always works as a fallback</strong>. Anyone who knows it gets in anyway. Stolen Device Protection is exactly what removes that fallback for the most sensitive actions when you're away from home.</p><p class="src"><a href="https://support.apple.com/en-us/120340" rel="noopener noreferrer">Apple: About Stolen Device Protection for iPhone</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>Familiar locations: the key to the protection</h3><p>iPhone decides whether you're somewhere trusted based on the Significant Locations the device itself learns. Apple says the security delay can end early if the iPhone detects you've arrived at a familiar location.</p><p>These security settings also can't be changed on the web at account.apple.com, so a thief can't skip the delay from a browser using the passcode.</p><h3>Activation Lock and factory resets</h3><p>On iPhone, <button type="button" class="term" popovertarget="g-activacion">Activation Lock</button> ties the device to your account as long as it stays in Find My. On Android, after a factory reset the device asks for the password of the Google Account it had. That's why a stolen phone loses much of its value if you don't get locked out of your account.</p><p>It's also why the attacker races: the goal is to turn off location tracking or change the account before you mark the phone as lost.</p><h3>Limits of Android's locks</h3><p>Theft Detection Lock doesn't act when the screen is already locked, and it may not trigger if the phone keeps a stable Wi-Fi or Bluetooth connection. Offline Device Lock requires the phone to have been unlocked when it lost connectivity, and both it and Remote Lock are limited to two activations every 24 hours.</p><p>Identity Check doesn't cover everything: a PIN or pattern still works, for example, for Private space, multi-user mode, and payment and password autofill in Chrome.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Security delay</dt><dd>A mandatory one-hour pause iPhone enforces before certain serious changes when Stolen Device Protection is on.</dd><dt>android.com/lock</dt><dd>Google&#x27;s page for remotely locking an Android phone using only your verified phone number.</dd><dt>SIM PIN</dt><dd>A code the SIM card asks for when the phone starts up. After too many wrong tries, the card locks and asks for a PUK code.</dd><dt>Activation Lock</dt><dd>An Apple feature that prevents anyone from using an erased iPhone without the owner&#x27;s Apple Account while it stays in Find My.</dd><dt>KEV</dt><dd>The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is on it, real attacks are happening.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://support.apple.com/en-us/120340" rel="noopener noreferrer">Apple: About Stolen Device Protection for iPhone</a></li><li><a href="https://support.apple.com/en-us/120837" rel="noopener noreferrer">Apple: If your iPhone or iPad was stolen</a></li><li><a href="https://support.apple.com/en-us/118228" rel="noopener noreferrer">Apple: Use a SIM PIN for your iPhone or iPad</a></li><li><a href="https://support.apple.com/en-us/102648" rel="noopener noreferrer">Apple: Turn on Find My on your iPhone, iPad, or Mac</a></li><li><a href="https://support.google.com/android/answer/15146908?hl=en" rel="noopener noreferrer">Google: Theft protection on Android</a></li><li><a href="https://support.google.com/android/answer/6160491?hl=en" rel="noopener noreferrer">Google: Find, secure, or erase a lost Android device</a></li><li><a href="https://blog.google/products/android/android-theft-protection/" rel="noopener noreferrer">Google: New Android theft protection features</a></li><li><a href="https://consumer.ftc.gov/articles/how-protect-your-phone-hackers" rel="noopener noreferrer">FTC: How To Protect Your Phone From Hackers</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-espera" class="gl-pop"><strong>Security delay</strong>A mandatory one-hour pause iPhone enforces before certain serious changes when Stolen Device Protection is on.</div><div popover id="g-lock" class="gl-pop"><strong>android.com/lock</strong>Google&#x27;s page for remotely locking an Android phone using only your verified phone number.</div><div popover id="g-pin" class="gl-pop"><strong>SIM PIN</strong>A code the SIM card asks for when the phone starts up. After too many wrong tries, the card locks and asks for a PUK code.</div><div popover id="g-activacion" class="gl-pop"><strong>Activation Lock</strong>An Apple feature that prevents anyone from using an erased iPhone without the owner&#x27;s Apple Account while it stays in Find My.</div><div popover id="g-kev" class="gl-pop"><strong>KEV</strong>The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is on it, real attacks are happening.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

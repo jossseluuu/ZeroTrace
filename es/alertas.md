@@ -4,6 +4,8 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [07/11/2026](ediciones/2026/11/2026-11-07.md) | Crítico | SonicWall: fallo en la VPN SSL que permite saltarse el SAML, ya explotado | CVE-2026-19868 |
+| [07/11/2026](ediciones/2026/11/2026-11-07.md) | Atención | Switches Zyxel GS1900: fallo atacado que esquivaba el parche anterior | CVE-2026-107441 |
 | [06/11/2026](ediciones/2026/11/2026-11-06.md) | Atención | Chrome 157 corrige 213 fallos, siete de ellos críticos | CVE-2026-121229, CVE-2026-121156, CVE-2026-121035, CVE-2026-121246, CVE-2026-121247, CVE-2026-121203, CVE-2026-121126 |
 | [05/11/2026](ediciones/2026/11/2026-11-05.md) | Atención | Firefox 159.0.1 corrige un fallo de seguridad de impacto alto | CVE-2026-120572 |
 | [04/11/2026](ediciones/2026/11/2026-11-04.md) | Crítico | WordPress: fallo en el proceso de actualización, ya explotado | CVE-2026-119977 |

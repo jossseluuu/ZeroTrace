@@ -1,7 +1,8 @@
 {
-  "actualizado": "2026-11-06T10:22:36+01:00",
+  "actualizado": "2026-11-07T07:50:40+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "smartphones",
     "sobremesa",
     "transito",
     "portatiles",
@@ -31,9 +32,25 @@
         "fecha": "2026-11-06",
         "concepto": "windows-10-esu-y-tpm"
       }
+    ],
+    "smartphones": [
+      {
+        "fecha": "2026-11-07",
+        "concepto": "proteccion-en-caso-de-robo"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-07",
+      "foco": "smartphones",
+      "concepto": "proteccion-en-caso-de-robo",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-07-sonicwall-sslvpn",
+        "2026-11-07-zyxel-gs1900"
+      ]
+    },
     {
       "fecha": "2026-11-06",
       "foco": "sobremesa",

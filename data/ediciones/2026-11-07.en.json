@@ -1,0 +1,192 @@
+{
+  "fecha": "2026-11-07",
+  "idioma": "en",
+  "foco": "smartphones",
+  "concepto": "stolen-device-protection",
+  "titulo": "If someone steals your phone after watching you type the passcode",
+  "subtitulo": "Why your unlock passcode opens far more than the screen, what the theft protections on iPhone and Android actually do, and what to have ready before it happens.",
+  "dispositivos": ["smartphone"],
+  "lectura": {"basico": 3, "fondo": 10},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-07-sonicwall-sslvpn", "2026-11-07-zyxel-gs1900"]
+  },
+  "basico": {
+    "parrafos": [
+      "There's a kind of phone theft that doesn't look like the classic grab: someone **watches you enter your passcode** at a bar, on the subway, or at a concert, and then takes the phone. With that passcode, they get more than the home screen.",
+      "On many phones, the same passcode also lets you **change account settings**, view saved passwords, or turn off location tracking. Whoever has it can try to lock you out of your own account before you even react.",
+      "The good news: iPhone and Android both have protections built for exactly this. **They ask for your face or fingerprint** (not the passcode) for sensitive actions when you're away from home, and iPhone adds **a one-hour delay** for the most serious changes. You just need to make sure they're turned on."
+    ],
+    "esencial": [
+      "Turn on your phone's theft protection (on iPhone, \"Stolen Device Protection\"; on Android, \"Theft protection\").",
+      "Use a passcode of at least 6 digits and shield it when you type it in public.",
+      "Set a SIM PIN so your SIM can't be used in another phone.",
+      "Know where you'd lock your phone without having it: iCloud.com/find or android.com/lock."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "medio", "texto": "It requires someone to see your passcode and then get hold of the phone. It's more likely in crowded places and at night, when people unlock their phones in plain sight."},
+    "impacto": {"nivel": "alto", "texto": "It's not just losing the device: with the passcode and no protection, a thief can try to take over your main account, your saved passwords, and your payments, and make it hard for you to recover anything."}
+  },
+  "fondo": [
+    {
+      "titulo": "Why the passcode is worth more than the phone",
+      "parrafos": [
+        "Your unlock passcode is the phone's **backup key**: when Face ID or your fingerprint fails, or when an action is sensitive, the system asks for it. So without extra protections, anyone who knows the passcode can do almost everything you can.",
+        "That includes actions that reach beyond the device itself: changing security settings on your Apple or Google account, viewing saved passwords, changing the passcode, or turning off location tracking so you can't find the phone."
+      ]
+    },
+    {
+      "titulo": "What iPhone does: required biometrics and a one-hour delay",
+      "parrafos": [
+        "Starting with iOS 17.3, **Stolen Device Protection** changes the rules when your iPhone is **away from familiar locations** (home, work, and other places you go regularly). To use saved passwords and passkeys, use payment AutoFill in Safari, turn off Lost Mode, or erase all content, it requires Face ID or Touch ID **with no passcode fallback**.",
+        "For the most serious changes (changing your Apple Account password, signing out, changing the passcode, adding or removing Face ID or Touch ID, resetting all settings, or turning off the protection itself), it adds a [[espera|security delay]] of **one hour** and asks for biometrics again at the end. That window is there so you can mark the phone as lost first.",
+        "It requires two-factor authentication on your Apple Account, a passcode, Face ID or Touch ID, and Find My and Significant Locations turned on (that's where \"familiar locations\" come from). Apple says it might be on by default, but it's worth checking."
+      ]
+    },
+    {
+      "titulo": "What Android does: detect the grab and lock",
+      "parrafos": [
+        "Google's **Theft protection** bundles several defenses. **Theft Detection Lock** uses motion sensors to detect someone snatching the phone from your hand and running off, and locks the screen. **Offline Device Lock** locks the screen if the phone goes offline right after a theft. And **Remote Lock** lets you lock it from [[lock|android.com/lock]] using just your phone number.",
+        "Google says these three work on Android 10 and up through a Google Play services update, though availability depends on the model. Some devices also have **Identity Check**: outside trusted places, it requires biometrics to change the screen lock, factory reset the phone, turn off Find Hub, or add and remove Google Accounts."
+      ]
+    },
+    {
+      "titulo": "The SIM, the back door",
+      "parrafos": [
+        "Even if the phone is locked, the SIM card can be popped out and put into another phone. Without a [[pin|PIN]], the thief gets your calls and texts, including **verification codes** from banks and services that still send them by text.",
+        "A SIM PIN blocks that: when it starts up in another phone, the SIM asks for the PIN before it works. Calling your carrier to **suspend the line** closes the door completely."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "Watching", "texto": "The thief picks out someone unlocking their phone with the passcode in plain view, often at night in a crowded venue. They memorize the passcode or record it."},
+    {"titulo": "The theft", "texto": "They take the phone: a snatch, a phone left on the table, or a friendly chat that ends with the phone in someone else's hands."},
+    {"titulo": "The race", "texto": "With the passcode, they try, as fast as possible, to turn off location tracking and change account settings so you can't lock or recover the phone."},
+    {"titulo": "The looting", "texto": "If that works, they go after saved passwords, banking and payment apps, and use the SIM to receive text-message codes."},
+    {"titulo": "Where it stops", "texto": "With theft protection on and away from your familiar locations, sensitive actions require your face or fingerprint, and on iPhone serious changes wait an hour. That time is yours to mark the phone as lost."}
+  ],
+  "atacante": {
+    "puede": [
+      "Unlock the screen and see anything not protected by another password: photos, messages, open email.",
+      "Pay with Apple Pay using the passcode: Apple says the protection doesn't change that.",
+      "Use the SIM in another phone if it has no PIN and you haven't suspended the line.",
+      "Sell the locked device or its parts, even if they can't fully use it."
+    ],
+    "no_puede": [
+      "View your saved passwords or erase the iPhone away from familiar locations if the protection is on: it asks for your face or fingerprint.",
+      "Change your Apple Account password on the iPhone without waiting an hour and passing Face ID or Touch ID again.",
+      "Activate an iPhone that's still in Find My as their own: Activation Lock asks for your account.",
+      "Use a factory-reset Android phone without your Google Account password."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Turn on iPhone Stolen Device Protection",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "This is the single setting that most changes how this theft ends. It requires iOS 17.3 or later.",
+      "pasos": {
+        "iPhone": ["Settings > **Face ID & Passcode** (or Touch ID & Passcode) > enter your passcode.", "Turn on **Stolen Device Protection**.", "If you don't see it, turn on two-factor authentication and Find My first."]
+      }
+    },
+    {
+      "titulo": "Turn on Android Theft protection",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "3 min", "para": "todos",
+      "texto": "Make sure the lock features are on and set up Remote Lock with your number ahead of time.",
+      "pasos": {
+        "Android": ["Settings > **Google** > **All services** > **Theft protection**.", "Turn on **Theft Detection Lock** and **Offline Device Lock**.", "Under **Remote Lock**, turn it on and verify your number.", "If your phone offers it, turn on **Identity Check** too."]
+      }
+    },
+    {
+      "titulo": "A better passcode, kept out of sight",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "habit", "para": "todos",
+      "texto": "Every protection assumes your passcode stays private. Use at least 6 digits and avoid dates or obvious patterns.",
+      "pasos": {
+        "Always": ["When you're out, unlock with your face or fingerprint and save the passcode for home.", "If you have to type it in public, shield the screen with your other hand.", "If you think someone saw it, change it as soon as you're somewhere familiar."]
+      }
+    },
+    {
+      "titulo": "Set a SIM PIN",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "3 min", "para": "todos",
+      "texto": "It stops your SIM from working in another phone. You'll need the default PIN from your carrier: **don't try to guess it**, because too many wrong tries lock the SIM and ask for a PUK code.",
+      "pasos": {
+        "iPhone": ["Settings > **Cellular** > **SIM PIN** > turn it on and enter the current PIN."],
+        "Android": ["Settings > **Security & Privacy** > **More Security Settings** > **SIM Lock** > **Lock SIM**. Names can vary by manufacturer."]
+      }
+    },
+    {
+      "titulo": "Have your plan B ready",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "5 min", "para": "todos",
+      "texto": "If your phone is stolen, you won't have it to look up instructions. Write down today where you'd act.",
+      "pasos": {
+        "iPhone": ["From another device, go to **iCloud.com/find**, choose the iPhone, and select **Mark as Lost**.", "Don't remove it from Find My: that removes Activation Lock.", "If you can't get it back, erase it remotely."],
+        "Android": ["Lock it at **android.com/lock** with your number.", "In **Find Hub**, mark it as lost and, if you can't get it back, use **Factory reset**."],
+        "Always": ["Call your carrier to suspend the line, and report the theft to the police."]
+      }
+    },
+    {
+      "titulo": "Make the security delay apply everywhere",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "paranoico",
+      "texto": "If you want the one-hour delay to apply at home and at work too (for example, if you share your home or the risk is inside it), tighten the setting. The trade-off: some legitimate changes will cost you an hour as well.",
+      "pasos": {
+        "iPhone": ["Settings > Face ID & Passcode > **Stolen Device Protection** > under **Require Security Delay**, choose **Always**."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "That the protection is on", "texto": "On iPhone, Settings > Face ID & Passcode should show **Stolen Device Protection** turned on. On Android, Settings > Google > All services > Theft protection."},
+    {"titulo": "That Find My or Find Hub works", "texto": "Open **iCloud.com/find** or Google's **Find Hub** from another device and check that your phone shows up on the map."},
+    {"titulo": "That your SIM asks for a PIN", "texto": "Restart the phone: before it gets a signal, it should ask for the SIM PIN."}
+  ],
+  "innecesario": [
+    {"titulo": "Installing third-party anti-theft apps", "texto": "Apple's and Google's built-in features already lock, locate, and erase, and they're more tightly integrated with the system than any app."},
+    {"titulo": "Not using your phone in public", "texto": "Just unlock it with your face or fingerprint and don't type the passcode where people can see."},
+    {"titulo": "Changing your passcode every month", "texto": "Change it only if you think someone saw it. A long, well-kept passcode doesn't expire."},
+    {"titulo": "Setting the security delay to \"Always\" by default", "texto": "For most people, the standard option (only away from familiar locations) gives almost all the protection without making life harder at home."}
+  ],
+  "mito": {
+    "mito": "\"With Face ID, nobody can use my phone.\"",
+    "realidad": "Face ID and fingerprints are convenient, but **the passcode always works as a fallback**. Anyone who knows it gets in anyway. Stolen Device Protection is exactly what removes that fallback for the most sensitive actions when you're away from home.",
+    "fuente": {"titulo": "Apple: About Stolen Device Protection for iPhone", "url": "https://support.apple.com/en-us/120340"}
+  },
+  "tecnico": [
+    {
+      "titulo": "Familiar locations: the key to the protection",
+      "parrafos": [
+        "iPhone decides whether you're somewhere trusted based on the Significant Locations the device itself learns. Apple says the security delay can end early if the iPhone detects you've arrived at a familiar location.",
+        "These security settings also can't be changed on the web at account.apple.com, so a thief can't skip the delay from a browser using the passcode."
+      ]
+    },
+    {
+      "titulo": "Activation Lock and factory resets",
+      "parrafos": [
+        "On iPhone, [[activacion|Activation Lock]] ties the device to your account as long as it stays in Find My. On Android, after a factory reset the device asks for the password of the Google Account it had. That's why a stolen phone loses much of its value if you don't get locked out of your account.",
+        "It's also why the attacker races: the goal is to turn off location tracking or change the account before you mark the phone as lost."
+      ]
+    },
+    {
+      "titulo": "Limits of Android's locks",
+      "parrafos": [
+        "Theft Detection Lock doesn't act when the screen is already locked, and it may not trigger if the phone keeps a stable Wi-Fi or Bluetooth connection. Offline Device Lock requires the phone to have been unlocked when it lost connectivity, and both it and Remote Lock are limited to two activations every 24 hours.",
+        "Identity Check doesn't cover everything: a PIN or pattern still works, for example, for Private space, multi-user mode, and payment and password autofill in Chrome."
+      ]
+    }
+  ],
+  "glosario": {
+    "espera": ["Security delay", "A mandatory one-hour pause iPhone enforces before certain serious changes when Stolen Device Protection is on."],
+    "lock": ["android.com/lock", "Google's page for remotely locking an Android phone using only your verified phone number."],
+    "pin": ["SIM PIN", "A code the SIM card asks for when the phone starts up. After too many wrong tries, the card locks and asks for a PUK code."],
+    "activacion": ["Activation Lock", "An Apple feature that prevents anyone from using an erased iPhone without the owner's Apple Account while it stays in Find My."],
+    "kev": ["KEV", "The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is on it, real attacks are happening."]
+  },
+  "fuentes": [
+    {"titulo": "Apple: About Stolen Device Protection for iPhone", "url": "https://support.apple.com/en-us/120340"},
+    {"titulo": "Apple: If your iPhone or iPad was stolen", "url": "https://support.apple.com/en-us/120837"},
+    {"titulo": "Apple: Use a SIM PIN for your iPhone or iPad", "url": "https://support.apple.com/en-us/118228"},
+    {"titulo": "Apple: Turn on Find My on your iPhone, iPad, or Mac", "url": "https://support.apple.com/en-us/102648"},
+    {"titulo": "Google: Theft protection on Android", "url": "https://support.google.com/android/answer/15146908?hl=en"},
+    {"titulo": "Google: Find, secure, or erase a lost Android device", "url": "https://support.google.com/android/answer/6160491?hl=en"},
+    {"titulo": "Google: New Android theft protection features", "url": "https://blog.google/products/android/android-theft-protection/"},
+    {"titulo": "FTC: How To Protect Your Phone From Hackers", "url": "https://consumer.ftc.gov/articles/how-protect-your-phone-hackers"}
+  ]
+}

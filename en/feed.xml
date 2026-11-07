@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Fri, 06 Nov 2026 10:22:36 +0100</lastBuildDate>
+  <lastBuildDate>Sat, 07 Nov 2026 07:50:40 +0100</lastBuildDate>
+  <item>
+    <title>If someone steals your phone after watching you type the passcode</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-07.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-07.html</guid>
+    <pubDate>Sat, 07 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Smartphones</category>
+    <description>Why your unlock passcode opens far more than the screen, what the theft protections on iPhone and Android actually do, and what to have ready before it happens. — Critical: SonicWall: SSL VPN flaw that bypasses SAML, now exploited | Heads-up: Zyxel GS1900 switches: exploited flaw that slipped past the earlier patch</description>
+  </item>
   <item>
     <title>Your Windows 10 PC: make sure it&#x27;s still getting patches</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-06.html</link>
