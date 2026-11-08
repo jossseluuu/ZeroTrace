@@ -1,7 +1,8 @@
 {
-  "actualizado": "2026-11-07T07:50:40+01:00",
+  "actualizado": "2026-11-08T07:48:12+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "habitos",
     "smartphones",
     "sobremesa",
     "transito",
@@ -38,9 +39,24 @@
         "fecha": "2026-11-07",
         "concepto": "proteccion-en-caso-de-robo"
       }
+    ],
+    "habitos": [
+      {
+        "fecha": "2026-11-08",
+        "concepto": "ubicacion-escondida-en-las-fotos"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-08",
+      "foco": "habitos",
+      "concepto": "ubicacion-escondida-en-las-fotos",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-08-apple-webkit"
+      ]
+    },
     {
       "fecha": "2026-11-07",
       "foco": "smartphones",

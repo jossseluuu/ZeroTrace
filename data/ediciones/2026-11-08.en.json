@@ -1,0 +1,310 @@
+{
+  "fecha": "2026-11-08",
+  "idioma": "en",
+  "foco": "habitos",
+  "concepto": "hidden-location-in-photos",
+  "titulo": "Your photos know where you took them",
+  "subtitulo": "What data rides along hidden inside a photo, when it can give away where you live, and how to share pictures without handing out your home address.",
+  "dispositivos": [
+    "smartphone",
+    "tablet",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-08-apple-webkit"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Every photo you take with your phone stores more than the image. It carries a hidden record with the date, the phone model, and, if the camera has location access, **the exact coordinates of where you took it**.",
+      "That's handy for you: it's how your gallery puts your photos on a map. The trouble starts when you share the photo **as is, as a file**: whoever gets it can read those coordinates with any photo viewer and find your home, your kids' school, or where you spend your vacations.",
+      "You don't need to give up location. Just **decide when it travels with the photo**: iPhone has a switch to leave it out when you share, and on Android the choice is best made in the camera itself."
+    ],
+    "esencial": [
+      "Before you send a photo taken at home, remove the location from the share menu.",
+      "If you never use your gallery's map, stop the camera from saving location.",
+      "Be extra careful when sending photos as files, by email, or from cloud storage: that's where location usually travels intact.",
+      "Remember the background talks too: a house number, a license plate, or the view from your window."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "bajo",
+      "texto": "It takes you sharing the original file with someone who bothers to look at its data. It's more likely when selling things online, sending photos to strangers, or posting them on websites and forums."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Coordinates captured at home pinpoint your front door within a few yards. In the hands of a stalker, a scammer, or an ex, it's a very hard detail to take back."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What's inside a photo",
+      "parrafos": [
+        "Common image formats (JPEG, HEIC) include a block of [[metadata|metadata]] in [[exif|EXIF]] format: date and time, make and model, camera settings, and, if the permission is on, a [[geotag|geotag]] with latitude, longitude, and sometimes altitude.",
+        "The NSA's guide *Limiting Location Data Exposure* (updated April 2026) warns that pictures posted on social media may have location data stored in hidden metadata, and that photos can relay location information through that metadata."
+      ]
+    },
+    {
+      "titulo": "When location travels and when it doesn't",
+      "parrafos": [
+        "It depends on the path the photo takes, not just the app. **Google says explicitly** that if you download a photo from Google Photos and email it outside the service, the original location your device saved can still be seen.",
+        "Some platforms strip this data when you post, but don't count on it: it varies from service to service, and depending on whether you send the photo as an image or as a document. The safe rule is to **remove the location yourself before sharing** whenever the photo shows a place you don't want to reveal."
+      ]
+    },
+    {
+      "titulo": "Camera location vs. estimated location",
+      "parrafos": [
+        "Google Photos treats two kinds differently. The location **written by the camera** when you take the photo can't be changed or removed in Google Photos. An **estimated** location (one Google infers, for example from landmarks) can be removed and, according to Google, isn't shared when you share the photo from Google Photos.",
+        "That's why on Android the key decision happens **in the camera**, before you take the shot. On iPhone, by contrast, you can remove location from an existing photo or leave it out just for one share."
+      ]
+    },
+    {
+      "titulo": "The background is data too",
+      "parrafos": [
+        "Stripping coordinates doesn't make a photo anonymous. The NSA warns that even without explicit location data, pictures may reveal location through their content, and Google says the same about recognizable landmarks.",
+        "A house number, a store sign, a license plate, or the view from your balcony can be enough to place you. No need to obsess: just glance at the background before sending a photo of your home to someone you don't know."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The listing",
+      "texto": "You list a couch on a secondhand marketplace. A would-be buyer asks for \"more photos, ideally by email or as files, because the app ruins the quality.\""
+    },
+    {
+      "titulo": "The original file",
+      "texto": "You send the photos straight from the camera. The EXIF block with your living room's coordinates goes along with them."
+    },
+    {
+      "titulo": "The read",
+      "texto": "Any photo viewer or metadata website shows the latitude and longitude. Pasted into a map, they point at your building."
+    },
+    {
+      "titulo": "Connecting the dots",
+      "texto": "If there are photos from other days, the date and time show when you're usually home. A house number or a view from the window fills in the rest."
+    },
+    {
+      "titulo": "What comes next",
+      "texto": "Showing up at your door, pressuring you to pay outside the platform, or using your address to make a later scam more convincing."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Read the coordinates, date, and phone model from any original photo you send.",
+      "Locate your home or workplace if the photos were taken there.",
+      "Infer routines from several photos with dates and times.",
+      "Use what's visible in the image to place you even when the photo has no coordinates."
+    ],
+    "no_puede": [
+      "See the location of a photo you shared with location turned off or removed.",
+      "Know where you are right now: a photo only says where you were when you took it.",
+      "Get into the rest of your photo library or your live location just by receiving an image.",
+      "Pull coordinates from a photo taken with the camera's location permission turned off."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Share without location from your iPhone",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "10 sec",
+      "para": "todos",
+      "texto": "It's the single most protective habit, and you keep the map of your memories: the photo keeps its location in your library but doesn't send it.",
+      "pasos": {
+        "iPhone / iPad": [
+          "In Photos, open the photo and tap the Share button > **Options**.",
+          "Turn off **Location**.",
+          "Check that *Location Not Included* appears above the Options button."
+        ]
+      }
+    },
+    {
+      "titulo": "Decide whether the camera saves location",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "If you never look at your photos on a map, the simplest option is for the camera not to save it. It matters most on Android, because Google Photos can't remove a location the camera wrote.",
+      "pasos": {
+        "iPhone / iPad": [
+          "Settings > Privacy & Security > Location Services > **Camera** > *Never*."
+        ],
+        "Android": [
+          "Open your camera app and go to its settings.",
+          "Google Pixel: turn off **Save location**. Samsung: turn off **Location tags**. Other brands use similar names."
+        ]
+      }
+    },
+    {
+      "titulo": "Remove location from a specific photo",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "30 sec",
+      "para": "todos",
+      "texto": "Useful for photos you've already taken at home and want to post or send.",
+      "pasos": {
+        "iPhone / iPad": [
+          "In Photos, open the photo > **Adjust Info** > **Adjust Location** > *No Location*."
+        ],
+        "Mac": [
+          "In Photos, select the photo > **Image** > **Location** > *Hide Location*."
+        ],
+        "Google Photos": [
+          "Open the photo > **Info** > **More** > **Edit** > *Remove location*. This only works for estimated or manually added locations."
+        ]
+      }
+    },
+    {
+      "titulo": "Watch out for files, email, and shared albums",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "habit",
+      "para": "todos",
+      "texto": "That's where location usually travels intact. When someone asks for \"the original\" or \"as a file,\" think about where the photo was taken.",
+      "pasos": {
+        "Always": [
+          "Before emailing or sending as a file a photo taken at home, remove its location.",
+          "In Google Photos, check **Album options** to see whether *Share photo locations* is on.",
+          "If you're selling something online, take the photos with camera location turned off."
+        ]
+      }
+    },
+    {
+      "titulo": "Clean the data on your computer before posting",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "2 min",
+      "para": "avanzado",
+      "texto": "For photos you'll upload from your computer to a website, a forum, or a professional profile.",
+      "pasos": {
+        "Windows": [
+          "Right-click the photo > **Properties** > **Details** tab.",
+          "Click **Remove Properties and Personal Information** and choose to create a copy without properties."
+        ],
+        "Terminal": [
+          "With ExifTool: `exiftool -gps:all= photo.jpg` removes only location data; `exiftool -all= photo.jpg` removes all metadata."
+        ]
+      }
+    },
+    {
+      "titulo": "Check the background before sending",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "habit",
+      "para": "paranoico",
+      "texto": "If you're worried about a specific person knowing where you live, the next step is what's visible in the image.",
+      "pasos": {
+        "Always": [
+          "Look for house numbers, street names, license plates, school uniforms, or recognizable views.",
+          "Crop or blur them with your gallery's editor before sharing."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "On iPhone",
+      "texto": "Open a photo in the Photos app and look at its info: if a map or a place appears, the photo carries location. When you share, the text above **Options** tells you whether it's included."
+    },
+    {
+      "titulo": "In Google Photos",
+      "texto": "Open the photo and tap **Info**. If a place appears and you can't remove it, it's the location your camera saved."
+    },
+    {
+      "titulo": "On Windows",
+      "texto": "Right-click the photo > **Properties** > **Details**. If you see a GPS section with latitude and longitude, the photo carries coordinates."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Turning off location for your whole phone",
+      "texto": "You need it for maps, finding your phone if you lose it, or sharing where you are with people you choose. The setting that matters here is the camera's."
+    },
+    {
+      "titulo": "Wiping location from all your old photos",
+      "texto": "In your own library they do no harm and help you find memories. The risk is in sharing them, not in having them."
+    },
+    {
+      "titulo": "Installing metadata \"cleaner\" apps",
+      "texto": "iPhone, Mac, and Windows already have the option built in. Many of those apps ask for access to your entire photo library, which is exactly what you're trying to protect."
+    },
+    {
+      "titulo": "Worrying about photos of landmarks",
+      "texto": "People knowing you visited the Golden Gate Bridge isn't a problem. Focus on photos taken at home, at school, or at places you go regularly."
+    }
+  ],
+  "mito": {
+    "mito": "\"If I remove the location from a photo, nobody can tell where I took it.\"",
+    "realidad": "Removing coordinates gets rid of the most precise clue, but **what's in the picture gives you away too**: Google warns that even if you hide your photos' locations, people can guess them from landmarks, and the NSA says the same about image content.",
+    "fuente": {
+      "titulo": "Google: Understand, find & edit your photos' locations",
+      "url": "https://support.google.com/photos/answer/6153599?hl=en"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "The EXIF GPS block",
+      "parrafos": [
+        "EXIF stores position in its own directory with tags such as `GPSLatitude`, `GPSLongitude`, `GPSAltitude`, and `GPSTimeStamp`. Almost every image viewer, editor, and library can read it without special permissions.",
+        "To see what a photo carries: `exiftool -gps:all photo.jpg`. To remove only location: `exiftool -gps:all= photo.jpg` (ExifTool keeps a copy of the original with the `_original` suffix)."
+      ]
+    },
+    {
+      "titulo": "How Android protects it from apps",
+      "parrafos": [
+        "Since Android 10, an app that wants to read **unredacted** EXIF data from photos must declare the `ACCESS_MEDIA_LOCATION` permission and request it at runtime. Without it, the system hands over photos with location hidden.",
+        "This protects you from apps with access to your gallery, not from the person you send the file to: if you share it as is, the metadata goes along."
+      ]
+    },
+    {
+      "titulo": "If you write code, strip it on the server",
+      "parrafos": [
+        "If your website or app lets people upload photos that others will see, don't trust the client to have removed metadata. Strip it on the server when processing the image (re-encoding without copying the EXIF block is the most reliable approach) and keep only what you need, such as orientation."
+      ]
+    }
+  ],
+  "glosario": {
+    "metadata": [
+      "Metadata",
+      "Data about a file that you can't see at a glance: when it was created, with what device, and, for photos, sometimes where."
+    ],
+    "exif": [
+      "EXIF",
+      "Standard format cameras and phones use to store metadata inside photos."
+    ],
+    "geotag": [
+      "Geotag",
+      "Latitude and longitude coordinates a camera adds to a photo to record where it was taken."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Apple: Manage location metadata in Photos",
+      "url": "https://support.apple.com/guide/personal-safety/ips0d7a5df82/web"
+    },
+    {
+      "titulo": "Google: Change your camera location settings",
+      "url": "https://support.google.com/photos/answer/9921876?hl=en"
+    },
+    {
+      "titulo": "Google: Understand, find & edit your photos' locations",
+      "url": "https://support.google.com/photos/answer/6153599?hl=en"
+    },
+    {
+      "titulo": "NSA: Limiting Location Data Exposure (PDF)",
+      "url": "https://media.defense.gov/2020/Aug/04/2002469874/-1/-1/0/Limiting%20Location%20Data%20Exposure_v1-1.PDF"
+    },
+    {
+      "titulo": "Android Developers: Media location permission",
+      "url": "https://developer.android.com/training/data-storage/shared/media#location-info-photos"
+    }
+  ]
+}

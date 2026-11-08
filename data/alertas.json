@@ -345,5 +345,55 @@
         "url": "https://www.securityweek.com/zyxel-switch-hacks-blamed-on-patched-flaw-actually-exploited-a-zero-day/"
       }
     ]
+  },
+  {
+    "id": "2026-11-08-apple-webkit",
+    "fecha": "2026-11-08",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2024-27834"
+    ],
+    "dispositivos": [
+      "smartphone",
+      "tablet",
+      "portatil",
+      "sobremesa",
+      "tv"
+    ],
+    "es": {
+      "titulo": "Apple: un fallo de WebKit de 2024, ahora atacado en dispositivos sin actualizar",
+      "afecta": "iPhone, iPad, Mac y Apple TV que sigan con versiones anteriores a **iOS/iPadOS 17.5, macOS Sonoma 14.5 o tvOS 17.5**. Si tu dispositivo está al día, no te afecta.",
+      "accion": "Actualiza a la última versión disponible (Ajustes > General > Actualización de software). Si tu iPhone o iPad ya no puede instalar iOS 17, evita usarlo para navegar por webs que no conozcas y plantéate sustituirlo.",
+      "detalle": "Es un fallo del motor web de Apple (WebKit) que permite saltarse la autenticación de punteros, una protección de la memoria; se usa encadenado con otros fallos para ejecutar código al visitar contenido web malicioso. Apple lo corrigió en mayo de 2024, pero CISA lo añadió el 04/11 a su catálogo de vulnerabilidades explotadas: hay ataques reales contra quien no actualizó."
+    },
+    "en": {
+      "titulo": "Apple: a 2024 WebKit flaw now under attack on unpatched devices",
+      "afecta": "iPhones, iPads, Macs, and Apple TVs still running versions earlier than **iOS/iPadOS 17.5, macOS Sonoma 14.5, or tvOS 17.5**. If your device is up to date, you're not affected.",
+      "accion": "Update to the latest available version (Settings > General > Software Update). If your iPhone or iPad can no longer install iOS 17, avoid using it to browse unfamiliar websites and consider replacing it.",
+      "detalle": "It's a flaw in Apple's web engine (WebKit) that lets an attacker bypass pointer authentication, a memory protection; it's chained with other bugs to run code when you visit malicious web content. Apple fixed it in May 2024, but CISA added it to its Known Exploited Vulnerabilities catalog on November 4: there are real attacks against people who didn't update."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Apple: contenido de seguridad de iOS 17.5 y iPadOS 17.5",
+          "en": "Apple: About the security content of iOS 17.5 and iPadOS 17.5"
+        },
+        "url": "https://support.apple.com/en-us/120905"
+      },
+      {
+        "titulo": {
+          "es": "Apple: contenido de seguridad de macOS Sonoma 14.5",
+          "en": "Apple: About the security content of macOS Sonoma 14.5"
+        },
+        "url": "https://support.apple.com/en-us/120903"
+      },
+      {
+        "titulo": {
+          "es": "CISA: alta en el catálogo de vulnerabilidades explotadas (04/11)",
+          "en": "CISA: Adds One Known Exploited Vulnerability to Catalog (Nov 4)"
+        },
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/04/cisa-adds-one-known-exploited-vulnerability-catalog"
+      }
+    ]
   }
 ]

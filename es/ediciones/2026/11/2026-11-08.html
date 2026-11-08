@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Qué datos viajan escondidos dentro de una foto, cuándo pueden revelar dónde vives y cómo compartirlas sin regalar la dirección de casa.">
+<title>Tus fotos dicen dónde las hiciste · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-08.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-08.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Domingo, 8 de noviembre de 2026 · 🧠 Hábitos y privacidad</p>
+<h1>Tus fotos dicen dónde las hiciste</h1><p class="sub">Qué datos viajan escondidos dentro de una foto, cuándo pueden revelar dónde vives y cómo compartirlas sin regalar la dirección de casa.</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 9 min</li><li>📱 Smartphone</li><li>📲 Tablet</li><li>💻 Portátil</li><li>🖥️ Sobremesa</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día de atención"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Día de atención</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-08-apple-webkit">
+<header><span class="pill amarillo">Atención</span><h3>Apple: un fallo de WebKit de 2024, ahora atacado en dispositivos sin actualizar</h3></header>
+<dl><dt>A quién afecta</dt><dd>iPhone, iPad, Mac y Apple TV que sigan con versiones anteriores a <strong>iOS/iPadOS 17.5, macOS Sonoma 14.5 o tvOS 17.5</strong>. Si tu dispositivo está al día, no te afecta.</dd>
+<dt>Qué hacer</dt><dd>Actualiza a la última versión disponible (Ajustes &gt; General &gt; Actualización de software). Si tu iPhone o iPad ya no puede instalar iOS 17, evita usarlo para navegar por webs que no conozcas y plantéate sustituirlo.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Es un fallo del motor web de Apple (WebKit) que permite saltarse la autenticación de punteros, una protección de la memoria; se usa encadenado con otros fallos para ejecutar código al visitar contenido web malicioso. Apple lo corrigió en mayo de 2024, pero CISA lo añadió el 04/11 a su catálogo de vulnerabilidades explotadas: hay ataques reales contra quien no actualizó.<div class="cves"><code>CVE-2024-27834</code></div></dd></dl>
+<p class="src"><a href="https://support.apple.com/en-us/120905" rel="noopener noreferrer">Apple: contenido de seguridad de iOS 17.5 y iPadOS 17.5</a> · <a href="https://support.apple.com/en-us/120903" rel="noopener noreferrer">Apple: contenido de seguridad de macOS Sonoma 14.5</a> · <a href="https://www.cisa.gov/news-events/alerts/2026/11/04/cisa-adds-one-known-exploited-vulnerability-catalog" rel="noopener noreferrer">CISA: alta en el catálogo de vulnerabilidades explotadas (04/11)</a></p></article></div><p class="nota">El color del día refleja el impacto para el público general. Cada alerta lleva el suyo para las personas a las que afecta. <a href="../../../alertas.html">Ver todas las alertas notificadas</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Cada foto que haces con el móvil guarda, además de la imagen, una ficha oculta con datos: fecha, modelo del teléfono y, si la cámara tiene permiso de ubicación, <strong>las coordenadas exactas del sitio donde la hiciste</strong>.</p><p>Para ti es útil: por eso la galería te ordena las fotos en un mapa. El problema llega cuando compartes la foto <strong>tal cual, como archivo</strong>: quien la reciba puede leer esas coordenadas con cualquier visor y saber dónde está tu casa, el colegio de tus hijos o dónde pasas las vacaciones.</p><p>No hace falta dejar de usar la ubicación. Basta con <strong>decidir cuándo viaja con la foto</strong>: el iPhone tiene un interruptor para quitarla al compartir, y en Android conviene decidirlo en la propia cámara.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>Antes de enviar una foto hecha en casa, quítale la ubicación desde el menú de compartir.</li><li>Si no usas el mapa de tu galería, haz que la cámara no guarde la ubicación.</li><li>Ten especial cuidado al mandar fotos como archivo, por correo o desde la nube: ahí la ubicación suele viajar entera.</li><li>Recuerda que el fondo de la foto también habla: un portal, una matrícula o la vista desde tu ventana.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: baja</span>
+<span class="barras bajo" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Hace falta que compartas el archivo original con alguien que se moleste en mirar sus datos. Es más probable al vender cosas en internet, al enviar fotos a desconocidos o al publicarlas en webs y foros.</p></div><div class="medidor"><div class="top"><span>Impacto: alto</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Unas coordenadas tomadas en casa señalan tu portal con un margen de pocos metros. En manos de un acosador, un estafador o alguien con quien has cortado, es un dato muy difícil de retirar.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Qué va dentro de una foto</h3><p>Los formatos de imagen habituales (JPEG, HEIC) incluyen un bloque de <button type="button" class="term" popovertarget="g-metadatos">metadatos</button> en formato <button type="button" class="term" popovertarget="g-exif">EXIF</button>: fecha y hora, fabricante y modelo, ajustes de la cámara y, si el permiso está activado, la <button type="button" class="term" popovertarget="g-geoetiqueta">geoetiqueta</button> con latitud, longitud y a veces altitud.</p><p>INCIBE lo resume así: cualquiera que tenga la imagen podría obtener información del lugar donde se hizo. La NSA, en su guía <em>Limiting Location Data Exposure</em> (actualizada en abril de 2026), recuerda que las fotos publicadas pueden llevar la ubicación guardada en metadatos ocultos.</p><h3>Cuándo viaja la ubicación y cuándo no</h3><p>Depende del camino que siga la foto, no solo de la app. <strong>Google avisa expresamente</strong> de que, si descargas una foto de Google Fotos y la envías por correo fuera del servicio, se sigue viendo la ubicación original que guardó tu dispositivo. INCIBE recuerda que los servicios de almacenamiento en la nube y el correo no eliminan los metadatos al subir un archivo.</p><p>Algunas plataformas los recortan al publicar, pero no lo des por hecho: cambia de un servicio a otro y según envíes la foto como imagen o como documento. La regla segura es <strong>quitar la ubicación tú antes de compartir</strong> cuando la foto sea de un sitio que no quieras revelar.</p><h3>Ubicación de la cámara frente a ubicación estimada</h3><p>Google Fotos distingue dos tipos. La que <strong>escribe la cámara</strong> al hacer la foto no se puede cambiar ni quitar desde Google Fotos. La <strong>estimada</strong> (la que Google deduce, por ejemplo, por los lugares que aparecen) sí se puede quitar y, según Google, no se comparte cuando compartes la foto desde Google Fotos.</p><p>Por eso en Android la decisión importante se toma <strong>en la cámara</strong>, antes de hacer la foto. En el iPhone, en cambio, puedes quitar la ubicación de una foto ya hecha o desactivarla solo para el envío.</p><h3>El fondo también es un dato</h3><p>Quitar las coordenadas no vuelve anónima una foto. La NSA advierte de que, aun sin datos de ubicación explícitos, el contenido de la imagen puede revelar dónde se hizo, y Google dice lo mismo de los lugares reconocibles.</p><p>Un número de portal, el nombre de una tienda, una matrícula o la vista desde tu balcón pueden bastar para situarte. No hace falta obsesionarse: basta con echar un vistazo al fondo antes de enviar una foto de casa a quien no conoces.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>El anuncio</strong><p>Pones a la venta un sofá en una web de segunda mano. Un supuesto comprador te pide «más fotos, mejor por correo o como archivo, que por la app pierden calidad».</p></li><li><strong>El archivo original</strong><p>Le envías las fotos tal como salieron de la cámara. Con ellas viaja el bloque EXIF con las coordenadas del salón.</p></li><li><strong>La lectura</strong><p>Cualquier visor de fotos o una web de metadatos muestra la latitud y la longitud. Pegadas en un mapa, señalan tu edificio.</p></li><li><strong>El cruce</strong><p>Si además hay fotos de otros días, la fecha y la hora le dicen cuándo sueles estar en casa. Un portal o una vista desde la ventana afinan el resto.</p></li><li><strong>Lo que intenta después</strong><p>Presentarse en tu casa, presionarte para pagar fuera de la plataforma o usar tu dirección para dar credibilidad a una estafa posterior.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Leer las coordenadas, la fecha y el modelo del móvil de cualquier foto original que le envíes.</li><li>Situar tu casa o tu trabajo si las fotos se hicieron allí.</li><li>Deducir rutinas si tiene varias fotos con fecha y hora.</li><li>Usar lo que se ve en la imagen para ubicarte aunque la foto no lleve coordenadas.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Ver la ubicación de una foto que compartiste con la ubicación desactivada o eliminada.</li><li>Saber dónde estás ahora: la foto solo dice dónde estabas al hacerla.</li><li>Acceder al resto de fotos de tu galería ni a tu ubicación en tiempo real por recibir una imagen.</li><li>Sacar coordenadas de una foto hecha con el permiso de ubicación de la cámara desactivado.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Comparte sin ubicación desde el iPhone</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 10 s</li><li>Para: todos</li></ul>
+<p>Es el gesto que más protege y no te obliga a renunciar al mapa de tus recuerdos: la foto conserva la ubicación en tu galería, pero no la envía.</p><div class="plataformas"><div class="plataforma"><h4>iPhone / iPad</h4><ol><li>En Fotos, abre la foto y toca el botón de compartir &gt; <strong>Opciones</strong>.</li><li>Desactiva <strong>Ubicación</strong>.</li><li>Comprueba que encima del botón Opciones aparece <em>Ubicación no incluida</em>.</li></ol></div></div></article><article class="medida"><h3>Decide si la cámara guarda la ubicación</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 1 min</li><li>Para: todos</li></ul>
+<p>Si nunca miras tus fotos en un mapa, lo más sencillo es que la cámara no la guarde. En Android es especialmente importante, porque Google Fotos no deja quitar después la ubicación que escribió la cámara.</p><div class="plataformas"><div class="plataforma"><h4>iPhone / iPad</h4><ol><li>Ajustes &gt; Privacidad y seguridad &gt; Localización &gt; <strong>Cámara</strong> &gt; <em>Nunca</em>.</li></ol></div><div class="plataforma"><h4>Android</h4><ol><li>Abre la app de cámara y entra en sus ajustes.</li><li>Google Pixel: desactiva <strong>Guardar ubicación</strong>. Samsung: desactiva <strong>Etiquetas de ubicación</strong>. Otras marcas usan nombres parecidos.</li></ol></div></div></article><article class="medida"><h3>Quita la ubicación de una foto concreta</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 30 s</li><li>Para: todos</li></ul>
+<p>Útil para fotos ya hechas en casa que quieras publicar o mandar.</p><div class="plataformas"><div class="plataforma"><h4>iPhone / iPad</h4><ol><li>En Fotos, abre la foto &gt; <strong>Ajustar datos</strong> &gt; <strong>Ajustar ubicación</strong> &gt; <em>Ninguna ubicación</em>.</li></ol></div><div class="plataforma"><h4>Mac</h4><ol><li>En Fotos, selecciona la foto &gt; <strong>Imagen</strong> &gt; <strong>Ubicación</strong> &gt; <em>Ocultar ubicación</em>.</li></ol></div><div class="plataforma"><h4>Google Fotos</h4><ol><li>Abre la foto &gt; <strong>Información</strong> &gt; <strong>Más</strong> &gt; <strong>Editar</strong> &gt; <em>Quitar ubicación</em>. Solo funciona con ubicaciones estimadas o añadidas a mano.</li></ol></div></div></article><article class="medida"><h3>Ojo con los archivos, el correo y los álbumes compartidos</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ hábito</li><li>Para: todos</li></ul>
+<p>Es donde la ubicación suele viajar entera. Cuando alguien te pida «el original» o «como archivo», piensa dónde se hizo la foto.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>Antes de mandar por correo o como archivo una foto hecha en casa, quítale la ubicación.</li><li>En Google Fotos, revisa en las <strong>opciones del álbum</strong> si está activado <em>Compartir ubicación de fotos</em>.</li><li>Si vendes algo por internet, haz las fotos con la ubicación de la cámara desactivada.</li></ol></div></div></article><article class="medida deep"><h3>Limpia los datos en el ordenador antes de publicar<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: medio</li>
+<li>⏱ 2 min</li><li>Para: avanzado</li></ul>
+<p>Para fotos que vayas a subir a una web, un foro o un perfil profesional desde el ordenador.</p><div class="plataformas"><div class="plataforma"><h4>Windows</h4><ol><li>Clic derecho en la foto &gt; <strong>Propiedades</strong> &gt; pestaña <strong>Detalles</strong>.</li><li>Pulsa <strong>Quitar propiedades e información personal</strong> y elige crear una copia sin propiedades.</li></ol></div><div class="plataforma"><h4>Terminal</h4><ol><li>Con ExifTool: <code>exiftool -gps:all= foto.jpg</code> borra solo los datos de ubicación; <code>exiftool -all= foto.jpg</code>, todos los metadatos.</li></ol></div></div></article><article class="medida deep"><h3>Revisa el fondo antes de enviar<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ hábito</li><li>Para: paranoico</li></ul>
+<p>Si te preocupa que alguien concreto sepa dónde vives, el siguiente paso es lo que se ve en la imagen.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>Busca números de portal, nombres de calles, matrículas, uniformes de colegio o vistas reconocibles.</li><li>Recorta o difumina con el editor de la galería antes de compartir.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>En el iPhone</h3><p>Abre una foto en la app Fotos y mira su información: si aparece un mapa o un lugar, la foto lleva ubicación. Al compartir, el texto encima de <strong>Opciones</strong> te dice si se incluye o no.</p></div><div class="fila"><h3>En Google Fotos</h3><p>Abre la foto y toca <strong>Información</strong>. Si aparece un lugar y no puedes quitarlo, es la ubicación que guardó la cámara.</p></div><div class="fila"><h3>En Windows</h3><p>Clic derecho en la foto &gt; <strong>Propiedades</strong> &gt; <strong>Detalles</strong>. Si ves un apartado GPS con latitud y longitud, la foto lleva coordenadas.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Apagar la ubicación de todo el móvil</h3><p>La necesitas para mapas, buscar tu móvil si lo pierdes o compartir dónde estás con quien tú quieras. El ajuste que importa aquí es el de la cámara.</p></div><div class="fila"><h3>Borrar la ubicación de todas tus fotos antiguas</h3><p>En tu galería no hacen daño y te ayudan a encontrar recuerdos. El riesgo está en compartirlas, no en tenerlas.</p></div><div class="fila"><h3>Instalar apps «limpiadoras» de metadatos</h3><p>El iPhone, el Mac y Windows ya traen la opción. Muchas de esas apps piden acceso a toda tu galería, que es justo lo que quieres proteger.</p></div><div class="fila"><h3>Preocuparte por las fotos de un monumento</h3><p>Que se sepa que estuviste en la Alhambra no es un problema. Céntrate en las fotos hechas en casa, en el colegio o en sitios que repites.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«Si le quito la ubicación a la foto, nadie puede saber dónde la hice.»</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>Quitar las coordenadas elimina el dato más preciso, pero <strong>lo que aparece en la imagen también delata</strong>: Google advierte de que, aunque ocultes la ubicación, se puede adivinar por los lugares reconocibles de la foto, y la NSA dice lo mismo del contenido de las imágenes.</p><p class="src"><a href="https://support.google.com/photos/answer/6153599?hl=es" rel="noopener noreferrer">Google: entender, buscar y editar la ubicación de tus fotos</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>El bloque GPS de EXIF</h3><p>EXIF guarda la posición en un directorio propio con etiquetas como <code>GPSLatitude</code>, <code>GPSLongitude</code>, <code>GPSAltitude</code> y <code>GPSTimeStamp</code>. Lo leen sin permisos especiales casi todos los visores, editores y bibliotecas de imagen.</p><p>Para ver qué lleva una foto: <code>exiftool -gps:all foto.jpg</code>. Para quitar solo la ubicación: <code>exiftool -gps:all= foto.jpg</code> (ExifTool guarda una copia del original con el sufijo <code>_original</code>).</p><h3>Cómo lo protege Android frente a las apps</h3><p>Desde Android 10, una app que quiera leer los datos EXIF <strong>sin censurar</strong> de las fotos debe declarar el permiso <code>ACCESS_MEDIA_LOCATION</code> y pedirlo en tiempo de ejecución. Sin él, el sistema le entrega las fotos con la ubicación oculta.</p><p>Esto protege frente a apps con acceso a tu galería, no frente a la persona a la que envías el archivo: si lo compartes tal cual, los metadatos van dentro.</p><h3>Si programas, límpialo en el servidor</h3><p>Si tu web o app permite subir fotos que luego ven otros usuarios, no confíes en que el cliente haya quitado los metadatos. Elimínalos en el servidor al procesar la imagen (volver a codificarla sin copiar el bloque EXIF es lo más fiable) y conserva solo lo que necesites, como la orientación.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>Metadatos</dt><dd>Datos sobre un archivo que no se ven a simple vista: cuándo se creó, con qué aparato y, en las fotos, a veces dónde.</dd><dt>EXIF</dt><dd>Formato estándar con el que las cámaras y los móviles guardan los metadatos dentro de las fotos.</dd><dt>Geoetiqueta</dt><dd>Coordenadas de latitud y longitud que la cámara añade a una foto para indicar dónde se hizo.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://support.apple.com/es-es/guide/personal-safety/ips0d7a5df82/web" rel="noopener noreferrer">Apple: gestionar los metadatos de ubicación en Fotos</a></li><li><a href="https://support.google.com/photos/answer/9921876?hl=es" rel="noopener noreferrer">Google: cambiar los ajustes de ubicación de la cámara</a></li><li><a href="https://support.google.com/photos/answer/6153599?hl=es" rel="noopener noreferrer">Google: entender, buscar y editar la ubicación de tus fotos</a></li><li><a href="https://www.incibe.es/ciudadania/blog/que-informacion-se-oculta-detras-de-una-foto" rel="noopener noreferrer">INCIBE: ¿qué información se oculta detrás de una foto?</a></li><li><a href="https://media.defense.gov/2020/Aug/04/2002469874/-1/-1/0/Limiting%20Location%20Data%20Exposure_v1-1.PDF" rel="noopener noreferrer">NSA: Limiting Location Data Exposure (PDF, en inglés)</a></li><li><a href="https://developer.android.com/training/data-storage/shared/media#location-info-photos" rel="noopener noreferrer">Android Developers: permiso de ubicación de contenido multimedia (en inglés)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-metadatos" class="gl-pop"><strong>Metadatos</strong>Datos sobre un archivo que no se ven a simple vista: cuándo se creó, con qué aparato y, en las fotos, a veces dónde.</div><div popover id="g-exif" class="gl-pop"><strong>EXIF</strong>Formato estándar con el que las cámaras y los móviles guardan los metadatos dentro de las fotos.</div><div popover id="g-geoetiqueta" class="gl-pop"><strong>Geoetiqueta</strong>Coordenadas de latitud y longitud que la cámara añade a una foto para indicar dónde se hizo.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

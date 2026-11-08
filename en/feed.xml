@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Sat, 07 Nov 2026 07:50:40 +0100</lastBuildDate>
+  <lastBuildDate>Sun, 08 Nov 2026 07:48:12 +0100</lastBuildDate>
+  <item>
+    <title>Your photos know where you took them</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-08.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-08.html</guid>
+    <pubDate>Sun, 08 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Habits and privacy</category>
+    <description>What data rides along hidden inside a photo, when it can give away where you live, and how to share pictures without handing out your home address. — Heads-up: Apple: a 2024 WebKit flaw now under attack on unpatched devices</description>
+  </item>
   <item>
     <title>If someone steals your phone after watching you type the passcode</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-07.html</link>
