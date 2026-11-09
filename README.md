@@ -5,7 +5,12 @@
 **Ciberseguridad útil, un concepto al día.**<br>
 **Practical cybersecurity, one concept a day.**
 
-[Leer en español](https://jossseluuu.github.io/ZeroTrace/es/) · [Read in English](https://jossseluuu.github.io/ZeroTrace/en/)
+[![Content License: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-blue.svg)](LICENSE-CONTENT.md)
+[![Code License: MIT](https://img.shields.io/badge/Code-MIT-green.svg)](LICENSE)
+[![Python 3.x](https://img.shields.io/badge/Python-3.x_No_Deps-yellow.svg)](tools/)
+[![Privacy: Strict CSP](https://img.shields.io/badge/Privacy-Zero_Tracking-brightgreen.svg)](#privacidad--privacy)
+
+[🌐 Leer en español](https://jossseluuu.github.io/ZeroTrace/es/) · [🌐 Read in English](https://jossseluuu.github.io/ZeroTrace/en/)
 
 </div>
 
@@ -13,55 +18,63 @@
 
 ## 🇪🇸 Español
 
-ZeroTrace es una newsletter diaria de ciberseguridad para todos los públicos. Cada edición trata **un único concepto concreto** sobre los dispositivos que usamos de verdad: móviles, tablets, ordenadores, televisores, relojes, routers y el hogar conectado. También cubre hábitos, programación segura y qué hacer cuando algo ya ha pasado.
+**ZeroTrace** es una newsletter diaria de ciberseguridad para todos los públicos. Cada edición aborda **un único concepto concreto** enfocado en los dispositivos de uso cotidiano: móviles, tablets, ordenadores, televisores, relojes, routers y la tecnología conectada (IoT). También cubre hábitos digitales, principios de programación segura y protocolos de respuesta a incidentes.
 
-### Cómo es cada edición
+### 💡 ¿Cómo es cada edición?
 
-- **Semáforo del día.** Solo alertas relevantes: vulnerabilidades explotadas o con impacto amplio en dispositivos de uso común. Cada alerta se publica **una sola vez** y queda en el [registro de alertas](https://jossseluuu.github.io/ZeroTrace/es/alertas.html).
-- **Dos niveles de lectura.** *Básico*, para entenderlo en pocos minutos, y *A fondo*, con el mecanismo, cómo sería un ataque y una sección para perfiles técnicos.
-- **Medidas en su justa medida.** Cada medida indica su impacto, su esfuerzo y para quién es. Y cada edición explica también lo que **no** hace falta hacer.
-- **Fuentes verificables.** Ningún dato ni CVE sin enlace a una fuente primaria: INCIBE, CCN-CERT, CISA, NIST o los propios fabricantes.
-
-### Privacidad
-
-Las páginas no usan cookies, analíticas, scripts de terceros ni fuentes externas. Cada página lleva una política de seguridad de contenido (CSP) estricta que solo permite su propio código.
-
-### Estructura
-
-```
-es/          ediciones en español (.md y .html), archivo, registro de alertas y RSS
-en/          editions in English (.md and .html), archive, alert log and RSS
-data/        contenido de origen: ediciones, alertas, focos e historial
-tools/       generador (Python, sin dependencias) y publicador local
-```
-
-### Suscripción
-
-- RSS en español: `https://jossseluuu.github.io/ZeroTrace/es/feed.xml`
-- RSS in English: `https://jossseluuu.github.io/ZeroTrace/en/feed.xml`
+* 🚦 **Semáforo del Día:** Muestra alertas relevantes sobre vulnerabilidades explotadas o de amplio impacto en dispositivos comunes. Cada alerta se publica una sola vez y se archiva en el [registro de alertas](https://jossseluuu.github.io/ZeroTrace/es/alertas.html).
+* 📖 **Dos Niveles de Lectura:**
+  * **Básico:** Diseñado para entender el problema y su solución en pocos minutos.
+  * **A Fondo:** Explicación algo más técnica del mecanismo, la anatomía del ataque y la sección especializada para perfiles un poco más técnicos.
+* ⚖️ **Medidas en su Justa Medida:** Los artículos contienen indicadores explícitos de impacto, esfuerzo o incluso sobre el público objetivo. También se incluye siempre lo que no hace falta hacer para evitar una sobrecarga de trabajo.
+* 🔗 **Fuentes Verificables:** Se trata de ser totalmente transparente. Ningún dato o CVE se menciona sin su enlace directo a las fuentes primarias (INCIBE, CCN-CERT, CISA, NIST o fabricantes) desde las que se obtuvo.
 
 ---
 
 ## 🇺🇸 English
 
-ZeroTrace is a daily cybersecurity newsletter for everyone. Each edition covers **one concrete concept** about the devices people actually use: phones, tablets, computers, TVs, watches, routers, and the smart home. It also covers habits, secure coding, and what to do when something has already gone wrong.
+**ZeroTrace** is a daily cybersecurity newsletter for everyone. Each edition covers one concrete concept about everyday devices: phones, tablets, computers, TVs, watches, routers, and smart home tech. It also covers digital habits, secure coding practices, and incident response guides.
 
-### What each edition looks like
+### 💡 What each edition looks like
 
-- **Today's status.** Only alerts that matter: exploited vulnerabilities or flaws with broad impact on everyday devices. Each alert is published **only once** and kept in the [alert log](https://jossseluuu.github.io/ZeroTrace/en/alerts.html).
-- **Two reading levels.** *Basic*, to get it in a few minutes, and *Deep dive*, with the mechanism, what an attack looks like, and a section for technical readers.
-- **Right-sized advice.** Every action shows its impact, effort, and who it's for. And every edition also explains what you **don't** need to do.
-- **Verifiable sources.** No fact or CVE without a link to a primary source: CISA, NIST, the FTC, or the vendors themselves.
-
-### Privacy
-
-The pages use no cookies, analytics, third-party scripts, or external fonts. Every page ships a strict Content Security Policy that only allows its own code.
+* 🚦 **Today's Status:** Only critical alerts regarding actively exploited flaws or broad-impact vulnerabilities. Published only once and archived in the [alert log](https://jossseluuu.github.io/ZeroTrace/en/alerts.html).
+* 📖 **Two Reading Levels:**
+  * **Basic:** Clear overview to grasp the concept and take action in just a few minutes.
+  * **Deep Dive:** Technical breakdown of the mechanism, attack vector, and dedicated details for technical readers.
+* ⚖️ **Right-Sized Advice:** Every action has its impact, effort, and target audience. Includes guidance on what you don't need to do.
+* 🔗 **Verifiable Sources:** Full transparency. Every fact or CVE links directly to primary sources (CISA, NIST, FTC, or vendor advisories).
 
 ---
 
-## Licencia · License
+## 🔒 Privacidad · Privacy
 
-- Contenido de las ediciones · Edition content: [CC BY 4.0](LICENSE-CONTENT.md)
-- Código y plantillas · Code and templates: [MIT](LICENSE)
+* 🇪🇸 **Español:** Las páginas no utilizan *cookies*, analíticas, scripts de terceros ni fuentes externas. Cada página implementa una Política de Seguridad de Contenido (CSP) estricta que prohíbe la ejecución de código externo.
+* 🇺🇸 **English:** No cookies, no analytics, no third-party scripts, and no external fonts. Every page ships with a strict Content Security Policy (CSP) that only allows its own self-hosted assets.
 
-¿Has encontrado un problema de seguridad en el sitio? · Found a security issue in the site? → [SECURITY.md](SECURITY.md)
+## 📁 Estructura del repositorio · Repository Structure
+```text
+.
+├── es/         # Ediciones en español (.md y .html), archivo, alertas y RSS
+├── en/         # English editions (.md and .html), archive, alerts, and RSS
+├── data/       # Contenido fuente: ediciones, alertas, focos e historial
+└── tools/      # Generador estático (Python, 0 dependencias) y publicador local
+```
+
+## 🛠️ Desarrollo local · Local Development
+
+El sitio utiliza un generador propio escrito en Python estándar (sin librerías ni dependencias externas).
+
+```bash
+# Generar sitio web / Build site
+python3 tools/build.py
+```
+
+---
+
+## 📜 Licencia · License
+
+- Contenido · Content: [CC BY 4.0](LICENSE-CONTENT.md)
+- Código y Plantillas · Code & Templates: [MIT](LICENSE)
+
+🛡️ ¿Has encontrado un problema de seguridad en el sitio? / Found a security issue?
+Consulta nuestra política de divulgación responsable en [SECURITY.md](SECURITY.md).
