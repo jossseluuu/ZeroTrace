@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Sun, 08 Nov 2026 07:48:12 +0100</lastBuildDate>
+  <lastBuildDate>Mon, 09 Nov 2026 07:51:20 +0100</lastBuildDate>
+  <item>
+    <title>That code to &quot;vote&quot; opens your WhatsApp to someone else</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-09.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-09.html</guid>
+    <pubDate>Mon, 09 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Social engineering</category>
+    <description>How the fake contest spreading on WhatsApp works, why the device-linking code is the key to your account, and one simple rule so you never fall for it. — Heads-up: OpenSSH on Alpine Linux: a very long password lets attackers log in without the real one</description>
+  </item>
   <item>
     <title>Your photos know where you took them</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-08.html</link>

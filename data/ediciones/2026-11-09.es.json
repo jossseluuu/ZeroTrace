@@ -1,0 +1,308 @@
+{
+  "fecha": "2026-11-09",
+  "idioma": "es",
+  "foco": "ingenieria",
+  "concepto": "codigo-para-vincular-whatsapp",
+  "titulo": "Ese código para «votar» abre tu WhatsApp a otra persona",
+  "subtitulo": "Cómo funciona el falso concurso que circula por WhatsApp, por qué el código de vinculación es la llave de tu cuenta y la regla sencilla para no caer nunca.",
+  "dispositivos": [
+    "smartphone",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-09-openssh-alpine"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Te llega un WhatsApp de alguien que conoces: «¿Puedes votar por Sophie, la hija de unos amigos? Está en un concurso de baile». El enlace lleva a una web que te pide el número de teléfono y te da un **código para meter en WhatsApp**.",
+      "Ese código no registra ningún voto. Es el que usa WhatsApp para **conectar un ordenador o una tablet a tu cuenta**. Si lo escribes, el ordenador del estafador queda vinculado a tu WhatsApp: puede leer tus chats recientes y escribir a tus contactos como si fueras tú, mientras tú sigues usando el móvil con normalidad.",
+      "INCIBE avisó de esta campaña el 21/10 con importancia alta. La defensa es una regla de una línea: **un código de vinculación solo se escribe si lo ves en una pantalla tuya que tienes delante**. Y si ya ha pasado, se arregla en un minuto cerrando la sesión desconocida."
+    ],
+    "esencial": [
+      "Ningún concurso, encuesta ni soporte técnico necesita que metas un código en WhatsApp.",
+      "Si el mensaje viene de un conocido, llámale antes de hacer nada: su número puede estar en manos de otro.",
+      "Revisa de vez en cuando Dispositivos vinculados y cierra lo que no reconozcas.",
+      "Activa la verificación en dos pasos, pero recuerda que no sustituye a cerrar sesiones desconocidas."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "La campaña está activa en España y se propaga sola: cada cuenta robada envía el mismo mensaje a todos sus contactos, así que llega de alguien de confianza."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "El estafador puede leer tus conversaciones recientes, hacerse pasar por ti y pedir dinero a tu familia y amigos. El daño principal suele caer sobre tus contactos."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Una función legítima, usada al revés",
+      "parrafos": [
+        "WhatsApp permite usar tu cuenta en hasta **cuatro dispositivos vinculados** (ordenador, tablet, navegador) además del móvil principal. Una de las formas de conectarlos es «vincular con el número de teléfono»: el ordenador muestra un **código de ocho caracteres** y tú lo escribes en el móvil para autorizarlo.",
+        "El flujo legítimo empieza siempre en un aparato que tienes delante. En la estafa, el aparato que pide permiso es el del delincuente: la web falsa mete tu número en WhatsApp Web, recibe el código y te lo enseña como si fuera «tu código de votación». Al escribirlo, autorizas su ordenador."
+      ]
+    },
+    {
+      "titulo": "Qué obtiene quien vincula tu cuenta",
+      "parrafos": [
+        "Según el servicio de ayuda de WhatsApp, justo después de vincular un dispositivo el móvil le envía una copia cifrada de tu **historial de mensajes más reciente**. A partir de ahí, ese dispositivo envía y recibe mensajes por su cuenta, aunque tu móvil esté apagado.",
+        "INCIBE subraya lo más engañoso: la víctima **puede seguir usando WhatsApp con normalidad** mientras los delincuentes escriben desde la sesión vinculada. Conservar el acceso no significa que nadie más esté usando la cuenta."
+      ]
+    },
+    {
+      "titulo": "Las barreras que ya pone WhatsApp",
+      "parrafos": [
+        "Cuando vinculas con el número, el móvil muestra **la ubicación y el nombre del dispositivo** que intenta conectarse y te pide confirmarlo, a veces con tu huella o el PIN del teléfono. Si detecta un dispositivo desconocido, te pregunta si quieres vincularlo o no. Meta anunció en marzo de 2026 avisos adicionales cuando una solicitud de vinculación parece sospechosa.",
+        "Además, los dispositivos vinculados se desconectan solos tras 30 días sin uso, o si no abres WhatsApp en el móvil principal durante más de 14 días. Son buenas barreras, pero todas dependen de que **leas la pantalla antes de pulsar Confirmar**."
+      ]
+    },
+    {
+      "titulo": "Por qué funciona tan bien",
+      "parrafos": [
+        "Combina tres palancas clásicas de la [[ingenieria-social|ingeniería social]]: **confianza** (lo pide un conocido), **causa simpática** (ayudar a una niña) y **poco esfuerzo** (solo votar). Nadie sospecha de un voto.",
+        "Y se autopropaga: cada cuenta vinculada sirve para enviar el mismo concurso a una nueva lista de contactos. INCIBE advierte de que los nombres, premios y direcciones cambian, así que no busques «Sophie»: busca el patrón **«web + tu número + código para WhatsApp»**."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "El mensaje",
+      "texto": "Llega desde la cuenta real de un contacto, ya comprometida: «Vota por Sophie, la hija de unos amigos; el premio es una beca y salir al escenario»."
+    },
+    {
+      "titulo": "La web de votación",
+      "texto": "Una página simula el concurso. Al pulsar «votar» te pide tu número de teléfono, supuestamente para evitar votos duplicados."
+    },
+    {
+      "titulo": "El código",
+      "texto": "Con tu número, el delincuente inicia en su ordenador «vincular con el número de teléfono». WhatsApp le muestra un código de ocho caracteres que la web te enseña como código de voto, con instrucciones para escribirlo en WhatsApp."
+    },
+    {
+      "titulo": "La confirmación",
+      "texto": "Tu móvil te pide confirmar la vinculación y te indica el nombre y la ubicación del dispositivo. Si confirmas y escribes el código, su ordenador queda conectado a tu cuenta."
+    },
+    {
+      "titulo": "La propagación",
+      "texto": "Desde tu cuenta escribe a tus contactos: unos reciben el mismo concurso y otros, peticiones urgentes de dinero en tu nombre."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Leer el historial reciente de tus chats que se sincroniza al vincular.",
+      "Enviar mensajes, notas de voz y archivos a tus contactos y grupos como si fueras tú.",
+      "Seguir conectado aunque tu móvil esté apagado, hasta que cierres la sesión o pasen los plazos de desconexión.",
+      "Pedir dinero a tus contactos o reenviarles el mismo engaño."
+    ],
+    "no_puede": [
+      "Vincular nada solo con tu número: sin el código que escribes tú en tu móvil no hay vinculación.",
+      "Echarte de tu cuenta ni quedarse con ella como dispositivo principal: un dispositivo vinculado no puede serlo.",
+      "Mantener el acceso si cierras su sesión desde Dispositivos vinculados.",
+      "Acceder a tu banco, tus fotos o el resto del móvil: solo controla tu WhatsApp."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Aplica la regla del código",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "hábito",
+      "para": "todos",
+      "texto": "Un código de vinculación solo se escribe en el móvil si aparece en **una pantalla tuya que tienes delante** (tu ordenador, tu tablet). Si te lo da una web, un mensaje o una llamada, es una estafa. Lo mismo vale para el código de registro que te llega por SMS: INCIBE insiste en **no compartir el PIN ni los códigos de registro** con nadie.",
+      "pasos": {
+        "Siempre": [
+          "Si te piden un código para votar, participar o «verificar», no lo escribas.",
+          "Si tu móvil te pide confirmar una vinculación que no has iniciado tú, pulsa **No vincular**."
+        ]
+      }
+    },
+    {
+      "titulo": "Revisa tus dispositivos vinculados",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Es la forma de saber si alguien más usa tu cuenta y la que lo corta de raíz. WhatsApp no puede decirte quién accedió, así que no esperes a tener pruebas.",
+      "pasos": {
+        "Android": [
+          "Abre WhatsApp y toca el menú de los tres puntos > **Dispositivos vinculados**.",
+          "Toca cada dispositivo que no reconozcas y pulsa **Cerrar sesión**."
+        ],
+        "iPhone": [
+          "Abre WhatsApp y entra en **Configuración** > **Dispositivos vinculados**.",
+          "Toca cada dispositivo que no reconozcas y pulsa **Cerrar sesión**."
+        ]
+      }
+    },
+    {
+      "titulo": "Llama antes de votar, pagar o ayudar",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "INCIBE lo dice claro: que el mensaje venga del número habitual de tu contacto **no garantiza que lo haya escrito él**. Una llamada de voz corta el engaño, tanto si te piden un voto como si te piden dinero.",
+      "pasos": {
+        "Siempre": [
+          "Llama a la persona por teléfono, no le respondas por el mismo chat.",
+          "Si te confirma que no lo envió, avísale de que revise sus Dispositivos vinculados.",
+          "No reenvíes el enlace, ni siquiera para advertir a otros."
+        ]
+      }
+    },
+    {
+      "titulo": "Activa la verificación en dos pasos",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "WhatsApp la presenta como una capa extra frente a accesos no autorizados: añade un PIN a tu cuenta. INCIBE recuerda que **no sustituye a cerrar las sesiones desconocidas**: protege contra otro tipo de robo, no contra este.",
+      "pasos": {
+        "Android": [
+          "Menú de los tres puntos > **Ajustes** > **Cuenta** > **Verificación en dos pasos**.",
+          "Crea un PIN y añade un correo de recuperación al que solo tengas acceso tú."
+        ],
+        "iPhone": [
+          "**Configuración** > **Cuenta** > **Verificación en dos pasos**.",
+          "Crea un PIN y añade un correo de recuperación al que solo tengas acceso tú."
+        ]
+      }
+    },
+    {
+      "titulo": "Si ya has escrito el código",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "todos",
+      "texto": "Haber abierto el enlace o escrito tu número no vincula nada por sí solo; el problema es el código. Si lo metiste, actúa en este orden.",
+      "pasos": {
+        "Ahora": [
+          "Cierra en **Dispositivos vinculados** todas las sesiones que no reconozcas.",
+          "Avisa a tus contactos por otro canal de que ignoren mensajes raros y no paguen nada.",
+          "Guarda capturas, la dirección de la web y las fechas, y repórtalo a INCIBE.",
+          "Si alguien envió dinero, que llame ya a su banco y presente denuncia.",
+          "Vuelve a revisar los dispositivos vinculados al día siguiente; si reaparecen, contacta con el soporte de WhatsApp. Tienes la línea gratuita 017 de INCIBE para orientarte."
+        ]
+      }
+    },
+    {
+      "titulo": "Enséñaselo a quien más lo va a recibir",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "avanzado",
+      "texto": "Padres, abuelos y grupos de familia son el blanco ideal: se fían de quien escribe y quieren ayudar. Cinco minutos con ellos valen más que cualquier ajuste.",
+      "pasos": {
+        "En persona": [
+          "Abre con ellos Dispositivos vinculados en su móvil y comprobad juntos que no hay nada raro.",
+          "Repetid la regla: «Ningún código se le da a nadie, ni a una web, ni por un voto»."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "¿Hay alguien más en mi cuenta?",
+      "texto": "Entra en **Dispositivos vinculados**. Si aparece un navegador, un ordenador o una tablet que no reconoces, o una fecha de último uso que no encaja contigo, ciérralo."
+    },
+    {
+      "titulo": "¿Este mensaje es la estafa?",
+      "texto": "Si un enlace te pide tu número y luego un código para escribir en WhatsApp, sí. Da igual el nombre de la niña, el premio o quién lo envíe."
+    },
+    {
+      "titulo": "¿Tengo la verificación en dos pasos?",
+      "texto": "Mira en **Cuenta** > **Verificación en dos pasos**. Si te ofrece «Activar», todavía no la tienes."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Dejar de usar WhatsApp Web o la app de ordenador",
+      "texto": "La función es segura cuando el código sale de tu pantalla. El problema no es vincular, es vincular el aparato de otro."
+    },
+    {
+      "titulo": "Cambiar de número de teléfono",
+      "texto": "El número no es un secreto y no sirve de nada al estafador sin el código. Cerrar la sesión desconocida basta."
+    },
+    {
+      "titulo": "Instalar apps «antirrobo de WhatsApp»",
+      "texto": "La revisión de dispositivos vinculados ya está en la propia app. Las apps de terceros que prometen proteger tu WhatsApp pueden ser parte del problema: WhatsApp advierte de que las apps no oficiales ponen tu cuenta en riesgo."
+    },
+    {
+      "titulo": "Borrar todos tus chats",
+      "texto": "Lo que el estafador vio ya lo vio, y borrar no lo desconecta. Lo que corta el acceso es cerrar su sesión."
+    }
+  ],
+  "mito": {
+    "mito": "«Si sigo usando WhatsApp con normalidad, es que no me han robado la cuenta.»",
+    "realidad": "En este fraude no te echan: **añaden un dispositivo** a tu cuenta. INCIBE advierte de que la víctima puede seguir usando WhatsApp mientras los delincuentes envían mensajes desde la sesión vinculada. La única forma de saberlo es mirar **Dispositivos vinculados**.",
+    "fuente": {
+      "titulo": "INCIBE: un falso concurso de baile permite a los ciberdelincuentes utilizar tu cuenta de WhatsApp",
+      "url": "https://www.incibe.es/ciudadania/avisos/un-falso-concurso-de-baile-permite-los-ciberdelincuentes-utilizar-tu-cuenta-de"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Es un «phishing de código de dispositivo»",
+      "parrafos": [
+        "El patrón no es exclusivo de WhatsApp. Cualquier flujo en el que un aparato muestra un código y el usuario lo aprueba desde otro sitio tiene el mismo punto débil: el aparato que pide permiso puede estar en manos del atacante. El estándar OAuth 2.0 Device Authorization Grant (RFC 8628) lo describe en su apartado **5.4 «Remote Phishing»**.",
+        "Las mitigaciones que propone son las que ya aplica WhatsApp: informar al usuario de que está **autorizando un dispositivo**, mostrar información sobre ese dispositivo y pedir que confirme que lo tiene delante. Ningún diseño elimina el riesgo si el usuario confirma sin leer."
+      ]
+    },
+    {
+      "titulo": "Si diseñas un flujo parecido",
+      "parrafos": [
+        "Si tu aplicación usa códigos de emparejamiento (TV, consolas, apps de escritorio), di explícitamente en la pantalla de aprobación **«estás dando acceso a otro dispositivo»**, no «introduce tu código». Muestra el tipo de dispositivo, la ubicación aproximada y la hora, haz que el código caduque pronto y limita los dispositivos simultáneos.",
+        "Ofrece también una lista de sesiones visible y fácil de revocar, y avisa en el dispositivo principal cada vez que se vincule uno nuevo. Es lo que permite al usuario detectar el abuso después."
+      ]
+    },
+    {
+      "titulo": "Lo que no cambia el cifrado de extremo a extremo",
+      "parrafos": [
+        "WhatsApp cifra de extremo a extremo los mensajes de cada dispositivo vinculado. Eso protege frente a quien intercepta el tráfico, pero aquí el atacante **es un extremo autorizado**: recibe los mensajes ya descifrados en su dispositivo. El cifrado protege el canal; la vinculación decide quién está en cada punta."
+      ]
+    }
+  ],
+  "glosario": {
+    "ingenieria-social": [
+      "Ingeniería social",
+      "Técnicas de engaño que buscan que la víctima haga algo por sí misma (pulsar, pagar, dar un código) aprovechando la confianza, la prisa o la buena voluntad."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "INCIBE: un falso concurso de baile permite a los ciberdelincuentes utilizar tu cuenta de WhatsApp (21/10/2026)",
+      "url": "https://www.incibe.es/ciudadania/avisos/un-falso-concurso-de-baile-permite-los-ciberdelincuentes-utilizar-tu-cuenta-de"
+    },
+    {
+      "titulo": "WhatsApp: cómo vincular un dispositivo mediante un número de teléfono",
+      "url": "https://faq.whatsapp.com/1324084875126592/?locale=es_ES"
+    },
+    {
+      "titulo": "WhatsApp: cómo revisar los dispositivos vinculados y desvincular uno que no reconoces",
+      "url": "https://faq.whatsapp.com/1428782138011916/?locale=es_ES"
+    },
+    {
+      "titulo": "WhatsApp: información sobre los dispositivos vinculados",
+      "url": "https://faq.whatsapp.com/378279804439436/?locale=es_ES"
+    },
+    {
+      "titulo": "WhatsApp: historial de mensajes en dispositivos vinculados",
+      "url": "https://faq.whatsapp.com/653480766448040/?locale=es_ES"
+    },
+    {
+      "titulo": "Meta: nuevas medidas contra estafas, incluido el aviso de vinculación de WhatsApp (marzo de 2026, en inglés)",
+      "url": "https://about.fb.com/news/2026/03/fighting-scammers-protecting-people-with-new-technology-and-partnerships/"
+    },
+    {
+      "titulo": "IETF RFC 8628: OAuth 2.0 Device Authorization Grant, apartado 5.4 (en inglés)",
+      "url": "https://www.rfc-editor.org/rfc/rfc8628.html#section-5.4"
+    }
+  ]
+}

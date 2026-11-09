@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Sun, 08 Nov 2026 07:48:12 +0100</lastBuildDate>
+  <lastBuildDate>Mon, 09 Nov 2026 07:51:20 +0100</lastBuildDate>
+  <item>
+    <title>Ese código para «votar» abre tu WhatsApp a otra persona</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-09.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-09.html</guid>
+    <pubDate>Mon, 09 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Ingeniería social</category>
+    <description>Cómo funciona el falso concurso que circula por WhatsApp, por qué el código de vinculación es la llave de tu cuenta y la regla sencilla para no caer nunca. — Atención: OpenSSH en Alpine Linux: se puede entrar sin contraseña con una muy larga</description>
+  </item>
   <item>
     <title>Tus fotos dicen dónde las hiciste</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-08.html</link>

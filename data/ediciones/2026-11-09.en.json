@@ -1,0 +1,312 @@
+{
+  "fecha": "2026-11-09",
+  "idioma": "en",
+  "foco": "ingenieria",
+  "concepto": "whatsapp-linking-code",
+  "titulo": "That code to \"vote\" opens your WhatsApp to someone else",
+  "subtitulo": "How the fake contest spreading on WhatsApp works, why the device-linking code is the key to your account, and one simple rule so you never fall for it.",
+  "dispositivos": [
+    "smartphone",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-09-openssh-alpine"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "You get a WhatsApp message from someone you know: \"Can you vote for Sophie, my friends' daughter? She's in a dance contest.\" The link opens a website that asks for your phone number and gives you a **code to enter in WhatsApp**.",
+      "That code doesn't cast any vote. It's the one WhatsApp uses to **connect a computer or tablet to your account**. If you enter it, the scammer's computer gets linked to your WhatsApp: it can read your recent chats and message your contacts as if it were you, while you keep using your phone as usual.",
+      "Spain's national cybersecurity institute (INCIBE) flagged this campaign as high importance on October 21, and Meta has described the same \"talent contest\" trick. The defense is a one-line rule: **only enter a linking code if you see it on a screen of your own that's right in front of you**. And if it already happened, you can fix it in a minute by logging out the unknown session."
+    ],
+    "esencial": [
+      "No contest, poll, or support agent ever needs you to enter a code in WhatsApp.",
+      "If the message comes from someone you know, call them before doing anything: their number may be in someone else's hands.",
+      "Check Linked devices now and then and log out anything you don't recognize.",
+      "Turn on two-step verification, but remember it doesn't replace logging out unknown sessions."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "The campaign is active and spreads by itself: every hijacked account sends the same message to all its contacts, so it arrives from someone you trust."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "The scammer can read your recent conversations, impersonate you, and ask your family and friends for money. Most of the damage usually lands on your contacts."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "A legitimate feature, used backwards",
+      "parrafos": [
+        "WhatsApp lets you use your account on up to **four linked devices** (computer, tablet, browser) in addition to your main phone. One way to connect them is \"link with phone number\": the computer shows an **eight-character code** and you type it on your phone to authorize it.",
+        "The legitimate flow always starts on a device you have in front of you. In the scam, the device asking for permission belongs to the criminal: the fake site enters your number in WhatsApp Web, gets the code, and shows it to you as \"your voting code.\" When you type it, you authorize their computer."
+      ]
+    },
+    {
+      "titulo": "What someone who links your account gets",
+      "parrafos": [
+        "According to the WhatsApp Help Center, right after a device is linked, your phone sends it an encrypted copy of your **most recent message history**. From then on, that device sends and receives messages on its own, even if your phone is off.",
+        "INCIBE highlights the most misleading part: the victim **can keep using WhatsApp normally** while the criminals send messages from the linked session. Still having access doesn't mean nobody else is using the account."
+      ]
+    },
+    {
+      "titulo": "The safeguards WhatsApp already has",
+      "parrafos": [
+        "When you link with your phone number, your phone shows **the location and name of the device** trying to connect and asks you to confirm, sometimes with your fingerprint or phone PIN. If it detects an unrecognized device, it asks whether you want to link it or not. In March 2026, Meta announced extra warnings when a linking request looks suspicious.",
+        "Linked devices are also disconnected automatically after 30 days of inactivity, or if you don't use WhatsApp on your main phone for over 14 days. These are good safeguards, but all of them depend on you **reading the screen before you tap Confirm**."
+      ]
+    },
+    {
+      "titulo": "Why it works so well",
+      "parrafos": [
+        "It combines three classic levers of [[social-engineering|social engineering]]: **trust** (someone you know is asking), **a sympathetic cause** (helping a child), and **low effort** (just a vote). Nobody is suspicious of a vote.",
+        "And it spreads itself: every linked account is used to send the same contest to a new contact list. INCIBE warns that names, prizes, and web addresses change, so don't look for \"Sophie\": look for the pattern **\"website + your number + code for WhatsApp.\"**"
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The message",
+      "texto": "It comes from a contact's real account, already compromised: \"Vote for Sophie, my friends' daughter; the prize is a scholarship and a spot on stage.\""
+    },
+    {
+      "titulo": "The voting site",
+      "texto": "A web page mimics the contest. When you tap \"vote,\" it asks for your phone number, supposedly to prevent duplicate votes."
+    },
+    {
+      "titulo": "The code",
+      "texto": "With your number, the criminal starts \"link with phone number\" on their computer. WhatsApp shows them an eight-character code, which the site displays to you as a voting code, with instructions to enter it in WhatsApp."
+    },
+    {
+      "titulo": "The confirmation",
+      "texto": "Your phone asks you to confirm the link and shows the device's name and location. If you confirm and enter the code, their computer is connected to your account."
+    },
+    {
+      "titulo": "The spread",
+      "texto": "From your account, they message your contacts: some get the same contest, others get urgent requests for money in your name."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Read the recent chat history that syncs when the device is linked.",
+      "Send messages, voice notes, and files to your contacts and groups as if they were you.",
+      "Stay connected even when your phone is off, until you log them out or the disconnection deadlines pass.",
+      "Ask your contacts for money or forward the same scam to them."
+    ],
+    "no_puede": [
+      "Link anything with just your number: without the code you type on your phone, there's no link.",
+      "Kick you out of your account or take it over as the main device: a linked device can't be one.",
+      "Keep access once you log out their session from Linked devices.",
+      "Get into your bank, your photos, or the rest of your phone: they only control your WhatsApp."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Follow the code rule",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "habit",
+      "para": "todos",
+      "texto": "Only enter a linking code on your phone if it appears on **a screen of your own that's right in front of you** (your computer, your tablet). If a website, a message, or a caller gives it to you, it's a scam. The same goes for the registration code you get by text. As the FTC puts it, **anyone who asks for your verification code is a scammer**.",
+      "pasos": {
+        "Always": [
+          "If someone asks you for a code to vote, enter a contest, or \"verify,\" don't type it.",
+          "If your phone asks you to confirm a link you didn't start, tap **Don't link**."
+        ]
+      }
+    },
+    {
+      "titulo": "Check your linked devices",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "It's how you find out whether someone else is using your account, and how you cut them off. WhatsApp can't tell you who accessed your account, so don't wait for proof.",
+      "pasos": {
+        "Android": [
+          "Open WhatsApp and tap the three-dot menu > **Linked devices**.",
+          "Tap each device you don't recognize, then tap **Log out**."
+        ],
+        "iPhone": [
+          "Open WhatsApp and tap **Settings** or your profile picture > **Linked Devices**.",
+          "Tap each device you don't recognize, then tap **Log Out** > **Log Out**."
+        ]
+      }
+    },
+    {
+      "titulo": "Call before you vote, pay, or help",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "A message from your contact's usual number **doesn't guarantee they wrote it**. A quick voice call stops the scam, whether they're asking for a vote or for money.",
+      "pasos": {
+        "Always": [
+          "Call the person on the phone; don't reply in the same chat.",
+          "If they confirm they didn't send it, tell them to check their Linked devices.",
+          "Don't forward the link, not even to warn others."
+        ]
+      }
+    },
+    {
+      "titulo": "Turn on two-step verification",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "WhatsApp describes it as an extra layer against unauthorized access: it adds a PIN to your account. INCIBE points out that it **doesn't replace logging out unknown sessions**: it protects against a different kind of theft, not this one.",
+      "pasos": {
+        "Android": [
+          "Three-dot menu > **Settings** > **Account** > **Two-step verification**.",
+          "Create a PIN and add a recovery email address that only you can access."
+        ],
+        "iPhone": [
+          "**Settings** > **Account** > **Two-step verification**.",
+          "Create a PIN and add a recovery email address that only you can access."
+        ]
+      }
+    },
+    {
+      "titulo": "If you already entered the code",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "todos",
+      "texto": "Opening the link or typing your number doesn't link anything by itself; the problem is the code. If you entered it, act in this order.",
+      "pasos": {
+        "Right now": [
+          "In **Linked devices**, log out every session you don't recognize.",
+          "Warn your contacts through another channel to ignore odd messages and not send any money.",
+          "Save screenshots, the website address, and the dates, and report it to the FTC at ReportFraud.ftc.gov.",
+          "If anyone sent money, they should call their bank right away.",
+          "Check your linked devices again the next day; if unknown sessions come back, contact WhatsApp support."
+        ]
+      }
+    },
+    {
+      "titulo": "Show it to the people most likely to get it",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "avanzado",
+      "texto": "Parents, grandparents, and family group chats are the ideal target: they trust the sender and want to help. Five minutes with them is worth more than any setting.",
+      "pasos": {
+        "In person": [
+          "Open Linked devices on their phone together and check that nothing looks off.",
+          "Repeat the rule: \"Never give a code to anyone, not to a website, not for a vote.\""
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Is someone else in my account?",
+      "texto": "Go to **Linked devices**. If you see a browser, computer, or tablet you don't recognize, or a last-active time that doesn't match you, log it out."
+    },
+    {
+      "titulo": "Is this message the scam?",
+      "texto": "If a link asks for your number and then a code to enter in WhatsApp, yes. It doesn't matter what the child's name is, what the prize is, or who sent it."
+    },
+    {
+      "titulo": "Do I have two-step verification on?",
+      "texto": "Look under **Account** > **Two-step verification**. If it offers to \"Turn on,\" you don't have it yet."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Stop using WhatsApp Web or the desktop app",
+      "texto": "The feature is safe when the code comes from your own screen. The problem isn't linking; it's linking someone else's device."
+    },
+    {
+      "titulo": "Change your phone number",
+      "texto": "Your number isn't a secret, and it's useless to the scammer without the code. Logging out the unknown session is enough."
+    },
+    {
+      "titulo": "Install \"WhatsApp anti-theft\" apps",
+      "texto": "Linked-device review is already built into the app. Third-party apps that promise to protect your WhatsApp can be part of the problem: WhatsApp warns that unofficial apps put your account at risk."
+    },
+    {
+      "titulo": "Delete all your chats",
+      "texto": "Whatever the scammer saw, they already saw, and deleting doesn't disconnect them. Logging out their session is what cuts off access."
+    }
+  ],
+  "mito": {
+    "mito": "\"If I can still use WhatsApp normally, my account hasn't been hijacked.\"",
+    "realidad": "In this scam they don't lock you out: they **add a device** to your account. INCIBE warns that victims can keep using WhatsApp while criminals send messages from the linked session. The only way to know is to check **Linked devices**.",
+    "fuente": {
+      "titulo": "INCIBE: A fake dance contest lets cybercriminals use your WhatsApp account (in Spanish)",
+      "url": "https://www.incibe.es/ciudadania/avisos/un-falso-concurso-de-baile-permite-los-ciberdelincuentes-utilizar-tu-cuenta-de"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "It's \"device code phishing\"",
+      "parrafos": [
+        "The pattern isn't unique to WhatsApp. Any flow where one device shows a code and the user approves it somewhere else has the same weak spot: the device asking for permission may be in the attacker's hands. The OAuth 2.0 Device Authorization Grant standard (RFC 8628) describes it in section **5.4, \"Remote Phishing.\"**",
+        "The mitigations it suggests are the ones WhatsApp already applies: tell the user they're **authorizing a device**, display information about that device, and ask them to confirm it's in their possession. No design removes the risk if the user confirms without reading."
+      ]
+    },
+    {
+      "titulo": "If you're designing a similar flow",
+      "parrafos": [
+        "If your app uses pairing codes (TVs, consoles, desktop apps), say explicitly on the approval screen **\"you're giving another device access,\"** not \"enter your code.\" Show the device type, approximate location, and time, make the code expire quickly, and cap the number of simultaneous devices.",
+        "Also provide a visible, easy-to-revoke session list, and notify the main device every time a new one is linked. That's what lets users spot abuse after the fact."
+      ]
+    },
+    {
+      "titulo": "What end-to-end encryption doesn't change",
+      "parrafos": [
+        "WhatsApp end-to-end encrypts messages for each linked device. That protects against anyone intercepting traffic, but here the attacker **is an authorized endpoint**: they receive messages already decrypted on their device. Encryption protects the channel; linking decides who's at each end."
+      ]
+    }
+  ],
+  "glosario": {
+    "social-engineering": [
+      "Social engineering",
+      "Deception techniques that get victims to do something themselves (click, pay, hand over a code) by exploiting trust, urgency, or goodwill."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "WhatsApp: How to link a device with phone number",
+      "url": "https://faq.whatsapp.com/1324084875126592/?locale=en_US"
+    },
+    {
+      "titulo": "WhatsApp: How to check devices linked to your account and unlink a device you don't recognize",
+      "url": "https://faq.whatsapp.com/1428782138011916/?locale=en_US"
+    },
+    {
+      "titulo": "WhatsApp: About linked devices",
+      "url": "https://faq.whatsapp.com/378279804439436/?locale=en_US"
+    },
+    {
+      "titulo": "WhatsApp: About message history on linked devices",
+      "url": "https://faq.whatsapp.com/653480766448040/?locale=en_US"
+    },
+    {
+      "titulo": "Meta: Fighting Scammers and Protecting People With New Technology and Partnerships (March 2026)",
+      "url": "https://about.fb.com/news/2026/03/fighting-scammers-protecting-people-with-new-technology-and-partnerships/"
+    },
+    {
+      "titulo": "FTC: What's a verification code and why would someone ask me for it?",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/03/whats-verification-code-why-would-someone-ask-me-it"
+    },
+    {
+      "titulo": "INCIBE: A fake dance contest lets cybercriminals use your WhatsApp account (Oct 21, 2026, in Spanish)",
+      "url": "https://www.incibe.es/ciudadania/avisos/un-falso-concurso-de-baile-permite-los-ciberdelincuentes-utilizar-tu-cuenta-de"
+    },
+    {
+      "titulo": "IETF RFC 8628: OAuth 2.0 Device Authorization Grant, section 5.4",
+      "url": "https://www.rfc-editor.org/rfc/rfc8628.html#section-5.4"
+    }
+  ]
+}

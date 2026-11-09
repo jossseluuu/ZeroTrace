@@ -4,6 +4,7 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [09/11/2026](ediciones/2026/11/2026-11-09.md) | Atención | OpenSSH en Alpine Linux: se puede entrar sin contraseña con una muy larga | CVE-2026-123158 |
 | [08/11/2026](ediciones/2026/11/2026-11-08.md) | Atención | Apple: un fallo de WebKit de 2024, ahora atacado en dispositivos sin actualizar | CVE-2024-27834 |
 | [07/11/2026](ediciones/2026/11/2026-11-07.md) | Crítico | SonicWall: fallo en la VPN SSL que permite saltarse el SAML, ya explotado | CVE-2026-19868 |
 | [07/11/2026](ediciones/2026/11/2026-11-07.md) | Atención | Switches Zyxel GS1900: fallo atacado que esquivaba el parche anterior | CVE-2026-107441 |

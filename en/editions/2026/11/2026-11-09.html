@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="How the fake contest spreading on WhatsApp works, why the device-linking code is the key to your account, and one simple rule so you never fall for it.">
+<title>That code to &quot;vote&quot; opens your WhatsApp to someone else · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-09.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-09.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Monday, November 9, 2026 · 🎣 Social engineering</p>
+<h1>That code to "vote" opens your WhatsApp to someone else</h1><p class="sub">How the fake contest spreading on WhatsApp works, why the device-linking code is the key to your account, and one simple rule so you never fall for it.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 9 min</li><li>📱 Smartphone</li><li>💻 Laptop</li><li>🖥️ Desktop</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-09-openssh-alpine">
+<header><span class="pill amarillo">Heads-up</span><h3>OpenSSH on Alpine Linux: a very long password lets attackers log in without the real one</h3></header>
+<dl><dt>Who it affects</dt><dd>Servers and VMs running <strong>Alpine Linux</strong> (or another musl-based system without PAM) with the SSH server on, <strong>password login</strong> enabled, and some account without a password of its own. Containers that don't run sshd aren't affected, and neither are most distributions (Debian, Ubuntu, and Fedora use glibc).</dd>
+<dt>What to do</dt><dd>Update openssh (<code>apk upgrade -U -a</code>) and <strong>restart sshd</strong>: upgrading the package doesn't restart the service. If you can't right now, set <code>PasswordAuthentication no</code> in your sshd configuration.</dd>
+<dt class="deep">Details</dt><dd class="deep">With a password between 257 and 1,024 bytes, an attacker who can reach the SSH port can log in to accounts whose password field is <code>*</code> (key-only accounts, or root in the base image) if another account on the machine has a password. Alpine published it on November 5 alongside OpenSSH 10.6p2; vendors don't report active exploitation, but it's trivial to exploit.<div class="cves"><code>CVE-2026-123158</code></div></dd></dl>
+<p class="src"><a href="https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass/" rel="noopener noreferrer">Alpine Linux: openssh-server password authentication bypass advisory (Nov 5)</a> · <a href="https://www.openssh.org/releasenotes.html#10.6p2" rel="noopener noreferrer">OpenSSH: 10.6p2 release notes</a> · <a href="https://security.alpinelinux.org/vuln/CVE-2026-123158" rel="noopener noreferrer">Alpine Security Tracker: CVE-2026-123158</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>You get a WhatsApp message from someone you know: "Can you vote for Sophie, my friends' daughter? She's in a dance contest." The link opens a website that asks for your phone number and gives you a <strong>code to enter in WhatsApp</strong>.</p><p>That code doesn't cast any vote. It's the one WhatsApp uses to <strong>connect a computer or tablet to your account</strong>. If you enter it, the scammer's computer gets linked to your WhatsApp: it can read your recent chats and message your contacts as if it were you, while you keep using your phone as usual.</p><p>Spain's national cybersecurity institute (INCIBE) flagged this campaign as high importance on October 21, and Meta has described the same "talent contest" trick. The defense is a one-line rule: <strong>only enter a linking code if you see it on a screen of your own that's right in front of you</strong>. And if it already happened, you can fix it in a minute by logging out the unknown session.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>No contest, poll, or support agent ever needs you to enter a code in WhatsApp.</li><li>If the message comes from someone you know, call them before doing anything: their number may be in someone else's hands.</li><li>Check Linked devices now and then and log out anything you don't recognize.</li><li>Turn on two-step verification, but remember it doesn't replace logging out unknown sessions.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>The campaign is active and spreads by itself: every hijacked account sends the same message to all its contacts, so it arrives from someone you trust.</p></div><div class="medidor"><div class="top"><span>Impact: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>The scammer can read your recent conversations, impersonate you, and ask your family and friends for money. Most of the damage usually lands on your contacts.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>A legitimate feature, used backwards</h3><p>WhatsApp lets you use your account on up to <strong>four linked devices</strong> (computer, tablet, browser) in addition to your main phone. One way to connect them is "link with phone number": the computer shows an <strong>eight-character code</strong> and you type it on your phone to authorize it.</p><p>The legitimate flow always starts on a device you have in front of you. In the scam, the device asking for permission belongs to the criminal: the fake site enters your number in WhatsApp Web, gets the code, and shows it to you as "your voting code." When you type it, you authorize their computer.</p><h3>What someone who links your account gets</h3><p>According to the WhatsApp Help Center, right after a device is linked, your phone sends it an encrypted copy of your <strong>most recent message history</strong>. From then on, that device sends and receives messages on its own, even if your phone is off.</p><p>INCIBE highlights the most misleading part: the victim <strong>can keep using WhatsApp normally</strong> while the criminals send messages from the linked session. Still having access doesn't mean nobody else is using the account.</p><h3>The safeguards WhatsApp already has</h3><p>When you link with your phone number, your phone shows <strong>the location and name of the device</strong> trying to connect and asks you to confirm, sometimes with your fingerprint or phone PIN. If it detects an unrecognized device, it asks whether you want to link it or not. In March 2026, Meta announced extra warnings when a linking request looks suspicious.</p><p>Linked devices are also disconnected automatically after 30 days of inactivity, or if you don't use WhatsApp on your main phone for over 14 days. These are good safeguards, but all of them depend on you <strong>reading the screen before you tap Confirm</strong>.</p><h3>Why it works so well</h3><p>It combines three classic levers of <button type="button" class="term" popovertarget="g-social-engineering">social engineering</button>: <strong>trust</strong> (someone you know is asking), <strong>a sympathetic cause</strong> (helping a child), and <strong>low effort</strong> (just a vote). Nobody is suspicious of a vote.</p><p>And it spreads itself: every linked account is used to send the same contest to a new contact list. INCIBE warns that names, prizes, and web addresses change, so don't look for "Sophie": look for the pattern <strong>"website + your number + code for WhatsApp."</strong></p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>The message</strong><p>It comes from a contact's real account, already compromised: "Vote for Sophie, my friends' daughter; the prize is a scholarship and a spot on stage."</p></li><li><strong>The voting site</strong><p>A web page mimics the contest. When you tap "vote," it asks for your phone number, supposedly to prevent duplicate votes.</p></li><li><strong>The code</strong><p>With your number, the criminal starts "link with phone number" on their computer. WhatsApp shows them an eight-character code, which the site displays to you as a voting code, with instructions to enter it in WhatsApp.</p></li><li><strong>The confirmation</strong><p>Your phone asks you to confirm the link and shows the device's name and location. If you confirm and enter the code, their computer is connected to your account.</p></li><li><strong>The spread</strong><p>From your account, they message your contacts: some get the same contest, others get urgent requests for money in your name.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Read the recent chat history that syncs when the device is linked.</li><li>Send messages, voice notes, and files to your contacts and groups as if they were you.</li><li>Stay connected even when your phone is off, until you log them out or the disconnection deadlines pass.</li><li>Ask your contacts for money or forward the same scam to them.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>Link anything with just your number: without the code you type on your phone, there's no link.</li><li>Kick you out of your account or take it over as the main device: a linked device can't be one.</li><li>Keep access once you log out their session from Linked devices.</li><li>Get into your bank, your photos, or the rest of your phone: they only control your WhatsApp.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Follow the code rule</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>Only enter a linking code on your phone if it appears on <strong>a screen of your own that's right in front of you</strong> (your computer, your tablet). If a website, a message, or a caller gives it to you, it's a scam. The same goes for the registration code you get by text. As the FTC puts it, <strong>anyone who asks for your verification code is a scammer</strong>.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>If someone asks you for a code to vote, enter a contest, or "verify," don't type it.</li><li>If your phone asks you to confirm a link you didn't start, tap <strong>Don't link</strong>.</li></ol></div></div></article><article class="medida"><h3>Check your linked devices</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: everyone</li></ul>
+<p>It's how you find out whether someone else is using your account, and how you cut them off. WhatsApp can't tell you who accessed your account, so don't wait for proof.</p><div class="plataformas"><div class="plataforma"><h4>Android</h4><ol><li>Open WhatsApp and tap the three-dot menu &gt; <strong>Linked devices</strong>.</li><li>Tap each device you don't recognize, then tap <strong>Log out</strong>.</li></ol></div><div class="plataforma"><h4>iPhone</h4><ol><li>Open WhatsApp and tap <strong>Settings</strong> or your profile picture &gt; <strong>Linked Devices</strong>.</li><li>Tap each device you don't recognize, then tap <strong>Log Out</strong> &gt; <strong>Log Out</strong>.</li></ol></div></div></article><article class="medida"><h3>Call before you vote, pay, or help</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: everyone</li></ul>
+<p>A message from your contact's usual number <strong>doesn't guarantee they wrote it</strong>. A quick voice call stops the scam, whether they're asking for a vote or for money.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>Call the person on the phone; don't reply in the same chat.</li><li>If they confirm they didn't send it, tell them to check their Linked devices.</li><li>Don't forward the link, not even to warn others.</li></ol></div></div></article><article class="medida"><h3>Turn on two-step verification</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: everyone</li></ul>
+<p>WhatsApp describes it as an extra layer against unauthorized access: it adds a PIN to your account. INCIBE points out that it <strong>doesn't replace logging out unknown sessions</strong>: it protects against a different kind of theft, not this one.</p><div class="plataformas"><div class="plataforma"><h4>Android</h4><ol><li>Three-dot menu &gt; <strong>Settings</strong> &gt; <strong>Account</strong> &gt; <strong>Two-step verification</strong>.</li><li>Create a PIN and add a recovery email address that only you can access.</li></ol></div><div class="plataforma"><h4>iPhone</h4><ol><li><strong>Settings</strong> &gt; <strong>Account</strong> &gt; <strong>Two-step verification</strong>.</li><li>Create a PIN and add a recovery email address that only you can access.</li></ol></div></div></article><article class="medida"><h3>If you already entered the code</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: medium</li>
+<li>⏱ 10 min</li><li>For: everyone</li></ul>
+<p>Opening the link or typing your number doesn't link anything by itself; the problem is the code. If you entered it, act in this order.</p><div class="plataformas"><div class="plataforma"><h4>Right now</h4><ol><li>In <strong>Linked devices</strong>, log out every session you don't recognize.</li><li>Warn your contacts through another channel to ignore odd messages and not send any money.</li><li>Save screenshots, the website address, and the dates, and report it to the FTC at ReportFraud.ftc.gov.</li><li>If anyone sent money, they should call their bank right away.</li><li>Check your linked devices again the next day; if unknown sessions come back, contact WhatsApp support.</li></ol></div></div></article><article class="medida deep"><h3>Show it to the people most likely to get it<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: advanced</li></ul>
+<p>Parents, grandparents, and family group chats are the ideal target: they trust the sender and want to help. Five minutes with them is worth more than any setting.</p><div class="plataformas"><div class="plataforma"><h4>In person</h4><ol><li>Open Linked devices on their phone together and check that nothing looks off.</li><li>Repeat the rule: "Never give a code to anyone, not to a website, not for a vote."</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>Is someone else in my account?</h3><p>Go to <strong>Linked devices</strong>. If you see a browser, computer, or tablet you don't recognize, or a last-active time that doesn't match you, log it out.</p></div><div class="fila"><h3>Is this message the scam?</h3><p>If a link asks for your number and then a code to enter in WhatsApp, yes. It doesn't matter what the child's name is, what the prize is, or who sent it.</p></div><div class="fila"><h3>Do I have two-step verification on?</h3><p>Look under <strong>Account</strong> &gt; <strong>Two-step verification</strong>. If it offers to "Turn on," you don't have it yet.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Stop using WhatsApp Web or the desktop app</h3><p>The feature is safe when the code comes from your own screen. The problem isn't linking; it's linking someone else's device.</p></div><div class="fila"><h3>Change your phone number</h3><p>Your number isn't a secret, and it's useless to the scammer without the code. Logging out the unknown session is enough.</p></div><div class="fila"><h3>Install "WhatsApp anti-theft" apps</h3><p>Linked-device review is already built into the app. Third-party apps that promise to protect your WhatsApp can be part of the problem: WhatsApp warns that unofficial apps put your account at risk.</p></div><div class="fila"><h3>Delete all your chats</h3><p>Whatever the scammer saw, they already saw, and deleting doesn't disconnect them. Logging out their session is what cuts off access.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"If I can still use WhatsApp normally, my account hasn't been hijacked."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>In this scam they don't lock you out: they <strong>add a device</strong> to your account. INCIBE warns that victims can keep using WhatsApp while criminals send messages from the linked session. The only way to know is to check <strong>Linked devices</strong>.</p><p class="src"><a href="https://www.incibe.es/ciudadania/avisos/un-falso-concurso-de-baile-permite-los-ciberdelincuentes-utilizar-tu-cuenta-de" rel="noopener noreferrer">INCIBE: A fake dance contest lets cybercriminals use your WhatsApp account (in Spanish)</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>It's "device code phishing"</h3><p>The pattern isn't unique to WhatsApp. Any flow where one device shows a code and the user approves it somewhere else has the same weak spot: the device asking for permission may be in the attacker's hands. The OAuth 2.0 Device Authorization Grant standard (RFC 8628) describes it in section <strong>5.4, "Remote Phishing."</strong></p><p>The mitigations it suggests are the ones WhatsApp already applies: tell the user they're <strong>authorizing a device</strong>, display information about that device, and ask them to confirm it's in their possession. No design removes the risk if the user confirms without reading.</p><h3>If you're designing a similar flow</h3><p>If your app uses pairing codes (TVs, consoles, desktop apps), say explicitly on the approval screen <strong>"you're giving another device access,"</strong> not "enter your code." Show the device type, approximate location, and time, make the code expire quickly, and cap the number of simultaneous devices.</p><p>Also provide a visible, easy-to-revoke session list, and notify the main device every time a new one is linked. That's what lets users spot abuse after the fact.</p><h3>What end-to-end encryption doesn't change</h3><p>WhatsApp end-to-end encrypts messages for each linked device. That protects against anyone intercepting traffic, but here the attacker <strong>is an authorized endpoint</strong>: they receive messages already decrypted on their device. Encryption protects the channel; linking decides who's at each end.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Social engineering</dt><dd>Deception techniques that get victims to do something themselves (click, pay, hand over a code) by exploiting trust, urgency, or goodwill.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://faq.whatsapp.com/1324084875126592/?locale=en_US" rel="noopener noreferrer">WhatsApp: How to link a device with phone number</a></li><li><a href="https://faq.whatsapp.com/1428782138011916/?locale=en_US" rel="noopener noreferrer">WhatsApp: How to check devices linked to your account and unlink a device you don&#x27;t recognize</a></li><li><a href="https://faq.whatsapp.com/378279804439436/?locale=en_US" rel="noopener noreferrer">WhatsApp: About linked devices</a></li><li><a href="https://faq.whatsapp.com/653480766448040/?locale=en_US" rel="noopener noreferrer">WhatsApp: About message history on linked devices</a></li><li><a href="https://about.fb.com/news/2026/03/fighting-scammers-protecting-people-with-new-technology-and-partnerships/" rel="noopener noreferrer">Meta: Fighting Scammers and Protecting People With New Technology and Partnerships (March 2026)</a></li><li><a href="https://consumer.ftc.gov/consumer-alerts/2024/03/whats-verification-code-why-would-someone-ask-me-it" rel="noopener noreferrer">FTC: What&#x27;s a verification code and why would someone ask me for it?</a></li><li><a href="https://www.incibe.es/ciudadania/avisos/un-falso-concurso-de-baile-permite-los-ciberdelincuentes-utilizar-tu-cuenta-de" rel="noopener noreferrer">INCIBE: A fake dance contest lets cybercriminals use your WhatsApp account (Oct 21, 2026, in Spanish)</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc8628.html#section-5.4" rel="noopener noreferrer">IETF RFC 8628: OAuth 2.0 Device Authorization Grant, section 5.4</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-social-engineering" class="gl-pop"><strong>Social engineering</strong>Deception techniques that get victims to do something themselves (click, pay, hand over a code) by exploiting trust, urgency, or goodwill.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

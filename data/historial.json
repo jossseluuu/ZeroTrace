@@ -1,7 +1,8 @@
 {
-  "actualizado": "2026-11-08T07:48:12+01:00",
+  "actualizado": "2026-11-09T07:51:20+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "ingenieria",
     "habitos",
     "smartphones",
     "sobremesa",
@@ -45,9 +46,24 @@
         "fecha": "2026-11-08",
         "concepto": "ubicacion-escondida-en-las-fotos"
       }
+    ],
+    "ingenieria": [
+      {
+        "fecha": "2026-11-09",
+        "concepto": "codigo-para-vincular-whatsapp"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-09",
+      "foco": "ingenieria",
+      "concepto": "codigo-para-vincular-whatsapp",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-09-openssh-alpine"
+      ]
+    },
     {
       "fecha": "2026-11-08",
       "foco": "habitos",

@@ -395,5 +395,51 @@
         "url": "https://www.cisa.gov/news-events/alerts/2026/11/04/cisa-adds-one-known-exploited-vulnerability-catalog"
       }
     ]
+  },
+  {
+    "id": "2026-11-09-openssh-alpine",
+    "fecha": "2026-11-09",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-123158"
+    ],
+    "dispositivos": [
+      "servidor"
+    ],
+    "es": {
+      "titulo": "OpenSSH en Alpine Linux: se puede entrar sin contraseña con una muy larga",
+      "afecta": "Servidores y máquinas virtuales con **Alpine Linux** (u otro sistema con musl y sin PAM) que tengan el servidor SSH activo con **acceso por contraseña** y alguna cuenta sin contraseña propia. No afecta a contenedores que no ejecuten sshd ni a la mayoría de distribuciones (Debian, Ubuntu, Fedora usan glibc).",
+      "accion": "Actualiza openssh (`apk upgrade -U -a`) y **reinicia sshd**: actualizar el paquete no reinicia el servicio. Si no puedes ahora, pon `PasswordAuthentication no` en la configuración de sshd.",
+      "detalle": "Con una contraseña de entre 257 y 1024 bytes, un atacante que llegue al puerto SSH puede entrar en cuentas cuyo campo de contraseña es `*` (las de solo clave o root en la imagen base) si en la máquina existe otra cuenta con contraseña. Alpine lo publicó el 05/11 junto a OpenSSH 10.6p2; los fabricantes no indican explotación activa, pero es trivial de aprovechar."
+    },
+    "en": {
+      "titulo": "OpenSSH on Alpine Linux: a very long password lets attackers log in without the real one",
+      "afecta": "Servers and VMs running **Alpine Linux** (or another musl-based system without PAM) with the SSH server on, **password login** enabled, and some account without a password of its own. Containers that don't run sshd aren't affected, and neither are most distributions (Debian, Ubuntu, and Fedora use glibc).",
+      "accion": "Update openssh (`apk upgrade -U -a`) and **restart sshd**: upgrading the package doesn't restart the service. If you can't right now, set `PasswordAuthentication no` in your sshd configuration.",
+      "detalle": "With a password between 257 and 1,024 bytes, an attacker who can reach the SSH port can log in to accounts whose password field is `*` (key-only accounts, or root in the base image) if another account on the machine has a password. Alpine published it on November 5 alongside OpenSSH 10.6p2; vendors don't report active exploitation, but it's trivial to exploit."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Alpine Linux: aviso de seguridad de openssh-server (05/11)",
+          "en": "Alpine Linux: openssh-server password authentication bypass advisory (Nov 5)"
+        },
+        "url": "https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass/"
+      },
+      {
+        "titulo": {
+          "es": "OpenSSH: notas de la versión 10.6p2",
+          "en": "OpenSSH: 10.6p2 release notes"
+        },
+        "url": "https://www.openssh.org/releasenotes.html#10.6p2"
+      },
+      {
+        "titulo": {
+          "es": "Alpine Security Tracker: CVE-2026-123158",
+          "en": "Alpine Security Tracker: CVE-2026-123158"
+        },
+        "url": "https://security.alpinelinux.org/vuln/CVE-2026-123158"
+      }
+    ]
   }
 ]
