@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Mon, 09 Nov 2026 07:51:20 +0100</lastBuildDate>
+  <lastBuildDate>Tue, 10 Nov 2026 07:48:21 +0100</lastBuildDate>
+  <item>
+    <title>That bargain Android tablet may come with a stowaway installed at the factory</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-10.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-10.html</guid>
+    <pubDate>Tue, 10 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Tablets / iPad</category>
+    <description>What an &quot;uncertified&quot; tablet is, why some arrive with a backdoor already on board, and the one-minute check to do before and after you buy.</description>
+  </item>
   <item>
     <title>That code to &quot;vote&quot; opens your WhatsApp to someone else</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-09.html</link>

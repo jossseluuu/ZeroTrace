@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Mon, 09 Nov 2026 07:51:20 +0100</lastBuildDate>
+  <lastBuildDate>Tue, 10 Nov 2026 07:48:21 +0100</lastBuildDate>
+  <item>
+    <title>Esa tablet Android tan barata puede traer un intruso de fábrica</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-10.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-10.html</guid>
+    <pubDate>Tue, 10 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Tablets / iPad</category>
+    <description>Qué es una tablet «no certificada», por qué algunas llegan a casa con una puerta trasera instalada y la comprobación de un minuto que deberías hacer antes y después de comprarla.</description>
+  </item>
   <item>
     <title>Ese código para «votar» abre tu WhatsApp a otra persona</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-09.html</link>

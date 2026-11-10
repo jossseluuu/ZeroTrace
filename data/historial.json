@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-09T07:51:20+01:00",
+  "actualizado": "2026-11-10T07:48:21+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "tablets",
     "ingenieria",
     "habitos",
     "smartphones",
     "sobremesa",
     "transito",
-    "portatiles",
-    "smart-tv"
+    "portatiles"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -52,9 +52,22 @@
         "fecha": "2026-11-09",
         "concepto": "codigo-para-vincular-whatsapp"
       }
+    ],
+    "tablets": [
+      {
+        "fecha": "2026-11-10",
+        "concepto": "tablet-android-sin-certificar"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-10",
+      "foco": "tablets",
+      "concepto": "tablet-android-sin-certificar",
+      "semaforo": "verde",
+      "alertas": []
+    },
     {
       "fecha": "2026-11-09",
       "foco": "ingenieria",
