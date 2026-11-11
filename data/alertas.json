@@ -441,5 +441,101 @@
         "url": "https://security.alpinelinux.org/vuln/CVE-2026-123158"
       }
     ]
+  },
+  {
+    "id": "2026-11-11-chrome-xml",
+    "fecha": "2026-11-11",
+    "nivel": "rojo",
+    "cves": [
+      "CVE-2026-125350"
+    ],
+    "dispositivos": [
+      "portatil",
+      "sobremesa",
+      "smartphone",
+      "tablet"
+    ],
+    "es": {
+      "titulo": "Chrome: fallo en el procesado de XML que ya se está explotando",
+      "afecta": "**Google Chrome** en Windows, Mac, Linux y Android anterior a la versión **157.0.8103.50**. Otros navegadores basados en Chromium (Edge, Brave, Opera…) suelen recibir el mismo arreglo días después.",
+      "accion": "Actualiza Chrome a **157.0.8103.50/.51** (Windows y Mac) o **157.0.8103.50** (Linux y Android): menú ⋮ > Ayuda > Información de Google Chrome, y pulsa **Reiniciar**. En el canal Extended Stable, la versión corregida es la **156.0.8078.96**.",
+      "detalle": "Google avisa de que existe un exploit para CVE-2026-125350 en circulación. Es un fallo de uso de memoria liberada (*use after free*) en el componente XML, de gravedad alta, notificado el 06/11 y corregido el 09/11. CISA lo añadió a su catálogo [[kev|KEV]] el 10/11."
+    },
+    "en": {
+      "titulo": "Chrome: XML processing flaw already being exploited",
+      "afecta": "**Google Chrome** on Windows, Mac, Linux, and Android before version **157.0.8103.50**. Other Chromium-based browsers (Edge, Brave, Opera, etc.) usually get the same fix a few days later.",
+      "accion": "Update Chrome to **157.0.8103.50/.51** (Windows and Mac) or **157.0.8103.50** (Linux and Android): ⋮ menu > Help > About Google Chrome, then click **Relaunch**. On the Extended Stable channel, the fixed version is **156.0.8078.96**.",
+      "detalle": "Google says an exploit for CVE-2026-125350 exists in the wild. It's a high-severity use-after-free bug in the XML component, reported on November 6 and fixed on November 9. CISA added it to its [[kev|KEV]] catalog on November 10."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Google: actualización estable de Chrome para escritorio (09/11)",
+          "en": "Google: Chrome Stable Channel Update for Desktop (Nov 9)"
+        },
+        "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html"
+      },
+      {
+        "titulo": {
+          "es": "Google: actualización de Chrome para Android (09/11)",
+          "en": "Google: Chrome for Android Update (Nov 9)"
+        },
+        "url": "https://chromereleases.googleblog.com/2026/11/chrome-for-android-update_01533302390.html"
+      },
+      {
+        "titulo": {
+          "es": "CISA: seis vulnerabilidades añadidas al catálogo KEV (10/11)",
+          "en": "CISA Adds Six Known Exploited Vulnerabilities to Catalog (Nov 10)"
+        },
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-11-outlook-ntlm",
+    "fecha": "2026-11-11",
+    "nivel": "rojo",
+    "cves": [
+      "CVE-2026-124194"
+    ],
+    "dispositivos": [
+      "portatil",
+      "sobremesa"
+    ],
+    "es": {
+      "titulo": "Outlook: un archivo manipulado entrega la huella de tu contraseña, ya explotado",
+      "afecta": "**Outlook** de escritorio incluido en **Microsoft 365 Apps** y **Office LTSC 2021 y 2024**, sin la actualización de seguridad del 10/11.",
+      "accion": "Actualiza Office: en Outlook, **Archivo > Cuenta de Office > Opciones de actualización > Actualizar ahora**, y reinicia la aplicación. No abras archivos de Office o mensajes adjuntos inesperados aunque parezcan de alguien conocido.",
+      "detalle": "Es una vulnerabilidad de suplantación (CVSS 6,5) que Microsoft corrigió en su boletín mensual del 10/11, junto a más de 1.000 fallos más. Al abrir un archivo manipulado, Outlook se conecta a un servidor del atacante y le entrega el [[ntlm|hash NTLMv2]] de la víctima, que puede servir para descifrar la contraseña o suplantarla en la red. Se ha explotado como día cero y CISA la añadió a su catálogo [[kev|KEV]] el 10/11."
+    },
+    "en": {
+      "titulo": "Outlook: a crafted file hands over your password hash, already exploited",
+      "afecta": "Desktop **Outlook** in **Microsoft 365 Apps** and **Office LTSC 2021 and 2024**, without the November 10 security update.",
+      "accion": "Update Office: in Outlook, go to **File > Office Account > Update Options > Update Now**, then restart the app. Don't open unexpected Office files or attachments, even if they seem to come from someone you know.",
+      "detalle": "It's a spoofing vulnerability (CVSS 6.5) that Microsoft fixed in its November 10 Patch Tuesday, along with more than 1,000 other flaws. Opening a crafted file makes Outlook connect to an attacker's server and hand over the victim's [[ntlm|NTLMv2 hash]], which can be used to crack the password or impersonate the user on the network. It was exploited as a zero-day, and CISA added it to its [[kev|KEV]] catalog on November 10."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Microsoft: guía de actualizaciones de seguridad, CVE-2026-124194",
+          "en": "Microsoft Security Update Guide: CVE-2026-124194"
+        },
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124194"
+      },
+      {
+        "titulo": {
+          "es": "CISA: seis vulnerabilidades añadidas al catálogo KEV (10/11)",
+          "en": "CISA Adds Six Known Exploited Vulnerabilities to Catalog (Nov 10)"
+        },
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog"
+      },
+      {
+        "titulo": {
+          "es": "Tenable: análisis del Patch Tuesday de noviembre de 2026",
+          "en": "Tenable: Microsoft's November 2026 Patch Tuesday"
+        },
+        "url": "https://www.tenable.com/blog/microsoft-november-2026-patch-tuesday-addresses-1093-cves-cve-2026-124194"
+      }
+    ]
   }
 ]

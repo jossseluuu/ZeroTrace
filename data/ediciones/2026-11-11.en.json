@@ -1,0 +1,348 @@
+{
+  "fecha": "2026-11-11",
+  "idioma": "en",
+  "foco": "copias",
+  "concepto": "sync-is-not-backup",
+  "titulo": "Having your files in the cloud isn't the same as having a backup",
+  "subtitulo": "Why OneDrive, iCloud Drive, and Google Drive delete and encrypt right along with you, what safety net they really give you, and the copy you're missing.",
+  "dispositivos": [
+    "portatil",
+    "sobremesa",
+    "smartphone",
+    "tablet"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "rojo",
+    "alertas": [
+      "2026-11-11-chrome-xml",
+      "2026-11-11-outlook-ntlm"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Lots of people assume that because their documents and photos are \"in the cloud,\" they're backed up. But OneDrive, iCloud Drive, and Google Drive **sync**: they keep the same version of your files on all your devices.",
+      "That's incredibly convenient until something goes wrong. If you delete a folder by mistake, **it's deleted in the cloud and on your other devices too**. If [[ransomware|ransomware]] encrypts the files on your laptop, the encrypted versions get uploaded and replace the good ones.",
+      "The cloud gives you a limited safety net (usually **30 days** of trash and file versions). A real backup is something else: a **separate** copy that doesn't change when the original does, and that you can get back even if you lose access to your account."
+    ],
+    "esencial": [
+      "Syncing isn't backing up: whatever gets deleted or damaged on one device is copied to all of them.",
+      "If you delete something important, you have about 30 days to rescue it from the cloud's trash.",
+      "Also keep a copy on an external drive that you unplug when you're done.",
+      "Try restoring a file from your backup once: if you don't know how to restore, you don't have a backup."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Deleting something by mistake, a device dying, or getting locked out of an account happens to almost everyone at some point. Ransomware on home computers is less common, but it does happen."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "If you notice too late (after 30 days) or lose the account, years of photos or important work documents can be gone for good."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What syncing actually does",
+      "parrafos": [
+        "A [[sync|sync]] service watches a folder and copies every change to the server and to your other devices. Google sums it up in its Drive for desktop help: changes you make on one device **reflect everywhere**. Creating, editing, moving, and also **deleting**.",
+        "Apple says it explicitly for iCloud Drive: when you delete a file on iCloud.com, **it's also deleted from all your devices** that have iCloud Drive turned on. Syncing can't tell a change you wanted from one you didn't.",
+        "A [[backup|backup]], on the other hand, keeps **snapshots of the past**: what your files looked like yesterday, last week, or last month. If something breaks today, the earlier copies aren't touched."
+      ]
+    },
+    {
+      "titulo": "The safety net the cloud does give you",
+      "parrafos": [
+        "The big services don't leave you completely exposed. In **OneDrive** with a personal account, deleted items go to the *Recycle bin* and can be restored for **30 days** (93 for work or school accounts, unless an admin changes it). Each file's *Version history* is also kept for 30 days.",
+        "With **Microsoft 365**, OneDrive can also roll your whole OneDrive back to any point in the last 30 days, and it alerts you if it detects signs of ransomware. Without a subscription, Microsoft gives you the first detection and recovery for free.",
+        "In **iCloud Drive**, deleted files can be recovered for 30 days (at icloud.com/recovery > *Restore Files*). In **Google Drive**, files stay in *Trash* for 30 days and are then deleted forever.",
+        "All of this has a hard limit: **if you empty it, if the deadline passes, or if you lose access to the account, there's no going back**."
+      ]
+    },
+    {
+      "titulo": "The Windows backup that's really OneDrive",
+      "parrafos": [
+        "The *Windows Backup* app sounds like a backup, but Microsoft explains that backing up your folders **syncs them to your OneDrive account**: Desktop, Documents, Pictures, Videos, and Music. It's handy when you set up a new PC, but it inherits everything above: deleting or encrypting on the PC affects the cloud too.",
+        "A free Microsoft account comes with **5 GB**. If your folders take up more than that, the \"backup\" is only partial."
+      ]
+    },
+    {
+      "titulo": "The 3-2-1 rule, kept simple",
+      "parrafos": [
+        "The classic [[rule321|3-2-1 rule]] is **three copies** of what matters, on **two different types of storage**, with **one away from home**. In practice, for almost everyone: the original on the computer, the cloud as the second copy, and an external drive as the third.",
+        "The external drive is what saves you from synced deletions and from ransomware, **as long as it's unplugged** when you're not backing up. CISA says the same thing: keep backups **offline** and encrypted, and regularly test that you can actually restore them."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "Getting in",
+      "texto": "The user opens an attachment or installs pirated software carrying ransomware. Nothing sophisticated is needed: the attack relies on the user running the file."
+    },
+    {
+      "titulo": "Encryption",
+      "texto": "The malware goes through the user's folders and encrypts documents and photos, including the OneDrive, iCloud Drive, or Google Drive folder."
+    },
+    {
+      "titulo": "Sync does the rest",
+      "texto": "The sync client sees \"modified\" files and uploads the encrypted versions, which replace the good ones in the cloud and on the other devices."
+    },
+    {
+      "titulo": "The ransom note",
+      "texto": "A note appears demanding payment. If the user has no other copy and the version and trash deadlines pass, they're at the mercy of the criminal."
+    },
+    {
+      "titulo": "Where the chain breaks",
+      "texto": "An unplugged external drive can't be encrypted. And while you're within the 30 days, earlier cloud versions let you roll back, as long as you clean the computer first."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Encrypt everything your user account can modify, including synced folders and any drive or network share connected at the time.",
+      "Get the encrypted versions copied to the cloud and to your other devices.",
+      "Re-encrypt whatever you restore if you haven't cleaned the infected computer first.",
+      "Empty your cloud trash if they manage to get into your account (that's why protecting it with two-step verification or passkeys matters)."
+    ],
+    "no_puede": [
+      "Touch an external drive that was unplugged and sitting in a drawer.",
+      "Wipe older cloud versions just from your PC: they're kept for the retention period.",
+      "Reach a Time Machine or File History backup if the drive wasn't connected.",
+      "Read your data from a password-encrypted backup if they steal the drive."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Learn how to rescue something from the cloud trash today",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "It's your first safety net and it has an expiration date: about **30 days**. Knowing where it is before you need it saves a lot of panic.",
+      "pasos": {
+        "OneDrive": [
+          "On onedrive.com, select **Recycle bin** in the navigation pane.",
+          "Select the files and choose **Restore**.",
+          "To go back to an earlier version of a file: in File Explorer, right-click > **Version history**."
+        ],
+        "iCloud Drive": [
+          "Go to icloud.com/recovery and choose **Restore Files**.",
+          "Select files deleted in the last 30 days and restore them."
+        ],
+        "Google Drive": [
+          "On drive.google.com, open **Trash**.",
+          "Right-click the file > **Restore**."
+        ]
+      }
+    },
+    {
+      "titulo": "Back up to an external drive, then unplug it",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "20 min the first time",
+      "para": "todos",
+      "texto": "This is the copy that doesn't depend on your account and doesn't notice what happens on your computer. Use the drive only for this and **unplug it when you're done**.",
+      "pasos": {
+        "Mac": [
+          "Connect the drive and go to **System Settings > General > Time Machine**.",
+          "Click **Add Backup Disk** and choose the drive.",
+          "Eject the drive before unplugging it."
+        ],
+        "Windows": [
+          "Open **Control Panel > System and Security > Save backup copies of your files with File History**.",
+          "Choose the external drive and select **Turn on**.",
+          "Once the backup finishes, unplug the drive."
+        ]
+      }
+    },
+    {
+      "titulo": "Put your external backup on the calendar",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "habit",
+      "para": "todos",
+      "texto": "An unplugged backup only protects what was there the last time you ran it. Match the frequency to how fast your data changes: every few days if you're working on a big project; every month or two may be enough for photos.",
+      "pasos": {
+        "Always": [
+          "Set a calendar reminder (say, the first Sunday of every month).",
+          "Plug in the drive, let the backup finish, and unplug it."
+        ]
+      }
+    },
+    {
+      "titulo": "Make sure you know how to restore",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "A backup you can't restore is useless. Practice with any file, not in the middle of an emergency.",
+      "pasos": {
+        "Always": [
+          "Pick a file, restore it from the backup to a different folder, and open it.",
+          "On Windows, heads-up: restoring from File History **replaces** the current version, and that can't be undone. Practice on a copy."
+        ]
+      }
+    },
+    {
+      "titulo": "Encrypt the drive and keep one copy away from home",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "30 min",
+      "para": "avanzado",
+      "texto": "That's the \"1\" in 3-2-1: a copy away from home protects you from theft, fire, or flooding. If the drive leaves your house, **encrypt it**: CISA recommends encrypted backups.",
+      "pasos": {
+        "Always": [
+          "Encrypt the drive with your operating system's encryption tool before it leaves home, and store the password somewhere safe.",
+          "Leave the second drive at a relative's place and swap it every few months."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Is your \"Windows backup\" just OneDrive?",
+      "texto": "If Settings > Accounts > Windows backup shows your folders syncing to OneDrive, that's syncing. You still need an external copy."
+    },
+    {
+      "titulo": "How much cloud storage do you have?",
+      "texto": "If your free account is full (5 GB with Microsoft, for example), some of your files are probably not even syncing."
+    },
+    {
+      "titulo": "When was your last external backup?",
+      "texto": "Time Machine shows the date of the latest backup, and so does File History on Windows. If it was months ago, you know what to do this weekend."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Giving up on the cloud",
+      "texto": "It's still a great second copy and protects you if you lose or break your laptop. You just need to add a separate copy."
+    },
+    {
+      "titulo": "Building a home server",
+      "texto": "A NAS can be fine if you enjoy that kind of thing, but for most people a good external drive and a monthly reminder cover the risk."
+    },
+    {
+      "titulo": "Paying for several clouds at once",
+      "texto": "Two services that sync are still syncing: a deletion or encryption can spread to both. One cloud plus one drive is better."
+    },
+    {
+      "titulo": "Backing up your entire disk every day",
+      "texto": "What matters is your data: photos, documents, and anything you can't download again. Apps and the operating system can be reinstalled."
+    }
+  ],
+  "mito": {
+    "mito": "\"Everything's in the cloud, so I'm already backed up.\"",
+    "realidad": "CISA's ransomware guidance calls for **offline, encrypted backups** that you test regularly, precisely because anything connected can be hit. And even when the provider doesn't fail, syncing **copies your deletions** to all your devices.",
+    "fuente": {
+      "titulo": "CISA: #StopRansomware Guide",
+      "url": "https://www.cisa.gov/stopransomware/ransomware-guide"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Why sync spreads ransomware",
+      "parrafos": [
+        "To a sync client, an encrypted file is just a file the user modified: it has write permissions and a new timestamp. There's no reliable way to tell, file by file, a legitimate edit from malicious encryption.",
+        "That's why the provider-side defense is statistical: spotting lots of mass changes in a short time (as OneDrive's ransomware detection does) and relying on **versioning** to roll back to an earlier point."
+      ]
+    },
+    {
+      "titulo": "Restoring without reinfection",
+      "parrafos": [
+        "Microsoft warns about this in its recovery guide: clean **all** synced devices before restoring, or your files could get encrypted again. Order matters: isolate, clean or reinstall, change passwords, and only then restore."
+      ]
+    },
+    {
+      "titulo": "Immutable and offline backups",
+      "parrafos": [
+        "CISA recommends keeping **offline**, encrypted backups of critical data, regularly testing their availability and integrity, and, as an alternative, cloud-to-cloud backups. The common idea is that the backup can't be modified with the same credentials or from the same machine that might be compromised.",
+        "At home, the simple equivalent is the unplugged drive. In technical environments: storage with retention or object lock, and separate credentials for the backup system."
+      ]
+    },
+    {
+      "titulo": "Retention: watch the deadlines",
+      "parrafos": [
+        "Time Machine deletes the oldest backups when the disk is full; it keeps hourly backups for the past 24 hours, daily backups for the past month, and weekly backups for previous months. OneDrive versions last 30 days. If a file got corrupted months ago and you haven't opened it since, none of the kept versions may be the good one anymore, which is why an extra drive stored separately is worth it."
+      ]
+    }
+  ],
+  "glosario": {
+    "sync": [
+      "Sync",
+      "Keeping the same files identical across several devices and the cloud: any change, including a deletion, is copied to all of them."
+    ],
+    "backup": [
+      "Backup",
+      "A separate copy of your data that preserves its state at a specific moment and doesn't change when the original does."
+    ],
+    "ransomware": [
+      "Ransomware",
+      "Malware that encrypts your files so you can't open them and demands a ransom to get them back."
+    ],
+    "rule321": [
+      "3-2-1 rule",
+      "Three copies of your data, on two different types of storage, with one of them away from home."
+    ],
+    "kev": [
+      "KEV",
+      "The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed there, real attacks are happening."
+    ],
+    "ntlm": [
+      "NTLM hash",
+      "A fingerprint of your password that Windows uses to identify you on some networks. If an attacker gets it, they can try to crack it or impersonate you."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "CISA: #StopRansomware Guide",
+      "url": "https://www.cisa.gov/stopransomware/ransomware-guide"
+    },
+    {
+      "titulo": "Microsoft: Restore deleted files or folders in OneDrive",
+      "url": "https://support.microsoft.com/en-us/office/restore-deleted-files-or-folders-in-onedrive-949ada80-0026-4db3-a953-c99083e6a84f"
+    },
+    {
+      "titulo": "Microsoft: Restore your OneDrive",
+      "url": "https://support.microsoft.com/en-us/office/restore-your-onedrive-fa231298-759d-41cf-bcd0-25ac53eb8a15"
+    },
+    {
+      "titulo": "Microsoft: Restore a previous version of a file stored in OneDrive",
+      "url": "https://support.microsoft.com/en-us/onedrive/restore-a-previous-version-of-a-file-stored-in-onedrive"
+    },
+    {
+      "titulo": "Microsoft: How to detect ransomware and recover files using OneDrive",
+      "url": "https://support.microsoft.com/en-us/onedrive/how-to-detect-ransomware-and-recover-files-using-onedrive"
+    },
+    {
+      "titulo": "Microsoft: Back up and restore with Windows Backup",
+      "url": "https://support.microsoft.com/en-us/windows/experience/backup-recovery/back-up-and-restore-with-windows-backup"
+    },
+    {
+      "titulo": "Microsoft: Back up and restore with File History",
+      "url": "https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-and-restore-with-file-history"
+    },
+    {
+      "titulo": "Apple: Delete files in iCloud Drive on iCloud.com",
+      "url": "https://support.apple.com/guide/icloud/delete-files-mm3b7fcd0c10/icloud"
+    },
+    {
+      "titulo": "Apple: Recover deleted files on iCloud.com",
+      "url": "https://support.apple.com/guide/icloud/recover-deleted-files-mmae56ea1ca5/icloud"
+    },
+    {
+      "titulo": "Apple: Back up your Mac with Time Machine",
+      "url": "https://support.apple.com/en-us/104984"
+    },
+    {
+      "titulo": "Google Drive Help: Recover a deleted file",
+      "url": "https://support.google.com/drive/answer/1716222"
+    },
+    {
+      "titulo": "Google Drive Help: Stream & mirror files with Drive for desktop",
+      "url": "https://support.google.com/drive/answer/13401938"
+    }
+  ]
+}

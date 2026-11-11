@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Why OneDrive, iCloud Drive, and Google Drive delete and encrypt right along with you, what safety net they really give you, and the copy you&#x27;re missing.">
+<title>Having your files in the cloud isn&#x27;t the same as having a backup · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-11.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-11.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Wednesday, November 11, 2026 · 💾 Backup and recovery</p>
+<h1>Having your files in the cloud isn't the same as having a backup</h1><p class="sub">Why OneDrive, iCloud Drive, and Google Drive delete and encrypt right along with you, what safety net they really give you, and the copy you're missing.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 9 min</li><li>💻 Laptop</li><li>🖥️ Desktop</li><li>📱 Smartphone</li><li>📲 Tablet</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Critical day"><div class="housing"><div class="lamp rojo on"></div><div class="lamp amarillo"></div><div class="lamp verde"></div></div>
+<div class="label">Critical day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta rojo" id="2026-11-11-chrome-xml">
+<header><span class="pill rojo">Critical</span><h3>Chrome: XML processing flaw already being exploited</h3></header>
+<dl><dt>Who it affects</dt><dd><strong>Google Chrome</strong> on Windows, Mac, Linux, and Android before version <strong>157.0.8103.50</strong>. Other Chromium-based browsers (Edge, Brave, Opera, etc.) usually get the same fix a few days later.</dd>
+<dt>What to do</dt><dd>Update Chrome to <strong>157.0.8103.50/.51</strong> (Windows and Mac) or <strong>157.0.8103.50</strong> (Linux and Android): ⋮ menu &gt; Help &gt; About Google Chrome, then click <strong>Relaunch</strong>. On the Extended Stable channel, the fixed version is <strong>156.0.8078.96</strong>.</dd>
+<dt class="deep">Details</dt><dd class="deep">Google says an exploit for CVE-2026-125350 exists in the wild. It's a high-severity use-after-free bug in the XML component, reported on November 6 and fixed on November 9. CISA added it to its <button type="button" class="term" popovertarget="g-kev">KEV</button> catalog on November 10.<div class="cves"><code>CVE-2026-125350</code></div></dd></dl>
+<p class="src"><a href="https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html" rel="noopener noreferrer">Google: Chrome Stable Channel Update for Desktop (Nov 9)</a> · <a href="https://chromereleases.googleblog.com/2026/11/chrome-for-android-update_01533302390.html" rel="noopener noreferrer">Google: Chrome for Android Update (Nov 9)</a> · <a href="https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog" rel="noopener noreferrer">CISA Adds Six Known Exploited Vulnerabilities to Catalog (Nov 10)</a></p></article><article class="alerta rojo" id="2026-11-11-outlook-ntlm">
+<header><span class="pill rojo">Critical</span><h3>Outlook: a crafted file hands over your password hash, already exploited</h3></header>
+<dl><dt>Who it affects</dt><dd>Desktop <strong>Outlook</strong> in <strong>Microsoft 365 Apps</strong> and <strong>Office LTSC 2021 and 2024</strong>, without the November 10 security update.</dd>
+<dt>What to do</dt><dd>Update Office: in Outlook, go to <strong>File &gt; Office Account &gt; Update Options &gt; Update Now</strong>, then restart the app. Don't open unexpected Office files or attachments, even if they seem to come from someone you know.</dd>
+<dt class="deep">Details</dt><dd class="deep">It's a spoofing vulnerability (CVSS 6.5) that Microsoft fixed in its November 10 Patch Tuesday, along with more than 1,000 other flaws. Opening a crafted file makes Outlook connect to an attacker's server and hand over the victim's <button type="button" class="term" popovertarget="g-ntlm">NTLMv2 hash</button>, which can be used to crack the password or impersonate the user on the network. It was exploited as a zero-day, and CISA added it to its <button type="button" class="term" popovertarget="g-kev">KEV</button> catalog on November 10.<div class="cves"><code>CVE-2026-124194</code></div></dd></dl>
+<p class="src"><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124194" rel="noopener noreferrer">Microsoft Security Update Guide: CVE-2026-124194</a> · <a href="https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog" rel="noopener noreferrer">CISA Adds Six Known Exploited Vulnerabilities to Catalog (Nov 10)</a> · <a href="https://www.tenable.com/blog/microsoft-november-2026-patch-tuesday-addresses-1093-cves-cve-2026-124194" rel="noopener noreferrer">Tenable: Microsoft&#x27;s November 2026 Patch Tuesday</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>Lots of people assume that because their documents and photos are "in the cloud," they're backed up. But OneDrive, iCloud Drive, and Google Drive <strong>sync</strong>: they keep the same version of your files on all your devices.</p><p>That's incredibly convenient until something goes wrong. If you delete a folder by mistake, <strong>it's deleted in the cloud and on your other devices too</strong>. If <button type="button" class="term" popovertarget="g-ransomware">ransomware</button> encrypts the files on your laptop, the encrypted versions get uploaded and replace the good ones.</p><p>The cloud gives you a limited safety net (usually <strong>30 days</strong> of trash and file versions). A real backup is something else: a <strong>separate</strong> copy that doesn't change when the original does, and that you can get back even if you lose access to your account.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>Syncing isn't backing up: whatever gets deleted or damaged on one device is copied to all of them.</li><li>If you delete something important, you have about 30 days to rescue it from the cloud's trash.</li><li>Also keep a copy on an external drive that you unplug when you're done.</li><li>Try restoring a file from your backup once: if you don't know how to restore, you don't have a backup.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Deleting something by mistake, a device dying, or getting locked out of an account happens to almost everyone at some point. Ransomware on home computers is less common, but it does happen.</p></div><div class="medidor"><div class="top"><span>Impact: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>If you notice too late (after 30 days) or lose the account, years of photos or important work documents can be gone for good.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>What syncing actually does</h3><p>A <button type="button" class="term" popovertarget="g-sync">sync</button> service watches a folder and copies every change to the server and to your other devices. Google sums it up in its Drive for desktop help: changes you make on one device <strong>reflect everywhere</strong>. Creating, editing, moving, and also <strong>deleting</strong>.</p><p>Apple says it explicitly for iCloud Drive: when you delete a file on iCloud.com, <strong>it's also deleted from all your devices</strong> that have iCloud Drive turned on. Syncing can't tell a change you wanted from one you didn't.</p><p>A <button type="button" class="term" popovertarget="g-backup">backup</button>, on the other hand, keeps <strong>snapshots of the past</strong>: what your files looked like yesterday, last week, or last month. If something breaks today, the earlier copies aren't touched.</p><h3>The safety net the cloud does give you</h3><p>The big services don't leave you completely exposed. In <strong>OneDrive</strong> with a personal account, deleted items go to the <em>Recycle bin</em> and can be restored for <strong>30 days</strong> (93 for work or school accounts, unless an admin changes it). Each file's <em>Version history</em> is also kept for 30 days.</p><p>With <strong>Microsoft 365</strong>, OneDrive can also roll your whole OneDrive back to any point in the last 30 days, and it alerts you if it detects signs of ransomware. Without a subscription, Microsoft gives you the first detection and recovery for free.</p><p>In <strong>iCloud Drive</strong>, deleted files can be recovered for 30 days (at icloud.com/recovery &gt; <em>Restore Files</em>). In <strong>Google Drive</strong>, files stay in <em>Trash</em> for 30 days and are then deleted forever.</p><p>All of this has a hard limit: <strong>if you empty it, if the deadline passes, or if you lose access to the account, there's no going back</strong>.</p><h3>The Windows backup that's really OneDrive</h3><p>The <em>Windows Backup</em> app sounds like a backup, but Microsoft explains that backing up your folders <strong>syncs them to your OneDrive account</strong>: Desktop, Documents, Pictures, Videos, and Music. It's handy when you set up a new PC, but it inherits everything above: deleting or encrypting on the PC affects the cloud too.</p><p>A free Microsoft account comes with <strong>5 GB</strong>. If your folders take up more than that, the "backup" is only partial.</p><h3>The 3-2-1 rule, kept simple</h3><p>The classic <button type="button" class="term" popovertarget="g-rule321">3-2-1 rule</button> is <strong>three copies</strong> of what matters, on <strong>two different types of storage</strong>, with <strong>one away from home</strong>. In practice, for almost everyone: the original on the computer, the cloud as the second copy, and an external drive as the third.</p><p>The external drive is what saves you from synced deletions and from ransomware, <strong>as long as it's unplugged</strong> when you're not backing up. CISA says the same thing: keep backups <strong>offline</strong> and encrypted, and regularly test that you can actually restore them.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>Getting in</strong><p>The user opens an attachment or installs pirated software carrying ransomware. Nothing sophisticated is needed: the attack relies on the user running the file.</p></li><li><strong>Encryption</strong><p>The malware goes through the user's folders and encrypts documents and photos, including the OneDrive, iCloud Drive, or Google Drive folder.</p></li><li><strong>Sync does the rest</strong><p>The sync client sees "modified" files and uploads the encrypted versions, which replace the good ones in the cloud and on the other devices.</p></li><li><strong>The ransom note</strong><p>A note appears demanding payment. If the user has no other copy and the version and trash deadlines pass, they're at the mercy of the criminal.</p></li><li><strong>Where the chain breaks</strong><p>An unplugged external drive can't be encrypted. And while you're within the 30 days, earlier cloud versions let you roll back, as long as you clean the computer first.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Encrypt everything your user account can modify, including synced folders and any drive or network share connected at the time.</li><li>Get the encrypted versions copied to the cloud and to your other devices.</li><li>Re-encrypt whatever you restore if you haven't cleaned the infected computer first.</li><li>Empty your cloud trash if they manage to get into your account (that's why protecting it with two-step verification or passkeys matters).</li></ul></div><div class="no"><h3>Can't</h3><ul><li>Touch an external drive that was unplugged and sitting in a drawer.</li><li>Wipe older cloud versions just from your PC: they're kept for the retention period.</li><li>Reach a Time Machine or File History backup if the drive wasn't connected.</li><li>Read your data from a password-encrypted backup if they steal the drive.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Learn how to rescue something from the cloud trash today</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>It's your first safety net and it has an expiration date: about <strong>30 days</strong>. Knowing where it is before you need it saves a lot of panic.</p><div class="plataformas"><div class="plataforma"><h4>OneDrive</h4><ol><li>On onedrive.com, select <strong>Recycle bin</strong> in the navigation pane.</li><li>Select the files and choose <strong>Restore</strong>.</li><li>To go back to an earlier version of a file: in File Explorer, right-click &gt; <strong>Version history</strong>.</li></ol></div><div class="plataforma"><h4>iCloud Drive</h4><ol><li>Go to icloud.com/recovery and choose <strong>Restore Files</strong>.</li><li>Select files deleted in the last 30 days and restore them.</li></ol></div><div class="plataforma"><h4>Google Drive</h4><ol><li>On drive.google.com, open <strong>Trash</strong>.</li><li>Right-click the file &gt; <strong>Restore</strong>.</li></ol></div></div></article><article class="medida"><h3>Back up to an external drive, then unplug it</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: medium</li>
+<li>⏱ 20 min the first time</li><li>For: everyone</li></ul>
+<p>This is the copy that doesn't depend on your account and doesn't notice what happens on your computer. Use the drive only for this and <strong>unplug it when you're done</strong>.</p><div class="plataformas"><div class="plataforma"><h4>Mac</h4><ol><li>Connect the drive and go to <strong>System Settings &gt; General &gt; Time Machine</strong>.</li><li>Click <strong>Add Backup Disk</strong> and choose the drive.</li><li>Eject the drive before unplugging it.</li></ol></div><div class="plataforma"><h4>Windows</h4><ol><li>Open <strong>Control Panel &gt; System and Security &gt; Save backup copies of your files with File History</strong>.</li><li>Choose the external drive and select <strong>Turn on</strong>.</li><li>Once the backup finishes, unplug the drive.</li></ol></div></div></article><article class="medida"><h3>Put your external backup on the calendar</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>An unplugged backup only protects what was there the last time you ran it. Match the frequency to how fast your data changes: every few days if you're working on a big project; every month or two may be enough for photos.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>Set a calendar reminder (say, the first Sunday of every month).</li><li>Plug in the drive, let the backup finish, and unplug it.</li></ol></div></div></article><article class="medida"><h3>Make sure you know how to restore</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>A backup you can't restore is useless. Practice with any file, not in the middle of an emergency.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>Pick a file, restore it from the backup to a different folder, and open it.</li><li>On Windows, heads-up: restoring from File History <strong>replaces</strong> the current version, and that can't be undone. Practice on a copy.</li></ol></div></div></article><article class="medida deep"><h3>Encrypt the drive and keep one copy away from home<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: medium</li>
+<li>⏱ 30 min</li><li>For: advanced</li></ul>
+<p>That's the "1" in 3-2-1: a copy away from home protects you from theft, fire, or flooding. If the drive leaves your house, <strong>encrypt it</strong>: CISA recommends encrypted backups.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>Encrypt the drive with your operating system's encryption tool before it leaves home, and store the password somewhere safe.</li><li>Leave the second drive at a relative's place and swap it every few months.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>Is your "Windows backup" just OneDrive?</h3><p>If Settings &gt; Accounts &gt; Windows backup shows your folders syncing to OneDrive, that's syncing. You still need an external copy.</p></div><div class="fila"><h3>How much cloud storage do you have?</h3><p>If your free account is full (5 GB with Microsoft, for example), some of your files are probably not even syncing.</p></div><div class="fila"><h3>When was your last external backup?</h3><p>Time Machine shows the date of the latest backup, and so does File History on Windows. If it was months ago, you know what to do this weekend.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Giving up on the cloud</h3><p>It's still a great second copy and protects you if you lose or break your laptop. You just need to add a separate copy.</p></div><div class="fila"><h3>Building a home server</h3><p>A NAS can be fine if you enjoy that kind of thing, but for most people a good external drive and a monthly reminder cover the risk.</p></div><div class="fila"><h3>Paying for several clouds at once</h3><p>Two services that sync are still syncing: a deletion or encryption can spread to both. One cloud plus one drive is better.</p></div><div class="fila"><h3>Backing up your entire disk every day</h3><p>What matters is your data: photos, documents, and anything you can't download again. Apps and the operating system can be reinstalled.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"Everything's in the cloud, so I'm already backed up."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>CISA's ransomware guidance calls for <strong>offline, encrypted backups</strong> that you test regularly, precisely because anything connected can be hit. And even when the provider doesn't fail, syncing <strong>copies your deletions</strong> to all your devices.</p><p class="src"><a href="https://www.cisa.gov/stopransomware/ransomware-guide" rel="noopener noreferrer">CISA: #StopRansomware Guide</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>Why sync spreads ransomware</h3><p>To a sync client, an encrypted file is just a file the user modified: it has write permissions and a new timestamp. There's no reliable way to tell, file by file, a legitimate edit from malicious encryption.</p><p>That's why the provider-side defense is statistical: spotting lots of mass changes in a short time (as OneDrive's ransomware detection does) and relying on <strong>versioning</strong> to roll back to an earlier point.</p><h3>Restoring without reinfection</h3><p>Microsoft warns about this in its recovery guide: clean <strong>all</strong> synced devices before restoring, or your files could get encrypted again. Order matters: isolate, clean or reinstall, change passwords, and only then restore.</p><h3>Immutable and offline backups</h3><p>CISA recommends keeping <strong>offline</strong>, encrypted backups of critical data, regularly testing their availability and integrity, and, as an alternative, cloud-to-cloud backups. The common idea is that the backup can't be modified with the same credentials or from the same machine that might be compromised.</p><p>At home, the simple equivalent is the unplugged drive. In technical environments: storage with retention or object lock, and separate credentials for the backup system.</p><h3>Retention: watch the deadlines</h3><p>Time Machine deletes the oldest backups when the disk is full; it keeps hourly backups for the past 24 hours, daily backups for the past month, and weekly backups for previous months. OneDrive versions last 30 days. If a file got corrupted months ago and you haven't opened it since, none of the kept versions may be the good one anymore, which is why an extra drive stored separately is worth it.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Sync</dt><dd>Keeping the same files identical across several devices and the cloud: any change, including a deletion, is copied to all of them.</dd><dt>Backup</dt><dd>A separate copy of your data that preserves its state at a specific moment and doesn&#x27;t change when the original does.</dd><dt>Ransomware</dt><dd>Malware that encrypts your files so you can&#x27;t open them and demands a ransom to get them back.</dd><dt>3-2-1 rule</dt><dd>Three copies of your data, on two different types of storage, with one of them away from home.</dd><dt>KEV</dt><dd>The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed there, real attacks are happening.</dd><dt>NTLM hash</dt><dd>A fingerprint of your password that Windows uses to identify you on some networks. If an attacker gets it, they can try to crack it or impersonate you.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://www.cisa.gov/stopransomware/ransomware-guide" rel="noopener noreferrer">CISA: #StopRansomware Guide</a></li><li><a href="https://support.microsoft.com/en-us/office/restore-deleted-files-or-folders-in-onedrive-949ada80-0026-4db3-a953-c99083e6a84f" rel="noopener noreferrer">Microsoft: Restore deleted files or folders in OneDrive</a></li><li><a href="https://support.microsoft.com/en-us/office/restore-your-onedrive-fa231298-759d-41cf-bcd0-25ac53eb8a15" rel="noopener noreferrer">Microsoft: Restore your OneDrive</a></li><li><a href="https://support.microsoft.com/en-us/onedrive/restore-a-previous-version-of-a-file-stored-in-onedrive" rel="noopener noreferrer">Microsoft: Restore a previous version of a file stored in OneDrive</a></li><li><a href="https://support.microsoft.com/en-us/onedrive/how-to-detect-ransomware-and-recover-files-using-onedrive" rel="noopener noreferrer">Microsoft: How to detect ransomware and recover files using OneDrive</a></li><li><a href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/back-up-and-restore-with-windows-backup" rel="noopener noreferrer">Microsoft: Back up and restore with Windows Backup</a></li><li><a href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-and-restore-with-file-history" rel="noopener noreferrer">Microsoft: Back up and restore with File History</a></li><li><a href="https://support.apple.com/guide/icloud/delete-files-mm3b7fcd0c10/icloud" rel="noopener noreferrer">Apple: Delete files in iCloud Drive on iCloud.com</a></li><li><a href="https://support.apple.com/guide/icloud/recover-deleted-files-mmae56ea1ca5/icloud" rel="noopener noreferrer">Apple: Recover deleted files on iCloud.com</a></li><li><a href="https://support.apple.com/en-us/104984" rel="noopener noreferrer">Apple: Back up your Mac with Time Machine</a></li><li><a href="https://support.google.com/drive/answer/1716222" rel="noopener noreferrer">Google Drive Help: Recover a deleted file</a></li><li><a href="https://support.google.com/drive/answer/13401938" rel="noopener noreferrer">Google Drive Help: Stream &amp; mirror files with Drive for desktop</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-sync" class="gl-pop"><strong>Sync</strong>Keeping the same files identical across several devices and the cloud: any change, including a deletion, is copied to all of them.</div><div popover id="g-backup" class="gl-pop"><strong>Backup</strong>A separate copy of your data that preserves its state at a specific moment and doesn&#x27;t change when the original does.</div><div popover id="g-ransomware" class="gl-pop"><strong>Ransomware</strong>Malware that encrypts your files so you can&#x27;t open them and demands a ransom to get them back.</div><div popover id="g-rule321" class="gl-pop"><strong>3-2-1 rule</strong>Three copies of your data, on two different types of storage, with one of them away from home.</div><div popover id="g-kev" class="gl-pop"><strong>KEV</strong>The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed there, real attacks are happening.</div><div popover id="g-ntlm" class="gl-pop"><strong>NTLM hash</strong>A fingerprint of your password that Windows uses to identify you on some networks. If an attacker gets it, they can try to crack it or impersonate you.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

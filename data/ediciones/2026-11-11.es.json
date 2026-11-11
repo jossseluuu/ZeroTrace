@@ -1,0 +1,344 @@
+{
+  "fecha": "2026-11-11",
+  "idioma": "es",
+  "foco": "copias",
+  "concepto": "sincronizar-no-es-copia-de-seguridad",
+  "titulo": "Tener tus archivos en la nube no es tener copia de seguridad",
+  "subtitulo": "Por qué OneDrive, iCloud Drive o Google Drive borran y cifran contigo, qué red de seguridad te dan de verdad y la copia que te falta.",
+  "dispositivos": [
+    "portatil",
+    "sobremesa",
+    "smartphone",
+    "tablet"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "rojo",
+    "alertas": [
+      "2026-11-11-chrome-xml",
+      "2026-11-11-outlook-ntlm"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Mucha gente cree que, como sus documentos y fotos «están en la nube», ya tiene copia de seguridad. Pero OneDrive, iCloud Drive o Google Drive **sincronizan**: mantienen la misma versión de tus archivos en todos tus aparatos.",
+      "Eso es comodísimo hasta que algo sale mal. Si borras una carpeta por error, **se borra también en la nube y en tus otros dispositivos**. Si un [[ransomware|ransomware]] cifra los archivos de tu portátil, la versión cifrada se sube y sustituye a la buena.",
+      "La nube te da una red de seguridad limitada (normalmente **30 días** de papelera y versiones). Una copia de verdad es otra cosa: un duplicado **separado**, que no cambia cuando cambia el original y que puedes recuperar aunque pierdas la cuenta."
+    ],
+    "esencial": [
+      "Sincronizar no es copiar: lo que borras o se estropea en un aparato se replica en todos.",
+      "Si borras algo importante, tienes unos 30 días para rescatarlo de la papelera de la nube.",
+      "Haz además una copia en un disco externo que desconectes al terminar.",
+      "Prueba una vez a recuperar un archivo de tu copia: si no sabes restaurar, no tienes copia."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Borrar algo por error, que un aparato se estropee o perder el acceso a la cuenta le pasa a casi todo el mundo alguna vez. El ransomware en equipos domésticos es menos frecuente, pero existe."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Si te das cuenta tarde (pasados los 30 días) o pierdes la cuenta, las fotos de años o los documentos de trabajo pueden desaparecer sin vuelta atrás."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Qué hace exactamente la sincronización",
+      "parrafos": [
+        "Un servicio de [[sync|sincronización]] vigila una carpeta y replica cada cambio en el servidor y en el resto de tus aparatos. Google lo resume así en la ayuda de Drive para ordenador: los cambios que haces en un dispositivo **se reflejan en todos**. Crear, editar, mover y también **borrar**.",
+        "Apple lo dice expresamente para iCloud Drive: cuando eliminas un archivo en iCloud.com, **también se elimina en todos los dispositivos** que tienen iCloud Drive activado. La sincronización no distingue entre un cambio que querías y uno que no.",
+        "Una [[copia|copia de seguridad]], en cambio, guarda **fotos fijas del pasado**: el estado de tus archivos ayer, la semana pasada o el mes pasado. Si hoy algo se estropea, las copias anteriores no se tocan."
+      ]
+    },
+    {
+      "titulo": "La red de seguridad que sí te da la nube",
+      "parrafos": [
+        "Los servicios grandes no te dejan totalmente a la intemperie. En **OneDrive** con cuenta personal, lo borrado pasa a la *Papelera de reciclaje* y se puede restaurar durante **30 días** (93 en cuentas de trabajo o centro educativo, salvo que el administrador lo cambie). El *Historial de versiones* de cada archivo también se conserva 30 días.",
+        "Con **Microsoft 365**, OneDrive permite además restaurar toda la nube a cómo estaba en un momento de los últimos 30 días, y avisa si detecta señales de ransomware. Sin suscripción, Microsoft ofrece gratis la primera detección y recuperación.",
+        "En **iCloud Drive**, los archivos borrados se pueden recuperar durante 30 días (en iCloud.com > Recuperación de datos > *Restaurar archivos*). En **Google Drive**, la *Papelera* conserva los archivos 30 días y después los elimina definitivamente.",
+        "Todo esto tiene un límite claro: **si lo vacías, si pasan los plazos o si pierdes el acceso a la cuenta, no hay marcha atrás**."
+      ]
+    },
+    {
+      "titulo": "La copia de Windows que en realidad es OneDrive",
+      "parrafos": [
+        "La app *Copia de seguridad de Windows* (Windows Backup) suena a copia, pero Microsoft explica que hacer copia de tus carpetas consiste en **sincronizarlas con tu cuenta de OneDrive**: Escritorio, Documentos, Imágenes, Vídeos y Música. Es útil para estrenar ordenador, pero hereda todo lo anterior: borrar o cifrar en el PC también afecta a la nube.",
+        "La cuenta gratuita de Microsoft incluye **5 GB**. Si tus carpetas ocupan más, la «copia» se queda a medias."
+      ]
+    },
+    {
+      "titulo": "La regla 3-2-1 sin complicarse",
+      "parrafos": [
+        "INCIBE recomienda la [[regla321|regla 3-2-1]]: **tres copias** de lo importante, en **dos soportes distintos**, y **una fuera de casa**. En la práctica, para casi todo el mundo: el original en el ordenador, la nube como segunda copia y un disco externo como tercera.",
+        "El disco externo es el que te salva del borrado sincronizado y del ransomware, **siempre que esté desconectado** cuando no haces la copia. CISA insiste en lo mismo: copias **fuera de línea** y cifradas, y comprobar periódicamente que se pueden recuperar."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "La entrada",
+      "texto": "El usuario abre un adjunto o instala un programa pirata que lleva un ransomware. No hace falta nada sofisticado: el ataque se apoya en que el usuario ejecute el archivo."
+    },
+    {
+      "titulo": "El cifrado",
+      "texto": "El malware recorre las carpetas del usuario y cifra documentos y fotos. Entre ellas está la carpeta de OneDrive, iCloud Drive o Google Drive."
+    },
+    {
+      "titulo": "La sincronización hace el resto",
+      "texto": "El cliente de sincronización ve archivos «modificados» y sube las versiones cifradas, que sustituyen a las buenas en la nube y en el resto de aparatos."
+    },
+    {
+      "titulo": "El chantaje",
+      "texto": "Aparece una nota pidiendo un rescate. Si el usuario no tiene otra copia y deja pasar los plazos de versiones y papelera, depende de la buena voluntad del delincuente."
+    },
+    {
+      "titulo": "Dónde se rompe la cadena",
+      "texto": "Un disco externo desconectado no se puede cifrar. Y mientras estés dentro de los 30 días, las versiones anteriores de la nube permiten volver atrás, siempre que antes limpies el equipo."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Cifrar todo lo que tu usuario puede modificar, incluidas las carpetas sincronizadas y cualquier disco o unidad de red conectada en ese momento.",
+      "Hacer que la versión cifrada se replique en la nube y en tus otros dispositivos.",
+      "Volver a cifrar lo que restaures si no has limpiado antes el equipo infectado.",
+      "Borrar la papelera de la nube si consigue entrar en tu cuenta (por eso importa protegerla con verificación en dos pasos o llaves de acceso)."
+    ],
+    "no_puede": [
+      "Tocar un disco externo que estaba desconectado y guardado en un cajón.",
+      "Borrar las versiones antiguas de la nube solo desde tu PC: siguen ahí durante el plazo de retención.",
+      "Llegar a una copia de Time Machine o del Historial de archivos si el disco no estaba conectado.",
+      "Recuperar tus datos de una copia cifrada con contraseña si se lleva el disco."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Aprende hoy a rescatar algo de la papelera de la nube",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Es tu primera red de seguridad y tiene fecha de caducidad: unos **30 días**. Saber dónde está antes de necesitarla evita sustos.",
+      "pasos": {
+        "OneDrive": [
+          "En onedrive.com, entra en **Papelera de reciclaje** en el panel lateral.",
+          "Selecciona los archivos y pulsa **Restaurar**.",
+          "Para volver a una versión anterior de un archivo: en el Explorador de archivos, clic derecho > **Historial de versiones**."
+        ],
+        "iCloud Drive": [
+          "En icloud.com/recovery, elige **Restaurar archivos**.",
+          "Marca los archivos borrados en los últimos 30 días y restáuralos."
+        ],
+        "Google Drive": [
+          "En drive.google.com, entra en **Papelera**.",
+          "Clic derecho sobre el archivo > **Restaurar**."
+        ]
+      }
+    },
+    {
+      "titulo": "Haz una copia en un disco externo y desconéctalo",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "20 min la primera vez",
+      "para": "todos",
+      "texto": "Es la copia que no depende de tu cuenta ni se entera de lo que pasa en el ordenador. Usa el disco solo para eso y **desconéctalo al terminar**.",
+      "pasos": {
+        "Mac": [
+          "Conecta el disco y ve a **Ajustes del Sistema > General > Time Machine**.",
+          "Pulsa **Añadir disco de copia de seguridad** y elige el disco.",
+          "Expulsa el disco antes de desconectarlo."
+        ],
+        "Windows": [
+          "Busca **Historial de archivos** en el menú Inicio (está en el Panel de control).",
+          "Elige el disco externo y actívalo.",
+          "Tras la copia, desconecta el disco."
+        ]
+      }
+    },
+    {
+      "titulo": "Pon fecha fija a la copia externa",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "hábito",
+      "para": "todos",
+      "texto": "Una copia desconectada solo protege lo que había la última vez que la hiciste. INCIBE aconseja ajustar la frecuencia a lo que cambian tus datos: si estás escribiendo un trabajo, cada pocos días; para fotos, cada uno o dos meses puede bastar.",
+      "pasos": {
+        "Siempre": [
+          "Ponte un recordatorio en el calendario (por ejemplo, el primer domingo de cada mes).",
+          "Conecta el disco, deja que termine la copia y desconéctalo."
+        ]
+      }
+    },
+    {
+      "titulo": "Comprueba que sabes restaurar",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Una copia que no se puede recuperar no sirve. Prueba con un archivo cualquiera, no en mitad de una emergencia.",
+      "pasos": {
+        "Siempre": [
+          "Elige un archivo, recupéralo desde la copia a otra carpeta y ábrelo.",
+          "En Windows, ojo: restaurar desde el Historial de archivos **sustituye** la versión actual y no se puede deshacer. Haz la prueba sobre una copia."
+        ]
+      }
+    },
+    {
+      "titulo": "Cifra el disco y guarda una copia fuera de casa",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "30 min",
+      "para": "avanzado",
+      "texto": "Es el «1» de la regla 3-2-1: una copia lejos de casa te protege de robos, incendios o inundaciones. Si el disco sale de casa, **cífralo**: INCIBE recomienda cifrar las copias.",
+      "pasos": {
+        "Siempre": [
+          "Cifra el disco con la herramienta de cifrado de tu sistema antes de sacarlo de casa y guarda la contraseña en un lugar seguro.",
+          "Deja el segundo disco en casa de un familiar y altérnalo cada pocos meses."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "¿Tu «copia de Windows» es solo OneDrive?",
+      "texto": "Si en Configuración > Cuentas aparece la copia de seguridad de Windows sincronizando carpetas con OneDrive, eso es sincronización. Necesitas además una copia externa."
+    },
+    {
+      "titulo": "¿Cuánto espacio tienes en la nube?",
+      "texto": "Si tu cuenta gratuita está llena (5 GB en Microsoft, por ejemplo), es probable que parte de tus archivos ni siquiera se esté sincronizando."
+    },
+    {
+      "titulo": "¿Cuándo fue tu última copia externa?",
+      "texto": "En Time Machine aparece la fecha de la última copia. En el Historial de archivos de Windows, también. Si es de hace meses, ya sabes qué hacer este fin de semana."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Dejar de usar la nube",
+      "texto": "Sigue siendo una buena segunda copia y te protege si pierdes o rompes el portátil. Solo hay que añadirle una copia separada."
+    },
+    {
+      "titulo": "Montar un servidor en casa",
+      "texto": "Un NAS puede estar bien para quien disfrute con ello, pero para casi todo el mundo un disco externo de calidad y un recordatorio mensual cubren el riesgo."
+    },
+    {
+      "titulo": "Pagar varias nubes a la vez",
+      "texto": "Dos servicios que sincronizan siguen siendo sincronización: un borrado o un cifrado se puede propagar a ambos. Mejor una nube y un disco."
+    },
+    {
+      "titulo": "Hacer copia de todo el disco cada día",
+      "texto": "Lo que importa son tus datos: fotos, documentos y lo que no puedas volver a descargar. Programas y sistema se reinstalan."
+    }
+  ],
+  "mito": {
+    "mito": "«Lo tengo todo en la nube, así que ya tengo copia de seguridad.»",
+    "realidad": "INCIBE cuenta el caso de una usuaria que lo perdió todo cuando atacaron a su proveedor y aconseja **no depender solo de la nube**: regla 3-2-1, copias cifradas y una de ellas fuera de casa. Y aunque el proveedor no falle, la sincronización **replica tus borrados** en todos tus aparatos.",
+    "fuente": {
+      "titulo": "INCIBE: No dependas solo de la nube",
+      "url": "https://www.incibe.es/ciudadania/blog/no-dependas-solo-de-la-nube"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Por qué la sincronización propaga el ransomware",
+      "parrafos": [
+        "Para el cliente de sincronización, un archivo cifrado es simplemente un archivo modificado por el usuario: tiene permisos de escritura y una marca de tiempo nueva. No hay forma fiable de distinguir, archivo a archivo, una edición legítima de un cifrado malicioso.",
+        "Por eso la defensa del lado del proveedor es estadística: detectar muchos cambios masivos en poco tiempo (como hace OneDrive con su detección de ransomware) y apoyarse en el **versionado** para volver a un punto anterior."
+      ]
+    },
+    {
+      "titulo": "Restaurar sin reinfectarse",
+      "parrafos": [
+        "Microsoft lo advierte en su guía de recuperación: antes de restaurar, limpia **todos** los dispositivos sincronizados, o los archivos pueden volver a cifrarse. El orden importa: aislar, limpiar o reinstalar, cambiar contraseñas y solo entonces restaurar."
+      ]
+    },
+    {
+      "titulo": "Copias inmutables y fuera de línea",
+      "parrafos": [
+        "CISA recomienda mantener copias **fuera de línea** y cifradas de los datos críticos, probar su integridad con regularidad y, como alternativa, copias de nube a nube. La idea común es que la copia no sea modificable con las mismas credenciales o desde el mismo equipo que puede quedar comprometido.",
+        "En casa, el equivalente sencillo es el disco desconectado. En entornos técnicos, almacenamiento con retención o bloqueo de objetos y credenciales separadas para el sistema de copias."
+      ]
+    },
+    {
+      "titulo": "Retención: cuidado con los plazos",
+      "parrafos": [
+        "Time Machine borra las copias más antiguas cuando el disco se llena; guarda copias horarias de las últimas 24 horas, diarias del último mes y semanales de los meses anteriores. Las versiones de OneDrive duran 30 días. Si un archivo se corrompió hace meses y no lo has abierto, puede que ninguna versión conservada sea ya la buena: de ahí el valor de un disco extra que guardes aparte."
+      ]
+    }
+  ],
+  "glosario": {
+    "sync": [
+      "Sincronización",
+      "Mantener los mismos archivos iguales en varios aparatos y en la nube: cualquier cambio, también un borrado, se copia a todos."
+    ],
+    "copia": [
+      "Copia de seguridad",
+      "Duplicado separado de tus datos que conserva su estado en un momento concreto y no cambia cuando cambia el original."
+    ],
+    "ransomware": [
+      "Ransomware",
+      "Programa malicioso que cifra tus archivos para que no puedas abrirlos y pide un rescate por recuperarlos."
+    ],
+    "regla321": [
+      "Regla 3-2-1",
+      "Tres copias de los datos, en dos soportes distintos y con una de ellas fuera de casa."
+    ],
+    "kev": [
+      "KEV",
+      "Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales."
+    ],
+    "ntlm": [
+      "Hash NTLM",
+      "Huella de tu contraseña que Windows usa para identificarte en algunas redes. Si un atacante la obtiene, puede intentar descifrarla o hacerse pasar por ti."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "INCIBE: No dependas solo de la nube",
+      "url": "https://www.incibe.es/ciudadania/blog/no-dependas-solo-de-la-nube"
+    },
+    {
+      "titulo": "INCIBE: Definiendo mi estrategia de copias de seguridad",
+      "url": "https://www.incibe.es/ciudadania/blog/definiendo-mi-estrategia-de-copias-de-seguridad"
+    },
+    {
+      "titulo": "Microsoft: restaurar archivos eliminados o carpetas en OneDrive",
+      "url": "https://support.microsoft.com/es-es/office/restaurar-archivos-o-carpetas-eliminados-en-onedrive-949ada80-0026-4db3-a953-c99083e6a84f"
+    },
+    {
+      "titulo": "Microsoft: restaurar una versión anterior de un archivo almacenado en OneDrive",
+      "url": "https://support.microsoft.com/es-es/office/restaurar-una-versi%C3%B3n-anterior-de-un-archivo-almacenado-en-onedrive-159cad6d-d76e-4981-88ef-de6e96c93893"
+    },
+    {
+      "titulo": "Microsoft: detectar ransomware y recuperar archivos con OneDrive",
+      "url": "https://support.microsoft.com/en-us/onedrive/how-to-detect-ransomware-and-recover-files-using-onedrive"
+    },
+    {
+      "titulo": "Microsoft: copia de seguridad y restauración con Copia de seguridad de Windows",
+      "url": "https://support.microsoft.com/en-us/windows/experience/backup-recovery/back-up-and-restore-with-windows-backup"
+    },
+    {
+      "titulo": "Apple: eliminar archivos de iCloud Drive en iCloud.com",
+      "url": "https://support.apple.com/es-es/guide/icloud/delete-files-mm3b7fcd0c10/icloud"
+    },
+    {
+      "titulo": "Apple: recuperar archivos eliminados en iCloud.com",
+      "url": "https://support.apple.com/es-es/guide/icloud/mmae56ea1ca5/icloud"
+    },
+    {
+      "titulo": "Apple: hacer una copia de seguridad de tu Mac con Time Machine",
+      "url": "https://support.apple.com/es-es/104984"
+    },
+    {
+      "titulo": "Google Drive: recuperar un archivo eliminado",
+      "url": "https://support.google.com/drive/answer/1716222?hl=es"
+    },
+    {
+      "titulo": "CISA: guía #StopRansomware (en inglés)",
+      "url": "https://www.cisa.gov/stopransomware/ransomware-guide"
+    }
+  ]
+}

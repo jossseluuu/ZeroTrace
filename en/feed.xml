@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Tue, 10 Nov 2026 07:48:21 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 11 Nov 2026 07:49:46 +0100</lastBuildDate>
+  <item>
+    <title>Having your files in the cloud isn&#x27;t the same as having a backup</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-11.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-11.html</guid>
+    <pubDate>Wed, 11 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Backup and recovery</category>
+    <description>Why OneDrive, iCloud Drive, and Google Drive delete and encrypt right along with you, what safety net they really give you, and the copy you&#x27;re missing. — Critical: Chrome: XML processing flaw already being exploited | Critical: Outlook: a crafted file hands over your password hash, already exploited</description>
+  </item>
   <item>
     <title>That bargain Android tablet may come with a stowaway installed at the factory</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-10.html</link>

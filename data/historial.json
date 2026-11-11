@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-10T07:48:21+01:00",
+  "actualizado": "2026-11-11T07:49:46+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "copias",
     "tablets",
     "ingenieria",
     "habitos",
     "smartphones",
     "sobremesa",
-    "transito",
-    "portatiles"
+    "transito"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -58,9 +58,25 @@
         "fecha": "2026-11-10",
         "concepto": "tablet-android-sin-certificar"
       }
+    ],
+    "copias": [
+      {
+        "fecha": "2026-11-11",
+        "concepto": "sincronizar-no-es-copia-de-seguridad"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-11",
+      "foco": "copias",
+      "concepto": "sincronizar-no-es-copia-de-seguridad",
+      "semaforo": "rojo",
+      "alertas": [
+        "2026-11-11-chrome-xml",
+        "2026-11-11-outlook-ntlm"
+      ]
+    },
     {
       "fecha": "2026-11-10",
       "foco": "tablets",

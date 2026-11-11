@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Tue, 10 Nov 2026 07:48:21 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 11 Nov 2026 07:49:46 +0100</lastBuildDate>
+  <item>
+    <title>Tener tus archivos en la nube no es tener copia de seguridad</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-11.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-11.html</guid>
+    <pubDate>Wed, 11 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Copias y recuperación</category>
+    <description>Por qué OneDrive, iCloud Drive o Google Drive borran y cifran contigo, qué red de seguridad te dan de verdad y la copia que te falta. — Crítico: Chrome: fallo en el procesado de XML que ya se está explotando | Crítico: Outlook: un archivo manipulado entrega la huella de tu contraseña, ya explotado</description>
+  </item>
   <item>
     <title>Esa tablet Android tan barata puede traer un intruso de fábrica</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-10.html</link>

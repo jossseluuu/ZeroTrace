@@ -4,6 +4,8 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/11/2026](editions/2026/11/2026-11-11.md) | Critical | Chrome: XML processing flaw already being exploited | CVE-2026-125350 |
+| [11/11/2026](editions/2026/11/2026-11-11.md) | Critical | Outlook: a crafted file hands over your password hash, already exploited | CVE-2026-124194 |
 | [11/09/2026](editions/2026/11/2026-11-09.md) | Heads-up | OpenSSH on Alpine Linux: a very long password lets attackers log in without the real one | CVE-2026-123158 |
 | [11/08/2026](editions/2026/11/2026-11-08.md) | Heads-up | Apple: a 2024 WebKit flaw now under attack on unpatched devices | CVE-2024-27834 |
 | [11/07/2026](editions/2026/11/2026-11-07.md) | Critical | SonicWall: SSL VPN flaw that bypasses SAML, now exploited | CVE-2026-19868 |
