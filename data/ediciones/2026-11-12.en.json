@@ -1,0 +1,314 @@
+{
+  "fecha": "2026-11-12",
+  "idioma": "en",
+  "foco": "iot",
+  "concepto": "securing-your-camera-app-account",
+  "titulo": "Your home camera is only as secure as its app account",
+  "subtitulo": "Why someone who wants to watch your cameras goes after your username and password, not the device, and the three app settings that stop them.",
+  "dispositivos": [
+    "iot",
+    "smartphone"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 8
+  },
+  "semaforo": {
+    "nivel": "verde",
+    "alertas": []
+  },
+  "basico": {
+    "parrafos": [
+      "Wi-Fi security cameras, video doorbells and baby monitors are almost never viewed directly: you watch them **through the manufacturer's app**, which connects to its cloud. Anyone with your username and password for that app can see what they record, just like you.",
+      "That's why the most common attack isn't \"hacking the camera\" but **getting into the account**. All it takes is using the same password in the app as on some other site that's had a data breach: automated tools try those email-and-password pairs across many services. It's called [[stuffing|credential stuffing]].",
+      "The good news is that it takes little to stop it: a password you don't use anywhere else, [[2fa|two-step verification]] turned on, and an occasional look at **who and which phones** have access."
+    ],
+    "esencial": [
+      "Your cameras are viewed through an account: protecting it protects what they record.",
+      "Use a unique password for your camera app, one you don't reuse on any other service.",
+      "Turn on two-step verification: with it, the password alone isn't enough to get in.",
+      "Every so often, review shared users and authorized phones, and remove any you don't need."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Password leaks happen all the time, and automated attempts with stolen credentials don't single anyone out. If you reuse passwords and don't have two-step verification, you're an easy target."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Whoever gets in can watch inside your home live, know when nobody's there, go through past recordings and, on many cameras, talk through the speaker."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "How a Wi-Fi camera is really viewed",
+      "parrafos": [
+        "Most home cameras don't open any port on your router: they connect **outward** to the manufacturer's servers, and so does the app on your phone. The cloud is the meeting point. It's convenient and avoids a lot of setup headaches, but it moves the risk: the way in is no longer the camera, it's **your account**.",
+        "That account usually gives access to the live feed, the recording history, motion alerts and sometimes the microphone and speaker. For an intruder, getting into it is as good as having the camera."
+      ]
+    },
+    {
+      "titulo": "Credential stuffing, explained",
+      "parrafos": [
+        "OWASP defines [[stuffing|credential stuffing]] as the **automated** testing of stolen username and password pairs against the login forms of other services. It works because many people reuse the same email and password on dozens of sites.",
+        "Your camera maker doesn't need to have been breached: it's enough that any other site where you used that same password was.",
+        "OWASP considers **multi-factor authentication** by far the most effective defense against this attack."
+      ]
+    },
+    {
+      "titulo": "What the FTC and other agencies recommend",
+      "parrafos": [
+        "The FTC's advice for home security cameras covers the essentials: strong, unique passwords instead of default or reused ones, two-factor authentication on the cloud account, automatic updates for the camera and its app, and **permission levels** when you share access with other people. It also suggests putting cameras on a separate network from your computers.",
+        "Spain's national cybersecurity institute, INCIBE, gives the same core advice for smart homes, and adds that devices that no longer get security updates should be disconnected."
+      ]
+    },
+    {
+      "titulo": "A concrete example: Ring's settings",
+      "parrafos": [
+        "It's a useful example because its help pages document it in detail. In the app, it's all under **menu (☰) > Control Center**: in *Account Verification* you choose how to get your sign-in code (text message, authenticator app, WhatsApp, or approval from a phone that's already signed in); in *Authorized Client Devices* you see which phones and browsers are signed in and can remove the ones you don't recognize.",
+        "*User Permissions* shows the people you've invited and their access level. Other brands have equivalent options under other names: look for \"security,\" \"account\" or \"shared users\" in the app's settings."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The list",
+      "texto": "The attacker gets a list of leaked emails and passwords from some other service. They don't need to know who you are or where you live."
+    },
+    {
+      "titulo": "Mass testing",
+      "texto": "A program automatically tries those pairs against the login pages of several camera brands."
+    },
+    {
+      "titulo": "The match",
+      "texto": "If your email and password match and you don't have two-step verification, they're in your account as if they were you."
+    },
+    {
+      "titulo": "The access",
+      "texto": "From the app they can watch the live feed, go through recordings, learn when your family leaves home and, if the camera has a speaker, talk through it."
+    },
+    {
+      "titulo": "Where the chain breaks",
+      "texto": "A unique password makes the list useless. And with two-step verification, even if they get the password right, they're missing the code sent to your phone or authenticator app."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Watch everything the camera can see, live and in recordings, if they get into your account.",
+      "Keep access even after you change your password, if their phone is still on your list of authorized devices and the service doesn't sign out existing sessions.",
+      "Use the camera's speaker to talk or scare people, if the model supports it.",
+      "Try your password on other services if you reuse it there too."
+    ],
+    "no_puede": [
+      "Get in with just your password if you have two-step verification on and don't give them the code.",
+      "Watch videos protected with end-to-end encryption without the key, which stays on your devices.",
+      "Know which cameras you have just by knowing your address.",
+      "Use a password that isn't in any breach because you've never used it anywhere else."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Give your camera app a password you don't use anywhere else",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "This is what defeats credential stuffing. The easiest way is to let a **password manager** create and remember it.",
+      "pasos": {
+        "Always": [
+          "Open the account settings in your camera app and change the password.",
+          "Use a long passphrase or a password generated by your manager, different from your email password and every other site."
+        ]
+      }
+    },
+    {
+      "titulo": "Turn on two-step verification",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "With it, the password alone isn't enough. If the app offers it, an **authenticator app** is a better choice than text messages.",
+      "pasos": {
+        "Ring": [
+          "In the app, open **menu (☰) > Control Center > Account Verification**.",
+          "Choose **Authenticator App** (or **Text Message**) and follow the steps."
+        ],
+        "Other brands": [
+          "Look in the account settings for an option called \"two-step verification,\" \"two-factor authentication\" or similar.",
+          "If there isn't one, consider whether that brand should keep watching your home."
+        ]
+      }
+    },
+    {
+      "titulo": "Check which phones are signed in",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "An old phone, one you sold or one you don't recognize may still be able to watch your cameras.",
+      "pasos": {
+        "Ring": [
+          "In the app: **menu (☰) > Control Center > Authorized Client Devices**.",
+          "Remove any device you don't recognize or no longer use."
+        ]
+      }
+    },
+    {
+      "titulo": "Review who you've given access to",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "Your ex, the summer house sitter or the installer don't need to keep watching your cameras. And whoever should have access gets just the permission level they need.",
+      "pasos": {
+        "Ring": [
+          "In the app: **menu (☰) > Control Center > User Permissions**.",
+          "Tap the person's name to change their level or remove them from the location."
+        ]
+      }
+    },
+    {
+      "titulo": "Turn on end-to-end encryption if your camera offers it",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "avanzado",
+      "texto": "With [[e2ee|end-to-end encryption]], videos can only be viewed on your enrolled devices. The trade-off is lost features: on Ring, for example, you can't share with other users or watch videos on the web, and if you lose the 12-word recovery passphrase, older videos become permanently inaccessible.",
+      "pasos": {
+        "Always": [
+          "Look in the app settings for \"video encryption\" or \"end-to-end encryption\" and check which features it turns off before enabling it.",
+          "Store the recovery passphrase or key somewhere safe, like your password manager."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Have you reused that password?",
+      "texto": "If your camera app password is the same as another service's, change it today. That's the condition the attack needs."
+    },
+    {
+      "titulo": "Are you asked for a code when signing in on a new phone?",
+      "texto": "If signing in on another device only asks for your password, two-step verification isn't turned on."
+    },
+    {
+      "titulo": "Getting sign-in codes you didn't ask for?",
+      "texto": "A verification code you didn't request means someone is trying your password. Change it and review your authorized devices."
+    },
+    {
+      "titulo": "Is your outdoor camera recording the street?",
+      "texto": "Aim it at your own door and yard, not at the sidewalk or your neighbors' windows. You capture less of other people's lives and have less data to protect."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Covering or unplugging every camera",
+      "texto": "If they're set up properly, they do their job. What does make sense is thinking about where they point: in bedrooms or bathrooms, a camera adds little and exposes a lot."
+    },
+    {
+      "titulo": "Buying a local recording system to avoid the cloud",
+      "texto": "It can be a good option if you enjoy setting it up, but it needs to be kept updated and not exposed to the internet. For most people, a well-protected account is simpler."
+    },
+    {
+      "titulo": "Switching brands out of fear",
+      "texto": "Before throwing anything out, check the settings. Most well-known manufacturers already offer two-step verification and user controls."
+    },
+    {
+      "titulo": "Reviewing the settings every week",
+      "texto": "Doing it when you install the camera, when who lives or works in your home changes, and when you get a new phone is enough."
+    }
+  ],
+  "mito": {
+    "mito": "\"To spy on my camera they'd have to be expert hackers.\"",
+    "realidad": "They don't need to break into the camera: trying leaked passwords against the app is enough, and it's done automatically and at scale. OWASP considers **multi-factor authentication** the best defense against this attack, and the FTC recommends two-factor authentication on camera cloud accounts.",
+    "fuente": {
+      "titulo": "FTC: How To Secure Your Home Security Cameras",
+      "url": "https://consumer.ftc.gov/articles/how-secure-your-home-security-cameras"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Why the cloud model changes the attack surface",
+      "parrafos": [
+        "In the old model, the camera exposed a web interface or video service on an open router port (often via UPnP), and the risk was the firmware itself and its default credentials. In today's model, the camera keeps an outbound connection to the manufacturer's service and authentication is centralized in the account.",
+        "That reduces the device's direct exposure, but concentrates the risk in the manufacturer's identity provider: long-lived session tokens in the apps, account recovery, and controls against automated attempts."
+      ]
+    },
+    {
+      "titulo": "Service-side defenses",
+      "parrafos": [
+        "OWASP's Credential Stuffing Prevention Cheat Sheet puts MFA first and, where it isn't possible, proposes layers: graduated IP mitigation, device fingerprinting, checking passwords against breach datasets and notifying users of unusual sign-ins. None of these alternatives matches MFA on its own.",
+        "If you build a service like this: invalidate sessions and tokens on password change, show users the list of signed-in devices, and require reauthentication for sensitive actions like adding users or turning off MFA."
+      ]
+    },
+    {
+      "titulo": "End-to-end encryption and its trade-offs",
+      "parrafos": [
+        "With end-to-end encryption, the service stores and transports video it can't decrypt. That's why it can no longer offer features that require processing content in the cloud, such as video search or smart alerts, and recovery depends on a key only the user holds. On Ring, resetting encryption makes earlier videos permanently inaccessible."
+      ]
+    },
+    {
+      "titulo": "Segmenting the network",
+      "parrafos": [
+        "The FTC suggests putting cameras on a separate network from your computers. It doesn't protect the cloud account, but it limits what an attacker can reach on your local network if they compromise a device's firmware. The router's guest network is usually enough."
+      ]
+    }
+  ],
+  "glosario": {
+    "stuffing": [
+      "Credential stuffing",
+      "An automated attack that tries username and password pairs stolen in other breaches against many services. It works because people reuse passwords."
+    ],
+    "2fa": [
+      "Two-step verification",
+      "On top of your password, the service asks for a second piece of information, usually a code sent to your phone or generated by an authenticator app."
+    ],
+    "e2ee": [
+      "End-to-end encryption",
+      "Data is encrypted on the source device and only decrypted on the user's devices. The service provider can't see it."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "FTC: How To Secure Your Home Security Cameras",
+      "url": "https://consumer.ftc.gov/articles/how-secure-your-home-security-cameras"
+    },
+    {
+      "titulo": "FTC: Securing Your Internet-Connected Devices at Home",
+      "url": "https://consumer.ftc.gov/articles/securing-your-internet-connected-devices-home"
+    },
+    {
+      "titulo": "FTC: How To Secure Your Home Wi-Fi Network",
+      "url": "https://consumer.ftc.gov/articles/how-secure-your-home-wi-fi-network"
+    },
+    {
+      "titulo": "OWASP: Credential stuffing",
+      "url": "https://owasp.org/www-community/attacks/Credential_stuffing"
+    },
+    {
+      "titulo": "OWASP: Credential Stuffing Prevention Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "titulo": "INCIBE: Protect your smart home (in Spanish)",
+      "url": "https://www.incibe.es/ciudadania/blog/protege-tu-hogar-inteligente-riesgos-y-recomendaciones"
+    },
+    {
+      "titulo": "Ring: Setting up two-step verification",
+      "url": "https://ring.com/support/articles/2mmqs/setting-up-two-step-verification-for-Ring"
+    },
+    {
+      "titulo": "Ring: Managing your Ring account and privacy settings",
+      "url": "https://ring.com/support/articles/t5i23/managing-your-ring-account-and-privacy-settings"
+    },
+    {
+      "titulo": "Ring: Managing permissions for users",
+      "url": "https://ring.com/support/articles/clv68/managing-permissions-for-users"
+    },
+    {
+      "titulo": "Ring: Using video end-to-end encryption",
+      "url": "https://ring.com/support/articles/myr75/using-video-end-to-end-encryption"
+    }
+  ]
+}

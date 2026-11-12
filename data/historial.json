@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-11T07:49:46+01:00",
+  "actualizado": "2026-11-12T09:03:47+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "iot",
     "copias",
     "tablets",
     "ingenieria",
     "habitos",
     "smartphones",
-    "sobremesa",
-    "transito"
+    "sobremesa"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -64,9 +64,22 @@
         "fecha": "2026-11-11",
         "concepto": "sincronizar-no-es-copia-de-seguridad"
       }
+    ],
+    "iot": [
+      {
+        "fecha": "2026-11-12",
+        "concepto": "cuenta-de-la-app-de-tus-camaras"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-12",
+      "foco": "iot",
+      "concepto": "cuenta-de-la-app-de-tus-camaras",
+      "semaforo": "verde",
+      "alertas": []
+    },
     {
       "fecha": "2026-11-11",
       "foco": "copias",
