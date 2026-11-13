@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Thu, 12 Nov 2026 09:03:47 +0100</lastBuildDate>
+  <lastBuildDate>Fri, 13 Nov 2026 08:34:54 +0100</lastBuildDate>
+  <item>
+    <title>Tu tele también se actualiza (y un día deja de hacerlo)</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-13.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-13.html</guid>
+    <pubDate>Fri, 13 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Smart TV</category>
+    <description>Por qué la smart TV necesita parches como el móvil, cómo dejar que se instalen solos y qué hacer, sin cambiar de tele, cuando el fabricante deja de enviarlos.</description>
+  </item>
   <item>
     <title>Tu cámara de casa es tan segura como la cuenta de su app</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-12.html</link>

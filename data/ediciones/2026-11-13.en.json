@@ -1,0 +1,292 @@
+{
+  "fecha": "2026-11-13",
+  "idioma": "en",
+  "foco": "smart-tv",
+  "concepto": "tv-updates-and-end-of-support",
+  "titulo": "Your TV gets security updates too (until one day it doesn't)",
+  "subtitulo": "Why a smart TV needs patches just like your phone, how to let them install on their own, and what to do, without buying a new TV, when the manufacturer stops sending them.",
+  "dispositivos": [
+    "tv"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 8
+  },
+  "semaforo": {
+    "nivel": "verde",
+    "alertas": []
+  },
+  "basico": {
+    "parrafos": [
+      "Inside, a smart TV is a small computer: it has an operating system, a web browser, an app store, Wi-Fi and sometimes a microphone. Like any computer, it has security flaws that the manufacturer fixes with **software updates** (the TV's [[firmware|firmware]]).",
+      "The problem is that we rarely pay attention to the TV: it doesn't nag like your phone, it sits in the living room for years, and updates are often **turned off or pending** without us knowing. CISA's advice is simple: turn on **automatic updates** on every device.",
+      "There's a second part almost nobody knows about: support **doesn't last forever**. After a few years, the manufacturer stops sending patches. The TV keeps working perfectly, but its flaws no longer get fixed. That's the moment to change how you use it, not necessarily to replace it."
+    ],
+    "esencial": [
+      "A smart TV is a connected computer, and it gets security patches just like your phone.",
+      "Turn on automatic updates: it's the highest-impact step, and you only do it once.",
+      "Install apps only from the TV's official store and delete the ones you don't use.",
+      "If your TV no longer gets updates, use an external streaming device that does and take the TV offline."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "bajo",
+      "texto": "Attacks aimed at home TVs are rare compared with those against phones or email. The risk goes up if the TV hasn't been updated in years, if you install apps from outside the official store or if you browse the web on it."
+    },
+    "impacto": {
+      "nivel": "medio",
+      "texto": "A compromised TV can be used to harass or snoop if it has a microphone or camera, and it can be used to attack other devices on your network or end up as part of a [[botnet|botnet]]."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What a TV update actually fixes",
+      "parrafos": [
+        "Smart TV updates don't just add features: they also close holes in the parts that handle content coming from outside, such as the **web browser**, the **video players** and the built-in **apps**. Those are exactly the parts an attacker can reach without being in your living room: a website, a file or a malicious app.",
+        "On top of that, we usually stay signed in to streaming services on the TV, sometimes with a payment method attached, and the TV sits on the same network as everything else in the house."
+      ]
+    },
+    {
+      "titulo": "Why TVs tend to fall behind",
+      "parrafos": [
+        "Your phone keeps asking until you update; your TV, not so much. Many only check for a new version while they're on, and if automatic updates are off they can stay on their factory software for years.",
+        "A practical tip from Samsung's help pages: if the *Software Update* option is grayed out, it's because a streaming app is running in the background. Close it and try again."
+      ]
+    },
+    {
+      "titulo": "Support has an expiration date",
+      "parrafos": [
+        "Each manufacturer decides how many years it updates each model, and it isn't always clear at the time of sale. As an example, on January 4, 2024, LG announced its webOS Re:New program, which brought the latest version of its platform to every 2022 LG OLED TV and promised **five years** of a refreshed experience; LG itself notes that it doesn't change the hardware.",
+        "When a TV reaches [[eol|end of support]], it stops getting patches. It doesn't shut down or break: any flaws discovered from that day on simply stay unfixed."
+      ]
+    },
+    {
+      "titulo": "What CISA, the FTC and INCIBE recommend",
+      "parrafos": [
+        "CISA, the U.S. cybersecurity agency, asks you to turn on automatic updates on every device and app and not to click \"Remind me later\" on security updates. The FTC adds a useful idea for end of support: disconnect older devices from your network, because their security may be out of date, and remove TV apps you don't use.",
+        "Spain's national cybersecurity institute (INCIBE) gives the same core advice for smart TVs: automatic updates, apps only from the manufacturer's official store, and turning off the microphone's listening feature if you don't need it."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The known flaw",
+      "texto": "A flaw is published in a common TV component, such as the web browser or a video player. The manufacturer fixes it in an update."
+    },
+    {
+      "titulo": "The unpatched TV",
+      "texto": "Your TV has automatic updates turned off, or is no longer supported, so it still has that flaw months or years later."
+    },
+    {
+      "titulo": "The way in",
+      "texto": "The attacker needs the TV to process something of theirs: an app installed from outside the official store, a website opened in the TV's browser, or an attack from an already infected device on your own network."
+    },
+    {
+      "titulo": "The exploit",
+      "texto": "With the flaw, they can run code on the TV: show content, use its connection to attack others or, if it has a microphone or camera, try to turn them on."
+    },
+    {
+      "titulo": "Where the chain breaks",
+      "texto": "Once the TV is updated, the flaw is gone. With apps only from the official store and no web browsing on the TV, the attacker has very few ways in left."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Exploit already published flaws on a TV that hasn't been updated.",
+      "Get in through an app installed from outside the official store.",
+      "Use a compromised TV to attack other devices on your network or add it to a botnet.",
+      "Try to access the microphone or camera, if the TV has them and the flaw allows it."
+    ],
+    "no_puede": [
+      "Exploit a flaw that an update has already fixed.",
+      "Break into your TV just by knowing its brand and model.",
+      "Watch your streaming account from another home just by getting into your TV: they'd still need your password to sign in on another device.",
+      "Do much with a TV that isn't connected to the internet."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Turn on automatic updates on your TV",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "It's CISA's and INCIBE's top recommendation. You do it once and the TV handles the rest, usually while it's on standby.",
+      "pasos": {
+        "Samsung": [
+          "Go to **Settings > All Settings > Support > Software Update**.",
+          "Select **Auto Update** to turn it on."
+        ],
+        "Other brands": [
+          "Look in the settings for a section called \"Software Update,\" \"System\" or \"About.\"",
+          "Turn on automatic updates if available; if not, check manually every few months."
+        ]
+      }
+    },
+    {
+      "titulo": "Install anything pending now",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "10 min",
+      "para": "todos",
+      "texto": "If automatic updates were off, your TV may be months behind. Do it once by hand.",
+      "pasos": {
+        "Samsung": [
+          "Go to **Settings > All Settings > Support > Software Update > Update Now**.",
+          "If the option is grayed out, close any streaming apps and try again. Don't turn the TV off while it installs."
+        ]
+      }
+    },
+    {
+      "titulo": "Apps only from the official store, and only the ones you need",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Apps from unofficial sources can be malicious. Also delete the ones you don't use: the FTC notes they can collect data even when you're not using them, and every app is more code that can have flaws.",
+      "pasos": {
+        "Always": [
+          "Go through your installed apps and delete the ones you don't use.",
+          "Don't install apps from USB drives or websites, even if they promise free channels."
+        ]
+      }
+    },
+    {
+      "titulo": "Check whether your model is still supported",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Find your TV's model and software version in its information menu and look them up on the manufacturer's support site. If the latest update is several years old, it probably no longer gets patches.",
+      "pasos": {
+        "Samsung": [
+          "You'll find the model number in the **Support** section of the settings or on the label on the back of the TV.",
+          "Look it up on Samsung's support site to see the software versions released."
+        ]
+      }
+    },
+    {
+      "titulo": "If it's no longer supported: external device and an offline TV",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "20 min",
+      "para": "avanzado",
+      "texto": "Plug in a streaming device or game console that still gets updates over HDMI, use your apps there, and take the TV off Wi-Fi and Ethernet. The screen keeps serving you for years, and whatever connects to the internet stays up to date.",
+      "pasos": {
+        "Always": [
+          "Sign in to your streaming services on the external device.",
+          "On the TV, sign out of those apps, forget the Wi-Fi network and unplug the Ethernet cable if there is one."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "When did your TV last update?",
+      "texto": "The update or information menu usually shows the installed version. If you don't remember ever seeing an update, check today that automatic updates are on."
+    },
+    {
+      "titulo": "Do you have apps you don't recognize or use?",
+      "texto": "Every extra app is one more way in. Delete it; you can reinstall it from the official store if you need it."
+    },
+    {
+      "titulo": "Do you browse the web on your TV?",
+      "texto": "The TV's browser is awkward to use and is one of the parts that needs the most patching. For searching, shopping or signing in to websites, your phone or computer is a better choice."
+    },
+    {
+      "titulo": "Does your TV have a microphone?",
+      "texto": "If you don't use the voice assistant, turn off listening in the privacy settings. If you do use it, keeping the TV updated matters even more."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Replacing your TV as soon as support ends",
+      "texto": "An unsupported screen that's offline, paired with an up-to-date external streaming device, is a perfectly reasonable setup."
+    },
+    {
+      "titulo": "Installing antivirus on your TV",
+      "texto": "For almost everyone, an updated TV and apps only from the official store cover what matters. Antivirus can't make up for an unpatched system."
+    },
+    {
+      "titulo": "Covering the screen or unplugging it every night",
+      "texto": "If the TV has no camera, there's nothing to cover. If it has one and you don't use it, turn it off or remove it if it detaches; that's enough."
+    },
+    {
+      "titulo": "Checking for updates every week",
+      "texto": "With automatic updates on, a quick look a couple of times a year, or when something seems off, is plenty."
+    }
+  ],
+  "mito": {
+    "mito": "\"There's nothing on my TV worth stealing, so nobody would bother attacking it.\"",
+    "realidad": "What attackers want isn't always the TV itself but what it gives them: its connection, your network and, if it has a microphone, what's said in your living room. CISA's advice applies to every connected device: turn on **automatic updates** and install security updates promptly.",
+    "fuente": {
+      "titulo": "CISA: Update Software",
+      "url": "https://www.cisa.gov/secure-our-world/update-software"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "A smart TV's attack surface",
+      "parrafos": [
+        "A smart TV runs a full operating system (Tizen, webOS, Google TV/Android TV or others), a web engine for the browser and many apps, media decoders that process untrusted content, and local network services for casting from your phone. Each of those components inherits the vulnerabilities of its codebase and needs patching.",
+        "The realistic vectors are three: malicious content processed by the browser or media players, apps installed from outside the official store, and services exposed on the local network, reachable from another device that's already compromised."
+      ]
+    },
+    {
+      "titulo": "Lifecycle and end of support",
+      "parrafos": [
+        "The manufacturer maintains each model's firmware for a period it decides. Public promises usually refer to **operating system upgrades** (new platform versions), which don't always amount to an explicit security patch policy with an end date.",
+        "Once a device is out of support, vulnerabilities published from that point on stay open indefinitely. The sensible mitigation is to reduce exposure: with no internet connectivity, the surface is limited to physical inputs (HDMI, USB) and the local network if it's still connected."
+      ]
+    },
+    {
+      "titulo": "Segment your network",
+      "parrafos": [
+        "If the TV stays connected, putting it on the guest network or a separate network for smart devices limits what it can reach if it's compromised, and what other infected devices can do to it. The FTC's advice for connected devices also includes disabling features and remote management you don't use."
+      ]
+    },
+    {
+      "titulo": "For TV app developers",
+      "parrafos": [
+        "TV platforms share the risks of any client app: long-lived session tokens stored on the device and remote content rendered in web views. Store tokens in whatever secure storage the platform provides, let users sign out remotely from their account, and don't load unverified remote code."
+      ]
+    }
+  ],
+  "glosario": {
+    "firmware": [
+      "Firmware",
+      "A device's internal software, such as a TV's or a router's. Updating it fixes bugs and vulnerabilities."
+    ],
+    "botnet": [
+      "Botnet",
+      "A network of infected devices that an attacker controls remotely to launch attacks, send spam or cover their tracks."
+    ],
+    "eol": [
+      "End of support",
+      "The point after which the manufacturer stops releasing updates for a model. The device keeps working, but new flaws no longer get fixed."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "CISA: Update Software",
+      "url": "https://www.cisa.gov/secure-our-world/update-software"
+    },
+    {
+      "titulo": "FTC: Securing Your Internet-Connected Devices at Home",
+      "url": "https://consumer.ftc.gov/articles/securing-your-internet-connected-devices-home"
+    },
+    {
+      "titulo": "Samsung: Update the software on your Samsung smart TV or monitor",
+      "url": "https://www.samsung.com/us/support/answer/ANS10002051/"
+    },
+    {
+      "titulo": "LG: More LG Smart TV Owners Set to Enjoy the Latest webOS Upgrade",
+      "url": "https://www.lg.com/us/press-release/CES2024_CA_3_LG_webOS_upgrade.pdf"
+    },
+    {
+      "titulo": "INCIBE: Privacy and security settings on a Smart TV (in Spanish)",
+      "url": "https://www.incibe.es/ciudadania/blog/configuraciones-de-privacidad-seguridad-smarttv"
+    }
+  ]
+}
