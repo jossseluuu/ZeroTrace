@@ -537,5 +537,45 @@
         "url": "https://www.tenable.com/blog/microsoft-november-2026-patch-tuesday-addresses-1093-cves-cve-2026-124194"
       }
     ]
+  },
+  {
+    "id": "2026-11-14-check-point-gaia",
+    "fecha": "2026-11-14",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-123039"
+    ],
+    "dispositivos": [
+      "empresa",
+      "servidor"
+    ],
+    "es": {
+      "titulo": "Check Point: fallo en Gaia OS que da control total del cortafuegos, ya explotado",
+      "afecta": "Cortafuegos, Security Gateway, servidores de gestión (Security Management y Multi-Domain) y Scalable Platforms de **Check Point** con Gaia **R81, R81.10, R81.20, R82, R82.10 y R82.20**. No afecta a los Spark Firewalls ni a Smart-1 Cloud.",
+      "accion": "Instala el Jumbo Hotfix Accumulator que corrige el fallo: **R82.20 desde el Take 14, R82.10 desde el Take 52, R82 desde el Take 132 y R81.20 desde el Take 174**. R81 y R81.10 están fuera de soporte y no tienen corrección: hay que migrar. Mientras tanto, Check Point indica cómo detener el proceso `dynamic_server`. Revisa también si hay indicios de intrusión.",
+      "detalle": "Es una escalada de privilegios local (CVSS 7,8) en el servicio DynamicCLI, que expone un canal de control con permisos de escritura para cualquier usuario. Quien ya ejecuta código en el equipo puede convertirse en administrador total (*root*). Check Point ha observado su explotación contra unas dos docenas de clientes: según BleepingComputer, los atacantes entraban primero por el fallo PHP2Shell del portal Mobile Access y usaban este para tomar el control. Afecta solo a empresas con estos equipos."
+    },
+    "en": {
+      "titulo": "Check Point: Gaia OS flaw gives full control of the firewall, already exploited",
+      "afecta": "**Check Point** firewalls, Security Gateways, management servers (Security Management and Multi-Domain) and Scalable Platforms running Gaia **R81, R81.10, R81.20, R82, R82.10 and R82.20**. Spark Firewalls and Smart-1 Cloud are not affected.",
+      "accion": "Install the Jumbo Hotfix Accumulator that fixes it: **R82.20 Take 14 or later, R82.10 Take 52 or later, R82 Take 132 or later and R81.20 Take 174 or later**. R81 and R81.10 are end of support and get no fix, so plan a migration. In the meantime, Check Point explains how to stop the `dynamic_server` process. Also check for signs of compromise.",
+      "detalle": "It's a local privilege escalation (CVSS 7.8) in the DynamicCLI service, which exposes a world-writable control socket. Anyone already running code on the appliance can become full administrator (*root*). Check Point has seen it exploited against a couple of dozen customers: according to BleepingComputer, attackers first got in through the PHP2Shell flaw in the Mobile Access portal and then used this one to take over. It only affects organizations running this equipment."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Check Point: aviso sk1000362, CVE-2026-123039 (en inglés)",
+          "en": "Check Point advisory sk1000362: CVE-2026-123039"
+        },
+        "url": "https://support.checkpoint.com/results/sk/sk1000362"
+      },
+      {
+        "titulo": {
+          "es": "BleepingComputer: Check Point corrige un día cero que da acceso root (en inglés)",
+          "en": "BleepingComputer: Check Point patches zero-day that lets hackers get root access"
+        },
+        "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/"
+      }
+    ]
   }
 ]

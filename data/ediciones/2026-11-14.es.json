@@ -1,0 +1,294 @@
+{
+  "fecha": "2026-11-14",
+  "idioma": "es",
+  "foco": "identidad",
+  "concepto": "llave-de-acceso-en-tu-correo",
+  "titulo": "Una llave de acceso en tu correo: la contraseña que no te pueden pescar",
+  "subtitulo": "Por qué entrar en tu cuenta principal con la huella o el PIN del móvil frena el phishing mejor que cualquier código, y qué conviene no tocar al activarla.",
+  "dispositivos": [
+    "smartphone",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 8
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-14-check-point-gaia"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Tu correo es la **llave maestra** de casi todo: desde él se recuperan las contraseñas del banco, de las redes sociales y de las compras. Por eso es la cuenta que más interesa a quien te manda un enlace a una página falsa de inicio de sesión: el [[phishing|phishing]].",
+      "Una [[passkey|llave de acceso]] (en inglés, *passkey*) sustituye a la contraseña al entrar. En lugar de escribir nada, confirmas con la **huella, la cara o el PIN** con el que desbloqueas el móvil o el ordenador. No hay nada que puedas teclear en una web falsa, porque la llave solo funciona en la web auténtica del servicio.",
+      "Google, Apple y Microsoft ya las admiten. Activarla en tu cuenta de correo lleva un par de minutos y **no borra tu contraseña ni tus opciones de recuperación**: simplemente dejas de necesitarla en el día a día."
+    ],
+    "esencial": [
+      "Tu cuenta de correo es la que más merece protección, porque abre todas las demás.",
+      "Una llave de acceso no se puede copiar ni escribir en una web falsa: es la mejor defensa disponible contra el phishing.",
+      "Se usa con la huella, la cara o el PIN de tu dispositivo; tu huella no sale del aparato.",
+      "Créala solo en dispositivos tuyos, y mantén al día el teléfono y el correo de recuperación."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Los correos y SMS que llevan a páginas falsas de inicio de sesión son constantes y no van dirigidos a nadie en concreto. Basta un despiste un día con prisa."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Quien controla tu correo puede pedir el cambio de contraseña de casi cualquier otro servicio, leer tus mensajes y hacerse pasar por ti ante tus contactos."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Qué es exactamente una llave de acceso",
+      "parrafos": [
+        "Es un par de claves criptográficas que crea tu dispositivo. La **clave pública** se envía al servicio, que la guarda; la **clave privada** se queda en tu dispositivo o en tu gestor de contraseñas y nunca viaja. Al iniciar sesión, el servicio te manda un reto, tu dispositivo lo firma con la clave privada después de que pongas la huella o el PIN, y el servicio comprueba la firma con la pública.",
+        "INCIBE lo resume así: si alguien roba la base de datos del servicio, solo se lleva claves públicas, que por sí solas no sirven para entrar. Las llaves se basan en los estándares de la FIDO Alliance y en [[webauthn|WebAuthn]]."
+      ]
+    },
+    {
+      "titulo": "Por qué el phishing no funciona contra ellas",
+      "parrafos": [
+        "Con una contraseña, o con un código de seis cifras, la página falsa solo tiene que pedírtelos y reenviarlos al servicio real. Tú eres quien decide si la web es auténtica, y ese es el eslabón débil.",
+        "Con una llave de acceso, quien comprueba la web es el navegador: la llave está ligada al dominio real del servicio y no se ofrece en ningún otro. Una página con un nombre parecido no recibe nada que pueda reutilizar. Por eso Apple y la FIDO Alliance las describen como resistentes al phishing, y la agencia de ciberseguridad de EE. UU. (CISA) considera la autenticación FIDO/WebAuthn la única resistente al phishing ampliamente disponible."
+      ]
+    },
+    {
+      "titulo": "Qué pasa si pierdes el móvil",
+      "parrafos": [
+        "Depende de dónde se guarde la llave. En Apple, las llaves se sincronizan entre tus dispositivos con el **llavero de iCloud**, cifrado de extremo a extremo, y Apple explica que se pueden recuperar aunque pierdas todos tus dispositivos. En Google, la ayuda indica que puedes entrar desde otro dispositivo y **quitar la llave** del que has perdido.",
+        "Y como añadir una llave no elimina la contraseña ni los métodos de recuperación de la cuenta, perder el móvil no te deja fuera, siempre que esos métodos estén al día."
+      ]
+    },
+    {
+      "titulo": "El matiz: la contraseña sigue ahí",
+      "parrafos": [
+        "Google mantiene la opción de entrar con contraseña aunque tengas llave de acceso. Es lo razonable para no dejar a nadie fuera, pero significa que la contraseña todavía podría robarse si la escribes en una web falsa. La ventaja real es que **dejas de escribirla**: si un día una página te pide la contraseña en lugar de la llave, eso ya es una señal de alarma.",
+        "Por eso no conviene descuidar lo demás: contraseña única y larga, y la [[2fa|verificación en dos pasos]] activada."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "El cebo",
+      "texto": "Te llega un correo o un SMS: «Tu cuenta se suspenderá hoy si no verificas tus datos», con un enlace a una copia exacta de la página de inicio de sesión."
+    },
+    {
+      "titulo": "La página falsa",
+      "texto": "Está en un dominio parecido al real. Te pide el correo, la contraseña y, si tienes verificación en dos pasos, el código que te acaba de llegar."
+    },
+    {
+      "titulo": "El reenvío",
+      "texto": "Un programa del atacante reenvía al instante todo lo que escribes al servicio auténtico y se queda con la sesión abierta. El código de un solo uso no lo impide, porque se usa en el momento."
+    },
+    {
+      "titulo": "Con llave de acceso",
+      "texto": "El navegador no ofrece la llave en ese dominio falso, porque no es el suyo. No hay nada que teclear ni que reenviar."
+    },
+    {
+      "titulo": "Dónde se rompe la cadena",
+      "texto": "La comprobación del dominio no depende de que tú te des cuenta del engaño. Solo queda una vía: que caigas y escribas la contraseña, que sigue existiendo. Si siempre entras con la llave, pedírtela es la señal para cerrar la página."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Engañarte para que escribas tu contraseña en una web falsa, si sigues usándola por costumbre.",
+      "Usar tus llaves si tiene tu móvil desbloqueado o conoce su PIN, porque el PIN desbloquea las llaves.",
+      "Intentar entrar por la recuperación de la cuenta si el teléfono o el correo de recuperación están desactualizados.",
+      "Seguir con el phishing en servicios donde aún no tengas llave de acceso."
+    ],
+    "no_puede": [
+      "Usar tu llave de acceso en una página falsa: el navegador no se la entrega a otro dominio.",
+      "Robar tu llave hackeando la base de datos del servicio: allí solo hay claves públicas.",
+      "Obtener tu huella o tu cara: solo sirven para desbloquear la llave dentro de tu dispositivo.",
+      "Pedirte por teléfono «el código de la llave», porque no existe ningún código que puedas dictar."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Crea una llave de acceso en tu cuenta de correo principal",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Empieza por la cuenta que recupera todas las demás. Hazlo desde tu propio móvil u ordenador, nunca desde uno compartido.",
+      "pasos": {
+        "Google (Gmail)": [
+          "Entra en **myaccount.google.com/signinoptions/passkeys** y toca **Crear llave de acceso**.",
+          "Confirma con la huella, la cara o el PIN del dispositivo. Google avisa de que puede tardar hasta 7 días en estar disponible al iniciar sesión."
+        ],
+        "Otros servicios (Apple, Microsoft…)": [
+          "En los ajustes de seguridad de la cuenta, busca «llaves de acceso», «claves de acceso» o «passkeys».",
+          "Sigue el asistente y confirma con el bloqueo de tu dispositivo."
+        ]
+      }
+    },
+    {
+      "titulo": "Protege bien el bloqueo de tu dispositivo",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "El PIN o el código del móvil pasa a ser lo que abre tus cuentas. Que no sea 1234 ni tu fecha de nacimiento, y no lo teclees a la vista de desconocidos.",
+      "pasos": {
+        "Siempre": [
+          "Usa un código de al menos seis cifras o alfanumérico.",
+          "Activa el desbloqueo con huella o cara para no tener que teclearlo en público."
+        ]
+      }
+    },
+    {
+      "titulo": "Revisa el teléfono y el correo de recuperación",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "La llave de acceso no los sustituye: son tu salida si pierdes el dispositivo, y también una vía que un atacante intentaría usar.",
+      "pasos": {
+        "Google (Gmail)": [
+          "En tu cuenta de Google, abre **Seguridad e inicio de sesión** y comprueba que el teléfono y el correo de recuperación son actuales."
+        ]
+      }
+    },
+    {
+      "titulo": "Quita las llaves de dispositivos que ya no tienes",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "Un móvil vendido, perdido o regalado no debería seguir abriendo tu cuenta.",
+      "pasos": {
+        "Google (Gmail)": [
+          "**Seguridad e inicio de sesión > Cómo inicias sesión en Google > Llaves de acceso y llaves de seguridad**.",
+          "Selecciona la llave del dispositivo que ya no usas y toca **Quitar**."
+        ]
+      }
+    },
+    {
+      "titulo": "Activa «Saltar contraseña cuando sea posible»",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "avanzado",
+      "texto": "Hace que Google te ofrezca la llave antes que la contraseña. Así, cualquier página que te pida la contraseña te resultará sospechosa desde el primer momento.",
+      "pasos": {
+        "Google (Gmail)": [
+          "En **Seguridad e inicio de sesión**, comprueba que la opción **Saltar contraseña cuando sea posible** está activada."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "¿Te pide la huella o el PIN al entrar en el correo?",
+      "texto": "Si en un dispositivo nuevo te sigue pidiendo la contraseña, la llave aún no está creada o no está disponible en él."
+    },
+    {
+      "titulo": "¿Cuántas llaves aparecen en tu cuenta?",
+      "texto": "En la lista de llaves de acceso debería haber solo dispositivos que reconoces y que sigues usando."
+    },
+    {
+      "titulo": "¿Una web te pide la contraseña en lugar de la llave?",
+      "texto": "Si siempre entras con la llave, que de repente te pidan la contraseña tras pulsar un enlace es motivo para cerrar la página y entrar escribiendo la dirección tú mismo."
+    },
+    {
+      "titulo": "¿Tu teléfono de recuperación sigue siendo tuyo?",
+      "texto": "Si cambiaste de número hace años, actualízalo hoy."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Pasar todas tus cuentas a llaves de acceso hoy mismo",
+      "texto": "Empieza por el correo y, después, por la cuenta de Apple o Google del móvil. El resto, cuando el propio servicio te lo ofrezca."
+    },
+    {
+      "titulo": "Comprar una llave de seguridad física",
+      "texto": "Son una gran opción para periodistas, cargos públicos o administradores de sistemas. Para casi todo el mundo, la llave guardada en el móvil es suficiente."
+    },
+    {
+      "titulo": "Borrar tu contraseña",
+      "texto": "No hace falta y en muchos servicios no se puede. Mantenla larga y única, guardada en tu gestor."
+    },
+    {
+      "titulo": "Desactivar la verificación en dos pasos",
+      "texto": "Las llaves conviven con ella. Google indica que, al entrar con llave, se omite el segundo paso porque la llave ya lo cubre."
+    }
+  ],
+  "mito": {
+    "mito": "«Si entro con la huella, el servicio se queda con mi huella.»",
+    "realidad": "La huella o la cara solo desbloquean la llave **dentro de tu dispositivo**. Al servicio le llega una firma criptográfica, y lo único que guarda es la clave pública, que por sí sola no sirve para entrar.",
+    "fuente": {
+      "titulo": "INCIBE: Passkeys, inicia sesión sin contraseñas de forma segura",
+      "url": "https://www.incibe.es/ciudadania/blog/passkeys-inicia-sesion-sin-contrasenas-de-forma-segura"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Vinculación al origen en WebAuthn",
+      "parrafos": [
+        "Cada credencial se crea para un identificador de la parte que confía (*RP ID*), normalmente el dominio registrable del servicio. El navegador solo permite usarla en orígenes que correspondan a ese RP ID e incluye el origen en los datos firmados, de modo que un proxy de phishing en otro dominio ni siquiera puede pedirla. Es la diferencia de fondo con los OTP y las notificaciones push, en los que el usuario es quien valida el dominio."
+      ]
+    },
+    {
+      "titulo": "Sincronizables y ligadas al dispositivo",
+      "parrafos": [
+        "Las llaves sincronizables (llavero de iCloud, Gestor de contraseñas de Google, gestores de terceros) copian la clave privada cifrada entre dispositivos; las ligadas al dispositivo, como las de una llave física, nunca salen del hardware. La revisión 4 de la guía NIST SP 800-63B exige ofrecer al menos una opción resistente al phishing en el nivel AAL2 y no admite autenticadores sincronizables en el nivel AAL3, el más alto, porque su clave privada es exportable."
+      ]
+    },
+    {
+      "titulo": "El eslabón que queda: recuperación y sesiones",
+      "parrafos": [
+        "Una llave no protege una sesión ya abierta: si un programa malicioso roba la cookie de sesión del navegador, no necesita autenticarse. Tampoco protege los flujos de recuperación de cuenta. Para quien desarrolle servicios: tratar la recuperación con el mismo rigor que el inicio de sesión, permitir varias llaves por cuenta, mostrar la lista de llaves y avisar por correo cuando se añade una nueva."
+      ]
+    }
+  ],
+  "glosario": {
+    "phishing": [
+      "Phishing",
+      "Engaño para que la víctima introduzca sus datos en una web falsa que imita a la real, normalmente a través de un correo o un SMS."
+    ],
+    "passkey": [
+      "Llave de acceso",
+      "Credencial basada en criptografía de clave pública que sustituye a la contraseña. Se desbloquea con la huella, la cara o el PIN del dispositivo y solo funciona en la web auténtica del servicio."
+    ],
+    "webauthn": [
+      "WebAuthn",
+      "Estándar web del W3C que permite a los navegadores crear y usar llaves de acceso y llaves de seguridad."
+    ],
+    "2fa": [
+      "Verificación en dos pasos",
+      "Además de la contraseña, el servicio pide un segundo dato, como un código que llega al móvil o que genera una app."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "INCIBE: Passkeys, inicia sesión sin contraseñas de forma segura",
+      "url": "https://www.incibe.es/ciudadania/blog/passkeys-inicia-sesion-sin-contrasenas-de-forma-segura"
+    },
+    {
+      "titulo": "Google: iniciar sesión con una llave de acceso en lugar de una contraseña",
+      "url": "https://support.google.com/accounts/answer/13548313?hl=es"
+    },
+    {
+      "titulo": "Apple: acerca de la seguridad de las llaves de acceso",
+      "url": "https://support.apple.com/es-es/102195"
+    },
+    {
+      "titulo": "FIDO Alliance: Passkeys (en inglés)",
+      "url": "https://fidoalliance.org/passkeys/"
+    },
+    {
+      "titulo": "CISA: Implementing Phishing-Resistant MFA (en inglés)",
+      "url": "https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf"
+    },
+    {
+      "titulo": "NIST SP 800-63B-4: Authentication and Authenticator Management (en inglés)",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    }
+  ]
+}

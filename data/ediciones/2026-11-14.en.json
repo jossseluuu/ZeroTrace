@@ -1,0 +1,290 @@
+{
+  "fecha": "2026-11-14",
+  "idioma": "en",
+  "foco": "identidad",
+  "concepto": "passkey-for-your-email",
+  "titulo": "A passkey for your email: the password nobody can phish",
+  "subtitulo": "Why signing in to your main account with your phone's fingerprint or PIN stops phishing better than any code, and what to leave alone when you turn it on.",
+  "dispositivos": [
+    "smartphone",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 8
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-14-check-point-gaia"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Your email is the **master key** to almost everything: it's how you reset the passwords for your bank, your social media and your shopping accounts. That makes it the account most worth stealing for anyone who sends you a link to a fake sign-in page: [[phishing|phishing]].",
+      "A [[passkey|passkey]] replaces your password when you sign in. Instead of typing anything, you confirm with the **fingerprint, face or PIN** you use to unlock your phone or computer. There's nothing you can type into a fake website, because the passkey only works on the service's real site.",
+      "Google, Apple and Microsoft already support them. Adding one to your email account takes a couple of minutes and **doesn't delete your password or your recovery options**: you just stop needing the password day to day."
+    ],
+    "esencial": [
+      "Your email account deserves the most protection, because it unlocks all the others.",
+      "A passkey can't be copied or typed into a fake site: it's the best defense available against phishing.",
+      "You use it with your device's fingerprint, face or PIN; your fingerprint never leaves the device.",
+      "Only create one on devices you own, and keep your recovery phone and email up to date."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Emails and texts that lead to fake sign-in pages never stop, and they aren't aimed at anyone in particular. One distracted moment on a busy day is enough."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Whoever controls your email can reset the password for almost any other service, read your messages and impersonate you to your contacts."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What a passkey actually is",
+      "parrafos": [
+        "It's a pair of cryptographic keys created by your device. The **public key** is sent to the service, which stores it; the **private key** stays on your device or in your password manager and never travels. When you sign in, the service sends a challenge, your device signs it with the private key after you use your fingerprint or PIN, and the service checks the signature with the public key.",
+        "As Apple puts it, there are no shared secrets: if someone steals the service's database, all they get is public keys, which can't be used to sign in. Passkeys are built on FIDO Alliance standards and [[webauthn|WebAuthn]]."
+      ]
+    },
+    {
+      "titulo": "Why phishing doesn't work against them",
+      "parrafos": [
+        "With a password, or a six-digit code, the fake page just has to ask for them and relay them to the real service. You're the one deciding whether the site is genuine, and that's the weak link.",
+        "With a passkey, the browser does the checking: the passkey is bound to the service's real domain and isn't offered anywhere else. A look-alike site gets nothing it can reuse. That's why Apple and the FIDO Alliance call passkeys phishing-resistant, and why CISA says FIDO/WebAuthn is the only widely available phishing-resistant authentication."
+      ]
+    },
+    {
+      "titulo": "What happens if you lose your phone",
+      "parrafos": [
+        "It depends on where the passkey is stored. On Apple devices, passkeys sync across your devices with **iCloud Keychain**, which is end-to-end encrypted, and Apple says they can be recovered even if you lose all your devices. Google's help explains that you can sign in on another device and **remove the passkey** from the lost one.",
+        "And since adding a passkey doesn't remove your password or your account's recovery options, losing your phone won't lock you out, as long as those options are current."
+      ]
+    },
+    {
+      "titulo": "The catch: your password is still there",
+      "parrafos": [
+        "Google keeps the option to sign in with your password even after you add a passkey. That's sensible so nobody gets locked out, but it means the password could still be stolen if you type it into a fake site. The real win is that you **stop typing it**: if a page ever asks for your password instead of your passkey, that alone is a red flag.",
+        "So don't neglect the rest: a long, unique password and [[2fa|two-step verification]] turned on."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The bait",
+      "texto": "You get an email or text: \"Your account will be suspended today unless you verify your details,\" with a link to an exact copy of the sign-in page."
+    },
+    {
+      "titulo": "The fake page",
+      "texto": "It sits on a domain that looks like the real one. It asks for your email, your password and, if you use two-step verification, the code you just received."
+    },
+    {
+      "titulo": "The relay",
+      "texto": "The attacker's software instantly forwards everything you type to the real service and keeps the signed-in session. A one-time code doesn't stop this, because it's used right away."
+    },
+    {
+      "titulo": "With a passkey",
+      "texto": "The browser won't offer your passkey on that fake domain, because it doesn't belong to it. There's nothing to type and nothing to relay."
+    },
+    {
+      "titulo": "Where the chain breaks",
+      "texto": "The domain check doesn't depend on you spotting the scam. Only one path remains: falling for it and typing your password, which still exists. If you always sign in with your passkey, being asked for the password is your cue to close the page."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Trick you into typing your password into a fake site, if you keep using it out of habit.",
+      "Use your passkeys if they have your unlocked phone or know its PIN, because the PIN unlocks them.",
+      "Try to get in through account recovery if your recovery phone or email is out of date.",
+      "Keep phishing you on services where you don't have a passkey yet."
+    ],
+    "no_puede": [
+      "Use your passkey on a fake page: the browser won't hand it to another domain.",
+      "Steal your passkey by hacking the service's database: it only holds public keys.",
+      "Get your fingerprint or face: they only unlock the passkey inside your device.",
+      "Ask you over the phone for \"your passkey code,\" because there's no code you could read out."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Create a passkey for your main email account",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Start with the account that can recover all the others. Do it from your own phone or computer, never a shared one.",
+      "pasos": {
+        "Google (Gmail)": [
+          "Go to **myaccount.google.com/signinoptions/passkeys** and tap **Create a passkey**.",
+          "Confirm with your device's fingerprint, face or PIN. Google notes it may take up to 7 days before a new passkey works at sign-in."
+        ],
+        "Other services (Apple, Microsoft…)": [
+          "In your account's security settings, look for \"passkeys.\"",
+          "Follow the steps and confirm with your device's screen lock."
+        ]
+      }
+    },
+    {
+      "titulo": "Lock your device properly",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "Your phone's PIN or passcode becomes what opens your accounts. Don't use 1234 or your birthday, and don't type it where strangers can see.",
+      "pasos": {
+        "Always": [
+          "Use a passcode of at least six digits, or an alphanumeric one.",
+          "Turn on fingerprint or face unlock so you don't have to type it in public."
+        ]
+      }
+    },
+    {
+      "titulo": "Check your recovery phone and email",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "A passkey doesn't replace them: they're your way back in if you lose your device, and also a path an attacker would try.",
+      "pasos": {
+        "Google (Gmail)": [
+          "In your Google Account, open **Security & sign-in** and make sure your recovery phone and email are current."
+        ]
+      }
+    },
+    {
+      "titulo": "Remove passkeys from devices you no longer have",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "A phone you sold, lost or gave away shouldn't still open your account.",
+      "pasos": {
+        "Google (Gmail)": [
+          "**Security & sign-in > How you sign in to Google > Passkeys and security keys**.",
+          "Select the passkey for the device you no longer use and tap **Remove**."
+        ]
+      }
+    },
+    {
+      "titulo": "Turn on \"Skip password when possible\"",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "avanzado",
+      "texto": "It makes Google offer your passkey before your password. That way, any page asking for your password will look suspicious right away.",
+      "pasos": {
+        "Google (Gmail)": [
+          "Under **Security & sign-in**, make sure **Skip password when possible** is turned on."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Does your email ask for your fingerprint or PIN?",
+      "texto": "If a new device still asks for your password, the passkey hasn't been created yet or isn't available on it."
+    },
+    {
+      "titulo": "How many passkeys are on your account?",
+      "texto": "Your passkey list should only show devices you recognize and still use."
+    },
+    {
+      "titulo": "Is a site asking for your password instead of your passkey?",
+      "texto": "If you always sign in with a passkey, suddenly being asked for your password after clicking a link is a reason to close the page and type the address yourself."
+    },
+    {
+      "titulo": "Is your recovery phone still yours?",
+      "texto": "If you changed numbers years ago, update it today."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Switching every account to passkeys today",
+      "texto": "Start with your email, then the Apple or Google account on your phone. Do the rest when each service offers it."
+    },
+    {
+      "titulo": "Buying a physical security key",
+      "texto": "They're a great choice for journalists, public officials or system administrators. For almost everyone, a passkey stored on your phone is enough."
+    },
+    {
+      "titulo": "Deleting your password",
+      "texto": "There's no need, and many services don't allow it. Keep it long and unique, stored in your password manager."
+    },
+    {
+      "titulo": "Turning off two-step verification",
+      "texto": "Passkeys work alongside it. Google says that when you sign in with a passkey, the second step is skipped because the passkey already covers it."
+    }
+  ],
+  "mito": {
+    "mito": "\"If I sign in with my fingerprint, the service keeps my fingerprint.\"",
+    "realidad": "Your fingerprint or face only unlocks the passkey **inside your device**. The service receives a cryptographic signature, and all it stores is the public key, which can't be used to sign in on its own.",
+    "fuente": {
+      "titulo": "Apple: About the security of passkeys",
+      "url": "https://support.apple.com/en-us/102195"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Origin binding in WebAuthn",
+      "parrafos": [
+        "Each credential is created for a relying party identifier (*RP ID*), usually the service's registrable domain. The browser only lets it be used on origins that match that RP ID and includes the origin in the signed data, so a phishing proxy on another domain can't even request it. That's the fundamental difference from OTPs and push notifications, where the user is the one validating the domain."
+      ]
+    },
+    {
+      "titulo": "Synced vs. device-bound",
+      "parrafos": [
+        "Synced passkeys (iCloud Keychain, Google Password Manager, third-party managers) copy the encrypted private key across devices; device-bound ones, like those on a hardware key, never leave the hardware. NIST SP 800-63B revision 4 requires verifiers to offer at least one phishing-resistant option at AAL2 and doesn't allow syncable authenticators at AAL3, the highest level, because their private key is exportable."
+      ]
+    },
+    {
+      "titulo": "The remaining weak spot: recovery and sessions",
+      "parrafos": [
+        "A passkey doesn't protect a session that's already open: if malware steals your browser's session cookie, it doesn't need to authenticate. Nor does it protect account recovery flows. For developers: treat recovery as rigorously as sign-in, allow several passkeys per account, show users their passkey list and send an email alert when a new one is added."
+      ]
+    }
+  ],
+  "glosario": {
+    "phishing": [
+      "Phishing",
+      "A scam that gets victims to enter their details on a fake website that mimics the real one, usually through an email or text message."
+    ],
+    "passkey": [
+      "Passkey",
+      "A credential based on public-key cryptography that replaces the password. It's unlocked with your device's fingerprint, face or PIN and only works on the service's real site."
+    ],
+    "webauthn": [
+      "WebAuthn",
+      "A W3C web standard that lets browsers create and use passkeys and security keys."
+    ],
+    "2fa": [
+      "Two-step verification",
+      "On top of your password, the service asks for a second factor, such as a code sent to your phone or generated by an app."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "CISA: Implementing Phishing-Resistant MFA",
+      "url": "https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf"
+    },
+    {
+      "titulo": "NIST SP 800-63B-4: Authentication and Authenticator Management",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    },
+    {
+      "titulo": "Google: Sign in with a passkey instead of a password",
+      "url": "https://support.google.com/accounts/answer/13548313?hl=en"
+    },
+    {
+      "titulo": "Apple: About the security of passkeys",
+      "url": "https://support.apple.com/en-us/102195"
+    },
+    {
+      "titulo": "FIDO Alliance: Passkeys",
+      "url": "https://fidoalliance.org/passkeys/"
+    }
+  ]
+}

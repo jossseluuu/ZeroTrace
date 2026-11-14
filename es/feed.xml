@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Fri, 13 Nov 2026 08:34:54 +0100</lastBuildDate>
+  <lastBuildDate>Sat, 14 Nov 2026 09:13:11 +0100</lastBuildDate>
+  <item>
+    <title>Una llave de acceso en tu correo: la contraseña que no te pueden pescar</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-14.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-14.html</guid>
+    <pubDate>Sat, 14 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Identidad y cuentas</category>
+    <description>Por qué entrar en tu cuenta principal con la huella o el PIN del móvil frena el phishing mejor que cualquier código, y qué conviene no tocar al activarla. — Atención: Check Point: fallo en Gaia OS que da control total del cortafuegos, ya explotado</description>
+  </item>
   <item>
     <title>Tu tele también se actualiza (y un día deja de hacerlo)</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-13.html</link>

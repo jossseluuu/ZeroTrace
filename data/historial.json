@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-13T08:34:54+01:00",
+  "actualizado": "2026-11-14T09:13:11+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "identidad",
     "smart-tv",
     "iot",
     "copias",
     "tablets",
     "ingenieria",
-    "habitos",
-    "smartphones"
+    "habitos"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -74,9 +74,24 @@
         "fecha": "2026-11-12",
         "concepto": "cuenta-de-la-app-de-tus-camaras"
       }
+    ],
+    "identidad": [
+      {
+        "fecha": "2026-11-14",
+        "concepto": "llave-de-acceso-en-tu-correo"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-14",
+      "foco": "identidad",
+      "concepto": "llave-de-acceso-en-tu-correo",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-14-check-point-gaia"
+      ]
+    },
     {
       "fecha": "2026-11-13",
       "foco": "smart-tv",

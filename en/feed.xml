@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Fri, 13 Nov 2026 08:34:54 +0100</lastBuildDate>
+  <lastBuildDate>Sat, 14 Nov 2026 09:13:11 +0100</lastBuildDate>
+  <item>
+    <title>A passkey for your email: the password nobody can phish</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-14.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-14.html</guid>
+    <pubDate>Sat, 14 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Identity and accounts</category>
+    <description>Why signing in to your main account with your phone&#x27;s fingerprint or PIN stops phishing better than any code, and what to leave alone when you turn it on. — Heads-up: Check Point: Gaia OS flaw gives full control of the firewall, already exploited</description>
+  </item>
   <item>
     <title>Your TV gets security updates too (until one day it doesn&#x27;t)</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-13.html</link>

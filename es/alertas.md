@@ -4,6 +4,7 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [14/11/2026](ediciones/2026/11/2026-11-14.md) | Atención | Check Point: fallo en Gaia OS que da control total del cortafuegos, ya explotado | CVE-2026-123039 |
 | [11/11/2026](ediciones/2026/11/2026-11-11.md) | Crítico | Chrome: fallo en el procesado de XML que ya se está explotando | CVE-2026-125350 |
 | [11/11/2026](ediciones/2026/11/2026-11-11.md) | Crítico | Outlook: un archivo manipulado entrega la huella de tu contraseña, ya explotado | CVE-2026-124194 |
 | [09/11/2026](ediciones/2026/11/2026-11-09.md) | Atención | OpenSSH en Alpine Linux: se puede entrar sin contraseña con una muy larga | CVE-2026-123158 |

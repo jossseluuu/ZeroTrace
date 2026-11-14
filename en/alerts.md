@@ -4,6 +4,7 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/14/2026](editions/2026/11/2026-11-14.md) | Heads-up | Check Point: Gaia OS flaw gives full control of the firewall, already exploited | CVE-2026-123039 |
 | [11/11/2026](editions/2026/11/2026-11-11.md) | Critical | Chrome: XML processing flaw already being exploited | CVE-2026-125350 |
 | [11/11/2026](editions/2026/11/2026-11-11.md) | Critical | Outlook: a crafted file hands over your password hash, already exploited | CVE-2026-124194 |
 | [11/09/2026](editions/2026/11/2026-11-09.md) | Heads-up | OpenSSH on Alpine Linux: a very long password lets attackers log in without the real one | CVE-2026-123158 |
