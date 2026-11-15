@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-14T09:13:11+01:00",
+  "actualizado": "2026-11-15T09:58:15+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "sobremesa",
     "identidad",
     "smart-tv",
     "iot",
     "copias",
     "tablets",
-    "ingenieria",
-    "habitos"
+    "ingenieria"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -37,6 +37,10 @@
       {
         "fecha": "2026-11-06",
         "concepto": "windows-10-esu-y-tpm"
+      },
+      {
+        "fecha": "2026-11-15",
+        "concepto": "cuenta-estandar-para-el-dia-a-dia"
       }
     ],
     "smartphones": [
@@ -83,6 +87,13 @@
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-15",
+      "foco": "sobremesa",
+      "concepto": "cuenta-estandar-para-el-dia-a-dia",
+      "semaforo": "verde",
+      "alertas": []
+    },
     {
       "fecha": "2026-11-14",
       "foco": "identidad",

@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Sat, 14 Nov 2026 09:13:11 +0100</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 09:58:15 +0100</lastBuildDate>
+  <item>
+    <title>Your PC shouldn&#x27;t run on the admin account every day</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-15.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-15.html</guid>
+    <pubDate>Sun, 15 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Desktop computers</category>
+    <description>Why the account you browse, read email and game on should be a standard account, how to switch without locking yourself out, and what it won&#x27;t fix.</description>
+  </item>
   <item>
     <title>A passkey for your email: the password nobody can phish</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-14.html</link>
