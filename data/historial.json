@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-15T09:58:15+01:00",
+  "actualizado": "2026-11-16T06:55:00+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "habitos",
     "sobremesa",
     "identidad",
     "smart-tv",
     "iot",
     "copias",
-    "tablets",
-    "ingenieria"
+    "tablets"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -53,6 +53,10 @@
       {
         "fecha": "2026-11-08",
         "concepto": "ubicacion-escondida-en-las-fotos"
+      },
+      {
+        "fecha": "2026-11-16",
+        "concepto": "quien-ve-tu-ubicacion-en-tiempo-real"
       }
     ],
     "ingenieria": [
@@ -87,6 +91,13 @@
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-16",
+      "foco": "habitos",
+      "concepto": "quien-ve-tu-ubicacion-en-tiempo-real",
+      "semaforo": "verde",
+      "alertas": []
+    },
     {
       "fecha": "2026-11-15",
       "foco": "sobremesa",

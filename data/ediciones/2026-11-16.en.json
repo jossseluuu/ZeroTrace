@@ -1,0 +1,182 @@
+{
+  "fecha": "2026-11-16",
+  "idioma": "en",
+  "foco": "habitos",
+  "concepto": "who-can-see-your-live-location",
+  "titulo": "Who can see where you are right now?",
+  "subtitulo": "Sharing your location is handy, but it's easy to forget. How to check in five minutes who can see you on the map and cut off what no longer makes sense, without drama.",
+  "dispositivos": ["smartphone", "tablet", "wearable"],
+  "lectura": {"basico": 3, "fondo": 9},
+  "semaforo": {
+    "nivel": "verde",
+    "alertas": []
+  },
+  "basico": {
+    "parrafos": [
+      "Sharing your live location is really useful: getting home late at night, meeting up, or letting family know you've arrived. The catch is that **it takes a second to turn on and then stays on for months**.",
+      "Over time, the list of people who can see you on the map grows: an ex, a roommate from two years ago, someone you met up with once. And whoever has it **sees where you are right now**, not just where you've been.",
+      "The good news: checking takes five minutes. iPhone has a tool built for exactly this, [[comprobacion|Safety Check]], and on Google you just open the *Location Sharing* page in your account."
+    ],
+    "esencial": [
+      "Once a year (or after a breakup or a move), review who can see your location.",
+      "On iPhone: Settings > Privacy & Security > **Safety Check**.",
+      "On Google: your account > People & sharing > **Location Sharing**.",
+      "Share for a limited time instead of \"until I turn it off.\""
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "medio", "texto": "No hacking required: all it takes is a permission you granted once and never took back, or a few minutes with your unlocked phone in the hands of someone close to you."},
+    "impacto": {"nivel": "alto", "texto": "Someone who sees your live location knows where you live, where you sleep, your routines, and when you're not home. In a controlling or stalking situation, that information puts your physical safety at risk."}
+  },
+  "fondo": [
+    {
+      "titulo": "Three ways someone can see your location",
+      "parrafos": [
+        "**1. You shared it.** From Find My (Apple), from Google Maps or Google's Find Hub app, from a chat, or from a social app with a map. This is the most common way and the easiest to forget.",
+        "**2. Someone turned it on from your phone.** With your unlocked phone in hand, sharing your location with their own account takes seconds. Nothing needs to be installed.",
+        "**3. They know your account password.** Find My and Find Hub exist to locate *your* devices. If someone else signs in to your Apple or Google account, they can see where your phone, watch, or tablet is without any \"sharing\" at all."
+      ]
+    },
+    {
+      "titulo": "What the other person actually sees",
+      "parrafos": [
+        "On Google, according to its own help pages, people you share with see your **name, profile picture, real-time location, and battery status**. You can also allow each person to create notifications about you, for example when you arrive at or leave a place.",
+        "Apple has something similar with *Notifications About You* in the Find My app: someone can get an alert when you get home or leave work. Check those too, in the **Me** tab.",
+        "On Google, this setting is **device and account-specific**: if you have two phones or two accounts, check each combination."
+      ]
+    },
+    {
+      "titulo": "Will they know if I stop sharing?",
+      "parrafos": [
+        "Apple is clear about it: when you stop sharing, the people you shared with **may notice**, and on earlier operating systems they may receive a notification in Messages.",
+        "Most of the time this doesn't matter at all: if it's someone you met up with once, no harm done. But if you're worried about how that person might react, read the section on sensitive situations below first."
+      ]
+    },
+    {
+      "titulo": "The iPhone tool: Safety Check",
+      "parrafos": [
+        "Available since iOS 16 in **Settings > Privacy & Security > Safety Check**. It has two options. **Manage Sharing & Access** lets you review, person by person and app by app, what you share, including your location.",
+        "**Emergency Reset** immediately stops sharing with all people and apps, and helps you review your emergency contacts and the devices signed in to your account, and change your Apple Account password.",
+        "Apple describes it as an iPhone feature. On iPad or Mac, you review things manually in the Find My app and privacy settings."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "A moment of access", "texto": "Someone close (a partner, an ex, a relative) picks up your unlocked phone for a few minutes, or already knows your passcode because they've watched you type it."},
+    {"titulo": "They turn on sharing", "texto": "From the maps or device-finding app, they share your location with their own account, with no end date. Nothing unusual gets installed and no new app appears on your screen."},
+    {"titulo": "They cover their tracks", "texto": "They delete the conversation or notification that might give it away. From then on, their phone shows where you are at any moment."},
+    {"titulo": "They use it", "texto": "They show up \"by chance\" where you are, know when you leave work, or mention places you never told them about. That last clue is usually what raises suspicion."},
+    {"titulo": "The account variant", "texto": "If they know your Apple or Google account password, they don't even need your phone: signing in to the device-finding website is enough."}
+  ],
+  "atacante": {
+    "puede": [
+      "See your live location for as long as sharing stays on.",
+      "Get alerts when you arrive at or leave a place, if you've allowed it.",
+      "See where your devices are if they know your account password.",
+      "Notice that you've stopped sharing and ask you about it."
+    ],
+    "no_puede": [
+      "See your location if you don't share it and they have no access to your account or your phone.",
+      "Read your messages or photos just because they can see your location: those are separate permissions.",
+      "Turn sharing back on remotely without getting your phone or account again.",
+      "Get into your account after you change the password, if you have two-step verification on."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Review who you share with on iPhone",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "5 min", "para": "todos",
+      "texto": "This is the most thorough check: location, photos, notes, and other data you share with each person, plus which apps have access.",
+      "pasos": {
+        "iPhone": ["Settings > Privacy & Security > **Safety Check** (you may need to scroll down).", "Tap **Manage Sharing & Access** and go through the list by **People**.", "Stop sharing with anyone who shouldn't see you anymore."],
+        "Find My app (iPhone and iPad)": ["Open Find My > **People** tab to see who you share with.", "Tap a name > **Stop Sharing My Location**."]
+      }
+    },
+    {
+      "titulo": "Review who you share with on Google",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "3 min", "para": "todos",
+      "texto": "This covers what you share from Google Maps or Find Hub, whether you use Android or iPhone. It works from a browser on any device.",
+      "pasos": {
+        "Google Account": ["Go to `myaccount.google.com` > **People & sharing**.", "Under *Info you can share with others*, tap **Location Sharing** > **Manage Location Sharing**.", "Tap each person's name and choose **Stop** if it no longer makes sense."],
+        "Android": ["To cut it all off at once, you can also pause Location Sharing in your Android device Settings."]
+      }
+    },
+    {
+      "titulo": "Check \"notifications about you\"",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "Even if no one is watching you on the map all the time, someone may get an alert every time you get home or leave work.",
+      "pasos": {
+        "Find My app": ["**Me** tab > **Notifications About You** section: check who has them."],
+        "Google": ["In **Manage Location Sharing**, tap each person and check whether they're allowed to create notifications about you."]
+      }
+    },
+    {
+      "titulo": "Share with an expiration date",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "habit", "para": "todos",
+      "texto": "For a meetup or a trip, pick a limited duration instead of sharing indefinitely. That way you don't have to remember to turn it off.",
+      "pasos": {
+        "Always": ["When you share from any app, choose how long, not the never-ending option.", "Also check messaging and social apps with maps: many have their own live location feature, separate from the system one."]
+      }
+    },
+    {
+      "titulo": "Protect the account, not just the phone",
+      "impacto": "alto", "esfuerzo": "medio", "tiempo": "10 min", "para": "avanzado",
+      "texto": "If someone knows your Apple or Google account password, they can locate your devices without any sharing. If you're suspicious, change the password and review the signed-in devices.",
+      "pasos": {
+        "iPhone": ["**Safety Check** > *Emergency Reset* walks you through stopping all sharing, reviewing devices, and changing your Apple Account password."],
+        "Always": ["Turn on two-step verification or a passkey on your main account.", "Change your phone passcode if someone close to you knows it."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "The People tab in Find My", "texto": "If anyone shows up under **People**, location is being shared in one direction or the other. Tap each name to see whether you share with them, they share with you, or both."},
+    {"titulo": "Google's Location Sharing page", "texto": "At `myaccount.google.com` > People & sharing > Location Sharing you'll see the list of people who can see your location. If it's empty, you're not sharing anything from that account on that device."},
+    {"titulo": "Signs someone knows too much", "texto": "Someone knowing where you are when you haven't told them is the clearest clue. A battery draining faster than usual, a phone that overheats or turns off and on unexpectedly can point to [[stalkerware|stalkerware]], according to the FTC, though they also have ordinary causes."}
+  ],
+  "innecesario": [
+    {"titulo": "Stopping sharing with your family", "texto": "Sharing with the people you live with or who look after you is useful and reasonable. What matters is that it's a conscious choice, not a forgotten leftover."},
+    {"titulo": "Turning off Location Services", "texto": "Maps, finding a lost phone, and emergency calls need it. The problem isn't that your phone knows where you are; it's who else can see it."},
+    {"titulo": "Checking every week", "texto": "A review once a year, plus another when your life changes (a breakup, a move, a new job), is enough."},
+    {"titulo": "Buying a new phone just in case", "texto": "Stopping sharing and changing your account password and phone passcode solves the vast majority of cases."}
+  ],
+  "mito": {
+    "mito": "\"I tapped *Hide Location* in Find My, so that person can't see me anymore.\"",
+    "realidad": "*Hide Location* is a **pause**: according to Apple, sharing automatically resumes the next day. To really stop, tap **Stop Sharing My Location**.",
+    "fuente": {"titulo": "Apple: Find My and location sharing (Personal Safety User Guide)", "url": "https://support.apple.com/guide/personal-safety/find-my-and-location-sharing-ips05ede4573/web"}
+  },
+  "tecnico": [
+    {
+      "titulo": "Sharing isn't the same as locating a device",
+      "parrafos": [
+        "There are two separate mechanisms worth keeping apart. **Sharing with people** is an explicit permission you grant to another account, which you can see and revoke in a list.",
+        "**Device location** (Find My, Find Hub) is tied to *your* account: anyone who signs in with it sees where your devices are. It never shows up in any list of \"people you share with,\" so the only defense is controlling who can get into the account: a unique password, two-step verification or a passkey, and a review of signed-in devices."
+      ]
+    },
+    {
+      "titulo": "Why the review has to be per account and per device",
+      "parrafos": [
+        "Google states that the Location Sharing setting is device and account-specific. A personal phone and a tablet on the same account, or one phone with two accounts, are different combinations.",
+        "On top of that, every messaging or social app with a map manages its own live location, independent of the system one. Revoking an app's **Location** permission in system settings cuts off its access at the root, even if you've forgotten what you were sharing inside it."
+      ]
+    },
+    {
+      "titulo": "Sensitive situations: think about your safety before cutting access",
+      "parrafos": [
+        "If you suspect a partner or ex is monitoring you, keep in mind that stopping sharing **can be noticed**. The FTC warns that an abuser may escalate if they suspect you're cutting off their access to your phone, and suggests getting specialized support before you act.",
+        "In the U.S., you can contact the National Domestic Violence Hotline at **1-800-799-SAFE (7233)**. The FTC also recommends keeping physical control of your phone, using a passcode of at least six digits, and turning on two-factor authentication."
+      ]
+    }
+  ],
+  "glosario": {
+    "comprobacion": ["Safety Check", "iPhone tool (iOS 16 or later) for reviewing and cutting off what you share with people and apps, including your location."],
+    "stalkerware": ["Stalkerware", "Spy app secretly installed on someone else's phone to see their location, messages, or activity. It's usually installed by someone close to the victim."]
+  },
+  "fuentes": [
+    {"titulo": "Apple: Safety Check for iPhone with iOS 16 or later", "url": "https://support.apple.com/guide/personal-safety/safety-check-iphone-ios-16-ips2aad835e1/web"},
+    {"titulo": "Apple: Find My and location sharing (Personal Safety User Guide)", "url": "https://support.apple.com/guide/personal-safety/find-my-and-location-sharing-ips05ede4573/web"},
+    {"titulo": "Apple: Share your location in Find My on iPhone", "url": "https://support.apple.com/guide/iphone/share-your-location-iph01954dc44/ios"},
+    {"titulo": "Google: Manage your Location Sharing settings", "url": "https://support.google.com/accounts/answer/9363497?hl=en"},
+    {"titulo": "FTC: Stalkerware, what to know", "url": "https://consumer.ftc.gov/articles/stalkerware-what-know"},
+    {"titulo": "FTC: How to protect your phone from hackers", "url": "https://consumer.ftc.gov/articles/how-protect-your-phone-hackers"}
+  ]
+}

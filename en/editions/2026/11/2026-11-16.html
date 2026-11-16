@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Sharing your location is handy, but it&#x27;s easy to forget. How to check in five minutes who can see you on the map and cut off what no longer makes sense, without drama.">
+<title>Who can see where you are right now? · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-16.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-16.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Monday, November 16, 2026 · 🧠 Habits and privacy</p>
+<h1>Who can see where you are right now?</h1><p class="sub">Sharing your location is handy, but it's easy to forget. How to check in five minutes who can see you on the map and cut off what no longer makes sense, without drama.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 9 min</li><li>📱 Smartphone</li><li>📲 Tablet</li><li>⌚ Wearable</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Quiet day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo"></div><div class="lamp verde on"></div></div>
+<div class="label">Quiet day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="calma"><p><strong>No new alerts today.</strong></p><p>Nothing published in the last few hours meets our bar: real-world exploitation or broad impact on everyday devices. Earlier alerts are still in the log.</p><p><a href="../../../alerts.html">See every alert we've issued</a></p></div></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>Sharing your live location is really useful: getting home late at night, meeting up, or letting family know you've arrived. The catch is that <strong>it takes a second to turn on and then stays on for months</strong>.</p><p>Over time, the list of people who can see you on the map grows: an ex, a roommate from two years ago, someone you met up with once. And whoever has it <strong>sees where you are right now</strong>, not just where you've been.</p><p>The good news: checking takes five minutes. iPhone has a tool built for exactly this, <button type="button" class="term" popovertarget="g-comprobacion">Safety Check</button>, and on Google you just open the <em>Location Sharing</em> page in your account.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>Once a year (or after a breakup or a move), review who can see your location.</li><li>On iPhone: Settings &gt; Privacy &amp; Security &gt; <strong>Safety Check</strong>.</li><li>On Google: your account &gt; People &amp; sharing &gt; <strong>Location Sharing</strong>.</li><li>Share for a limited time instead of "until I turn it off."</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>No hacking required: all it takes is a permission you granted once and never took back, or a few minutes with your unlocked phone in the hands of someone close to you.</p></div><div class="medidor"><div class="top"><span>Impact: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Someone who sees your live location knows where you live, where you sleep, your routines, and when you're not home. In a controlling or stalking situation, that information puts your physical safety at risk.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>Three ways someone can see your location</h3><p><strong>1. You shared it.</strong> From Find My (Apple), from Google Maps or Google's Find Hub app, from a chat, or from a social app with a map. This is the most common way and the easiest to forget.</p><p><strong>2. Someone turned it on from your phone.</strong> With your unlocked phone in hand, sharing your location with their own account takes seconds. Nothing needs to be installed.</p><p><strong>3. They know your account password.</strong> Find My and Find Hub exist to locate <em>your</em> devices. If someone else signs in to your Apple or Google account, they can see where your phone, watch, or tablet is without any "sharing" at all.</p><h3>What the other person actually sees</h3><p>On Google, according to its own help pages, people you share with see your <strong>name, profile picture, real-time location, and battery status</strong>. You can also allow each person to create notifications about you, for example when you arrive at or leave a place.</p><p>Apple has something similar with <em>Notifications About You</em> in the Find My app: someone can get an alert when you get home or leave work. Check those too, in the <strong>Me</strong> tab.</p><p>On Google, this setting is <strong>device and account-specific</strong>: if you have two phones or two accounts, check each combination.</p><h3>Will they know if I stop sharing?</h3><p>Apple is clear about it: when you stop sharing, the people you shared with <strong>may notice</strong>, and on earlier operating systems they may receive a notification in Messages.</p><p>Most of the time this doesn't matter at all: if it's someone you met up with once, no harm done. But if you're worried about how that person might react, read the section on sensitive situations below first.</p><h3>The iPhone tool: Safety Check</h3><p>Available since iOS 16 in <strong>Settings &gt; Privacy &amp; Security &gt; Safety Check</strong>. It has two options. <strong>Manage Sharing &amp; Access</strong> lets you review, person by person and app by app, what you share, including your location.</p><p><strong>Emergency Reset</strong> immediately stops sharing with all people and apps, and helps you review your emergency contacts and the devices signed in to your account, and change your Apple Account password.</p><p>Apple describes it as an iPhone feature. On iPad or Mac, you review things manually in the Find My app and privacy settings.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>A moment of access</strong><p>Someone close (a partner, an ex, a relative) picks up your unlocked phone for a few minutes, or already knows your passcode because they've watched you type it.</p></li><li><strong>They turn on sharing</strong><p>From the maps or device-finding app, they share your location with their own account, with no end date. Nothing unusual gets installed and no new app appears on your screen.</p></li><li><strong>They cover their tracks</strong><p>They delete the conversation or notification that might give it away. From then on, their phone shows where you are at any moment.</p></li><li><strong>They use it</strong><p>They show up "by chance" where you are, know when you leave work, or mention places you never told them about. That last clue is usually what raises suspicion.</p></li><li><strong>The account variant</strong><p>If they know your Apple or Google account password, they don't even need your phone: signing in to the device-finding website is enough.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>See your live location for as long as sharing stays on.</li><li>Get alerts when you arrive at or leave a place, if you've allowed it.</li><li>See where your devices are if they know your account password.</li><li>Notice that you've stopped sharing and ask you about it.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>See your location if you don't share it and they have no access to your account or your phone.</li><li>Read your messages or photos just because they can see your location: those are separate permissions.</li><li>Turn sharing back on remotely without getting your phone or account again.</li><li>Get into your account after you change the password, if you have two-step verification on.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Review who you share with on iPhone</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>This is the most thorough check: location, photos, notes, and other data you share with each person, plus which apps have access.</p><div class="plataformas"><div class="plataforma"><h4>iPhone</h4><ol><li>Settings &gt; Privacy &amp; Security &gt; <strong>Safety Check</strong> (you may need to scroll down).</li><li>Tap <strong>Manage Sharing &amp; Access</strong> and go through the list by <strong>People</strong>.</li><li>Stop sharing with anyone who shouldn't see you anymore.</li></ol></div><div class="plataforma"><h4>Find My app (iPhone and iPad)</h4><ol><li>Open Find My &gt; <strong>People</strong> tab to see who you share with.</li><li>Tap a name &gt; <strong>Stop Sharing My Location</strong>.</li></ol></div></div></article><article class="medida"><h3>Review who you share with on Google</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>This covers what you share from Google Maps or Find Hub, whether you use Android or iPhone. It works from a browser on any device.</p><div class="plataformas"><div class="plataforma"><h4>Google Account</h4><ol><li>Go to <code>myaccount.google.com</code> &gt; <strong>People &amp; sharing</strong>.</li><li>Under <em>Info you can share with others</em>, tap <strong>Location Sharing</strong> &gt; <strong>Manage Location Sharing</strong>.</li><li>Tap each person's name and choose <strong>Stop</strong> if it no longer makes sense.</li></ol></div><div class="plataforma"><h4>Android</h4><ol><li>To cut it all off at once, you can also pause Location Sharing in your Android device Settings.</li></ol></div></div></article><article class="medida"><h3>Check "notifications about you"</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: everyone</li></ul>
+<p>Even if no one is watching you on the map all the time, someone may get an alert every time you get home or leave work.</p><div class="plataformas"><div class="plataforma"><h4>Find My app</h4><ol><li><strong>Me</strong> tab &gt; <strong>Notifications About You</strong> section: check who has them.</li></ol></div><div class="plataforma"><h4>Google</h4><ol><li>In <strong>Manage Location Sharing</strong>, tap each person and check whether they're allowed to create notifications about you.</li></ol></div></div></article><article class="medida"><h3>Share with an expiration date</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>For a meetup or a trip, pick a limited duration instead of sharing indefinitely. That way you don't have to remember to turn it off.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>When you share from any app, choose how long, not the never-ending option.</li><li>Also check messaging and social apps with maps: many have their own live location feature, separate from the system one.</li></ol></div></div></article><article class="medida deep"><h3>Protect the account, not just the phone<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: medium</li>
+<li>⏱ 10 min</li><li>For: advanced</li></ul>
+<p>If someone knows your Apple or Google account password, they can locate your devices without any sharing. If you're suspicious, change the password and review the signed-in devices.</p><div class="plataformas"><div class="plataforma"><h4>iPhone</h4><ol><li><strong>Safety Check</strong> &gt; <em>Emergency Reset</em> walks you through stopping all sharing, reviewing devices, and changing your Apple Account password.</li></ol></div><div class="plataforma"><h4>Always</h4><ol><li>Turn on two-step verification or a passkey on your main account.</li><li>Change your phone passcode if someone close to you knows it.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>The People tab in Find My</h3><p>If anyone shows up under <strong>People</strong>, location is being shared in one direction or the other. Tap each name to see whether you share with them, they share with you, or both.</p></div><div class="fila"><h3>Google's Location Sharing page</h3><p>At <code>myaccount.google.com</code> &gt; People &amp; sharing &gt; Location Sharing you'll see the list of people who can see your location. If it's empty, you're not sharing anything from that account on that device.</p></div><div class="fila"><h3>Signs someone knows too much</h3><p>Someone knowing where you are when you haven't told them is the clearest clue. A battery draining faster than usual, a phone that overheats or turns off and on unexpectedly can point to <button type="button" class="term" popovertarget="g-stalkerware">stalkerware</button>, according to the FTC, though they also have ordinary causes.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Stopping sharing with your family</h3><p>Sharing with the people you live with or who look after you is useful and reasonable. What matters is that it's a conscious choice, not a forgotten leftover.</p></div><div class="fila"><h3>Turning off Location Services</h3><p>Maps, finding a lost phone, and emergency calls need it. The problem isn't that your phone knows where you are; it's who else can see it.</p></div><div class="fila"><h3>Checking every week</h3><p>A review once a year, plus another when your life changes (a breakup, a move, a new job), is enough.</p></div><div class="fila"><h3>Buying a new phone just in case</h3><p>Stopping sharing and changing your account password and phone passcode solves the vast majority of cases.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"I tapped <em>Hide Location</em> in Find My, so that person can't see me anymore."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p><em>Hide Location</em> is a <strong>pause</strong>: according to Apple, sharing automatically resumes the next day. To really stop, tap <strong>Stop Sharing My Location</strong>.</p><p class="src"><a href="https://support.apple.com/guide/personal-safety/find-my-and-location-sharing-ips05ede4573/web" rel="noopener noreferrer">Apple: Find My and location sharing (Personal Safety User Guide)</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>Sharing isn't the same as locating a device</h3><p>There are two separate mechanisms worth keeping apart. <strong>Sharing with people</strong> is an explicit permission you grant to another account, which you can see and revoke in a list.</p><p><strong>Device location</strong> (Find My, Find Hub) is tied to <em>your</em> account: anyone who signs in with it sees where your devices are. It never shows up in any list of "people you share with," so the only defense is controlling who can get into the account: a unique password, two-step verification or a passkey, and a review of signed-in devices.</p><h3>Why the review has to be per account and per device</h3><p>Google states that the Location Sharing setting is device and account-specific. A personal phone and a tablet on the same account, or one phone with two accounts, are different combinations.</p><p>On top of that, every messaging or social app with a map manages its own live location, independent of the system one. Revoking an app's <strong>Location</strong> permission in system settings cuts off its access at the root, even if you've forgotten what you were sharing inside it.</p><h3>Sensitive situations: think about your safety before cutting access</h3><p>If you suspect a partner or ex is monitoring you, keep in mind that stopping sharing <strong>can be noticed</strong>. The FTC warns that an abuser may escalate if they suspect you're cutting off their access to your phone, and suggests getting specialized support before you act.</p><p>In the U.S., you can contact the National Domestic Violence Hotline at <strong>1-800-799-SAFE (7233)</strong>. The FTC also recommends keeping physical control of your phone, using a passcode of at least six digits, and turning on two-factor authentication.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Safety Check</dt><dd>iPhone tool (iOS 16 or later) for reviewing and cutting off what you share with people and apps, including your location.</dd><dt>Stalkerware</dt><dd>Spy app secretly installed on someone else&#x27;s phone to see their location, messages, or activity. It&#x27;s usually installed by someone close to the victim.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://support.apple.com/guide/personal-safety/safety-check-iphone-ios-16-ips2aad835e1/web" rel="noopener noreferrer">Apple: Safety Check for iPhone with iOS 16 or later</a></li><li><a href="https://support.apple.com/guide/personal-safety/find-my-and-location-sharing-ips05ede4573/web" rel="noopener noreferrer">Apple: Find My and location sharing (Personal Safety User Guide)</a></li><li><a href="https://support.apple.com/guide/iphone/share-your-location-iph01954dc44/ios" rel="noopener noreferrer">Apple: Share your location in Find My on iPhone</a></li><li><a href="https://support.google.com/accounts/answer/9363497?hl=en" rel="noopener noreferrer">Google: Manage your Location Sharing settings</a></li><li><a href="https://consumer.ftc.gov/articles/stalkerware-what-know" rel="noopener noreferrer">FTC: Stalkerware, what to know</a></li><li><a href="https://consumer.ftc.gov/articles/how-protect-your-phone-hackers" rel="noopener noreferrer">FTC: How to protect your phone from hackers</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-comprobacion" class="gl-pop"><strong>Safety Check</strong>iPhone tool (iOS 16 or later) for reviewing and cutting off what you share with people and apps, including your location.</div><div popover id="g-stalkerware" class="gl-pop"><strong>Stalkerware</strong>Spy app secretly installed on someone else&#x27;s phone to see their location, messages, or activity. It&#x27;s usually installed by someone close to the victim.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>
