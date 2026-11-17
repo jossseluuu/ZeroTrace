@@ -1,0 +1,193 @@
+{
+  "fecha": "2026-11-17",
+  "idioma": "es",
+  "foco": "transito",
+  "concepto": "dns-cifrado",
+  "titulo": "Aunque la web lleve candado, la red puede ver a qué webs entras",
+  "subtitulo": "Qué revela la «guía telefónica» de internet, quién la ve en casa o en una wifi pública y cómo cifrarla en dos minutos sin pagar nada.",
+  "dispositivos": ["smartphone", "tablet", "portatil", "sobremesa"],
+  "lectura": {"basico": 3, "fondo": 9},
+  "semaforo": {
+    "nivel": "verde",
+    "alertas": []
+  },
+  "basico": {
+    "parrafos": [
+      "El candado de la web (**HTTPS**) cifra lo que haces dentro de ella: lo que escribes, lo que lees, tus contraseñas. Pero antes de llegar, tu dispositivo tiene que preguntar dónde está esa web. Esa pregunta es el [[dns|DNS]], y **en la mayoría de los casos viaja sin cifrar**.",
+      "Eso significa que quien gestiona la red por la que vas (tu operador, la wifi del hotel o quien haya montado una wifi abierta) puede **ver la lista de webs y servicios que consultas**, aunque no vea qué haces en ellos. Una lista así dice mucho: tu banco, tu médico, tus apps.",
+      "La buena noticia es que el **DNS cifrado** ya viene en los navegadores y en Android, muchas veces activado de serie. Solo tienes que comprobar que está encendido. No necesitas pagar una VPN ni tocar el router."
+    ],
+    "esencial": [
+      "En Chrome, comprueba que **Usar DNS seguro** está activado.",
+      "En Android, deja **DNS privado** en *Automático*.",
+      "En Firefox, activa la protección de **DNS sobre HTTPS** (en España no viene activada por defecto).",
+      "Recuerda que cifrar el DNS protege tu privacidad, pero no te protege de una web falsa: sigue mirando bien la dirección."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "medio", "texto": "Tu operador puede ver tus consultas DNS siempre que uses su servidor. En una wifi pública o abierta, también quien la gestione o cualquiera que pueda interceptarla."},
+    "impacto": {"nivel": "medio", "texto": "No te roban la cuenta, pero sí revelan tus hábitos: qué servicios usas, a qué horas y desde dónde. Y en una red hostil, un DNS sin proteger facilita redirigirte a páginas falsas."}
+  },
+  "fondo": [
+    {
+      "titulo": "Qué es el DNS y por qué es tan revelador",
+      "parrafos": [
+        "Las webs se encuentran por su dirección IP, no por su nombre. El DNS traduce `mibanco.es` a esa dirección, igual que una guía telefónica. Cada vez que abres una web o una app consulta un servicio, tu dispositivo hace una o varias de estas preguntas a un [[resolutor|resolutor DNS]].",
+        "La AEPD lo resume así en su nota técnica sobre privacidad en DNS: una consulta contiene la dirección IP que identifica al usuario y el nombre del sitio, los servidores DNS **pueden registrar esa información** y, en la gran mayoría de casos, las consultas no van protegidas por la red.",
+        "En casa, quien decide qué resolutor usas suele ser el operador, que lo configura en tu router automáticamente. Por eso, por defecto, tu operador recibe todas tus consultas."
+      ]
+    },
+    {
+      "titulo": "HTTPS protege el contenido, no la consulta",
+      "parrafos": [
+        "HTTPS cifra la conversación con la web una vez establecida. Pero la consulta DNS que la precede sale, por defecto, en texto claro por el puerto 53. Quien vea pasar tu tráfico puede leerla sin romper nada.",
+        "Por eso el candado y el DNS cifrado se complementan: **el candado protege lo que haces; el DNS cifrado oculta a la red a qué sitio vas a preguntar**."
+      ]
+    },
+    {
+      "titulo": "Qué cambia al cifrarlo",
+      "parrafos": [
+        "Con [[doh|DNS sobre HTTPS (DoH)]] o [[dot|DNS sobre TLS (DoT)]], la consulta viaja cifrada hasta el resolutor. La red local y el operador ya no pueden leerla ni modificarla por el camino.",
+        "Lo que **no** cambia: el resolutor que elijas sigue viendo todas tus consultas. Cifrar el DNS es decidir en quién confías, no dejar de confiar en nadie. La AEPD advierte de que estas medidas ayudan a la privacidad pero no la garantizan, y de que conviene fijarse en las condiciones del proveedor."
+      ]
+    },
+    {
+      "titulo": "Dónde viene ya activado",
+      "parrafos": [
+        "**Chrome** tiene «Usar DNS seguro» activado de serie en modo automático: intenta cifrar con tu proveedor actual y, si hay problemas, vuelve al DNS normal. **Android** usa DNS privado de forma predeterminada en las redes que lo admiten.",
+        "**Firefox** solo lo activa por defecto en algunos países (Estados Unidos, Canadá, Rusia y Ucrania, en escritorio), así que en España hay que encenderlo. En **iPhone y iPad**, los sistemas de Apple admiten DNS cifrado desde 2020 mediante apps o perfiles de configuración, y **Relay privado de iCloud** (incluido en iCloud+) cifra las consultas DNS de Safari."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "El atacante controla la red", "texto": "Monta una wifi abierta en un sitio concurrido o se cuela en una red mal protegida. No necesita romper ningún cifrado: solo estar en medio."},
+    {"titulo": "Escucha las consultas", "texto": "Como el DNS normal viaja en claro, ve qué nombres pregunta cada dispositivo: el banco, el correo, la app de citas, la del hospital. Con eso ya tiene un perfil."},
+    {"titulo": "Responde con direcciones falsas", "texto": "Puede contestar antes que el resolutor legítimo y dar la dirección de un servidor suyo para un nombre concreto."},
+    {"titulo": "Choca con HTTPS", "texto": "Si la web usa HTTPS, su servidor no puede presentar un certificado válido para ese nombre y el navegador muestra el aviso de certificado. Si la víctima lo ignora o la web no usa HTTPS, puede mostrarle una página falsa."},
+    {"titulo": "Con DNS cifrado", "texto": "Las consultas viajan cifradas hasta el resolutor: el atacante no puede leerlas ni falsificarlas. Solo ve que hay tráfico cifrado hacia ciertas direcciones IP."}
+  ],
+  "atacante": {
+    "puede": [
+      "Ver las direcciones IP a las que te conectas, aunque cifres el DNS. A veces basta para adivinar el servicio.",
+      "Ver el nombre del sitio en el inicio de la conexión HTTPS ([[sni|SNI]]), salvo que el navegador y la web usen [[ech|ECH]].",
+      "Bloquear el DNS cifrado para forzar el normal, si tu dispositivo está en modo automático.",
+      "Leer y manipular tus consultas DNS si no están cifradas."
+    ],
+    "no_puede": [
+      "Leer el contenido de webs y apps con HTTPS, uses o no DNS cifrado.",
+      "Leer ni falsificar consultas que viajan por DoH o DoT hacia tu resolutor.",
+      "Hacer pasar su servidor por tu banco sin que el navegador avise, si la web usa HTTPS.",
+      "Saltarse el modo estricto: si fijas un proveedor concreto y lo bloquea, la consulta falla en lugar de salir en claro."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Comprueba el DNS seguro de Chrome",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Viene activado de serie, pero conviene confirmar que nadie lo ha apagado. En dispositivos gestionados o con control parental no está disponible.",
+      "pasos": {
+        "Chrome en ordenador": ["Más (⋮) > **Configuración** > **Privacidad y seguridad** > **Seguridad**.", "En *Configuración avanzada*, comprueba que **Usar DNS seguro** está activado."],
+        "Chrome en Android": ["Más (⋮) > **Configuración** > **Privacidad y seguridad**.", "En *Seguridad*, toca **Usar DNS seguro** y actívalo."]
+      }
+    },
+    {
+      "titulo": "Deja el DNS privado de Android en Automático",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Cubre todo el móvil, no solo el navegador. Viene en *Automático* de serie: solo hay que comprobar que no está *Desactivado*.",
+      "pasos": {
+        "Android": ["Ajustes > **Redes e Internet** > **DNS privado**.", "Elige **Automático** y pulsa **Guardar**."]
+      }
+    },
+    {
+      "titulo": "Activa DNS sobre HTTPS en Firefox",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "En España Firefox no lo activa por defecto. La protección por defecto ya cifra cuando puede; la aumentada usa siempre tu proveedor elegido salvo que falle.",
+      "pasos": {
+        "Firefox en ordenador": ["Menú > **Ajustes** > **Privacidad & Seguridad**.", "Baja hasta **DNS sobre HTTPS** y elige **Protección aumentada** (o, como mínimo, **Protección por defecto**)."]
+      }
+    },
+    {
+      "titulo": "En iPhone, aprovecha Relay privado si ya tienes iCloud+",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Cifra las consultas DNS y oculta tu IP cuando navegas con Safari. No está disponible en todos los países y no cubre el resto de apps. No merece la pena contratar iCloud+ solo por esto.",
+      "pasos": {
+        "iPhone / iPad": ["Ajustes > [tu nombre] > **iCloud** > **Relay privado**, y actívalo.", "Si una red no es compatible, puedes desactivarlo solo para esa wifi con **Limitar rastreo de dirección IP** en sus ajustes."]
+      }
+    },
+    {
+      "titulo": "Fija un proveedor y usa modo estricto",
+      "impacto": "medio", "esfuerzo": "medio", "tiempo": "5 min", "para": "avanzado",
+      "texto": "En modo automático, una red puede bloquear el DNS cifrado y tu dispositivo vuelve al normal sin avisar. Si eliges un proveedor concreto, no hay vuelta atrás: la consulta va cifrada o no sale. A cambio, alguna wifi con portal de acceso puede dar problemas.",
+      "pasos": {
+        "Android": ["Ajustes > Redes e Internet > DNS privado > **Nombre de host del proveedor de DNS privado**.", "Escribe el nombre de host de un proveedor cuyas condiciones conozcas (por ejemplo, `dns.google`) y pulsa **Guardar**."],
+        "Chrome": ["En **Usar DNS seguro**, elige un proveedor de la lista o uno personalizado en lugar del actual. Así Chrome ya no vuelve al DNS sin cifrar."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "Chrome", "texto": "En Configuración > Privacidad y seguridad > Seguridad, **Usar DNS seguro** debe aparecer activado. Si está gris y no te deja cambiarlo, el navegador lo gestiona tu empresa o un control parental."},
+    {"titulo": "Android", "texto": "En Ajustes > Redes e Internet, debajo de **DNS privado** verás *Automático*, *Desactivado* o el nombre del proveedor que hayas puesto."},
+    {"titulo": "Firefox", "texto": "En Ajustes > Privacidad & Seguridad, la sección **DNS sobre HTTPS** indica el nivel de protección elegido. *Desactivado* significa que tus consultas salen sin cifrar."}
+  ],
+  "innecesario": [
+    {"titulo": "Contratar una VPN solo para esto", "texto": "El DNS cifrado es gratis y ya está en tu navegador y en Android. Una VPN traslada la confianza a otra empresa, que ve tus consultas y tu tráfico."},
+    {"titulo": "Cambiar el DNS del router", "texto": "No hace falta tocar la configuración del router: el cifrado se activa en cada dispositivo o navegador, y así te protege también fuera de casa."},
+    {"titulo": "Instalar apps de «DNS seguro» desconocidas", "texto": "Una app de DNS ve todas tus consultas. Si quieres un proveedor concreto, elige uno de los que ofrece tu navegador o uno cuyas condiciones de privacidad conozcas."},
+    {"titulo": "Preocuparte por el contenido de lo que haces", "texto": "Eso ya lo protege HTTPS. El DNS cifrado añade privacidad sobre a dónde vas, no protección extra para tus contraseñas."}
+  ],
+  "mito": {
+    "mito": "«Si la web tiene candado, nadie sabe qué páginas visito.»",
+    "realidad": "El candado cifra lo que haces dentro de la web, pero **la consulta DNS previa suele viajar en claro**, y la dirección IP y el nombre del sitio al iniciar la conexión también pueden verse. Quien gestiona la red puede saber a qué sitios vas aunque no vea qué haces en ellos.",
+    "fuente": {"titulo": "AEPD: nota técnica «Privacidad en DNS» (PDF)", "url": "https://www.aepd.es/documento/nota-tecnica-privacidad-dns.pdf"}
+  },
+  "tecnico": [
+    {
+      "titulo": "DoT y DoH: mismo objetivo, distinto disfraz",
+      "parrafos": [
+        "DoT (RFC 7858, 2016) envuelve las consultas DNS en TLS sobre el puerto TCP 853. DoH (RFC 8484, 2018) las envía como peticiones HTTPS por el puerto 443.",
+        "La diferencia práctica: el puerto 853 es fácil de identificar y bloquear en un cortafuegos; DoH se confunde con el resto del tráfico web. Por eso es más difícil de bloquear sin afectar a la navegación normal."
+      ]
+    },
+    {
+      "titulo": "Modo oportunista frente a modo estricto",
+      "parrafos": [
+        "En modo oportunista (el *Automático* de Android o el proveedor actual de Chrome), el cliente intenta cifrar y, si falla, vuelve al DNS normal por el puerto 53. Funciona en cualquier red, pero un atacante activo puede provocar ese retroceso.",
+        "En modo estricto, el cliente exige cifrado con un servidor concreto y autenticado. Si no lo consigue, la resolución falla. Es más seguro frente a una red hostil y menos tolerante con redes que filtran DNS."
+      ]
+    },
+    {
+      "titulo": "Lo que el DNS cifrado no tapa: IP y SNI",
+      "parrafos": [
+        "Tras resolver el nombre, el navegador abre una conexión TLS. En el saludo inicial (*ClientHello*) envía el nombre del sitio en claro, el SNI, para que el servidor sepa qué certificado presentar. Además, la IP de destino es siempre visible.",
+        "**Encrypted Client Hello (ECH)**, publicado como RFC 9849 en marzo de 2026, cifra ese saludo. Firefox empezó a desplegarlo con la versión 118. Solo funciona si el navegador y el servidor lo admiten, y el propio RFC reconoce que se sigue viendo que te conectas a un proveedor concreto."
+      ]
+    },
+    {
+      "titulo": "Centralización y redes gestionadas",
+      "parrafos": [
+        "Cifrar hacia un gran resolutor público concentra en pocas empresas un registro muy valioso. La AEPD pide que los proveedores informen de sus condiciones de uso y anima a extender DNSSEC, que firma las respuestas para detectar falsificaciones con independencia del transporte.",
+        "En empresas, DoH puede saltarse el filtrado DNS corporativo. Chrome no permite el DNS seguro en dispositivos gestionados, y Firefox lo desactiva cuando hay políticas de empresa, control parental o la red indica que no se use. Los administradores tienen directivas para permitirlo, prohibirlo o exigirlo."
+      ]
+    }
+  ],
+  "glosario": {
+    "dns": ["DNS", "Sistema que traduce el nombre de una web (como `ejemplo.es`) a la dirección IP del servidor donde está."],
+    "resolutor": ["Resolutor DNS", "Servidor que responde a las consultas DNS de tu dispositivo. Por defecto suele ser el de tu operador."],
+    "doh": ["DoH (DNS sobre HTTPS)", "Forma de enviar las consultas DNS cifradas dentro de una conexión HTTPS normal, por el puerto 443."],
+    "dot": ["DoT (DNS sobre TLS)", "Forma de enviar las consultas DNS cifradas con TLS por un puerto dedicado, el 853."],
+    "sni": ["SNI", "Campo del inicio de una conexión HTTPS que indica, en claro, el nombre del sitio al que quieres conectarte."],
+    "ech": ["ECH (Encrypted Client Hello)", "Extensión de TLS que cifra el saludo inicial de la conexión, incluido el SNI, para que la red no vea el nombre del sitio."]
+  },
+  "fuentes": [
+    {"titulo": "AEPD: nota técnica «Privacidad en DNS» (PDF)", "url": "https://www.aepd.es/documento/nota-tecnica-privacidad-dns.pdf"},
+    {"titulo": "INCIBE-CERT: protege tus peticiones DNS con DNS over TLS", "url": "https://www.incibe.es/incibe-cert/blog/protege-tus-peticiones-dns-dns-over-tls"},
+    {"titulo": "Google Chrome: usar DNS seguro", "url": "https://support.google.com/chrome/answer/10468685?hl=es"},
+    {"titulo": "Android: DNS privado", "url": "https://support.google.com/android/answer/9654714?hl=es"},
+    {"titulo": "Mozilla: DNS sobre HTTPS en Firefox", "url": "https://support.mozilla.org/es/kb/firefox-dns-over-https"},
+    {"titulo": "Apple: acerca de Relay privado de iCloud", "url": "https://support.apple.com/es-es/102602"},
+    {"titulo": "Apple: activar el DNS cifrado (WWDC20, en inglés)", "url": "https://developer.apple.com/videos/play/wwdc2020/10047/"},
+    {"titulo": "RFC 8484: DNS sobre HTTPS (en inglés)", "url": "https://www.rfc-editor.org/rfc/rfc8484"},
+    {"titulo": "RFC 7858: DNS sobre TLS (en inglés)", "url": "https://www.rfc-editor.org/rfc/rfc7858"},
+    {"titulo": "RFC 9849: TLS Encrypted Client Hello (en inglés)", "url": "https://www.rfc-editor.org/rfc/rfc9849"}
+  ]
+}

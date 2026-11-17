@@ -1,0 +1,194 @@
+{
+  "fecha": "2026-11-17",
+  "idioma": "en",
+  "foco": "transito",
+  "concepto": "encrypted-dns",
+  "titulo": "Even with the padlock, the network can see which sites you visit",
+  "subtitulo": "What the internet's \"phone book\" gives away, who sees it at home or on public Wi-Fi, and how to encrypt it in two minutes for free.",
+  "dispositivos": ["smartphone", "tablet", "portatil", "sobremesa"],
+  "lectura": {"basico": 3, "fondo": 9},
+  "semaforo": {
+    "nivel": "verde",
+    "alertas": []
+  },
+  "basico": {
+    "parrafos": [
+      "The padlock on a website (**HTTPS**) encrypts what you do there: what you type, what you read, your passwords. But before you get there, your device has to ask where that site is. That question is [[dns|DNS]], and **most of the time it travels unencrypted**.",
+      "That means whoever runs the network you're on (your internet provider, the hotel Wi-Fi, or whoever set up an open hotspot) can **see the list of sites and services you look up**, even though they can't see what you do on them. A list like that says a lot: your bank, your doctor, your apps.",
+      "The good news: **encrypted DNS** is already built into browsers and Android, often turned on by default. You just need to check that it's on. No need to pay for a VPN or touch your router."
+    ],
+    "esencial": [
+      "In Chrome, check that **Use secure DNS** is on.",
+      "On Android, leave **Private DNS** set to *Automatic*.",
+      "In Firefox, check your **DNS over HTTPS** protection level (it's on by default for US desktop users).",
+      "Remember: encrypting DNS protects your privacy, not against a fake website. Keep checking the address."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "medio", "texto": "Your internet provider can see your DNS lookups whenever you use its server. On public or open Wi-Fi, so can whoever runs it or anyone able to intercept it."},
+    "impacto": {"nivel": "medio", "texto": "Nobody takes over your account, but your habits are exposed: which services you use, when, and from where. And on a hostile network, unprotected DNS makes it easier to steer you to fake pages."}
+  },
+  "fondo": [
+    {
+      "titulo": "What DNS is and why it's so revealing",
+      "parrafos": [
+        "Websites are found by IP address, not by name. DNS translates `mybank.com` into that address, like a phone book. Every time you open a site or an app reaches a service, your device asks one or more of these questions to a [[resolver|DNS resolver]].",
+        "By default, DNS queries and responses are sent in plaintext, which means networks, internet providers, or anyone able to monitor the traffic can read them. Each query also carries the IP address that identifies you, and resolvers can log them.",
+        "At home, the resolver you use is usually set by your provider, which configures your router automatically. So by default, your provider receives every lookup you make."
+      ]
+    },
+    {
+      "titulo": "HTTPS protects the content, not the lookup",
+      "parrafos": [
+        "HTTPS encrypts the conversation with a site once it's set up. But the DNS lookup that comes first goes out, by default, in plaintext over port 53. Anyone watching your traffic can read it without breaking anything.",
+        "That's why the padlock and encrypted DNS work together: **the padlock protects what you do; encrypted DNS hides from the network which site you're asking about**."
+      ]
+    },
+    {
+      "titulo": "What changes when you encrypt it",
+      "parrafos": [
+        "With [[doh|DNS over HTTPS (DoH)]] or [[dot|DNS over TLS (DoT)]], the lookup travels encrypted all the way to the resolver. The local network and your provider can no longer read or alter it along the way.",
+        "What **doesn't** change: the resolver you pick still sees all your lookups. Encrypting DNS is choosing whom to trust, not trusting no one. It helps your privacy but doesn't guarantee it, so check the provider's terms."
+      ]
+    },
+    {
+      "titulo": "Where it's already on",
+      "parrafos": [
+        "**Chrome** has \"Use secure DNS\" on by default in automatic mode: it tries to encrypt with your current provider and falls back to regular DNS if there's a problem. **Android** uses Private DNS by default on networks that support it.",
+        "**Firefox** has turned DoH on by default for all US desktop users since 2019 (and for Canada, Russia, and Ukraine since). On **iPhone and iPad**, Apple platforms have supported encrypted DNS since 2020 through apps or configuration profiles, and **iCloud Private Relay** (part of iCloud+) encrypts Safari's DNS lookups."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "The attacker controls the network", "texto": "They set up an open Wi-Fi hotspot in a busy place or get into a poorly secured network. No encryption to break: they just need to be in the middle."},
+    {"titulo": "They listen to lookups", "texto": "Since regular DNS travels in plaintext, they can see which names each device asks for: the bank, email, a dating app, the hospital. That's already a profile."},
+    {"titulo": "They answer with fake addresses", "texto": "They can reply before the legitimate resolver does and hand back the address of their own server for a specific name."},
+    {"titulo": "They hit HTTPS", "texto": "If the site uses HTTPS, their server can't present a valid certificate for that name and the browser shows a certificate warning. If the victim clicks through, or the site doesn't use HTTPS, they can show a fake page."},
+    {"titulo": "With encrypted DNS", "texto": "Lookups travel encrypted to the resolver: the attacker can't read or forge them. All they see is encrypted traffic going to certain IP addresses."}
+  ],
+  "atacante": {
+    "puede": [
+      "See the IP addresses you connect to, even with encrypted DNS. Sometimes that's enough to guess the service.",
+      "See the site name at the start of the HTTPS connection ([[sni|SNI]]), unless both the browser and the site use [[ech|ECH]].",
+      "Block encrypted DNS to force a fallback to regular DNS, if your device is in automatic mode.",
+      "Read and tamper with your DNS lookups if they aren't encrypted."
+    ],
+    "no_puede": [
+      "Read the content of HTTPS sites and apps, whether or not you use encrypted DNS.",
+      "Read or forge lookups sent over DoH or DoT to your resolver.",
+      "Pass off their server as your bank without a browser warning, if the site uses HTTPS.",
+      "Get around strict mode: if you set a specific provider and they block it, the lookup fails instead of going out in plaintext."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Check Chrome's secure DNS",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "It's on by default, but it's worth confirming nobody turned it off. It isn't available on managed devices or with parental controls.",
+      "pasos": {
+        "Chrome on a computer": ["More (⋮) > **Settings** > **Privacy and security** > **Security**.", "Under *Advanced*, check that **Use secure DNS** is on."],
+        "Chrome on Android": ["More (⋮) > **Settings** > **Privacy and security**.", "Under *Security*, tap **Use secure DNS** and turn it on."]
+      }
+    },
+    {
+      "titulo": "Leave Android's Private DNS on Automatic",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "It covers the whole phone, not just the browser. It's set to *Automatic* by default; just make sure it isn't *Off*.",
+      "pasos": {
+        "Android": ["Settings > **Network & internet** > **Private DNS**.", "Choose **Automatic** and tap **Save**."]
+      }
+    },
+    {
+      "titulo": "Check DNS over HTTPS in Firefox",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "It's on by default for US desktop users, but it may be off on other devices or if you changed it. Default Protection encrypts when it can; Increased Protection always uses your chosen provider unless it fails.",
+      "pasos": {
+        "Firefox on a computer": ["Menu > **Settings** > **Privacy & Security**.", "Scroll to **DNS over HTTPS** and choose **Increased Protection** (or at least **Default Protection**)."]
+      }
+    },
+    {
+      "titulo": "On iPhone, use Private Relay if you already have iCloud+",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "It encrypts DNS lookups and hides your IP address when you browse in Safari. It isn't available in every country or region and doesn't cover other apps. Not worth buying iCloud+ just for this.",
+      "pasos": {
+        "iPhone / iPad": ["Settings > [your name] > **iCloud** > **Private Relay**, then turn it on.", "If a network isn't compatible, you can turn it off for that Wi-Fi only with **Limit IP Address Tracking** in its settings."]
+      }
+    },
+    {
+      "titulo": "Pick a provider and use strict mode",
+      "impacto": "medio", "esfuerzo": "medio", "tiempo": "5 min", "para": "avanzado",
+      "texto": "In automatic mode, a network can block encrypted DNS and your device quietly falls back to regular DNS. If you choose a specific provider, there's no fallback: the lookup goes out encrypted or not at all. The trade-off: some Wi-Fi networks with sign-in pages may act up.",
+      "pasos": {
+        "Android": ["Settings > Network & internet > Private DNS > **Private DNS provider hostname**.", "Enter the hostname of a provider whose terms you know (for example, `dns.google`) and tap **Save**."],
+        "Chrome": ["In **Use secure DNS**, choose a provider from the list or a custom one instead of your current provider. Chrome will then stop falling back to unencrypted DNS."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "Chrome", "texto": "In Settings > Privacy and security > Security, **Use secure DNS** should show as on. If it's grayed out and you can't change it, the browser is managed by your organization or by parental controls."},
+    {"titulo": "Android", "texto": "In Settings > Network & internet, under **Private DNS** you'll see *Automatic*, *Off*, or the provider hostname you entered."},
+    {"titulo": "Firefox", "texto": "In Settings > Privacy & Security, the **DNS over HTTPS** section shows your protection level. *Off* means your lookups go out unencrypted."}
+  ],
+  "innecesario": [
+    {"titulo": "Paying for a VPN just for this", "texto": "Encrypted DNS is free and already in your browser and on Android. A VPN just shifts your trust to another company, which sees your lookups and your traffic."},
+    {"titulo": "Changing your router's DNS", "texto": "No need to touch your router settings: encryption is turned on per device or browser, so it protects you away from home too."},
+    {"titulo": "Installing unknown \"secure DNS\" apps", "texto": "A DNS app sees every lookup you make. If you want a specific provider, pick one your browser offers or one whose privacy terms you know."},
+    {"titulo": "Worrying about the content of what you do", "texto": "HTTPS already protects that. Encrypted DNS adds privacy about where you go, not extra protection for your passwords."}
+  ],
+  "mito": {
+    "mito": "\"If the site has a padlock, nobody knows which pages I visit.\"",
+    "realidad": "The padlock encrypts what you do on the site, but **the DNS lookup before it usually travels in plaintext**, and the IP address and site name at the start of the connection can be visible too. Whoever runs the network can know which sites you go to even if they can't see what you do there.",
+    "fuente": {"titulo": "RFC 9849: TLS Encrypted Client Hello (introduction)", "url": "https://www.rfc-editor.org/rfc/rfc9849"}
+  },
+  "tecnico": [
+    {
+      "titulo": "DoT and DoH: same goal, different disguise",
+      "parrafos": [
+        "DoT (RFC 7858, 2016) wraps DNS queries in TLS over TCP port 853. DoH (RFC 8484, 2018) sends them as HTTPS requests over port 443.",
+        "The practical difference: port 853 is easy to spot and block at a firewall; DoH blends in with the rest of web traffic. That makes it harder to block without disrupting normal browsing."
+      ]
+    },
+    {
+      "titulo": "Opportunistic vs. strict mode",
+      "parrafos": [
+        "In opportunistic mode (Android's *Automatic* or Chrome's current-provider option), the client tries to encrypt and, if that fails, falls back to regular DNS on port 53. It works on any network, but an active attacker can trigger that downgrade.",
+        "In strict mode, the client requires encryption with a specific, authenticated server. If it can't get it, resolution fails. It's safer on a hostile network and less forgiving with networks that filter DNS."
+      ]
+    },
+    {
+      "titulo": "What encrypted DNS doesn't cover: IP and SNI",
+      "parrafos": [
+        "After resolving the name, the browser opens a TLS connection. In the first message (*ClientHello*) it sends the site name in plaintext, the SNI, so the server knows which certificate to present. The destination IP address is always visible as well.",
+        "**Encrypted Client Hello (ECH)**, published as RFC 9849 in March 2026, encrypts that first message. Firefox began rolling it out with version 118. It only works if both browser and server support it, and the RFC itself notes that observers can still tell you're connecting to a particular provider."
+      ]
+    },
+    {
+      "titulo": "Centralization and managed networks",
+      "parrafos": [
+        "Encrypting to a big public resolver concentrates a very valuable log in a few companies. Look for clear terms of service, and keep in mind DNSSEC, which signs responses so forgeries can be detected regardless of transport.",
+        "In organizations, DoH can bypass corporate DNS filtering. Chrome doesn't allow secure DNS on managed devices, and Firefox turns it off with enterprise policies, parental controls, or when the network signals not to use it. CISA has published encrypted DNS implementation guidance for federal agencies, and admins have policies to allow, prohibit, or require DoH."
+      ]
+    }
+  ],
+  "glosario": {
+    "dns": ["DNS", "The system that translates a website's name (like `example.com`) into the IP address of the server that hosts it."],
+    "resolver": ["DNS resolver", "The server that answers your device's DNS lookups. By default it's usually your internet provider's."],
+    "doh": ["DoH (DNS over HTTPS)", "A way to send DNS lookups encrypted inside a normal HTTPS connection, over port 443."],
+    "dot": ["DoT (DNS over TLS)", "A way to send DNS lookups encrypted with TLS over a dedicated port, 853."],
+    "sni": ["SNI", "A field at the start of an HTTPS connection that states, in plaintext, the name of the site you want to reach."],
+    "ech": ["ECH (Encrypted Client Hello)", "A TLS extension that encrypts the connection's first message, including the SNI, so the network can't see the site name."]
+  },
+  "fuentes": [
+    {"titulo": "CISA: Encrypted DNS Implementation Guidance", "url": "https://www.cisa.gov/resources-tools/resources/encrypted-dns-implementation-guidance"},
+    {"titulo": "FTC: Are public Wi-Fi networks safe? What you need to know", "url": "https://consumer.ftc.gov/articles/are-public-wi-fi-networks-safe-what-you-need-know"},
+    {"titulo": "Google Chrome: Use secure DNS", "url": "https://support.google.com/chrome/answer/10468685?hl=en"},
+    {"titulo": "Android: Private DNS", "url": "https://support.google.com/android/answer/9654714?hl=en"},
+    {"titulo": "Mozilla: Firefox DNS over HTTPS", "url": "https://support.mozilla.org/en-US/kb/firefox-dns-over-https"},
+    {"titulo": "Apple: About iCloud Private Relay", "url": "https://support.apple.com/en-us/102602"},
+    {"titulo": "Apple: Enable encrypted DNS (WWDC20)", "url": "https://developer.apple.com/videos/play/wwdc2020/10047/"},
+    {"titulo": "Cloudflare: What is DNS over TLS?", "url": "https://www.cloudflare.com/learning/dns/dns-over-tls/"},
+    {"titulo": "RFC 8484: DNS Queries over HTTPS (DoH)", "url": "https://www.rfc-editor.org/rfc/rfc8484"},
+    {"titulo": "RFC 7858: DNS over TLS", "url": "https://www.rfc-editor.org/rfc/rfc7858"},
+    {"titulo": "RFC 9849: TLS Encrypted Client Hello", "url": "https://www.rfc-editor.org/rfc/rfc9849"}
+  ]
+}
