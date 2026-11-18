@@ -4,6 +4,8 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [18/11/2026](ediciones/2026/11/2026-11-18.md) | Atención | Optimizely: webs de 178 organizaciones sirvieron código que robaba tarjetas y atacaba iPhone sin actualizar |  |
+| [18/11/2026](ediciones/2026/11/2026-11-18.md) | Atención | Chrome 158 corrige 204 fallos, seis de ellos críticos | CVE-2026-130963, CVE-2026-131031, CVE-2026-131060, CVE-2026-131008, CVE-2026-131054, CVE-2026-130975 |
 | [14/11/2026](ediciones/2026/11/2026-11-14.md) | Atención | Check Point: fallo en Gaia OS que da control total del cortafuegos, ya explotado | CVE-2026-123039 |
 | [11/11/2026](ediciones/2026/11/2026-11-11.md) | Crítico | Chrome: fallo en el procesado de XML que ya se está explotando | CVE-2026-125350 |
 | [11/11/2026](ediciones/2026/11/2026-11-11.md) | Crítico | Outlook: un archivo manipulado entrega la huella de tu contraseña, ya explotado | CVE-2026-124194 |

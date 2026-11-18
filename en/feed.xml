@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Tue, 17 Nov 2026 07:55:42 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 18 Nov 2026 09:31:04 +0100</lastBuildDate>
+  <item>
+    <title>That third-party script on your website is your code, too</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-18.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-18.html</guid>
+    <pubDate>Wed, 18 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Secure coding</category>
+    <description>Analytics, A/B testing, chat widgets, ad pixels: every line you paste into your site runs with the same permissions as your own code. What happens when that vendor gets hit, and what&#x27;s enough to keep it from taking you down with it. — Heads-up: Optimizely: websites of 178 organizations served code that stole cards and attacked out-of-date iPhones | Heads-up: Chrome 158 fixes 204 flaws, six of them critical</description>
+  </item>
   <item>
     <title>Even with the padlock, the network can see which sites you visit</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-17.html</link>

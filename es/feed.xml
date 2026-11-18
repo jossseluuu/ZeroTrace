@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Tue, 17 Nov 2026 07:55:42 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 18 Nov 2026 09:31:04 +0100</lastBuildDate>
+  <item>
+    <title>El script de otro que cargas en tu web también es código tuyo</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-18.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-18.html</guid>
+    <pubDate>Wed, 18 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Programación segura</category>
+    <description>Analítica, pruebas A/B, chats, píxeles de publicidad: cada línea que pegas en tu web se ejecuta con los mismos permisos que tu propio código. Qué pasa cuando ese proveedor cae y qué basta con hacer para que no te arrastre. — Atención: Optimizely: webs de 178 organizaciones sirvieron código que robaba tarjetas y atacaba iPhone sin actualizar | Atención: Chrome 158 corrige 204 fallos, seis de ellos críticos</description>
+  </item>
   <item>
     <title>Aunque la web lleve candado, la red puede ver a qué webs entras</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-17.html</link>

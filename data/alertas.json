@@ -577,5 +577,100 @@
         "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/"
       }
     ]
+  },
+  {
+    "id": "2026-11-18-optimizely-webs",
+    "fecha": "2026-11-18",
+    "nivel": "amarillo",
+    "cves": [],
+    "dispositivos": [
+      "smartphone",
+      "tablet",
+      "portatil",
+      "sobremesa",
+      "empresa"
+    ],
+    "es": {
+      "titulo": "Optimizely: webs de 178 organizaciones sirvieron código que robaba tarjetas y atacaba iPhone sin actualizar",
+      "afecta": "Quien visitó el **16/11** webs que usan **Optimizely Web**, sobre todo si pagó con tarjeta o usa un **iPhone o iPad con iOS 18 o anterior**. Y a las empresas que usan esa plataforma.",
+      "accion": "Actualiza tu iPhone o iPad en **Ajustes > General > Actualización de Software** (la versión más reciente es iOS 27.2.1). Si pagaste online el 16/11, revisa los movimientos de tu tarjeta. Si tu empresa usa Optimizely Web, revisa el *Project JavaScript* de cada proyecto y cambia las credenciales de acceso.",
+      "detalle": "Según Report URI, el atacante escribió código en los proyectos de clientes de Optimizely y la propia CDN del proveedor lo sirvió con su certificado legítimo. El código robaba datos de tarjetas, cookies y capturas, cambiaba direcciones de criptomonedas y, a iPhone y iPad con iOS 13 a 18, les enviaba los kits de ataque Coruna y DarkSword; en iOS 26 solo identificaba el dispositivo. No se sabe si llegó a infectar algún teléfono. Según declaró Optimizely a BleepingComputer, recogido por MacRumors, se aprovechó un fallo de su proceso de registro, ya corregido. Lo explicamos a fondo en la edición de hoy."
+    },
+    "en": {
+      "titulo": "Optimizely: websites of 178 organizations served code that stole cards and attacked out-of-date iPhones",
+      "afecta": "Anyone who visited websites using **Optimizely Web** on **November 16**, especially if they paid by card or use an **iPhone or iPad on iOS 18 or earlier**. Also organizations that use the platform.",
+      "accion": "Update your iPhone or iPad in **Settings > General > Software Update** (the latest version is iOS 27.2.1). If you paid for something online on November 16, check your card statement. If your organization uses Optimizely Web, review the *Project JavaScript* in each project and rotate access credentials.",
+      "detalle": "According to Report URI, the attacker wrote code into Optimizely customer projects, and the vendor's own CDN served it with its legitimate certificate. The code stole card data, cookies, and screenshots, swapped cryptocurrency addresses, and sent the Coruna and DarkSword exploit kits to iPhones and iPads running iOS 13 through 18; on iOS 26 it only fingerprinted the device. It's not known whether any phone was actually compromised. Optimizely told BleepingComputer, as reported by MacRumors, that a flaw in its signup process was exploited and has been fixed. Today's edition covers this in depth."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Report URI: grandes marcas infectadas con código malicioso a través de Optimizely (en inglés)",
+          "en": "Report URI: World's largest brands infected with malware via Optimizely"
+        },
+        "url": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/"
+      },
+      {
+        "titulo": {
+          "es": "Apple: actualizar el iPhone o iPad",
+          "en": "Apple: Update your iPhone or iPad"
+        },
+        "url": "https://support.apple.com/es-es/118575"
+      },
+      {
+        "titulo": {
+          "es": "MacRumors: usuarios de iPhone atacados a través de webs legítimas (en inglés)",
+          "en": "MacRumors: iPhone users targeted in major website security breach"
+        },
+        "url": "https://www.macrumors.com/2026/11/17/iphone-users-targeted-website-security-breach/"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-18-chrome-158",
+    "fecha": "2026-11-18",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-130963",
+      "CVE-2026-131031",
+      "CVE-2026-131060",
+      "CVE-2026-131008",
+      "CVE-2026-131054",
+      "CVE-2026-130975"
+    ],
+    "dispositivos": [
+      "sobremesa",
+      "portatil",
+      "smartphone",
+      "tablet"
+    ],
+    "es": {
+      "titulo": "Chrome 158 corrige 204 fallos, seis de ellos críticos",
+      "afecta": "Cualquiera que use Google Chrome en Windows, Mac, Linux o Android.",
+      "accion": "Actualiza a **Chrome 158.0.8127.36** o superior (en Windows y Mac también vale la .37; en Android, la **158.0.8127.42**) y **reinicia el navegador**: la actualización no se aplica hasta que lo cierras.",
+      "detalle": "Google publicó la versión el 17/11. Los seis fallos críticos están en WebView, GPU, Media, el recolector de basura, ANGLE y WebAudio, e incluyen usos de memoria liberada y escrituras fuera de límites (CVE-2026-130963, CVE-2026-131031, CVE-2026-131060, CVE-2026-131008, CVE-2026-131054 y CVE-2026-130975). Google no ha indicado que se esté explotando ninguno, pero con seis críticos conviene no esperar."
+    },
+    "en": {
+      "titulo": "Chrome 158 fixes 204 flaws, six of them critical",
+      "afecta": "Anyone using Google Chrome on Windows, Mac, Linux, or Android.",
+      "accion": "Update to **Chrome 158.0.8127.36** or later (.37 also counts on Windows and Mac; on Android, **158.0.8127.42**) and **relaunch the browser**: the update doesn't apply until you do.",
+      "detalle": "Google shipped the release on November 17. The six critical bugs are in WebView, GPU, Media, garbage collection, ANGLE, and WebAudio, and include use-after-free and out-of-bounds write flaws (CVE-2026-130963, CVE-2026-131031, CVE-2026-131060, CVE-2026-131008, CVE-2026-131054, and CVE-2026-130975). Google hasn't said any of them is being exploited, but with six critical flaws it's not worth waiting."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Google: Stable Channel Update for Desktop, Chrome 158 (17/11, en inglés)",
+          "en": "Google: Stable Channel Update for Desktop, Chrome 158 (Nov 17)"
+        },
+        "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html"
+      },
+      {
+        "titulo": {
+          "es": "Google: Chrome para Android 158 (17/11, en inglés)",
+          "en": "Google: Chrome for Android update 158 (Nov 17)"
+        },
+        "url": "https://chromereleases.googleblog.com/2026/11/chrome-for-android-update_0281314271.html"
+      }
+    ]
   }
 ]

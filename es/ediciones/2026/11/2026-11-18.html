@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Analítica, pruebas A/B, chats, píxeles de publicidad: cada línea que pegas en tu web se ejecuta con los mismos permisos que tu propio código. Qué pasa cuando ese proveedor cae y qué basta con hacer para que no te arrastre.">
+<title>El script de otro que cargas en tu web también es código tuyo · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-18.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-18.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Miércoles, 18 de noviembre de 2026 · 👨‍💻 Programación segura</p>
+<h1>El script de otro que cargas en tu web también es código tuyo</h1><p class="sub">Analítica, pruebas A/B, chats, píxeles de publicidad: cada línea que pegas en tu web se ejecuta con los mismos permisos que tu propio código. Qué pasa cuando ese proveedor cae y qué basta con hacer para que no te arrastre.</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 10 min</li><li>💻 Portátil</li><li>🖥️ Sobremesa</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día de atención"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Día de atención</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-18-optimizely-webs">
+<header><span class="pill amarillo">Atención</span><h3>Optimizely: webs de 178 organizaciones sirvieron código que robaba tarjetas y atacaba iPhone sin actualizar</h3></header>
+<dl><dt>A quién afecta</dt><dd>Quien visitó el <strong>16/11</strong> webs que usan <strong>Optimizely Web</strong>, sobre todo si pagó con tarjeta o usa un <strong>iPhone o iPad con iOS 18 o anterior</strong>. Y a las empresas que usan esa plataforma.</dd>
+<dt>Qué hacer</dt><dd>Actualiza tu iPhone o iPad en <strong>Ajustes &gt; General &gt; Actualización de Software</strong> (la versión más reciente es iOS 27.2.1). Si pagaste online el 16/11, revisa los movimientos de tu tarjeta. Si tu empresa usa Optimizely Web, revisa el <em>Project JavaScript</em> de cada proyecto y cambia las credenciales de acceso.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Según Report URI, el atacante escribió código en los proyectos de clientes de Optimizely y la propia CDN del proveedor lo sirvió con su certificado legítimo. El código robaba datos de tarjetas, cookies y capturas, cambiaba direcciones de criptomonedas y, a iPhone y iPad con iOS 13 a 18, les enviaba los kits de ataque Coruna y DarkSword; en iOS 26 solo identificaba el dispositivo. No se sabe si llegó a infectar algún teléfono. Según declaró Optimizely a BleepingComputer, recogido por MacRumors, se aprovechó un fallo de su proceso de registro, ya corregido. Lo explicamos a fondo en la edición de hoy.<div class="cves"></div></dd></dl>
+<p class="src"><a href="https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/" rel="noopener noreferrer">Report URI: grandes marcas infectadas con código malicioso a través de Optimizely (en inglés)</a> · <a href="https://support.apple.com/es-es/118575" rel="noopener noreferrer">Apple: actualizar el iPhone o iPad</a> · <a href="https://www.macrumors.com/2026/11/17/iphone-users-targeted-website-security-breach/" rel="noopener noreferrer">MacRumors: usuarios de iPhone atacados a través de webs legítimas (en inglés)</a></p></article><article class="alerta amarillo" id="2026-11-18-chrome-158">
+<header><span class="pill amarillo">Atención</span><h3>Chrome 158 corrige 204 fallos, seis de ellos críticos</h3></header>
+<dl><dt>A quién afecta</dt><dd>Cualquiera que use Google Chrome en Windows, Mac, Linux o Android.</dd>
+<dt>Qué hacer</dt><dd>Actualiza a <strong>Chrome 158.0.8127.36</strong> o superior (en Windows y Mac también vale la .37; en Android, la <strong>158.0.8127.42</strong>) y <strong>reinicia el navegador</strong>: la actualización no se aplica hasta que lo cierras.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Google publicó la versión el 17/11. Los seis fallos críticos están en WebView, GPU, Media, el recolector de basura, ANGLE y WebAudio, e incluyen usos de memoria liberada y escrituras fuera de límites (CVE-2026-130963, CVE-2026-131031, CVE-2026-131060, CVE-2026-131008, CVE-2026-131054 y CVE-2026-130975). Google no ha indicado que se esté explotando ninguno, pero con seis críticos conviene no esperar.<div class="cves"><code>CVE-2026-130963</code><code>CVE-2026-131031</code><code>CVE-2026-131060</code><code>CVE-2026-131008</code><code>CVE-2026-131054</code><code>CVE-2026-130975</code></div></dd></dl>
+<p class="src"><a href="https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html" rel="noopener noreferrer">Google: Stable Channel Update for Desktop, Chrome 158 (17/11, en inglés)</a> · <a href="https://chromereleases.googleblog.com/2026/11/chrome-for-android-update_0281314271.html" rel="noopener noreferrer">Google: Chrome para Android 158 (17/11, en inglés)</a></p></article></div><p class="nota">El color del día refleja el impacto para el público general. Cada alerta lleva el suyo para las personas a las que afecta. <a href="../../../alertas.html">Ver todas las alertas notificadas</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Casi todas las webs cargan código que no han escrito: la analítica, la herramienta de pruebas A/B, el chat de atención al cliente, el píxel de una red social. Se añade pegando una línea en la plantilla y se olvida. Pero <strong>ese código se ejecuta en el navegador de tus visitantes con los mismos poderes que el tuyo</strong>: puede leer lo que escriben en un formulario, cambiar lo que ven y enviar datos a donde quiera.</p><p>El 16/11/2026, alguien consiguió escribir código malicioso dentro de los proyectos de clientes de Optimizely, una conocida plataforma de pruebas A/B. Según el investigador que lo descubrió, <strong>webs de 178 organizaciones</strong> sirvieron durante horas un script que <button type="button" class="term" popovertarget="g-skimming">robaba tarjetas</button>, cambiaba direcciones de criptomonedas y lanzaba ataques contra iPhone sin actualizar. Las webs no tenían ningún fallo propio: confiaban en un proveedor.</p><p>No se trata de dejar de usar herramientas externas, sino de <strong>saber cuáles tienes, quitar las que sobran y poner límites</strong> a lo que pueden hacer las que se quedan. Si tienes o mantienes una web, aunque sea pequeña, esto va contigo.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>Haz una lista de todos los scripts externos que carga tu web y quién puede modificarlos.</li><li>Quita los que ya no uses: cada uno es una puerta.</li><li>Los archivos que no cambian, sírvelos tú o fíjalos con un hash de integridad.</li><li>Activa una política de seguridad de contenidos (CSP), primero en modo solo informe.</li><li>Protege con doble factor las cuentas de tus proveedores: quien entra en ellas, entra en tu web.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: media</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Atacar a un proveedor es raro, pero cuando ocurre afecta a miles de webs de golpe. Ya ha pasado varias veces: polyfill.io en 2024 y Optimizely esta semana.</p></div><div class="medidor"><div class="top"><span>Impacto: alto</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>El código malicioso ve todo lo que tus visitantes hacen en tu página: tarjetas, contraseñas y datos personales. Para ellos es tu web la que les ha robado, con las consecuencias legales y de reputación que eso trae.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Una línea que da todos los permisos</h3><p>Cuando pegas <code>&lt;script src="https://proveedor.example/sdk.js"&gt;</code> en tu página, el navegador descarga ese archivo y lo ejecuta en el <strong>mismo origen</strong> que tu web. No hay separación: el script puede leer y modificar el <button type="button" class="term" popovertarget="g-dom">DOM</button>, las cookies que no estén marcadas como <em>HttpOnly</em>, lo que el usuario teclea y las peticiones que hace la página.</p><p>Además, <strong>tú no controlas su contenido</strong>. El proveedor puede cambiarlo en cualquier momento, y tus visitantes recibirán la versión nueva sin que tú despliegues nada. Esa es la comodidad que vende y, a la vez, el riesgo que asumes.</p><h3>Tres maneras de que el script de otro se vuelva malicioso</h3><p>Es lo que se llama un <button type="button" class="term" popovertarget="g-cadena">ataque a la cadena de suministro</button>. <strong>Entran en el proveedor</strong>: comprometen su infraestructura o su código y todos sus clientes sirven lo que el atacante quiera.</p><p><strong>Entran en tu cuenta del proveedor</strong>: muchas herramientas permiten escribir código propio desde su panel. Quien tenga acceso a esa cuenta puede inyectar JavaScript en tu web sin tocar tu servidor. Es lo que ocurrió con Optimizely, donde el atacante escribió su código en el campo <em>Project JavaScript</em> de los proyectos de los clientes.</p><p><strong>El dominio cambia de manos</strong>: en febrero de 2024 una empresa compró el dominio y la cuenta de GitHub de polyfill.io, una librería que más de 100.000 webs cargaban desde su servidor. Poco después, según Sansec, empezó a inyectar código que redirigía a móviles a webs de apuestas.</p><h3>Qué puedes fijar y qué no</h3><p>Para archivos que no cambian, como una versión concreta de una librería, existe la <button type="button" class="term" popovertarget="g-sri">integridad de subrecursos</button> (SRI): añades al <code>&lt;script&gt;</code> el hash del archivo que has revisado y, si lo que llega no coincide, el navegador <strong>se niega a ejecutarlo</strong>. Admite SHA-256, SHA-384 y SHA-512.</p><p>El problema es que muchas herramientas de marketing y pruebas A/B sirven un fragmento que <strong>cambia cada vez que editas tu proyecto</strong>. No se puede fijar con un hash, así que SRI no habría frenado lo de Optimizely: el archivo malicioso llegaba desde el servidor legítimo, con su certificado legítimo.</p><p>Para eso está la <button type="button" class="term" popovertarget="g-csp">política de seguridad de contenidos</button> (CSP): no impide que el script cambie, pero <strong>limita de dónde se puede cargar más código y a dónde se pueden enviar datos</strong>. Report URI, el servicio del investigador que destapó el ataque, señala que una CSP bien ajustada en modo de bloqueo habría frenado partes clave.</p><h3>Menos scripts, mejor</h3><p>La medida más barata es la más olvidada: <strong>quitar lo que no se usa</strong>. Es habitual encontrar etiquetas de campañas que terminaron hace años o de herramientas que nadie consulta.</p><p>OWASP recomienda además, cuando sea posible, que el navegador envíe los eventos a un recolector propio y que sea tu servidor quien los reenvíe al proveedor. Así el código de terceros no se ejecuta en la página.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>Acceso al proveedor</strong><p>El atacante consigue permiso de escritura en la herramienta: roba la contraseña de un empleado sin doble factor, aprovecha un fallo del propio proveedor o compra un dominio abandonado del que aún cargan miles de webs.</p></li><li><strong>Inyección silenciosa</strong><p>Añade unas líneas al script que tus páginas ya cargan. El archivo sigue saliendo del servidor de siempre, con su certificado válido, y el resto del código no cambia: a simple vista todo parece normal.</p></li><li><strong>Carga en cadena</strong><p>Esas líneas cargan un segundo script desde un dominio del atacante, a veces escondido en base64, y cambian el comportamiento según el visitante: a unos les muestran un formulario de pago espiado, a otros un ataque contra su móvil.</p></li><li><strong>Recogida</strong><p>Mientras el visitante escribe su tarjeta o copia una dirección de criptomonedas, el script captura los datos o los cambia y los envía al servidor del atacante.</p></li><li><strong>Desaparición</strong><p>Cuando el proveedor limpia el código, el ataque deja pocas huellas en tu servidor. Si no tienes informes de CSP ni vigilancia de cambios, puede que nunca sepas qué se sirvió en tu nombre.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Leer lo que tus visitantes escriben en tu página, incluidos formularios de pago y de acceso.</li><li>Cambiar lo que ven: números de cuenta, direcciones de criptomonedas o enlaces de descarga.</li><li>Robar cookies de sesión que no estén marcadas como <em>HttpOnly</em> y hacer capturas de la página.</li><li>Usar tu web como trampolín para atacar los dispositivos de tus visitantes.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Leer lo que se escribe dentro de un iframe de pago alojado en otro dominio, como el de la pasarela: la política de mismo origen lo impide (aunque podría intentar taparlo con un formulario falso).</li><li>Ejecutar un archivo fijado con SRI si su contenido no coincide con el hash.</li><li>Cargar código desde dominios o enviar datos a servidores que tu CSP no permita, si está en modo de bloqueo y sin excepciones como <code>'unsafe-eval'</code>.</li><li>Entrar en tu servidor ni en tu base de datos solo por controlar un script del navegador.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Haz inventario de lo que carga tu web</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 15 min</li><li>Para: todos</li></ul>
+<p>No puedes proteger lo que no sabes que tienes. Apunta cada script externo, para qué sirve, quién de tu equipo lo pidió y quién tiene acceso a su panel.</p><div class="plataformas"><div class="plataforma"><h4>En el navegador</h4><ol><li>Abre tu web, pulsa <strong>F12</strong> y ve a la pestaña <strong>Red</strong> (<em>Network</em>).</li><li>Filtra por <strong>JS</strong> y recarga: verás cada script y el dominio desde el que llega.</li><li>Repite en la página de pago, la de registro y la de acceso, que suelen cargar herramientas distintas.</li></ol></div><div class="plataforma"><h4>En el código</h4><ol><li>Busca <code>&lt;script src=</code> en las plantillas y revisa el gestor de etiquetas, si usas uno: es habitual que cargue más de lo que aparece en tu código.</li></ol></div></div></article><article class="medida"><h3>Quita lo que sobra</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 30 min</li><li>Para: todos</li></ul>
+<p>Cada script que eliminas es un proveedor menos del que depende la seguridad de tu web. Pregunta a marketing y a producto qué siguen usando de verdad.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>Elimina etiquetas de campañas acabadas y herramientas sin uso.</li><li>Si una herramienta solo se necesita en algunas páginas, cárgala solo allí y <strong>nunca en la página de pago</strong> si no es imprescindible.</li></ol></div></div></article><article class="medida"><h3>Blinda las cuentas de tus proveedores</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 10 min</li><li>Para: todos</li></ul>
+<p>Si una herramienta permite escribir código desde su panel, quien entre en esa cuenta entra en tu web. Trátala como el acceso a tu servidor.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>Activa el doble factor (mejor con llave de acceso) en cada panel que pueda inyectar código.</li><li>Revisa quién tiene permisos de edición y quita a quien ya no los necesite.</li><li>Si usas Optimizely Web, revisa ahora el <strong>Project JavaScript</strong> de tus proyectos y cambia las credenciales.</li></ol></div></div></article><article class="medida"><h3>Sirve tú o fija con SRI lo que no cambia</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: medio</li>
+<li>⏱ 30 min</li><li>Para: todos</li></ul>
+<p>Para librerías con versión concreta (frameworks, componentes, iconos), la opción más sencilla es alojarlas en tu propio servidor. Si prefieres seguir usando una CDN, añade el atributo <code>integrity</code>.</p><div class="plataformas"><div class="plataforma"><h4>HTML</h4><ol><li>Usa <code>&lt;script src="…" integrity="sha384-…" crossorigin="anonymous"&gt;</code>. El atributo <code>crossorigin</code> es obligatorio y el servidor externo debe permitir CORS.</li><li>Genera el hash del archivo que has revisado, no del que te llega después.</li></ol></div></div></article><article class="medida deep"><h3>Despliega una CSP en modo solo informe<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: medio</li>
+<li>⏱ 1 h</li><li>Para: avanzado</li></ul>
+<p>La cabecera <code>Content-Security-Policy-Report-Only</code> no bloquea nada: solo informa de lo que se habría bloqueado. Te sirve para descubrir qué carga tu web en realidad y como alarma si un día aparece un dominio nuevo.</p><div class="plataformas"><div class="plataforma"><h4>Servidor</h4><ol><li>Empieza con una política que liste tus dominios en <code>script-src</code> y <code>connect-src</code>.</li><li>Añade la directiva <code>report-to</code>: sin ella no se envía ningún informe.</li><li>Revisa los informes unas semanas y, cuando no queden sorpresas, pasa a <code>Content-Security-Policy</code> para bloquear de verdad.</li></ol></div></div></article><article class="medida deep"><h3>Aísla lo que no necesita tu página<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: alto</li>
+<li>⏱ días</li><li>Para: paranoico</li></ul>
+<p>Para webs que manejan pagos o datos sensibles: que el código de terceros no se ejecute en tus páginas críticas.</p><div class="plataformas"><div class="plataforma"><h4>Arquitectura</h4><ol><li>Mueve la analítica a un recolector propio en el servidor que reenvíe los eventos al proveedor.</li><li>Carga los widgets que no necesitan tu página (chats, vídeos) en un <code>&lt;iframe&gt;</code> de otro dominio con el atributo <code>sandbox</code>.</li><li>En la página de pago, usa el formulario alojado o el iframe de la pasarela y no cargues nada más.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>¿Cuántos dominios ejecutan código en tu web?</h3><p>En las herramientas de desarrollo (F12 &gt; <strong>Red</strong> &gt; filtro <strong>JS</strong>), cuenta los dominios distintos al tuyo. Si no sabes explicar para qué está alguno, ese es el primero que debes revisar.</p></div><div class="fila"><h3>¿Tus scripts externos llevan integridad?</h3><p>Mira el código fuente (Ctrl+U) y busca <code>integrity=</code>. Las librerías con versión fija desde una CDN deberían llevarlo; los fragmentos de marketing que cambian, no pueden.</p></div><div class="fila"><h3>¿Tienes CSP?</h3><p>En F12 &gt; <strong>Red</strong>, haz clic en la petición de la página y mira las cabeceras de respuesta. Si no aparece <code>Content-Security-Policy</code> ni <code>Content-Security-Policy-Report-Only</code>, no tienes ninguna red de seguridad frente a un script alterado.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Prohibir toda herramienta externa</h3><p>La analítica o un chat aportan valor. Lo razonable es tener pocas, saber cuáles son y limitar lo que pueden hacer.</p></div><div class="fila"><h3>Revisar a mano cada versión del script de tu proveedor</h3><p>Es inviable con fragmentos que cambian a diario. Para eso están la CSP con informes y las herramientas de vigilancia de cambios.</p></div><div class="fila"><h3>Dejar de pagar online como visitante</h3><p>Como usuario, actualizar el móvil y el navegador y revisar los movimientos de la tarjeta es suficiente. El trabajo duro corresponde a quien mantiene la web.</p></div><div class="fila"><h3>Montar una CSP perfecta el primer día</h3><p>Una política demasiado estricta rompe la web y acaba desactivada. Mejor empezar en modo solo informe e ir cerrando poco a poco.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«El script viene de un proveedor grande y con HTTPS, así que es seguro.»</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>HTTPS garantiza que el archivo llega sin alteraciones <strong>desde el servidor del proveedor</strong>, no que lo que el proveedor sirve sea legítimo. En el caso de Optimizely, el código malicioso salía de su propia CDN, con su certificado válido.</p><p class="src"><a href="https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/" rel="noopener noreferrer">Report URI: código malicioso servido a través de Optimizely (en inglés)</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>CSP: listas de dominios, nonces y 'strict-dynamic'</h3><p>Una CSP basada solo en listas de dominios es fácil de saltar si permites una CDN pública grande: el atacante puede alojar su código allí. Las políticas más robustas usan un <button type="button" class="term" popovertarget="g-nonce">nonce</button> aleatorio y distinto en cada respuesta, o hashes de los scripts en línea.</p><p>Ojo con <code>'strict-dynamic'</code>: según MDN, la confianza se <strong>propaga a todos los scripts que cargue un script de confianza</strong>. Si el script del proveedor es de confianza y alguien lo altera, lo que cargue también lo será. Contra este tipo de ataque, la defensa fuerte es un <code>connect-src</code> estricto, que impide sacar los datos aunque el código se ejecute.</p><h3>Por qué SRI necesita CORS</h3><p>Para comprobar el hash, el navegador tiene que poder leer el contenido de la respuesta, y eso en peticiones a otros orígenes exige CORS. Por eso hace falta <code>crossorigin="anonymous"</code> y que el servidor externo envíe las cabeceras adecuadas; los navegadores no permiten SRI en peticiones <em>no-cors</em>.</p><p>Si indicas varios hashes, el navegador usa solo el del algoritmo más fuerte. Es útil para rotar versiones sin cortar el servicio.</p><h3>Lo que pide PCI DSS 4.0</h3><p>Si tu web acepta tarjetas, los requisitos 6.4.3 y 11.6.1 de PCI DSS 4.0 son obligatorios desde el 31/03/2025: los scripts de la página de pago deben estar <strong>autorizados, con su integridad asegurada y en un inventario con justificación escrita</strong>, y debe haber un mecanismo que <strong>detecte cambios o manipulaciones</strong> en esa página tal como la recibe el navegador.</p><p>Aunque no te apliquen, son una buena lista de comprobación para cualquier página donde los usuarios escriban datos sensibles.</p><h3>El mismo problema en npm y PyPI</h3><p>Las dependencias de tu proyecto son la versión en servidor de este mismo riesgo: código de terceros que se ejecuta con tus permisos. La guía <em>Securing the Software Supply Chain for Developers</em> de la NSA, CISA y la ODNI recomienda verificar los componentes de terceros, proteger el entorno de compilación y la entrega del código.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>DOM</dt><dd>La representación de la página que el navegador mantiene en memoria. Quien puede modificarla puede cambiar lo que ves y leer lo que escribes.</dd><dt>SRI (integridad de subrecursos)</dt><dd>Atributo `integrity` que indica al navegador el hash que debe tener un archivo. Si no coincide, no lo ejecuta.</dd><dt>CSP (política de seguridad de contenidos)</dt><dd>Cabecera HTTP con la que una web indica al navegador de qué orígenes puede cargar código y a dónde puede enviar datos.</dd><dt>Nonce</dt><dd>Valor aleatorio de un solo uso que el servidor genera en cada respuesta y añade a sus scripts legítimos para que la CSP los distinga del resto.</dd><dt>Ataque a la cadena de suministro</dt><dd>Ataque que no va contra ti directamente, sino contra un proveedor o componente del que dependes.</dd><dt>Skimming web</dt><dd>Robo de datos de tarjeta mediante código malicioso insertado en la página de pago de una tienda online.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/" rel="noopener noreferrer">Report URI: código malicioso servido a 178 organizaciones a través de Optimizely (en inglés)</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html" rel="noopener noreferrer">OWASP: gestión de JavaScript de terceros (en inglés)</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" rel="noopener noreferrer">MDN: integridad de subrecursos (SRI) (en inglés)</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src" rel="noopener noreferrer">MDN: CSP, directiva script-src (en inglés)</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" rel="noopener noreferrer">MDN: cabecera Content-Security-Policy-Report-Only (en inglés)</a></li><li><a href="https://pcisecuritystandards.org/wp-content/uploads/2023/09/05.Scaling-6.4.3-and-11.6.1-Browser-Script-Management-and-The-Large-Enterprise-Journey-to-Compliance.pdf" rel="noopener noreferrer">PCI SSC: requisitos 6.4.3 y 11.6.1 de PCI DSS 4.0 (PDF, en inglés)</a></li><li><a href="https://sansec.io/research/polyfill-supply-chain-attack" rel="noopener noreferrer">Sansec: el ataque a la cadena de suministro de polyfill.io (en inglés)</a></li><li><a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3146465/nsa-cisa-odni-release-software-supply-chain-guidance-for-developers/" rel="noopener noreferrer">NSA, CISA y ODNI: guía de la cadena de suministro de software para desarrolladores (en inglés)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-dom" class="gl-pop"><strong>DOM</strong>La representación de la página que el navegador mantiene en memoria. Quien puede modificarla puede cambiar lo que ves y leer lo que escribes.</div><div popover id="g-sri" class="gl-pop"><strong>SRI (integridad de subrecursos)</strong>Atributo `integrity` que indica al navegador el hash que debe tener un archivo. Si no coincide, no lo ejecuta.</div><div popover id="g-csp" class="gl-pop"><strong>CSP (política de seguridad de contenidos)</strong>Cabecera HTTP con la que una web indica al navegador de qué orígenes puede cargar código y a dónde puede enviar datos.</div><div popover id="g-nonce" class="gl-pop"><strong>Nonce</strong>Valor aleatorio de un solo uso que el servidor genera en cada respuesta y añade a sus scripts legítimos para que la CSP los distinga del resto.</div><div popover id="g-cadena" class="gl-pop"><strong>Ataque a la cadena de suministro</strong>Ataque que no va contra ti directamente, sino contra un proveedor o componente del que dependes.</div><div popover id="g-skimming" class="gl-pop"><strong>Skimming web</strong>Robo de datos de tarjeta mediante código malicioso insertado en la página de pago de una tienda online.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+{
+  "fecha": "2026-11-18",
+  "idioma": "en",
+  "foco": "programacion",
+  "concepto": "third-party-scripts-on-your-site",
+  "titulo": "That third-party script on your website is your code, too",
+  "subtitulo": "Analytics, A/B testing, chat widgets, ad pixels: every line you paste into your site runs with the same permissions as your own code. What happens when that vendor gets hit, and what's enough to keep it from taking you down with it.",
+  "dispositivos": ["portatil", "sobremesa"],
+  "lectura": {"basico": 3, "fondo": 10},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-18-optimizely-webs", "2026-11-18-chrome-158"]
+  },
+  "basico": {
+    "parrafos": [
+      "Almost every website loads code it didn't write: analytics, an A/B testing tool, a customer chat, a social media pixel. You add it by pasting one line into a template and then forget about it. But **that code runs in your visitors' browsers with the same powers as your own**: it can read what they type into a form, change what they see, and send data wherever it wants.",
+      "On November 16, 2026, someone managed to write malicious code into customer projects on Optimizely, a well-known A/B testing platform. According to the researcher who found it, **websites belonging to 178 organizations** served a script for hours that [[skimming|stole payment cards]], swapped cryptocurrency addresses, and launched attacks against out-of-date iPhones. Those sites had no bug of their own: they trusted a vendor.",
+      "The answer isn't to stop using outside tools. It's to **know which ones you have, remove the ones you don't need, and put limits** on what the rest can do. If you own or maintain a website, even a small one, this is for you."
+    ],
+    "esencial": [
+      "List every external script your site loads and who can change it.",
+      "Remove the ones you no longer use: each one is a door.",
+      "Self-host files that never change, or pin them with an integrity hash.",
+      "Turn on a Content Security Policy (CSP), starting in report-only mode.",
+      "Protect your vendors' accounts with two-factor authentication: whoever gets in there gets into your site."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "medio", "texto": "Attacks on a vendor are rare, but when they happen they hit thousands of sites at once. It has happened several times already: polyfill.io in 2024 and Optimizely this week."},
+    "impacto": {"nivel": "alto", "texto": "Malicious code sees everything your visitors do on your page: cards, passwords, and personal data. To them, it's your site that robbed them, with all the legal and reputational fallout that comes with it."}
+  },
+  "fondo": [
+    {
+      "titulo": "One line that grants every permission",
+      "parrafos": [
+        "When you paste `<script src=\"https://vendor.example/sdk.js\">` into your page, the browser downloads that file and runs it in the **same origin** as your site. There's no separation: the script can read and modify the [[dom|DOM]], any cookies not marked *HttpOnly*, whatever the user types, and the requests the page makes.",
+        "On top of that, **you don't control its content**. The vendor can change it at any time, and your visitors will get the new version without you deploying anything. That's the convenience they sell, and it's also the risk you take on."
+      ]
+    },
+    {
+      "titulo": "Three ways someone else's script turns malicious",
+      "parrafos": [
+        "This is what's called a [[cadena|supply chain attack]]. **The vendor gets breached**: attackers compromise its infrastructure or code, and every customer serves whatever the attacker wants.",
+        "**Your vendor account gets breached**: many tools let you write custom code from their dashboard. Anyone with access to that account can inject JavaScript into your site without touching your server. That's what happened with Optimizely, where the attacker wrote their code into the *Project JavaScript* field of customer projects.",
+        "**The domain changes hands**: in February 2024, a company bought the domain and GitHub account of polyfill.io, a library that more than 100,000 sites loaded from its server. Soon after, according to Sansec, it started injecting code that redirected mobile users to sports betting sites."
+      ]
+    },
+    {
+      "titulo": "What you can pin and what you can't",
+      "parrafos": [
+        "For files that don't change, like a specific version of a library, there's [[sri|Subresource Integrity]] (SRI): you add the hash of the file you reviewed to the `<script>` tag, and if what arrives doesn't match, the browser **refuses to run it**. It supports SHA-256, SHA-384, and SHA-512.",
+        "The catch is that many marketing and A/B testing tools serve a snippet that **changes every time you edit your project**. It can't be pinned with a hash, so SRI wouldn't have stopped the Optimizely attack: the malicious file came from the legitimate server, with its legitimate certificate.",
+        "That's where a [[csp|Content Security Policy]] (CSP) comes in: it doesn't stop the script from changing, but it **limits where more code can be loaded from and where data can be sent**. Report URI, the service run by the researcher who uncovered the attack, notes that a well-tuned CSP in enforcement mode would have blocked key parts of it."
+      ]
+    },
+    {
+      "titulo": "Fewer scripts is better",
+      "parrafos": [
+        "The cheapest measure is the most overlooked: **remove what you don't use**. It's common to find tags from campaigns that ended years ago or from tools nobody checks anymore.",
+        "OWASP also recommends, where possible, having the browser send events to a collector you control and letting your server forward them to the vendor. That way, third-party code never runs on the page."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "Access to the vendor", "texto": "The attacker gets write access to the tool: they steal an employee's password that has no two-factor protection, exploit a flaw in the vendor itself, or buy an abandoned domain that thousands of sites still load from."},
+    {"titulo": "Silent injection", "texto": "They add a few lines to the script your pages already load. The file still comes from the usual server, with a valid certificate, and the rest of the code is unchanged: at a glance, everything looks normal."},
+    {"titulo": "Chained loading", "texto": "Those lines load a second script from an attacker's domain, sometimes hidden in base64, and behave differently depending on the visitor: some get a payment form that's being watched, others get an attack against their phone."},
+    {"titulo": "Collection", "texto": "As the visitor types in their card or copies a cryptocurrency address, the script captures or swaps the data and sends it to the attacker's server."},
+    {"titulo": "Vanishing act", "texto": "Once the vendor cleans up the code, the attack leaves few traces on your server. Without CSP reports or change monitoring, you may never know what was served in your name."}
+  ],
+  "atacante": {
+    "puede": [
+      "Read what your visitors type into your page, including payment and sign-in forms.",
+      "Change what they see: account numbers, cryptocurrency addresses, or download links.",
+      "Steal session cookies not marked *HttpOnly* and take screenshots of the page.",
+      "Use your site as a launchpad to attack your visitors' devices."
+    ],
+    "no_puede": [
+      "Read what's typed inside a payment iframe hosted on another domain, like the payment processor's: the same-origin policy prevents it (though it could try to cover it with a fake form).",
+      "Run a file pinned with SRI if its content doesn't match the hash.",
+      "Load code from domains or send data to servers your CSP doesn't allow, if it's in enforcement mode without exceptions like `'unsafe-eval'`.",
+      "Get into your server or your database just by controlling a browser script."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Take inventory of what your site loads",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "15 min", "para": "todos",
+      "texto": "You can't protect what you don't know you have. Write down every external script, what it's for, who on your team asked for it, and who has access to its dashboard.",
+      "pasos": {
+        "In the browser": ["Open your site, press **F12**, and go to the **Network** tab.", "Filter by **JS** and reload: you'll see every script and the domain it comes from.", "Repeat on the checkout, sign-up, and sign-in pages, which often load different tools."],
+        "In the code": ["Search your templates for `<script src=` and check your tag manager if you use one: it often loads more than what shows up in your code."]
+      }
+    },
+    {
+      "titulo": "Remove what you don't need",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "30 min", "para": "todos",
+      "texto": "Every script you remove is one less vendor your site's security depends on. Ask marketing and product what they actually still use.",
+      "pasos": {
+        "Always": ["Delete tags from finished campaigns and unused tools.", "If a tool is only needed on some pages, load it only there, and **never on the checkout page** unless it's essential."]
+      }
+    },
+    {
+      "titulo": "Lock down your vendor accounts",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "10 min", "para": "todos",
+      "texto": "If a tool lets you write code from its dashboard, whoever gets into that account gets into your site. Treat it like access to your server.",
+      "pasos": {
+        "Always": ["Turn on two-factor authentication (ideally a passkey) on every dashboard that can inject code.", "Review who has edit permissions and remove anyone who no longer needs them.", "If you use Optimizely Web, review your projects' **Project JavaScript** now and rotate credentials."]
+      }
+    },
+    {
+      "titulo": "Self-host or pin with SRI what doesn't change",
+      "impacto": "alto", "esfuerzo": "medio", "tiempo": "30 min", "para": "todos",
+      "texto": "For libraries with a fixed version (frameworks, components, icons), the simplest option is to host them on your own server. If you'd rather keep using a CDN, add the `integrity` attribute.",
+      "pasos": {
+        "HTML": ["Use `<script src=\"…\" integrity=\"sha384-…\" crossorigin=\"anonymous\">`. The `crossorigin` attribute is required, and the external server must allow CORS.", "Generate the hash from the file you reviewed, not from whatever arrives later."]
+      }
+    },
+    {
+      "titulo": "Deploy a CSP in report-only mode",
+      "impacto": "alto", "esfuerzo": "medio", "tiempo": "1 h", "para": "avanzado",
+      "texto": "The `Content-Security-Policy-Report-Only` header doesn't block anything: it just reports what would have been blocked. It shows you what your site really loads and works as an alarm if a new domain ever shows up.",
+      "pasos": {
+        "Server": ["Start with a policy that lists your domains in `script-src` and `connect-src`.", "Add the `report-to` directive: without it, no reports are sent.", "Review the reports for a few weeks and, once there are no surprises left, switch to `Content-Security-Policy` to actually block."]
+      }
+    },
+    {
+      "titulo": "Isolate what your page doesn't need",
+      "impacto": "medio", "esfuerzo": "alto", "tiempo": "days", "para": "paranoico",
+      "texto": "For sites that handle payments or sensitive data: keep third-party code from running on your critical pages.",
+      "pasos": {
+        "Architecture": ["Move analytics to a server-side collector you control that forwards events to the vendor.", "Load widgets that don't need your page (chat, video) in an `<iframe>` on another domain with the `sandbox` attribute.", "On the checkout page, use the payment processor's hosted form or iframe and load nothing else."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "How many domains run code on your site?", "texto": "In the developer tools (F12 > **Network** > **JS** filter), count the domains other than yours. If you can't explain why one is there, that's the first one to look into."},
+    {"titulo": "Do your external scripts use integrity?", "texto": "View the page source (Ctrl+U) and search for `integrity=`. Version-pinned libraries from a CDN should have it; marketing snippets that change can't."},
+    {"titulo": "Do you have a CSP?", "texto": "In F12 > **Network**, click the page request and check the response headers. If neither `Content-Security-Policy` nor `Content-Security-Policy-Report-Only` shows up, you have no safety net against a tampered script."}
+  ],
+  "innecesario": [
+    {"titulo": "Banning every outside tool", "texto": "Analytics or a chat widget add value. The sensible approach is to have few, know which they are, and limit what they can do."},
+    {"titulo": "Manually reviewing every version of your vendor's script", "texto": "That's not feasible with snippets that change daily. That's what CSP reporting and change-monitoring tools are for."},
+    {"titulo": "Giving up online payments as a shopper", "texto": "As a user, keeping your phone and browser updated and watching your card statements is enough. The heavy lifting belongs to whoever runs the site."},
+    {"titulo": "Building a perfect CSP on day one", "texto": "A policy that's too strict breaks the site and ends up switched off. Better to start in report-only mode and tighten it gradually."}
+  ],
+  "mito": {
+    "mito": "\"The script comes from a big vendor over HTTPS, so it's safe.\"",
+    "realidad": "HTTPS guarantees the file arrives unaltered **from the vendor's server**, not that what the vendor serves is legitimate. In the Optimizely case, the malicious code came from its own CDN, with its valid certificate.",
+    "fuente": {"titulo": "Report URI: malicious code served through Optimizely", "url": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/"}
+  },
+  "tecnico": [
+    {
+      "titulo": "CSP: domain allowlists, nonces, and 'strict-dynamic'",
+      "parrafos": [
+        "A CSP built only on domain allowlists is easy to bypass if you allow a large public CDN: the attacker can host their code there. Stronger policies use a random [[nonce|nonce]] that's different in every response, or hashes of inline scripts.",
+        "Be careful with `'strict-dynamic'`: according to MDN, trust is **propagated to every script loaded by a trusted script**. If the vendor's script is trusted and someone tampers with it, whatever it loads will be trusted too. Against this kind of attack, the strong defense is a strict `connect-src`, which keeps data from leaving even if the code runs."
+      ]
+    },
+    {
+      "titulo": "Why SRI needs CORS",
+      "parrafos": [
+        "To check the hash, the browser has to be able to read the response body, and for cross-origin requests that requires CORS. That's why you need `crossorigin=\"anonymous\"` and the external server has to send the right headers; browsers don't allow SRI on *no-cors* requests.",
+        "If you list several hashes, the browser only uses the one with the strongest algorithm. That's handy for rotating versions without downtime."
+      ]
+    },
+    {
+      "titulo": "What PCI DSS 4.0 requires",
+      "parrafos": [
+        "If your site takes cards, PCI DSS 4.0 requirements 6.4.3 and 11.6.1 have been mandatory since March 31, 2025: scripts on the payment page must be **authorized, have their integrity assured, and be kept in an inventory with a written justification**, and there must be a mechanism that **detects changes or tampering** on that page as the browser receives it.",
+        "Even if they don't apply to you, they make a good checklist for any page where users enter sensitive data."
+      ]
+    },
+    {
+      "titulo": "The same problem in npm and PyPI",
+      "parrafos": [
+        "Your project's dependencies are the server-side version of the same risk: third-party code running with your permissions. The NSA, CISA, and ODNI guide *Securing the Software Supply Chain for Developers* recommends verifying third-party components, hardening the build environment, and securing how code is delivered."
+      ]
+    }
+  ],
+  "glosario": {
+    "dom": ["DOM", "The in-memory representation of the page that the browser keeps. Whoever can modify it can change what you see and read what you type."],
+    "sri": ["SRI (Subresource Integrity)", "An `integrity` attribute that tells the browser the hash a file must have. If it doesn't match, the browser won't run it."],
+    "csp": ["CSP (Content Security Policy)", "An HTTP header a website uses to tell the browser which origins it may load code from and where it may send data."],
+    "nonce": ["Nonce", "A one-time random value the server generates for every response and adds to its legitimate scripts so the CSP can tell them apart from the rest."],
+    "cadena": ["Supply chain attack", "An attack that doesn't target you directly, but a vendor or component you depend on."],
+    "skimming": ["Web skimming", "Stealing payment card data through malicious code inserted into an online store's checkout page."]
+  },
+  "fuentes": [
+    {"titulo": "Report URI: malicious code served to 178 organizations through Optimizely", "url": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/"},
+    {"titulo": "NSA, CISA, and ODNI: Securing the Software Supply Chain for Developers", "url": "https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3146465/nsa-cisa-odni-release-software-supply-chain-guidance-for-developers/"},
+    {"titulo": "OWASP: Third-Party JavaScript Management Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html"},
+    {"titulo": "MDN: Subresource Integrity", "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity"},
+    {"titulo": "MDN: CSP script-src directive", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src"},
+    {"titulo": "MDN: Content-Security-Policy-Report-Only header", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only"},
+    {"titulo": "PCI SSC: PCI DSS 4.0 requirements 6.4.3 and 11.6.1 (PDF)", "url": "https://pcisecuritystandards.org/wp-content/uploads/2023/09/05.Scaling-6.4.3-and-11.6.1-Browser-Script-Management-and-The-Large-Enterprise-Journey-to-Compliance.pdf"},
+    {"titulo": "Sansec: the polyfill.io supply chain attack", "url": "https://sansec.io/research/polyfill-supply-chain-attack"}
+  ]
+}
