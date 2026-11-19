@@ -1,0 +1,193 @@
+{
+  "fecha": "2026-11-19",
+  "idioma": "en",
+  "foco": "wearables",
+  "concepto": "smartwatch-without-a-passcode",
+  "titulo": "A smartwatch without a passcode shows your messages to whoever picks it up",
+  "subtitulo": "What someone can see and do with your watch in hand, why Wrist Detection is the key piece, and the three settings that are enough.",
+  "dispositivos": ["wearable", "smartphone"],
+  "lectura": {"basico": 3, "fondo": 9},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-19-synology-dsm"]
+  },
+  "basico": {
+    "parrafos": [
+      "Your smartwatch is a **second screen for your phone**: it gets your texts, your email, and often the verification codes sent to you by text message.",
+      "Plenty of people skip the passcode because \"it's just a watch.\" But if you take it off at the gym, at work, or at a friend's place, **whoever picks it up can read what comes in** without touching your phone.",
+      "The good news is the fix is small: a 4-digit passcode and **Wrist Detection** turned on. With that, the watch locks itself when you take it off, and you never think about it while you're wearing it."
+    ],
+    "esencial": [
+      "Set a passcode on your watch, even a short one.",
+      "Keep Wrist Detection on: it's what locks the watch when you take it off.",
+      "Make notification content show only when you tap it.",
+      "You don't need to turn off notifications or stop paying with your watch."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "bajo", "texto": "Someone needs the watch in hand. It mostly happens when it's left in a locker, on a charger at the office, or with a curious kid or roommate."},
+    "impacto": {"nivel": "medio", "texto": "They can read your messages and the codes you get by text. If they also know your email or phone number, that code may be enough to reset the password on one of your accounts."}
+  },
+  "fondo": [
+    {
+      "titulo": "Why your watch knows so much",
+      "parrafos": [
+        "Your watch receives a copy of your paired phone's notifications over Bluetooth. That's why you see the WhatsApp message, the email from your bank, or the text with a six-digit sign-in code on your wrist.",
+        "That copy stays on the watch even when your phone is locked in your pocket or in another room. **Your phone's lock doesn't protect what has already reached your watch**: the watch needs its own passcode for that."
+      ]
+    },
+    {
+      "titulo": "Wrist Detection does the heavy lifting",
+      "parrafos": [
+        "A passcode you had to type every time you checked the time would be unbearable. So watches work like a session: **you authenticate once when you put it on, and the sensors confirm it's still on your wrist**. Take it off, and it locks.",
+        "On Apple Watch, [[deteccion|Wrist Detection]] is on by default. If you turn it off, the watch **no longer locks or unlocks automatically**, Apple Pay asks for your passcode every time, heart rate tracking and notifications turn off, and the watch won't automatically call emergency services after a hard fall.",
+        "Samsung describes its Galaxy Watch the same way: with a screen lock set, **the watch locks automatically when you take it off or restart it**, and stays unlocked as long as it detects you're wearing it."
+      ]
+    },
+    {
+      "titulo": "What shows while the watch is locked",
+      "parrafos": [
+        "Even locked, the watch can show a [[resumen|summary]] of each notification: the app's name and icon and a line of text. On Apple Watch you can choose to show the full text **only when you tap the notification**, instead of a few seconds after you raise your wrist.",
+        "There's also a setting to show notifications with your wrist down. It's off by default, and it's best left that way: with it on, anyone sitting next to you sees what comes in even when you're not looking."
+      ]
+    },
+    {
+      "titulo": "No passcode, no payments",
+      "parrafos": [
+        "A common question is whether someone could pay with your watch. The manufacturers already prevent it: Samsung requires a screen lock to use Samsung Wallet on the watch, Google asks you to set one up when you add a card to Pixel Watch, and Apple Pay on Apple Watch is tied to the passcode and Wrist Detection.",
+        "So the risk of a watch with no passcode isn't so much your money as **your information**: your conversations and, above all, your verification codes."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "The opening", "texto": "You take off your watch to shower at the gym, leave it charging on your desk at work, or forget it in the living room of a shared apartment. It has no passcode."},
+    {"titulo": "The read", "texto": "Whoever picks it up scrolls through your notifications: who you talk to, what your bank sends you, which services you use. They don't need to touch your phone."},
+    {"titulo": "The borrowed code", "texto": "If they know your email or number, they tap \"Forgot password\" on one of your accounts that uses text-message codes. The code lands on your watch and they read it right there."},
+    {"titulo": "The takeover", "texto": "If that account has no other protection (a passkey, an authenticator app, or an alert when the password changes), they reset it and lock you out."},
+    {"titulo": "What they don't get", "texto": "If the watch has a passcode and Wrist Detection, it locks when you take it off: at most they'll see the notification summary, and the full text only if you haven't set it to appear on tap."}
+  ],
+  "atacante": {
+    "puede": [
+      "Read notifications that arrive on, or are stored on, a watch with no passcode, including text-message verification codes.",
+      "See which apps and people you're in touch with, even from the summary alone.",
+      "Use codes that land on the watch to try to recover an account whose password they don't know.",
+      "See the activity and health data shown on the watch itself."
+    ],
+    "no_puede": [
+      "Pay with your watch: payment wallets require the watch to have a passcode.",
+      "Unlock a watch that has a passcode except by guessing it, and watches can erase themselves after repeated failed attempts.",
+      "Use the watch to unlock your phone if the watch is locked or not on your wrist.",
+      "Get into an account protected by a passkey or a security key, even if they see a code on your wrist."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Set a passcode on your watch",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "Everything else builds on this. With Wrist Detection you only type it when you put the watch on, so a 4-digit passcode is enough. It can be different from your phone's.",
+      "pasos": {
+        "Apple Watch": ["On the watch: Settings app > **Passcode**.", "To skip typing it every morning: Apple Watch app on iPhone > My Watch > Passcode > turn on **Unlock with iPhone** (your iPhone needs to be within about 33 feet)."],
+        "Galaxy Watch": ["On the watch: Settings > **Security and privacy** > **Lock type** > **PIN** or **Pattern**.", "The PIN needs at least 4 digits, with no consecutive or repeated numbers."],
+        "Other Wear OS watches": ["Look for the screen lock in the watch's security settings. If you added a card to Google Wallet on the watch, you already have one."]
+      }
+    },
+    {
+      "titulo": "Don't turn off Wrist Detection",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "It's what locks the watch when you take it off. If it keeps locking on its own, adjust the band before turning it off.",
+      "pasos": {
+        "Apple Watch": ["On the watch: Settings > Passcode > **Wrist Detection** on.", "If it locks for no reason, adjust the band so it's snug but comfortable, and check that Settings > General > **Orientation** matches the wrist you wear it on."],
+        "Galaxy Watch": ["Settings > Security and privacy > keep **Wrist detection** on."]
+      }
+    },
+    {
+      "titulo": "Show the text only on tap",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "That way, if someone glances at your wrist or at your watch on the table, they only see which app is messaging you, not what it says.",
+      "pasos": {
+        "Apple Watch": ["On the watch: Settings > Notifications > turn on **Tap to Show Full Notification**.", "Leave **Show Notifications on Wrist Down** turned off."]
+      }
+    },
+    {
+      "titulo": "Choose which apps reach your watch",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "5 min", "para": "avanzado",
+      "texto": "Not everything has to buzz on your wrist. If text-message codes or your bank's email add nothing on the watch, keep them on your phone.",
+      "pasos": {
+        "Apple Watch": ["Apple Watch app on iPhone > My Watch > Notifications > choose the app > **Custom** > *Notifications Off* or *Send to Notification Center*."],
+        "Galaxy Watch and Wear OS": ["In your watch's companion app on the phone, open notifications and turn off the apps you don't want on your wrist."]
+      }
+    },
+    {
+      "titulo": "Erase after too many attempts",
+      "impacto": "bajo", "esfuerzo": "bajo", "tiempo": "1 min", "para": "paranoico",
+      "texto": "Useful if you worry that someone with time on their hands might try to guess your passcode.",
+      "pasos": {
+        "Apple Watch": ["On the watch: Settings > Passcode > turn on the option to erase data after 10 failed unlock attempts."],
+        "Galaxy Watch": ["Settings > Security and privacy > turn on **Auto factory reset**: the watch resets after 20 failed attempts."]
+      }
+    },
+    {
+      "titulo": "Lock your phone if you leave it behind",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "2 min", "para": "avanzado",
+      "texto": "The flip side: your watch can protect your phone too. Pixel Watch has a feature, off by default, that locks your phone instantly when the Bluetooth connection with the watch you're wearing drops.",
+      "pasos": {
+        "Pixel Watch": ["Google Pixel Watch app on your phone > **Watch preferences** > **Security** > turn on **Lock phone when left behind**."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "The table test", "texto": "Take off your watch, set it down for a moment, and pick it up again. If it asks for your passcode, Wrist Detection is working. If it shows an unlocked watch face, go back to the first two settings."},
+    {"titulo": "Your payment wallet", "texto": "If you have cards in Apple Pay, Google Wallet, or Samsung Wallet on the watch, it already has a passcode: all three require one. If you don't pay with it and it has never asked you for anything, it probably doesn't."},
+    {"titulo": "Which apps reach you", "texto": "Go through your watch's notification list in the companion app. Usually everything from the phone is on by default; keep only what you actually want on your wrist."}
+  ],
+  "innecesario": [
+    {"titulo": "A long passcode", "texto": "With Wrist Detection and erase-after-failed-attempts, 4 digits are enough. A long passcode will just tempt you to turn it off."},
+    {"titulo": "Turning off all notifications", "texto": "That's what the watch is for. Showing content only on tap and removing apps that add nothing is enough."},
+    {"titulo": "Locking it manually every time", "texto": "With Wrist Detection on, it locks itself when you take it off. Locking it manually from Control Center only matters if you'll leave it on a charger or hand it to someone without taking it off first."},
+    {"titulo": "Giving up paying with your watch", "texto": "Watch payment wallets require a passcode, and with Wrist Detection the watch locks as soon as you take it off. The risk of paying with it is comparable to paying with your phone."}
+  ],
+  "mito": {
+    "mito": "\"Wrist Detection is for counting steps and heart rate; I turn it off because the watch keeps locking.\"",
+    "realidad": "It's exactly what protects you: without it, the watch **no longer locks automatically** when you take it off, Apple Pay asks for your passcode every time, notifications and heart rate tracking turn off, and the watch won't call emergency services on its own after a hard fall. If it locks for no reason, adjust the band before turning it off.",
+    "fuente": {"titulo": "Apple: If your Apple Watch locks unexpectedly", "url": "https://support.apple.com/en-us/111819"}
+  },
+  "tecnico": [
+    {
+      "titulo": "A session anchored to a sensor",
+      "parrafos": [
+        "The watch follows a session model: authentication (the passcode) happens once, and Wrist Detection acts as a **continuous witness** that the chain of custody hasn't been broken. Taking the watch off is the same as signing out.",
+        "That's why turning off Wrist Detection isn't a convenience setting: it turns a device that locks itself into one that only locks when you tell it to."
+      ]
+    },
+    {
+      "titulo": "Your watch as your phone's key",
+      "parrafos": [
+        "Features like Pixel Watch's Watch Unlock use the watch as a proximity factor: the phone unlocks if the watch is **unlocked, on your wrist, and near** the phone, and they require the watch to have a passcode. Only one watch can be enrolled at a time.",
+        "It's delegated trust: the phone relies on the watch's session. If that session had no passcode and no Wrist Detection, the key would be permanently turned. That's why manufacturers won't let you enable these features on a watch without a passcode."
+      ]
+    },
+    {
+      "titulo": "Text messages as a weak factor",
+      "parrafos": [
+        "NIST classifies SMS as a \"restricted\" authenticator: acceptable, but with known risks such as SIM swaps and message redirection. The watch adds one more, physical and everyday: **any screen the text is mirrored to is a place where the code can be read**.",
+        "The deeper defense is the same as for any other channel: on important accounts, move to a passkey or an authenticator app, and keep text messages only as a last-resort recovery option."
+      ]
+    }
+  ],
+  "glosario": {
+    "deteccion": ["Wrist Detection", "A feature that uses the watch's sensors to know whether you're wearing it. It keeps the watch unlocked while it's on your wrist and locks it when you take it off."],
+    "resumen": ["Notification summary", "The brief view your watch shows when an alert arrives: the app's name and icon and, sometimes, a line of text."],
+    "kev": ["KEV", "The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed there, real attacks are happening."]
+  },
+  "fuentes": [
+    {"titulo": "Apple: Wake and unlock Apple Watch", "url": "https://support.apple.com/guide/watch/apd0e1e73b6f/watchos"},
+    {"titulo": "Apple: If your Apple Watch locks unexpectedly", "url": "https://support.apple.com/en-us/111819"},
+    {"titulo": "Apple: Change notification settings on Apple Watch", "url": "https://support.apple.com/guide/watch/change-notification-settings-apd9b833c9f3/watchos"},
+    {"titulo": "Samsung: How to set or reset a security lock on your Galaxy smart watch", "url": "https://www.samsung.com/us/support/answer/ANS10002911/"},
+    {"titulo": "Samsung: How to set a lock on your Galaxy Watch", "url": "https://www.samsung.com/au/support/mobile-devices/set-lock-on-samsung-galaxy-watch/"},
+    {"titulo": "Google: Unlock Pixel Phone with Google Pixel Watch", "url": "https://support.google.com/googlepixelwatch/answer/13387340?hl=en"},
+    {"titulo": "Google: Lock phone when left behind with Pixel Watch", "url": "https://support.google.com/googlepixelwatch/answer/16996880?hl=en"},
+    {"titulo": "Google: Make contactless payments with Google Pixel Watch", "url": "https://support.google.com/googlepixelwatch/answer/12661007?hl=en"},
+    {"titulo": "NIST SP 800-63B: restricted authenticators", "url": "https://pages.nist.gov/800-63-3/sp800-63b.html"}
+  ]
+}

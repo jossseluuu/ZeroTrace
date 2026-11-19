@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Wed, 18 Nov 2026 09:31:04 +0100</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 08:51:16 +0100</lastBuildDate>
+  <item>
+    <title>A smartwatch without a passcode shows your messages to whoever picks it up</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-19.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-19.html</guid>
+    <pubDate>Thu, 19 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Smartwatches and wearables</category>
+    <description>What someone can see and do with your watch in hand, why Wrist Detection is the key piece, and the three settings that are enough. — Heads-up: Synology NAS: a 2024 flaw that hands over the device, now exploited</description>
+  </item>
   <item>
     <title>That third-party script on your website is your code, too</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-18.html</link>

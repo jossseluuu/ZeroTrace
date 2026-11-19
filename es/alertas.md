@@ -4,6 +4,7 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [19/11/2026](ediciones/2026/11/2026-11-19.md) | Atención | NAS de Synology: un fallo de 2024 que da el control del equipo, ahora explotado | CVE-2024-10441 |
 | [18/11/2026](ediciones/2026/11/2026-11-18.md) | Atención | Optimizely: webs de 178 organizaciones sirvieron código que robaba tarjetas y atacaba iPhone sin actualizar |  |
 | [18/11/2026](ediciones/2026/11/2026-11-18.md) | Atención | Chrome 158 corrige 204 fallos, seis de ellos críticos | CVE-2026-130963, CVE-2026-131031, CVE-2026-131060, CVE-2026-131008, CVE-2026-131054, CVE-2026-130975 |
 | [14/11/2026](ediciones/2026/11/2026-11-14.md) | Atención | Check Point: fallo en Gaia OS que da control total del cortafuegos, ya explotado | CVE-2026-123039 |

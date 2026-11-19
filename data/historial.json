@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-18T09:31:04+01:00",
+  "actualizado": "2026-11-19T08:51:16+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "wearables",
     "programacion",
     "transito",
     "habitos",
     "sobremesa",
     "identidad",
-    "smart-tv",
-    "iot"
+    "smart-tv"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -98,9 +98,24 @@
         "fecha": "2026-11-18",
         "concepto": "scripts-de-terceros-en-tu-web"
       }
+    ],
+    "wearables": [
+      {
+        "fecha": "2026-11-19",
+        "concepto": "reloj-sin-codigo"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-19",
+      "foco": "wearables",
+      "concepto": "reloj-sin-codigo",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-19-synology-dsm"
+      ]
+    },
     {
       "fecha": "2026-11-18",
       "foco": "programacion",

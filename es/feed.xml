@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Wed, 18 Nov 2026 09:31:04 +0100</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 08:51:16 +0100</lastBuildDate>
+  <item>
+    <title>Tu reloj sin código enseña tus mensajes a quien lo coja</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-19.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-19.html</guid>
+    <pubDate>Thu, 19 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Relojes y wearables</category>
+    <description>Qué puede ver y hacer alguien con tu reloj en la mano, por qué la detección de muñeca es la pieza clave y los tres ajustes que bastan. — Atención: NAS de Synology: un fallo de 2024 que da el control del equipo, ahora explotado</description>
+  </item>
   <item>
     <title>El script de otro que cargas en tu web también es código tuyo</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-18.html</link>

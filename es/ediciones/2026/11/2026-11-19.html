@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Qué puede ver y hacer alguien con tu reloj en la mano, por qué la detección de muñeca es la pieza clave y los tres ajustes que bastan.">
+<title>Tu reloj sin código enseña tus mensajes a quien lo coja · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-19.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-19.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Jueves, 19 de noviembre de 2026 · ⌚ Relojes y wearables</p>
+<h1>Tu reloj sin código enseña tus mensajes a quien lo coja</h1><p class="sub">Qué puede ver y hacer alguien con tu reloj en la mano, por qué la detección de muñeca es la pieza clave y los tres ajustes que bastan.</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 9 min</li><li>⌚ Wearable</li><li>📱 Smartphone</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día de atención"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Día de atención</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-19-synology-dsm">
+<header><span class="pill amarillo">Atención</span><h3>NAS de Synology: un fallo de 2024 que da el control del equipo, ahora explotado</h3></header>
+<dl><dt>A quién afecta</dt><dd>Quien tenga un NAS Synology con DSM o un BeeStation que no se haya actualizado desde finales de 2024, sobre todo si es accesible desde internet.</dd>
+<dt>Qué hacer</dt><dd>Actualiza DSM a <strong>7.2.2-72806-1, 7.2.1-69057-6, 7.2-64570-4 o 7.1.1-42962-7</strong> (o superior) según tu rama, o BeeStation a <strong>1.1-65374</strong> o superior. Si tu equipo ya no recibe estas versiones, no lo dejes accesible desde internet.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Un fallo en el servicio de complementos del sistema permite a un atacante remoto ejecutar código en el NAS. Synology lo calificó de crítico y lo corrigió en su aviso Synology-SA-24:20, publicado el 05/11/2024. CISA lo añadió el 18/11 a su catálogo de vulnerabilidades explotadas (<button type="button" class="term" popovertarget="g-kev">KEV</button>): quien tenga el NAS al día no tiene que hacer nada.<div class="cves"><code>CVE-2024-10441</code></div></dd></dl>
+<p class="src"><a href="https://www.synology.com/en-global/security/advisory/Synology_SA_24_20" rel="noopener noreferrer">Synology: aviso de seguridad Synology-SA-24:20 (DSM)</a> · <a href="https://www.synology.com/en-global/security/advisory/Synology_SA_24_23" rel="noopener noreferrer">Synology: aviso de seguridad Synology-SA-24:23 (BeeStation)</a> · <a href="https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog" rel="noopener noreferrer">CISA: añade cuatro vulnerabilidades explotadas a su catálogo (18/11)</a></p></article></div><p class="nota">El color del día refleja el impacto para el público general. Cada alerta lleva el suyo para las personas a las que afecta. <a href="../../../alertas.html">Ver todas las alertas notificadas</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Tu reloj inteligente es una <strong>segunda pantalla de tu móvil</strong>: le llegan los mensajes, los correos y, muchas veces, los códigos de verificación que te mandan por SMS.</p><p>Mucha gente no le pone código porque «es un reloj». Pero si te lo quitas en el gimnasio, en la oficina o en casa de alguien, <strong>quien lo coja puede leer lo que te llega</strong> sin tocar tu móvil.</p><p>La buena noticia es que el arreglo es pequeño: un código de 4 cifras y la <strong>detección de muñeca</strong> activada. Con eso, el reloj se bloquea solo al quitártelo y no vuelves a pensar en ello mientras lo llevas puesto.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>Ponle un código al reloj, aunque sea corto.</li><li>Deja activada la detección de muñeca: es lo que lo bloquea al quitártelo.</li><li>Haz que el contenido de las notificaciones solo se vea al tocarlas.</li><li>No hace falta apagar las notificaciones ni dejar de pagar con el reloj.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: baja</span>
+<span class="barras bajo" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Hace falta tener el reloj en la mano. Pasa sobre todo cuando se queda en una taquilla, en el cargador de la oficina o lo usa un niño o un compañero de piso curioso.</p></div><div class="medidor"><div class="top"><span>Impacto: medio</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Puede leer tus mensajes y los códigos que te llegan por SMS. Si además conoce tu correo o tu teléfono, ese código puede bastar para cambiar la contraseña de alguna cuenta.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Por qué el reloj sabe tanto</h3><p>El reloj recibe por Bluetooth una copia de las notificaciones del móvil emparejado. Por eso ves en la muñeca el WhatsApp, el correo del banco o el SMS con el código de seis cifras para entrar en una cuenta.</p><p>Esa copia se queda en el reloj aunque el móvil esté bloqueado en tu bolsillo o en otra habitación. <strong>El bloqueo del móvil no protege lo que ya ha llegado al reloj</strong>: para eso el reloj necesita su propio código.</p><h3>La detección de muñeca es la que hace el trabajo</h3><p>Un código que hubiera que teclear cada vez que miras la hora sería insoportable. Por eso los relojes funcionan como una sesión: <strong>te identificas una vez al ponértelo y los sensores comprueban que sigue en tu muñeca</strong>. En cuanto te lo quitas, se bloquea.</p><p>En el Apple Watch, la <button type="button" class="term" popovertarget="g-deteccion">detección de muñeca</button> viene activada por omisión. Si la desactivas, el reloj <strong>deja de bloquearse y desbloquearse solo</strong>, Apple Pay pide el código en cada pago, se apagan las notificaciones y el seguimiento de la frecuencia cardiaca y el reloj ya no llama automáticamente a emergencias tras una caída fuerte.</p><p>Samsung lo explica igual para sus Galaxy Watch: con un bloqueo de pantalla configurado, <strong>el reloj se bloquea automáticamente al quitártelo o al reiniciarse</strong>, y se queda desbloqueado mientras detecta que lo llevas puesto.</p><h3>Lo que se ve con el reloj bloqueado</h3><p>Aun bloqueado, el reloj puede mostrar un <button type="button" class="term" popovertarget="g-resumen">resumen</button> de cada notificación: el nombre y el icono de la app y una línea de texto. En el Apple Watch puedes elegir que el texto completo <strong>solo aparezca al tocar la notificación</strong>, y no unos segundos después de levantar la muñeca.</p><p>También hay un ajuste para que las notificaciones aparezcan con la muñeca bajada. Viene desactivado y conviene dejarlo así: con él, cualquiera sentado a tu lado ve lo que te llega aunque tú no estés mirando.</p><h3>Sin código no hay pago</h3><p>Una duda frecuente es si alguien podría pagar con tu reloj. Los fabricantes ya lo impiden: Samsung exige un bloqueo de pantalla para usar Samsung Wallet en el reloj, Google pide configurarlo al añadir una tarjeta al Pixel Watch y Apple Pay en el Apple Watch funciona ligado al código y a la detección de muñeca.</p><p>Por eso el riesgo de un reloj sin código no es tanto el dinero como <strong>la información</strong>: tus conversaciones y, sobre todo, los códigos de verificación.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>La oportunidad</strong><p>Te quitas el reloj para ducharte en el gimnasio, lo dejas cargando en la mesa del trabajo o se queda en el salón de un piso compartido. No tiene código.</p></li><li><strong>La lectura</strong><p>Quien lo coge repasa las notificaciones: con quién hablas, qué te escribe tu banco, qué servicios usas. No necesita tocar tu móvil.</p></li><li><strong>El código prestado</strong><p>Si conoce tu correo o tu número, pide desde su móvil «He olvidado mi contraseña» en una de tus cuentas que use códigos por SMS. El código llega a tu reloj y lo lee ahí mismo.</p></li><li><strong>La toma de la cuenta</strong><p>Si esa cuenta no tiene otra protección (una llave de acceso, una app de autenticación o una alerta al cambiar la contraseña), cambia la clave y te deja fuera.</p></li><li><strong>Lo que no consigue</strong><p>Si el reloj tiene código y detección de muñeca, al quitártelo queda bloqueado: solo verá, como mucho, el resumen de la notificación, y el texto completo si no has activado que solo aparezca al tocar.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Leer las notificaciones que lleguen o estén guardadas en un reloj sin código, incluidos los códigos de verificación por SMS.</li><li>Ver con qué apps y personas te comunicas, aunque solo vea el resumen.</li><li>Usar los códigos que lleguen al reloj para intentar recuperar una cuenta tuya cuya contraseña no conoce.</li><li>Ver tus datos de actividad y salud que se muestran en el propio reloj.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Pagar con tu reloj: las carteras de pago exigen que el reloj tenga código.</li><li>Desbloquear un reloj con código salvo adivinándolo, y los relojes pueden borrarse tras varios intentos fallidos.</li><li>Usar el reloj para desbloquear tu móvil si el reloj está bloqueado o no lo llevas puesto.</li><li>Entrar en una cuenta protegida con una llave de acceso o una llave física aunque vea un código en tu muñeca.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Ponle un código al reloj</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 2 min</li><li>Para: todos</li></ul>
+<p>Es la base de todo lo demás. Con la detección de muñeca solo lo teclearás al ponerte el reloj, así que un código de 4 cifras es suficiente. Puede ser distinto del del móvil.</p><div class="plataformas"><div class="plataforma"><h4>Apple Watch</h4><ol><li>En el reloj: app Ajustes &gt; <strong>Código</strong>.</li><li>Para no teclearlo cada mañana: app Apple Watch del iPhone &gt; Mi reloj &gt; Código &gt; activa <strong>Desbloquear con el iPhone</strong> (el iPhone debe estar a unos 10 metros).</li></ol></div><div class="plataforma"><h4>Galaxy Watch</h4><ol><li>En el reloj: Ajustes &gt; seguridad y privacidad &gt; tipo de bloqueo &gt; <strong>PIN</strong> o <strong>patrón</strong>.</li><li>El PIN debe tener 4 cifras o más, sin números consecutivos ni repetidos.</li></ol></div><div class="plataforma"><h4>Otros relojes con Wear OS</h4><ol><li>Busca el bloqueo de pantalla en los ajustes de seguridad del reloj. Si añadiste una tarjeta a Google Wallet en el reloj, ya lo tienes.</li></ol></div></div></article><article class="medida"><h3>No desactives la detección de muñeca</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 1 min</li><li>Para: todos</li></ul>
+<p>Es lo que bloquea el reloj al quitártelo. Si se te bloquea solo con frecuencia, ajusta la correa antes de apagarla.</p><div class="plataformas"><div class="plataforma"><h4>Apple Watch</h4><ol><li>En el reloj: Ajustes &gt; Código &gt; <strong>Detección de muñeca</strong> activada.</li><li>Si se bloquea sin motivo, ajusta la correa para que quede ceñida pero cómoda y comprueba que está bien configurada la muñeca en la que lo llevas.</li></ol></div><div class="plataforma"><h4>Galaxy Watch</h4><ol><li>En los ajustes de seguridad y privacidad del reloj, deja activada la detección de muñeca.</li></ol></div></div></article><article class="medida"><h3>Que el texto solo se vea al tocar</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 1 min</li><li>Para: todos</li></ul>
+<p>Así, si alguien ve tu muñeca o tu reloj encima de la mesa, solo verá qué app te escribe, no lo que dice.</p><div class="plataformas"><div class="plataforma"><h4>Apple Watch</h4><ol><li>En el reloj: Ajustes &gt; Notificaciones &gt; activa <strong>Tocar para ver la notificación completa</strong>.</li><li>Deja desactivado <strong>Mostrar notificaciones con la muñeca bajada</strong>.</li></ol></div></div></article><article class="medida deep"><h3>Elige qué apps llegan al reloj<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 5 min</li><li>Para: avanzado</li></ul>
+<p>No todo tiene que vibrar en tu muñeca. Si los SMS con códigos o el correo del banco no te aportan nada en el reloj, déjalos solo en el móvil.</p><div class="plataformas"><div class="plataforma"><h4>Apple Watch</h4><ol><li>App Apple Watch del iPhone &gt; Mi reloj &gt; Notificaciones &gt; elige la app &gt; <strong>Personalizado</strong> &gt; <em>Notificaciones desactivadas</em> o <em>Enviar al centro de notificaciones</em>.</li></ol></div><div class="plataforma"><h4>Galaxy Watch y Wear OS</h4><ol><li>En la app del reloj en tu móvil, entra en las notificaciones y desactiva las apps que no quieras ver en la muñeca.</li></ol></div></div></article><article class="medida deep"><h3>Que se borre tras muchos intentos<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="bajo">Impacto: bajo</li><li>Esfuerzo: bajo</li>
+<li>⏱ 1 min</li><li>Para: paranoico</li></ul>
+<p>Útil si temes que alguien con tiempo intente adivinar tu código.</p><div class="plataformas"><div class="plataforma"><h4>Apple Watch</h4><ol><li>En el reloj: Ajustes &gt; Código &gt; activa <strong>Borrar datos</strong> (borra el reloj tras 10 intentos fallidos).</li></ol></div><div class="plataforma"><h4>Galaxy Watch</h4><ol><li>En seguridad y privacidad, activa el restablecimiento automático: el reloj vuelve a fábrica tras 20 intentos fallidos.</li></ol></div></div></article><article class="medida deep"><h3>Que el móvil se bloquee si lo dejas atrás<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 2 min</li><li>Para: avanzado</li></ul>
+<p>La otra cara: el reloj también puede proteger al móvil. En el Pixel Watch hay una función, desactivada de serie, que bloquea el teléfono al instante cuando se pierde la conexión Bluetooth con el reloj que llevas puesto.</p><div class="plataformas"><div class="plataforma"><h4>Pixel Watch</h4><ol><li>App Google Pixel Watch del móvil &gt; preferencias del reloj &gt; seguridad &gt; activa el bloqueo del teléfono cuando lo dejas atrás.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>La prueba de la mesa</h3><p>Quítate el reloj, déjalo un momento y vuelve a levantarlo. Si te pide el código, la detección de muñeca funciona. Si te enseña la esfera desbloqueada, revisa los dos primeros ajustes.</p></div><div class="fila"><h3>Tu cartera de pagos</h3><p>Si tienes tarjetas en Apple Pay, Google Wallet o Samsung Wallet en el reloj, ya tiene código: los tres lo exigen. Si no usas pagos y nunca te ha pedido nada, probablemente no lo tiene.</p></div><div class="fila"><h3>Qué apps te llegan</h3><p>Repasa la lista de notificaciones del reloj en la app del móvil. Lo habitual es que esté activado todo lo del teléfono por defecto; deja solo lo que de verdad quieras ver en la muñeca.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Un código largo</h3><p>Con detección de muñeca y borrado tras intentos fallidos, 4 cifras bastan. Un código largo solo te hará desactivarlo por pereza.</p></div><div class="fila"><h3>Apagar todas las notificaciones</h3><p>Para eso sirve el reloj. Basta con que el contenido solo se vea al tocar y con quitar las apps que no te aportan nada.</p></div><div class="fila"><h3>Bloquearlo a mano cada vez</h3><p>Si la detección de muñeca está activada, se bloquea solo al quitártelo. El bloqueo manual desde el centro de control es útil solo si lo vas a dejar puesto en otra persona o en el cargador sin quitártelo.</p></div><div class="fila"><h3>Dejar de pagar con el reloj</h3><p>Las carteras de pago del reloj exigen código, y con la detección de muñeca el reloj se bloquea en cuanto te lo quitas. El riesgo de pagar con él es comparable al de pagar con el móvil.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«La detección de muñeca es para contar pasos y medir el pulso; la apago porque el reloj se bloquea solo.»</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>Es justo lo que lo protege: sin ella, el reloj <strong>ya no se bloquea automáticamente</strong> al quitártelo, Apple Pay pide el código en cada pago, se apagan las notificaciones y el seguimiento cardiaco, y el reloj no llama solo a emergencias tras una caída fuerte. Si se bloquea sin motivo, ajusta la correa antes de desactivarla.</p><p class="src"><a href="https://support.apple.com/es-es/guide/watch/apd0e1e73b6f/watchos" rel="noopener noreferrer">Apple: bloquear o desbloquear el Apple Watch</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>Una sesión anclada a un sensor</h3><p>El modelo del reloj es el de una sesión: la autenticación (el código) ocurre una vez y la detección de muñeca hace de <strong>testigo continuo</strong> de que nadie ha roto la cadena de custodia. Quitar el reloj equivale a cerrar la sesión.</p><p>Por eso desactivar la detección de muñeca no es un ajuste de comodidad: convierte un dispositivo que se bloquea solo en uno que solo se bloquea si tú lo pides.</p><h3>El reloj como llave del móvil</h3><p>Funciones como Watch Unlock del Pixel Watch usan el reloj como factor de proximidad: el móvil se desbloquea si el reloj <strong>está desbloqueado, en tu muñeca y cerca</strong> del teléfono, y exigen que el reloj tenga código. Solo se puede registrar un reloj a la vez.</p><p>Es una delegación de confianza: el móvil se fía de la sesión del reloj. Si esa sesión no tuviera código ni detección de muñeca, la llave estaría permanentemente echada. Por eso los fabricantes no permiten activarlas en un reloj sin código.</p><h3>El SMS como factor débil</h3><p>El NIST considera el SMS un autenticador «restringido»: aceptable, pero con riesgos conocidos como el duplicado de SIM o la desviación de mensajes. El reloj añade uno más, físico y cotidiano: <strong>cualquier pantalla donde se replique el SMS es un sitio desde el que se puede leer el código</strong>.</p><p>La defensa de fondo es la misma que en cualquier otro canal: en las cuentas importantes, pasa a una llave de acceso o a una app de autenticación, y deja el SMS solo como último recurso de recuperación.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>Detección de muñeca</dt><dd>Función que usa los sensores del reloj para saber si lo llevas puesto. Mantiene el reloj desbloqueado mientras está en tu muñeca y lo bloquea al quitártelo.</dd><dt>Resumen de notificación</dt><dd>Vista breve que muestra el reloj al llegar un aviso: el nombre y el icono de la app y, a veces, una línea de texto.</dd><dt>KEV</dt><dd>Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://support.apple.com/es-es/guide/watch/apd0e1e73b6f/watchos" rel="noopener noreferrer">Apple: bloquear o desbloquear el Apple Watch</a></li><li><a href="https://support.apple.com/es-es/guide/watch/apd9b833c9f3/watchos" rel="noopener noreferrer">Apple: cambiar los ajustes de notificaciones en el Apple Watch</a></li><li><a href="https://support.apple.com/en-us/111819" rel="noopener noreferrer">Apple: si el Apple Watch se bloquea inesperadamente (en inglés)</a></li><li><a href="https://www.samsung.com/au/support/mobile-devices/set-lock-on-samsung-galaxy-watch/" rel="noopener noreferrer">Samsung: cómo configurar el bloqueo del Galaxy Watch (en inglés)</a></li><li><a href="https://www.samsung.com/us/support/answer/ANS10002911/" rel="noopener noreferrer">Samsung: bloqueo de seguridad del Galaxy Watch y Samsung Wallet (en inglés)</a></li><li><a href="https://support.google.com/googlepixelwatch/answer/13387340" rel="noopener noreferrer">Google: desbloquear el móvil Pixel con el Pixel Watch</a></li><li><a href="https://support.google.com/googlepixelwatch/answer/16996880" rel="noopener noreferrer">Google: bloquear el móvil cuando lo dejas atrás con el Pixel Watch</a></li><li><a href="https://support.google.com/googlepixelwatch/answer/12661007" rel="noopener noreferrer">Google: pagos sin contacto con el Pixel Watch</a></li><li><a href="https://www.incibe.es/ciudadania/blog/equipado-y-vulnerable-los-riesgos-de-los-dispositivos-wearables" rel="noopener noreferrer">INCIBE: los riesgos de los dispositivos wearables</a></li><li><a href="https://pages.nist.gov/800-63-3/sp800-63b.html" rel="noopener noreferrer">NIST SP 800-63B: autenticadores restringidos (en inglés)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-deteccion" class="gl-pop"><strong>Detección de muñeca</strong>Función que usa los sensores del reloj para saber si lo llevas puesto. Mantiene el reloj desbloqueado mientras está en tu muñeca y lo bloquea al quitártelo.</div><div popover id="g-resumen" class="gl-pop"><strong>Resumen de notificación</strong>Vista breve que muestra el reloj al llegar un aviso: el nombre y el icono de la app y, a veces, una línea de texto.</div><div popover id="g-kev" class="gl-pop"><strong>KEV</strong>Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

@@ -672,5 +672,51 @@
         "url": "https://chromereleases.googleblog.com/2026/11/chrome-for-android-update_0281314271.html"
       }
     ]
+  },
+  {
+    "id": "2026-11-19-synology-dsm",
+    "fecha": "2026-11-19",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2024-10441"
+    ],
+    "dispositivos": [
+      "servidor"
+    ],
+    "es": {
+      "titulo": "NAS de Synology: un fallo de 2024 que da el control del equipo, ahora explotado",
+      "afecta": "Quien tenga un NAS Synology con DSM o un BeeStation que no se haya actualizado desde finales de 2024, sobre todo si es accesible desde internet.",
+      "accion": "Actualiza DSM a **7.2.2-72806-1, 7.2.1-69057-6, 7.2-64570-4 o 7.1.1-42962-7** (o superior) según tu rama, o BeeStation a **1.1-65374** o superior. Si tu equipo ya no recibe estas versiones, no lo dejes accesible desde internet.",
+      "detalle": "Un fallo en el servicio de complementos del sistema permite a un atacante remoto ejecutar código en el NAS. Synology lo calificó de crítico y lo corrigió en su aviso Synology-SA-24:20, publicado el 05/11/2024. CISA lo añadió el 18/11 a su catálogo de vulnerabilidades explotadas ([[kev|KEV]]): quien tenga el NAS al día no tiene que hacer nada."
+    },
+    "en": {
+      "titulo": "Synology NAS: a 2024 flaw that hands over the device, now exploited",
+      "afecta": "Anyone with a Synology NAS running DSM, or a BeeStation, that hasn't been updated since late 2024, especially if it's reachable from the internet.",
+      "accion": "Update DSM to **7.2.2-72806-1, 7.2.1-69057-6, 7.2-64570-4, or 7.1.1-42962-7** (or later) for your branch, or BeeStation to **1.1-65374** or later. If your device no longer gets these versions, don't leave it reachable from the internet.",
+      "detalle": "A flaw in the system plugin daemon lets a remote attacker run code on the NAS. Synology rated it critical and fixed it in advisory Synology-SA-24:20, published November 5, 2024. CISA added it to its Known Exploited Vulnerabilities catalog ([[kev|KEV]]) on November 18: if your NAS is up to date, there's nothing to do."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Synology: aviso de seguridad Synology-SA-24:20 (DSM)",
+          "en": "Synology: Security advisory Synology-SA-24:20 (DSM)"
+        },
+        "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_24_20"
+      },
+      {
+        "titulo": {
+          "es": "Synology: aviso de seguridad Synology-SA-24:23 (BeeStation)",
+          "en": "Synology: Security advisory Synology-SA-24:23 (BeeStation)"
+        },
+        "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_24_23"
+      },
+      {
+        "titulo": {
+          "es": "CISA: añade cuatro vulnerabilidades explotadas a su catálogo (18/11)",
+          "en": "CISA Adds Four Known Exploited Vulnerabilities to Catalog (Nov. 18)"
+        },
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog"
+      }
+    ]
   }
 ]

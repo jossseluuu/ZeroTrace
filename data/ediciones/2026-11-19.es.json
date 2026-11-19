@@ -1,0 +1,194 @@
+{
+  "fecha": "2026-11-19",
+  "idioma": "es",
+  "foco": "wearables",
+  "concepto": "reloj-sin-codigo",
+  "titulo": "Tu reloj sin código enseña tus mensajes a quien lo coja",
+  "subtitulo": "Qué puede ver y hacer alguien con tu reloj en la mano, por qué la detección de muñeca es la pieza clave y los tres ajustes que bastan.",
+  "dispositivos": ["wearable", "smartphone"],
+  "lectura": {"basico": 3, "fondo": 9},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-19-synology-dsm"]
+  },
+  "basico": {
+    "parrafos": [
+      "Tu reloj inteligente es una **segunda pantalla de tu móvil**: le llegan los mensajes, los correos y, muchas veces, los códigos de verificación que te mandan por SMS.",
+      "Mucha gente no le pone código porque «es un reloj». Pero si te lo quitas en el gimnasio, en la oficina o en casa de alguien, **quien lo coja puede leer lo que te llega** sin tocar tu móvil.",
+      "La buena noticia es que el arreglo es pequeño: un código de 4 cifras y la **detección de muñeca** activada. Con eso, el reloj se bloquea solo al quitártelo y no vuelves a pensar en ello mientras lo llevas puesto."
+    ],
+    "esencial": [
+      "Ponle un código al reloj, aunque sea corto.",
+      "Deja activada la detección de muñeca: es lo que lo bloquea al quitártelo.",
+      "Haz que el contenido de las notificaciones solo se vea al tocarlas.",
+      "No hace falta apagar las notificaciones ni dejar de pagar con el reloj."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "bajo", "texto": "Hace falta tener el reloj en la mano. Pasa sobre todo cuando se queda en una taquilla, en el cargador de la oficina o lo usa un niño o un compañero de piso curioso."},
+    "impacto": {"nivel": "medio", "texto": "Puede leer tus mensajes y los códigos que te llegan por SMS. Si además conoce tu correo o tu teléfono, ese código puede bastar para cambiar la contraseña de alguna cuenta."}
+  },
+  "fondo": [
+    {
+      "titulo": "Por qué el reloj sabe tanto",
+      "parrafos": [
+        "El reloj recibe por Bluetooth una copia de las notificaciones del móvil emparejado. Por eso ves en la muñeca el WhatsApp, el correo del banco o el SMS con el código de seis cifras para entrar en una cuenta.",
+        "Esa copia se queda en el reloj aunque el móvil esté bloqueado en tu bolsillo o en otra habitación. **El bloqueo del móvil no protege lo que ya ha llegado al reloj**: para eso el reloj necesita su propio código."
+      ]
+    },
+    {
+      "titulo": "La detección de muñeca es la que hace el trabajo",
+      "parrafos": [
+        "Un código que hubiera que teclear cada vez que miras la hora sería insoportable. Por eso los relojes funcionan como una sesión: **te identificas una vez al ponértelo y los sensores comprueban que sigue en tu muñeca**. En cuanto te lo quitas, se bloquea.",
+        "En el Apple Watch, la [[deteccion|detección de muñeca]] viene activada por omisión. Si la desactivas, el reloj **deja de bloquearse y desbloquearse solo**, Apple Pay pide el código en cada pago, se apagan las notificaciones y el seguimiento de la frecuencia cardiaca y el reloj ya no llama automáticamente a emergencias tras una caída fuerte.",
+        "Samsung lo explica igual para sus Galaxy Watch: con un bloqueo de pantalla configurado, **el reloj se bloquea automáticamente al quitártelo o al reiniciarse**, y se queda desbloqueado mientras detecta que lo llevas puesto."
+      ]
+    },
+    {
+      "titulo": "Lo que se ve con el reloj bloqueado",
+      "parrafos": [
+        "Aun bloqueado, el reloj puede mostrar un [[resumen|resumen]] de cada notificación: el nombre y el icono de la app y una línea de texto. En el Apple Watch puedes elegir que el texto completo **solo aparezca al tocar la notificación**, y no unos segundos después de levantar la muñeca.",
+        "También hay un ajuste para que las notificaciones aparezcan con la muñeca bajada. Viene desactivado y conviene dejarlo así: con él, cualquiera sentado a tu lado ve lo que te llega aunque tú no estés mirando."
+      ]
+    },
+    {
+      "titulo": "Sin código no hay pago",
+      "parrafos": [
+        "Una duda frecuente es si alguien podría pagar con tu reloj. Los fabricantes ya lo impiden: Samsung exige un bloqueo de pantalla para usar Samsung Wallet en el reloj, Google pide configurarlo al añadir una tarjeta al Pixel Watch y Apple Pay en el Apple Watch funciona ligado al código y a la detección de muñeca.",
+        "Por eso el riesgo de un reloj sin código no es tanto el dinero como **la información**: tus conversaciones y, sobre todo, los códigos de verificación."
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "La oportunidad", "texto": "Te quitas el reloj para ducharte en el gimnasio, lo dejas cargando en la mesa del trabajo o se queda en el salón de un piso compartido. No tiene código."},
+    {"titulo": "La lectura", "texto": "Quien lo coge repasa las notificaciones: con quién hablas, qué te escribe tu banco, qué servicios usas. No necesita tocar tu móvil."},
+    {"titulo": "El código prestado", "texto": "Si conoce tu correo o tu número, pide desde su móvil «He olvidado mi contraseña» en una de tus cuentas que use códigos por SMS. El código llega a tu reloj y lo lee ahí mismo."},
+    {"titulo": "La toma de la cuenta", "texto": "Si esa cuenta no tiene otra protección (una llave de acceso, una app de autenticación o una alerta al cambiar la contraseña), cambia la clave y te deja fuera."},
+    {"titulo": "Lo que no consigue", "texto": "Si el reloj tiene código y detección de muñeca, al quitártelo queda bloqueado: solo verá, como mucho, el resumen de la notificación, y el texto completo si no has activado que solo aparezca al tocar."}
+  ],
+  "atacante": {
+    "puede": [
+      "Leer las notificaciones que lleguen o estén guardadas en un reloj sin código, incluidos los códigos de verificación por SMS.",
+      "Ver con qué apps y personas te comunicas, aunque solo vea el resumen.",
+      "Usar los códigos que lleguen al reloj para intentar recuperar una cuenta tuya cuya contraseña no conoce.",
+      "Ver tus datos de actividad y salud que se muestran en el propio reloj."
+    ],
+    "no_puede": [
+      "Pagar con tu reloj: las carteras de pago exigen que el reloj tenga código.",
+      "Desbloquear un reloj con código salvo adivinándolo, y los relojes pueden borrarse tras varios intentos fallidos.",
+      "Usar el reloj para desbloquear tu móvil si el reloj está bloqueado o no lo llevas puesto.",
+      "Entrar en una cuenta protegida con una llave de acceso o una llave física aunque vea un código en tu muñeca."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Ponle un código al reloj",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "Es la base de todo lo demás. Con la detección de muñeca solo lo teclearás al ponerte el reloj, así que un código de 4 cifras es suficiente. Puede ser distinto del del móvil.",
+      "pasos": {
+        "Apple Watch": ["En el reloj: app Ajustes > **Código**.", "Para no teclearlo cada mañana: app Apple Watch del iPhone > Mi reloj > Código > activa **Desbloquear con el iPhone** (el iPhone debe estar a unos 10 metros)."],
+        "Galaxy Watch": ["En el reloj: Ajustes > seguridad y privacidad > tipo de bloqueo > **PIN** o **patrón**.", "El PIN debe tener 4 cifras o más, sin números consecutivos ni repetidos."],
+        "Otros relojes con Wear OS": ["Busca el bloqueo de pantalla en los ajustes de seguridad del reloj. Si añadiste una tarjeta a Google Wallet en el reloj, ya lo tienes."]
+      }
+    },
+    {
+      "titulo": "No desactives la detección de muñeca",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Es lo que bloquea el reloj al quitártelo. Si se te bloquea solo con frecuencia, ajusta la correa antes de apagarla.",
+      "pasos": {
+        "Apple Watch": ["En el reloj: Ajustes > Código > **Detección de muñeca** activada.", "Si se bloquea sin motivo, ajusta la correa para que quede ceñida pero cómoda y comprueba que está bien configurada la muñeca en la que lo llevas."],
+        "Galaxy Watch": ["En los ajustes de seguridad y privacidad del reloj, deja activada la detección de muñeca."]
+      }
+    },
+    {
+      "titulo": "Que el texto solo se vea al tocar",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Así, si alguien ve tu muñeca o tu reloj encima de la mesa, solo verá qué app te escribe, no lo que dice.",
+      "pasos": {
+        "Apple Watch": ["En el reloj: Ajustes > Notificaciones > activa **Tocar para ver la notificación completa**.", "Deja desactivado **Mostrar notificaciones con la muñeca bajada**."]
+      }
+    },
+    {
+      "titulo": "Elige qué apps llegan al reloj",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "5 min", "para": "avanzado",
+      "texto": "No todo tiene que vibrar en tu muñeca. Si los SMS con códigos o el correo del banco no te aportan nada en el reloj, déjalos solo en el móvil.",
+      "pasos": {
+        "Apple Watch": ["App Apple Watch del iPhone > Mi reloj > Notificaciones > elige la app > **Personalizado** > *Notificaciones desactivadas* o *Enviar al centro de notificaciones*."],
+        "Galaxy Watch y Wear OS": ["En la app del reloj en tu móvil, entra en las notificaciones y desactiva las apps que no quieras ver en la muñeca."]
+      }
+    },
+    {
+      "titulo": "Que se borre tras muchos intentos",
+      "impacto": "bajo", "esfuerzo": "bajo", "tiempo": "1 min", "para": "paranoico",
+      "texto": "Útil si temes que alguien con tiempo intente adivinar tu código.",
+      "pasos": {
+        "Apple Watch": ["En el reloj: Ajustes > Código > activa **Borrar datos** (borra el reloj tras 10 intentos fallidos)."],
+        "Galaxy Watch": ["En seguridad y privacidad, activa el restablecimiento automático: el reloj vuelve a fábrica tras 20 intentos fallidos."]
+      }
+    },
+    {
+      "titulo": "Que el móvil se bloquee si lo dejas atrás",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "2 min", "para": "avanzado",
+      "texto": "La otra cara: el reloj también puede proteger al móvil. En el Pixel Watch hay una función, desactivada de serie, que bloquea el teléfono al instante cuando se pierde la conexión Bluetooth con el reloj que llevas puesto.",
+      "pasos": {
+        "Pixel Watch": ["App Google Pixel Watch del móvil > preferencias del reloj > seguridad > activa el bloqueo del teléfono cuando lo dejas atrás."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "La prueba de la mesa", "texto": "Quítate el reloj, déjalo un momento y vuelve a levantarlo. Si te pide el código, la detección de muñeca funciona. Si te enseña la esfera desbloqueada, revisa los dos primeros ajustes."},
+    {"titulo": "Tu cartera de pagos", "texto": "Si tienes tarjetas en Apple Pay, Google Wallet o Samsung Wallet en el reloj, ya tiene código: los tres lo exigen. Si no usas pagos y nunca te ha pedido nada, probablemente no lo tiene."},
+    {"titulo": "Qué apps te llegan", "texto": "Repasa la lista de notificaciones del reloj en la app del móvil. Lo habitual es que esté activado todo lo del teléfono por defecto; deja solo lo que de verdad quieras ver en la muñeca."}
+  ],
+  "innecesario": [
+    {"titulo": "Un código largo", "texto": "Con detección de muñeca y borrado tras intentos fallidos, 4 cifras bastan. Un código largo solo te hará desactivarlo por pereza."},
+    {"titulo": "Apagar todas las notificaciones", "texto": "Para eso sirve el reloj. Basta con que el contenido solo se vea al tocar y con quitar las apps que no te aportan nada."},
+    {"titulo": "Bloquearlo a mano cada vez", "texto": "Si la detección de muñeca está activada, se bloquea solo al quitártelo. El bloqueo manual desde el centro de control es útil solo si lo vas a dejar puesto en otra persona o en el cargador sin quitártelo."},
+    {"titulo": "Dejar de pagar con el reloj", "texto": "Las carteras de pago del reloj exigen código, y con la detección de muñeca el reloj se bloquea en cuanto te lo quitas. El riesgo de pagar con él es comparable al de pagar con el móvil."}
+  ],
+  "mito": {
+    "mito": "«La detección de muñeca es para contar pasos y medir el pulso; la apago porque el reloj se bloquea solo.»",
+    "realidad": "Es justo lo que lo protege: sin ella, el reloj **ya no se bloquea automáticamente** al quitártelo, Apple Pay pide el código en cada pago, se apagan las notificaciones y el seguimiento cardiaco, y el reloj no llama solo a emergencias tras una caída fuerte. Si se bloquea sin motivo, ajusta la correa antes de desactivarla.",
+    "fuente": {"titulo": "Apple: bloquear o desbloquear el Apple Watch", "url": "https://support.apple.com/es-es/guide/watch/apd0e1e73b6f/watchos"}
+  },
+  "tecnico": [
+    {
+      "titulo": "Una sesión anclada a un sensor",
+      "parrafos": [
+        "El modelo del reloj es el de una sesión: la autenticación (el código) ocurre una vez y la detección de muñeca hace de **testigo continuo** de que nadie ha roto la cadena de custodia. Quitar el reloj equivale a cerrar la sesión.",
+        "Por eso desactivar la detección de muñeca no es un ajuste de comodidad: convierte un dispositivo que se bloquea solo en uno que solo se bloquea si tú lo pides."
+      ]
+    },
+    {
+      "titulo": "El reloj como llave del móvil",
+      "parrafos": [
+        "Funciones como Watch Unlock del Pixel Watch usan el reloj como factor de proximidad: el móvil se desbloquea si el reloj **está desbloqueado, en tu muñeca y cerca** del teléfono, y exigen que el reloj tenga código. Solo se puede registrar un reloj a la vez.",
+        "Es una delegación de confianza: el móvil se fía de la sesión del reloj. Si esa sesión no tuviera código ni detección de muñeca, la llave estaría permanentemente echada. Por eso los fabricantes no permiten activarlas en un reloj sin código."
+      ]
+    },
+    {
+      "titulo": "El SMS como factor débil",
+      "parrafos": [
+        "El NIST considera el SMS un autenticador «restringido»: aceptable, pero con riesgos conocidos como el duplicado de SIM o la desviación de mensajes. El reloj añade uno más, físico y cotidiano: **cualquier pantalla donde se replique el SMS es un sitio desde el que se puede leer el código**.",
+        "La defensa de fondo es la misma que en cualquier otro canal: en las cuentas importantes, pasa a una llave de acceso o a una app de autenticación, y deja el SMS solo como último recurso de recuperación."
+      ]
+    }
+  ],
+  "glosario": {
+    "deteccion": ["Detección de muñeca", "Función que usa los sensores del reloj para saber si lo llevas puesto. Mantiene el reloj desbloqueado mientras está en tu muñeca y lo bloquea al quitártelo."],
+    "resumen": ["Resumen de notificación", "Vista breve que muestra el reloj al llegar un aviso: el nombre y el icono de la app y, a veces, una línea de texto."],
+    "kev": ["KEV", "Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales."]
+  },
+  "fuentes": [
+    {"titulo": "Apple: bloquear o desbloquear el Apple Watch", "url": "https://support.apple.com/es-es/guide/watch/apd0e1e73b6f/watchos"},
+    {"titulo": "Apple: cambiar los ajustes de notificaciones en el Apple Watch", "url": "https://support.apple.com/es-es/guide/watch/apd9b833c9f3/watchos"},
+    {"titulo": "Apple: si el Apple Watch se bloquea inesperadamente (en inglés)", "url": "https://support.apple.com/en-us/111819"},
+    {"titulo": "Samsung: cómo configurar el bloqueo del Galaxy Watch (en inglés)", "url": "https://www.samsung.com/au/support/mobile-devices/set-lock-on-samsung-galaxy-watch/"},
+    {"titulo": "Samsung: bloqueo de seguridad del Galaxy Watch y Samsung Wallet (en inglés)", "url": "https://www.samsung.com/us/support/answer/ANS10002911/"},
+    {"titulo": "Google: desbloquear el móvil Pixel con el Pixel Watch", "url": "https://support.google.com/googlepixelwatch/answer/13387340"},
+    {"titulo": "Google: bloquear el móvil cuando lo dejas atrás con el Pixel Watch", "url": "https://support.google.com/googlepixelwatch/answer/16996880"},
+    {"titulo": "Google: pagos sin contacto con el Pixel Watch", "url": "https://support.google.com/googlepixelwatch/answer/12661007"},
+    {"titulo": "INCIBE: los riesgos de los dispositivos wearables", "url": "https://www.incibe.es/ciudadania/blog/equipado-y-vulnerable-los-riesgos-de-los-dispositivos-wearables"},
+    {"titulo": "NIST SP 800-63B: autenticadores restringidos (en inglés)", "url": "https://pages.nist.gov/800-63-3/sp800-63b.html"}
+  ]
+}

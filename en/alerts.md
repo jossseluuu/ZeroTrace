@@ -4,6 +4,7 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/19/2026](editions/2026/11/2026-11-19.md) | Heads-up | Synology NAS: a 2024 flaw that hands over the device, now exploited | CVE-2024-10441 |
 | [11/18/2026](editions/2026/11/2026-11-18.md) | Heads-up | Optimizely: websites of 178 organizations served code that stole cards and attacked out-of-date iPhones |  |
 | [11/18/2026](editions/2026/11/2026-11-18.md) | Heads-up | Chrome 158 fixes 204 flaws, six of them critical | CVE-2026-130963, CVE-2026-131031, CVE-2026-131060, CVE-2026-131008, CVE-2026-131054, CVE-2026-130975 |
 | [11/14/2026](editions/2026/11/2026-11-14.md) | Heads-up | Check Point: Gaia OS flaw gives full control of the firewall, already exploited | CVE-2026-123039 |
