@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Thu, 19 Nov 2026 08:51:16 +0100</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 08:44:30 +0100</lastBuildDate>
+  <item>
+    <title>Your WhatsApp chats only exist on your phone (and in the backup you make)</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-20.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-20.html</guid>
+    <pubDate>Fri, 20 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Backup and recovery</category>
+    <description>Why WhatsApp can&#x27;t give your conversations back if you lose your phone, where your backup lives, who protects it, and how to encrypt it with your fingerprint in three minutes. — Heads-up: VMware vCenter: critical authentication bypass, attacked since September | Heads-up: PHP: update fixes 18 flaws, several critical, across every supported version</description>
+  </item>
   <item>
     <title>A smartwatch without a passcode shows your messages to whoever picks it up</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-19.html</link>

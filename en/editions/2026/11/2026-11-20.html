@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Why WhatsApp can&#x27;t give your conversations back if you lose your phone, where your backup lives, who protects it, and how to encrypt it with your fingerprint in three minutes.">
+<title>Your WhatsApp chats only exist on your phone (and in the backup you make) · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-20.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-20.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Friday, November 20, 2026 · 💾 Backup and recovery</p>
+<h1>Your WhatsApp chats only exist on your phone (and in the backup you make)</h1><p class="sub">Why WhatsApp can't give your conversations back if you lose your phone, where your backup lives, who protects it, and how to encrypt it with your fingerprint in three minutes.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 9 min</li><li>📱 Smartphone</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-20-vmware-vcenter">
+<header><span class="pill amarillo">Heads-up</span><h3>VMware vCenter: critical authentication bypass, attacked since September</h3></header>
+<dl><dt>Who it affects</dt><dd>Organizations that manage virtual servers with VMware vCenter or SDDC Manager, and Windows machines with VMware Tools. If you work at one, give your IT team a heads-up.</dd>
+<dt>What to do</dt><dd>Update vCenter to <strong>8.0 U3m</strong> (or the fixed version for your branch), plus SDDC Manager and VMware Tools for Windows, as listed in advisory <strong>VMSA-2026-0009</strong>. Broadcom offers no workarounds: patch, and limit who can reach vCenter over the network.</dd>
+<dt class="deep">Details</dt><dd class="deep">The main flaw, rated 9.8 out of 10, lets someone with network access to vCenter bypass authentication. Broadcom shipped the fix on November 19. According to Google Threat Intelligence, as reported by BleepingComputer, it has been exploited since early September; Broadcom hasn't confirmed this. ESXi, Workstation, and Fusion aren't affected.<div class="cves"><code>CVE-2026-123890</code><code>CVE-2026-123891</code><code>CVE-2026-123892</code><code>CVE-2026-123893</code><code>CVE-2026-123894</code></div></dd></dl>
+<p class="src"><a href="https://github.com/vmware/vcf-security-and-compliance-guidelines/blob/main/security-advisories/vmsa-2026-0009/README.md" rel="noopener noreferrer">Broadcom: VMSA-2026-0009 questions and answers</a> · <a href="https://www.bleepingcomputer.com/news/security/vmware-patches-vcenter-zero-day-exploited-in-attacks-since-september/" rel="noopener noreferrer">BleepingComputer: VMware patches vCenter zero-day exploited in attacks since September</a></p></article><article class="alerta amarillo" id="2026-11-20-php-noviembre">
+<header><span class="pill amarillo">Heads-up</span><h3>PHP: update fixes 18 flaws, several critical, across every supported version</h3></header>
+<dl><dt>Who it affects</dt><dd>Anyone running a website or server on PHP 8.2, 8.3, 8.4, or 8.5: WordPress, online stores, hosting control panels. PHP 8.1 and earlier no longer get fixes.</dd>
+<dt>What to do</dt><dd>Update to <strong>8.5.13, 8.4.28, 8.3.37, or 8.2.36</strong> (or later) for your branch and restart PHP-FPM. On shared hosting, ask your provider whether it's done.</dd>
+<dt class="deep">Details</dt><dd class="deep">The November 19 releases fix 18 flaws in sessions, the core, date handling, FPM, Phar, SOAP, and other modules; several allow code execution. PHP rates them critical but notes that the most serious ones require non-default configurations or uncommon setups. No exploitation is known. These are different flaws from PHP2Shell, which we reported on November 3.<div class="cves"><code>CVE-2026-115560</code><code>CVE-2026-126714</code><code>CVE-2026-129481</code><code>CVE-2026-129474</code><code>CVE-2026-129182</code><code>CVE-2026-129496</code><code>CVE-2026-129501</code><code>CVE-2026-129538</code><code>CVE-2026-129291</code><code>CVE-2026-129289</code><code>CVE-2026-129292</code><code>CVE-2026-128090</code><code>CVE-2026-15353</code><code>CVE-2026-129506</code><code>CVE-2026-128064</code><code>CVE-2026-127960</code><code>CVE-2026-129438</code><code>CVE-2026-48841</code></div></dd></dl>
+<p class="src"><a href="https://www.php.net/archive/2026.php" rel="noopener noreferrer">PHP: 2026 news archive (Nov. 18 notice and Nov. 19 releases)</a> · <a href="https://www.php.net/ChangeLog-8.php#8.5.13" rel="noopener noreferrer">PHP: PHP 8.5.13 changelog</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>A lot of people assume their WhatsApp conversations "live on WhatsApp" and will reappear on a new phone. They won't: <strong>WhatsApp deletes each message from its servers as soon as it's delivered</strong>. From then on, it only exists on your phone.</p><p>So if your phone is lost, broken, or stolen, <strong>the only thing that brings back your chats, photos, and voice messages is your backup</strong>, which WhatsApp stores in your Google Account (Android) or in iCloud (iPhone). No backup, no chats.</p><p>There's a second catch: unless you turn it on, that backup <strong>isn't covered by WhatsApp's end-to-end encryption</strong>; your cloud provider protects it. Since late 2025 you can encrypt it with a <button type="button" class="term" popovertarget="g-passkey">passkey</button>, meaning your fingerprint, face, or screen lock, with nothing to memorize.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>WhatsApp doesn't keep your conversations: without a backup, losing your phone means losing your chats.</li><li>Check today that backup is on and recent.</li><li>Encrypt it end to end with a passkey: it's the easiest option and you can't forget it.</li><li>You don't need to export chats one by one or install apps that promise to "recover WhatsApp."</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Losing, breaking, or replacing a phone happens to almost everyone every few years. Someone going after your cloud backup is rare.</p></div><div class="medidor"><div class="top"><span>Impact: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Without a backup, years of conversations, photos, voice messages, and documents disappear at once, and often they aren't stored anywhere else.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>Why WhatsApp doesn't have your messages</h3><p>WhatsApp's privacy policy puts it plainly: once messages are delivered, <strong>they're deleted from its servers</strong>. It only keeps, encrypted and for up to 30 days, messages that haven't reached the recipient yet (for example, because their phone was off).</p><p>That follows from <button type="button" class="term" popovertarget="g-e2e">end-to-end encryption</button>: if WhatsApp can't read your messages, it can't hand them back either. Keeping your history is up to you.</p><h3>Where your backup lives</h3><p>On Android, the backup goes to your <strong>Google Account</strong> and uses your storage: Google lists WhatsApp backups among the things that count toward your <strong>15 GB of free storage</strong>, shared with Gmail, Drive, and Photos. If you run out of space, the backup can quietly stop updating.</p><p>On iPhone, the backup goes to <strong>iCloud</strong>, using your Apple Account's storage.</p><p>Either way, the same rule applies: the backup sits in another company's cloud and is protected by that company and by your account's security, not by WhatsApp.</p><h3>Who protects the backup if you do nothing</h3><p>WhatsApp says it doesn't have access to these backups and that <strong>they're secured by the cloud storage services</strong> that hold them. In other words, without the extra encryption, your history is only as safe as your Google or Apple account and those companies' safeguards.</p><p>Apple, for example, encrypts iCloud backups, but under standard protection <strong>it keeps the keys in its data centers</strong>. To make sure only you hold the key, you need end-to-end encryption.</p><h3>End-to-end encrypted backup</h3><p>Since 2021, WhatsApp has let you encrypt your backup with a password or a <strong>64-digit key</strong>. According to WhatsApp, neither WhatsApp nor your backup provider can then read it.</p><p>The problem was memory: if you forget the password or lose the key, nobody can open the backup for you. That's why, since October 2025, you can use a <strong>passkey</strong>: you encrypt with your fingerprint, face, or screen lock code, and the passkey is stored in your Google or Apple password manager, which follows you to your new phone.</p><p>The official path is <strong>Settings &gt; Chats &gt; Chat backup &gt; End-to-end encrypted backup</strong>.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>The cloud account</strong><p>Someone gets your Google or Apple password through a fake "storage full" email, and your account doesn't have two-step verification.</p></li><li><strong>The number</strong><p>To pull your chats, they also need to register your WhatsApp number on another phone, which requires the verification code sent to you. They try the classic "I sent you a code by mistake" message.</p></li><li><strong>The restore</strong><p>If they get both and your backup isn't end-to-end encrypted, installing WhatsApp with your number and your cloud account can restore your history on their phone.</p></li><li><strong>What they don't get</strong><p>If the backup is encrypted with a passkey or password, it's useless without it: they end up with an empty account, and your conversations stay only on your phone.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>See your new messages if they take over your WhatsApp account, even without your history.</li><li>Try to restore an unencrypted backup if they control both your number and your Google or Apple account.</li><li>Trick you with fake emails about "your WhatsApp backup" so you download malware or hand over passwords.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>Ask WhatsApp for your old conversations: it doesn't have them.</li><li>Read an end-to-end encrypted backup without the password, the key, or your passkey.</li><li>Guess passwords forever: WhatsApp's key vault makes the backup permanently inaccessible after a limited number of failed attempts.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Check that backup is on and recent</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: everyone</li></ul>
+<p>This is what separates a scare from a loss. Make sure backup is on and that the last one is from the past few days; if it's months old, back up now.</p><div class="plataformas"><div class="plataforma"><h4>Android</h4><ol><li>WhatsApp &gt; <strong>⋮</strong> menu &gt; <strong>Settings</strong> &gt; <strong>Chats</strong> &gt; <strong>Chat backup</strong>.</li><li>Check which Google Account it saves to and make one now.</li></ol></div><div class="plataforma"><h4>iPhone</h4><ol><li>WhatsApp &gt; <strong>Settings</strong> &gt; <strong>Chats</strong> &gt; <strong>Chat backup</strong>.</li><li>Tap to back up now and review the automatic backup frequency.</li></ol></div></div></article><article class="medida"><h3>Encrypt the backup with a passkey</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>Only you can open the backup, and there's no password to forget: it unlocks with your fingerprint, face, or screen lock. If you prefer a password or 64-digit key, keep it in your password manager: if you lose it, nobody can recover the backup.</p><div class="plataformas"><div class="plataforma"><h4>Android and iPhone</h4><ol><li>WhatsApp &gt; <strong>Settings</strong> &gt; <strong>Chats</strong> &gt; <strong>Chat backup</strong> &gt; <strong>End-to-end encrypted backup</strong>.</li><li>Choose passkey and confirm with your fingerprint, face, or phone passcode.</li></ol></div></div></article><article class="medida"><h3>Keep an eye on your cloud storage</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>On Android, your WhatsApp backup counts against your 15 GB of free Google storage. If storage is full, the backup can go stale. Free up space or leave out videos before paying for more.</p><div class="plataformas"><div class="plataforma"><h4>Android</h4><ol><li>Open the <strong>Google One</strong> app or website and check what's using your storage: WhatsApp backups are counted there.</li></ol></div><div class="plataforma"><h4>iPhone</h4><ol><li>iPhone <strong>Settings</strong> &gt; your name &gt; <strong>iCloud</strong> to see how much space you have.</li></ol></div></div></article><article class="medida"><h3>When you switch phones, move chats from the old one</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: medium</li>
+<li>⏱ 15 min</li><li>For: everyone</li></ul>
+<p>If you still have your old phone, a direct transfer is the most complete route and doesn't depend on the cloud. Don't reset or sell it until you've confirmed your chats are on the new one.</p><div class="plataformas"><div class="plataforma"><h4>Android to iPhone</h4><ol><li>During initial iPhone setup, Apple's <strong>Move to iOS</strong> app includes WhatsApp messages and media. If you've already set up the iPhone, you'd have to erase it and start over.</li></ol></div><div class="plataforma"><h4>iPhone to Android</h4><ol><li>WhatsApp supports moving chats from iPhone to Android; keep both phones handy during the process.</li></ol></div></div></article><article class="medida deep"><h3>Lock down the account that holds the backup<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: advanced</li></ul>
+<p>Your backup (and much more) depends on your Google or Apple account. CISA recommends a strong password and multifactor authentication for cloud accounts: turn on two-step verification or, better yet, a passkey, and be wary of "storage full" emails.</p><div class="plataformas"><div class="plataforma"><h4>Google Account</h4><ol><li>At myaccount.google.com &gt; <strong>Security</strong>, turn on 2-Step Verification or add a passkey.</li></ol></div><div class="plataforma"><h4>Apple Account</h4><ol><li>iPhone <strong>Settings</strong> &gt; your name &gt; <strong>Sign-In &amp; Security</strong>: make sure two-factor authentication is on.</li></ol></div></div></article><article class="medida deep"><h3>iCloud Advanced Data Protection<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="bajo">Impact: low</li><li>Effort: medium</li>
+<li>⏱ 10 min</li><li>For: paranoid</li></ul>
+<p>With it, Apple encrypts iCloud Backup and third-party app data stored there end to end, and no longer holds your keys. The trade-off: if you lose access, Apple can't help you recover your data. For WhatsApp, the app's own encrypted backup already covers the essentials.</p><div class="plataformas"><div class="plataforma"><h4>iPhone</h4><ol><li><strong>Settings</strong> &gt; your name &gt; <strong>iCloud</strong> &gt; <strong>Advanced Data Protection</strong>. Before turning it on, you'll be asked to set up a recovery contact or recovery key.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>The date of your last backup</h3><p>Go to Settings &gt; Chats &gt; Chat backup. If the last backup is weeks or months old, something's wrong: usually it's out of storage or automatic backup is off.</p></div><div class="fila"><h3>Is it encrypted?</h3><p>On the same screen, the end-to-end encrypted backup option tells you whether it's on. If it says off, your backup is protected only by your cloud provider.</p></div><div class="fila"><h3>Could you restore it?</h3><p>Think about which Google or Apple account and which phone number it was made with, and whether it's encrypted with a passkey, password, or key. If you're unsure about any of that, now's the time to note it in your password manager.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Exporting chats one by one</h3><p>Exporting saves a single conversation, but it isn't a backup you can restore. Your backup already includes everything.</p></div><div class="fila"><h3>Installing apps to "recover WhatsApp"</h3><p>They can't conjure up what WhatsApp no longer has, and many ask for excessive permissions or money. If there was no backup, what's gone stays gone.</p></div><div class="fila"><h3>Turning off backup because you distrust the cloud</h3><p>You're far more likely to lose your phone than to have someone read your backup. The fix is to encrypt it, not to stop backing up.</p></div><div class="fila"><h3>Buying more storage just for WhatsApp</h3><p>First, try leaving videos out of the backup or deleting large files you no longer need: they usually take up the most space.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"My chats are stored on WhatsApp; when I switch phones, they'll just come back."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>WhatsApp <strong>deletes messages from its servers once they're delivered</strong>. What comes back on a new phone is whatever is in your Google or iCloud backup, or whatever you transfer directly from the old phone. Without either, it's gone.</p><p class="src"><a href="https://www.whatsapp.com/legal/privacy-policy-eea" rel="noopener noreferrer">WhatsApp: Privacy Policy (EEA)</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>A key vault with an attempt limit</h3><p>With an encrypted backup, the key that encrypts your history is generated on the phone. If you choose a password, that key is stored in <strong>WhatsApp's key vault built on hardware security modules (<button type="button" class="term" popovertarget="g-hsm">HSMs</button>)</strong>, which only releases it to someone who proves they know the password and makes it <strong>permanently inaccessible after a limited number of failed attempts</strong>.</p><p>With the 64-digit key there's no vault: you keep it and type it in when restoring. With a passkey, the factor becomes a FIDO credential synced in your Google or Apple password manager: biometric convenience with recovery tied to your account.</p><h3>App backup vs. system backup</h3><p>Without WhatsApp's encryption, confidentiality depends on the provider's key model. In iCloud with standard protection, backup keys sit in Apple's data centers; with Advanced Data Protection, iCloud Backup and third-party app data become end-to-end encrypted.</p><p>Google says some Android backup data is end-to-end encrypted with your device's screen lock, but it doesn't spell out whether that includes the WhatsApp backup. If you want a guarantee that doesn't depend on the OS, turn on encryption in the app itself.</p><h3>Availability, not just confidentiality</h3><p>An encrypted backup is only as recoverable as its key. The typical failure isn't someone reading it but <strong>losing the key along with the phone</strong>: that's why a synced passkey beats, for most people, a password jotted down on the phone itself.</p><p>And the FTC's advice applies to any phone: back up your data regularly, to the cloud or your computer.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>End-to-end encryption</dt><dd>Encryption where only the endpoints (you and the person you&#x27;re talking to, or you and your backup) have the key. Not even the service that carries or stores the data can read it.</dd><dt>Passkey</dt><dd>A credential that replaces passwords. It unlocks with your fingerprint, face, or screen lock and is stored in your phone&#x27;s password manager.</dd><dt>HSM</dt><dd>Hardware security module: specialized equipment that stores cryptographic keys and doesn&#x27;t let them be extracted.</dd><dt>KEV</dt><dd>The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed there, it&#x27;s being used in real attacks.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://www.whatsapp.com/legal/privacy-policy-eea" rel="noopener noreferrer">WhatsApp: Privacy Policy (EEA)</a></li><li><a href="https://blog.whatsapp.com/encrypting-your-whatsapp-chat-backup-just-got-easier" rel="noopener noreferrer">WhatsApp: Encrypting your WhatsApp chat backup just got easier (Oct. 30, 2025)</a></li><li><a href="https://blog.whatsapp.com/end-to-end-encrypted-backups-on-whatsapp" rel="noopener noreferrer">WhatsApp: End-to-end encrypted backups on WhatsApp (2021)</a></li><li><a href="https://engineering.fb.com/2021/09/10/security/whatsapp-e2ee-backups/" rel="noopener noreferrer">Meta Engineering: WhatsApp end-to-end encrypted backups</a></li><li><a href="https://support.google.com/googleone/answer/9312312?hl=en" rel="noopener noreferrer">Google One: What counts toward your storage</a></li><li><a href="https://support.apple.com/en-us/102651" rel="noopener noreferrer">Apple: iCloud data security overview</a></li><li><a href="https://support.apple.com/en-us/118670" rel="noopener noreferrer">Apple: Move from Android to iPhone or iPad</a></li><li><a href="https://www.cisa.gov/resources-tools/training/get-most-out-cloud-storage-and-services-while-minimizing-risk" rel="noopener noreferrer">CISA: Get the most out of cloud storage and services while minimizing the risk</a></li><li><a href="https://consumer.ftc.gov/articles/how-protect-your-phone-hackers" rel="noopener noreferrer">FTC: How to protect your phone from hackers</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-e2e" class="gl-pop"><strong>End-to-end encryption</strong>Encryption where only the endpoints (you and the person you&#x27;re talking to, or you and your backup) have the key. Not even the service that carries or stores the data can read it.</div><div popover id="g-passkey" class="gl-pop"><strong>Passkey</strong>A credential that replaces passwords. It unlocks with your fingerprint, face, or screen lock and is stored in your phone&#x27;s password manager.</div><div popover id="g-hsm" class="gl-pop"><strong>HSM</strong>Hardware security module: specialized equipment that stores cryptographic keys and doesn&#x27;t let them be extracted.</div><div popover id="g-kev" class="gl-pop"><strong>KEV</strong>The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed there, it&#x27;s being used in real attacks.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

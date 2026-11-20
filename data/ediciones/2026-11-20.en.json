@@ -1,0 +1,321 @@
+{
+  "fecha": "2026-11-20",
+  "idioma": "en",
+  "foco": "copias",
+  "concepto": "whatsapp-chat-backup",
+  "titulo": "Your WhatsApp chats only exist on your phone (and in the backup you make)",
+  "subtitulo": "Why WhatsApp can't give your conversations back if you lose your phone, where your backup lives, who protects it, and how to encrypt it with your fingerprint in three minutes.",
+  "dispositivos": [
+    "smartphone"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-20-vmware-vcenter",
+      "2026-11-20-php-noviembre"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "A lot of people assume their WhatsApp conversations \"live on WhatsApp\" and will reappear on a new phone. They won't: **WhatsApp deletes each message from its servers as soon as it's delivered**. From then on, it only exists on your phone.",
+      "So if your phone is lost, broken, or stolen, **the only thing that brings back your chats, photos, and voice messages is your backup**, which WhatsApp stores in your Google Account (Android) or in iCloud (iPhone). No backup, no chats.",
+      "There's a second catch: unless you turn it on, that backup **isn't covered by WhatsApp's end-to-end encryption**; your cloud provider protects it. Since late 2025 you can encrypt it with a [[passkey|passkey]], meaning your fingerprint, face, or screen lock, with nothing to memorize."
+    ],
+    "esencial": [
+      "WhatsApp doesn't keep your conversations: without a backup, losing your phone means losing your chats.",
+      "Check today that backup is on and recent.",
+      "Encrypt it end to end with a passkey: it's the easiest option and you can't forget it.",
+      "You don't need to export chats one by one or install apps that promise to \"recover WhatsApp.\""
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Losing, breaking, or replacing a phone happens to almost everyone every few years. Someone going after your cloud backup is rare."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Without a backup, years of conversations, photos, voice messages, and documents disappear at once, and often they aren't stored anywhere else."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Why WhatsApp doesn't have your messages",
+      "parrafos": [
+        "WhatsApp's privacy policy puts it plainly: once messages are delivered, **they're deleted from its servers**. It only keeps, encrypted and for up to 30 days, messages that haven't reached the recipient yet (for example, because their phone was off).",
+        "That follows from [[e2e|end-to-end encryption]]: if WhatsApp can't read your messages, it can't hand them back either. Keeping your history is up to you."
+      ]
+    },
+    {
+      "titulo": "Where your backup lives",
+      "parrafos": [
+        "On Android, the backup goes to your **Google Account** and uses your storage: Google lists WhatsApp backups among the things that count toward your **15 GB of free storage**, shared with Gmail, Drive, and Photos. If you run out of space, the backup can quietly stop updating.",
+        "On iPhone, the backup goes to **iCloud**, using your Apple Account's storage.",
+        "Either way, the same rule applies: the backup sits in another company's cloud and is protected by that company and by your account's security, not by WhatsApp."
+      ]
+    },
+    {
+      "titulo": "Who protects the backup if you do nothing",
+      "parrafos": [
+        "WhatsApp says it doesn't have access to these backups and that **they're secured by the cloud storage services** that hold them. In other words, without the extra encryption, your history is only as safe as your Google or Apple account and those companies' safeguards.",
+        "Apple, for example, encrypts iCloud backups, but under standard protection **it keeps the keys in its data centers**. To make sure only you hold the key, you need end-to-end encryption."
+      ]
+    },
+    {
+      "titulo": "End-to-end encrypted backup",
+      "parrafos": [
+        "Since 2021, WhatsApp has let you encrypt your backup with a password or a **64-digit key**. According to WhatsApp, neither WhatsApp nor your backup provider can then read it.",
+        "The problem was memory: if you forget the password or lose the key, nobody can open the backup for you. That's why, since October 2025, you can use a **passkey**: you encrypt with your fingerprint, face, or screen lock code, and the passkey is stored in your Google or Apple password manager, which follows you to your new phone.",
+        "The official path is **Settings > Chats > Chat backup > End-to-end encrypted backup**."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The cloud account",
+      "texto": "Someone gets your Google or Apple password through a fake \"storage full\" email, and your account doesn't have two-step verification."
+    },
+    {
+      "titulo": "The number",
+      "texto": "To pull your chats, they also need to register your WhatsApp number on another phone, which requires the verification code sent to you. They try the classic \"I sent you a code by mistake\" message."
+    },
+    {
+      "titulo": "The restore",
+      "texto": "If they get both and your backup isn't end-to-end encrypted, installing WhatsApp with your number and your cloud account can restore your history on their phone."
+    },
+    {
+      "titulo": "What they don't get",
+      "texto": "If the backup is encrypted with a passkey or password, it's useless without it: they end up with an empty account, and your conversations stay only on your phone."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "See your new messages if they take over your WhatsApp account, even without your history.",
+      "Try to restore an unencrypted backup if they control both your number and your Google or Apple account.",
+      "Trick you with fake emails about \"your WhatsApp backup\" so you download malware or hand over passwords."
+    ],
+    "no_puede": [
+      "Ask WhatsApp for your old conversations: it doesn't have them.",
+      "Read an end-to-end encrypted backup without the password, the key, or your passkey.",
+      "Guess passwords forever: WhatsApp's key vault makes the backup permanently inaccessible after a limited number of failed attempts."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Check that backup is on and recent",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "This is what separates a scare from a loss. Make sure backup is on and that the last one is from the past few days; if it's months old, back up now.",
+      "pasos": {
+        "Android": [
+          "WhatsApp > **⋮** menu > **Settings** > **Chats** > **Chat backup**.",
+          "Check which Google Account it saves to and make one now."
+        ],
+        "iPhone": [
+          "WhatsApp > **Settings** > **Chats** > **Chat backup**.",
+          "Tap to back up now and review the automatic backup frequency."
+        ]
+      }
+    },
+    {
+      "titulo": "Encrypt the backup with a passkey",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Only you can open the backup, and there's no password to forget: it unlocks with your fingerprint, face, or screen lock. If you prefer a password or 64-digit key, keep it in your password manager: if you lose it, nobody can recover the backup.",
+      "pasos": {
+        "Android and iPhone": [
+          "WhatsApp > **Settings** > **Chats** > **Chat backup** > **End-to-end encrypted backup**.",
+          "Choose passkey and confirm with your fingerprint, face, or phone passcode."
+        ]
+      }
+    },
+    {
+      "titulo": "Keep an eye on your cloud storage",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "On Android, your WhatsApp backup counts against your 15 GB of free Google storage. If storage is full, the backup can go stale. Free up space or leave out videos before paying for more.",
+      "pasos": {
+        "Android": [
+          "Open the **Google One** app or website and check what's using your storage: WhatsApp backups are counted there."
+        ],
+        "iPhone": [
+          "iPhone **Settings** > your name > **iCloud** to see how much space you have."
+        ]
+      }
+    },
+    {
+      "titulo": "When you switch phones, move chats from the old one",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "todos",
+      "texto": "If you still have your old phone, a direct transfer is the most complete route and doesn't depend on the cloud. Don't reset or sell it until you've confirmed your chats are on the new one.",
+      "pasos": {
+        "Android to iPhone": [
+          "During initial iPhone setup, Apple's **Move to iOS** app includes WhatsApp messages and media. If you've already set up the iPhone, you'd have to erase it and start over."
+        ],
+        "iPhone to Android": [
+          "WhatsApp supports moving chats from iPhone to Android; keep both phones handy during the process."
+        ]
+      }
+    },
+    {
+      "titulo": "Lock down the account that holds the backup",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "avanzado",
+      "texto": "Your backup (and much more) depends on your Google or Apple account. CISA recommends a strong password and multifactor authentication for cloud accounts: turn on two-step verification or, better yet, a passkey, and be wary of \"storage full\" emails.",
+      "pasos": {
+        "Google Account": [
+          "At myaccount.google.com > **Security**, turn on 2-Step Verification or add a passkey."
+        ],
+        "Apple Account": [
+          "iPhone **Settings** > your name > **Sign-In & Security**: make sure two-factor authentication is on."
+        ]
+      }
+    },
+    {
+      "titulo": "iCloud Advanced Data Protection",
+      "impacto": "bajo",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "paranoico",
+      "texto": "With it, Apple encrypts iCloud Backup and third-party app data stored there end to end, and no longer holds your keys. The trade-off: if you lose access, Apple can't help you recover your data. For WhatsApp, the app's own encrypted backup already covers the essentials.",
+      "pasos": {
+        "iPhone": [
+          "**Settings** > your name > **iCloud** > **Advanced Data Protection**. Before turning it on, you'll be asked to set up a recovery contact or recovery key."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "The date of your last backup",
+      "texto": "Go to Settings > Chats > Chat backup. If the last backup is weeks or months old, something's wrong: usually it's out of storage or automatic backup is off."
+    },
+    {
+      "titulo": "Is it encrypted?",
+      "texto": "On the same screen, the end-to-end encrypted backup option tells you whether it's on. If it says off, your backup is protected only by your cloud provider."
+    },
+    {
+      "titulo": "Could you restore it?",
+      "texto": "Think about which Google or Apple account and which phone number it was made with, and whether it's encrypted with a passkey, password, or key. If you're unsure about any of that, now's the time to note it in your password manager."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Exporting chats one by one",
+      "texto": "Exporting saves a single conversation, but it isn't a backup you can restore. Your backup already includes everything."
+    },
+    {
+      "titulo": "Installing apps to \"recover WhatsApp\"",
+      "texto": "They can't conjure up what WhatsApp no longer has, and many ask for excessive permissions or money. If there was no backup, what's gone stays gone."
+    },
+    {
+      "titulo": "Turning off backup because you distrust the cloud",
+      "texto": "You're far more likely to lose your phone than to have someone read your backup. The fix is to encrypt it, not to stop backing up."
+    },
+    {
+      "titulo": "Buying more storage just for WhatsApp",
+      "texto": "First, try leaving videos out of the backup or deleting large files you no longer need: they usually take up the most space."
+    }
+  ],
+  "mito": {
+    "mito": "\"My chats are stored on WhatsApp; when I switch phones, they'll just come back.\"",
+    "realidad": "WhatsApp **deletes messages from its servers once they're delivered**. What comes back on a new phone is whatever is in your Google or iCloud backup, or whatever you transfer directly from the old phone. Without either, it's gone.",
+    "fuente": {
+      "titulo": "WhatsApp: Privacy Policy (EEA)",
+      "url": "https://www.whatsapp.com/legal/privacy-policy-eea"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "A key vault with an attempt limit",
+      "parrafos": [
+        "With an encrypted backup, the key that encrypts your history is generated on the phone. If you choose a password, that key is stored in **WhatsApp's key vault built on hardware security modules ([[hsm|HSMs]])**, which only releases it to someone who proves they know the password and makes it **permanently inaccessible after a limited number of failed attempts**.",
+        "With the 64-digit key there's no vault: you keep it and type it in when restoring. With a passkey, the factor becomes a FIDO credential synced in your Google or Apple password manager: biometric convenience with recovery tied to your account."
+      ]
+    },
+    {
+      "titulo": "App backup vs. system backup",
+      "parrafos": [
+        "Without WhatsApp's encryption, confidentiality depends on the provider's key model. In iCloud with standard protection, backup keys sit in Apple's data centers; with Advanced Data Protection, iCloud Backup and third-party app data become end-to-end encrypted.",
+        "Google says some Android backup data is end-to-end encrypted with your device's screen lock, but it doesn't spell out whether that includes the WhatsApp backup. If you want a guarantee that doesn't depend on the OS, turn on encryption in the app itself."
+      ]
+    },
+    {
+      "titulo": "Availability, not just confidentiality",
+      "parrafos": [
+        "An encrypted backup is only as recoverable as its key. The typical failure isn't someone reading it but **losing the key along with the phone**: that's why a synced passkey beats, for most people, a password jotted down on the phone itself.",
+        "And the FTC's advice applies to any phone: back up your data regularly, to the cloud or your computer."
+      ]
+    }
+  ],
+  "glosario": {
+    "e2e": [
+      "End-to-end encryption",
+      "Encryption where only the endpoints (you and the person you're talking to, or you and your backup) have the key. Not even the service that carries or stores the data can read it."
+    ],
+    "passkey": [
+      "Passkey",
+      "A credential that replaces passwords. It unlocks with your fingerprint, face, or screen lock and is stored in your phone's password manager."
+    ],
+    "hsm": [
+      "HSM",
+      "Hardware security module: specialized equipment that stores cryptographic keys and doesn't let them be extracted."
+    ],
+    "kev": [
+      "KEV",
+      "The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed there, it's being used in real attacks."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "WhatsApp: Privacy Policy (EEA)",
+      "url": "https://www.whatsapp.com/legal/privacy-policy-eea"
+    },
+    {
+      "titulo": "WhatsApp: Encrypting your WhatsApp chat backup just got easier (Oct. 30, 2025)",
+      "url": "https://blog.whatsapp.com/encrypting-your-whatsapp-chat-backup-just-got-easier"
+    },
+    {
+      "titulo": "WhatsApp: End-to-end encrypted backups on WhatsApp (2021)",
+      "url": "https://blog.whatsapp.com/end-to-end-encrypted-backups-on-whatsapp"
+    },
+    {
+      "titulo": "Meta Engineering: WhatsApp end-to-end encrypted backups",
+      "url": "https://engineering.fb.com/2021/09/10/security/whatsapp-e2ee-backups/"
+    },
+    {
+      "titulo": "Google One: What counts toward your storage",
+      "url": "https://support.google.com/googleone/answer/9312312?hl=en"
+    },
+    {
+      "titulo": "Apple: iCloud data security overview",
+      "url": "https://support.apple.com/en-us/102651"
+    },
+    {
+      "titulo": "Apple: Move from Android to iPhone or iPad",
+      "url": "https://support.apple.com/en-us/118670"
+    },
+    {
+      "titulo": "CISA: Get the most out of cloud storage and services while minimizing the risk",
+      "url": "https://www.cisa.gov/resources-tools/training/get-most-out-cloud-storage-and-services-while-minimizing-risk"
+    },
+    {
+      "titulo": "FTC: How to protect your phone from hackers",
+      "url": "https://consumer.ftc.gov/articles/how-protect-your-phone-hackers"
+    }
+  ]
+}

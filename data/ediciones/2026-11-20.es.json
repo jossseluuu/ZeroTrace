@@ -1,0 +1,317 @@
+{
+  "fecha": "2026-11-20",
+  "idioma": "es",
+  "foco": "copias",
+  "concepto": "copia-de-seguridad-de-whatsapp",
+  "titulo": "Tus chats de WhatsApp solo existen en tu móvil (y en la copia que tú hagas)",
+  "subtitulo": "Por qué WhatsApp no te devuelve las conversaciones si pierdes el móvil, dónde vive tu copia, quién la protege y cómo cifrarla con tu huella en tres minutos.",
+  "dispositivos": [
+    "smartphone"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-20-vmware-vcenter",
+      "2026-11-20-php-noviembre"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Mucha gente cree que sus conversaciones de WhatsApp «están en WhatsApp» y que, si cambia de móvil, volverán solas. No es así: **WhatsApp borra cada mensaje de sus servidores en cuanto te lo entrega**. A partir de ahí, solo existe en tu móvil.",
+      "Por eso, si pierdes, rompes o te roban el teléfono, **lo único que te devuelve tus chats, fotos y audios es la copia de seguridad**, que WhatsApp guarda en tu cuenta de Google (Android) o en iCloud (iPhone). Sin copia, se pierden.",
+      "Y hay un segundo detalle: esa copia, salvo que tú lo actives, **no tiene el cifrado de extremo a extremo de WhatsApp**; la protege tu proveedor de nube. Desde finales de 2025 puedes cifrarla con una [[passkey|llave de acceso]], es decir, con tu huella, tu cara o el bloqueo de pantalla, sin memorizar nada."
+    ],
+    "esencial": [
+      "WhatsApp no guarda tus conversaciones: sin copia de seguridad, perder el móvil es perder los chats.",
+      "Comprueba hoy que la copia está activada y que es reciente.",
+      "Cífrala de extremo a extremo con una llave de acceso: es lo más cómodo y no se olvida.",
+      "No hace falta exportar chats uno a uno ni instalar apps para «recuperar WhatsApp»."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Perder, romper o cambiar de móvil le pasa a casi todo el mundo cada pocos años. Lo que es raro es que alguien vaya a por tu copia en la nube."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Sin copia, se pierden de golpe años de conversaciones, fotos, audios y documentos que muchas veces no están en ningún otro sitio."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Por qué WhatsApp no tiene tus mensajes",
+      "parrafos": [
+        "La política de privacidad de WhatsApp lo dice sin rodeos: una vez entregados, los mensajes **se borran de sus servidores**. Solo guarda, cifrados y durante un máximo de 30 días, los que todavía no han llegado a su destinatario (por ejemplo, porque el móvil estaba apagado).",
+        "Es una consecuencia del [[e2e|cifrado de extremo a extremo]]: si WhatsApp no puede leer tus mensajes, tampoco puede devolvértelos. La custodia de tu historial pasa a ser cosa tuya."
+      ]
+    },
+    {
+      "titulo": "Dónde vive tu copia",
+      "parrafos": [
+        "En Android, la copia se guarda en tu **cuenta de Google** y ocupa espacio de tu almacenamiento: Google incluye las copias de WhatsApp entre lo que gasta tus **15 GB gratuitos**, compartidos con Gmail, Drive y Fotos. Si te quedas sin espacio, la copia puede dejar de actualizarse sin que te des cuenta.",
+        "En iPhone, la copia va a **iCloud**, con el espacio de tu Apple ID.",
+        "En ambos casos rige lo mismo: la copia está en la nube de otro proveedor y la protegen él y la seguridad de tu cuenta, no WhatsApp."
+      ]
+    },
+    {
+      "titulo": "Quién protege la copia si no haces nada",
+      "parrafos": [
+        "WhatsApp explica que no tiene acceso a estas copias y que **las protegen los servicios de almacenamiento** en los que se guardan. Es decir, sin el cifrado extra, tu historial vale lo que valgan la seguridad de tu cuenta de Google o Apple y las garantías de esas empresas.",
+        "Apple, por ejemplo, cifra las copias de iCloud, pero con la protección estándar **guarda las claves en sus centros de datos**. Para que nadie más que tú tenga la llave hace falta un cifrado de extremo a extremo."
+      ]
+    },
+    {
+      "titulo": "La copia cifrada de extremo a extremo",
+      "parrafos": [
+        "Desde 2021, WhatsApp permite cifrar la copia con una contraseña o con una **clave de 64 dígitos**. Así, según la propia WhatsApp, ni WhatsApp ni tu proveedor de copias pueden leerla.",
+        "El problema era la memoria: si olvidas la contraseña o pierdes la clave, nadie puede abrir la copia por ti. Por eso, desde octubre de 2025 se puede usar una **llave de acceso**: cifras con tu huella, tu cara o el código de bloqueo, y la llave queda guardada en tu gestor de contraseñas de Google o Apple, que viaja contigo al móvil nuevo.",
+        "La ruta oficial es **Ajustes > Chats > Copia de seguridad > Copia de seguridad cifrada de extremo a extremo**."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "La cuenta de la nube",
+      "texto": "Alguien consigue tu contraseña de Google o de Apple con un correo falso que imita un aviso de «almacenamiento lleno», y tu cuenta no tiene verificación en dos pasos."
+    },
+    {
+      "titulo": "El número",
+      "texto": "Para traerse tus chats necesita además registrar tu número de WhatsApp en otro móvil, lo que exige el código de verificación que te llega a ti. Lo intenta con el clásico mensaje de «te he enviado un código por error»."
+    },
+    {
+      "titulo": "La restauración",
+      "texto": "Si consigue las dos cosas y tu copia no está cifrada de extremo a extremo, al instalar WhatsApp con tu número y tu cuenta de nube puede recuperar tu historial en su teléfono."
+    },
+    {
+      "titulo": "Lo que no consigue",
+      "texto": "Si la copia está cifrada con una llave de acceso o una contraseña, sin ella la copia no sirve de nada: se queda con una cuenta vacía y tus conversaciones siguen solo en tu móvil."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Ver tus mensajes nuevos si se queda con tu cuenta de WhatsApp, aunque no tenga tu historial.",
+      "Intentar restaurar una copia sin cifrar si controla a la vez tu número y tu cuenta de Google o Apple.",
+      "Engañarte con correos falsos sobre «tu copia de WhatsApp» para que descargues malware o entregues contraseñas."
+    ],
+    "no_puede": [
+      "Pedirle tus conversaciones antiguas a WhatsApp: no las tiene.",
+      "Leer una copia cifrada de extremo a extremo sin la contraseña, la clave o tu llave de acceso.",
+      "Probar contraseñas sin límite: el sistema de claves de WhatsApp deja la copia inaccesible tras un número limitado de intentos fallidos."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Comprueba que la copia está activada y es reciente",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "Es lo que separa un susto de una pérdida. Mira que la copia esté activa y que la fecha de la última sea de estos días; si es de hace meses, haz una ahora.",
+      "pasos": {
+        "Android": [
+          "WhatsApp > menú **⋮** > **Ajustes** > **Chats** > **Copia de seguridad**.",
+          "Comprueba la cuenta de Google a la que se guarda y haz una copia ahora."
+        ],
+        "iPhone": [
+          "WhatsApp > **Ajustes** > **Chats** > **Copia de seguridad**.",
+          "Pulsa para hacer una copia ahora y revisa la frecuencia automática."
+        ]
+      }
+    },
+    {
+      "titulo": "Cifra la copia con una llave de acceso",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Así solo tú puedes abrir la copia, y no hay contraseña que olvidar: se desbloquea con tu huella, tu cara o el bloqueo de pantalla. Si prefieres contraseña o clave de 64 dígitos, guárdala en tu gestor de contraseñas: si la pierdes, nadie podrá recuperar la copia.",
+      "pasos": {
+        "Android y iPhone": [
+          "WhatsApp > **Ajustes** > **Chats** > **Copia de seguridad** > **Copia de seguridad cifrada de extremo a extremo**.",
+          "Elige la llave de acceso y confirma con tu huella, tu cara o el código del móvil."
+        ]
+      }
+    },
+    {
+      "titulo": "Vigila el espacio de tu nube",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "En Android, la copia de WhatsApp cuenta dentro de tus 15 GB gratuitos de Google. Si el almacenamiento está lleno, la copia puede quedarse antigua. Libera espacio o excluye los vídeos antes de pagar más.",
+      "pasos": {
+        "Android": [
+          "Abre la app o la web de **Google One** y revisa qué ocupa tu almacenamiento: las copias de WhatsApp aparecen como parte de él."
+        ],
+        "iPhone": [
+          "**Ajustes** del iPhone > tu nombre > **iCloud** para ver el espacio disponible."
+        ]
+      }
+    },
+    {
+      "titulo": "Al cambiar de móvil, pasa los chats desde el viejo",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "todos",
+      "texto": "Si todavía tienes el móvil antiguo, la transferencia directa es la vía más completa y no depende de la nube. No lo restaures ni lo vendas hasta comprobar que los chats están en el nuevo.",
+      "pasos": {
+        "De Android a iPhone": [
+          "Durante la configuración inicial del iPhone, la app **Pasar a iOS** de Apple incluye los mensajes y archivos de WhatsApp. Si ya configuraste el iPhone, tendrías que borrarlo y empezar de nuevo."
+        ],
+        "De iPhone a Android": [
+          "WhatsApp permite trasladar los chats de iPhone a Android; ten los dos móviles a mano durante el proceso."
+        ]
+      }
+    },
+    {
+      "titulo": "Blinda la cuenta donde vive la copia",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "avanzado",
+      "texto": "Tu copia (y muchas cosas más) dependen de tu cuenta de Google o Apple. Actívale la verificación en dos pasos o, mejor, una llave de acceso, y desconfía de los correos de «almacenamiento lleno».",
+      "pasos": {
+        "Cuenta de Google": [
+          "En myaccount.google.com > **Seguridad**, activa la verificación en dos pasos o añade una llave de acceso."
+        ],
+        "Cuenta de Apple": [
+          "**Ajustes** del iPhone > tu nombre > **Inicio de sesión y seguridad**: comprueba que la autenticación de doble factor está activada."
+        ]
+      }
+    },
+    {
+      "titulo": "Protección de datos avanzada de iCloud",
+      "impacto": "bajo",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "paranoico",
+      "texto": "Con ella, Apple cifra de extremo a extremo las copias de iCloud y los datos de apps de terceros guardados ahí, y deja de tener tus claves. A cambio, si pierdes el acceso, Apple no podrá ayudarte a recuperar los datos. Para WhatsApp, la copia cifrada de la propia app ya cubre lo esencial.",
+      "pasos": {
+        "iPhone": [
+          "**Ajustes** > tu nombre > **iCloud** > **Protección de datos avanzada**. Antes de activarla te pedirá configurar un contacto o una clave de recuperación."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "La fecha de la última copia",
+      "texto": "Entra en Ajustes > Chats > Copia de seguridad. Si la última copia tiene semanas o meses, algo falla: suele ser falta de espacio o la copia automática desactivada."
+    },
+    {
+      "titulo": "¿Está cifrada?",
+      "texto": "En la misma pantalla, la opción de copia cifrada de extremo a extremo te dirá si está activada. Si pone que está desactivada, tu copia la protege solo tu proveedor de nube."
+    },
+    {
+      "titulo": "¿Sabrías restaurarla?",
+      "texto": "Piensa con qué cuenta de Google o Apple y con qué número se hizo, y si el cifrado es con llave de acceso, contraseña o clave. Si dudas de algo de eso, es el momento de dejarlo anotado en tu gestor de contraseñas."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Exportar los chats uno a uno",
+      "texto": "La exportación sirve para guardar una conversación concreta, pero no es una copia que puedas restaurar. La copia de seguridad ya lo guarda todo."
+    },
+    {
+      "titulo": "Instalar apps para «recuperar WhatsApp»",
+      "texto": "No pueden sacar de la nada lo que WhatsApp ya no tiene, y muchas piden permisos excesivos o dinero. Si no había copia, lo borrado no vuelve."
+    },
+    {
+      "titulo": "Desactivar la copia por miedo a la nube",
+      "texto": "El riesgo de perder el móvil es mucho mayor que el de que alguien lea tu copia. La solución es cifrarla, no dejar de hacerla."
+    },
+    {
+      "titulo": "Pagar más almacenamiento solo por WhatsApp",
+      "texto": "Antes, prueba a excluir los vídeos de la copia o a borrar los archivos pesados que ya no necesitas: suelen ser lo que más ocupa."
+    }
+  ],
+  "mito": {
+    "mito": "«Mis chats están en WhatsApp; si cambio de móvil, me vuelven solos.»",
+    "realidad": "WhatsApp **borra los mensajes de sus servidores en cuanto se entregan**. Lo que vuelve al móvil nuevo es lo que esté en tu copia de seguridad en Google o iCloud, o lo que pases directamente desde el móvil viejo. Sin ninguna de las dos, se pierde.",
+    "fuente": {
+      "titulo": "WhatsApp: política de privacidad (EEE)",
+      "url": "https://www.whatsapp.com/legal/privacy-policy-eea"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Un almacén de claves con límite de intentos",
+      "parrafos": [
+        "En la copia cifrada, la clave que cifra el historial la genera el propio móvil. Si eliges contraseña, esa clave se guarda en un **almacén de claves de WhatsApp basado en módulos de seguridad hardware ([[hsm|HSM]])**, que solo la entrega a quien demuestre conocer la contraseña y la deja **permanentemente inaccesible tras un número limitado de intentos fallidos**.",
+        "Con la clave de 64 dígitos no hay almacén: la guardas tú y la tecleas al restaurar. Con la llave de acceso, el factor pasa a ser una credencial FIDO sincronizada en el gestor de contraseñas de Google o Apple: comodidad de biometría con la recuperación ligada a tu cuenta."
+      ]
+    },
+    {
+      "titulo": "Copia de la app frente a copia del sistema",
+      "parrafos": [
+        "Sin el cifrado de WhatsApp, la confidencialidad depende del modelo de claves del proveedor. En iCloud con protección estándar, las claves de las copias están en los centros de datos de Apple; con la protección de datos avanzada, la copia de iCloud y los datos de apps de terceros pasan a cifrarse de extremo a extremo.",
+        "Google indica que parte de los datos de las copias de Android se cifra de extremo a extremo con el bloqueo de pantalla del dispositivo, pero no detalla si eso incluye la copia de WhatsApp. Si quieres una garantía que no dependa del sistema, activa el cifrado en la propia app."
+      ]
+    },
+    {
+      "titulo": "Disponibilidad, no solo confidencialidad",
+      "parrafos": [
+        "Una copia cifrada es tan recuperable como lo sea su clave. El fallo típico no es que alguien la lea, sino **perder la clave junto con el móvil**: por eso la llave de acceso sincronizada es mejor opción para la mayoría que una contraseña que se apunta en el propio teléfono.",
+        "Y aplica la regla de INCIBE para cualquier copia: revisarla de vez en cuando para comprobar que funciona."
+      ]
+    }
+  ],
+  "glosario": {
+    "e2e": [
+      "Cifrado de extremo a extremo",
+      "Cifrado en el que solo los extremos (tú y la persona con la que hablas, o tú y tu copia) tienen la clave. Ni el servicio que transporta o guarda los datos puede leerlos."
+    ],
+    "passkey": [
+      "Llave de acceso",
+      "Credencial que sustituye a la contraseña. Se desbloquea con la huella, la cara o el bloqueo de pantalla y se guarda en el gestor de contraseñas del móvil."
+    ],
+    "hsm": [
+      "HSM",
+      "Módulo de seguridad hardware: equipo especializado que guarda claves criptográficas y no permite extraerlas."
+    ],
+    "kev": [
+      "KEV",
+      "Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "WhatsApp: política de privacidad (EEE)",
+      "url": "https://www.whatsapp.com/legal/privacy-policy-eea"
+    },
+    {
+      "titulo": "WhatsApp: cifrar la copia de seguridad de tus chats ahora es más fácil (30/10/2025)",
+      "url": "https://blog.whatsapp.com/encrypting-your-whatsapp-chat-backup-just-got-easier?lang=es_ES"
+    },
+    {
+      "titulo": "WhatsApp: copias de seguridad cifradas de extremo a extremo (2021)",
+      "url": "https://blog.whatsapp.com/end-to-end-encrypted-backups-on-whatsapp?lang=es_ES"
+    },
+    {
+      "titulo": "Meta Engineering: copias de seguridad cifradas de WhatsApp (en inglés)",
+      "url": "https://engineering.fb.com/2021/09/10/security/whatsapp-e2ee-backups/"
+    },
+    {
+      "titulo": "Google One: qué cuenta en tu almacenamiento",
+      "url": "https://support.google.com/googleone/answer/9312312?hl=es"
+    },
+    {
+      "titulo": "Apple: seguridad de los datos de iCloud y protección de datos avanzada (en inglés)",
+      "url": "https://support.apple.com/en-us/102651"
+    },
+    {
+      "titulo": "Apple: pasar de Android a iPhone (en inglés)",
+      "url": "https://support.apple.com/en-us/118670"
+    },
+    {
+      "titulo": "INCIBE: ¿qué pasa si no haces copias de seguridad? (PDF)",
+      "url": "https://www.incibe.es/sites/default/files/docs/cuadriptico_copias_seguridad_tu_vida_digital.pdf"
+    }
+  ]
+}

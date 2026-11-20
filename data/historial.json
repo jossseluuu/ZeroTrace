@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-19T08:51:16+01:00",
+  "actualizado": "2026-11-20T08:44:30+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "copias",
     "wearables",
     "programacion",
     "transito",
     "habitos",
     "sobremesa",
-    "identidad",
-    "smart-tv"
+    "identidad"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -79,6 +79,10 @@
       {
         "fecha": "2026-11-11",
         "concepto": "sincronizar-no-es-copia-de-seguridad"
+      },
+      {
+        "fecha": "2026-11-20",
+        "concepto": "copia-de-seguridad-de-whatsapp"
       }
     ],
     "iot": [
@@ -107,6 +111,16 @@
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-20",
+      "foco": "copias",
+      "concepto": "copia-de-seguridad-de-whatsapp",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-20-vmware-vcenter",
+        "2026-11-20-php-noviembre"
+      ]
+    },
     {
       "fecha": "2026-11-19",
       "foco": "wearables",

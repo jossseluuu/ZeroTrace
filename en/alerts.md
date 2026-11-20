@@ -4,6 +4,8 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/20/2026](editions/2026/11/2026-11-20.md) | Heads-up | VMware vCenter: critical authentication bypass, attacked since September | CVE-2026-123890, CVE-2026-123891, CVE-2026-123892, CVE-2026-123893, CVE-2026-123894 |
+| [11/20/2026](editions/2026/11/2026-11-20.md) | Heads-up | PHP: update fixes 18 flaws, several critical, across every supported version | CVE-2026-115560, CVE-2026-126714, CVE-2026-129481, CVE-2026-129474, CVE-2026-129182, CVE-2026-129496, CVE-2026-129501, CVE-2026-129538, CVE-2026-129291, CVE-2026-129289, CVE-2026-129292, CVE-2026-128090, CVE-2026-15353, CVE-2026-129506, CVE-2026-128064, CVE-2026-127960, CVE-2026-129438, CVE-2026-48841 |
 | [11/19/2026](editions/2026/11/2026-11-19.md) | Heads-up | Synology NAS: a 2024 flaw that hands over the device, now exploited | CVE-2024-10441 |
 | [11/18/2026](editions/2026/11/2026-11-18.md) | Heads-up | Optimizely: websites of 178 organizations served code that stole cards and attacked out-of-date iPhones |  |
 | [11/18/2026](editions/2026/11/2026-11-18.md) | Heads-up | Chrome 158 fixes 204 flaws, six of them critical | CVE-2026-130963, CVE-2026-131031, CVE-2026-131060, CVE-2026-131008, CVE-2026-131054, CVE-2026-130975 |

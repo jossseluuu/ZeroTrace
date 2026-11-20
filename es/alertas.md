@@ -4,6 +4,8 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [20/11/2026](ediciones/2026/11/2026-11-20.md) | Atención | VMware vCenter: fallo crítico que permite saltarse el inicio de sesión, atacado desde septiembre | CVE-2026-123890, CVE-2026-123891, CVE-2026-123892, CVE-2026-123893, CVE-2026-123894 |
+| [20/11/2026](ediciones/2026/11/2026-11-20.md) | Atención | PHP: actualización con 18 fallos corregidos, varios críticos, en todas las versiones con soporte | CVE-2026-115560, CVE-2026-126714, CVE-2026-129481, CVE-2026-129474, CVE-2026-129182, CVE-2026-129496, CVE-2026-129501, CVE-2026-129538, CVE-2026-129291, CVE-2026-129289, CVE-2026-129292, CVE-2026-128090, CVE-2026-15353, CVE-2026-129506, CVE-2026-128064, CVE-2026-127960, CVE-2026-129438, CVE-2026-48841 |
 | [19/11/2026](ediciones/2026/11/2026-11-19.md) | Atención | NAS de Synology: un fallo de 2024 que da el control del equipo, ahora explotado | CVE-2024-10441 |
 | [18/11/2026](ediciones/2026/11/2026-11-18.md) | Atención | Optimizely: webs de 178 organizaciones sirvieron código que robaba tarjetas y atacaba iPhone sin actualizar |  |
 | [18/11/2026](ediciones/2026/11/2026-11-18.md) | Atención | Chrome 158 corrige 204 fallos, seis de ellos críticos | CVE-2026-130963, CVE-2026-131031, CVE-2026-131060, CVE-2026-131008, CVE-2026-131054, CVE-2026-130975 |
