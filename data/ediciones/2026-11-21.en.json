@@ -1,0 +1,327 @@
+{
+  "fecha": "2026-11-21",
+  "idioma": "en",
+  "foco": "iot",
+  "concepto": "remove-from-account-and-reset-before-selling",
+  "titulo": "Before you sell your smart speaker or robot vacuum, remove it from your account",
+  "subtitulo": "Why the reset button isn't enough, what stays on the device and in the cloud (your Wi-Fi password, a map of your home, your history), and the two steps that wipe it clean in ten minutes, including when you're the one buying it used.",
+  "dispositivos": [
+    "iot"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-21-apache-roller",
+      "2026-11-21-cisco-expressway",
+      "2026-11-21-sap-netweaver",
+      "2026-11-21-pypi-agent-framework"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Black Friday rolls around, you upgrade the smart speaker, the video doorbell, or the robot vacuum, and the old one ends up on a resale site, at a relative's house, or at the recycling center. Before it goes out the door, it's worth knowing what's inside: **your Wi-Fi password**, a signed-in link to your account and, depending on the device, **a map of your home**, your routines, or your video history.",
+      "That information lives in **two places**: on the device itself and in your account in the manufacturer's cloud. A [[reset|factory reset]] wipes the device but doesn't always remove it from your account; removing it in the app doesn't always erase what's stored inside. That's why Amazon, for example, recommends doing **both**.",
+      "The recipe is short: **first remove it from your account in the app, then factory reset it**. And if you're the one buying a used device, do the same in reverse: reset it before setting it up and make sure the previous owner no longer has it linked."
+    ],
+    "esencial": [
+      "A connected device keeps data in two places: on the device and in your manufacturer account.",
+      "Before you sell, give away, or recycle it: first remove it from your account in the app, then factory reset it.",
+      "If you buy one used, reset it before using it and make sure nobody else still has it on their account.",
+      "You don't need to destroy the device or use wiping software: the two official steps are enough."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "Selling or giving one away without a reset is very common: in a study of 86 used Echo Dot speakers, more than half arrived without being reset. A buyer actually trying to exploit that is much less common."
+    },
+    "impacto": {
+      "nivel": "medio",
+      "texto": "Whoever gets it may see your Wi-Fi password, your routines, or the map of your home, or the device may stay tied to your account. It's annoying and fixable, but better avoided."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What a smart-home device stores",
+      "parrafos": [
+        "To work, almost all of them store **your Wi-Fi network name and password** and a **session credential ([[token|token]])** that ties them to your account. Beyond that, it depends on the device: a speaker keeps settings and preferences; a doorbell or camera, its link to your video history; a robot vacuum, maps.",
+        "Spain's national cybersecurity institute, INCIBE, describes it for cleaning robots: they can **build floor plans of your home** to plan their routes, some have cameras, and they use Wi-Fi to send that information to the company's cloud."
+      ]
+    },
+    {
+      "titulo": "Two places, two steps",
+      "parrafos": [
+        "What's **on the device** (Wi-Fi, settings, local maps) is erased by a factory reset. What's **in the cloud** (the device being listed on your account, history, saved maps) is handled in the app.",
+        "Manufacturers don't handle this the same way. iRobot warns that if you reset the robot with its buttons, **cloud data, app data, and account associations remain intact**; only a reset from the app unlinks it. Google cautions that after resetting a speaker or display, **some basic device data may remain connected to the home**. And Amazon answers the question \"Should I factory reset instead of deregistering before selling?\" with \"Do both.\""
+      ]
+    },
+    {
+      "titulo": "Why the order matters",
+      "parrafos": [
+        "First, remove it from your account while it still works and shows up in the app. Then reset it. Done the other way around, the device is clean but may still appear on your account, and with some systems the new owner can't set it up until you release it: at Amazon, **only the registered account can deregister** a device.",
+        "Ring makes the same point another way: canceling your subscription, uninstalling the doorbell, or deleting the app **does not release ownership** of the device; you have to transfer it or remove it in the app."
+      ]
+    },
+    {
+      "titulo": "When you're the buyer",
+      "parrafos": [
+        "The FTC advises anyone taking over someone else's devices to **reset them and check their privacy settings** before using them. That's just sensible: you don't know what accounts, routines, or shared access they carry.",
+        "Some manufacturers add their own timelines. Google says a Nest camera already used by another account can't be set up until its video history expires, which **can take up to 60 days**. And Ring lets a new owner request ownership: the previous owner gets notices and, if they don't respond, doorbells and cameras come off their account within **up to 15 days**."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The listing",
+      "texto": "Someone buys a cheap used smart speaker or robot vacuum. The seller just unplugged it and put it back in the box."
+    },
+    {
+      "titulo": "What they find with no effort",
+      "texto": "If the device is still set up, plugging it in may show the name you gave it, your routines, or the map of your home, and they might even try using it with your account if you never removed it."
+    },
+    {
+      "titulo": "What they find with effort",
+      "texto": "In a 2021 academic study, researchers who opened up Echo Dots and read their memory chip directly recovered Wi-Fi passwords even from some devices that had been reset. That takes disassembly and specialized equipment."
+    },
+    {
+      "titulo": "What they don't get",
+      "texto": "If you removed the device from your account and reset it, it no longer has access to your account or your cloud history. And if you also change your Wi-Fi password, any old password left behind is useless."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "See your settings, routines, maps, or network name if the device arrives without a reset.",
+      "Use a Wi-Fi password they find to join your network, if they live nearby and you haven't changed it.",
+      "In extreme cases, with the device opened and specialized equipment, recover data remnants from memory."
+    ],
+    "no_puede": [
+      "Get into your Amazon, Google, or manufacturer account once you've removed the device from it.",
+      "See your cloud video history: with Google, removing a Nest camera from your account deletes its history.",
+      "Use an old Wi-Fi password once you've changed it."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "First, remove it from your account in the app",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Do it while the device still works. That takes it off your account, cuts its access, and lets the new owner set it up without needing anything from you.",
+      "pasos": {
+        "Google Home / Nest": [
+          "**Google Home** app > **Home** > **All devices** > touch and hold the device > **Settings** > **Remove device** > **Remove**."
+        ],
+        "Amazon Echo": [
+          "Sign in to Amazon, go to **Devices**, choose the Echo from the list, and select **Deregister**. Only the account it's registered to can do this."
+        ],
+        "Ring": [
+          "**Ring** app > menu > **Settings** > **Location Details** > **Transfer Ownership**. If you don't know the new owner, you can remove the device without entering an email."
+        ],
+        "iRobot robot (Roomba)": [
+          "In the iRobot app, open the robot's settings and use the option to **factory reset and remove the robot** from your account: it does both steps at once."
+        ]
+      }
+    },
+    {
+      "titulo": "Then, factory reset it",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "This is what erases the Wi-Fi password, settings, and data on the device itself. If you're offered variants, choose the full reset, not the one that \"keeps\" connections or maps.",
+      "pasos": {
+        "HomePod": [
+          "**Home** app > tap the HomePod > **Settings** button > **Reset HomePod** > **Remove Accessory**."
+        ],
+        "Google speakers and displays": [
+          "It can't be done by voice or from the app: you hold a button for several seconds. The exact combination for each model is on Google's page in the sources."
+        ],
+        "Echo with a screen": [
+          "From the screen's settings, under device options, or by holding the microphone-off and volume-down buttons for about 15 seconds. If it offers to keep smart home device connections, don't pick that."
+        ],
+        "Robot vacuums": [
+          "With iRobot, reset from the app (a button reset leaves your account and cloud data intact) and, if asked, don't save the maps. With Roborock, a factory reset erases Wi-Fi, logs, and maps."
+        ]
+      }
+    },
+    {
+      "titulo": "If you buy it used, reset it before using it",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Even if the seller says it's clean, reset it yourself and set it up from scratch with your account. Then review its privacy settings and update it.",
+      "pasos": {
+        "Nest cameras": [
+          "If another account used it, Google says you have to wait for its video history to expire (up to 60 days) before setting it up."
+        ],
+        "Ring": [
+          "**Ring** app > **Set Up a Device**: if it's still on another account, you'll be offered **Request Ownership**. The previous owner gets notices and, if they don't respond, the doorbell or camera comes off their account within 15 days at most."
+        ]
+      }
+    },
+    {
+      "titulo": "Make a list before you move or sell your home",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "20 min",
+      "para": "todos",
+      "texto": "If you're moving, the FTC recommends listing every connected device in the home (thermostat, lock, doorbell, plugs), removing your access and accounts, and resetting them. Google's moving guide walks through it device by device.",
+      "pasos": {}
+    },
+    {
+      "titulo": "If you already sold one without doing this, change your Wi-Fi password",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "10 min",
+      "para": "avanzado",
+      "texto": "Remove the device from your account in the app (it still shows up even though you no longer have it) and change the Wi-Fi password on your router. You'll have to reconnect your other devices, but the password it left with stops working.",
+      "pasos": {}
+    },
+    {
+      "titulo": "Ask the manufacturer to delete your data",
+      "impacto": "bajo",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "paranoico",
+      "texto": "If you stop using a service, you can ask the manufacturer to delete your data, using its privacy portal or the rights your state's privacy law gives you, and close the account. For most people, removing and resetting the device is enough; this is for anyone who wants to leave no trace.",
+      "pasos": {}
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Is it still in the app?",
+      "texto": "Open the manufacturer's app and look at the device list. If one you no longer own shows up, remove it now."
+    },
+    {
+      "titulo": "Which reset did you do?",
+      "texto": "If you reset a robot with its buttons or picked a reset that \"keeps\" connections or maps, your account may still be tied to it. Redo it from the app."
+    },
+    {
+      "titulo": "If you bought it used",
+      "texto": "In the app, check that the device only appears on your account, that there are no home members you don't recognize, and that it has the latest update."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Smashing or destroying the device",
+      "texto": "No agency or manufacturer asks consumers to do that. Removing it from your account and resetting it is what the FTC, other government agencies, and manufacturers recommend."
+    },
+    {
+      "titulo": "Using secure-wipe software",
+      "texto": "That makes sense for a hard drive, not a speaker or a smart plug. Recovering remnants from its memory means opening it up and reading the chip with lab equipment."
+    },
+    {
+      "titulo": "Giving up on buying or selling used",
+      "texto": "Reusing devices is good. Just do the two steps when selling and reset when buying."
+    },
+    {
+      "titulo": "Changing your Wi-Fi password every time you sell something",
+      "texto": "If you removed it from your account and reset it properly, there's no need. Save that for when a device left without a reset."
+    }
+  ],
+  "mito": {
+    "mito": "\"Holding down the reset button wipes everything.\"",
+    "realidad": "It depends on where the data is. iRobot explains that if you reset the robot with its buttons, **cloud data, app data, and account associations remain intact**. The reset cleans the device; removing it from your account cleans the cloud. You need both.",
+    "fuente": {
+      "titulo": "iRobot: Why factory reset your robot and how to do it?",
+      "url": "https://homesupport.irobot.com/articles/en_US/Knowledge/9047"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Local state vs. cloud binding",
+      "parrafos": [
+        "A typical IoT device has two kinds of state. **Local**: Wi-Fi credentials (on embedded Linux, often in `wpa_supplicant.conf`), device tokens, configuration, and caches. And **remote**: the device's registration on the user's account, with its permissions, history, and derived data (maps, recordings).",
+        "A factory reset acts on the first; unbinding (deregister, remove device, transfer ownership) revokes the second on the server. A local-only reset leaves the cloud registration alive; unbinding without a reset leaves credentials on the device. Hence \"do both.\""
+      ]
+    },
+    {
+      "titulo": "Why a reset can leave remnants",
+      "parrafos": [
+        "Giese and Noubir (Northeastern University, WiSec 2021) bought 86 used Echo Dots. More than half hadn't been reset, and they recovered remnants from some that had: [[nand|NAND]] memory spreads writes across blocks ([[nand|wear leveling]]), so \"deleted\" data can linger in cells that haven't been reused, and the user data partition wasn't encrypted.",
+        "They also found that on the 3rd-gen Echo Dot, a button press could trigger only Wi-Fi reconfiguration and look like a full reset. Amazon reproduced and confirmed the findings. The six Amazon certified-refurbished units had no remnants."
+      ]
+    },
+    {
+      "titulo": "The right mitigation",
+      "parrafos": [
+        "The design-level defense is encrypting the user partition and destroying the key on reset (crypto-erase): without the key, whatever remains in NAND is unreadable. For users, the realistic threat model isn't a lab, it's the buyer who plugs the device in: the two official steps cover that.",
+        "As a safety net, rotating your Wi-Fi password invalidates any leftover credential, and a guest network for IoT devices limits what anyone who gets it can do."
+      ]
+    }
+  ],
+  "glosario": {
+    "reset": [
+      "Factory reset",
+      "An option that returns a device to its original state and erases the settings and data stored on it."
+    ],
+    "token": [
+      "Token",
+      "A digital credential the service gives the device so it doesn't need your password every time. Once revoked, it stops working."
+    ],
+    "nand": [
+      "NAND memory",
+      "The type of memory in many devices. To avoid wearing out, it spreads writes across blocks (wear leveling), which is why deleted data can linger for a while in cells that haven't been reused."
+    ],
+    "kev": [
+      "KEV",
+      "The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed, there are real attacks."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "FTC: Buying or selling a \"smart\" home? Read this. (2018)",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2018/01/buying-or-selling-smart-home-read"
+    },
+    {
+      "titulo": "FTC: Securing your internet-connected devices at home",
+      "url": "https://consumer.ftc.gov/articles/securing-your-internet-connected-devices-home"
+    },
+    {
+      "titulo": "Amazon: How to deregister your Amazon device",
+      "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=201357520"
+    },
+    {
+      "titulo": "Google: Moving guide for Google Home and Nest devices",
+      "url": "https://support.google.com/googlenest/answer/11151047?hl=en"
+    },
+    {
+      "titulo": "Google: Factory reset your Google smart speaker or display",
+      "url": "https://support.google.com/googlenest/answer/7073477?hl=en"
+    },
+    {
+      "titulo": "Google: Remove a device from your Google Account",
+      "url": "https://support.google.com/googlehome/answer/9293132?hl=en"
+    },
+    {
+      "titulo": "Apple: Reset HomePod or HomePod mini",
+      "url": "https://support.apple.com/108389"
+    },
+    {
+      "titulo": "iRobot: Why factory reset your robot and how to do it?",
+      "url": "https://homesupport.irobot.com/articles/en_US/Knowledge/9047"
+    },
+    {
+      "titulo": "Ring: Transfer ownership of a Ring device",
+      "url": "https://ring.com/support/articles/k8jn9/transfer"
+    },
+    {
+      "titulo": "Roborock: How to reset Roborock to factory default?",
+      "url": "https://support.roborock.com/hc/en-us/articles/360035372632"
+    },
+    {
+      "titulo": "INCIBE: Protect your smart home, risks and recommendations (in Spanish, Sept. 2, 2026)",
+      "url": "https://www.incibe.es/ciudadania/blog/protege-tu-hogar-inteligente-riesgos-y-recomendaciones"
+    },
+    {
+      "titulo": "Giese and Noubir: Amazon Echo Dot or the Reverberating Secrets of IoT Devices (WiSec 2021, PDF)",
+      "url": "https://khoury.northeastern.edu/home/noubir/publications-local/GN2021.pdf"
+    }
+  ]
+}

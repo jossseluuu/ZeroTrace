@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Por qué el botón de reset no basta, qué se queda dentro del aparato y en la nube (la clave del wifi, el plano de tu casa, tu historial) y los dos pasos que lo dejan limpio en diez minutos, también si eres tú quien lo compra de segunda mano.">
+<title>Antes de vender tu altavoz o tu robot aspirador, sácalo de tu cuenta · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-21.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-21.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Sábado, 21 de noviembre de 2026 · 🏠 Hogar conectado (IoT)</p>
+<h1>Antes de vender tu altavoz o tu robot aspirador, sácalo de tu cuenta</h1><p class="sub">Por qué el botón de reset no basta, qué se queda dentro del aparato y en la nube (la clave del wifi, el plano de tu casa, tu historial) y los dos pasos que lo dejan limpio en diez minutos, también si eres tú quien lo compra de segunda mano.</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 9 min</li><li>🏠 IoT</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día de atención"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Día de atención</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="alertas"><article class="alerta rojo" id="2026-11-21-apache-roller">
+<header><span class="pill rojo">Crítico</span><h3>Apache Roller: fallo crítico que permite tomar el servidor sin contraseña, ya explotado</h3></header>
+<dl><dt>A quién afecta</dt><dd>Quien tenga un blog o portal con Apache Roller entre las versiones 4.0.0 y 6.1.4.</dd>
+<dt>Qué hacer</dt><dd>Actualiza a <strong>Roller 6.1.6</strong> o posterior. Si no puedes hoy, pon <code>enabledForExtensions</code> a <code>false</code> en <code>WEB-INF/web.xml</code> o elimina el mapeo del servlet <code>/roller-services/xmlrpc</code> y reinicia: desactivar XML-RPC desde el panel de administración <strong>no basta</strong>.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">El punto de entrada XML-RPC deserializa datos antes de comprobar quién envía la petición, lo que permite ejecutar código sin autenticarse (CVSS 9,8). Apache avisa de que se está explotando activamente y CISA lo añadió al catálogo KEV el 20/11. Es el mismo fallo que CVE-2026-82384, que solo listaba la 6.1.5 como afectada.<div class="cves"><code>CVE-2026-129448</code></div></dd></dl>
+<p class="src"><a href="https://www.openwall.com/lists/oss-security/2026/11/17/5" rel="noopener noreferrer">Apache: aviso de seguridad de Roller publicado en oss-security (17/11)</a> · <a href="https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json" rel="noopener noreferrer">CISA: catálogo KEV (alta del 20/11)</a></p></article><article class="alerta rojo" id="2026-11-21-cisco-expressway">
+<header><span class="pill rojo">Crítico</span><h3>Cisco Expressway: credenciales fijas que dan control total en equipos en clúster, ya explotadas</h3></header>
+<dl><dt>A quién afecta</dt><dd>Empresas con Cisco Expressway-C o Expressway-E (virtual o físico) configurados en clúster, en versiones X15.5.3 y anteriores.</dd>
+<dt>Qué hacer</dt><dd>Actualiza a <strong>X15.5.20</strong>. Las versiones X14 y anteriores deben migrar a una versión corregida. Cisco indica que <strong>no hay medidas alternativas</strong>.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Unas credenciales incrustadas permiten a un atacante remoto sin autenticar ejecutar órdenes como root (CVSS 9,8). Cisco publicó el parche el 21/10 y su aviso aún no menciona ataques, pero CISA lo añadió al catálogo KEV el 20/11 por explotación activa y hay una prueba de concepto pública.<div class="cves"><code>CVE-2026-76466</code></div></dd></dl>
+<p class="src"><a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-vcs-static-cred-hr7EWZ8t" rel="noopener noreferrer">Cisco: aviso cisco-sa-vcs-static-cred-hr7EWZ8t (en inglés)</a> · <a href="https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json" rel="noopener noreferrer">CISA: catálogo KEV (alta del 20/11)</a></p></article><article class="alerta amarillo" id="2026-11-21-sap-netweaver">
+<header><span class="pill amarillo">Atención</span><h3>SAP NetWeaver Enterprise Portal: un fallo parcheado en noviembre de 2025, ahora atacado</h3></header>
+<dl><dt>A quién afecta</dt><dd>Empresas con SAP NetWeaver Enterprise Portal (EP-BASIS y EP-RUNTIME 7.50) sin la nota de seguridad 3660969.</dd>
+<dt>Qué hacer</dt><dd>Comprueba que tienes aplicada la <strong>nota SAP 3660969</strong> del Patch Day del 11/11/2025 y, si no, aplícala.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Un atacante sin autenticar puede inyectar parámetros JNDI y leer o modificar información del servidor. SAP lo calificó de gravedad media (CVSS 6,5), sin impacto en la disponibilidad, pero CISA lo añadió al catálogo KEV el 20/11 por explotación activa. Quien parcheó en su día ya está protegido.<div class="cves"><code>CVE-2025-42884</code></div></dd></dl>
+<p class="src"><a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news/bulletin-2025.html" rel="noopener noreferrer">SAP: boletín del Security Patch Day 2025 (en inglés)</a> · <a href="https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json" rel="noopener noreferrer">CISA: catálogo KEV (alta del 20/11)</a></p></article><article class="alerta amarillo" id="2026-11-21-pypi-agent-framework">
+<header><span class="pill amarillo">Atención</span><h3>PyPI: dos versiones falsas de agent-framework, de Microsoft, robaban credenciales de desarrolladores</h3></header>
+<dl><dt>A quién afecta</dt><dd>Equipos y servidores de integración continua que instalaron <strong>agent-framework 1.26.1 o 1.26.2</strong> desde PyPI el 17/11, entre las 21:35 y las 22:20 (hora peninsular).</dd>
+<dt>Qué hacer</dt><dd>Si las instalaste, aísla la máquina, reconstrúyela desde limpio en vez de desinstalar, fija la versión <strong>1.26.0</strong> y <strong>cambia todas las credenciales</strong> a las que tenía acceso desde otro equipo.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Las dos versiones se publicaron con la cuenta comprometida y PyPI las retiró en menos de 45 minutos. Incluían un archivo <code>.pth</code> que se ejecuta cada vez que arranca Python, aunque no se importe el paquete, y enviaba a un servidor externo variables de entorno, ficheros de credenciales (Azure, npm, pip, Git, Docker, <code>.env</code>) y tokens de Azure y GitHub Actions. La versión 1.26.0 es segura.<div class="cves"></div></dd></dl>
+<p class="src"><a href="https://www.stepsecurity.io/blog/microsoft-agent-framework-pypi-package-compromised" rel="noopener noreferrer">StepSecurity: paquete de PyPI de Microsoft Agent Framework comprometido (en inglés)</a> · <a href="https://aikido.dev/blog/two-malicious-agent-framework-releases-hit-pypi-in-33-minutes" rel="noopener noreferrer">Aikido: dos versiones maliciosas de agent-framework en PyPI (en inglés)</a> · <a href="https://pypi.org/project/agent-framework/" rel="noopener noreferrer">PyPI: ficha de agent-framework</a></p></article></div><p class="nota">El color del día refleja el impacto para el público general. Cada alerta lleva el suyo para las personas a las que afecta. <a href="../../../alertas.html">Ver todas las alertas notificadas</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Llega el Black Friday, cambias el altavoz inteligente, el timbre con cámara o el robot aspirador, y el viejo acaba en una web de segunda mano, en casa de tu cuñado o en el punto limpio. Antes de que salga por la puerta conviene saber qué lleva dentro: <strong>la contraseña de tu wifi</strong>, la sesión de tu cuenta y, según el aparato, <strong>el plano de tu casa</strong>, tus rutinas o el historial de vídeo.</p><p>Esa información vive en <strong>dos sitios</strong>: en el propio aparato y en tu cuenta en la nube del fabricante. El <button type="button" class="term" popovertarget="g-reset">restablecimiento de fábrica</button> limpia el aparato, pero no siempre lo saca de tu cuenta; y quitarlo de la app no siempre borra lo que guarda dentro. Por eso Amazon, por ejemplo, recomienda hacer <strong>las dos cosas</strong>.</p><p>La receta es corta: <strong>primero quítalo de tu cuenta desde la app, luego restablécelo de fábrica</strong>. Y si eres tú quien compra un aparato usado, haz lo mismo al revés: restablécelo antes de configurarlo y comprueba que el anterior dueño ya no lo tiene vinculado.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>Un aparato conectado guarda datos en dos sitios: en él mismo y en tu cuenta del fabricante.</li><li>Antes de venderlo, regalarlo o reciclarlo: primero quítalo de tu cuenta en la app y después restablécelo de fábrica.</li><li>Si compras uno de segunda mano, restablécelo antes de usarlo y comprueba que nadie más lo tiene en su cuenta.</li><li>No hace falta destruir el aparato ni usar programas de borrado: con los dos pasos oficiales basta.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: media</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Venderlo o regalarlo sin restablecer es muy habitual: en un estudio con 86 altavoces Echo Dot comprados usados, más de la mitad llegaron sin restablecer. Que el comprador quiera aprovecharlo ya es bastante menos frecuente.</p></div><div class="medidor"><div class="top"><span>Impacto: medio</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Quien lo recibe puede ver la clave de tu wifi, tus rutinas o el plano de tu casa, o el aparato puede seguir ligado a tu cuenta. Es molesto y se arregla, pero mejor evitarlo.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Qué guarda un aparato del hogar conectado</h3><p>Para funcionar, casi todos guardan la <strong>red y la contraseña de tu wifi</strong> y un <strong>identificador de sesión (<button type="button" class="term" popovertarget="g-token">token</button>)</strong> que lo une a tu cuenta. A partir de ahí, depende del aparato: un altavoz guarda ajustes y preferencias; un timbre o una cámara, la relación con tu historial de vídeo; un robot aspirador, mapas.</p><p>INCIBE lo explica en el caso de los robots de limpieza: son capaces de <strong>recoger planos de la casa</strong> para optimizar sus desplazamientos, algunos llevan cámara, y usan el wifi para enviar la información a la nube de la empresa.</p><h3>Dos sitios, dos pasos</h3><p>Lo que está <strong>en el aparato</strong> (wifi, ajustes, mapas locales) se borra con el restablecimiento de fábrica. Lo que está <strong>en la nube</strong> (que el aparato figure en tu cuenta, el historial, los mapas guardados) se gestiona desde la app.</p><p>Los fabricantes no lo resuelven igual. iRobot avisa de que, si restableces el robot con los botones, <strong>los datos en la nube, los de la app y la asociación con tu cuenta siguen intactos</strong>; solo el restablecimiento desde la app lo desvincula. Google advierte de que, tras restablecer un altavoz o pantalla, <strong>algunos datos básicos del dispositivo pueden seguir asociados a la casa</strong>. Y Amazon responde a la pregunta «¿restablecer o anular el registro antes de vender?» con un «haz las dos cosas».</p><h3>Por qué el orden importa</h3><p>Primero, sácalo de tu cuenta mientras todavía funciona y lo ves en la app. Después, restablécelo. Al revés, el aparato queda limpio pero puede seguir apareciendo en tu cuenta, y en algunos sistemas el nuevo dueño no podrá darlo de alta hasta que lo liberes: en Amazon, <strong>solo la cuenta registrada puede anular el registro</strong> de un dispositivo.</p><p>Ring lo deja claro por otro camino: cancelar la suscripción, desinstalar el timbre o borrar la app <strong>no libera la propiedad</strong> del aparato; hay que transferirla o quitarlo desde la app.</p><h3>Cuando eres tú quien compra</h3><p>La FTC (la agencia de protección del consumidor de EE. UU.) recomienda a quien recibe aparatos de otro <strong>restablecerlos y revisar su configuración de privacidad</strong> antes de usarlos. Es lo sensato: no sabes qué cuentas, rutinas o accesos compartidos arrastran.</p><p>Algunos fabricantes ponen sus propios plazos. Google indica que una cámara Nest que ya usó otra cuenta no se puede configurar hasta que caduque su historial de vídeo, lo que <strong>puede tardar hasta 60 días</strong>. Y Ring permite al nuevo dueño solicitar la propiedad: el anterior recibe avisos y, si no responde, timbres y cámaras salen de su cuenta en <strong>hasta 15 días</strong>.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>El anuncio</strong><p>Alguien compra barato un altavoz o un robot aspirador de segunda mano. El vendedor lo ha desenchufado y lo ha metido en la caja tal cual.</p></li><li><strong>Lo que encuentra sin esfuerzo</strong><p>Si el aparato sigue configurado, al enchufarlo puede ver el nombre que le diste, tus rutinas o el plano de tu casa, e incluso intentar usarlo con tu cuenta si no lo sacaste de ella.</p></li><li><strong>Lo que encuentra con esfuerzo</strong><p>En un estudio académico de 2021, investigadores que abrieron los Echo Dot y leyeron directamente su chip de memoria recuperaron claves de wifi incluso en algunos aparatos que sí se habían restablecido. Exige desmontar el aparato y equipo específico.</p></li><li><strong>Lo que no consigue</strong><p>Si quitaste el aparato de tu cuenta y lo restableciste, ya no tiene acceso a tu cuenta ni a tu historial en la nube. Y si además cambias la clave del wifi, una contraseña antigua que pudiera quedar no le sirve de nada.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Ver tus ajustes, rutinas, mapas o el nombre de tu red si el aparato llega sin restablecer.</li><li>Usar la clave del wifi que encuentre para conectarse a tu red, si vive cerca y no la has cambiado.</li><li>En casos extremos, con el aparato abierto y equipo específico, rescatar restos de datos de la memoria.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Entrar en tu cuenta de Amazon, Google o del fabricante una vez que has quitado el aparato de ella.</li><li>Ver tu historial de vídeo en la nube: en Google, quitar una cámara Nest de la cuenta borra su historial.</li><li>Usar una clave de wifi antigua si ya la has cambiado.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Primero, quítalo de tu cuenta desde la app</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 3 min</li><li>Para: todos</li></ul>
+<p>Hazlo con el aparato todavía funcionando. Así dejas de tenerlo en tu cuenta, se cortan sus accesos y el nuevo dueño podrá darlo de alta sin pedirte nada.</p><div class="plataformas"><div class="plataforma"><h4>Google Home / Nest</h4><ol><li>App <strong>Google Home</strong> &gt; <strong>Casa</strong> &gt; <strong>Todos los dispositivos</strong> &gt; mantén pulsado el dispositivo &gt; <strong>Ajustes</strong> &gt; <strong>Quitar dispositivo</strong> &gt; <strong>Quitar</strong>.</li></ol></div><div class="plataforma"><h4>Amazon Echo</h4><ol><li>En tu cuenta de Amazon, en la gestión de contenido y dispositivos, elige el Echo y <strong>anula su registro</strong>. Solo puede hacerlo la cuenta en la que está registrado.</li></ol></div><div class="plataforma"><h4>Ring</h4><ol><li>App <strong>Ring</strong> &gt; menú &gt; ajustes de la ubicación &gt; opción para <strong>transferir la propiedad</strong>. Si no conoces al nuevo dueño, puedes quitar el aparato sin indicar ningún correo.</li></ol></div><div class="plataforma"><h4>Robot iRobot (Roomba)</h4><ol><li>En la app de iRobot, entra en los ajustes del robot y usa la opción de <strong>restablecer de fábrica y quitar el robot</strong> de la cuenta: hace los dos pasos a la vez.</li></ol></div></div></article><article class="medida"><h3>Después, restablécelo de fábrica</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 2 min</li><li>Para: todos</li></ul>
+<p>Es lo que borra la clave del wifi, los ajustes y los datos del propio aparato. Si te ofrece variantes, elige el restablecimiento completo, no el que «conserva» conexiones o mapas.</p><div class="plataformas"><div class="plataforma"><h4>HomePod</h4><ol><li>App <strong>Casa</strong> &gt; toca el HomePod &gt; botón <strong>Ajustes</strong> &gt; <strong>Restablecer HomePod</strong> &gt; <strong>Eliminar accesorio</strong>.</li></ol></div><div class="plataforma"><h4>Altavoces y pantallas de Google</h4><ol><li>No se hace por voz ni desde la app: se mantiene pulsado un botón unos segundos. La combinación exacta de cada modelo está en la página de Google de las fuentes.</li></ol></div><div class="plataforma"><h4>Echo con pantalla</h4><ol><li>Desde los ajustes de la pantalla, en las opciones del dispositivo, o manteniendo pulsados los botones de silenciar micrófono y bajar volumen unos 15 segundos. Si te ofrece conservar las conexiones del hogar inteligente, no la elijas.</li></ol></div><div class="plataforma"><h4>Robots aspiradores</h4><ol><li>En iRobot, haz el restablecimiento desde la app (el de los botones deja tu cuenta y tus datos en la nube intactos) y, si te pregunta, no guardes los mapas. En Roborock, el restablecimiento borra el wifi, los registros y los mapas.</li></ol></div></div></article><article class="medida"><h3>Si lo compras de segunda mano, restablécelo antes de usarlo</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 5 min</li><li>Para: todos</li></ul>
+<p>Aunque el vendedor diga que está limpio, restablécelo tú y configúralo desde cero con tu cuenta. Después revisa sus ajustes de privacidad y actualízalo.</p><div class="plataformas"><div class="plataforma"><h4>Cámaras Nest</h4><ol><li>Si la usó otra cuenta, Google indica que hay que esperar a que caduque su historial (hasta 60 días) para configurarla.</li></ol></div><div class="plataforma"><h4>Ring</h4><ol><li>App <strong>Ring</strong> &gt; <strong>Configurar un dispositivo</strong>: si sigue en otra cuenta, te ofrecerá <strong>solicitar la propiedad</strong>. El anterior dueño recibirá avisos y, si no responde, el timbre o la cámara saldrán de su cuenta en un máximo de 15 días.</li></ol></div></div></article><article class="medida"><h3>Haz la lista antes de mudarte o vender la casa</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: medio</li>
+<li>⏱ 20 min</li><li>Para: todos</li></ul>
+<p>Si te mudas, la FTC recomienda apuntar todos los aparatos conectados de la vivienda (termostato, cerradura, timbre, enchufes), quitar tus accesos y cuentas y restablecerlos. La Guía de Google para cambiar de vivienda lo explica aparato por aparato.</p><div class="plataformas"></div></article><article class="medida deep"><h3>Si ya lo vendiste sin hacerlo, cambia la clave del wifi<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 10 min</li><li>Para: avanzado</li></ul>
+<p>Quita el aparato de tu cuenta desde la app (sigue apareciendo aunque ya no lo tengas) y cambia la contraseña del wifi en el router. Tendrás que volver a conectar el resto de aparatos, pero la clave que se llevó deja de servir.</p><div class="plataformas"></div></article><article class="medida deep"><h3>Pide al fabricante que borre tus datos<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="bajo">Impacto: bajo</li><li>Esfuerzo: medio</li>
+<li>⏱ 15 min</li><li>Para: paranoico</li></ul>
+<p>Si dejas de usar un servicio, puedes ejercer tu derecho de supresión ante el fabricante, como recuerda la AEPD, y cerrar la cuenta. Para la mayoría basta con quitar el aparato y restablecerlo; esto es para quien quiere no dejar rastro.</p><div class="plataformas"></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>¿Sigue en la app?</h3><p>Abre la app del fabricante y mira la lista de dispositivos. Si aparece uno que ya no tienes, quítalo ahora.</p></div><div class="fila"><h3>¿Qué tipo de reset hiciste?</h3><p>Si restableciste un robot con los botones o elegiste un reset que «conserva» conexiones o mapas, tu cuenta puede seguir ligada a él. Repítelo desde la app.</p></div><div class="fila"><h3>Si lo compraste usado</h3><p>En la app, revisa que el aparato solo aparece en tu cuenta, que no hay miembros de la casa que no conozcas y que tiene la última actualización.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Romper o destruir el aparato</h3><p>Ningún organismo ni fabricante lo pide a un particular. Quitarlo de tu cuenta y restablecerlo es lo que recomiendan INCIBE, la AEPD, la FTC y los fabricantes.</p></div><div class="fila"><h3>Usar programas de borrado seguro</h3><p>Tiene sentido en un disco duro, no en un altavoz o un enchufe. Recuperar restos de su memoria exige abrirlo y leer el chip con equipo de laboratorio.</p></div><div class="fila"><h3>Dejar de comprar o vender de segunda mano</h3><p>Reutilizar es bueno. Basta con hacer los dos pasos al vender y restablecer al comprar.</p></div><div class="fila"><h3>Cambiar la clave del wifi cada vez que vendes algo</h3><p>Si lo quitaste de tu cuenta y lo restableciste bien, no hace falta. Resérvalo para cuando el aparato salió sin restablecer.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«Con mantener pulsado el botón de reset ya está todo borrado.»</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>Depende de dónde estén los datos. iRobot explica que, si restableces el robot con los botones, <strong>los datos en la nube, los de la app y la asociación con tu cuenta siguen intactos</strong>. El reset limpia el aparato; quitarlo de la cuenta limpia la nube. Hacen falta los dos.</p><p class="src"><a href="https://homesupport.irobot.com/articles/en_US/Knowledge/9047" rel="noopener noreferrer">iRobot: por qué y cómo restablecer de fábrica tu robot (en inglés)</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>Estado local frente a vínculo en la nube</h3><p>Un aparato IoT típico tiene dos estados. El <strong>local</strong>: credenciales del wifi (en Linux embebido, a menudo en <code>wpa_supplicant.conf</code>), tokens de dispositivo, configuración y cachés. Y el <strong>remoto</strong>: el registro del aparato en la cuenta del usuario, con sus permisos, historial y datos derivados (mapas, grabaciones).</p><p>El restablecimiento actúa sobre el primero; la desvinculación (anular registro, quitar dispositivo, transferir propiedad) revoca el segundo en el servidor. Un reset solo local deja el registro vivo en la nube; una desvinculación sin reset deja credenciales en el aparato. De ahí el «haz las dos cosas».</p><h3>Por qué un reset puede dejar restos</h3><p>Giese y Noubir (Northeastern University, WiSec 2021) compraron 86 Echo Dot usados. Más de la mitad no se habían restablecido, y en algunos restablecidos recuperaron restos: la memoria <button type="button" class="term" popovertarget="g-nand">NAND</button> reparte las escrituras entre bloques (<button type="button" class="term" popovertarget="g-nand">nivelación de desgaste</button>), así que lo «borrado» puede seguir en celdas no reutilizadas, y la partición de datos no estaba cifrada.</p><p>También vieron que en el Echo Dot de 3.ª generación una pulsación podía lanzar solo la reconfiguración del wifi y dar la impresión de un reset completo. Amazon reprodujo y confirmó los hallazgos. Los seis aparatos reacondicionados por Amazon no tenían restos.</p><h3>La mitigación correcta</h3><p>La defensa de diseño es cifrar la partición de usuario y, al restablecer, destruir la clave (borrado criptográfico): sin clave, lo que quede en la NAND es ilegible. Para el usuario, el modelo de amenaza realista no es el laboratorio, sino el comprador que enchufa el aparato: los dos pasos oficiales lo cubren.</p><p>Como red de seguridad, rotar la clave del wifi invalida cualquier credencial residual, y una red de invitados para los aparatos IoT limita lo que puede hacer quien la consiga.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>Restablecimiento de fábrica</dt><dd>Opción que devuelve un aparato a su estado original y borra la configuración y los datos guardados en él.</dd><dt>Token</dt><dd>Credencial digital que el servicio entrega al aparato para que no tenga que usar tu contraseña cada vez. Si se revoca, deja de servir.</dd><dt>Memoria NAND</dt><dd>El tipo de memoria de muchos aparatos. Para no desgastarse, reparte las escrituras entre bloques (nivelación de desgaste), y por eso los datos borrados pueden quedar un tiempo en celdas no reutilizadas.</dd><dt>KEV</dt><dd>Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://www.incibe.es/ciudadania/blog/protege-tu-hogar-inteligente-riesgos-y-recomendaciones" rel="noopener noreferrer">INCIBE: protege tu hogar inteligente, riesgos y recomendaciones (02/09/2026)</a></li><li><a href="https://www.incibe.es/ciudadania/blog/como-funciona-un-robot-de-limpieza" rel="noopener noreferrer">INCIBE: ¿cómo funciona un robot de limpieza?</a></li><li><a href="https://www.aepd.es/documento/infografia-riesgos-del-internet-de-las-cosas-en-el-hogar.pdf" rel="noopener noreferrer">AEPD: riesgos del internet de las cosas en el hogar (infografía, PDF)</a></li><li><a href="https://www.amazon.es/gp/help/customer/display.html?nodeId=201357520" rel="noopener noreferrer">Amazon: cómo anular el registro de tu dispositivo Amazon</a></li><li><a href="https://support.google.com/googlenest/answer/11151047?hl=es" rel="noopener noreferrer">Google: guía para gestionar dispositivos Google Home y Nest al cambiar de vivienda</a></li><li><a href="https://support.google.com/googlenest/answer/7073477?hl=es" rel="noopener noreferrer">Google: restablecer el estado de fábrica de un altavoz o una pantalla inteligente</a></li><li><a href="https://support.apple.com/es-es/108389" rel="noopener noreferrer">Apple: restablecer el HomePod o HomePod mini</a></li><li><a href="https://homesupport.irobot.com/articles/en_US/Knowledge/9047" rel="noopener noreferrer">iRobot: por qué y cómo restablecer de fábrica tu robot (en inglés)</a></li><li><a href="https://ring.com/support/articles/k8jn9/transfer" rel="noopener noreferrer">Ring: transferir la propiedad de un dispositivo (en inglés)</a></li><li><a href="https://support.roborock.com/hc/en-us/articles/360035372632" rel="noopener noreferrer">Roborock: restablecer los valores de fábrica (en inglés)</a></li><li><a href="https://consumer.ftc.gov/consumer-alerts/2018/01/buying-or-selling-smart-home-read" rel="noopener noreferrer">FTC: ¿compras o vendes una casa «inteligente»? (en inglés, 2018)</a></li><li><a href="https://khoury.northeastern.edu/home/noubir/publications-local/GN2021.pdf" rel="noopener noreferrer">Giese y Noubir: Amazon Echo Dot or the Reverberating Secrets of IoT Devices (WiSec 2021, PDF, en inglés)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-reset" class="gl-pop"><strong>Restablecimiento de fábrica</strong>Opción que devuelve un aparato a su estado original y borra la configuración y los datos guardados en él.</div><div popover id="g-token" class="gl-pop"><strong>Token</strong>Credencial digital que el servicio entrega al aparato para que no tenga que usar tu contraseña cada vez. Si se revoca, deja de servir.</div><div popover id="g-nand" class="gl-pop"><strong>Memoria NAND</strong>El tipo de memoria de muchos aparatos. Para no desgastarse, reparte las escrituras entre bloques (nivelación de desgaste), y por eso los datos borrados pueden quedar un tiempo en celdas no reutilizadas.</div><div popover id="g-kev" class="gl-pop"><strong>KEV</strong>Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

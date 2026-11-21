@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Fri, 20 Nov 2026 08:44:30 +0100</lastBuildDate>
+  <lastBuildDate>Sat, 21 Nov 2026 08:42:18 +0100</lastBuildDate>
+  <item>
+    <title>Before you sell your smart speaker or robot vacuum, remove it from your account</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-21.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-21.html</guid>
+    <pubDate>Sat, 21 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Smart home (IoT)</category>
+    <description>Why the reset button isn&#x27;t enough, what stays on the device and in the cloud (your Wi-Fi password, a map of your home, your history), and the two steps that wipe it clean in ten minutes, including when you&#x27;re the one buying it used. — Critical: Apache Roller: critical flaw lets attackers take over the server without a password, already exploited | Critical: Cisco Expressway: hard-coded credentials give full control of clustered devices, already exploited | Heads-up: SAP NetWeaver Enterprise Portal: a flaw patched in November 2025, now under attack | Heads-up: PyPI: two fake versions of Microsoft&#x27;s agent-framework stole developer credentials</description>
+  </item>
   <item>
     <title>Your WhatsApp chats only exist on your phone (and in the backup you make)</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-20.html</link>

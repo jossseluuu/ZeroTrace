@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Fri, 20 Nov 2026 08:44:30 +0100</lastBuildDate>
+  <lastBuildDate>Sat, 21 Nov 2026 08:42:18 +0100</lastBuildDate>
+  <item>
+    <title>Antes de vender tu altavoz o tu robot aspirador, sácalo de tu cuenta</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-21.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-21.html</guid>
+    <pubDate>Sat, 21 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Hogar conectado (IoT)</category>
+    <description>Por qué el botón de reset no basta, qué se queda dentro del aparato y en la nube (la clave del wifi, el plano de tu casa, tu historial) y los dos pasos que lo dejan limpio en diez minutos, también si eres tú quien lo compra de segunda mano. — Crítico: Apache Roller: fallo crítico que permite tomar el servidor sin contraseña, ya explotado | Crítico: Cisco Expressway: credenciales fijas que dan control total en equipos en clúster, ya explotadas | Atención: SAP NetWeaver Enterprise Portal: un fallo parcheado en noviembre de 2025, ahora atacado | Atención: PyPI: dos versiones falsas de agent-framework, de Microsoft, robaban credenciales de desarrolladores</description>
+  </item>
   <item>
     <title>Tus chats de WhatsApp solo existen en tu móvil (y en la copia que tú hagas)</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-20.html</link>

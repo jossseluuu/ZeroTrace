@@ -4,6 +4,10 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/21/2026](editions/2026/11/2026-11-21.md) | Critical | Apache Roller: critical flaw lets attackers take over the server without a password, already exploited | CVE-2026-129448 |
+| [11/21/2026](editions/2026/11/2026-11-21.md) | Critical | Cisco Expressway: hard-coded credentials give full control of clustered devices, already exploited | CVE-2026-76466 |
+| [11/21/2026](editions/2026/11/2026-11-21.md) | Heads-up | SAP NetWeaver Enterprise Portal: a flaw patched in November 2025, now under attack | CVE-2025-42884 |
+| [11/21/2026](editions/2026/11/2026-11-21.md) | Heads-up | PyPI: two fake versions of Microsoft's agent-framework stole developer credentials |  |
 | [11/20/2026](editions/2026/11/2026-11-20.md) | Heads-up | VMware vCenter: critical authentication bypass, attacked since September | CVE-2026-123890, CVE-2026-123891, CVE-2026-123892, CVE-2026-123893, CVE-2026-123894 |
 | [11/20/2026](editions/2026/11/2026-11-20.md) | Heads-up | PHP: update fixes 18 flaws, several critical, across every supported version | CVE-2026-115560, CVE-2026-126714, CVE-2026-129481, CVE-2026-129474, CVE-2026-129182, CVE-2026-129496, CVE-2026-129501, CVE-2026-129538, CVE-2026-129291, CVE-2026-129289, CVE-2026-129292, CVE-2026-128090, CVE-2026-15353, CVE-2026-129506, CVE-2026-128064, CVE-2026-127960, CVE-2026-129438, CVE-2026-48841 |
 | [11/19/2026](editions/2026/11/2026-11-19.md) | Heads-up | Synology NAS: a 2024 flaw that hands over the device, now exploited | CVE-2024-10441 |
