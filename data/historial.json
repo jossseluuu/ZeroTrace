@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-21T08:42:18+01:00",
+  "actualizado": "2026-11-22T09:29:15+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "router",
     "iot",
     "copias",
     "wearables",
     "programacion",
     "transito",
-    "habitos",
-    "sobremesa"
+    "habitos"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -112,9 +112,25 @@
         "fecha": "2026-11-19",
         "concepto": "reloj-sin-codigo"
       }
+    ],
+    "router": [
+      {
+        "fecha": "2026-11-22",
+        "concepto": "panel-del-router-cerrado-a-internet"
+      }
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-22",
+      "foco": "router",
+      "concepto": "panel-del-router-cerrado-a-internet",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-22-whatsapp",
+        "2026-11-22-gpgme"
+      ]
+    },
     {
       "fecha": "2026-11-21",
       "foco": "iot",

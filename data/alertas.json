@@ -978,5 +978,74 @@
         "url": "https://pypi.org/project/agent-framework/"
       }
     ]
+  },
+  {
+    "id": "2026-11-22-whatsapp",
+    "fecha": "2026-11-22",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-23871",
+      "CVE-2026-102769",
+      "CVE-2026-44908"
+    ],
+    "dispositivos": [
+      "smartphone",
+      "portatil"
+    ],
+    "es": {
+      "titulo": "WhatsApp corrige tres fallos; uno que revelaba tu IP pudo usarse con mensajes de spam",
+      "afecta": "**WhatsApp y WhatsApp Business para Android** anteriores a la 2.26.17.4 (fuga de IP) y **WhatsApp para Android** anterior a la 2.26.35.74. Un tercer fallo afecta también a WhatsApp para iOS anterior a la 2.26.24.72 y a WhatsApp para Mac.",
+      "accion": "**Actualiza WhatsApp** desde Google Play o la App Store. No hace falta nada más.",
+      "detalle": "El más relevante: un mensaje de respuesta a un anuncio manipulado podía hacer que tu móvil descargara contenido de un servidor del atacante y le revelara tu dirección IP; Meta indica que pudo aprovecharse junto con mensajes de spam concretos. El segundo, un mensaje de «detalles del pedido» enviado desde un cliente no oficial, podía borrar archivos locales de WhatsApp; Meta no ha visto explotación. El tercero afecta a la verificación del servidor de Meta AI y Meta confirma que no se explotó."
+    },
+    "en": {
+      "titulo": "WhatsApp fixes three flaws; one that exposed your IP address may have been used with spam messages",
+      "afecta": "**WhatsApp and WhatsApp Business for Android** before 2.26.17.4 (IP leak) and **WhatsApp for Android** before 2.26.35.74. A third flaw also affects WhatsApp for iOS before 2.26.24.72 and WhatsApp for Mac.",
+      "accion": "**Update WhatsApp** from Google Play or the App Store. Nothing else is needed.",
+      "detalle": "The most relevant one: a crafted ad-reply message could make your phone fetch content from an attacker's server and reveal your IP address; Meta says it may have been abused alongside specific spam messages. The second, an \"order details\" message sent from an unofficial client, could delete local WhatsApp files; Meta has seen no exploitation. The third affects verification of Meta AI's server, and Meta confirms it wasn't exploited."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "WhatsApp: avisos de seguridad de 2026 (en inglés)",
+          "en": "WhatsApp: 2026 security advisories"
+        },
+        "url": "https://www.whatsapp.com/security/advisories/2026/"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-22-gpgme",
+    "fecha": "2026-11-22",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-129975"
+    ],
+    "dispositivos": [
+      "portatil",
+      "sobremesa",
+      "servidor"
+    ],
+    "es": {
+      "titulo": "GnuPG: fallo grave en GPGME, la biblioteca que usan Gpg4win y muchos programas de cifrado",
+      "afecta": "Programas que usan **GPGME anterior a la 2.3.0**, como biblioteca compartida, DLL o enlazada estáticamente. En Windows, **Gpg4win** anterior a la 5.1.2.",
+      "accion": "Actualiza a **Gpg4win 5.1.2** en Windows y a **GPGME 2.3.1** (o el paquete corregido de tu distribución) en Linux. GnuPG recomienda hacerlo de inmediato.",
+      "detalle": "Es una doble liberación de memoria al procesar la salida de gpg. Con datos manipulados, como un mensaje firmado, se puede filtrar información de la aplicación, y GnuPG no descarta que se pueda llegar a ejecutar código a distancia. El aviso no menciona explotación. Publicado el 20/11."
+    },
+    "en": {
+      "titulo": "GnuPG: serious flaw in GPGME, the library behind Gpg4win and many encryption tools",
+      "afecta": "Software using **GPGME before 2.3.0**, whether as a shared library, DLL, or statically linked. On Windows, **Gpg4win** before 5.1.2.",
+      "accion": "Update to **Gpg4win 5.1.2** on Windows and to **GPGME 2.3.1** (or your distribution's fixed package) on Linux. GnuPG recommends doing it right away.",
+      "detalle": "It's a double free when processing gpg's output. With crafted data, such as a signed message, information can leak from the application, and GnuPG says remote code execution can't be ruled out. The advisory doesn't mention exploitation. Published November 20."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "GnuPG: aviso de seguridad de GPGME, CVE-2026-129975 (en inglés)",
+          "en": "GnuPG: GPGME security advisory, CVE-2026-129975"
+        },
+        "url": "https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html"
+      }
+    ]
   }
 ]

@@ -4,6 +4,8 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/22/2026](editions/2026/11/2026-11-22.md) | Heads-up | WhatsApp fixes three flaws; one that exposed your IP address may have been used with spam messages | CVE-2026-23871, CVE-2026-102769, CVE-2026-44908 |
+| [11/22/2026](editions/2026/11/2026-11-22.md) | Heads-up | GnuPG: serious flaw in GPGME, the library behind Gpg4win and many encryption tools | CVE-2026-129975 |
 | [11/21/2026](editions/2026/11/2026-11-21.md) | Critical | Apache Roller: critical flaw lets attackers take over the server without a password, already exploited | CVE-2026-129448 |
 | [11/21/2026](editions/2026/11/2026-11-21.md) | Critical | Cisco Expressway: hard-coded credentials give full control of clustered devices, already exploited | CVE-2026-76466 |
 | [11/21/2026](editions/2026/11/2026-11-21.md) | Heads-up | SAP NetWeaver Enterprise Portal: a flaw patched in November 2025, now under attack | CVE-2025-42884 |

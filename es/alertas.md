@@ -4,6 +4,8 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [22/11/2026](ediciones/2026/11/2026-11-22.md) | Atención | WhatsApp corrige tres fallos; uno que revelaba tu IP pudo usarse con mensajes de spam | CVE-2026-23871, CVE-2026-102769, CVE-2026-44908 |
+| [22/11/2026](ediciones/2026/11/2026-11-22.md) | Atención | GnuPG: fallo grave en GPGME, la biblioteca que usan Gpg4win y muchos programas de cifrado | CVE-2026-129975 |
 | [21/11/2026](ediciones/2026/11/2026-11-21.md) | Crítico | Apache Roller: fallo crítico que permite tomar el servidor sin contraseña, ya explotado | CVE-2026-129448 |
 | [21/11/2026](ediciones/2026/11/2026-11-21.md) | Crítico | Cisco Expressway: credenciales fijas que dan control total en equipos en clúster, ya explotadas | CVE-2026-76466 |
 | [21/11/2026](ediciones/2026/11/2026-11-21.md) | Atención | SAP NetWeaver Enterprise Portal: un fallo parcheado en noviembre de 2025, ahora atacado | CVE-2025-42884 |

@@ -1,0 +1,341 @@
+{
+  "fecha": "2026-11-22",
+  "idioma": "en",
+  "foco": "router",
+  "concepto": "router-admin-page-closed-to-the-internet",
+  "titulo": "Your router's admin page shouldn't be reachable from the internet",
+  "subtitulo": "What \"remote management\" is, why attackers hunt for routers with that door open, how to check in five minutes that yours is closed, and why you don't need to touch anything else your internet provider manages.",
+  "dispositivos": [
+    "router"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-22-whatsapp",
+      "2026-11-22-gpgme"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Your router has a **settings page**: the one you open by typing something like `192.168.1.1`, where you change the Wi-Fi password. Normally it only opens **from inside your home**. But many routers have an option, [[admin-remota|remote management]], that makes that page answer **anyone on the internet** too.",
+      "That matters because there are programs that sweep the internet nonstop looking for those pages. When they find one, they try factory passwords or known flaws. If they get in, they can **change your router's [[dns|DNS]]** to send you to fake sites, or use your connection to hide their crimes. The FBI documented this in 2025 and 2026, and its advice is always the same: **turn off remote management**.",
+      "The good news: on most routers it's **off by default**. You just need to check it's still off, change the admin password if it's the one on the sticker, and let the router update. Everything else, including what your internet provider manages, you can leave alone."
+    ],
+    "esencial": [
+      "Your router's admin page should open only from inside your home, not from the internet.",
+      "Look for \"remote management\" or \"web access from WAN\" on your router and make sure it's off.",
+      "Change the admin password if it's still the factory one, and let the router update.",
+      "You don't need a new router or to touch what your internet provider manages: that's enough."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "bajo",
+      "texto": "TP-Link and NETGEAR, among others, ship with remote management turned off, so most homes don't have it open. The risk shows up when someone turned it on once \"to try it\" and left it that way, or on old routers that no longer get updates."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Whoever controls the router controls where the whole household's traffic goes: they can send you to fake sites to steal passwords, or use your connection as cover for their attacks."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Two doors on the same router",
+      "parrafos": [
+        "A router has two sides: the **inside** (your home network, the [[lan|LAN]]) and the **outside** (the internet, the [[wan|WAN]]). The admin page always listens on the inside. Remote management makes it **listen on the outside too**, usually on a port like 8443 or 8080.",
+        "From then on, the page is within reach of anyone who knows your public address. NETGEAR puts it plainly: if you choose to let everyone in, **any IP address on the internet can try to log in**. NETGEAR also says most people don't need this feature."
+      ]
+    },
+    {
+      "titulo": "What the FBI and the Justice Department have seen",
+      "parrafos": [
+        "On May 7, 2025, the FBI warned that variants of TheMoon malware infect end-of-life routers **without needing a password**, and that a newer variant showed up on routers with **remote administration turned on**. Infected routers are rented out as [[proxy|proxies]] so criminals can hide their tracks.",
+        "On April 7, 2026, the U.S. Department of Justice announced it had disrupted a network run by Russian military intelligence (GRU) that, since at least 2024, had stolen credentials for thousands of TP-Link routers worldwide by exploiting known flaws. They changed the routers' DNS to give fake answers for specific domains, such as Microsoft's webmail, to intercept passwords and email. Among other steps, the FBI advised **turning off remote management from the internet** and **taking browser certificate warnings seriously**."
+      ]
+    },
+    {
+      "titulo": "What U.S. agencies recommend",
+      "parrafos": [
+        "CISA's home network guidance says to turn off remote management because it lets anyone on the internet view and change your settings, to change the default admin password, and to keep firmware updated. The NSA's home network best practices say the router should be managed only from inside the home.",
+        "Both add two more settings: disable [[upnp|UPnP]] unless you need it, and, per CISA, disable [[wps|WPS]]."
+      ]
+    },
+    {
+      "titulo": "And what your provider does isn't this",
+      "parrafos": [
+        "If your router came from your internet provider, the provider also manages it remotely with a standard protocol called [[tr069|TR-069]]: that's how it pushes updates and configures your line. It's a separate channel from the remote management we're talking about, and it isn't yours to control.",
+        "Some manufacturers are already closing this door themselves: NETGEAR is removing remote management from most of its routers through updates, because it **opens an external port**, and replacing it with access through its app, which doesn't need one."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The sweep",
+      "texto": "An automated program scans internet addresses looking for router login pages on the usual ports. It isn't looking for you: it's looking for any open admin page."
+    },
+    {
+      "titulo": "The sticker password or a known flaw",
+      "texto": "If it finds yours, it tries factory usernames and passwords or exploits an unpatched firmware flaw. On end-of-life routers, those flaws will never be fixed."
+    },
+    {
+      "titulo": "The quiet change",
+      "texto": "Once in, it changes the router's DNS. Your devices pick it up automatically and, for certain sites, land on a fake copy. Often the browser warns about a certificate problem."
+    },
+    {
+      "titulo": "What it can't do",
+      "texto": "If the admin page only listens inside your home, there's no page to reach from the internet. And if you don't click past the certificate warning, a fake site can't see what you send to the real one."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Find your admin page within minutes if remote management is on, without knowing who you are.",
+      "Get in if the password is the factory one or the firmware has a known, unpatched flaw.",
+      "Change your DNS to divert you to fake sites, or use your connection as a proxy for attacks."
+    ],
+    "no_puede": [
+      "Open the admin page from the internet if remote management is off.",
+      "Read your HTTPS traffic if you don't accept a certificate warning.",
+      "Reach your router from outside if your provider gives you a shared address ([[cgnat|CGNAT]]): in that case remote management doesn't even work."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Make sure remote management is turned off",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Open your router's admin page from home (the address and username are usually on the sticker) and look for an option called \"remote management,\" \"remote access,\" or \"web access from WAN.\" It should be off. If you can't find it on a router from your provider, ask them.",
+      "pasos": {
+        "TP-Link": [
+          "**Advanced** > **System Tools** (or **System**) > **Administration** > **Remote Management** > **Disable Remote Management** > **Save**. Menus vary slightly by model. In the **Tether** app, go to **More** > **Manager**."
+        ],
+        "ASUS": [
+          "**Administration** > **System** > **Remote Access Config** > set **Enable Web Access from WAN** to **No** and apply."
+        ],
+        "NETGEAR": [
+          "**ADVANCED** > **Advanced Setup** > **Remote Management** (on some models, **Web Services Management**) > clear **Turn Remote Management On** > **Apply**."
+        ],
+        "FRITZ!Box": [
+          "Review which router services are reachable from the internet under **Diagnostics** > **Security** > **FRITZ!Box Services** and turn off the ones you don't use."
+        ]
+      }
+    },
+    {
+      "titulo": "Change the admin password if it's the factory one",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "This isn't the Wi-Fi password: it's the one that protects the settings. If it's still the one on the sticker or a generic one like \"admin,\" change it to a long, unique one and save it in your password manager. The FBI recommends 16 to 64 characters.",
+      "pasos": {}
+    },
+    {
+      "titulo": "Let the router update",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "10 min",
+      "para": "todos",
+      "texto": "If it has an automatic update option, turn it on. If it's your provider's router, it usually updates on its own. If it's an old router you own and the manufacturer no longer releases updates, the FBI and the NSA recommend replacing it.",
+      "pasos": {}
+    },
+    {
+      "titulo": "If you need access from outside, use the app or a VPN",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "avanzado",
+      "texto": "If you really need to manage the router while away, use the manufacturer's official app, which on many models works through the vendor's cloud without opening ports, or the router's built-in VPN feature. If you turn on remote management anyway, limit it to a single address instead of \"everyone.\"",
+      "pasos": {}
+    },
+    {
+      "titulo": "Turn off UPnP if you don't need it",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "avanzado",
+      "texto": "UPnP lets devices on your network open ports on the router without asking you. CISA and the NSA recommend disabling it. Heads-up: some game consoles and gaming apps use it; if something stops working, you can turn it back on.",
+      "pasos": {}
+    },
+    {
+      "titulo": "Check the DNS servers your router hands out",
+      "impacto": "bajo",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "paranoico",
+      "texto": "On the admin page, look at the DNS servers for the internet connection and for DHCP. They should be blank or automatic (your provider's), or ones you chose yourself. If you see ones you don't recognize, change the admin password, update, and set them back to automatic. That's what the Justice Department advised after the GRU case.",
+      "pasos": {}
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Look at the setting",
+      "texto": "Open the admin page and confirm that remote management or WAN access is set to \"off\" or \"no.\""
+    },
+    {
+      "titulo": "Test it from outside",
+      "texto": "While on your home Wi-Fi, search \"what's my IP\" to get your public address. Then, with your phone on cellular data (Wi-Fi off), try opening `https://your-IP:8443` or `http://your-IP:8080`. If your router's login page shows up, the admin page is exposed."
+    },
+    {
+      "titulo": "Signs something is wrong",
+      "texto": "The FBI lists these: the router overheats, the connection drops for no reason, or you find settings you didn't change."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Buying a new router just in case",
+      "texto": "If yours still gets updates and has remote management closed, it's fine. Replace it only when the manufacturer stops updating it."
+    },
+    {
+      "titulo": "Turning off your provider's management",
+      "texto": "TR-069 is how your provider updates and configures its router. It isn't the remote management we're talking about, and it's not something you should touch."
+    },
+    {
+      "titulo": "Paying for a \"router scanner\" or network antivirus",
+      "texto": "What actually protects you is free: admin page closed to the internet, your own password, and up-to-date firmware."
+    },
+    {
+      "titulo": "Hiding your Wi-Fi network name",
+      "texto": "It has nothing to do with the admin page. It doesn't protect you from this."
+    }
+  ],
+  "mito": {
+    "mito": "\"Even if it's open to the internet, the admin page asks for a password, so it's fine.\"",
+    "realidad": "The FBI describes how TheMoon variants infect end-of-life routers **without needing a password**, by exploiting flaws, and how a newer variant appeared on routers with **remote administration turned on**. A password only protects you if the software behind it has no holes.",
+    "fuente": {
+      "titulo": "FBI: Cyber Criminal Proxy Services Exploiting End of Life Routers (May 7, 2025)",
+      "url": "https://www.ic3.gov/PSA/2025/PSA250507"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Attack surface: the router's web server",
+      "parrafos": [
+        "The admin page is an embedded web server (often `httpd` or `lighttpd`) running scripts with root privileges. With remote management on, that server also listens on the WAN interface, usually on `443`, `8443`, or `8080`, and any authentication or injection flaw in its scripts becomes reachable from the internet.",
+        "Examples from CISA's [[kev|KEV]] catalog: CVE-2023-1389, unauthenticated command injection in the TP-Link Archer AX21 web interface (in KEV since May 1, 2023); CVE-2023-39780, authenticated command injection in the ASUS RT-AX55 (in KEV since June 2, 2025); and CVE-2023-50224, which lets an unauthenticated attacker read stored credentials on TP-Link routers and which the FBI tied to the GRU campaign (in KEV since September 3, 2025)."
+      ]
+    },
+    {
+      "titulo": "Adjacent vs. remote",
+      "parrafos": [
+        "The CVSS vector for CVE-2023-1389 and CVE-2023-50224 is **adjacent** (`AV:A`): the vendor assumes the admin page is reachable only from the LAN. That assumption breaks as soon as the service listens on the WAN, which is why turning off remote management cuts real-world risk more than the CVSS score suggests.",
+        "CISA's Secure by Design alert for SOHO router manufacturers asks for exactly that: eliminate web management interface flaws and keep management **LAN-side only by default**."
+      ]
+    },
+    {
+      "titulo": "TR-069 and CGNAT",
+      "parrafos": [
+        "TR-069 (CWMP), from the Broadband Forum, connects the router to the provider's Auto-Configuration Server (ACS) for provisioning, firmware, and diagnostics; IANA assigned it port `7547`. It's a management plane separate from the web admin page, and its security is on the provider.",
+        "If your router's WAN address is in `100.64.0.0/10` (CGNAT, RFC 6598) or a private range and doesn't match what a \"what's my IP\" site shows, your router isn't directly reachable from the internet: ASUS notes that WAN access won't work in that case."
+      ]
+    }
+  ],
+  "glosario": {
+    "admin-remota": [
+      "Remote management",
+      "A router option that lets you open its settings page from the internet, not just from home. Also called remote access or web access from WAN."
+    ],
+    "dns": [
+      "DNS",
+      "The service that translates names like cisa.gov into numeric addresses. Whoever controls your DNS can send you to a fake address."
+    ],
+    "lan": [
+      "LAN",
+      "Your local network: the devices connected to your router at home, by cable or Wi-Fi."
+    ],
+    "wan": [
+      "WAN",
+      "The side of the router that faces the internet."
+    ],
+    "proxy": [
+      "Proxy",
+      "A middleman device that relays someone else's traffic. Criminals use infected routers as proxies so their attacks look like they come from you."
+    ],
+    "upnp": [
+      "UPnP",
+      "A feature that lets devices on your network open ports on the router automatically, without asking."
+    ],
+    "wps": [
+      "WPS",
+      "A way to connect devices to Wi-Fi with a button or a PIN. The PIN method has a known flaw that makes it easier to guess."
+    ],
+    "tr069": [
+      "TR-069",
+      "The standard protocol providers use to manage the routers they supply remotely: updates, configuration, and diagnostics."
+    ],
+    "cgnat": [
+      "CGNAT",
+      "A technique providers use to share one public address among several customers. Your router can't be reached directly from the internet."
+    ],
+    "kev": [
+      "KEV",
+      "The Known Exploited Vulnerabilities catalog maintained by CISA, the U.S. cybersecurity agency. If a flaw is listed there, real attacks are happening."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "FBI: Cyber Criminal Proxy Services Exploiting End of Life Routers (May 7, 2025)",
+      "url": "https://www.ic3.gov/PSA/2025/PSA250507"
+    },
+    {
+      "titulo": "FBI: Russian GRU Exploiting Vulnerable Routers to Steal Sensitive Information (April 7, 2026)",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260407"
+    },
+    {
+      "titulo": "U.S. Department of Justice: court-authorized disruption of GRU DNS hijacking network (April 7, 2026)",
+      "url": "https://www.justice.gov/opa/pr/justice-department-conducts-court-authorized-disruption-dns-hijacking-network-controlled"
+    },
+    {
+      "titulo": "CISA: Home Network Security",
+      "url": "https://www.cisa.gov/tips/st15-002"
+    },
+    {
+      "titulo": "NSA: Best Practices for Securing Your Home Network (February 22, 2023, PDF)",
+      "url": "https://media.defense.gov/2023/Feb/22/2003165170/-1/-1/0/CSI_BEST_PRACTICS_FOR_SECURING_YOUR_HOME_NETWORK.PDF"
+    },
+    {
+      "titulo": "CISA: Secure by Design Alert for SOHO device manufacturers",
+      "url": "https://www.cisa.gov/resources-tools/resources/secure-design-alert-security-design-improvements-soho-device-manufacturers"
+    },
+    {
+      "titulo": "TP-Link: How to configure Remote Management",
+      "url": "https://www.tp-link.com/us/support/faq/1553/"
+    },
+    {
+      "titulo": "ASUS: How to set up web access from WAN",
+      "url": "https://www.asus.com/support/faq/1000926/"
+    },
+    {
+      "titulo": "NETGEAR: How do I turn off Remote Management?",
+      "url": "https://kb.netgear.com/000061995/How-do-I-turn-off-Remote-Management-on-my-NETGEAR-router-or-gateway"
+    },
+    {
+      "titulo": "NETGEAR: Why is the Remote Management feature being removed?",
+      "url": "https://kb.netgear.com/000065071/Why-is-the-Remote-Management-feature-being-removed-from-NETGEAR-routers"
+    },
+    {
+      "titulo": "AVM: Protecting the FRITZ!Box",
+      "url": "https://uk.fritz.com/service/knowledge-base/dok/FRITZ-Box-7530/3467_Protecting-the-FRITZ-Box/"
+    },
+    {
+      "titulo": "NVD: CVE-2023-50224",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-50224"
+    },
+    {
+      "titulo": "NVD: CVE-2023-1389",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-1389"
+    },
+    {
+      "titulo": "NVD: CVE-2023-39780",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-39780"
+    },
+    {
+      "titulo": "Broadband Forum: TR-069 CPE WAN Management Protocol (PDF)",
+      "url": "https://www.broadband-forum.org/pdfs/tr-069-1-6-0.pdf"
+    }
+  ]
+}

@@ -1,0 +1,357 @@
+{
+  "fecha": "2026-11-22",
+  "idioma": "es",
+  "foco": "router",
+  "concepto": "panel-del-router-cerrado-a-internet",
+  "titulo": "El panel de tu router no debería verse desde internet",
+  "subtitulo": "Qué es la «administración remota», por qué los atacantes buscan routers con esa puerta abierta, cómo comprobar en cinco minutos que la tuya está cerrada y por qué no hace falta tocar nada más del router de tu operadora.",
+  "dispositivos": [
+    "router"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-22-whatsapp",
+      "2026-11-22-gpgme"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Tu router tiene un **panel de configuración**: la página que abres escribiendo algo como `192.168.1.1` y en la que se cambia la clave del wifi. Lo normal es que solo se pueda abrir **desde dentro de casa**. Pero muchos routers tienen una opción, la [[admin-remota|administración remota]], que hace que ese panel también responda **a cualquiera desde internet**.",
+      "Eso importa porque hay programas que recorren internet sin parar buscando esos paneles. Cuando encuentran uno, prueban contraseñas de fábrica o fallos conocidos. Si entran, pueden **cambiar los [[dns|DNS]]** de tu router para llevarte a webs falsas o usar tu conexión para esconder sus delitos. El FBI lo ha documentado en 2025 y 2026, y su consejo es siempre el mismo: **desactiva la administración remota**.",
+      "La buena noticia: en la mayoría de routers **viene desactivada de fábrica**. Solo tienes que comprobar que sigue así, cambiar la contraseña del panel si es la de la pegatina y dejar que el router se actualice. Lo demás, incluido lo que gestiona tu operadora, puedes dejarlo como está."
+    ],
+    "esencial": [
+      "El panel del router debe abrirse solo desde tu casa, no desde internet.",
+      "Busca «administración remota» o «acceso desde WAN» en el router y comprueba que está desactivado.",
+      "Cambia la contraseña del panel si sigue siendo la de fábrica y deja que el router se actualice.",
+      "No hace falta comprar otro router ni tocar la gestión que hace tu operadora: con eso basta."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "bajo",
+      "texto": "TP-Link y NETGEAR, entre otros, traen la administración remota desactivada de fábrica, así que la mayoría de hogares no la tienen abierta. El riesgo aparece cuando alguien la activó un día «para probar» y se quedó así, o en routers viejos sin actualizaciones."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Quien controla el router controla por dónde va el tráfico de toda la casa: puede mandarte a webs falsas para robarte contraseñas o usar tu conexión como tapadera para sus ataques."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Dos puertas en el mismo router",
+      "parrafos": [
+        "El router tiene dos lados: el de **dentro** (tu red de casa, la [[lan|LAN]]) y el de **fuera** (internet, la [[wan|WAN]]). El panel de configuración siempre escucha en el lado de dentro. La administración remota hace que **también escuche fuera**, normalmente en un puerto como el 8443 o el 8080.",
+        "Desde ese momento, el panel queda al alcance de cualquiera que conozca tu dirección pública. NETGEAR lo explica sin rodeos: si eliges que cualquiera pueda acceder, **cualquier dirección de internet puede intentar iniciar sesión**. Y la propia NETGEAR dice que la mayoría de la gente no necesita esta función."
+      ]
+    },
+    {
+      "titulo": "Lo que han visto el FBI y el Departamento de Justicia",
+      "parrafos": [
+        "El 07/05/2025, el FBI avisó de que variantes del malware TheMoon infectan routers sin soporte **sin necesidad de contraseña**, y de que una variante nueva apareció en routers que tenían la **administración remota activada**. Los routers infectados se alquilan como [[proxy|proxis]] para que los delincuentes oculten su rastro.",
+        "El 07/04/2026, el Departamento de Justicia de EE. UU. anunció que había desmantelado una red del servicio de inteligencia militar ruso (GRU) que desde al menos 2024 había robado credenciales de miles de routers TP-Link en todo el mundo aprovechando fallos conocidos. Cambiaban los DNS de los routers para responder con direcciones falsas a dominios concretos, como el correo web de Microsoft, y así interceptar contraseñas y correos. El FBI recomendó, entre otras cosas, **desactivar la gestión remota desde internet** y **tomarse en serio los avisos de certificado** del navegador."
+      ]
+    },
+    {
+      "titulo": "Lo que recomiendan en España",
+      "parrafos": [
+        "INCIBE lo incluye en sus consejos para el router de casa: **desactivar la administración remota**, cambiar las credenciales de acceso a la configuración y actualizar el firmware. En 2022, ante un malware que convertía routers ASUS en parte de una red de equipos infectados, con más de 3.500 posibles afectados en España, INCIBE pidió exactamente lo mismo.",
+        "CISA y la NSA, en EE. UU., coinciden y añaden dos ajustes más: desactivar [[upnp|UPnP]] si no lo necesitas y desactivar [[wps|WPS]]."
+      ]
+    },
+    {
+      "titulo": "Y lo que hace tu operadora no es esto",
+      "parrafos": [
+        "Si tu router es de tu operadora, ella también lo gestiona a distancia con un protocolo estándar llamado [[tr069|TR-069]]: así le envía actualizaciones y configura la línea. Es un canal distinto de la administración remota de la que hablamos y no lo controlas tú.",
+        "Algunos fabricantes ya están cerrando esta puerta por su cuenta: NETGEAR está retirando la administración remota de la mayoría de sus routers mediante actualizaciones, porque **abre un puerto hacia fuera**, y la sustituye por el acceso a través de su app, que no lo necesita."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "El barrido",
+      "texto": "Un programa automático recorre las direcciones de internet buscando páginas de inicio de sesión de routers en los puertos habituales. No te busca a ti: busca cualquier panel abierto."
+    },
+    {
+      "titulo": "La llave de la pegatina o un fallo conocido",
+      "texto": "Si encuentra el tuyo, prueba usuarios y contraseñas de fábrica o aprovecha un fallo del firmware que no se ha parcheado. En routers sin soporte, esos fallos ya no se van a corregir."
+    },
+    {
+      "titulo": "El cambio silencioso",
+      "texto": "Una vez dentro, cambia los DNS del router. Tus dispositivos los reciben solos y, para algunas webs concretas, te llevan a una copia falsa. A menudo el navegador avisa de un problema de certificado."
+    },
+    {
+      "titulo": "Lo que no consigue",
+      "texto": "Si el panel solo escucha dentro de casa, desde internet no hay página a la que llamar. Y si no ignoras el aviso de certificado, una web falsa no puede ver lo que envías a la de verdad."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Encontrar en minutos tu panel si la administración remota está activada, sin saber quién eres.",
+      "Entrar si la contraseña es la de fábrica o si el firmware tiene un fallo conocido sin parchear.",
+      "Cambiar los DNS para desviarte a webs falsas o usar tu conexión como proxy para sus ataques."
+    ],
+    "no_puede": [
+      "Abrir el panel desde internet si la administración remota está desactivada.",
+      "Leer el contenido de tus webs con candado si no aceptas un aviso de certificado.",
+      "Llegar a tu router desde fuera si tu operadora te da una dirección compartida ([[cgnat|CG-NAT]]): en ese caso ni siquiera la administración remota funciona."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Comprueba que la administración remota está desactivada",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Entra en el panel del router desde casa (la dirección y el usuario suelen estar en la pegatina) y busca una opción llamada «administración remota», «acceso remoto» o «acceso web desde WAN». Debe estar desactivada. Si no la encuentras en el router de tu operadora, pregúntale a ella.",
+      "pasos": {
+        "TP-Link": [
+          "**Avanzado** > **Herramientas del sistema** > **Administración** > **Administración remota** > **Desactivar la administración remota** > **Guardar**. Según el modelo, el menú puede variar un poco."
+        ],
+        "ASUS": [
+          "**Administration** > **System** > **Remote Access Config** > **Activar acceso web desde WAN**: **No** y guarda los cambios. En muchos modelos el menú aparece en inglés aunque el resto esté en español."
+        ],
+        "NETGEAR": [
+          "**ADVANCED** > **Advanced Setup** > **Remote Management** (en algunos modelos, **Web Services Management**) > desmarca **Turn Remote Management On** > **Apply**."
+        ],
+        "FRITZ!Box": [
+          "Revisa qué servicios del router son accesibles desde internet en **Diagnostics** > **Security** > **FRITZ!Box Services** y desactiva los que no uses."
+        ]
+      }
+    },
+    {
+      "titulo": "Cambia la contraseña del panel si es la de fábrica",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "No es la clave del wifi: es la que protege la configuración. Si sigue siendo la de la pegatina o una genérica como «admin», cámbiala por una larga y única y guárdala en tu gestor de contraseñas. El FBI recomienda entre 16 y 64 caracteres.",
+      "pasos": {}
+    },
+    {
+      "titulo": "Deja que el router se actualice",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "10 min",
+      "para": "todos",
+      "texto": "Si tiene opción de actualización automática, actívala. Si es de tu operadora, normalmente se actualiza sola. Si es un router tuyo muy antiguo y el fabricante ya no publica versiones nuevas, el FBI y la NSA recomiendan sustituirlo.",
+      "pasos": {}
+    },
+    {
+      "titulo": "Si necesitas entrar desde fuera, usa la app o una VPN",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "avanzado",
+      "texto": "Si de verdad tienes que gestionar el router cuando no estás en casa, usa la app oficial del fabricante, que en muchos modelos funciona a través de su nube sin abrir puertos, o la función de VPN del propio router. Si aun así activas la administración remota, limítala a una dirección concreta en lugar de «todos».",
+      "pasos": {}
+    },
+    {
+      "titulo": "Desactiva UPnP si no lo necesitas",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "avanzado",
+      "texto": "UPnP permite que los aparatos de casa abran puertos en el router sin preguntarte. CISA y la NSA recomiendan desactivarlo. Ojo: algunas consolas y aplicaciones de juego lo usan; si algo deja de funcionar, puedes volver a activarlo.",
+      "pasos": {}
+    },
+    {
+      "titulo": "Revisa los DNS que reparte el router",
+      "impacto": "bajo",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "paranoico",
+      "texto": "En el panel, mira los servidores DNS de la conexión a internet y los del DHCP. Deben estar vacíos o en automático (los de tu operadora) o ser unos que hayas elegido tú. Si ves unos que no reconoces, cambia la contraseña del panel, actualiza y vuelve a ponerlos en automático. Es lo que recomendó el Departamento de Justicia tras el caso del GRU.",
+      "pasos": {}
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Mira el ajuste",
+      "texto": "Entra en el panel y confirma que la administración remota o el acceso desde WAN está en «desactivado» o «no»."
+    },
+    {
+      "titulo": "Pruébalo desde fuera",
+      "texto": "Conectado al wifi de casa, busca «cuál es mi IP» para conocer tu dirección pública. Después, con el móvil en datos móviles (sin wifi), prueba a abrir `https://tu-IP:8443` o `http://tu-IP:8080` desde el móvil. Si aparece la página de tu router, el panel está expuesto."
+    },
+    {
+      "titulo": "Señales de que algo va mal",
+      "texto": "El FBI cita estas: el router se calienta de más, la conexión falla sin motivo o encuentras ajustes que no has cambiado tú."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Comprar un router nuevo por si acaso",
+      "texto": "Si el tuyo recibe actualizaciones y tiene la administración remota cerrada, está bien. Sustitúyelo solo si el fabricante ya no lo actualiza."
+    },
+    {
+      "titulo": "Desactivar la gestión de tu operadora",
+      "texto": "TR-069 es el canal con el que tu operadora actualiza y configura su router. No es la administración remota de la que hablamos y no es algo que debas tocar tú."
+    },
+    {
+      "titulo": "Pagar un «escáner de router» o un antivirus para la red",
+      "texto": "Lo que protege de verdad es gratis: panel cerrado a internet, contraseña propia y firmware al día."
+    },
+    {
+      "titulo": "Esconder el nombre de tu wifi",
+      "texto": "No tiene nada que ver con el panel de administración. No te protege de esto."
+    }
+  ],
+  "mito": {
+    "mito": "«Aunque esté abierto a internet, el panel pide contraseña, así que no pasa nada.»",
+    "realidad": "El FBI describe cómo variantes de TheMoon infectan routers sin soporte **sin necesidad de contraseña**, aprovechando fallos, y cómo una variante nueva apareció en routers con la **administración remota activada**. La contraseña solo protege si el software que hay detrás no tiene fallos.",
+    "fuente": {
+      "titulo": "FBI: Cyber Criminal Proxy Services Exploiting End of Life Routers (07/05/2025, en inglés)",
+      "url": "https://www.ic3.gov/PSA/2025/PSA250507"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Superficie de ataque: el servidor web del router",
+      "parrafos": [
+        "El panel es un servidor web embebido (a menudo `httpd` o `lighttpd`) que ejecuta scripts con privilegios de root. Con la administración remota, ese servidor escucha también en la interfaz WAN, normalmente en `443`, `8443` u `8080`, y cualquier fallo de autenticación o de inyección en sus scripts pasa a ser alcanzable desde internet.",
+        "Ejemplos del catálogo [[kev|KEV]] de CISA: CVE-2023-1389, inyección de comandos sin autenticar en la interfaz web del TP-Link Archer AX21 (en KEV desde el 01/05/2023); CVE-2023-39780, inyección de comandos con sesión iniciada en ASUS RT-AX55 (en KEV desde el 02/06/2025); y CVE-2023-50224, que permite leer credenciales guardadas sin autenticar en routers TP-Link y que el FBI asoció a la campaña del GRU (en KEV desde el 03/09/2025)."
+      ]
+    },
+    {
+      "titulo": "Adyacente frente a remoto",
+      "parrafos": [
+        "El vector CVSS de CVE-2023-1389 y CVE-2023-50224 es **adyacente** (`AV:A`): el fabricante asume que el panel solo es alcanzable desde la LAN. Esa suposición se cae en cuanto el servicio escucha en la WAN; por eso la desactivación de la gestión remota reduce el riesgo real más que la nota del CVSS sugiere.",
+        "La alerta Secure by Design de CISA para fabricantes de routers domésticos y de pequeña oficina pide justo eso: eliminar los fallos de las interfaces web y dejar la gestión **solo en el lado LAN por defecto**."
+      ]
+    },
+    {
+      "titulo": "TR-069 y CG-NAT",
+      "parrafos": [
+        "TR-069 (CWMP), del Broadband Forum, conecta el router con el servidor de autoconfiguración (ACS) de la operadora para provisión, firmware y diagnóstico; IANA le asignó el puerto `7547`. Es un plano de gestión separado del panel web y su seguridad depende de la operadora.",
+        "Si la dirección WAN de tu router está en `100.64.0.0/10` (CG-NAT, RFC 6598) o en un rango privado y no coincide con la que muestra una web de «cuál es mi IP», tu router no es alcanzable directamente desde internet: ASUS advierte de que en ese caso el acceso desde WAN no funciona."
+      ]
+    }
+  ],
+  "glosario": {
+    "admin-remota": [
+      "Administración remota",
+      "Opción del router que permite abrir su panel de configuración desde internet, no solo desde casa. También se llama acceso remoto o acceso web desde WAN."
+    ],
+    "dns": [
+      "DNS",
+      "El servicio que traduce nombres como incibe.es en direcciones numéricas. Quien controla tus DNS puede mandarte a una dirección falsa."
+    ],
+    "lan": [
+      "LAN",
+      "Tu red local: los dispositivos conectados al router en casa, por cable o wifi."
+    ],
+    "wan": [
+      "WAN",
+      "El lado del router que da a internet."
+    ],
+    "proxy": [
+      "Proxy",
+      "Equipo intermedio por el que pasa el tráfico de otro. Los delincuentes usan routers infectados como proxis para que sus ataques parezcan venir de ti."
+    ],
+    "upnp": [
+      "UPnP",
+      "Función que permite a los aparatos de la red abrir puertos en el router automáticamente, sin pedir permiso."
+    ],
+    "wps": [
+      "WPS",
+      "Sistema para conectar aparatos al wifi con un botón o un PIN. El método del PIN tiene un fallo conocido que facilita adivinarlo."
+    ],
+    "tr069": [
+      "TR-069",
+      "Protocolo estándar con el que las operadoras gestionan a distancia los routers que entregan: actualizaciones, configuración y diagnóstico."
+    ],
+    "cgnat": [
+      "CG-NAT",
+      "Técnica con la que la operadora comparte una misma dirección pública entre varios clientes. Desde internet no se puede llegar directamente a tu router."
+    ],
+    "kev": [
+      "KEV",
+      "Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "INCIBE: conexiones inalámbricas seguras, ¿sabes cómo conseguirlo? (13/05/2024)",
+      "url": "https://www.incibe.es/ciudadania/blog/conexiones-inalambricas-seguras-sabes-como-conseguirlo"
+    },
+    {
+      "titulo": "OSI (INCIBE): conexiones seguras (folleto, PDF)",
+      "url": "https://www.incibe.es/sites/default/files/docs/osi_cuadriptico_conexiones-seguras.pdf"
+    },
+    {
+      "titulo": "INCIBE: detectado un ataque a routers ASUS que los convierte en bots (18/03/2022)",
+      "url": "https://www.incibe.es/ciudadania/avisos/detectado-ataque-routers-asus-que-los-convierte-en-bots"
+    },
+    {
+      "titulo": "INCIBE Empresas: el router, defensa inicial de las comunicaciones de tu negocio (17/11/2020)",
+      "url": "https://www.incibe.es/empresas/blog/el-router-defensa-inicial-las-comunicaciones-tu-negocio"
+    },
+    {
+      "titulo": "FBI: Cyber Criminal Proxy Services Exploiting End of Life Routers (07/05/2025, en inglés)",
+      "url": "https://www.ic3.gov/PSA/2025/PSA250507"
+    },
+    {
+      "titulo": "FBI: Russian GRU Exploiting Vulnerable Routers to Steal Sensitive Information (07/04/2026, en inglés)",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260407"
+    },
+    {
+      "titulo": "Departamento de Justicia de EE. UU.: desmantelamiento de la red de secuestro de DNS del GRU (07/04/2026, en inglés)",
+      "url": "https://www.justice.gov/opa/pr/justice-department-conducts-court-authorized-disruption-dns-hijacking-network-controlled"
+    },
+    {
+      "titulo": "CISA: Home Network Security (en inglés)",
+      "url": "https://www.cisa.gov/tips/st15-002"
+    },
+    {
+      "titulo": "NSA: Best Practices for Securing Your Home Network (22/02/2023, PDF, en inglés)",
+      "url": "https://media.defense.gov/2023/Feb/22/2003165170/-1/-1/0/CSI_BEST_PRACTICS_FOR_SECURING_YOUR_HOME_NETWORK.PDF"
+    },
+    {
+      "titulo": "CISA: Secure by Design Alert para fabricantes de routers domésticos (en inglés)",
+      "url": "https://www.cisa.gov/resources-tools/resources/secure-design-alert-security-design-improvements-soho-device-manufacturers"
+    },
+    {
+      "titulo": "TP-Link: cómo configurar la administración remota",
+      "url": "https://www.tp-link.com/ar/support/faq/1553/"
+    },
+    {
+      "titulo": "ASUS: cómo configurar el acceso web desde WAN",
+      "url": "https://www.asus.com/mx/support/faq/1000926/"
+    },
+    {
+      "titulo": "NETGEAR: cómo desactivar la administración remota (en inglés)",
+      "url": "https://kb.netgear.com/000061995/How-do-I-turn-off-Remote-Management-on-my-NETGEAR-router-or-gateway"
+    },
+    {
+      "titulo": "NETGEAR: por qué se retira la administración remota de sus routers (en inglés)",
+      "url": "https://kb.netgear.com/000065071/Why-is-the-Remote-Management-feature-being-removed-from-NETGEAR-routers"
+    },
+    {
+      "titulo": "AVM: proteger el FRITZ!Box (en inglés)",
+      "url": "https://uk.fritz.com/service/knowledge-base/dok/FRITZ-Box-7530/3467_Protecting-the-FRITZ-Box/"
+    },
+    {
+      "titulo": "NVD: CVE-2023-50224",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-50224"
+    },
+    {
+      "titulo": "NVD: CVE-2023-1389",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-1389"
+    },
+    {
+      "titulo": "NVD: CVE-2023-39780",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-39780"
+    },
+    {
+      "titulo": "Broadband Forum: TR-069 CPE WAN Management Protocol (PDF, en inglés)",
+      "url": "https://www.broadband-forum.org/pdfs/tr-069-1-6-0.pdf"
+    }
+  ]
+}

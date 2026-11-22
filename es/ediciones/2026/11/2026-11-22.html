@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Qué es la «administración remota», por qué los atacantes buscan routers con esa puerta abierta, cómo comprobar en cinco minutos que la tuya está cerrada y por qué no hace falta tocar nada más del router de tu operadora.">
+<title>El panel de tu router no debería verse desde internet · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-22.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-22.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Domingo, 22 de noviembre de 2026 · 📡 Router y red doméstica</p>
+<h1>El panel de tu router no debería verse desde internet</h1><p class="sub">Qué es la «administración remota», por qué los atacantes buscan routers con esa puerta abierta, cómo comprobar en cinco minutos que la tuya está cerrada y por qué no hace falta tocar nada más del router de tu operadora.</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 9 min</li><li>📡 Router</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día de atención"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Día de atención</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-22-whatsapp">
+<header><span class="pill amarillo">Atención</span><h3>WhatsApp corrige tres fallos; uno que revelaba tu IP pudo usarse con mensajes de spam</h3></header>
+<dl><dt>A quién afecta</dt><dd><strong>WhatsApp y WhatsApp Business para Android</strong> anteriores a la 2.26.17.4 (fuga de IP) y <strong>WhatsApp para Android</strong> anterior a la 2.26.35.74. Un tercer fallo afecta también a WhatsApp para iOS anterior a la 2.26.24.72 y a WhatsApp para Mac.</dd>
+<dt>Qué hacer</dt><dd><strong>Actualiza WhatsApp</strong> desde Google Play o la App Store. No hace falta nada más.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">El más relevante: un mensaje de respuesta a un anuncio manipulado podía hacer que tu móvil descargara contenido de un servidor del atacante y le revelara tu dirección IP; Meta indica que pudo aprovecharse junto con mensajes de spam concretos. El segundo, un mensaje de «detalles del pedido» enviado desde un cliente no oficial, podía borrar archivos locales de WhatsApp; Meta no ha visto explotación. El tercero afecta a la verificación del servidor de Meta AI y Meta confirma que no se explotó.<div class="cves"><code>CVE-2026-23871</code><code>CVE-2026-102769</code><code>CVE-2026-44908</code></div></dd></dl>
+<p class="src"><a href="https://www.whatsapp.com/security/advisories/2026/" rel="noopener noreferrer">WhatsApp: avisos de seguridad de 2026 (en inglés)</a></p></article><article class="alerta amarillo" id="2026-11-22-gpgme">
+<header><span class="pill amarillo">Atención</span><h3>GnuPG: fallo grave en GPGME, la biblioteca que usan Gpg4win y muchos programas de cifrado</h3></header>
+<dl><dt>A quién afecta</dt><dd>Programas que usan <strong>GPGME anterior a la 2.3.0</strong>, como biblioteca compartida, DLL o enlazada estáticamente. En Windows, <strong>Gpg4win</strong> anterior a la 5.1.2.</dd>
+<dt>Qué hacer</dt><dd>Actualiza a <strong>Gpg4win 5.1.2</strong> en Windows y a <strong>GPGME 2.3.1</strong> (o el paquete corregido de tu distribución) en Linux. GnuPG recomienda hacerlo de inmediato.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Es una doble liberación de memoria al procesar la salida de gpg. Con datos manipulados, como un mensaje firmado, se puede filtrar información de la aplicación, y GnuPG no descarta que se pueda llegar a ejecutar código a distancia. El aviso no menciona explotación. Publicado el 20/11.<div class="cves"><code>CVE-2026-129975</code></div></dd></dl>
+<p class="src"><a href="https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html" rel="noopener noreferrer">GnuPG: aviso de seguridad de GPGME, CVE-2026-129975 (en inglés)</a></p></article></div><p class="nota">El color del día refleja el impacto para el público general. Cada alerta lleva el suyo para las personas a las que afecta. <a href="../../../alertas.html">Ver todas las alertas notificadas</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Tu router tiene un <strong>panel de configuración</strong>: la página que abres escribiendo algo como <code>192.168.1.1</code> y en la que se cambia la clave del wifi. Lo normal es que solo se pueda abrir <strong>desde dentro de casa</strong>. Pero muchos routers tienen una opción, la <button type="button" class="term" popovertarget="g-admin-remota">administración remota</button>, que hace que ese panel también responda <strong>a cualquiera desde internet</strong>.</p><p>Eso importa porque hay programas que recorren internet sin parar buscando esos paneles. Cuando encuentran uno, prueban contraseñas de fábrica o fallos conocidos. Si entran, pueden <strong>cambiar los <button type="button" class="term" popovertarget="g-dns">DNS</button></strong> de tu router para llevarte a webs falsas o usar tu conexión para esconder sus delitos. El FBI lo ha documentado en 2025 y 2026, y su consejo es siempre el mismo: <strong>desactiva la administración remota</strong>.</p><p>La buena noticia: en la mayoría de routers <strong>viene desactivada de fábrica</strong>. Solo tienes que comprobar que sigue así, cambiar la contraseña del panel si es la de la pegatina y dejar que el router se actualice. Lo demás, incluido lo que gestiona tu operadora, puedes dejarlo como está.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>El panel del router debe abrirse solo desde tu casa, no desde internet.</li><li>Busca «administración remota» o «acceso desde WAN» en el router y comprueba que está desactivado.</li><li>Cambia la contraseña del panel si sigue siendo la de fábrica y deja que el router se actualice.</li><li>No hace falta comprar otro router ni tocar la gestión que hace tu operadora: con eso basta.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: baja</span>
+<span class="barras bajo" aria-hidden="true"><i></i><i></i><i></i></span></div><p>TP-Link y NETGEAR, entre otros, traen la administración remota desactivada de fábrica, así que la mayoría de hogares no la tienen abierta. El riesgo aparece cuando alguien la activó un día «para probar» y se quedó así, o en routers viejos sin actualizaciones.</p></div><div class="medidor"><div class="top"><span>Impacto: alto</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Quien controla el router controla por dónde va el tráfico de toda la casa: puede mandarte a webs falsas para robarte contraseñas o usar tu conexión como tapadera para sus ataques.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Dos puertas en el mismo router</h3><p>El router tiene dos lados: el de <strong>dentro</strong> (tu red de casa, la <button type="button" class="term" popovertarget="g-lan">LAN</button>) y el de <strong>fuera</strong> (internet, la <button type="button" class="term" popovertarget="g-wan">WAN</button>). El panel de configuración siempre escucha en el lado de dentro. La administración remota hace que <strong>también escuche fuera</strong>, normalmente en un puerto como el 8443 o el 8080.</p><p>Desde ese momento, el panel queda al alcance de cualquiera que conozca tu dirección pública. NETGEAR lo explica sin rodeos: si eliges que cualquiera pueda acceder, <strong>cualquier dirección de internet puede intentar iniciar sesión</strong>. Y la propia NETGEAR dice que la mayoría de la gente no necesita esta función.</p><h3>Lo que han visto el FBI y el Departamento de Justicia</h3><p>El 07/05/2025, el FBI avisó de que variantes del malware TheMoon infectan routers sin soporte <strong>sin necesidad de contraseña</strong>, y de que una variante nueva apareció en routers que tenían la <strong>administración remota activada</strong>. Los routers infectados se alquilan como <button type="button" class="term" popovertarget="g-proxy">proxis</button> para que los delincuentes oculten su rastro.</p><p>El 07/04/2026, el Departamento de Justicia de EE. UU. anunció que había desmantelado una red del servicio de inteligencia militar ruso (GRU) que desde al menos 2024 había robado credenciales de miles de routers TP-Link en todo el mundo aprovechando fallos conocidos. Cambiaban los DNS de los routers para responder con direcciones falsas a dominios concretos, como el correo web de Microsoft, y así interceptar contraseñas y correos. El FBI recomendó, entre otras cosas, <strong>desactivar la gestión remota desde internet</strong> y <strong>tomarse en serio los avisos de certificado</strong> del navegador.</p><h3>Lo que recomiendan en España</h3><p>INCIBE lo incluye en sus consejos para el router de casa: <strong>desactivar la administración remota</strong>, cambiar las credenciales de acceso a la configuración y actualizar el firmware. En 2022, ante un malware que convertía routers ASUS en parte de una red de equipos infectados, con más de 3.500 posibles afectados en España, INCIBE pidió exactamente lo mismo.</p><p>CISA y la NSA, en EE. UU., coinciden y añaden dos ajustes más: desactivar <button type="button" class="term" popovertarget="g-upnp">UPnP</button> si no lo necesitas y desactivar <button type="button" class="term" popovertarget="g-wps">WPS</button>.</p><h3>Y lo que hace tu operadora no es esto</h3><p>Si tu router es de tu operadora, ella también lo gestiona a distancia con un protocolo estándar llamado <button type="button" class="term" popovertarget="g-tr069">TR-069</button>: así le envía actualizaciones y configura la línea. Es un canal distinto de la administración remota de la que hablamos y no lo controlas tú.</p><p>Algunos fabricantes ya están cerrando esta puerta por su cuenta: NETGEAR está retirando la administración remota de la mayoría de sus routers mediante actualizaciones, porque <strong>abre un puerto hacia fuera</strong>, y la sustituye por el acceso a través de su app, que no lo necesita.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>El barrido</strong><p>Un programa automático recorre las direcciones de internet buscando páginas de inicio de sesión de routers en los puertos habituales. No te busca a ti: busca cualquier panel abierto.</p></li><li><strong>La llave de la pegatina o un fallo conocido</strong><p>Si encuentra el tuyo, prueba usuarios y contraseñas de fábrica o aprovecha un fallo del firmware que no se ha parcheado. En routers sin soporte, esos fallos ya no se van a corregir.</p></li><li><strong>El cambio silencioso</strong><p>Una vez dentro, cambia los DNS del router. Tus dispositivos los reciben solos y, para algunas webs concretas, te llevan a una copia falsa. A menudo el navegador avisa de un problema de certificado.</p></li><li><strong>Lo que no consigue</strong><p>Si el panel solo escucha dentro de casa, desde internet no hay página a la que llamar. Y si no ignoras el aviso de certificado, una web falsa no puede ver lo que envías a la de verdad.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Encontrar en minutos tu panel si la administración remota está activada, sin saber quién eres.</li><li>Entrar si la contraseña es la de fábrica o si el firmware tiene un fallo conocido sin parchear.</li><li>Cambiar los DNS para desviarte a webs falsas o usar tu conexión como proxy para sus ataques.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Abrir el panel desde internet si la administración remota está desactivada.</li><li>Leer el contenido de tus webs con candado si no aceptas un aviso de certificado.</li><li>Llegar a tu router desde fuera si tu operadora te da una dirección compartida (<button type="button" class="term" popovertarget="g-cgnat">CG-NAT</button>): en ese caso ni siquiera la administración remota funciona.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Comprueba que la administración remota está desactivada</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 5 min</li><li>Para: todos</li></ul>
+<p>Entra en el panel del router desde casa (la dirección y el usuario suelen estar en la pegatina) y busca una opción llamada «administración remota», «acceso remoto» o «acceso web desde WAN». Debe estar desactivada. Si no la encuentras en el router de tu operadora, pregúntale a ella.</p><div class="plataformas"><div class="plataforma"><h4>TP-Link</h4><ol><li><strong>Avanzado</strong> &gt; <strong>Herramientas del sistema</strong> &gt; <strong>Administración</strong> &gt; <strong>Administración remota</strong> &gt; <strong>Desactivar la administración remota</strong> &gt; <strong>Guardar</strong>. Según el modelo, el menú puede variar un poco.</li></ol></div><div class="plataforma"><h4>ASUS</h4><ol><li><strong>Administration</strong> &gt; <strong>System</strong> &gt; <strong>Remote Access Config</strong> &gt; <strong>Activar acceso web desde WAN</strong>: <strong>No</strong> y guarda los cambios. En muchos modelos el menú aparece en inglés aunque el resto esté en español.</li></ol></div><div class="plataforma"><h4>NETGEAR</h4><ol><li><strong>ADVANCED</strong> &gt; <strong>Advanced Setup</strong> &gt; <strong>Remote Management</strong> (en algunos modelos, <strong>Web Services Management</strong>) &gt; desmarca <strong>Turn Remote Management On</strong> &gt; <strong>Apply</strong>.</li></ol></div><div class="plataforma"><h4>FRITZ!Box</h4><ol><li>Revisa qué servicios del router son accesibles desde internet en <strong>Diagnostics</strong> &gt; <strong>Security</strong> &gt; <strong>FRITZ!Box Services</strong> y desactiva los que no uses.</li></ol></div></div></article><article class="medida"><h3>Cambia la contraseña del panel si es la de fábrica</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 5 min</li><li>Para: todos</li></ul>
+<p>No es la clave del wifi: es la que protege la configuración. Si sigue siendo la de la pegatina o una genérica como «admin», cámbiala por una larga y única y guárdala en tu gestor de contraseñas. El FBI recomienda entre 16 y 64 caracteres.</p><div class="plataformas"></div></article><article class="medida"><h3>Deja que el router se actualice</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 10 min</li><li>Para: todos</li></ul>
+<p>Si tiene opción de actualización automática, actívala. Si es de tu operadora, normalmente se actualiza sola. Si es un router tuyo muy antiguo y el fabricante ya no publica versiones nuevas, el FBI y la NSA recomiendan sustituirlo.</p><div class="plataformas"></div></article><article class="medida deep"><h3>Si necesitas entrar desde fuera, usa la app o una VPN<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: medio</li>
+<li>⏱ 15 min</li><li>Para: avanzado</li></ul>
+<p>Si de verdad tienes que gestionar el router cuando no estás en casa, usa la app oficial del fabricante, que en muchos modelos funciona a través de su nube sin abrir puertos, o la función de VPN del propio router. Si aun así activas la administración remota, limítala a una dirección concreta en lugar de «todos».</p><div class="plataformas"></div></article><article class="medida deep"><h3>Desactiva UPnP si no lo necesitas<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 5 min</li><li>Para: avanzado</li></ul>
+<p>UPnP permite que los aparatos de casa abran puertos en el router sin preguntarte. CISA y la NSA recomiendan desactivarlo. Ojo: algunas consolas y aplicaciones de juego lo usan; si algo deja de funcionar, puedes volver a activarlo.</p><div class="plataformas"></div></article><article class="medida deep"><h3>Revisa los DNS que reparte el router<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="bajo">Impacto: bajo</li><li>Esfuerzo: medio</li>
+<li>⏱ 10 min</li><li>Para: paranoico</li></ul>
+<p>En el panel, mira los servidores DNS de la conexión a internet y los del DHCP. Deben estar vacíos o en automático (los de tu operadora) o ser unos que hayas elegido tú. Si ves unos que no reconoces, cambia la contraseña del panel, actualiza y vuelve a ponerlos en automático. Es lo que recomendó el Departamento de Justicia tras el caso del GRU.</p><div class="plataformas"></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>Mira el ajuste</h3><p>Entra en el panel y confirma que la administración remota o el acceso desde WAN está en «desactivado» o «no».</p></div><div class="fila"><h3>Pruébalo desde fuera</h3><p>Conectado al wifi de casa, busca «cuál es mi IP» para conocer tu dirección pública. Después, con el móvil en datos móviles (sin wifi), prueba a abrir <code>https://tu-IP:8443</code> o <code>http://tu-IP:8080</code> desde el móvil. Si aparece la página de tu router, el panel está expuesto.</p></div><div class="fila"><h3>Señales de que algo va mal</h3><p>El FBI cita estas: el router se calienta de más, la conexión falla sin motivo o encuentras ajustes que no has cambiado tú.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Comprar un router nuevo por si acaso</h3><p>Si el tuyo recibe actualizaciones y tiene la administración remota cerrada, está bien. Sustitúyelo solo si el fabricante ya no lo actualiza.</p></div><div class="fila"><h3>Desactivar la gestión de tu operadora</h3><p>TR-069 es el canal con el que tu operadora actualiza y configura su router. No es la administración remota de la que hablamos y no es algo que debas tocar tú.</p></div><div class="fila"><h3>Pagar un «escáner de router» o un antivirus para la red</h3><p>Lo que protege de verdad es gratis: panel cerrado a internet, contraseña propia y firmware al día.</p></div><div class="fila"><h3>Esconder el nombre de tu wifi</h3><p>No tiene nada que ver con el panel de administración. No te protege de esto.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«Aunque esté abierto a internet, el panel pide contraseña, así que no pasa nada.»</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>El FBI describe cómo variantes de TheMoon infectan routers sin soporte <strong>sin necesidad de contraseña</strong>, aprovechando fallos, y cómo una variante nueva apareció en routers con la <strong>administración remota activada</strong>. La contraseña solo protege si el software que hay detrás no tiene fallos.</p><p class="src"><a href="https://www.ic3.gov/PSA/2025/PSA250507" rel="noopener noreferrer">FBI: Cyber Criminal Proxy Services Exploiting End of Life Routers (07/05/2025, en inglés)</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>Superficie de ataque: el servidor web del router</h3><p>El panel es un servidor web embebido (a menudo <code>httpd</code> o <code>lighttpd</code>) que ejecuta scripts con privilegios de root. Con la administración remota, ese servidor escucha también en la interfaz WAN, normalmente en <code>443</code>, <code>8443</code> u <code>8080</code>, y cualquier fallo de autenticación o de inyección en sus scripts pasa a ser alcanzable desde internet.</p><p>Ejemplos del catálogo <button type="button" class="term" popovertarget="g-kev">KEV</button> de CISA: CVE-2023-1389, inyección de comandos sin autenticar en la interfaz web del TP-Link Archer AX21 (en KEV desde el 01/05/2023); CVE-2023-39780, inyección de comandos con sesión iniciada en ASUS RT-AX55 (en KEV desde el 02/06/2025); y CVE-2023-50224, que permite leer credenciales guardadas sin autenticar en routers TP-Link y que el FBI asoció a la campaña del GRU (en KEV desde el 03/09/2025).</p><h3>Adyacente frente a remoto</h3><p>El vector CVSS de CVE-2023-1389 y CVE-2023-50224 es <strong>adyacente</strong> (<code>AV:A</code>): el fabricante asume que el panel solo es alcanzable desde la LAN. Esa suposición se cae en cuanto el servicio escucha en la WAN; por eso la desactivación de la gestión remota reduce el riesgo real más que la nota del CVSS sugiere.</p><p>La alerta Secure by Design de CISA para fabricantes de routers domésticos y de pequeña oficina pide justo eso: eliminar los fallos de las interfaces web y dejar la gestión <strong>solo en el lado LAN por defecto</strong>.</p><h3>TR-069 y CG-NAT</h3><p>TR-069 (CWMP), del Broadband Forum, conecta el router con el servidor de autoconfiguración (ACS) de la operadora para provisión, firmware y diagnóstico; IANA le asignó el puerto <code>7547</code>. Es un plano de gestión separado del panel web y su seguridad depende de la operadora.</p><p>Si la dirección WAN de tu router está en <code>100.64.0.0/10</code> (CG-NAT, RFC 6598) o en un rango privado y no coincide con la que muestra una web de «cuál es mi IP», tu router no es alcanzable directamente desde internet: ASUS advierte de que en ese caso el acceso desde WAN no funciona.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>Administración remota</dt><dd>Opción del router que permite abrir su panel de configuración desde internet, no solo desde casa. También se llama acceso remoto o acceso web desde WAN.</dd><dt>DNS</dt><dd>El servicio que traduce nombres como incibe.es en direcciones numéricas. Quien controla tus DNS puede mandarte a una dirección falsa.</dd><dt>LAN</dt><dd>Tu red local: los dispositivos conectados al router en casa, por cable o wifi.</dd><dt>WAN</dt><dd>El lado del router que da a internet.</dd><dt>Proxy</dt><dd>Equipo intermedio por el que pasa el tráfico de otro. Los delincuentes usan routers infectados como proxis para que sus ataques parezcan venir de ti.</dd><dt>UPnP</dt><dd>Función que permite a los aparatos de la red abrir puertos en el router automáticamente, sin pedir permiso.</dd><dt>WPS</dt><dd>Sistema para conectar aparatos al wifi con un botón o un PIN. El método del PIN tiene un fallo conocido que facilita adivinarlo.</dd><dt>TR-069</dt><dd>Protocolo estándar con el que las operadoras gestionan a distancia los routers que entregan: actualizaciones, configuración y diagnóstico.</dd><dt>CG-NAT</dt><dd>Técnica con la que la operadora comparte una misma dirección pública entre varios clientes. Desde internet no se puede llegar directamente a tu router.</dd><dt>KEV</dt><dd>Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://www.incibe.es/ciudadania/blog/conexiones-inalambricas-seguras-sabes-como-conseguirlo" rel="noopener noreferrer">INCIBE: conexiones inalámbricas seguras, ¿sabes cómo conseguirlo? (13/05/2024)</a></li><li><a href="https://www.incibe.es/sites/default/files/docs/osi_cuadriptico_conexiones-seguras.pdf" rel="noopener noreferrer">OSI (INCIBE): conexiones seguras (folleto, PDF)</a></li><li><a href="https://www.incibe.es/ciudadania/avisos/detectado-ataque-routers-asus-que-los-convierte-en-bots" rel="noopener noreferrer">INCIBE: detectado un ataque a routers ASUS que los convierte en bots (18/03/2022)</a></li><li><a href="https://www.incibe.es/empresas/blog/el-router-defensa-inicial-las-comunicaciones-tu-negocio" rel="noopener noreferrer">INCIBE Empresas: el router, defensa inicial de las comunicaciones de tu negocio (17/11/2020)</a></li><li><a href="https://www.ic3.gov/PSA/2025/PSA250507" rel="noopener noreferrer">FBI: Cyber Criminal Proxy Services Exploiting End of Life Routers (07/05/2025, en inglés)</a></li><li><a href="https://www.ic3.gov/PSA/2026/PSA260407" rel="noopener noreferrer">FBI: Russian GRU Exploiting Vulnerable Routers to Steal Sensitive Information (07/04/2026, en inglés)</a></li><li><a href="https://www.justice.gov/opa/pr/justice-department-conducts-court-authorized-disruption-dns-hijacking-network-controlled" rel="noopener noreferrer">Departamento de Justicia de EE. UU.: desmantelamiento de la red de secuestro de DNS del GRU (07/04/2026, en inglés)</a></li><li><a href="https://www.cisa.gov/tips/st15-002" rel="noopener noreferrer">CISA: Home Network Security (en inglés)</a></li><li><a href="https://media.defense.gov/2023/Feb/22/2003165170/-1/-1/0/CSI_BEST_PRACTICS_FOR_SECURING_YOUR_HOME_NETWORK.PDF" rel="noopener noreferrer">NSA: Best Practices for Securing Your Home Network (22/02/2023, PDF, en inglés)</a></li><li><a href="https://www.cisa.gov/resources-tools/resources/secure-design-alert-security-design-improvements-soho-device-manufacturers" rel="noopener noreferrer">CISA: Secure by Design Alert para fabricantes de routers domésticos (en inglés)</a></li><li><a href="https://www.tp-link.com/ar/support/faq/1553/" rel="noopener noreferrer">TP-Link: cómo configurar la administración remota</a></li><li><a href="https://www.asus.com/mx/support/faq/1000926/" rel="noopener noreferrer">ASUS: cómo configurar el acceso web desde WAN</a></li><li><a href="https://kb.netgear.com/000061995/How-do-I-turn-off-Remote-Management-on-my-NETGEAR-router-or-gateway" rel="noopener noreferrer">NETGEAR: cómo desactivar la administración remota (en inglés)</a></li><li><a href="https://kb.netgear.com/000065071/Why-is-the-Remote-Management-feature-being-removed-from-NETGEAR-routers" rel="noopener noreferrer">NETGEAR: por qué se retira la administración remota de sus routers (en inglés)</a></li><li><a href="https://uk.fritz.com/service/knowledge-base/dok/FRITZ-Box-7530/3467_Protecting-the-FRITZ-Box/" rel="noopener noreferrer">AVM: proteger el FRITZ!Box (en inglés)</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-50224" rel="noopener noreferrer">NVD: CVE-2023-50224</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-1389" rel="noopener noreferrer">NVD: CVE-2023-1389</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-39780" rel="noopener noreferrer">NVD: CVE-2023-39780</a></li><li><a href="https://www.broadband-forum.org/pdfs/tr-069-1-6-0.pdf" rel="noopener noreferrer">Broadband Forum: TR-069 CPE WAN Management Protocol (PDF, en inglés)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-admin-remota" class="gl-pop"><strong>Administración remota</strong>Opción del router que permite abrir su panel de configuración desde internet, no solo desde casa. También se llama acceso remoto o acceso web desde WAN.</div><div popover id="g-dns" class="gl-pop"><strong>DNS</strong>El servicio que traduce nombres como incibe.es en direcciones numéricas. Quien controla tus DNS puede mandarte a una dirección falsa.</div><div popover id="g-lan" class="gl-pop"><strong>LAN</strong>Tu red local: los dispositivos conectados al router en casa, por cable o wifi.</div><div popover id="g-wan" class="gl-pop"><strong>WAN</strong>El lado del router que da a internet.</div><div popover id="g-proxy" class="gl-pop"><strong>Proxy</strong>Equipo intermedio por el que pasa el tráfico de otro. Los delincuentes usan routers infectados como proxis para que sus ataques parezcan venir de ti.</div><div popover id="g-upnp" class="gl-pop"><strong>UPnP</strong>Función que permite a los aparatos de la red abrir puertos en el router automáticamente, sin pedir permiso.</div><div popover id="g-wps" class="gl-pop"><strong>WPS</strong>Sistema para conectar aparatos al wifi con un botón o un PIN. El método del PIN tiene un fallo conocido que facilita adivinarlo.</div><div popover id="g-tr069" class="gl-pop"><strong>TR-069</strong>Protocolo estándar con el que las operadoras gestionan a distancia los routers que entregan: actualizaciones, configuración y diagnóstico.</div><div popover id="g-cgnat" class="gl-pop"><strong>CG-NAT</strong>Técnica con la que la operadora comparte una misma dirección pública entre varios clientes. Desde internet no se puede llegar directamente a tu router.</div><div popover id="g-kev" class="gl-pop"><strong>KEV</strong>Catálogo de vulnerabilidades explotadas conocidas que mantiene CISA, la agencia de ciberseguridad de EE. UU. Si un fallo está ahí, hay ataques reales.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

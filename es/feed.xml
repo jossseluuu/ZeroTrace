@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Sat, 21 Nov 2026 08:42:18 +0100</lastBuildDate>
+  <lastBuildDate>Sun, 22 Nov 2026 09:29:15 +0100</lastBuildDate>
+  <item>
+    <title>El panel de tu router no debería verse desde internet</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-22.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-22.html</guid>
+    <pubDate>Sun, 22 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Router y red doméstica</category>
+    <description>Qué es la «administración remota», por qué los atacantes buscan routers con esa puerta abierta, cómo comprobar en cinco minutos que la tuya está cerrada y por qué no hace falta tocar nada más del router de tu operadora. — Atención: WhatsApp corrige tres fallos; uno que revelaba tu IP pudo usarse con mensajes de spam | Atención: GnuPG: fallo grave en GPGME, la biblioteca que usan Gpg4win y muchos programas de cifrado</description>
+  </item>
   <item>
     <title>Antes de vender tu altavoz o tu robot aspirador, sácalo de tu cuenta</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-21.html</link>
