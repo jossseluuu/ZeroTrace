@@ -1,0 +1,335 @@
+{
+  "fecha": "2026-11-23",
+  "idioma": "es",
+  "foco": "portatiles",
+  "concepto": "permisos-de-camara-y-microfono",
+  "titulo": "Quién puede encender la cámara y el micrófono de tu portátil",
+  "subtitulo": "La pegatina en la cámara tranquiliza, pero lo que de verdad decide quién te ve y te oye son los permisos. Cómo revisarlos en cinco minutos y qué hacer si te llega el correo de «te he grabado».",
+  "dispositivos": [
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "verde",
+    "alertas": []
+  },
+  "basico": {
+    "parrafos": [
+      "Tu portátil no deja que cualquier programa use la cámara o el micrófono: **lo decide una lista de permisos** que tú (o quien instaló las apps) fue aceptando con un «Permitir» casi sin mirar.",
+      "Esa lista es lo que hay que revisar. Una app de videollamadas que ya no usas, una web a la que diste permiso una vez o un programa que no recuerdas haber instalado pueden seguir teniendo acceso. **La tapa de la cámara no tapa el micrófono**, y el micrófono es justo lo que más se olvida.",
+      "Y si te llega un correo diciendo que te han grabado por la webcam y que pagues en bitcoin, respira: INCIBE y la FTC llevan años avisando de que **es una estafa masiva**. Aunque incluya una contraseña tuya, esa contraseña sale de una filtración antigua, no de tu cámara."
+    ],
+    "esencial": [
+      "Revisa qué apps tienen permiso para la cámara y el micrófono y quita las que no uses.",
+      "Haz lo mismo con las webs a las que diste permiso en el navegador.",
+      "Fíjate en la luz de la cámara y en el icono del micrófono: te avisan cuando se usan.",
+      "Ante un correo de «te he grabado», no pagues ni contestes; si aparece una contraseña tuya, cámbiala."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "bajo",
+      "texto": "Para encenderte la cámara a escondidas hace falta un programa malicioso instalado o una app con permiso que abuse de él. Es poco frecuente en un equipo actualizado; el correo de chantaje falso, en cambio, le llega a muchísima gente."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Imágenes o conversaciones privadas en manos de otro son difíciles de recuperar y pueden usarse para chantajear. Por eso merece la pena una revisión que cuesta cinco minutos."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Quién decide si una app puede usar la cámara",
+      "parrafos": [
+        "Windows y macOS tienen una sección de [[permiso|permisos]] para la cámara y otra para el micrófono. La primera vez que una app los pide, el sistema te pregunta, y tu respuesta queda guardada hasta que la cambies.",
+        "En **macOS**, cada app aparece en la lista y la activas o desactivas una a una, tanto para la cámara como para el micrófono.",
+        "En **Windows** hay dos tipos de programas. Las apps de la Microsoft Store salen en una lista y se controlan una a una. Las aplicaciones de escritorio (el navegador, Teams, Zoom y la mayoría de programas que instalas desde una web) **no se pueden controlar de forma individual**: un único interruptor las permite o las bloquea todas, y Windows muestra debajo cuáles ha detectado usando la cámara o el micrófono. Microsoft avisa de que algunas pueden no aparecer en la lista."
+      ]
+    },
+    {
+      "titulo": "Las luces y los iconos que te avisan",
+      "parrafos": [
+        "En un Mac, junto a la cámara se enciende una **luz verde** cuando está en uso. Apple afirma que la cámara está diseñada para que **no pueda activarse sin que se encienda esa luz**.",
+        "Para el micrófono, macOS muestra un [[indicador|indicador de grabación]] en el centro de control cuando se está usando o se ha usado hace poco.",
+        "En Windows, si tu equipo tiene luz de cámara, se enciende cuando la cámara está activa; si no la tiene, Windows muestra una notificación al encenderla y apagarla. Cuando una app usa el micrófono aparece un **icono de micrófono** en el área de notificación de la barra de tareas."
+      ]
+    },
+    {
+      "titulo": "El navegador tiene sus propios permisos",
+      "parrafos": [
+        "Una web nunca puede usar tu cámara sin pedir permiso al navegador. Pero si un día aceptaste para una videollamada, ese permiso puede seguir guardado para esa web.",
+        "Todos los navegadores importantes muestran un icono en la pestaña o en la barra de direcciones mientras una web usa la cámara o el micrófono, y te dejan ver y retirar los permisos de cada sitio desde el icono que hay a la izquierda de la dirección."
+      ]
+    },
+    {
+      "titulo": "El correo de «te he grabado» y por qué es mentira",
+      "parrafos": [
+        "Es una de las estafas más repetidas: un correo asegura que te infectaron el ordenador hace meses, que te grabaron por la cámara y que enviarán el vídeo a tus contactos si no pagas en bitcoin en 48 horas. INCIBE lo resume así en uno de sus avisos: nadie ha accedido a tus dispositivos ni ha grabado ningún vídeo.",
+        "Para parecer creíble, a veces el correo incluye **una contraseña que usaste de verdad**. La FTC explica que suele salir de una [[filtracion|filtración de datos]] de algún servicio: no demuestra que nadie haya entrado en tu ordenador, pero sí que esa contraseña está expuesta y hay que cambiarla."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "La entrada",
+      "texto": "El atacante necesita ejecutar algo en tu equipo: un programa pirata con sorpresa, un adjunto que abres o un «reproductor» que te pide instalar una web. Con eso instala un [[rat|troyano de acceso remoto]]."
+    },
+    {
+      "titulo": "El permiso",
+      "texto": "En macOS, ese programa tendría que superar la pregunta de permisos o abusar de una app que ya los tiene. En Windows, si es un programa de escritorio y las aplicaciones de escritorio tienen permiso, no aparece ninguna pregunta nueva."
+    },
+    {
+      "titulo": "La grabación",
+      "texto": "Enciende la cámara o el micrófono cuando cree que no miras. En un Mac la luz verde se encenderá; en Windows lo hará la luz si el equipo la tiene, y el icono del micrófono aparecerá en la barra de tareas."
+    },
+    {
+      "titulo": "El chantaje",
+      "texto": "Con el material, el atacante puede intentar una [[sextorsion|sextorsión]] real. Es mucho más raro que la versión falsa por correo, que no requiere ningún acceso a tu equipo."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Usar la cámara y el micrófono si consigue instalar un programa malicioso y este obtiene el permiso.",
+      "Aprovechar el permiso que ya tiene una app o una web que autorizaste en su día.",
+      "Escucharte por el micrófono aunque la cámara esté tapada.",
+      "Asustarte con un correo falso que incluye una contraseña tuya sacada de una filtración."
+    ],
+    "no_puede": [
+      "Encender la cámara de un equipo actualizado desde internet sin haber ejecutado antes nada en él.",
+      "Encender la cámara de un Mac sin que se encienda la luz verde, según el diseño que describe Apple.",
+      "Hacer que una web use tu cámara sin que el navegador te pida permiso.",
+      "Demostrar que te ha grabado solo por enseñarte una contraseña antigua."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Revisa qué apps pueden usar la cámara y el micrófono",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Es la medida que de verdad cierra la puerta. Quita el permiso a todo lo que no uses para videollamadas o grabaciones; si algún día lo necesitas, la app te lo volverá a pedir.",
+      "pasos": {
+        "Windows 11": [
+          "Inicio > Configuración > Privacidad y seguridad > **Cámara**.",
+          "En la lista de apps, desactiva las que no necesiten la cámara.",
+          "Debajo, en **Permitir que las aplicaciones de escritorio accedan a la cámara**, mira qué programas ha detectado Windows. Si alguno no te suena, investígalo o desinstálalo.",
+          "Repite en Privacidad y seguridad > **Micrófono**."
+        ],
+        "Mac": [
+          "Menú Apple > Ajustes del Sistema > Privacidad y seguridad > **Cámara**.",
+          "Desactiva las apps que no la necesiten.",
+          "Repite en Privacidad y seguridad > **Micrófono**."
+        ]
+      }
+    },
+    {
+      "titulo": "Limpia los permisos de las webs",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "Una web de videollamadas que usaste una vez no necesita conservar el acceso. Retirarlo no rompe nada: te lo volverá a pedir la próxima vez.",
+      "pasos": {
+        "Cualquier navegador": [
+          "Entra en la web y pulsa el icono a la izquierda de la dirección para ver sus permisos.",
+          "En la configuración del navegador, busca los permisos de sitios para **Cámara** y **Micrófono** y quita los que no reconozcas."
+        ],
+        "Safari (Mac)": [
+          "Safari > Ajustes > Sitios web > **Cámara** (y **Micrófono**)."
+        ]
+      }
+    },
+    {
+      "titulo": "Aprende a leer los avisos",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "hábito",
+      "para": "todos",
+      "texto": "La luz y el icono son tu alarma. Si se encienden sin que estés en una llamada, mira qué app es y quítale el permiso.",
+      "pasos": {
+        "Windows": [
+          "Luz de la cámara (si la tiene) o notificación al encenderse.",
+          "Icono de micrófono en el área de notificación de la barra de tareas."
+        ],
+        "Mac": [
+          "Luz verde junto a la cámara.",
+          "Indicador de grabación en el **centro de control** para el micrófono."
+        ]
+      }
+    },
+    {
+      "titulo": "Si tapas la cámara, que la tapa sea fina",
+      "impacto": "bajo",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Una tapa no hace daño como medida extra, pero Apple advierte de que cerrar un MacBook con una tapa más gruesa que una hoja de papel (0,1 mm) puede dañar la pantalla, y de que puede tapar el sensor de luz ambiental.",
+      "pasos": {
+        "Siempre": [
+          "Usa una tapa de 0,1 mm como mucho, o quítala antes de cerrar la tapa del portátil.",
+          "Evita adhesivos que dejen restos sobre la cámara."
+        ]
+      }
+    },
+    {
+      "titulo": "Ante el correo de «te he grabado»",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "La reacción correcta es la contraria a la que busca el correo: nada de prisas ni de pagos.",
+      "pasos": {
+        "Siempre": [
+          "No pagues ni contestes. Borra el mensaje.",
+          "Si el correo incluye una contraseña tuya, **cámbiala** en todos los sitios donde la uses y activa la verificación en dos pasos.",
+          "Si ya has pagado, guarda capturas y correos y denúncialo a la Policía o a la Guardia Civil. También puedes llamar al 017, la línea de ayuda de INCIBE."
+        ]
+      }
+    },
+    {
+      "titulo": "Apaga la cámara para todo el sistema",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "1 min",
+      "para": "avanzado",
+      "texto": "Si casi nunca haces videollamadas, puedes cortar el acceso de todas las apps y activarlo solo cuando lo necesites.",
+      "pasos": {
+        "Windows 11": [
+          "Privacidad y seguridad > Cámara > desactiva **Acceso a la cámara**.",
+          "Ten en cuenta que Windows Hello puede seguir usando la cámara para iniciar sesión."
+        ],
+        "Mac": [
+          "En Privacidad y seguridad > Cámara, deja todas las apps desactivadas y actívalas solo mientras las uses."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "La lista de aplicaciones de escritorio de Windows",
+      "texto": "En Privacidad y seguridad > Cámara (y > Micrófono), la sección de aplicaciones de escritorio muestra los programas que Windows ha detectado usándolos. Un nombre que no reconoces es la mejor pista de que algo sobra."
+    },
+    {
+      "titulo": "Las listas de permisos del Mac",
+      "texto": "En Ajustes del Sistema > Privacidad y seguridad, revisa **Cámara** y **Micrófono**. Cada app que aparece ahí ha pedido acceso alguna vez: compara la lista con lo que usas de verdad."
+    },
+    {
+      "titulo": "Una prueba rápida",
+      "texto": "Abre la app de cámara del sistema y comprueba que se enciende la luz o aparece el aviso. Así sabrás cómo es la señal en tu equipo y la reconocerás si aparece cuando no toca."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Comprar un programa de «protección de webcam»",
+      "texto": "Los permisos del sistema y los avisos de luz e icono ya hacen ese trabajo. Lo que sí importa es tener el sistema actualizado y no instalar programas de origen dudoso."
+    },
+    {
+      "titulo": "Desconectar o desinstalar la cámara",
+      "texto": "No hace falta romper nada. Si no la usas, basta con quitar los permisos o apagar el acceso a la cámara para todo el sistema."
+    },
+    {
+      "titulo": "Revisar los permisos cada semana",
+      "texto": "Con hacerlo hoy y repasarlo cuando instales una app de videollamadas o un programa nuevo es suficiente."
+    },
+    {
+      "titulo": "Pagar «por si acaso» al chantajista",
+      "texto": "Pagar no borra nada porque no hay nada que borrar, y te marca como alguien que paga. Lo útil es cambiar la contraseña que aparezca en el correo."
+    }
+  ],
+  "mito": {
+    "mito": "«Si en el correo de chantaje sale mi contraseña, es que me han hackeado la cámara.»",
+    "realidad": "Esa contraseña suele venir de una **filtración de datos antigua** de algún servicio. Prueba que tu contraseña está expuesta, no que alguien haya entrado en tu ordenador ni te haya grabado. INCIBE lo deja claro: nadie ha accedido a tus dispositivos ni ha grabado un vídeo íntimo. No pagues y cambia esa contraseña.",
+    "fuente": {
+      "titulo": "INCIBE: nueva campaña de sextorsión, ¡nadie ha instalado un software espía en tu dispositivo!",
+      "url": "https://www.incibe.es/ciudadania/avisos/nueva-campana-de-sextorsion-nadie-ha-instalado-un-software-espia-en-tu"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Apps empaquetadas y aplicaciones de escritorio en Windows",
+      "parrafos": [
+        "Las apps de la Microsoft Store se ejecutan con una identidad de paquete y declaran qué capacidades necesitan, como la cámara o el micrófono. Por eso Windows puede listarlas y controlarlas una a una.",
+        "Las aplicaciones de escritorio tradicionales no tienen esa identidad, así que Windows solo ofrece un interruptor común para todas y una lista de las que ha detectado. Microsoft indica que las aplicaciones de escritorio no aparecen en las listas de apps que puedes activar o desactivar, y que para permitirlas o bloquearlas hay que usar la configuración de cada aplicación. En la práctica, en Windows tu mejor defensa es **no instalar programas de escritorio que no necesites**."
+      ]
+    },
+    {
+      "titulo": "Por qué la luz del Mac es una garantía de diseño",
+      "parrafos": [
+        "Apple afirma que la cámara de sus portátiles está diseñada para que no pueda activarse sin que se encienda el indicador luminoso. Eso convierte la luz en una señal fiable y no en un simple aviso del software.",
+        "En Windows, la luz depende de cómo la haya implementado cada fabricante. Por eso, en esos equipos, conviene apoyarse también en la notificación y en la lista de aplicaciones que ha detectado Windows."
+      ]
+    },
+    {
+      "titulo": "Qué cambia si el atacante ya es administrador",
+      "parrafos": [
+        "Los permisos de privacidad protegen frente a apps normales. Un programa malicioso que ya ha conseguido privilegios de administrador tiene muchas más formas de saltarse controles del sistema. Por eso las medidas de base siguen siendo las de siempre: sistema actualizado, cuenta estándar para el día a día y nada de programas de origen dudoso."
+      ]
+    },
+    {
+      "titulo": "La cámara en el navegador",
+      "parrafos": [
+        "Las webs acceden a la cámara y al micrófono a través de la API `getUserMedia`, que los navegadores solo ofrecen en contextos seguros (HTTPS) y siempre tras un permiso explícito, guardado por origen. Si desarrollas webs, pide el permiso solo cuando el usuario pulse el botón de llamada, no nada más cargar la página: es más respetuoso y aumenta la probabilidad de que lo acepte."
+      ]
+    }
+  ],
+  "glosario": {
+    "permiso": [
+      "Permiso de privacidad",
+      "Autorización que el sistema operativo guarda para cada app y que decide si puede usar la cámara, el micrófono u otros recursos sensibles."
+    ],
+    "indicador": [
+      "Indicador de grabación",
+      "Señal en el centro de control del Mac que muestra que el micrófono se está usando o se ha usado hace poco."
+    ],
+    "filtracion": [
+      "Filtración de datos",
+      "Robo o exposición de la base de datos de un servicio, con correos y contraseñas de sus usuarios, que después circulan entre delincuentes."
+    ],
+    "rat": [
+      "Troyano de acceso remoto (RAT)",
+      "Programa malicioso que permite a un atacante controlar un equipo a distancia: ver la pantalla, robar archivos o encender la cámara y el micrófono."
+    ],
+    "sextorsion": [
+      "Sextorsión",
+      "Chantaje en el que se amenaza con difundir imágenes íntimas, reales o inventadas, si la víctima no paga."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Microsoft: administrar los permisos de las aplicaciones para la cámara en Windows",
+      "url": "https://support.microsoft.com/es-es/windows/privacy/manage-app-permissions-for-a-camera-in-windows"
+    },
+    {
+      "titulo": "Microsoft: cámara, micrófono y privacidad en Windows",
+      "url": "https://support.microsoft.com/es-es/windows/privacy/windows-camera-microphone-and-privacy"
+    },
+    {
+      "titulo": "Microsoft: configuración de privacidad de Windows que usan las aplicaciones",
+      "url": "https://support.microsoft.com/es-es/windows/privacy/windows-privacy-settings-that-apps-use"
+    },
+    {
+      "titulo": "Apple: controlar el acceso a la cámara del Mac",
+      "url": "https://support.apple.com/es-es/guide/mac-help/mchlf6d108da/mac"
+    },
+    {
+      "titulo": "Apple: controlar el acceso al micrófono desde el Mac",
+      "url": "https://support.apple.com/es-es/guide/mac-help/mchla1b1e1fe/mac"
+    },
+    {
+      "titulo": "Apple: no cierres tu MacBook con una tapa sobre la cámara",
+      "url": "https://support.apple.com/es-es/102177"
+    },
+    {
+      "titulo": "INCIBE: nueva campaña de sextorsión, ¡nadie ha instalado un software espía en tu dispositivo!",
+      "url": "https://www.incibe.es/ciudadania/avisos/nueva-campana-de-sextorsion-nadie-ha-instalado-un-software-espia-en-tu"
+    },
+    {
+      "titulo": "FTC: correos de estafa que exigen bitcoin y amenazan con chantaje (en inglés)",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2020/04/scam-emails-demand-bitcoin-threaten-blackmail"
+    }
+  ]
+}

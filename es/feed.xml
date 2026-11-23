@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Sun, 22 Nov 2026 09:29:15 +0100</lastBuildDate>
+  <lastBuildDate>Mon, 23 Nov 2026 12:20:38 +0100</lastBuildDate>
+  <item>
+    <title>Quién puede encender la cámara y el micrófono de tu portátil</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-23.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-23.html</guid>
+    <pubDate>Mon, 23 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Portátiles</category>
+    <description>La pegatina en la cámara tranquiliza, pero lo que de verdad decide quién te ve y te oye son los permisos. Cómo revisarlos en cinco minutos y qué hacer si te llega el correo de «te he grabado».</description>
+  </item>
   <item>
     <title>El panel de tu router no debería verse desde internet</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-22.html</link>

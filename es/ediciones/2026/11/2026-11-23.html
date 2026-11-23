@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="La pegatina en la cámara tranquiliza, pero lo que de verdad decide quién te ve y te oye son los permisos. Cómo revisarlos en cinco minutos y qué hacer si te llega el correo de «te he grabado».">
+<title>Quién puede encender la cámara y el micrófono de tu portátil · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-23.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-23.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Lunes, 23 de noviembre de 2026 · 💻 Portátiles</p>
+<h1>Quién puede encender la cámara y el micrófono de tu portátil</h1><p class="sub">La pegatina en la cámara tranquiliza, pero lo que de verdad decide quién te ve y te oye son los permisos. Cómo revisarlos en cinco minutos y qué hacer si te llega el correo de «te he grabado».</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 9 min</li><li>💻 Portátil</li><li>🖥️ Sobremesa</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día tranquilo"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo"></div><div class="lamp verde on"></div></div>
+<div class="label">Día tranquilo</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="calma"><p><strong>Hoy no hay alertas nuevas.</strong></p><p>Nada de lo publicado en las últimas horas cumple nuestro criterio: explotación real o impacto amplio en dispositivos de uso común. Las alertas anteriores siguen en el registro.</p><p><a href="../../../alertas.html">Ver todas las alertas notificadas</a></p></div></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Tu portátil no deja que cualquier programa use la cámara o el micrófono: <strong>lo decide una lista de permisos</strong> que tú (o quien instaló las apps) fue aceptando con un «Permitir» casi sin mirar.</p><p>Esa lista es lo que hay que revisar. Una app de videollamadas que ya no usas, una web a la que diste permiso una vez o un programa que no recuerdas haber instalado pueden seguir teniendo acceso. <strong>La tapa de la cámara no tapa el micrófono</strong>, y el micrófono es justo lo que más se olvida.</p><p>Y si te llega un correo diciendo que te han grabado por la webcam y que pagues en bitcoin, respira: INCIBE y la FTC llevan años avisando de que <strong>es una estafa masiva</strong>. Aunque incluya una contraseña tuya, esa contraseña sale de una filtración antigua, no de tu cámara.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>Revisa qué apps tienen permiso para la cámara y el micrófono y quita las que no uses.</li><li>Haz lo mismo con las webs a las que diste permiso en el navegador.</li><li>Fíjate en la luz de la cámara y en el icono del micrófono: te avisan cuando se usan.</li><li>Ante un correo de «te he grabado», no pagues ni contestes; si aparece una contraseña tuya, cámbiala.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: baja</span>
+<span class="barras bajo" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Para encenderte la cámara a escondidas hace falta un programa malicioso instalado o una app con permiso que abuse de él. Es poco frecuente en un equipo actualizado; el correo de chantaje falso, en cambio, le llega a muchísima gente.</p></div><div class="medidor"><div class="top"><span>Impacto: alto</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Imágenes o conversaciones privadas en manos de otro son difíciles de recuperar y pueden usarse para chantajear. Por eso merece la pena una revisión que cuesta cinco minutos.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Quién decide si una app puede usar la cámara</h3><p>Windows y macOS tienen una sección de <button type="button" class="term" popovertarget="g-permiso">permisos</button> para la cámara y otra para el micrófono. La primera vez que una app los pide, el sistema te pregunta, y tu respuesta queda guardada hasta que la cambies.</p><p>En <strong>macOS</strong>, cada app aparece en la lista y la activas o desactivas una a una, tanto para la cámara como para el micrófono.</p><p>En <strong>Windows</strong> hay dos tipos de programas. Las apps de la Microsoft Store salen en una lista y se controlan una a una. Las aplicaciones de escritorio (el navegador, Teams, Zoom y la mayoría de programas que instalas desde una web) <strong>no se pueden controlar de forma individual</strong>: un único interruptor las permite o las bloquea todas, y Windows muestra debajo cuáles ha detectado usando la cámara o el micrófono. Microsoft avisa de que algunas pueden no aparecer en la lista.</p><h3>Las luces y los iconos que te avisan</h3><p>En un Mac, junto a la cámara se enciende una <strong>luz verde</strong> cuando está en uso. Apple afirma que la cámara está diseñada para que <strong>no pueda activarse sin que se encienda esa luz</strong>.</p><p>Para el micrófono, macOS muestra un <button type="button" class="term" popovertarget="g-indicador">indicador de grabación</button> en el centro de control cuando se está usando o se ha usado hace poco.</p><p>En Windows, si tu equipo tiene luz de cámara, se enciende cuando la cámara está activa; si no la tiene, Windows muestra una notificación al encenderla y apagarla. Cuando una app usa el micrófono aparece un <strong>icono de micrófono</strong> en el área de notificación de la barra de tareas.</p><h3>El navegador tiene sus propios permisos</h3><p>Una web nunca puede usar tu cámara sin pedir permiso al navegador. Pero si un día aceptaste para una videollamada, ese permiso puede seguir guardado para esa web.</p><p>Todos los navegadores importantes muestran un icono en la pestaña o en la barra de direcciones mientras una web usa la cámara o el micrófono, y te dejan ver y retirar los permisos de cada sitio desde el icono que hay a la izquierda de la dirección.</p><h3>El correo de «te he grabado» y por qué es mentira</h3><p>Es una de las estafas más repetidas: un correo asegura que te infectaron el ordenador hace meses, que te grabaron por la cámara y que enviarán el vídeo a tus contactos si no pagas en bitcoin en 48 horas. INCIBE lo resume así en uno de sus avisos: nadie ha accedido a tus dispositivos ni ha grabado ningún vídeo.</p><p>Para parecer creíble, a veces el correo incluye <strong>una contraseña que usaste de verdad</strong>. La FTC explica que suele salir de una <button type="button" class="term" popovertarget="g-filtracion">filtración de datos</button> de algún servicio: no demuestra que nadie haya entrado en tu ordenador, pero sí que esa contraseña está expuesta y hay que cambiarla.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>La entrada</strong><p>El atacante necesita ejecutar algo en tu equipo: un programa pirata con sorpresa, un adjunto que abres o un «reproductor» que te pide instalar una web. Con eso instala un <button type="button" class="term" popovertarget="g-rat">troyano de acceso remoto</button>.</p></li><li><strong>El permiso</strong><p>En macOS, ese programa tendría que superar la pregunta de permisos o abusar de una app que ya los tiene. En Windows, si es un programa de escritorio y las aplicaciones de escritorio tienen permiso, no aparece ninguna pregunta nueva.</p></li><li><strong>La grabación</strong><p>Enciende la cámara o el micrófono cuando cree que no miras. En un Mac la luz verde se encenderá; en Windows lo hará la luz si el equipo la tiene, y el icono del micrófono aparecerá en la barra de tareas.</p></li><li><strong>El chantaje</strong><p>Con el material, el atacante puede intentar una <button type="button" class="term" popovertarget="g-sextorsion">sextorsión</button> real. Es mucho más raro que la versión falsa por correo, que no requiere ningún acceso a tu equipo.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Usar la cámara y el micrófono si consigue instalar un programa malicioso y este obtiene el permiso.</li><li>Aprovechar el permiso que ya tiene una app o una web que autorizaste en su día.</li><li>Escucharte por el micrófono aunque la cámara esté tapada.</li><li>Asustarte con un correo falso que incluye una contraseña tuya sacada de una filtración.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Encender la cámara de un equipo actualizado desde internet sin haber ejecutado antes nada en él.</li><li>Encender la cámara de un Mac sin que se encienda la luz verde, según el diseño que describe Apple.</li><li>Hacer que una web use tu cámara sin que el navegador te pida permiso.</li><li>Demostrar que te ha grabado solo por enseñarte una contraseña antigua.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Revisa qué apps pueden usar la cámara y el micrófono</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 3 min</li><li>Para: todos</li></ul>
+<p>Es la medida que de verdad cierra la puerta. Quita el permiso a todo lo que no uses para videollamadas o grabaciones; si algún día lo necesitas, la app te lo volverá a pedir.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Inicio &gt; Configuración &gt; Privacidad y seguridad &gt; <strong>Cámara</strong>.</li><li>En la lista de apps, desactiva las que no necesiten la cámara.</li><li>Debajo, en <strong>Permitir que las aplicaciones de escritorio accedan a la cámara</strong>, mira qué programas ha detectado Windows. Si alguno no te suena, investígalo o desinstálalo.</li><li>Repite en Privacidad y seguridad &gt; <strong>Micrófono</strong>.</li></ol></div><div class="plataforma"><h4>Mac</h4><ol><li>Menú Apple &gt; Ajustes del Sistema &gt; Privacidad y seguridad &gt; <strong>Cámara</strong>.</li><li>Desactiva las apps que no la necesiten.</li><li>Repite en Privacidad y seguridad &gt; <strong>Micrófono</strong>.</li></ol></div></div></article><article class="medida"><h3>Limpia los permisos de las webs</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 2 min</li><li>Para: todos</li></ul>
+<p>Una web de videollamadas que usaste una vez no necesita conservar el acceso. Retirarlo no rompe nada: te lo volverá a pedir la próxima vez.</p><div class="plataformas"><div class="plataforma"><h4>Cualquier navegador</h4><ol><li>Entra en la web y pulsa el icono a la izquierda de la dirección para ver sus permisos.</li><li>En la configuración del navegador, busca los permisos de sitios para <strong>Cámara</strong> y <strong>Micrófono</strong> y quita los que no reconozcas.</li></ol></div><div class="plataforma"><h4>Safari (Mac)</h4><ol><li>Safari &gt; Ajustes &gt; Sitios web &gt; <strong>Cámara</strong> (y <strong>Micrófono</strong>).</li></ol></div></div></article><article class="medida"><h3>Aprende a leer los avisos</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ hábito</li><li>Para: todos</li></ul>
+<p>La luz y el icono son tu alarma. Si se encienden sin que estés en una llamada, mira qué app es y quítale el permiso.</p><div class="plataformas"><div class="plataforma"><h4>Windows</h4><ol><li>Luz de la cámara (si la tiene) o notificación al encenderse.</li><li>Icono de micrófono en el área de notificación de la barra de tareas.</li></ol></div><div class="plataforma"><h4>Mac</h4><ol><li>Luz verde junto a la cámara.</li><li>Indicador de grabación en el <strong>centro de control</strong> para el micrófono.</li></ol></div></div></article><article class="medida"><h3>Si tapas la cámara, que la tapa sea fina</h3>
+<ul class="badges"><li class="bajo">Impacto: bajo</li><li>Esfuerzo: bajo</li>
+<li>⏱ 1 min</li><li>Para: todos</li></ul>
+<p>Una tapa no hace daño como medida extra, pero Apple advierte de que cerrar un MacBook con una tapa más gruesa que una hoja de papel (0,1 mm) puede dañar la pantalla, y de que puede tapar el sensor de luz ambiental.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>Usa una tapa de 0,1 mm como mucho, o quítala antes de cerrar la tapa del portátil.</li><li>Evita adhesivos que dejen restos sobre la cámara.</li></ol></div></div></article><article class="medida"><h3>Ante el correo de «te he grabado»</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 5 min</li><li>Para: todos</li></ul>
+<p>La reacción correcta es la contraria a la que busca el correo: nada de prisas ni de pagos.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>No pagues ni contestes. Borra el mensaje.</li><li>Si el correo incluye una contraseña tuya, <strong>cámbiala</strong> en todos los sitios donde la uses y activa la verificación en dos pasos.</li><li>Si ya has pagado, guarda capturas y correos y denúncialo a la Policía o a la Guardia Civil. También puedes llamar al 017, la línea de ayuda de INCIBE.</li></ol></div></div></article><article class="medida deep"><h3>Apaga la cámara para todo el sistema<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: medio</li>
+<li>⏱ 1 min</li><li>Para: avanzado</li></ul>
+<p>Si casi nunca haces videollamadas, puedes cortar el acceso de todas las apps y activarlo solo cuando lo necesites.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Privacidad y seguridad &gt; Cámara &gt; desactiva <strong>Acceso a la cámara</strong>.</li><li>Ten en cuenta que Windows Hello puede seguir usando la cámara para iniciar sesión.</li></ol></div><div class="plataforma"><h4>Mac</h4><ol><li>En Privacidad y seguridad &gt; Cámara, deja todas las apps desactivadas y actívalas solo mientras las uses.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>La lista de aplicaciones de escritorio de Windows</h3><p>En Privacidad y seguridad &gt; Cámara (y &gt; Micrófono), la sección de aplicaciones de escritorio muestra los programas que Windows ha detectado usándolos. Un nombre que no reconoces es la mejor pista de que algo sobra.</p></div><div class="fila"><h3>Las listas de permisos del Mac</h3><p>En Ajustes del Sistema &gt; Privacidad y seguridad, revisa <strong>Cámara</strong> y <strong>Micrófono</strong>. Cada app que aparece ahí ha pedido acceso alguna vez: compara la lista con lo que usas de verdad.</p></div><div class="fila"><h3>Una prueba rápida</h3><p>Abre la app de cámara del sistema y comprueba que se enciende la luz o aparece el aviso. Así sabrás cómo es la señal en tu equipo y la reconocerás si aparece cuando no toca.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Comprar un programa de «protección de webcam»</h3><p>Los permisos del sistema y los avisos de luz e icono ya hacen ese trabajo. Lo que sí importa es tener el sistema actualizado y no instalar programas de origen dudoso.</p></div><div class="fila"><h3>Desconectar o desinstalar la cámara</h3><p>No hace falta romper nada. Si no la usas, basta con quitar los permisos o apagar el acceso a la cámara para todo el sistema.</p></div><div class="fila"><h3>Revisar los permisos cada semana</h3><p>Con hacerlo hoy y repasarlo cuando instales una app de videollamadas o un programa nuevo es suficiente.</p></div><div class="fila"><h3>Pagar «por si acaso» al chantajista</h3><p>Pagar no borra nada porque no hay nada que borrar, y te marca como alguien que paga. Lo útil es cambiar la contraseña que aparezca en el correo.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«Si en el correo de chantaje sale mi contraseña, es que me han hackeado la cámara.»</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>Esa contraseña suele venir de una <strong>filtración de datos antigua</strong> de algún servicio. Prueba que tu contraseña está expuesta, no que alguien haya entrado en tu ordenador ni te haya grabado. INCIBE lo deja claro: nadie ha accedido a tus dispositivos ni ha grabado un vídeo íntimo. No pagues y cambia esa contraseña.</p><p class="src"><a href="https://www.incibe.es/ciudadania/avisos/nueva-campana-de-sextorsion-nadie-ha-instalado-un-software-espia-en-tu" rel="noopener noreferrer">INCIBE: nueva campaña de sextorsión, ¡nadie ha instalado un software espía en tu dispositivo!</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>Apps empaquetadas y aplicaciones de escritorio en Windows</h3><p>Las apps de la Microsoft Store se ejecutan con una identidad de paquete y declaran qué capacidades necesitan, como la cámara o el micrófono. Por eso Windows puede listarlas y controlarlas una a una.</p><p>Las aplicaciones de escritorio tradicionales no tienen esa identidad, así que Windows solo ofrece un interruptor común para todas y una lista de las que ha detectado. Microsoft indica que las aplicaciones de escritorio no aparecen en las listas de apps que puedes activar o desactivar, y que para permitirlas o bloquearlas hay que usar la configuración de cada aplicación. En la práctica, en Windows tu mejor defensa es <strong>no instalar programas de escritorio que no necesites</strong>.</p><h3>Por qué la luz del Mac es una garantía de diseño</h3><p>Apple afirma que la cámara de sus portátiles está diseñada para que no pueda activarse sin que se encienda el indicador luminoso. Eso convierte la luz en una señal fiable y no en un simple aviso del software.</p><p>En Windows, la luz depende de cómo la haya implementado cada fabricante. Por eso, en esos equipos, conviene apoyarse también en la notificación y en la lista de aplicaciones que ha detectado Windows.</p><h3>Qué cambia si el atacante ya es administrador</h3><p>Los permisos de privacidad protegen frente a apps normales. Un programa malicioso que ya ha conseguido privilegios de administrador tiene muchas más formas de saltarse controles del sistema. Por eso las medidas de base siguen siendo las de siempre: sistema actualizado, cuenta estándar para el día a día y nada de programas de origen dudoso.</p><h3>La cámara en el navegador</h3><p>Las webs acceden a la cámara y al micrófono a través de la API <code>getUserMedia</code>, que los navegadores solo ofrecen en contextos seguros (HTTPS) y siempre tras un permiso explícito, guardado por origen. Si desarrollas webs, pide el permiso solo cuando el usuario pulse el botón de llamada, no nada más cargar la página: es más respetuoso y aumenta la probabilidad de que lo acepte.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>Permiso de privacidad</dt><dd>Autorización que el sistema operativo guarda para cada app y que decide si puede usar la cámara, el micrófono u otros recursos sensibles.</dd><dt>Indicador de grabación</dt><dd>Señal en el centro de control del Mac que muestra que el micrófono se está usando o se ha usado hace poco.</dd><dt>Filtración de datos</dt><dd>Robo o exposición de la base de datos de un servicio, con correos y contraseñas de sus usuarios, que después circulan entre delincuentes.</dd><dt>Troyano de acceso remoto (RAT)</dt><dd>Programa malicioso que permite a un atacante controlar un equipo a distancia: ver la pantalla, robar archivos o encender la cámara y el micrófono.</dd><dt>Sextorsión</dt><dd>Chantaje en el que se amenaza con difundir imágenes íntimas, reales o inventadas, si la víctima no paga.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://support.microsoft.com/es-es/windows/privacy/manage-app-permissions-for-a-camera-in-windows" rel="noopener noreferrer">Microsoft: administrar los permisos de las aplicaciones para la cámara en Windows</a></li><li><a href="https://support.microsoft.com/es-es/windows/privacy/windows-camera-microphone-and-privacy" rel="noopener noreferrer">Microsoft: cámara, micrófono y privacidad en Windows</a></li><li><a href="https://support.microsoft.com/es-es/windows/privacy/windows-privacy-settings-that-apps-use" rel="noopener noreferrer">Microsoft: configuración de privacidad de Windows que usan las aplicaciones</a></li><li><a href="https://support.apple.com/es-es/guide/mac-help/mchlf6d108da/mac" rel="noopener noreferrer">Apple: controlar el acceso a la cámara del Mac</a></li><li><a href="https://support.apple.com/es-es/guide/mac-help/mchla1b1e1fe/mac" rel="noopener noreferrer">Apple: controlar el acceso al micrófono desde el Mac</a></li><li><a href="https://support.apple.com/es-es/102177" rel="noopener noreferrer">Apple: no cierres tu MacBook con una tapa sobre la cámara</a></li><li><a href="https://www.incibe.es/ciudadania/avisos/nueva-campana-de-sextorsion-nadie-ha-instalado-un-software-espia-en-tu" rel="noopener noreferrer">INCIBE: nueva campaña de sextorsión, ¡nadie ha instalado un software espía en tu dispositivo!</a></li><li><a href="https://consumer.ftc.gov/consumer-alerts/2020/04/scam-emails-demand-bitcoin-threaten-blackmail" rel="noopener noreferrer">FTC: correos de estafa que exigen bitcoin y amenazan con chantaje (en inglés)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-permiso" class="gl-pop"><strong>Permiso de privacidad</strong>Autorización que el sistema operativo guarda para cada app y que decide si puede usar la cámara, el micrófono u otros recursos sensibles.</div><div popover id="g-indicador" class="gl-pop"><strong>Indicador de grabación</strong>Señal en el centro de control del Mac que muestra que el micrófono se está usando o se ha usado hace poco.</div><div popover id="g-filtracion" class="gl-pop"><strong>Filtración de datos</strong>Robo o exposición de la base de datos de un servicio, con correos y contraseñas de sus usuarios, que después circulan entre delincuentes.</div><div popover id="g-rat" class="gl-pop"><strong>Troyano de acceso remoto (RAT)</strong>Programa malicioso que permite a un atacante controlar un equipo a distancia: ver la pantalla, robar archivos o encender la cámara y el micrófono.</div><div popover id="g-sextorsion" class="gl-pop"><strong>Sextorsión</strong>Chantaje en el que se amenaza con difundir imágenes íntimas, reales o inventadas, si la víctima no paga.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

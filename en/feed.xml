@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Sun, 22 Nov 2026 09:29:15 +0100</lastBuildDate>
+  <lastBuildDate>Mon, 23 Nov 2026 12:20:38 +0100</lastBuildDate>
+  <item>
+    <title>Who can turn on your laptop&#x27;s camera and microphone</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-23.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-23.html</guid>
+    <pubDate>Mon, 23 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Laptops</category>
+    <description>A sticker over the camera feels reassuring, but permissions are what actually decide who can see and hear you. How to review them in five minutes, and what to do if you get the &quot;I recorded you&quot; email.</description>
+  </item>
   <item>
     <title>Your router&#x27;s admin page shouldn&#x27;t be reachable from the internet</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-22.html</link>
