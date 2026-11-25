@@ -1,0 +1,304 @@
+{
+  "fecha": "2026-11-25",
+  "idioma": "es",
+  "foco": "sobremesa",
+  "concepto": "certificados-de-arranque-seguro",
+  "titulo": "Los certificados que protegen el arranque de tu PC caducaron este año: comprueba que tiene los nuevos",
+  "subtitulo": "Qué ha cambiado en el arranque seguro de Windows, por qué tu ordenador sigue encendiendo igual aunque no lo tenga resuelto, cómo mirarlo en un minuto y qué no hace falta tocar.",
+  "dispositivos": [
+    "sobremesa",
+    "portatil"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 8
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-25-drupal-core",
+      "2026-11-25-firefox-161"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Cuando enciendes un PC con Windows, antes de que aparezca el logotipo actúa el [[arranque|arranque seguro]]: el [[uefi|firmware]] de la placa base solo deja arrancar programas firmados con unos certificados que lleva guardados. Así se impide que un programa malicioso se instale **por debajo** de Windows, donde el antivirus no llega.",
+      "Los certificados que Microsoft puso en casi todos los ordenadores fabricados desde 2012 tenían fecha de caducidad, y **ya han caducado**: el 24/06/2026, el 27/06/2026 y el 19/10/2026. Microsoft los está sustituyendo por unos nuevos de 2023, que llegan **por Windows Update** sin que tengas que hacer nada en la mayoría de equipos.",
+      "La buena noticia: un PC que aún no los tenga **sigue arrancando y funcionando con normalidad**. Lo que pierde es la posibilidad de recibir las correcciones futuras del propio arranque. Por eso merece la pena mirar un minuto si el tuyo ya está al día, sobre todo si es un sobremesa montado por piezas o con unos años."
+    ],
+    "esencial": [
+      "Los certificados antiguos del arranque seguro caducaron en junio y octubre de 2026; los nuevos son de 2023.",
+      "Tu PC sigue arrancando sin ellos, pero deja de recibir parches del arranque.",
+      "Míralo en **Seguridad de Windows > Seguridad del dispositivo > Arranque seguro**: lee el texto, no solo el icono.",
+      "No desactives el arranque seguro «para evitar problemas»: Microsoft lo desaconseja expresamente."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "bajo",
+      "texto": "Los ataques al arranque son raros contra particulares: exigen un fallo concreto y, normalmente, que el atacante ya tenga permisos de administrador en el equipo."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Un programa que se instala en el arranque se carga antes que Windows, puede desactivar protecciones como BitLocker y sobrevive a muchas limpiezas."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Qué es exactamente lo que ha caducado",
+      "parrafos": [
+        "El arranque seguro funciona con varias listas guardadas en el firmware: una base de datos de firmas permitidas, otra de firmas revocadas (la [[dbx|DBX]]) y una clave que autoriza a modificar ambas. Microsoft tenía tres certificados de 2011 en esas listas: el que firma el arranque de Windows (**Microsoft Windows Production PCA 2011**, caducado el 19/10/2026), el que firma cargadores y firmware de terceros (**Microsoft UEFI CA 2011**, el 27/06/2026) y el que permite actualizar las listas (**Microsoft Corporation KEK CA 2011**, el 24/06/2026).",
+        "Sus sustitutos son **Windows UEFI CA 2023**, **Microsoft UEFI CA 2023**, **Microsoft Option ROM UEFI CA 2023** (para el firmware de tarjetas de expansión, como muchas gráficas) y **Microsoft Corporation KEK 2K CA 2023**. Microsoft indica que hay que añadirlos tanto a la base de datos de firmas como a la de claves."
+      ]
+    },
+    {
+      "titulo": "Qué pasa si tu PC no los tiene",
+      "parrafos": [
+        "Según Microsoft, el equipo **sigue arrancando y funcionando con normalidad** y las actualizaciones normales de Windows se siguen instalando. Lo que ya no puede recibir son las actualizaciones del Administrador de arranque de Windows, de las listas del arranque seguro y las correcciones de fallos nuevos en la cadena de arranque.",
+        "Es decir, no hay un apagón: hay un equipo que se va quedando sin parches en la parte más delicada. Microsoft añade que algunos componentes de terceros que dependen de su firma pueden dejar de actualizarse."
+      ]
+    },
+    {
+      "titulo": "Por qué en un sobremesa conviene mirarlo",
+      "parrafos": [
+        "En la mayoría de equipos, Windows Update aplica los certificados solo. Pero Microsoft avisa de que algunos necesitan **una actualización del firmware del fabricante**, que puede estar disponible solo para equipos aún en su periodo de soporte. En un sobremesa montado por piezas, ese fabricante es el de la **placa base**.",
+        "Tampoco los reciben los equipos con el arranque seguro desactivado (frecuente en PC antiguos o que alguna vez se tocaron para instalar otro sistema) ni, desde el 14/10/2025, los Windows 10 que no estén en el programa de actualizaciones extendidas (ESU)."
+      ]
+    },
+    {
+      "titulo": "El pequeño riesgo del cambio",
+      "parrafos": [
+        "Microsoft reconoce que, al recibir los certificados nuevos, algún equipo puede pedir la **clave de recuperación de BitLocker** (48 dígitos) o, en casos raros, no arrancar. No es motivo para evitar la actualización, pero sí para tener esa clave localizada antes."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "El punto de partida",
+      "texto": "Un atacante ya ha conseguido ejecutar un programa con permisos de administrador en tu PC, por ejemplo con un instalador falso."
+    },
+    {
+      "titulo": "Bajar al arranque",
+      "texto": "Coloca un cargador de arranque antiguo, firmado legítimamente pero con un fallo conocido, para saltarse el arranque seguro. Es lo que hacía BlackLotus, analizado por la NSA en 2023."
+    },
+    {
+      "titulo": "Desactivar defensas",
+      "texto": "Desde ahí, BlackLotus desactivaba la integridad de memoria y BitLocker y reiniciaba el equipo, cargándose antes que Windows en cada arranque."
+    },
+    {
+      "titulo": "La defensa",
+      "texto": "La solución de Microsoft es **revocar** los cargadores antiguos firmados con el certificado de 2011 (añadiéndolo a la DBX). Eso solo es posible en equipos que ya arrancan con lo firmado por el certificado de 2023."
+    },
+    {
+      "titulo": "Lo que te toca",
+      "texto": "Que tu PC tenga los certificados nuevos y el arranque seguro activado es lo que permite que esas revocaciones y parches futuros lleguen."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Aprovechar un fallo del arranque que ya esté corregido, si tu equipo no puede recibir las actualizaciones nuevas.",
+      "Instalarse por debajo de Windows si el arranque seguro está desactivado.",
+      "Desactivar protecciones como BitLocker o la integridad de memoria una vez dentro del arranque.",
+      "Seguir aprovechando cargadores antiguos mientras no se revoquen en tu equipo."
+    ],
+    "no_puede": [
+      "Atacar el arranque de tu PC solo porque los certificados hayan caducado: la caducidad no abre ninguna puerta por sí sola.",
+      "Llegar al arranque sin haber conseguido antes ejecutar algo con permisos altos en el equipo o tener acceso físico.",
+      "Hacer que tu PC deje de arrancar por la caducidad: Microsoft confirma que sigue funcionando.",
+      "Saltarse una revocación ya aplicada reinstalando Windows o formateando el disco: según Microsoft, las revocaciones se mantienen."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Mira el estado en Seguridad de Windows",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Microsoft muestra el estado de los certificados en la app. Lee el mensaje: según Microsoft, la marca verde por sí sola no confirma que estén actualizados.",
+      "pasos": {
+        "Windows 11": [
+          "Abre **Seguridad de Windows > Seguridad del dispositivo > Arranque seguro**.",
+          "**Totalmente actualizado**: no tienes que hacer nada. **Sin actualizar aún**: instala las actualizaciones pendientes y reinicia. **Requiere una acción**: sigue la indicación del mensaje (normalmente, contactar con el fabricante)."
+        ]
+      }
+    },
+    {
+      "titulo": "No pauses Windows Update y reinicia cuando te lo pida",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Es la vía por la que llegan los certificados. Microsoft pide tener una versión de Windows con soporte, las actualizaciones sin pausar y el arranque seguro activado.",
+      "pasos": {
+        "Windows 11": [
+          "Ve a **Configuración > Windows Update** y pulsa **Buscar actualizaciones**.",
+          "Si están en pausa, pulsa **Reanudar actualizaciones** y reinicia cuando termine."
+        ]
+      }
+    },
+    {
+      "titulo": "Localiza tu clave de recuperación de BitLocker antes",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Si el cambio de certificados te la pide, tendrás que teclear sus 48 dígitos. Si tu disco está cifrado con una cuenta Microsoft, suele estar guardada en ella.",
+      "pasos": {
+        "Windows 11": [
+          "Entra desde otro dispositivo en **account.microsoft.com/devices/recoverykey** con tu cuenta Microsoft.",
+          "Comprueba que aparece la clave de este PC y guárdala en tu gestor de contraseñas o en papel."
+        ]
+      }
+    },
+    {
+      "titulo": "Si pone «Requiere una acción», busca el firmware de tu placa base",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "20 min",
+      "para": "todos",
+      "texto": "Microsoft indica que algunos equipos necesitan una actualización de firmware del fabricante. En un sobremesa de marca, busca en su web de soporte; en uno montado por piezas, en la del fabricante de la placa base, con el modelo exacto.",
+      "pasos": {
+        "Windows 11": [
+          "Pulsa **Windows + R**, escribe `msinfo32` y anota **Fabricante de la placa base** y **Producto de la placa base**.",
+          "Busca ese modelo en la web oficial del fabricante y sigue sus instrucciones para actualizar el firmware (BIOS/UEFI). Si no hay versión nueva, consulta con su soporte."
+        ]
+      }
+    },
+    {
+      "titulo": "Comprueba los certificados con PowerShell",
+      "impacto": "bajo",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "avanzado",
+      "texto": "Para confirmar qué hay realmente en la base de datos de firmas, sin depender del mensaje de la app.",
+      "pasos": {
+        "Windows 11": [
+          "Abre **Terminal (Administrador)** y ejecuta `Get-SecureBootUEFI -Name db -Decoded` (disponible desde las actualizaciones acumulativas del 14/04/2026).",
+          "Debe aparecer `CN=Windows UEFI CA 2023`. También puedes mirar el valor `UEFICA2023Status` en `HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecureBoot\\Servicing`: debería decir `Updated`."
+        ]
+      }
+    },
+    {
+      "titulo": "Actualiza tu USB de recuperación",
+      "impacto": "bajo",
+      "esfuerzo": "medio",
+      "tiempo": "30 min",
+      "para": "paranoico",
+      "texto": "Microsoft advierte de que, cuando se apliquen las revocaciones de los cargadores antiguos, los medios de recuperación anteriores pueden dejar de arrancar el equipo. Uno creado después de tener los certificados nuevos te ahorra sustos.",
+      "pasos": {
+        "Windows 11": [
+          "Busca en Inicio **Crear una unidad de recuperación**, conecta un USB y sigue el asistente."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "¿El mensaje dice «Totalmente actualizado»?",
+      "texto": "En **Seguridad del dispositivo > Arranque seguro**, el texto debería indicar que el arranque seguro está activado y que se han aplicado todas las actualizaciones de certificado necesarias."
+    },
+    {
+      "titulo": "¿El arranque seguro está activado?",
+      "texto": "En `msinfo32`, la línea **Estado de arranque seguro** debería decir **Activado**."
+    },
+    {
+      "titulo": "¿Tienes la clave de BitLocker a mano?",
+      "texto": "Compruébalo hoy en tu cuenta Microsoft, no el día que el ordenador te la pida."
+    },
+    {
+      "titulo": "¿Windows Update está al día?",
+      "texto": "Sin actualizaciones en pausa y sin un reinicio pendiente desde hace semanas."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Desactivar el arranque seguro",
+      "texto": "Microsoft lo dice claro: no debe desactivarse para evitar la caducidad, porque reduce mucho la protección frente al malware de arranque."
+    },
+    {
+      "titulo": "Actualizar la BIOS «por si acaso»",
+      "texto": "Si la app dice que está totalmente actualizado, no hace falta. Actualizar firmware tiene su propio riesgo y solo merece la pena si el estado lo pide o el fabricante lo recomienda."
+    },
+    {
+      "titulo": "Reinstalar Windows o cambiar de PC",
+      "texto": "La caducidad no estropea nada: el equipo sigue arrancando. Lo normal es que se resuelva solo con Windows Update."
+    },
+    {
+      "titulo": "Programas que prometen «arreglar» el arranque seguro",
+      "texto": "Los certificados llegan por Windows Update o por el firmware oficial del fabricante. No hay otra vía legítima."
+    }
+  ],
+  "mito": {
+    "mito": "«Cuando caducan los certificados, mi PC dejará de arrancar.»",
+    "realidad": "Microsoft explica que un equipo que llega a la fecha sin los certificados nuevos **sigue arrancando y funcionando con normalidad**. Lo que pierde son las actualizaciones de seguridad del arranque, como las del Administrador de arranque y las listas de revocación.",
+    "fuente": {
+      "titulo": "Microsoft: cuando los certificados de arranque seguro expiran en dispositivos Windows",
+      "url": "https://support.microsoft.com/es-es/servicing/os/secure-boot/2026/02/when-secure-boot-certificates-expire-on-windows-devices"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "PK, KEK, DB y DBX",
+      "parrafos": [
+        "El firmware UEFI guarda la clave de plataforma (PK) del fabricante, la KEK (claves autorizadas a modificar las bases de datos), la DB (firmas y hashes permitidos) y la DBX (revocados). Windows actualiza las variables activas; el firmware del fabricante actualiza también los valores predeterminados. Por eso Microsoft advierte de que, si se restablece el firmware a unos valores de fábrica que no incluyen Windows UEFI CA 2023 después de aplicar las revocaciones, el arranque seguro bloqueará el inicio y habrá que recurrir a un medio de recuperación."
+      ]
+    },
+    {
+      "titulo": "CVE-2023-24932 y la revocación de PCA 2011",
+      "parrafos": [
+        "BlackLotus explotaba CVE-2022-21894 (*Baton Drop*) cargando un administrador de arranque antiguo y vulnerable. La mitigación de fondo, documentada para CVE-2023-24932, pasa por añadir Windows UEFI CA 2023 a la DB, arrancar con un administrador firmado por él y, después, añadir **Windows Production PCA 2011** a la DBX, lo que deja de confiar en todos los administradores de arranque firmados con ese certificado. Microsoft avisa de que no se puede revertir mientras se use el arranque seguro y de que la fase de aplicación obligatoria se anunciará con al menos seis meses de antelación."
+      ]
+    },
+    {
+      "titulo": "Comprobaciones útiles",
+      "parrafos": [
+        "En equipos sin el parámetro `-Decoded`, Microsoft propone `[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI db).bytes) -match 'Windows UEFI CA 2023'`, que devuelve `True` si el certificado está en la DB. Antes de tocar nada en equipos con BitLocker, guarda los protectores con `manage-bde -protectors -get %systemdrive%`. Si desarrollas o distribuyes cargadores o controladores UEFI firmados por Microsoft UEFI CA 2011, revisa la firma con la nueva Microsoft UEFI CA 2023 u Option ROM UEFI CA 2023."
+      ]
+    }
+  ],
+  "glosario": {
+    "arranque": [
+      "Arranque seguro (Secure Boot)",
+      "Función del firmware UEFI que solo permite arrancar software firmado con certificados de confianza guardados en el propio equipo."
+    ],
+    "uefi": [
+      "Firmware UEFI",
+      "El programa de la placa base que se ejecuta al encender el ordenador, antes que Windows. Es el sucesor de la antigua BIOS."
+    ],
+    "dbx": [
+      "DBX",
+      "Lista de firmas revocadas del arranque seguro: lo que figura en ella ya no puede arrancar aunque esté firmado."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Microsoft: expiración del certificado de arranque seguro de Windows y actualizaciones de CA",
+      "url": "https://support.microsoft.com/es-es/servicing/os/secure-boot/2025/06/windows-secure-boot-certificate-expiration-and-ca-updates"
+    },
+    {
+      "titulo": "Microsoft: cuando los certificados de arranque seguro expiran en dispositivos Windows",
+      "url": "https://support.microsoft.com/es-es/servicing/os/secure-boot/2026/02/when-secure-boot-certificates-expire-on-windows-devices"
+    },
+    {
+      "titulo": "Microsoft: estado de actualización del certificado de arranque seguro en la aplicación de Seguridad de Windows",
+      "url": "https://support.microsoft.com/es-es/servicing/os/secure-boot/2026/03/secure-boot-certificate-update-status-in-the-windows-security-app"
+    },
+    {
+      "titulo": "Microsoft: dispositivos Windows para usuarios particulares con actualizaciones administradas por Microsoft",
+      "url": "https://support.microsoft.com/es-es/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates"
+    },
+    {
+      "titulo": "Microsoft: revocaciones del Administrador de arranque asociadas a CVE-2023-24932 (en inglés)",
+      "url": "https://support.microsoft.com/en-us/servicing/os/windows/2023/03/how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023"
+    },
+    {
+      "titulo": "Microsoft: el parámetro -Decoded de Get-SecureBootUEFI (en inglés)",
+      "url": "https://support.microsoft.com/en-us/servicing/os/secure-boot/docs/2026/04/powershell-using-the-decoded-parameter-in-get-securebootuefi"
+    },
+    {
+      "titulo": "NSA: guía de mitigación de BlackLotus, junio de 2023 (PDF, en inglés)",
+      "url": "https://media.defense.gov/2023/Jun/22/2003245723/-1/-1/0/CSI_BlackLotus_Mitigation_Guide.PDF"
+    }
+  ]
+}

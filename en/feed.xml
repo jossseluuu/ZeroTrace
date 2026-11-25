@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Tue, 24 Nov 2026 08:24:08 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 25 Nov 2026 09:01:24 +0100</lastBuildDate>
+  <item>
+    <title>The certificates that protect your PC&#x27;s startup expired this year: make sure it has the new ones</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-25.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-25.html</guid>
+    <pubDate>Wed, 25 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Desktop computers</category>
+    <description>What changed in Windows Secure Boot, why your computer still starts the same even if it isn&#x27;t sorted yet, how to check in a minute, and what you don&#x27;t need to touch. — Critical: Drupal: highly critical installer flaw lets attackers take over sites, already exploited | Heads-up: Firefox 161 fixes 110 flaws, 59 of them high impact</description>
+  </item>
   <item>
     <title>Your phone carries a number for tracking you across ads (and you can take it away)</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-24.html</link>

@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="What changed in Windows Secure Boot, why your computer still starts the same even if it isn&#x27;t sorted yet, how to check in a minute, and what you don&#x27;t need to touch.">
+<title>The certificates that protect your PC&#x27;s startup expired this year: make sure it has the new ones · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-25.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-25.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Wednesday, November 25, 2026 · 🖥️ Desktop computers</p>
+<h1>The certificates that protect your PC's startup expired this year: make sure it has the new ones</h1><p class="sub">What changed in Windows Secure Boot, why your computer still starts the same even if it isn't sorted yet, how to check in a minute, and what you don't need to touch.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 8 min</li><li>🖥️ Desktop</li><li>💻 Laptop</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta rojo" id="2026-11-25-drupal-core">
+<header><span class="pill rojo">Critical</span><h3>Drupal: highly critical installer flaw lets attackers take over sites, already exploited</h3></header>
+<dl><dt>Who it affects</dt><dd>Anyone running a Drupal 10 or 11 site older than 10.6.22, 11.3.22, or 11.4.13.</dd>
+<dt>What to do</dt><dd>Update core to <strong>10.6.22</strong>, <strong>11.3.22</strong>, or <strong>11.4.13</strong>, depending on your branch. In the meantime, Drupal says some exploit paths are blocked if the web server can't write to <code>settings.php</code>, and it recommends securing the installer.</dd>
+<dt class="deep">Details</dt><dd class="deep">Drupal published advisory SA-CORE-2026-017 on November 18: a flaw in the installer (<code>install.php</code>) allows remote code execution or site takeover (CVE-2026-132165), rated "highly critical" (20/25). On November 21 it added that the flaw had been exploited on live sites since November 19, and CISA added it to its Known Exploited Vulnerabilities catalog on November 24. The same releases fix a less severe flaw published the same day (SA-CORE-2026-018).<div class="cves"><code>CVE-2026-132165</code></div></dd></dl>
+<p class="src"><a href="https://www.drupal.org/sa-core-2026-017" rel="noopener noreferrer">Drupal: SA-CORE-2026-017, Remote code execution</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noopener noreferrer">CISA: Known Exploited Vulnerabilities Catalog (Nov 24)</a></p></article><article class="alerta amarillo" id="2026-11-25-firefox-161">
+<header><span class="pill amarillo">Heads-up</span><h3>Firefox 161 fixes 110 flaws, 59 of them high impact</h3></header>
+<dl><dt>Who it affects</dt><dd>Anyone using Firefox on a computer, including Extended Support Release (ESR) versions.</dd>
+<dt>What to do</dt><dd>Update to <strong>Firefox 161</strong> (or <strong>ESR 153.8</strong> / <strong>ESR 115.46</strong> if you use the extended support release) from <strong>Menu &gt; Help &gt; About Firefox</strong>, then restart the browser.</dd>
+<dt class="deep">Details</dt><dd class="deep">Mozilla published advisory MFSA 2026-131 on November 24. The high-impact flaws include a privilege escalation in WebGPU (CVE-2026-135500), a sandbox escape in the audio/video component (CVE-2026-135501), and a site-isolation issue in WebRender (CVE-2026-135502). Mozilla hasn't said any are being exploited. Thunderbird 161 shipped the same day.<div class="cves"><code>CVE-2026-135500</code><code>CVE-2026-135501</code><code>CVE-2026-135502</code></div></dd></dl>
+<p class="src"><a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-131/" rel="noopener noreferrer">Mozilla: MFSA 2026-131, Firefox 161</a> · <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-133/" rel="noopener noreferrer">Mozilla: MFSA 2026-133, Firefox ESR 153.8</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>When you turn on a Windows PC, before the logo appears, <button type="button" class="term" popovertarget="g-secureboot">Secure Boot</button> kicks in: the motherboard's <button type="button" class="term" popovertarget="g-uefi">firmware</button> only lets software start if it's signed with certificates stored on the machine. That keeps malware from installing itself <strong>underneath</strong> Windows, where antivirus can't reach.</p><p>The certificates Microsoft put on nearly every computer built since 2012 had an expiration date, and <strong>they've now expired</strong>: on June 24, June 27, and October 19, 2026. Microsoft is replacing them with new 2023 certificates that arrive <strong>through Windows Update</strong>, with nothing for you to do on most machines.</p><p>The good news: a PC that doesn't have them yet <strong>still starts and works normally</strong>. What it loses is the ability to receive future fixes for the startup process itself. So it's worth a one-minute check, especially on a custom-built or older desktop.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>The old Secure Boot certificates expired in June and October 2026; the replacements are from 2023.</li><li>Your PC still starts without them, but it stops getting startup security fixes.</li><li>Check <strong>Windows Security &gt; Device security &gt; Secure Boot</strong>: read the message, not just the icon.</li><li>Don't turn off Secure Boot "to avoid problems": Microsoft explicitly advises against it.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: low</span>
+<span class="barras bajo" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Startup attacks against home users are rare: they need a specific flaw and usually an attacker who already has admin rights on the machine.</p></div><div class="medidor"><div class="top"><span>Impact: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Malware in the startup chain loads before Windows, can turn off protections like BitLocker, and survives many cleanups.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>What exactly expired</h3><p>Secure Boot relies on several lists stored in firmware: a database of allowed signatures, another of revoked ones (the <button type="button" class="term" popovertarget="g-dbx">DBX</button>), and a key that authorizes changes to both. Microsoft had three 2011 certificates in those lists: the one that signs the Windows boot loader (<strong>Microsoft Windows Production PCA 2011</strong>, expired October 19, 2026), the one that signs third-party boot loaders and firmware (<strong>Microsoft UEFI CA 2011</strong>, June 27, 2026), and the one that allows updating the lists (<strong>Microsoft Corporation KEK CA 2011</strong>, June 24, 2026).</p><p>Their replacements are <strong>Windows UEFI CA 2023</strong>, <strong>Microsoft UEFI CA 2023</strong>, <strong>Microsoft Option ROM UEFI CA 2023</strong> (for firmware on expansion cards, such as many graphics cards), and <strong>Microsoft Corporation KEK 2K CA 2023</strong>. Microsoft says both the signature database and the key database need the new versions.</p><h3>What happens if your PC doesn't have them</h3><p>According to Microsoft, the device <strong>continues to start and operate normally</strong>, and regular Windows updates still install. What it can no longer receive are updates to Windows Boot Manager, to the Secure Boot databases and revocation lists, and fixes for newly discovered vulnerabilities in the boot chain.</p><p>In other words, there's no blackout: there's a machine that slowly falls behind on patches in its most sensitive layer. Microsoft adds that some third-party components that rely on its signature may fail to update.</p><h3>Why desktops deserve a look</h3><p>On most machines, Windows Update applies the certificates by itself. But Microsoft warns that some devices need <strong>a firmware update from the manufacturer</strong>, which may only be available for devices still within their support period. On a custom-built desktop, that manufacturer is your <strong>motherboard</strong> maker.</p><p>Devices with Secure Boot turned off won't get them either (common on older PCs or ones tweaked to install another OS), and neither will Windows 10 PCs outside the Extended Security Updates (ESU) program since October 14, 2025.</p><h3>The small risk of the switch</h3><p>Microsoft acknowledges that when the new certificates arrive, some devices may ask for the <strong>BitLocker recovery key</strong> (48 digits) or, rarely, fail to start. That's no reason to avoid the update, but it is a reason to know where that key is first.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>The starting point</strong><p>An attacker has already managed to run a program with admin rights on your PC, for example through a fake installer.</p></li><li><strong>Dropping into startup</strong><p>It plants an old boot loader, legitimately signed but with a known flaw, to bypass Secure Boot. That's what BlackLotus did, as analyzed by the NSA in 2023.</p></li><li><strong>Turning off defenses</strong><p>From there, BlackLotus disabled Memory Integrity and BitLocker and rebooted the device, loading ahead of Windows on every startup.</p></li><li><strong>The defense</strong><p>Microsoft's fix is to <strong>revoke</strong> the old boot loaders signed with the 2011 certificate (by adding it to the DBX). That's only possible on devices already booting with software signed by the 2023 certificate.</p></li><li><strong>Your part</strong><p>Having the new certificates and Secure Boot turned on is what lets those revocations and future fixes reach your PC.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Exploit a startup flaw that has already been fixed, if your device can't receive the new updates.</li><li>Install itself underneath Windows if Secure Boot is turned off.</li><li>Disable protections like BitLocker or Memory Integrity once inside the startup chain.</li><li>Keep abusing old boot loaders until they're revoked on your device.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>Attack your PC's startup just because the certificates expired: expiration doesn't open a door by itself.</li><li>Reach the startup chain without first running something with high privileges on the device or having physical access.</li><li>Make your PC stop starting because of the expiration: Microsoft confirms it keeps working.</li><li>Undo a revocation that's already applied by reinstalling Windows or reformatting the disk: per Microsoft, revocations persist.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Check the status in Windows Security</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: everyone</li></ul>
+<p>Microsoft shows certificate status in the app. Read the message: per Microsoft, a green check mark alone doesn't confirm the certificates are updated.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Open <strong>Windows Security &gt; Device security &gt; Secure Boot</strong>.</li><li><strong>Fully updated</strong>: nothing to do. <strong>Not yet updated</strong>: install pending updates and restart. <strong>Requires action</strong>: follow the message (usually, contact the manufacturer).</li></ol></div></div></article><article class="medida"><h3>Don't pause Windows Update, and restart when asked</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>That's how the certificates arrive. Microsoft asks for a supported version of Windows, updates not paused, and Secure Boot turned on.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Go to <strong>Settings &gt; Windows Update</strong> and select <strong>Check for updates</strong>.</li><li>If updates are paused, select <strong>Resume updates</strong> and restart when it finishes.</li></ol></div></div></article><article class="medida"><h3>Find your BitLocker recovery key first</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>If the certificate change asks for it, you'll need to type all 48 digits. If your drive was encrypted with a Microsoft account, it's usually stored there.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>From another device, go to <strong>account.microsoft.com/devices/recoverykey</strong> and sign in with your Microsoft account.</li><li>Make sure this PC's key is listed and save it in your password manager or on paper.</li></ol></div></div></article><article class="medida"><h3>If it says "Requires action," look for your motherboard's firmware</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: medium</li>
+<li>⏱ 20 min</li><li>For: everyone</li></ul>
+<p>Microsoft says some devices need a firmware update from the manufacturer. For a brand-name desktop, check its support site; for a custom build, check your motherboard maker's site for the exact model.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Press <strong>Windows + R</strong>, type <code>msinfo32</code>, and note <strong>BaseBoard Manufacturer</strong> and <strong>BaseBoard Product</strong>.</li><li>Look up that model on the manufacturer's official site and follow its instructions to update the firmware (BIOS/UEFI). If there's no new version, contact its support.</li></ol></div></div></article><article class="medida deep"><h3>Check the certificates with PowerShell<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="bajo">Impact: low</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: advanced</li></ul>
+<p>To confirm what's actually in the signature database without relying on the app's message.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Open <strong>Terminal (Admin)</strong> and run <code>Get-SecureBootUEFI -Name db -Decoded</code> (available since the April 14, 2026, cumulative updates).</li><li>You should see <code>CN=Windows UEFI CA 2023</code>. You can also check the <code>UEFICA2023Status</code> value under <code>HKLM:\SYSTEM\CurrentControlSet\Control\SecureBoot\Servicing</code>: it should read <code>Updated</code>.</li></ol></div></div></article><article class="medida deep"><h3>Refresh your recovery USB<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="bajo">Impact: low</li><li>Effort: medium</li>
+<li>⏱ 30 min</li><li>For: paranoid</li></ul>
+<p>Microsoft warns that once the old boot loaders are revoked, older recovery media may no longer start the device. One created after you have the new certificates saves you a scare.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Search Start for <strong>Create a recovery drive</strong>, plug in a USB drive, and follow the wizard.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>Does the message say "Fully updated"?</h3><p>Under <strong>Device security &gt; Secure Boot</strong>, the text should say Secure Boot is on and all required certificate updates have been applied.</p></div><div class="fila"><h3>Is Secure Boot on?</h3><p>In <code>msinfo32</code>, the <strong>Secure Boot State</strong> line should read <strong>On</strong>.</p></div><div class="fila"><h3>Do you have your BitLocker key handy?</h3><p>Check your Microsoft account today, not the day your computer asks for it.</p></div><div class="fila"><h3>Is Windows Update current?</h3><p>No paused updates and no restart pending for weeks.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Turning off Secure Boot</h3><p>Microsoft is clear: it shouldn't be disabled to work around certificate expiration, because that significantly reduces protection against boot-level malware.</p></div><div class="fila"><h3>Updating the BIOS "just in case"</h3><p>If the app says fully updated, you don't need to. Firmware updates carry their own risk and are only worth it if the status calls for one or the manufacturer recommends it.</p></div><div class="fila"><h3>Reinstalling Windows or replacing your PC</h3><p>The expiration doesn't break anything: the device keeps starting. It usually resolves itself through Windows Update.</p></div><div class="fila"><h3>Apps that promise to "fix" Secure Boot</h3><p>The certificates come through Windows Update or the manufacturer's official firmware. There's no other legitimate route.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"Once the certificates expire, my PC won't start."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>Microsoft explains that a device that reaches the expiration date without the new certificates <strong>will still start and operate normally</strong>. What it loses are startup security updates, such as Boot Manager updates and revocation lists.</p><p class="src"><a href="https://support.microsoft.com/en-us/servicing/os/secure-boot/2026/02/when-secure-boot-certificates-expire-on-windows-devices" rel="noopener noreferrer">Microsoft: When Secure Boot certificates expire on Windows devices</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>PK, KEK, DB, and DBX</h3><p>UEFI firmware stores the manufacturer's Platform Key (PK), the KEK (keys authorized to modify the databases), the DB (allowed signatures and hashes), and the DBX (revoked ones). Windows updates the active variables; the manufacturer's firmware also updates the defaults. That's why Microsoft warns that if firmware is reset to factory defaults lacking Windows UEFI CA 2023 after revocations are applied, Secure Boot will block startup and you'll need recovery media.</p><h3>CVE-2023-24932 and revoking PCA 2011</h3><p>BlackLotus exploited CVE-2022-21894 (<em>Baton Drop</em>) by loading an old, vulnerable boot manager. The underlying mitigation, documented for CVE-2023-24932, is to add Windows UEFI CA 2023 to the DB, boot with a manager signed by it, and then add <strong>Windows Production PCA 2011</strong> to the DBX, which untrusts every boot manager signed by that certificate. Microsoft warns this can't be reverted while Secure Boot is in use and that the mandatory enforcement phase will be announced with at least six months' notice.</p><h3>Useful checks</h3><p>On systems without the <code>-Decoded</code> parameter, Microsoft suggests <code>[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI db).bytes) -match 'Windows UEFI CA 2023'</code>, which returns <code>True</code> if the certificate is in the DB. Before touching BitLocker-protected machines, back up the protectors with <code>manage-bde -protectors -get %systemdrive%</code>. If you build or ship UEFI loaders or drivers signed with Microsoft UEFI CA 2011, plan for signing under the new Microsoft UEFI CA 2023 or Option ROM UEFI CA 2023.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Secure Boot</dt><dd>A UEFI firmware feature that only lets software start if it&#x27;s signed with trusted certificates stored on the device.</dd><dt>UEFI firmware</dt><dd>The motherboard software that runs when you turn on the computer, before Windows. It&#x27;s the successor to the old BIOS.</dd><dt>DBX</dt><dd>Secure Boot&#x27;s list of revoked signatures: anything on it can&#x27;t start, even if it&#x27;s signed.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://support.microsoft.com/en-us/servicing/os/secure-boot/2025/06/windows-secure-boot-certificate-expiration-and-ca-updates" rel="noopener noreferrer">Microsoft: Windows Secure Boot certificate expiration and CA updates</a></li><li><a href="https://support.microsoft.com/en-us/servicing/os/secure-boot/2026/02/when-secure-boot-certificates-expire-on-windows-devices" rel="noopener noreferrer">Microsoft: When Secure Boot certificates expire on Windows devices</a></li><li><a href="https://support.microsoft.com/en-us/servicing/os/secure-boot/2026/03/secure-boot-certificate-update-status-in-the-windows-security-app" rel="noopener noreferrer">Microsoft: Secure Boot certificate update status in the Windows Security app</a></li><li><a href="https://support.microsoft.com/en-us/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates" rel="noopener noreferrer">Microsoft: Windows devices for home users with Microsoft-managed updates</a></li><li><a href="https://support.microsoft.com/en-us/servicing/os/windows/2023/03/how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023" rel="noopener noreferrer">Microsoft: Managing Windows Boot Manager revocations for CVE-2023-24932</a></li><li><a href="https://support.microsoft.com/en-us/servicing/os/secure-boot/docs/2026/04/powershell-using-the-decoded-parameter-in-get-securebootuefi" rel="noopener noreferrer">Microsoft: Using the -Decoded parameter in Get-SecureBootUEFI</a></li><li><a href="https://media.defense.gov/2023/Jun/22/2003245723/-1/-1/0/CSI_BlackLotus_Mitigation_Guide.PDF" rel="noopener noreferrer">NSA: BlackLotus Mitigation Guide, June 2023 (PDF)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-secureboot" class="gl-pop"><strong>Secure Boot</strong>A UEFI firmware feature that only lets software start if it&#x27;s signed with trusted certificates stored on the device.</div><div popover id="g-uefi" class="gl-pop"><strong>UEFI firmware</strong>The motherboard software that runs when you turn on the computer, before Windows. It&#x27;s the successor to the old BIOS.</div><div popover id="g-dbx" class="gl-pop"><strong>DBX</strong>Secure Boot&#x27;s list of revoked signatures: anything on it can&#x27;t start, even if it&#x27;s signed.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

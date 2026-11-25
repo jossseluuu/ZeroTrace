@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Qué ha cambiado en el arranque seguro de Windows, por qué tu ordenador sigue encendiendo igual aunque no lo tenga resuelto, cómo mirarlo en un minuto y qué no hace falta tocar.">
+<title>Los certificados que protegen el arranque de tu PC caducaron este año: comprueba que tiene los nuevos · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-25.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-25.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Miércoles, 25 de noviembre de 2026 · 🖥️ Ordenadores de sobremesa</p>
+<h1>Los certificados que protegen el arranque de tu PC caducaron este año: comprueba que tiene los nuevos</h1><p class="sub">Qué ha cambiado en el arranque seguro de Windows, por qué tu ordenador sigue encendiendo igual aunque no lo tenga resuelto, cómo mirarlo en un minuto y qué no hace falta tocar.</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 8 min</li><li>🖥️ Sobremesa</li><li>💻 Portátil</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día de atención"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Día de atención</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="alertas"><article class="alerta rojo" id="2026-11-25-drupal-core">
+<header><span class="pill rojo">Crítico</span><h3>Drupal: fallo muy crítico en el instalador que permite tomar la web, ya explotado</h3></header>
+<dl><dt>A quién afecta</dt><dd>Quien administre una web con Drupal 10 u 11 anterior a las versiones 10.6.22, 11.3.22 u 11.4.13.</dd>
+<dt>Qué hacer</dt><dd>Actualiza el núcleo a <strong>10.6.22</strong>, <strong>11.3.22</strong> u <strong>11.4.13</strong>, según tu rama. Mientras tanto, Drupal indica que algunas vías de ataque se bloquean si el servidor web no puede escribir en <code>settings.php</code>, y recomienda proteger el instalador.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Drupal publicó el 18/11 el aviso SA-CORE-2026-017: un fallo en el instalador (<code>install.php</code>) permite ejecutar código en el servidor o hacerse con el sitio (CVE-2026-132165), calificado como «muy crítico» (20/25). El 21/11 añadió que se ha explotado en webs reales desde el 19/11, y CISA lo incluyó el 24/11 en su catálogo de vulnerabilidades explotadas. Las mismas versiones corrigen otro fallo menos grave publicado el mismo día (SA-CORE-2026-018).<div class="cves"><code>CVE-2026-132165</code></div></dd></dl>
+<p class="src"><a href="https://www.drupal.org/sa-core-2026-017" rel="noopener noreferrer">Drupal: SA-CORE-2026-017, ejecución remota de código (en inglés)</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noopener noreferrer">CISA: catálogo de vulnerabilidades explotadas (24/11, en inglés)</a></p></article><article class="alerta amarillo" id="2026-11-25-firefox-161">
+<header><span class="pill amarillo">Atención</span><h3>Firefox 161 corrige 110 fallos, 59 de ellos de impacto alto</h3></header>
+<dl><dt>A quién afecta</dt><dd>Cualquiera que use Firefox en el ordenador, incluidas las versiones de soporte extendido (ESR).</dd>
+<dt>Qué hacer</dt><dd>Actualiza a <strong>Firefox 161</strong> (o a <strong>ESR 153.8</strong> / <strong>ESR 115.46</strong> si usas la versión de soporte extendido) desde <strong>Menú &gt; Ayuda &gt; Acerca de Firefox</strong> y reinicia el navegador.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Mozilla publicó el 24/11 el boletín MFSA 2026-131. Entre los fallos de impacto alto hay una escalada de privilegios en WebGPU (CVE-2026-135500), una salida del <em>sandbox</em> en el componente de audio y vídeo (CVE-2026-135501) y un fallo de aislamiento de sitios en WebRender (CVE-2026-135502). Mozilla no indica que ninguno se esté explotando. El mismo día actualizó Thunderbird a la versión 161.<div class="cves"><code>CVE-2026-135500</code><code>CVE-2026-135501</code><code>CVE-2026-135502</code></div></dd></dl>
+<p class="src"><a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-131/" rel="noopener noreferrer">Mozilla: MFSA 2026-131, Firefox 161 (en inglés)</a> · <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-133/" rel="noopener noreferrer">Mozilla: MFSA 2026-133, Firefox ESR 153.8 (en inglés)</a></p></article></div><p class="nota">El color del día refleja el impacto para el público general. Cada alerta lleva el suyo para las personas a las que afecta. <a href="../../../alertas.html">Ver todas las alertas notificadas</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Cuando enciendes un PC con Windows, antes de que aparezca el logotipo actúa el <button type="button" class="term" popovertarget="g-arranque">arranque seguro</button>: el <button type="button" class="term" popovertarget="g-uefi">firmware</button> de la placa base solo deja arrancar programas firmados con unos certificados que lleva guardados. Así se impide que un programa malicioso se instale <strong>por debajo</strong> de Windows, donde el antivirus no llega.</p><p>Los certificados que Microsoft puso en casi todos los ordenadores fabricados desde 2012 tenían fecha de caducidad, y <strong>ya han caducado</strong>: el 24/06/2026, el 27/06/2026 y el 19/10/2026. Microsoft los está sustituyendo por unos nuevos de 2023, que llegan <strong>por Windows Update</strong> sin que tengas que hacer nada en la mayoría de equipos.</p><p>La buena noticia: un PC que aún no los tenga <strong>sigue arrancando y funcionando con normalidad</strong>. Lo que pierde es la posibilidad de recibir las correcciones futuras del propio arranque. Por eso merece la pena mirar un minuto si el tuyo ya está al día, sobre todo si es un sobremesa montado por piezas o con unos años.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>Los certificados antiguos del arranque seguro caducaron en junio y octubre de 2026; los nuevos son de 2023.</li><li>Tu PC sigue arrancando sin ellos, pero deja de recibir parches del arranque.</li><li>Míralo en <strong>Seguridad de Windows &gt; Seguridad del dispositivo &gt; Arranque seguro</strong>: lee el texto, no solo el icono.</li><li>No desactives el arranque seguro «para evitar problemas»: Microsoft lo desaconseja expresamente.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: baja</span>
+<span class="barras bajo" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Los ataques al arranque son raros contra particulares: exigen un fallo concreto y, normalmente, que el atacante ya tenga permisos de administrador en el equipo.</p></div><div class="medidor"><div class="top"><span>Impacto: alto</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Un programa que se instala en el arranque se carga antes que Windows, puede desactivar protecciones como BitLocker y sobrevive a muchas limpiezas.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Qué es exactamente lo que ha caducado</h3><p>El arranque seguro funciona con varias listas guardadas en el firmware: una base de datos de firmas permitidas, otra de firmas revocadas (la <button type="button" class="term" popovertarget="g-dbx">DBX</button>) y una clave que autoriza a modificar ambas. Microsoft tenía tres certificados de 2011 en esas listas: el que firma el arranque de Windows (<strong>Microsoft Windows Production PCA 2011</strong>, caducado el 19/10/2026), el que firma cargadores y firmware de terceros (<strong>Microsoft UEFI CA 2011</strong>, el 27/06/2026) y el que permite actualizar las listas (<strong>Microsoft Corporation KEK CA 2011</strong>, el 24/06/2026).</p><p>Sus sustitutos son <strong>Windows UEFI CA 2023</strong>, <strong>Microsoft UEFI CA 2023</strong>, <strong>Microsoft Option ROM UEFI CA 2023</strong> (para el firmware de tarjetas de expansión, como muchas gráficas) y <strong>Microsoft Corporation KEK 2K CA 2023</strong>. Microsoft indica que hay que añadirlos tanto a la base de datos de firmas como a la de claves.</p><h3>Qué pasa si tu PC no los tiene</h3><p>Según Microsoft, el equipo <strong>sigue arrancando y funcionando con normalidad</strong> y las actualizaciones normales de Windows se siguen instalando. Lo que ya no puede recibir son las actualizaciones del Administrador de arranque de Windows, de las listas del arranque seguro y las correcciones de fallos nuevos en la cadena de arranque.</p><p>Es decir, no hay un apagón: hay un equipo que se va quedando sin parches en la parte más delicada. Microsoft añade que algunos componentes de terceros que dependen de su firma pueden dejar de actualizarse.</p><h3>Por qué en un sobremesa conviene mirarlo</h3><p>En la mayoría de equipos, Windows Update aplica los certificados solo. Pero Microsoft avisa de que algunos necesitan <strong>una actualización del firmware del fabricante</strong>, que puede estar disponible solo para equipos aún en su periodo de soporte. En un sobremesa montado por piezas, ese fabricante es el de la <strong>placa base</strong>.</p><p>Tampoco los reciben los equipos con el arranque seguro desactivado (frecuente en PC antiguos o que alguna vez se tocaron para instalar otro sistema) ni, desde el 14/10/2025, los Windows 10 que no estén en el programa de actualizaciones extendidas (ESU).</p><h3>El pequeño riesgo del cambio</h3><p>Microsoft reconoce que, al recibir los certificados nuevos, algún equipo puede pedir la <strong>clave de recuperación de BitLocker</strong> (48 dígitos) o, en casos raros, no arrancar. No es motivo para evitar la actualización, pero sí para tener esa clave localizada antes.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>El punto de partida</strong><p>Un atacante ya ha conseguido ejecutar un programa con permisos de administrador en tu PC, por ejemplo con un instalador falso.</p></li><li><strong>Bajar al arranque</strong><p>Coloca un cargador de arranque antiguo, firmado legítimamente pero con un fallo conocido, para saltarse el arranque seguro. Es lo que hacía BlackLotus, analizado por la NSA en 2023.</p></li><li><strong>Desactivar defensas</strong><p>Desde ahí, BlackLotus desactivaba la integridad de memoria y BitLocker y reiniciaba el equipo, cargándose antes que Windows en cada arranque.</p></li><li><strong>La defensa</strong><p>La solución de Microsoft es <strong>revocar</strong> los cargadores antiguos firmados con el certificado de 2011 (añadiéndolo a la DBX). Eso solo es posible en equipos que ya arrancan con lo firmado por el certificado de 2023.</p></li><li><strong>Lo que te toca</strong><p>Que tu PC tenga los certificados nuevos y el arranque seguro activado es lo que permite que esas revocaciones y parches futuros lleguen.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Aprovechar un fallo del arranque que ya esté corregido, si tu equipo no puede recibir las actualizaciones nuevas.</li><li>Instalarse por debajo de Windows si el arranque seguro está desactivado.</li><li>Desactivar protecciones como BitLocker o la integridad de memoria una vez dentro del arranque.</li><li>Seguir aprovechando cargadores antiguos mientras no se revoquen en tu equipo.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Atacar el arranque de tu PC solo porque los certificados hayan caducado: la caducidad no abre ninguna puerta por sí sola.</li><li>Llegar al arranque sin haber conseguido antes ejecutar algo con permisos altos en el equipo o tener acceso físico.</li><li>Hacer que tu PC deje de arrancar por la caducidad: Microsoft confirma que sigue funcionando.</li><li>Saltarse una revocación ya aplicada reinstalando Windows o formateando el disco: según Microsoft, las revocaciones se mantienen.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Mira el estado en Seguridad de Windows</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 1 min</li><li>Para: todos</li></ul>
+<p>Microsoft muestra el estado de los certificados en la app. Lee el mensaje: según Microsoft, la marca verde por sí sola no confirma que estén actualizados.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Abre <strong>Seguridad de Windows &gt; Seguridad del dispositivo &gt; Arranque seguro</strong>.</li><li><strong>Totalmente actualizado</strong>: no tienes que hacer nada. <strong>Sin actualizar aún</strong>: instala las actualizaciones pendientes y reinicia. <strong>Requiere una acción</strong>: sigue la indicación del mensaje (normalmente, contactar con el fabricante).</li></ol></div></div></article><article class="medida"><h3>No pauses Windows Update y reinicia cuando te lo pida</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ 5 min</li><li>Para: todos</li></ul>
+<p>Es la vía por la que llegan los certificados. Microsoft pide tener una versión de Windows con soporte, las actualizaciones sin pausar y el arranque seguro activado.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Ve a <strong>Configuración &gt; Windows Update</strong> y pulsa <strong>Buscar actualizaciones</strong>.</li><li>Si están en pausa, pulsa <strong>Reanudar actualizaciones</strong> y reinicia cuando termine.</li></ol></div></div></article><article class="medida"><h3>Localiza tu clave de recuperación de BitLocker antes</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 5 min</li><li>Para: todos</li></ul>
+<p>Si el cambio de certificados te la pide, tendrás que teclear sus 48 dígitos. Si tu disco está cifrado con una cuenta Microsoft, suele estar guardada en ella.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Entra desde otro dispositivo en <strong>account.microsoft.com/devices/recoverykey</strong> con tu cuenta Microsoft.</li><li>Comprueba que aparece la clave de este PC y guárdala en tu gestor de contraseñas o en papel.</li></ol></div></div></article><article class="medida"><h3>Si pone «Requiere una acción», busca el firmware de tu placa base</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: medio</li>
+<li>⏱ 20 min</li><li>Para: todos</li></ul>
+<p>Microsoft indica que algunos equipos necesitan una actualización de firmware del fabricante. En un sobremesa de marca, busca en su web de soporte; en uno montado por piezas, en la del fabricante de la placa base, con el modelo exacto.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Pulsa <strong>Windows + R</strong>, escribe <code>msinfo32</code> y anota <strong>Fabricante de la placa base</strong> y <strong>Producto de la placa base</strong>.</li><li>Busca ese modelo en la web oficial del fabricante y sigue sus instrucciones para actualizar el firmware (BIOS/UEFI). Si no hay versión nueva, consulta con su soporte.</li></ol></div></div></article><article class="medida deep"><h3>Comprueba los certificados con PowerShell<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="bajo">Impacto: bajo</li><li>Esfuerzo: bajo</li>
+<li>⏱ 2 min</li><li>Para: avanzado</li></ul>
+<p>Para confirmar qué hay realmente en la base de datos de firmas, sin depender del mensaje de la app.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Abre <strong>Terminal (Administrador)</strong> y ejecuta <code>Get-SecureBootUEFI -Name db -Decoded</code> (disponible desde las actualizaciones acumulativas del 14/04/2026).</li><li>Debe aparecer <code>CN=Windows UEFI CA 2023</code>. También puedes mirar el valor <code>UEFICA2023Status</code> en <code>HKLM:\SYSTEM\CurrentControlSet\Control\SecureBoot\Servicing</code>: debería decir <code>Updated</code>.</li></ol></div></div></article><article class="medida deep"><h3>Actualiza tu USB de recuperación<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="bajo">Impacto: bajo</li><li>Esfuerzo: medio</li>
+<li>⏱ 30 min</li><li>Para: paranoico</li></ul>
+<p>Microsoft advierte de que, cuando se apliquen las revocaciones de los cargadores antiguos, los medios de recuperación anteriores pueden dejar de arrancar el equipo. Uno creado después de tener los certificados nuevos te ahorra sustos.</p><div class="plataformas"><div class="plataforma"><h4>Windows 11</h4><ol><li>Busca en Inicio <strong>Crear una unidad de recuperación</strong>, conecta un USB y sigue el asistente.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>¿El mensaje dice «Totalmente actualizado»?</h3><p>En <strong>Seguridad del dispositivo &gt; Arranque seguro</strong>, el texto debería indicar que el arranque seguro está activado y que se han aplicado todas las actualizaciones de certificado necesarias.</p></div><div class="fila"><h3>¿El arranque seguro está activado?</h3><p>En <code>msinfo32</code>, la línea <strong>Estado de arranque seguro</strong> debería decir <strong>Activado</strong>.</p></div><div class="fila"><h3>¿Tienes la clave de BitLocker a mano?</h3><p>Compruébalo hoy en tu cuenta Microsoft, no el día que el ordenador te la pida.</p></div><div class="fila"><h3>¿Windows Update está al día?</h3><p>Sin actualizaciones en pausa y sin un reinicio pendiente desde hace semanas.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Desactivar el arranque seguro</h3><p>Microsoft lo dice claro: no debe desactivarse para evitar la caducidad, porque reduce mucho la protección frente al malware de arranque.</p></div><div class="fila"><h3>Actualizar la BIOS «por si acaso»</h3><p>Si la app dice que está totalmente actualizado, no hace falta. Actualizar firmware tiene su propio riesgo y solo merece la pena si el estado lo pide o el fabricante lo recomienda.</p></div><div class="fila"><h3>Reinstalar Windows o cambiar de PC</h3><p>La caducidad no estropea nada: el equipo sigue arrancando. Lo normal es que se resuelva solo con Windows Update.</p></div><div class="fila"><h3>Programas que prometen «arreglar» el arranque seguro</h3><p>Los certificados llegan por Windows Update o por el firmware oficial del fabricante. No hay otra vía legítima.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«Cuando caducan los certificados, mi PC dejará de arrancar.»</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>Microsoft explica que un equipo que llega a la fecha sin los certificados nuevos <strong>sigue arrancando y funcionando con normalidad</strong>. Lo que pierde son las actualizaciones de seguridad del arranque, como las del Administrador de arranque y las listas de revocación.</p><p class="src"><a href="https://support.microsoft.com/es-es/servicing/os/secure-boot/2026/02/when-secure-boot-certificates-expire-on-windows-devices" rel="noopener noreferrer">Microsoft: cuando los certificados de arranque seguro expiran en dispositivos Windows</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>PK, KEK, DB y DBX</h3><p>El firmware UEFI guarda la clave de plataforma (PK) del fabricante, la KEK (claves autorizadas a modificar las bases de datos), la DB (firmas y hashes permitidos) y la DBX (revocados). Windows actualiza las variables activas; el firmware del fabricante actualiza también los valores predeterminados. Por eso Microsoft advierte de que, si se restablece el firmware a unos valores de fábrica que no incluyen Windows UEFI CA 2023 después de aplicar las revocaciones, el arranque seguro bloqueará el inicio y habrá que recurrir a un medio de recuperación.</p><h3>CVE-2023-24932 y la revocación de PCA 2011</h3><p>BlackLotus explotaba CVE-2022-21894 (<em>Baton Drop</em>) cargando un administrador de arranque antiguo y vulnerable. La mitigación de fondo, documentada para CVE-2023-24932, pasa por añadir Windows UEFI CA 2023 a la DB, arrancar con un administrador firmado por él y, después, añadir <strong>Windows Production PCA 2011</strong> a la DBX, lo que deja de confiar en todos los administradores de arranque firmados con ese certificado. Microsoft avisa de que no se puede revertir mientras se use el arranque seguro y de que la fase de aplicación obligatoria se anunciará con al menos seis meses de antelación.</p><h3>Comprobaciones útiles</h3><p>En equipos sin el parámetro <code>-Decoded</code>, Microsoft propone <code>[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI db).bytes) -match 'Windows UEFI CA 2023'</code>, que devuelve <code>True</code> si el certificado está en la DB. Antes de tocar nada en equipos con BitLocker, guarda los protectores con <code>manage-bde -protectors -get %systemdrive%</code>. Si desarrollas o distribuyes cargadores o controladores UEFI firmados por Microsoft UEFI CA 2011, revisa la firma con la nueva Microsoft UEFI CA 2023 u Option ROM UEFI CA 2023.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>Arranque seguro (Secure Boot)</dt><dd>Función del firmware UEFI que solo permite arrancar software firmado con certificados de confianza guardados en el propio equipo.</dd><dt>Firmware UEFI</dt><dd>El programa de la placa base que se ejecuta al encender el ordenador, antes que Windows. Es el sucesor de la antigua BIOS.</dd><dt>DBX</dt><dd>Lista de firmas revocadas del arranque seguro: lo que figura en ella ya no puede arrancar aunque esté firmado.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://support.microsoft.com/es-es/servicing/os/secure-boot/2025/06/windows-secure-boot-certificate-expiration-and-ca-updates" rel="noopener noreferrer">Microsoft: expiración del certificado de arranque seguro de Windows y actualizaciones de CA</a></li><li><a href="https://support.microsoft.com/es-es/servicing/os/secure-boot/2026/02/when-secure-boot-certificates-expire-on-windows-devices" rel="noopener noreferrer">Microsoft: cuando los certificados de arranque seguro expiran en dispositivos Windows</a></li><li><a href="https://support.microsoft.com/es-es/servicing/os/secure-boot/2026/03/secure-boot-certificate-update-status-in-the-windows-security-app" rel="noopener noreferrer">Microsoft: estado de actualización del certificado de arranque seguro en la aplicación de Seguridad de Windows</a></li><li><a href="https://support.microsoft.com/es-es/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates" rel="noopener noreferrer">Microsoft: dispositivos Windows para usuarios particulares con actualizaciones administradas por Microsoft</a></li><li><a href="https://support.microsoft.com/en-us/servicing/os/windows/2023/03/how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023" rel="noopener noreferrer">Microsoft: revocaciones del Administrador de arranque asociadas a CVE-2023-24932 (en inglés)</a></li><li><a href="https://support.microsoft.com/en-us/servicing/os/secure-boot/docs/2026/04/powershell-using-the-decoded-parameter-in-get-securebootuefi" rel="noopener noreferrer">Microsoft: el parámetro -Decoded de Get-SecureBootUEFI (en inglés)</a></li><li><a href="https://media.defense.gov/2023/Jun/22/2003245723/-1/-1/0/CSI_BlackLotus_Mitigation_Guide.PDF" rel="noopener noreferrer">NSA: guía de mitigación de BlackLotus, junio de 2023 (PDF, en inglés)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-arranque" class="gl-pop"><strong>Arranque seguro (Secure Boot)</strong>Función del firmware UEFI que solo permite arrancar software firmado con certificados de confianza guardados en el propio equipo.</div><div popover id="g-uefi" class="gl-pop"><strong>Firmware UEFI</strong>El programa de la placa base que se ejecuta al encender el ordenador, antes que Windows. Es el sucesor de la antigua BIOS.</div><div popover id="g-dbx" class="gl-pop"><strong>DBX</strong>Lista de firmas revocadas del arranque seguro: lo que figura en ella ya no puede arrancar aunque esté firmado.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

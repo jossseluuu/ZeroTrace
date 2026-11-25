@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-24T08:24:08+01:00",
+  "actualizado": "2026-11-25T09:01:24+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "sobremesa",
     "habitos",
     "portatiles",
     "router",
     "iot",
     "copias",
-    "wearables",
-    "programacion"
+    "wearables"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -49,6 +49,10 @@
       {
         "fecha": "2026-11-15",
         "concepto": "cuenta-estandar-para-el-dia-a-dia"
+      },
+      {
+        "fecha": "2026-11-25",
+        "concepto": "certificados-de-arranque-seguro"
       }
     ],
     "smartphones": [
@@ -129,6 +133,16 @@
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-25",
+      "foco": "sobremesa",
+      "concepto": "certificados-de-arranque-seguro",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-25-drupal-core",
+        "2026-11-25-firefox-161"
+      ]
+    },
     {
       "fecha": "2026-11-24",
       "foco": "habitos",

@@ -4,6 +4,8 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/25/2026](editions/2026/11/2026-11-25.md) | Critical | Drupal: highly critical installer flaw lets attackers take over sites, already exploited | CVE-2026-132165 |
+| [11/25/2026](editions/2026/11/2026-11-25.md) | Heads-up | Firefox 161 fixes 110 flaws, 59 of them high impact | CVE-2026-135500, CVE-2026-135501, CVE-2026-135502 |
 | [11/24/2026](editions/2026/11/2026-11-24.md) | Heads-up | Chrome 158 gets an update that fixes a critical flaw | CVE-2026-134401 |
 | [11/22/2026](editions/2026/11/2026-11-22.md) | Heads-up | WhatsApp fixes three flaws; one that exposed your IP address may have been used with spam messages | CVE-2026-23871, CVE-2026-102769, CVE-2026-44908 |
 | [11/22/2026](editions/2026/11/2026-11-22.md) | Heads-up | GnuPG: serious flaw in GPGME, the library behind Gpg4win and many encryption tools | CVE-2026-129975 |

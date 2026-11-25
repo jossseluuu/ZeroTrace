@@ -4,6 +4,8 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [25/11/2026](ediciones/2026/11/2026-11-25.md) | Crítico | Drupal: fallo muy crítico en el instalador que permite tomar la web, ya explotado | CVE-2026-132165 |
+| [25/11/2026](ediciones/2026/11/2026-11-25.md) | Atención | Firefox 161 corrige 110 fallos, 59 de ellos de impacto alto | CVE-2026-135500, CVE-2026-135501, CVE-2026-135502 |
 | [24/11/2026](ediciones/2026/11/2026-11-24.md) | Atención | Chrome 158 recibe una actualización con un fallo crítico corregido | CVE-2026-134401 |
 | [22/11/2026](ediciones/2026/11/2026-11-22.md) | Atención | WhatsApp corrige tres fallos; uno que revelaba tu IP pudo usarse con mensajes de spam | CVE-2026-23871, CVE-2026-102769, CVE-2026-44908 |
 | [22/11/2026](ediciones/2026/11/2026-11-22.md) | Atención | GnuPG: fallo grave en GPGME, la biblioteca que usan Gpg4win y muchos programas de cifrado | CVE-2026-129975 |

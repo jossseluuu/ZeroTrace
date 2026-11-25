@@ -1089,5 +1089,86 @@
         "url": "https://chromereleases.googleblog.com/2026/11/chrome-for-android-update_0411169060.html"
       }
     ]
+  },
+  {
+    "id": "2026-11-25-drupal-core",
+    "fecha": "2026-11-25",
+    "nivel": "rojo",
+    "cves": [
+      "CVE-2026-132165"
+    ],
+    "dispositivos": [
+      "servidor"
+    ],
+    "es": {
+      "titulo": "Drupal: fallo muy crítico en el instalador que permite tomar la web, ya explotado",
+      "afecta": "Quien administre una web con Drupal 10 u 11 anterior a las versiones 10.6.22, 11.3.22 u 11.4.13.",
+      "accion": "Actualiza el núcleo a **10.6.22**, **11.3.22** u **11.4.13**, según tu rama. Mientras tanto, Drupal indica que algunas vías de ataque se bloquean si el servidor web no puede escribir en `settings.php`, y recomienda proteger el instalador.",
+      "detalle": "Drupal publicó el 18/11 el aviso SA-CORE-2026-017: un fallo en el instalador (`install.php`) permite ejecutar código en el servidor o hacerse con el sitio (CVE-2026-132165), calificado como «muy crítico» (20/25). El 21/11 añadió que se ha explotado en webs reales desde el 19/11, y CISA lo incluyó el 24/11 en su catálogo de vulnerabilidades explotadas. Las mismas versiones corrigen otro fallo menos grave publicado el mismo día (SA-CORE-2026-018)."
+    },
+    "en": {
+      "titulo": "Drupal: highly critical installer flaw lets attackers take over sites, already exploited",
+      "afecta": "Anyone running a Drupal 10 or 11 site older than 10.6.22, 11.3.22, or 11.4.13.",
+      "accion": "Update core to **10.6.22**, **11.3.22**, or **11.4.13**, depending on your branch. In the meantime, Drupal says some exploit paths are blocked if the web server can't write to `settings.php`, and it recommends securing the installer.",
+      "detalle": "Drupal published advisory SA-CORE-2026-017 on November 18: a flaw in the installer (`install.php`) allows remote code execution or site takeover (CVE-2026-132165), rated \"highly critical\" (20/25). On November 21 it added that the flaw had been exploited on live sites since November 19, and CISA added it to its Known Exploited Vulnerabilities catalog on November 24. The same releases fix a less severe flaw published the same day (SA-CORE-2026-018)."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Drupal: SA-CORE-2026-017, ejecución remota de código (en inglés)",
+          "en": "Drupal: SA-CORE-2026-017, Remote code execution"
+        },
+        "url": "https://www.drupal.org/sa-core-2026-017"
+      },
+      {
+        "titulo": {
+          "es": "CISA: catálogo de vulnerabilidades explotadas (24/11, en inglés)",
+          "en": "CISA: Known Exploited Vulnerabilities Catalog (Nov 24)"
+        },
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-25-firefox-161",
+    "fecha": "2026-11-25",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-135500",
+      "CVE-2026-135501",
+      "CVE-2026-135502"
+    ],
+    "dispositivos": [
+      "sobremesa",
+      "portatil"
+    ],
+    "es": {
+      "titulo": "Firefox 161 corrige 110 fallos, 59 de ellos de impacto alto",
+      "afecta": "Cualquiera que use Firefox en el ordenador, incluidas las versiones de soporte extendido (ESR).",
+      "accion": "Actualiza a **Firefox 161** (o a **ESR 153.8** / **ESR 115.46** si usas la versión de soporte extendido) desde **Menú > Ayuda > Acerca de Firefox** y reinicia el navegador.",
+      "detalle": "Mozilla publicó el 24/11 el boletín MFSA 2026-131. Entre los fallos de impacto alto hay una escalada de privilegios en WebGPU (CVE-2026-135500), una salida del *sandbox* en el componente de audio y vídeo (CVE-2026-135501) y un fallo de aislamiento de sitios en WebRender (CVE-2026-135502). Mozilla no indica que ninguno se esté explotando. El mismo día actualizó Thunderbird a la versión 161."
+    },
+    "en": {
+      "titulo": "Firefox 161 fixes 110 flaws, 59 of them high impact",
+      "afecta": "Anyone using Firefox on a computer, including Extended Support Release (ESR) versions.",
+      "accion": "Update to **Firefox 161** (or **ESR 153.8** / **ESR 115.46** if you use the extended support release) from **Menu > Help > About Firefox**, then restart the browser.",
+      "detalle": "Mozilla published advisory MFSA 2026-131 on November 24. The high-impact flaws include a privilege escalation in WebGPU (CVE-2026-135500), a sandbox escape in the audio/video component (CVE-2026-135501), and a site-isolation issue in WebRender (CVE-2026-135502). Mozilla hasn't said any are being exploited. Thunderbird 161 shipped the same day."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Mozilla: MFSA 2026-131, Firefox 161 (en inglés)",
+          "en": "Mozilla: MFSA 2026-131, Firefox 161"
+        },
+        "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2026-131/"
+      },
+      {
+        "titulo": {
+          "es": "Mozilla: MFSA 2026-133, Firefox ESR 153.8 (en inglés)",
+          "en": "Mozilla: MFSA 2026-133, Firefox ESR 153.8"
+        },
+        "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2026-133/"
+      }
+    ]
   }
 ]

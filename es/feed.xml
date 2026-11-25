@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Tue, 24 Nov 2026 08:24:08 +0100</lastBuildDate>
+  <lastBuildDate>Wed, 25 Nov 2026 09:01:24 +0100</lastBuildDate>
+  <item>
+    <title>Los certificados que protegen el arranque de tu PC caducaron este año: comprueba que tiene los nuevos</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-25.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-25.html</guid>
+    <pubDate>Wed, 25 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Ordenadores de sobremesa</category>
+    <description>Qué ha cambiado en el arranque seguro de Windows, por qué tu ordenador sigue encendiendo igual aunque no lo tenga resuelto, cómo mirarlo en un minuto y qué no hace falta tocar. — Crítico: Drupal: fallo muy crítico en el instalador que permite tomar la web, ya explotado | Atención: Firefox 161 corrige 110 fallos, 59 de ellos de impacto alto</description>
+  </item>
   <item>
     <title>Tu móvil lleva un número para seguirte en los anuncios (y puedes quitárselo)</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-24.html</link>
