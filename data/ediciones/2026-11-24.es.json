@@ -1,0 +1,295 @@
+{
+  "fecha": "2026-11-24",
+  "idioma": "es",
+  "foco": "habitos",
+  "concepto": "id-de-publicidad-del-movil",
+  "titulo": "Tu móvil lleva un número para seguirte en los anuncios (y puedes quitárselo)",
+  "subtitulo": "Android e iPhone asignan a cada móvil un identificador publicitario que comparten las apps. Borrarlo o negarlo cuesta dos minutos y corta buena parte del rastreo entre apps, sin romper nada.",
+  "dispositivos": [
+    "smartphone",
+    "tablet"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-24-chrome-158-variations"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Tu móvil tiene un número que no es tu teléfono ni tu IMEI: es el [[idpub|identificador de publicidad]]. Lo crea el propio sistema (Android o iOS) y las apps pueden leerlo para saber que *el mismo móvil* ha usado la app del tiempo, el juego y la tienda online.",
+      "Sirve para mostrarte anuncios personalizados, pero también es **la pieza que permite unir lo que haces en apps distintas** en un único perfil. Ese perfil puede acabar en manos de [[broker|intermediarios de datos]] que lo revenden, a veces con tu ubicación incluida.",
+      "La buena noticia: en Android puedes **eliminar** ese número y en iPhone puedes **impedir que las apps te pidan rastrearte**. Son dos minutos, no rompen ninguna app y el efecto dura hasta que tú lo cambies."
+    ],
+    "esencial": [
+      "En Android: Ajustes > Privacidad > Anuncios > **Eliminar ID de publicidad**.",
+      "En iPhone y iPad: Ajustes > Privacidad y seguridad > Rastreo > desactiva **Permitir que las apps soliciten rastrearte**.",
+      "Seguirás viendo anuncios: solo serán menos personalizados y será más difícil cruzar tus datos.",
+      "No sustituye a revisar el permiso de ubicación de cada app: son cosas distintas."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "alto",
+      "texto": "No hace falta ningún ataque: si no has tocado este ajuste, las apps con publicidad pueden leer el identificador en Android, y en iPhone basta con que alguna vez tocaras «Permitir» en la ventana de rastreo."
+    },
+    "impacto": {
+      "nivel": "medio",
+      "texto": "Lo habitual es solo publicidad más dirigida. El problema serio llega cuando ese identificador viaja junto con tu ubicación: la FTC de EE. UU. ha sancionado a empresas que vendían ubicaciones precisas ligadas a identificadores publicitarios, incluidas visitas a clínicas o lugares de culto."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Qué es exactamente y por qué existe",
+      "parrafos": [
+        "Es un código aleatorio, distinto en cada móvil, que el sistema pone a disposición de las apps para fines publicitarios. En Android se llama *ID de publicidad*; en Apple, *IDFA*.",
+        "Se creó precisamente para que las apps **no** usaran identificadores imposibles de cambiar (como el número de serie). La política de Google Play obliga a usar el ID de publicidad en lugar de otros identificadores del dispositivo para cualquier fin publicitario. Es decir: es un identificador pensado para que tú puedas cambiarlo o quitarlo.",
+        "La clave es que todas las apps leen **el mismo** número. Eso es lo que permite cruzar datos entre empresas que no tienen nada que ver entre sí."
+      ]
+    },
+    {
+      "titulo": "Cambiar, eliminar o no dejar pedir: qué hace cada opción",
+      "parrafos": [
+        "**Cambiar (Android).** Genera un número nuevo al azar. Corta el enlace con el perfil antiguo, pero las apps empiezan a construir uno nuevo con el número nuevo.",
+        "**Eliminar (Android).** Según Google, cuando lo eliminas, cualquier app que intente leerlo recibe **una cadena de ceros** en su lugar. Es la opción más completa en Android.",
+        "**No permitir solicitudes de rastreo (iPhone y iPad).** Desde iOS 14.5, las apps deben pedir permiso antes de rastrearte entre apps y webs de otras empresas. Si desactivas *Permitir que las apps soliciten rastrearte*, no verás esas ventanas y cada app se trata como si hubieras tocado **Pedir a la app que no rastree**: no puede acceder al IDFA."
+      ]
+    },
+    {
+      "titulo": "Lo que no cambia",
+      "parrafos": [
+        "Las apps siguen funcionando igual, y Apple lo dice expresamente: puedes seguir usando todas sus funciones. Seguirás viendo anuncios; serán menos personalizados.",
+        "Google avisa de que algunas apps tienen **sus propios ajustes de publicidad**, que también influyen en lo que ves, y de que algunas redes publicitarias pueden seguir mostrándote anuncios personalizados. Y lo que haces *dentro* de una app con tu cuenta (por ejemplo, en una red social) sigue siendo conocido por esa app."
+      ]
+    },
+    {
+      "titulo": "Si el ajuste no aparece igual en tu móvil",
+      "parrafos": [
+        "En Android la ruta depende de la versión y del fabricante. Google indica **Ajustes > Privacidad > Anuncios**; en móviles algo más antiguos, la opción está en **Ajustes > Google > Anuncios**. Si no lo encuentras, escribe «publicidad» en el buscador de Ajustes.",
+        "En iPhone, Apple no permite activar *Permitir que las apps soliciten rastrearte* en cuentas de menores de 18 años, cuentas gestionadas o cuentas creadas hace menos de tres días: en esos casos aparece desactivado de serie, que es lo que buscamos."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "Una app recoge datos",
+      "texto": "Una app gratuita (linterna, tiempo, juego) incluye un [[sdk|SDK]] de un tercero que lee el identificador de publicidad y, si tiene permiso, la ubicación del móvil."
+    },
+    {
+      "titulo": "Los datos se venden",
+      "texto": "Ese tercero junta lo que recoge desde muchas apps y lo vende o lo cruza con otros intermediarios de datos. El identificador es el hilo que une todos los registros del mismo móvil."
+    },
+    {
+      "titulo": "El perfil toma forma",
+      "texto": "Con semanas de ubicaciones asociadas al mismo número se ven patrones: dónde pasa la noche ese móvil, dónde está entre semana, qué sitios visita."
+    },
+    {
+      "titulo": "Se le pone nombre",
+      "texto": "Aunque no lleve tu nombre, la FTC explica que esos datos no son anónimos: permiten relacionar el móvil de una persona concreta con los lugares que visitó."
+    },
+    {
+      "titulo": "Dónde se corta la cadena",
+      "texto": "Si el identificador está eliminado o la app no tiene permiso para rastrearte, el hilo que une los registros desaparece. Si además la app no tiene permiso de ubicación, no hay ubicación que vender."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Unir lo que haces en apps distintas en un perfil, mientras el identificador esté disponible.",
+      "Combinarlo con tu ubicación si alguna app tiene ese permiso.",
+      "Seguir usando lo que ya recogió antes de que borraras el identificador.",
+      "Usar otros datos que le das directamente, como el correo con el que inicias sesión en su app."
+    ],
+    "no_puede": [
+      "Leer el identificador en Android después de que lo elimines: recibe una cadena de ceros.",
+      "Acceder al IDFA en iPhone si le has dicho que no rastree o tienes desactivadas las solicitudes.",
+      "Ver tus mensajes, fotos o contraseñas por tener el identificador: es solo un número.",
+      "Saber dónde estás a través del identificador si ninguna app tiene permiso de ubicación."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Elimina el ID de publicidad en Android",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "Es la medida principal en Android: las apps que intenten leerlo recibirán ceros. Se hace una vez y se queda así.",
+      "pasos": {
+        "Android (versiones recientes)": [
+          "Ajustes > **Privacidad** > **Anuncios**.",
+          "Toca **Eliminar ID de publicidad** y confirma."
+        ],
+        "Android (versiones anteriores)": [
+          "Ajustes > **Google** > **Anuncios**.",
+          "Si no hay opción de eliminar, activa **Inhabilitar Personalización de anuncios** y toca **Restablecer ID de publicidad**."
+        ],
+        "Si no lo encuentras": [
+          "Escribe «publicidad» en el buscador de Ajustes: el nombre del menú cambia según el fabricante."
+        ]
+      }
+    },
+    {
+      "titulo": "Desactiva las solicitudes de rastreo en iPhone y iPad",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Con un solo interruptor, todas las apps quedan como si les hubieras dicho que no, incluidas las que instales en el futuro.",
+      "pasos": {
+        "iPhone y iPad": [
+          "Ajustes > **Privacidad y seguridad** > **Rastreo**.",
+          "Desactiva **Permitir que las apps soliciten rastrearte**.",
+          "Si ves apps en la lista con el interruptor activado, desactívalas también."
+        ]
+      }
+    },
+    {
+      "titulo": "Revisa qué apps tienen tu ubicación",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "El identificador une los datos; la ubicación es el dato más delicado. Una app del tiempo o un juego rara vez necesitan tu ubicación precisa todo el tiempo.",
+      "pasos": {
+        "iPhone": [
+          "Ajustes > Privacidad y seguridad > **Localización**.",
+          "Para cada app, elige que no la use nunca o solo mientras la tienes abierta, y desactiva **Ubicación exacta** si no la necesita."
+        ],
+        "Android": [
+          "Ajustes > **Ubicación** > permisos de ubicación de las aplicaciones (el nombre exacto varía según el fabricante).",
+          "Quita el permiso o deja que solo la use mientras la tienes abierta."
+        ]
+      }
+    },
+    {
+      "titulo": "Mira los ajustes de publicidad dentro de tus apps principales",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "avanzado",
+      "texto": "Google recuerda que las apps pueden tener sus propios ajustes de anuncios. Las redes sociales y las grandes plataformas suelen tener una sección de «preferencias de anuncios» o «datos de socios» que conviene revisar una vez.",
+      "pasos": {
+        "Siempre": [
+          "En cada app que uses a diario con tu cuenta, busca en su configuración *Anuncios* o *Privacidad*.",
+          "Desactiva el uso de datos de otras webs y apps para personalizar anuncios, si lo ofrece."
+        ]
+      }
+    },
+    {
+      "titulo": "Desinstala las apps que ya no usas",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Cada app con publicidad es una posible fuente de datos. La que no usas no te aporta nada y puede seguir recogiendo en segundo plano lo que sus permisos le dejen.",
+      "pasos": {
+        "Siempre": [
+          "Repasa la pantalla de apps y borra las que no hayas abierto en meses."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Android: el menú Anuncios",
+      "texto": "Vuelve a Ajustes > Privacidad > Anuncios después de eliminarlo: ya no debería mostrarse ningún ID de publicidad."
+    },
+    {
+      "titulo": "iPhone: la pantalla Rastreo",
+      "texto": "En Ajustes > Privacidad y seguridad > Rastreo, el interruptor general debe estar desactivado. Debajo aparecen las apps que te han pedido rastrearte y si les dijiste que sí."
+    },
+    {
+      "titulo": "Señal de que funciona",
+      "texto": "Los anuncios no desaparecen, pero con el tiempo dejan de «seguirte» de una app a otra con el producto que miraste ayer."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Instalar apps «antirrastreo» o una VPN para esto",
+      "texto": "El ajuste del sistema es gratuito y hace exactamente esto. Una VPN no oculta el identificador de publicidad: las apps lo leen dentro del móvil."
+    },
+    {
+      "titulo": "Renunciar a las apps gratuitas",
+      "texto": "Puedes seguir usándolas. Con el identificador eliminado y los permisos de ubicación ajustados, lo que pueden cruzar es mucho menos."
+    },
+    {
+      "titulo": "Cambiar el identificador cada semana",
+      "texto": "Si lo eliminas, no hay nada que cambiar: las apps reciben ceros. Cambiarlo a menudo solo tiene sentido si tu móvil no permite eliminarlo."
+    },
+    {
+      "titulo": "Pedir a cada empresa que borre tus datos",
+      "texto": "Es un derecho que tienes, pero para la mayoría de la gente no compensa el esfuerzo. Cortar el flujo hacia el futuro es lo que más rinde."
+    }
+  ],
+  "mito": {
+    "mito": "«Mis datos de ubicación no llevan mi nombre, así que son anónimos.»",
+    "realidad": "La FTC explicó en 2024 que la ubicación vendida por un intermediario de datos iba asociada a identificadores publicitarios, **no estaba anonimizada** y permitía relacionar el móvil de una persona con los lugares que visitó.",
+    "fuente": {
+      "titulo": "FTC: orden contra el intermediario de datos X-Mode Social y Outlogic (09/01/2024, en inglés)",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Qué recibe la app y qué exige Google",
+      "parrafos": [
+        "En Android, el identificador lo sirve Google Play services. Google explica que, cuando el usuario lo elimina, cualquier intento de leerlo devuelve una cadena de ceros. Este comportamiento llegó a Android 12 a finales de 2021 y se extendió a todos los dispositivos con Google Play desde el 1 de abril de 2022.",
+        "Las apps que apuntan a Android 13 o superior deben declarar el permiso `com.google.android.gms.permission.AD_ID` en su manifiesto para poder leerlo. Para analítica o prevención de fraude, Google indica usar el *App Set ID*, que es por desarrollador y no sirve para cruzar datos entre empresas.",
+        "Un matiz importante: Google permite que, si no hay ID de publicidad, la app recurra a un identificador propio o persistente, siempre que lo indique en su política de privacidad y cumpla la ley. Por eso eliminar el ID reduce mucho el cruce entre empresas, pero no impide que una app concreta te reconozca a sí misma."
+      ]
+    },
+    {
+      "titulo": "ATT en Apple: más que el IDFA",
+      "parrafos": [
+        "Con *App Tracking Transparency* (iOS, iPadOS y tvOS 14.5 o posterior), si dices que no, el desarrollador no puede acceder al IDFA. Apple añade que tampoco puede rastrearte usando otra información que te identifique a ti o a tu dispositivo, como tu correo electrónico.",
+        "Apple define el rastreo como enlazar datos de su app con datos de otras empresas para publicidad o compartirlos con intermediarios de datos. No cubre lo que la app hace con sus propios datos dentro de su servicio."
+      ]
+    },
+    {
+      "titulo": "Para desarrolladores",
+      "parrafos": [
+        "Si tu app incluye SDK de publicidad o analítica, revisa qué recogen y si respetan la eliminación del ID (ceros en Android) y la respuesta de ATT en iOS. La FTC señaló en el caso X-Mode que la empresa no respetó las peticiones de exclusión de algunos usuarios de Android: el SDK que integras es responsabilidad tuya ante tus usuarios."
+      ]
+    }
+  ],
+  "glosario": {
+    "idpub": [
+      "Identificador de publicidad",
+      "Código aleatorio que Android (ID de publicidad) e iOS (IDFA) asignan a cada dispositivo para que las apps lo usen con fines publicitarios. Se puede cambiar o eliminar."
+    ],
+    "broker": [
+      "Intermediario de datos",
+      "Empresa que compra, combina y revende información sobre personas, a menudo sin relación directa con ellas (en inglés, *data broker*)."
+    ],
+    "sdk": [
+      "SDK",
+      "Kit de software de un tercero que el desarrollador integra en su app, por ejemplo para mostrar anuncios o medir el uso. Funciona con los mismos permisos que la app."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Google: ID de publicidad (ayuda de Google Play Console)",
+      "url": "https://support.google.com/googleplay/android-developer/answer/6048248?hl=es"
+    },
+    {
+      "titulo": "Google: restablecer el ID de publicidad e inhabilitar la personalización de anuncios",
+      "url": "https://support.google.com/googleplay/answer/3405269?hl=es"
+    },
+    {
+      "titulo": "Apple: si una app te pide rastrear tu actividad",
+      "url": "https://support.apple.com/es-es/102420"
+    },
+    {
+      "titulo": "FTC: orden contra el intermediario de datos X-Mode Social y Outlogic (en inglés)",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data"
+    },
+    {
+      "titulo": "EFF: cómo desactivar el rastreo por ID de publicidad en iOS y Android (en inglés)",
+      "url": "https://www.eff.org/deeplinks/2022/05/how-disable-ad-id-tracking-ios-and-android-and-why-you-should-do-it-now"
+    }
+  ]
+}

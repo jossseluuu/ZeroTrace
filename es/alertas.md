@@ -4,6 +4,7 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [24/11/2026](ediciones/2026/11/2026-11-24.md) | Atención | Chrome 158 recibe una actualización con un fallo crítico corregido | CVE-2026-134401 |
 | [22/11/2026](ediciones/2026/11/2026-11-22.md) | Atención | WhatsApp corrige tres fallos; uno que revelaba tu IP pudo usarse con mensajes de spam | CVE-2026-23871, CVE-2026-102769, CVE-2026-44908 |
 | [22/11/2026](ediciones/2026/11/2026-11-22.md) | Atención | GnuPG: fallo grave en GPGME, la biblioteca que usan Gpg4win y muchos programas de cifrado | CVE-2026-129975 |
 | [21/11/2026](ediciones/2026/11/2026-11-21.md) | Crítico | Apache Roller: fallo crítico que permite tomar el servidor sin contraseña, ya explotado | CVE-2026-129448 |

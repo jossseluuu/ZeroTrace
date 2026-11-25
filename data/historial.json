@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-23T12:20:38+01:00",
+  "actualizado": "2026-11-24T08:24:08+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "habitos",
     "portatiles",
     "router",
     "iot",
     "copias",
     "wearables",
-    "programacion",
-    "transito"
+    "programacion"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -65,6 +65,10 @@
       {
         "fecha": "2026-11-16",
         "concepto": "quien-ve-tu-ubicacion-en-tiempo-real"
+      },
+      {
+        "fecha": "2026-11-24",
+        "concepto": "id-de-publicidad-del-movil"
       }
     ],
     "ingenieria": [
@@ -125,6 +129,15 @@
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-24",
+      "foco": "habitos",
+      "concepto": "id-de-publicidad-del-movil",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-24-chrome-158-variations"
+      ]
+    },
     {
       "fecha": "2026-11-23",
       "foco": "portatiles",

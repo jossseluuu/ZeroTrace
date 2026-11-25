@@ -1,0 +1,295 @@
+{
+  "fecha": "2026-11-24",
+  "idioma": "en",
+  "foco": "habitos",
+  "concepto": "phone-advertising-id",
+  "titulo": "Your phone carries a number for tracking you across ads (and you can take it away)",
+  "subtitulo": "Android and iPhone give each phone an advertising identifier that apps share. Deleting or denying it takes two minutes and cuts a big chunk of cross-app tracking, without breaking anything.",
+  "dispositivos": [
+    "smartphone",
+    "tablet"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-24-chrome-158-variations"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Your phone has a number that isn't your phone number or your IMEI: it's the [[idpub|advertising ID]]. The operating system (Android or iOS) creates it, and apps can read it to know that *the same phone* used the weather app, the game, and the shopping app.",
+      "It's used to show you personalized ads, but it's also **the piece that lets what you do in different apps be stitched into a single profile**. That profile can end up with [[broker|data brokers]] who resell it, sometimes including your location.",
+      "The good news: on Android you can **delete** that number, and on iPhone you can **stop apps from asking to track you**. It takes two minutes, doesn't break any app, and stays that way until you change it."
+    ],
+    "esencial": [
+      "On Android: Settings > Privacy > Ads > **Delete advertising ID**.",
+      "On iPhone and iPad: Settings > Privacy & Security > Tracking > turn off **Allow Apps to Request to Track**.",
+      "You'll still see ads: they'll just be less personalized, and your data will be harder to link.",
+      "It doesn't replace reviewing each app's location permission: those are separate things."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "alto",
+      "texto": "No attack needed: if you've never touched this setting, apps with ads can read the identifier on Android, and on iPhone it's enough that you once tapped \"Allow\" on a tracking prompt."
+    },
+    "impacto": {
+      "nivel": "medio",
+      "texto": "Usually it just means more targeted ads. The serious problem comes when the identifier travels with your location: the FTC has acted against companies that sold precise location data tied to advertising IDs, including visits to medical clinics and places of worship."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "What it is and why it exists",
+      "parrafos": [
+        "It's a random code, different on every phone, that the system makes available to apps for advertising. On Android it's called the *advertising ID*; on Apple devices, the *IDFA*.",
+        "It was created precisely so apps would **not** use identifiers you can't change (like a serial number). Google Play policy requires apps to use the advertising ID instead of other device identifiers for any advertising purpose. In other words, it's an identifier designed so you can change or remove it.",
+        "The key point is that every app reads **the same** number. That's what makes it possible to link data across companies that have nothing to do with each other."
+      ]
+    },
+    {
+      "titulo": "Reset, delete, or don't let apps ask: what each option does",
+      "parrafos": [
+        "**Reset (Android).** Generates a new random number. It breaks the link to the old profile, but apps start building a new one around the new number.",
+        "**Delete (Android).** According to Google, once you delete it, any app that tries to read it gets **a string of zeros** instead. It's the most complete option on Android.",
+        "**Turn off tracking requests (iPhone and iPad).** Since iOS 14.5, apps must ask permission before tracking you across other companies' apps and websites. If you turn off *Allow Apps to Request to Track*, you won't see those prompts and every app is treated as if you'd tapped **Ask App Not to Track**: it can't access the IDFA."
+      ]
+    },
+    {
+      "titulo": "What doesn't change",
+      "parrafos": [
+        "Apps keep working the same, and Apple says so explicitly: you can still use the full capabilities of the app. You'll still see ads; they'll be less personalized.",
+        "Google notes that some apps have **their own ad settings**, which also affect what you see, and that some ad networks may still show you personalized ads. And what you do *inside* an app while signed in (on a social network, say) is still known to that app."
+      ]
+    },
+    {
+      "titulo": "If the setting looks different on your phone",
+      "parrafos": [
+        "On Android the path depends on the version and the manufacturer. Google lists **Settings > Privacy > Ads**; on somewhat older phones, the option is under **Settings > Google > Ads**. If you can't find it, type \"ads\" into the Settings search bar.",
+        "On iPhone, Apple doesn't allow *Allow Apps to Request to Track* to be turned on for accounts of users under 18, managed accounts, or accounts created in the last three days: in those cases it's off by default, which is what we want."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "An app collects data",
+      "texto": "A free app (flashlight, weather, game) includes a third-party [[sdk|SDK]] that reads the advertising ID and, if it has permission, the phone's location."
+    },
+    {
+      "titulo": "The data gets sold",
+      "texto": "That third party pools what it collects from many apps and sells it or matches it with other data brokers. The identifier is the thread that ties together every record from the same phone."
+    },
+    {
+      "titulo": "A profile takes shape",
+      "texto": "With weeks of locations attached to the same number, patterns emerge: where the phone spends the night, where it is on weekdays, which places it visits."
+    },
+    {
+      "titulo": "A name gets attached",
+      "texto": "Even without your name on it, the FTC explains that this data isn't anonymous: it can match a specific person's phone with the places they visited."
+    },
+    {
+      "titulo": "Where the chain breaks",
+      "texto": "If the identifier is deleted or the app isn't allowed to track you, the thread linking the records disappears. And if the app has no location permission, there's no location to sell."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Link what you do in different apps into one profile, as long as the identifier is available.",
+      "Combine it with your location if an app has that permission.",
+      "Keep using what it already collected before you deleted the identifier.",
+      "Use other data you give it directly, like the email you sign in with."
+    ],
+    "no_puede": [
+      "Read the identifier on Android after you delete it: it gets a string of zeros.",
+      "Access the IDFA on iPhone if you've asked it not to track or turned off requests.",
+      "See your messages, photos, or passwords because it has the identifier: it's just a number.",
+      "Know where you are through the identifier if no app has location permission."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Delete the advertising ID on Android",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "todos",
+      "texto": "This is the main step on Android: apps that try to read it will get zeros. You do it once and it stays that way.",
+      "pasos": {
+        "Android (recent versions)": [
+          "Settings > **Privacy** > **Ads**.",
+          "Tap **Delete advertising ID** and confirm."
+        ],
+        "Android (older versions)": [
+          "Settings > **Google** > **Ads**.",
+          "If there's no delete option, turn on **Opt out of Ads Personalization** and tap **Reset advertising ID**."
+        ],
+        "If you can't find it": [
+          "Type \"ads\" into the Settings search bar: the menu name varies by manufacturer."
+        ]
+      }
+    },
+    {
+      "titulo": "Turn off tracking requests on iPhone and iPad",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "With one switch, every app is treated as if you'd said no, including apps you install later.",
+      "pasos": {
+        "iPhone and iPad": [
+          "Settings > **Privacy & Security** > **Tracking**.",
+          "Turn off **Allow Apps to Request to Track**.",
+          "If any apps in the list have their switch on, turn those off too."
+        ]
+      }
+    },
+    {
+      "titulo": "Review which apps have your location",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "The identifier links the data; location is the most sensitive piece. A weather app or a game rarely needs your precise location all the time.",
+      "pasos": {
+        "iPhone": [
+          "Settings > Privacy & Security > **Location Services**.",
+          "For each app, choose *Never* or *While Using the App*, and turn off *Precise Location* if it doesn't need it."
+        ],
+        "Android": [
+          "Settings > **Location** > app location permissions (the exact name varies by manufacturer).",
+          "Remove the permission or allow it only while you're using the app."
+        ]
+      }
+    },
+    {
+      "titulo": "Check the ad settings inside your main apps",
+      "impacto": "medio",
+      "esfuerzo": "medio",
+      "tiempo": "10 min",
+      "para": "avanzado",
+      "texto": "Google points out that apps can have their own ad settings. Social networks and big platforms usually have an \"ad preferences\" or \"partner data\" section worth reviewing once.",
+      "pasos": {
+        "Always": [
+          "In each app you use daily with an account, look for *Ads* or *Privacy* in its settings.",
+          "Turn off the use of data from other websites and apps to personalize ads, if offered."
+        ]
+      }
+    },
+    {
+      "titulo": "Uninstall apps you no longer use",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Every ad-supported app is a potential data source. One you don't use gives you nothing and can keep collecting whatever its permissions allow in the background.",
+      "pasos": {
+        "Always": [
+          "Scroll through your apps and delete the ones you haven't opened in months."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Android: the Ads menu",
+      "texto": "Go back to Settings > Privacy > Ads after deleting it: no advertising ID should be shown anymore."
+    },
+    {
+      "titulo": "iPhone: the Tracking screen",
+      "texto": "In Settings > Privacy & Security > Tracking, the main switch should be off. Below it you'll see the apps that asked to track you and whether you said yes."
+    },
+    {
+      "titulo": "A sign it's working",
+      "texto": "Ads don't go away, but over time they stop \"following\" you from app to app with the product you looked at yesterday."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Installing \"anti-tracking\" apps or a VPN for this",
+      "texto": "The built-in setting is free and does exactly this. A VPN doesn't hide the advertising ID: apps read it inside the phone."
+    },
+    {
+      "titulo": "Giving up free apps",
+      "texto": "You can keep using them. With the identifier deleted and location permissions trimmed, there's much less for them to link."
+    },
+    {
+      "titulo": "Resetting the identifier every week",
+      "texto": "If you delete it, there's nothing to reset: apps get zeros. Frequent resets only make sense if your phone doesn't let you delete it."
+    },
+    {
+      "titulo": "Asking every company to delete your data",
+      "texto": "Depending on where you live, you may have that right, but for most people it isn't worth the effort. Cutting off the flow going forward is what pays off most."
+    }
+  ],
+  "mito": {
+    "mito": "\"My location data doesn't have my name on it, so it's anonymous.\"",
+    "realidad": "The FTC explained in 2024 that location data sold by a data broker was tied to mobile advertising IDs, **was not anonymized**, and could match an individual's phone with the places they visited.",
+    "fuente": {
+      "titulo": "FTC: Order Prohibits Data Broker X-Mode Social and Outlogic from Selling Sensitive Location Data (Jan 9, 2024)",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "What the app receives and what Google requires",
+      "parrafos": [
+        "On Android, the identifier is served by Google Play services. Google says that once a user deletes it, any attempt to read it returns a string of zeros. This behavior reached Android 12 in late 2021 and expanded to all devices that support Google Play starting April 1, 2022.",
+        "Apps targeting Android 13 or higher must declare the `com.google.android.gms.permission.AD_ID` permission in their manifest to read it. For analytics or fraud prevention, Google points to the *App Set ID*, which is scoped per developer and can't be used to link data across companies.",
+        "An important nuance: Google allows apps, when no advertising ID is present, to fall back to their own or a persistent identifier, as long as they disclose it in their privacy policy and comply with the law. So deleting the ID greatly reduces cross-company linking, but it doesn't stop a given app from recognizing you within its own service."
+      ]
+    },
+    {
+      "titulo": "Apple's ATT: more than the IDFA",
+      "parrafos": [
+        "With *App Tracking Transparency* (iOS, iPadOS, and tvOS 14.5 or later), if you say no, the developer can't access the IDFA. Apple adds that it also can't track you using other information that identifies you or your device, like your email address.",
+        "Apple defines tracking as linking an app's data with other companies' data for advertising, or sharing it with data brokers. It doesn't cover what the app does with its own data inside its own service."
+      ]
+    },
+    {
+      "titulo": "For developers",
+      "parrafos": [
+        "If your app includes ad or analytics SDKs, check what they collect and whether they honor ID deletion (zeros on Android) and the ATT response on iOS. In the X-Mode case, the FTC said the company failed to honor some Android users' opt-out requests: the SDK you ship is your responsibility to your users."
+      ]
+    }
+  ],
+  "glosario": {
+    "idpub": [
+      "Advertising ID",
+      "A random code that Android (advertising ID) and iOS (IDFA) assign to each device for apps to use for advertising. It can be reset or deleted."
+    ],
+    "broker": [
+      "Data broker",
+      "A company that buys, combines, and resells information about people, often without any direct relationship with them."
+    ],
+    "sdk": [
+      "SDK",
+      "A third-party software kit a developer builds into an app, for example to show ads or measure usage. It runs with the same permissions as the app."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Google: Advertising ID (Play Console Help)",
+      "url": "https://support.google.com/googleplay/android-developer/answer/6048248?hl=en"
+    },
+    {
+      "titulo": "Google: reset your advertising ID and opt out of ads personalization",
+      "url": "https://support.google.com/googleplay/answer/3405269?hl=en"
+    },
+    {
+      "titulo": "Apple: If an app asks to track your activity",
+      "url": "https://support.apple.com/en-us/102420"
+    },
+    {
+      "titulo": "FTC: Order Prohibits Data Broker X-Mode Social and Outlogic from Selling Sensitive Location Data",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data"
+    },
+    {
+      "titulo": "EFF: How to Disable Ad ID Tracking on iOS and Android",
+      "url": "https://www.eff.org/deeplinks/2022/05/how-disable-ad-id-tracking-ios-and-android-and-why-you-should-do-it-now"
+    }
+  ]
+}

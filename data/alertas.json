@@ -1047,5 +1047,47 @@
         "url": "https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html"
       }
     ]
+  },
+  {
+    "id": "2026-11-24-chrome-158-variations",
+    "fecha": "2026-11-24",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-134401"
+    ],
+    "dispositivos": [
+      "sobremesa",
+      "portatil",
+      "smartphone",
+      "tablet"
+    ],
+    "es": {
+      "titulo": "Chrome 158 recibe una actualización con un fallo crítico corregido",
+      "afecta": "Cualquiera que use Google Chrome en Windows, Mac, Linux o Android.",
+      "accion": "Actualiza a **Chrome 158.0.8127.88** o superior (en Windows y Mac también vale la .89; en Android, la **158.0.8127.92**) y **reinicia el navegador**. Si usas la versión *Extended Stable* de empresa, la corregida es la **156.0.8078.114**.",
+      "detalle": "Google publicó la versión el 23/11. Corrige un único fallo, de gravedad crítica: una validación incorrecta de datos en *Variations*, el componente que recibe la configuración de funciones en pruebas (CVE-2026-134401). Lo encontró la propia Google y no ha indicado que se esté explotando. La versión para Android incluye las mismas correcciones. Se distribuye de forma escalonada durante días o semanas: si aún no te aparece, puedes forzarla desde Ayuda > Información de Google Chrome."
+    },
+    "en": {
+      "titulo": "Chrome 158 gets an update that fixes a critical flaw",
+      "afecta": "Anyone using Google Chrome on Windows, Mac, Linux, or Android.",
+      "accion": "Update to **Chrome 158.0.8127.88** or later (.89 also counts on Windows and Mac; on Android, **158.0.8127.92**) and **relaunch the browser**. If your organization uses *Extended Stable*, the fixed version is **156.0.8078.114**.",
+      "detalle": "Google shipped the release on November 23. It fixes a single critical flaw: improper input validation in *Variations*, the component that receives the configuration for features under testing (CVE-2026-134401). Google found it internally and hasn't said it's being exploited. The Android release includes the same fixes. It rolls out gradually over days or weeks; if you don't see it yet, you can trigger it from Help > About Google Chrome."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Google: Stable Channel Update for Desktop, Chrome 158 (23/11, en inglés)",
+          "en": "Google: Stable Channel Update for Desktop, Chrome 158 (Nov 23)"
+        },
+        "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01734282054.html"
+      },
+      {
+        "titulo": {
+          "es": "Google: Chrome para Android 158 (23/11, en inglés)",
+          "en": "Google: Chrome for Android update 158 (Nov 23)"
+        },
+        "url": "https://chromereleases.googleblog.com/2026/11/chrome-for-android-update_0411169060.html"
+      }
+    ]
   }
 ]
