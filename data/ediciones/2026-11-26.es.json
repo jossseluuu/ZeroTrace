@@ -1,0 +1,334 @@
+{
+  "fecha": "2026-11-26",
+  "idioma": "es",
+  "foco": "tablets",
+  "concepto": "tablet-familiar-sin-tu-cuenta",
+  "titulo": "La tablet que usa toda la familia no debería llevar tu cuenta",
+  "subtitulo": "Por qué un iPad o una tablet Android compartida con tu cuenta personal enseña tus mensajes y tus códigos de verificación a quien la coja, cómo separarla en diez minutos y qué no hace falta hacer.",
+  "dispositivos": [
+    "tablet",
+    "smartphone"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 7
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-26-nginx-http2"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Es muy habitual: la tablet de casa la configuró uno de los padres **con su propia cuenta** de Apple o de Google, y luego la usan los niños, los abuelos o quien venga de visita. Parece cómodo, pero esa tablet no es «la de casa»: para Apple y Google es **un dispositivo tuyo más**.",
+      "Eso significa que puede mostrar lo que sincronizas con tu cuenta. En un iPad, Apple trata como [[confianza|dispositivo de confianza]] cualquier equipo en el que hayas iniciado sesión con [[2fa|verificación en dos pasos]]: ahí aparecen los **códigos de verificación** de tu cuenta. Y si activaste el reenvío de SMS desde tu iPhone, también llegan tus **mensajes de texto**, incluidos los códigos del banco.",
+      "La solución no es dejar de compartir la tablet, sino **separar**: que la tablet tenga su propia cuenta (una infantil si la usa un menor), perfiles distintos en Android cuando el modelo lo permita y las compras con aprobación. Son diez minutos una sola vez."
+    ],
+    "esencial": [
+      "Una tablet con tu cuenta es, para Apple y Google, un dispositivo tuyo: muestra tus mensajes y tus códigos de verificación.",
+      "Si la usa un menor, crea una cuenta infantil con **En familia** (Apple) o **Family Link** (Google) en lugar de prestarle la tuya.",
+      "En Android, añade un usuario o un invitado en **Ajustes > Sistema > Varios usuarios**: no ve tus mensajes ni tus fotos.",
+      "Activa la aprobación de compras: **Solicitar la compra** en Apple y **Verificación de compras: Siempre** en Google Play."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "medio",
+      "texto": "No hace falta ningún atacante: basta con que otra persona use la tablet y vea lo que llega. Que alguien con malas intenciones la aproveche es menos frecuente, pero quien suele tenerla a mano es alguien de confianza."
+    },
+    "impacto": {
+      "nivel": "medio",
+      "texto": "Mensajes privados, fotos y códigos de verificación a la vista, y compras que nadie autorizó. Si además alguien tiene tu contraseña, la tablet le da el segundo factor."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Qué hace de una tablet un «dispositivo de confianza»",
+      "parrafos": [
+        "Apple define dispositivo de confianza como un iPhone, iPad, Apple Watch, Apple Vision Pro o Mac en el que ya has iniciado sesión en tu cuenta de Apple con autenticación de doble factor. En esos dispositivos aparece automáticamente el código de seis dígitos cuando alguien intenta entrar en tu cuenta desde otro sitio.",
+        "Apple añade que los dispositivos de confianza también sirven para aprobar cambios importantes de la cuenta, como el cambio de contraseña. Es decir, el iPad del salón con tu cuenta no solo «ve» cosas: tiene peso en la seguridad de tu cuenta."
+      ]
+    },
+    {
+      "titulo": "Tus SMS, en la tablet",
+      "parrafos": [
+        "El iPhone puede reenviar los SMS, MMS y RCS a otros dispositivos con la misma cuenta de Apple desde **Ajustes > Apps > Mensajes > Reenvío de mensajes de texto**. Si activaste el iPad en esa lista, los códigos que te manda el banco por SMS también aparecen en él.",
+        "No es un fallo: es una función pensada para quien usa varios aparatos propios. El problema aparece cuando ese aparato deja de ser solo tuyo."
+      ]
+    },
+    {
+      "titulo": "Android tiene perfiles; úsalos",
+      "parrafos": [
+        "Android permite varios usuarios en un mismo dispositivo (**Ajustes > Sistema > Varios usuarios**). Según Google, cada usuario tiene sus propios archivos y mensajes (SMS, correo, fotos, música) y no ve los datos de las apps que ha instalado otro. Se comparten algunos ajustes, como la wifi y el Bluetooth.",
+        "Hay también un perfil de **invitado**, pensado para alguien que usa el dispositivo poco tiempo, y un **perfil restringido** que Google indica que solo existe en tablets. Samsung también permite varios usuarios en sus tablets Galaxy, aunque los menús cambian según el modelo."
+      ]
+    },
+    {
+      "titulo": "Las compras: el problema de siempre",
+      "parrafos": [
+        "En 2014, la FTC estadounidense obligó a Apple a devolver al menos 32,5 millones de dólares por compras dentro de apps hechas por niños sin permiso. Había recibido decenas de miles de quejas. Hoy, tanto Apple como Google tienen controles específicos para esto: **Solicitar la compra** en las cuentas infantiles de Apple y la **verificación de compras** de Google Play."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "El punto de partida",
+      "texto": "La tablet familiar tiene iniciada tu cuenta personal y, en un iPad, el reenvío de SMS desde tu iPhone activado. El código de desbloqueo lo conoce media casa."
+    },
+    {
+      "titulo": "Alguien la coge",
+      "texto": "Un familiar, una expareja, una visita o quien se la encuentre si el código es fácil. No necesita ningún programa: le basta con abrir Mensajes o mirar las notificaciones."
+    },
+    {
+      "titulo": "Ve lo que llega",
+      "texto": "Mensajes privados, fotos sincronizadas y, sobre todo, **códigos**: los de verificación de tu cuenta de Apple y los SMS del banco o de otros servicios."
+    },
+    {
+      "titulo": "Lo peor que puede pasar",
+      "texto": "Si esa persona ya tiene tu contraseña (por un engaño o porque la ha visto), la tablet le da el segundo paso que le faltaba para entrar en tu cuenta o confirmar una operación."
+    },
+    {
+      "titulo": "La defensa",
+      "texto": "Sacar tu cuenta de la tablet. Apple confirma que un dispositivo eliminado de tu cuenta **ya no muestra códigos de verificación**."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Leer los mensajes y ver las fotos que sincronizas con tu cuenta en esa tablet.",
+      "Ver los códigos de verificación que llegan a la tablet como dispositivo de confianza o por SMS reenviado.",
+      "Hacer compras en la tienda de apps con tu método de pago si no hay aprobación ni verificación.",
+      "Usar la tablet como segundo factor si ya conoce tu contraseña."
+    ],
+    "no_puede": [
+      "Ver nada de esto si la tablet usa otra cuenta o, en Android, otro usuario: según Google, los usuarios no comparten archivos ni mensajes.",
+      "Recibir códigos en una tablet que has eliminado de tu cuenta.",
+      "Saltarse **Solicitar la compra**: la compra queda pendiente hasta que el adulto la aprueba desde su dispositivo.",
+      "Salir de una app fijada (Acceso guiado o Fijar aplicaciones) sin el código o el PIN."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Si la usa un menor, dale su propia cuenta infantil",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "todos",
+      "texto": "Es la separación de verdad. Apple pide que las cuentas de los menores de 13 años las cree un adulto (la edad varía según el país) y Google permite crear y supervisar la cuenta de un menor con Family Link.",
+      "pasos": {
+        "iPad": [
+          "En tu iPhone o iPad, ve a **Ajustes > Familia > Añadir miembro > Crear cuenta infantil > Continuar** y sigue los pasos.",
+          "Inicia sesión en la tablet con esa cuenta infantil en lugar de con la tuya."
+        ],
+        "Android": [
+          "Instala **Family Link** en tu móvil y crea o añade la cuenta de Google del menor.",
+          "Configura la tablet con esa cuenta."
+        ]
+      }
+    },
+    {
+      "titulo": "Saca tu cuenta de la tablet compartida",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Así deja de ser un dispositivo de confianza y de recibir tus códigos. Apple recomienda cerrar la sesión en el propio dispositivo para que no vuelva a aparecer en la lista.",
+      "pasos": {
+        "iPad": [
+          "En la propia tablet, abre **Ajustes** y cierra la sesión de tu cuenta de Apple.",
+          "Si no la tienes a mano: en tu iPhone, **Ajustes > [tu nombre]**, baja hasta la lista de dispositivos, toca la tablet y pulsa **Eliminar de la cuenta**."
+        ]
+      }
+    },
+    {
+      "titulo": "En Android, un usuario para cada uno (o un invitado)",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "10 min",
+      "para": "todos",
+      "texto": "Si la tablet es tuya pero otros la usan a menudo, crea un usuario aparte. Para usos puntuales, el invitado se borra fácilmente al terminar. Solo el propietario puede añadir usuarios.",
+      "pasos": {
+        "Android": [
+          "Ve a **Ajustes > Sistema > Varios usuarios > Añadir usuario > Aceptar** y pon un nombre (si no aparece, **Añadir usuario o perfil > Usuario**).",
+          "Para cambiar de usuario, desliza desde arriba y toca el icono de usuario. En tablets Samsung, el menú está en **Ajustes > Cuentas y copia de seguridad > Usuarios**."
+        ]
+      }
+    },
+    {
+      "titulo": "Revisa el reenvío de SMS en tu iPhone",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "todos",
+      "texto": "Deja activados solo los aparatos que usas tú.",
+      "pasos": {
+        "iPhone": [
+          "Ve a **Ajustes > Apps > Mensajes > Reenvío de mensajes de texto**.",
+          "Desactiva la tablet compartida."
+        ]
+      }
+    },
+    {
+      "titulo": "Pon las compras bajo aprobación",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Así ninguna compra sale sin que un adulto la autorice.",
+      "pasos": {
+        "iPad": [
+          "Con cuenta infantil: **Ajustes > Familia > [nombre] > Apps y sitios web > Restricciones > Solicitar la compra** y activa **Solicitar aprobación de compra**."
+        ],
+        "Android": [
+          "En Google Play, toca tu foto > **Pagos y suscripciones > Verificación de compras** y elige **Siempre**, no **Cada 30 minutos** ni **Nunca**."
+        ]
+      }
+    },
+    {
+      "titulo": "Fija la app antes de prestarla",
+      "impacto": "bajo",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "avanzado",
+      "texto": "Para prestar la tablet un rato (un vídeo, un juego) sin que se pueda salir de esa app.",
+      "pasos": {
+        "iPad": [
+          "Activa **Ajustes > Accesibilidad > Acceso guiado** y define un código.",
+          "Abre la app y haz triple clic en el botón superior (o en el botón de inicio en modelos antiguos). Para terminar, triple clic, código y **Terminar**."
+        ],
+        "Android": [
+          "Activa **Ajustes > Seguridad > Avanzado > Fijar aplicaciones** (puede estar en **Seguridad y ubicación**).",
+          "Para dejar de fijarla hará falta el PIN, el patrón o la contraseña."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "¿Qué cuenta tiene la tablet?",
+      "texto": "Abre **Ajustes** en la tablet y mira el nombre que aparece arriba. Si es el tuyo y no la usas solo tú, sigue las medidas."
+    },
+    {
+      "titulo": "¿Aparece en tu lista de dispositivos?",
+      "texto": "En tu iPhone, **Ajustes > [tu nombre]**: baja hasta la lista y comprueba que solo están tus aparatos."
+    },
+    {
+      "titulo": "¿Recibe tus SMS?",
+      "texto": "En **Reenvío de mensajes de texto** no debería estar marcada la tablet compartida."
+    },
+    {
+      "titulo": "¿Pide permiso para comprar?",
+      "texto": "Intenta descargar una app de pago desde la tablet: debería pedir aprobación o tu verificación."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Comprar una tablet para cada miembro de la familia",
+      "texto": "Con una cuenta propia para la tablet o perfiles separados en Android, compartirla es perfectamente razonable."
+    },
+    {
+      "titulo": "Apps de control parental de terceros «por si acaso»",
+      "texto": "Para separar cuentas y aprobar compras bastan las herramientas del sistema: En familia y Tiempo de uso en Apple, Family Link en Google."
+    },
+    {
+      "titulo": "Restablecer la tablet de fábrica",
+      "texto": "Para quitar tu cuenta basta con cerrar la sesión o eliminarla de tu cuenta. Restablecer solo es necesario si la vas a vender o regalar."
+    },
+    {
+      "titulo": "Quitar la verificación en dos pasos para no recibir códigos en la tablet",
+      "texto": "Sería empeorar tu seguridad para resolver otra cosa. Lo correcto es que la tablet deje de ser un dispositivo de confianza."
+    }
+  ],
+  "mito": {
+    "mito": "«Si la tienda pide mi contraseña, el niño no puede comprar sin mí.»",
+    "realidad": "Depende de cómo esté configurado. La FTC comprobó en 2014 que, al teclear la contraseña una vez, se abría una ventana de **15 minutos** de compras sin volver a pedirla. Hoy Google Play aún ofrece verificar **cada 30 minutos**: si la tecleas delante del niño, puede seguir comprando ese rato. Elige **Siempre** o usa una cuenta infantil con aprobación.",
+    "fuente": {
+      "titulo": "FTC: Apple devolverá al menos 32,5 millones de dólares por compras de niños (2014, en inglés)",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2014/01/apple-inc-will-provide-full-consumer-refunds-least-325-million-settle-ftc-complaint-it-charged-kids"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "Aislamiento de usuarios en Android",
+      "parrafos": [
+        "Cada usuario secundario de Android tiene su propio espacio de almacenamiento y sus propias instancias de las apps; lo que se comparte son las actualizaciones de apps instaladas por más de un usuario y algunos ajustes del sistema, como la wifi y el Bluetooth. El perfil restringido (solo tablets) deriva del usuario principal y limita qué apps y contenidos ve. Solo el propietario del dispositivo puede crear o eliminar usuarios, y en Samsung la cuenta de administrador necesita un bloqueo de pantalla antes de crear un perfil restringido."
+      ]
+    },
+    {
+      "titulo": "Dispositivos de confianza y su alcance",
+      "parrafos": [
+        "En el modelo de Apple, el segundo factor es «algo que tienes»: los dispositivos donde ya autenticaste con doble factor. Cada dispositivo añadido amplía la superficie: cualquiera con el código de desbloqueo de cualquiera de ellos puede ver un código de verificación o aprobar cambios. La revisión periódica de la lista de dispositivos (en el iPhone o en account.apple.com > Dispositivos) es la forma de mantenerla al mínimo. Si gestionas varias tablets en un colegio o una empresa, lo adecuado es una gestión de dispositivos (MDM), no cuentas personales."
+      ]
+    },
+    {
+      "titulo": "Acceso guiado y Fijar aplicaciones",
+      "parrafos": [
+        "Ambas funciones bloquean el dispositivo en una sola app. En iPad, Acceso guiado permite además desactivar botones, movimiento, teclado o zonas de la pantalla y fijar un límite de tiempo; durante la sesión, Apple avisa de que la detección de accidentes y las llamadas de emergencia no están disponibles. En Android, al fijar una app con la función activada, salir exige el bloqueo de pantalla. No sustituyen a una cuenta separada: solo limitan una sesión concreta."
+      ]
+    }
+  ],
+  "glosario": {
+    "confianza": [
+      "Dispositivo de confianza",
+      "Aparato en el que ya has iniciado sesión con tu cuenta usando verificación en dos pasos. Muestra los códigos de verificación y puede aprobar cambios en la cuenta."
+    ],
+    "2fa": [
+      "Verificación en dos pasos",
+      "Además de la contraseña, se pide un segundo dato, normalmente un código que aparece en un dispositivo tuyo o llega por SMS."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Apple: números de teléfono y dispositivos de confianza de la cuenta de Apple",
+      "url": "https://support.apple.com/es-es/122621"
+    },
+    {
+      "titulo": "Apple: autenticación de doble factor para la cuenta de Apple",
+      "url": "https://support.apple.com/es-es/102660"
+    },
+    {
+      "titulo": "Apple: revisar los dispositivos con sesión iniciada en tu cuenta de Apple",
+      "url": "https://support.apple.com/es-es/102649"
+    },
+    {
+      "titulo": "Apple: reenviar mensajes de texto del iPhone a otros dispositivos",
+      "url": "https://support.apple.com/es-es/102545"
+    },
+    {
+      "titulo": "Apple: crear una cuenta de Apple para tu hijo",
+      "url": "https://support.apple.com/es-es/102617"
+    },
+    {
+      "titulo": "Apple: Solicitar la compra",
+      "url": "https://support.apple.com/es-es/105055"
+    },
+    {
+      "titulo": "Apple: usar Acceso guiado en el iPhone o iPad",
+      "url": "https://support.apple.com/es-es/111795"
+    },
+    {
+      "titulo": "Google: eliminar, cambiar o añadir usuarios en Android",
+      "url": "https://support.google.com/android/answer/2865483?hl=es"
+    },
+    {
+      "titulo": "Google Play: verificación de compras",
+      "url": "https://support.google.com/googleplay/answer/1626831?hl=es"
+    },
+    {
+      "titulo": "Google: fijar y dejar de fijar pantallas",
+      "url": "https://support.google.com/android/answer/9455138?hl=es"
+    },
+    {
+      "titulo": "INCIBE (menores): Tiempo de uso, el control parental de Apple",
+      "url": "https://www.incibe.es/menores/blog/conoce-tiempo-de-uso-el-control-parental-de-apple"
+    },
+    {
+      "titulo": "INCIBE (menores): Family Link, el control parental de Google",
+      "url": "https://www.incibe.es/menores/blog/family-link-el-control-parental-de-google"
+    },
+    {
+      "titulo": "Samsung: añadir usuarios a una tablet Galaxy (en inglés)",
+      "url": "https://www.samsung.com/uk/support/mobile-devices/how-do-i-add-additional-user-accounts-to-my-galaxy-tablet/"
+    }
+  ]
+}

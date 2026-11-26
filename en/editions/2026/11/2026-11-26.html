@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Why a shared iPad or Android tablet signed in to your personal account shows your messages and verification codes to whoever picks it up, how to separate it in ten minutes, and what you don&#x27;t need to do.">
+<title>The tablet the whole family uses shouldn&#x27;t be signed in to your account · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-26.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-26.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Thursday, November 26, 2026 · 📲 Tablets / iPad</p>
+<h1>The tablet the whole family uses shouldn't be signed in to your account</h1><p class="sub">Why a shared iPad or Android tablet signed in to your personal account shows your messages and verification codes to whoever picks it up, how to separate it in ten minutes, and what you don't need to do.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 7 min</li><li>📲 Tablet</li><li>📱 Smartphone</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-26-nginx-http2">
+<header><span class="pill amarillo">Heads-up</span><h3>NGINX: HTTP/2 flaw with public exploit code, now under attack per Singapore's CSA</h3></header>
+<dl><dt>Who it affects</dt><dd>Websites and services running NGINX Open Source (1.9.5 through 1.30.6 and 1.31.0 through 1.31.8) or NGINX Plus with HTTP/2 enabled. Your home devices aren't affected.</dd>
+<dt>What to do</dt><dd>If you run servers, update to <strong>NGINX 1.30.7 or 1.31.9</strong> (or <strong>NGINX Plus 37.0.8.1 / 37.3.0.1</strong>), or your distribution's fixed package, and restart the service.</dd>
+<dt class="deep">Details</dt><dd class="deep">On November 18, F5 disclosed five critical NGINX flaws (dubbed <em>NGINX2Root</em>). On November 26, Singapore's Cyber Security Agency (CSA) warned that CVE-2026-123007, an integer underflow in HTTP/2 flow control with a public proof of concept, is reportedly being actively exploited. The same releases fix CVE-2026-123633 and the other flaws in the advisory.<div class="cves"><code>CVE-2026-123007</code></div></dd></dl>
+<p class="src"><a href="https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-168/" rel="noopener noreferrer">Singapore CSA: AL-2026-168, Active Exploitation of Vulnerability in F5 NGINX</a> · <a href="https://my.f5.com/manage/s/article/K000163926" rel="noopener noreferrer">F5: NGINX advisory K000163926</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>It happens all the time: one parent set up the family tablet <strong>with their own</strong> Apple or Google account, and now the kids, the grandparents, or visiting friends use it. It feels convenient, but to Apple and Google that tablet isn't "the family one": it's <strong>just another one of your devices</strong>.</p><p>That means it can show whatever you sync to your account. On an iPad, Apple treats any device where you've signed in with <button type="button" class="term" popovertarget="g-2fa">two-factor authentication</button> as a <button type="button" class="term" popovertarget="g-trusted">trusted device</button>: your account's <strong>verification codes</strong> show up there. And if you turned on text message forwarding from your iPhone, your <strong>texts</strong> arrive too, including codes from your bank.</p><p>The fix isn't to stop sharing the tablet. It's to <strong>separate</strong>: give the tablet its own account (a child account if a kid uses it), use separate Android users when the model supports them, and require approval for purchases. It takes about ten minutes, once.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>To Apple and Google, a tablet signed in to your account is your device: it shows your messages and verification codes.</li><li>If a kid uses it, create a child account with <strong>Family Sharing</strong> (Apple) or <strong>Family Link</strong> (Google) instead of lending yours.</li><li>On Android, add a user or a guest in <strong>Settings &gt; System &gt; Multiple users</strong>: they can't see your messages or photos.</li><li>Turn on purchase approval: <strong>Ask to Buy</strong> on Apple and <strong>Purchase verification: Always</strong> on Google Play.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>No attacker required: someone else just has to use the tablet and see what comes in. Someone with bad intentions taking advantage of it is less common, but the people who have it handy are usually people you trust.</p></div><div class="medidor"><div class="top"><span>Impact: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Private messages, photos, and verification codes in plain view, plus purchases nobody approved. If someone also has your password, the tablet gives them the second factor.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>What makes a tablet a "trusted device"</h3><p>Apple defines a trusted device as an iPhone, iPad, Apple Watch, Apple Vision Pro, or Mac where you've already signed in to your Apple Account using two-factor authentication. The six-digit code automatically appears on those devices when someone tries to sign in to your account somewhere else.</p><p>Apple adds that trusted devices can also approve important account changes, such as a password change. In other words, the living-room iPad signed in to your account doesn't just "see" things: it carries weight in your account's security.</p><h3>Your texts, on the tablet</h3><p>Your iPhone can forward SMS, MMS, and RCS messages to other devices signed in to the same Apple Account from <strong>Settings &gt; Apps &gt; Messages &gt; Text Message Forwarding</strong>. If you turned the iPad on in that list, the codes your bank texts you show up there too.</p><p>It isn't a bug: it's a feature meant for people who use several devices of their own. The problem starts when that device stops being only yours.</p><h3>Android has user profiles; use them</h3><p>Android supports multiple users on one device (<strong>Settings &gt; System &gt; Multiple users</strong>). According to Google, each user has their own files and messages (texts, email, photos, music) and can't see data from apps another user installed. Some settings, like Wi-Fi and Bluetooth, are shared.</p><p>There's also a <strong>guest</strong> profile, meant for someone using the device for a short time, and a <strong>restricted profile</strong> that Google says is available on tablets only. Samsung also supports multiple users on Galaxy tablets, though menus vary by model.</p><h3>Purchases: the old problem</h3><p>In 2014, the FTC required Apple to refund at least $32.5 million for in-app purchases kids made without permission, after the company received tens of thousands of complaints. Today both Apple and Google have dedicated controls for this: <strong>Ask to Buy</strong> for Apple child accounts and Google Play's <strong>purchase verification</strong>.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>The starting point</strong><p>The family tablet is signed in to your personal account and, on an iPad, text message forwarding from your iPhone is on. Half the household knows the passcode.</p></li><li><strong>Someone picks it up</strong><p>A relative, an ex, a guest, or whoever finds it if the passcode is easy. No special software needed: opening Messages or glancing at notifications is enough.</p></li><li><strong>They see what comes in</strong><p>Private messages, synced photos and, above all, <strong>codes</strong>: your Apple Account verification codes and texts from your bank or other services.</p></li><li><strong>The worst case</strong><p>If that person already has your password (through a scam or because they saw it), the tablet gives them the second step they were missing to get into your account or confirm a transaction.</p></li><li><strong>The defense</strong><p>Take your account off the tablet. Apple confirms that a device removed from your account <strong>no longer displays verification codes</strong>.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Read the messages and see the photos you sync to your account on that tablet.</li><li>See verification codes that reach the tablet as a trusted device or through forwarded texts.</li><li>Make app store purchases with your payment method if there's no approval or verification.</li><li>Use the tablet as a second factor if they already know your password.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>See any of this if the tablet uses a different account or, on Android, a different user: according to Google, users don't share files or messages.</li><li>Receive codes on a tablet you've removed from your account.</li><li>Get around <strong>Ask to Buy</strong>: the purchase stays pending until the adult approves it from their own device.</li><li>Leave a locked app (Guided Access or App pinning) without the passcode or PIN.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>If a kid uses it, give them their own child account</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: medium</li>
+<li>⏱ 15 min</li><li>For: everyone</li></ul>
+<p>This is real separation. Apple requires a parent or guardian to create accounts for children under 13 (age varies by country), and Google lets you create and supervise a child's account with Family Link.</p><div class="plataformas"><div class="plataforma"><h4>iPad</h4><ol><li>On your iPhone or iPad, go to <strong>Settings &gt; Family &gt; Add Member &gt; Create Child Account &gt; Continue</strong> and follow the steps.</li><li>Sign in to the tablet with that child account instead of yours.</li></ol></div><div class="plataforma"><h4>Android</h4><ol><li>Install <strong>Family Link</strong> on your phone and create or add your child's Google Account.</li><li>Set up the tablet with that account.</li></ol></div></div></article><article class="medida"><h3>Take your account off the shared tablet</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>That way it stops being a trusted device and stops receiving your codes. Apple recommends signing out on the device itself so it doesn't reappear in your list.</p><div class="plataformas"><div class="plataforma"><h4>iPad</h4><ol><li>On the tablet itself, open <strong>Settings</strong> and sign out of your Apple Account.</li><li>If it isn't handy: on your iPhone, go to <strong>Settings &gt; [your name]</strong>, scroll down to the device list, tap the tablet, and tap <strong>Remove from Account</strong>.</li></ol></div></div></article><article class="medida"><h3>On Android, one user per person (or a guest)</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 10 min</li><li>For: everyone</li></ul>
+<p>If the tablet is yours but others use it often, create a separate user. For occasional use, a guest is easy to delete afterward. Only the device owner can add users.</p><div class="plataformas"><div class="plataforma"><h4>Android</h4><ol><li>Go to <strong>Settings &gt; System &gt; Multiple users &gt; Add user &gt; OK</strong> and enter a name (if you don't see it: <strong>Add user or profile &gt; User</strong>).</li><li>To switch users, swipe down from the top and tap the user icon. On Samsung tablets, the menu is under <strong>Settings &gt; Accounts and backup &gt; Users</strong>.</li></ol></div></div></article><article class="medida"><h3>Check text message forwarding on your iPhone</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: everyone</li></ul>
+<p>Leave on only the devices you use yourself.</p><div class="plataformas"><div class="plataforma"><h4>iPhone</h4><ol><li>Go to <strong>Settings &gt; Apps &gt; Messages &gt; Text Message Forwarding</strong>.</li><li>Turn off the shared tablet.</li></ol></div></div></article><article class="medida"><h3>Put purchases behind approval</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>That way no purchase goes through without an adult approving it.</p><div class="plataformas"><div class="plataforma"><h4>iPad</h4><ol><li>With a child account: <strong>Settings &gt; Family &gt; [name] &gt; Apps &amp; Websites &gt; Restrictions &gt; Ask to Buy</strong> and turn on <strong>Require Purchase Approval</strong>.</li></ol></div><div class="plataforma"><h4>Android</h4><ol><li>In Google Play, tap your profile picture &gt; <strong>Payments &amp; subscriptions &gt; Purchase verification</strong> and choose <strong>Always</strong>, not <strong>Every 30 minutes</strong> or <strong>Never</strong>.</li></ol></div></div></article><article class="medida deep"><h3>Lock the app before handing it over<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="bajo">Impact: low</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: advanced</li></ul>
+<p>For lending the tablet for a while (a video, a game) without anyone leaving that app.</p><div class="plataformas"><div class="plataforma"><h4>iPad</h4><ol><li>Turn on <strong>Settings &gt; Accessibility &gt; Guided Access</strong> and set a passcode.</li><li>Open the app and triple-click the top button (or the Home button on older models). To end, triple-click, enter the passcode, and tap <strong>End</strong>.</li></ol></div><div class="plataforma"><h4>Android</h4><ol><li>Turn on <strong>Settings &gt; Security &gt; Advanced &gt; App pinning</strong> (it may be under <strong>Security &amp; location</strong>).</li><li>Unpinning will require your PIN, pattern, or password.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>Which account is the tablet using?</h3><p>Open <strong>Settings</strong> on the tablet and check the name at the top. If it's yours and you're not the only one using it, follow the steps above.</p></div><div class="fila"><h3>Is it in your device list?</h3><p>On your iPhone, <strong>Settings &gt; [your name]</strong>: scroll down to the list and make sure only your own devices are there.</p></div><div class="fila"><h3>Does it get your texts?</h3><p>In <strong>Text Message Forwarding</strong>, the shared tablet shouldn't be turned on.</p></div><div class="fila"><h3>Does it ask before buying?</h3><p>Try downloading a paid app on the tablet: it should ask for approval or your verification.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Buying a tablet for every family member</h3><p>With its own account, or separate users on Android, sharing a tablet is perfectly reasonable.</p></div><div class="fila"><h3>Third-party parental control apps "just in case"</h3><p>Separating accounts and approving purchases only takes the built-in tools: Family Sharing and Screen Time on Apple, Family Link on Google.</p></div><div class="fila"><h3>Factory resetting the tablet</h3><p>To take your account off, signing out or removing it from your account is enough. A reset is only needed if you're selling or giving it away.</p></div><div class="fila"><h3>Turning off two-factor authentication to stop codes on the tablet</h3><p>That would weaken your security to fix a different problem. The right move is for the tablet to stop being a trusted device.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"If the store asks for my password, my kid can't buy anything without me."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>It depends on your settings. In 2014 the FTC found that entering the password once opened a <strong>15-minute</strong> window of purchases without asking again. Today Google Play still offers verification <strong>every 30 minutes</strong>: if you type it in front of your kid, they can keep buying for that long. Choose <strong>Always</strong> or use a child account with approval.</p><p class="src"><a href="https://www.ftc.gov/news-events/news/press-releases/2014/01/apple-inc-will-provide-full-consumer-refunds-least-325-million-settle-ftc-complaint-it-charged-kids" rel="noopener noreferrer">FTC: Apple will provide full consumer refunds of at least $32.5 million (2014)</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>User isolation on Android</h3><p>Each secondary Android user gets its own storage and its own app instances; what's shared are updates to apps installed by more than one user and some system settings, like Wi-Fi and Bluetooth. The restricted profile (tablets only) derives from the primary user and limits which apps and content it sees. Only the device owner can create or delete users, and on Samsung the admin account needs a screen lock before creating a restricted profile.</p><h3>Trusted devices and their reach</h3><p>In Apple's model, the second factor is "something you have": the devices where you've already authenticated with two-factor authentication. Every device you add widens the surface: anyone with the passcode to any of them can see a verification code or approve changes. Reviewing the device list regularly (on your iPhone or at account.apple.com &gt; Devices) keeps it to a minimum. If you manage several tablets at a school or business, the right tool is mobile device management (MDM), not personal accounts.</p><h3>Guided Access and App pinning</h3><p>Both features lock the device to a single app. On iPad, Guided Access can also disable buttons, motion, the keyboard, or areas of the screen and set a time limit; Apple notes that Crash Detection and emergency calls aren't available during a session. On Android, when the feature is on, leaving a pinned app requires the screen lock. Neither replaces a separate account: they only limit one session.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Trusted device</dt><dd>A device where you&#x27;ve already signed in to your account using two-factor authentication. It displays verification codes and can approve account changes.</dd><dt>Two-factor authentication</dt><dd>On top of your password, a second piece of information is required, usually a code that appears on one of your devices or arrives by text.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://support.apple.com/en-us/122621" rel="noopener noreferrer">Apple: About trusted phone numbers and trusted devices for Apple Account</a></li><li><a href="https://support.apple.com/en-us/102660" rel="noopener noreferrer">Apple: Two-factor authentication for Apple Account</a></li><li><a href="https://support.apple.com/en-us/102649" rel="noopener noreferrer">Apple: Review devices signed in to your Apple Account</a></li><li><a href="https://support.apple.com/en-us/102545" rel="noopener noreferrer">Apple: Forward text messages from your iPhone to other devices</a></li><li><a href="https://support.apple.com/en-us/102617" rel="noopener noreferrer">Apple: Create an Apple Account for your child</a></li><li><a href="https://support.apple.com/en-us/105055" rel="noopener noreferrer">Apple: Approve what kids buy and download with Ask to Buy</a></li><li><a href="https://support.apple.com/en-us/111795" rel="noopener noreferrer">Apple: Use Guided Access with iPhone and iPad</a></li><li><a href="https://support.google.com/android/answer/2865483?hl=en" rel="noopener noreferrer">Google: Delete, switch, or add users on Android</a></li><li><a href="https://support.google.com/googleplay/answer/1626831?hl=en" rel="noopener noreferrer">Google Play: Purchase verification</a></li><li><a href="https://support.google.com/android/answer/9455138?hl=en" rel="noopener noreferrer">Google: Pin &amp; unpin screens</a></li><li><a href="https://www.ftc.gov/news-events/news/press-releases/2014/01/apple-inc-will-provide-full-consumer-refunds-least-325-million-settle-ftc-complaint-it-charged-kids" rel="noopener noreferrer">FTC: Apple will provide full consumer refunds of at least $32.5 million (2014)</a></li><li><a href="https://www.samsung.com/uk/support/mobile-devices/how-do-i-add-additional-user-accounts-to-my-galaxy-tablet/" rel="noopener noreferrer">Samsung: How do I add additional user accounts to my Galaxy tablet?</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-trusted" class="gl-pop"><strong>Trusted device</strong>A device where you&#x27;ve already signed in to your account using two-factor authentication. It displays verification codes and can approve account changes.</div><div popover id="g-2fa" class="gl-pop"><strong>Two-factor authentication</strong>On top of your password, a second piece of information is required, usually a code that appears on one of your devices or arrives by text.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

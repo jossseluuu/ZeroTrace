@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/en/feed.xml" rel="self" type="application/rss+xml"/>
   <description>A daily cybersecurity newsletter: one concrete concept a day, for beginners and for those who want to go deeper.</description>
   <language>en-US</language>
-  <lastBuildDate>Wed, 25 Nov 2026 09:01:24 +0100</lastBuildDate>
+  <lastBuildDate>Thu, 26 Nov 2026 10:08:57 +0100</lastBuildDate>
+  <item>
+    <title>The tablet the whole family uses shouldn&#x27;t be signed in to your account</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-26.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-26.html</guid>
+    <pubDate>Thu, 26 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Tablets / iPad</category>
+    <description>Why a shared iPad or Android tablet signed in to your personal account shows your messages and verification codes to whoever picks it up, how to separate it in ten minutes, and what you don&#x27;t need to do. — Heads-up: NGINX: HTTP/2 flaw with public exploit code, now under attack per Singapore&#x27;s CSA</description>
+  </item>
   <item>
     <title>The certificates that protect your PC&#x27;s startup expired this year: make sure it has the new ones</title>
     <link>https://jossseluuu.github.io/ZeroTrace/en/editions/2026/11/2026-11-25.html</link>

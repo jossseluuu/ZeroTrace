@@ -1170,5 +1170,45 @@
         "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2026-133/"
       }
     ]
+  },
+  {
+    "id": "2026-11-26-nginx-http2",
+    "fecha": "2026-11-26",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-123007"
+    ],
+    "dispositivos": [
+      "servidor",
+      "empresa"
+    ],
+    "es": {
+      "titulo": "NGINX: fallo en HTTP/2 con exploit público, ya atacado según el CSA de Singapur",
+      "afecta": "Webs y servicios que usan NGINX Open Source (1.9.5 a 1.30.6 y 1.31.0 a 1.31.8) o NGINX Plus con HTTP/2 activado. No afecta a tus dispositivos de casa.",
+      "accion": "Si administras servidores, actualiza a **NGINX 1.30.7 o 1.31.9** (o **NGINX Plus 37.0.8.1 / 37.3.0.1**), o al paquete corregido de tu distribución, y reinicia el servicio.",
+      "detalle": "F5 publicó el 18/11 cinco fallos críticos en NGINX (conocidos como *NGINX2Root*). El 26/11, la Agencia de Ciberseguridad de Singapur (CSA) avisó de que CVE-2026-123007, un desbordamiento por defecto de entero en el control de flujo de HTTP/2 con prueba de concepto pública, se estaría explotando activamente. Las mismas versiones corrigen CVE-2026-123633 y el resto de fallos del boletín."
+    },
+    "en": {
+      "titulo": "NGINX: HTTP/2 flaw with public exploit code, now under attack per Singapore's CSA",
+      "afecta": "Websites and services running NGINX Open Source (1.9.5 through 1.30.6 and 1.31.0 through 1.31.8) or NGINX Plus with HTTP/2 enabled. Your home devices aren't affected.",
+      "accion": "If you run servers, update to **NGINX 1.30.7 or 1.31.9** (or **NGINX Plus 37.0.8.1 / 37.3.0.1**), or your distribution's fixed package, and restart the service.",
+      "detalle": "On November 18, F5 disclosed five critical NGINX flaws (dubbed *NGINX2Root*). On November 26, Singapore's Cyber Security Agency (CSA) warned that CVE-2026-123007, an integer underflow in HTTP/2 flow control with a public proof of concept, is reportedly being actively exploited. The same releases fix CVE-2026-123633 and the other flaws in the advisory."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "CSA Singapur: AL-2026-168, explotación activa en F5 NGINX (en inglés)",
+          "en": "Singapore CSA: AL-2026-168, Active Exploitation of Vulnerability in F5 NGINX"
+        },
+        "url": "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-168/"
+      },
+      {
+        "titulo": {
+          "es": "F5: aviso K000163926 sobre NGINX (en inglés)",
+          "en": "F5: NGINX advisory K000163926"
+        },
+        "url": "https://my.f5.com/manage/s/article/K000163926"
+      }
+    ]
   }
 ]

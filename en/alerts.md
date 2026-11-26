@@ -4,6 +4,7 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/26/2026](editions/2026/11/2026-11-26.md) | Heads-up | NGINX: HTTP/2 flaw with public exploit code, now under attack per Singapore's CSA | CVE-2026-123007 |
 | [11/25/2026](editions/2026/11/2026-11-25.md) | Critical | Drupal: highly critical installer flaw lets attackers take over sites, already exploited | CVE-2026-132165 |
 | [11/25/2026](editions/2026/11/2026-11-25.md) | Heads-up | Firefox 161 fixes 110 flaws, 59 of them high impact | CVE-2026-135500, CVE-2026-135501, CVE-2026-135502 |
 | [11/24/2026](editions/2026/11/2026-11-24.md) | Heads-up | Chrome 158 gets an update that fixes a critical flaw | CVE-2026-134401 |

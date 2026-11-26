@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-25T09:01:24+01:00",
+  "actualizado": "2026-11-26T10:08:57+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "tablets",
     "sobremesa",
     "habitos",
     "portatiles",
     "router",
     "iot",
-    "copias",
-    "wearables"
+    "copias"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -85,6 +85,10 @@
       {
         "fecha": "2026-11-10",
         "concepto": "tablet-android-sin-certificar"
+      },
+      {
+        "fecha": "2026-11-26",
+        "concepto": "tablet-familiar-sin-tu-cuenta"
       }
     ],
     "copias": [
@@ -133,6 +137,15 @@
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-26",
+      "foco": "tablets",
+      "concepto": "tablet-familiar-sin-tu-cuenta",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-26-nginx-http2"
+      ]
+    },
     {
       "fecha": "2026-11-25",
       "foco": "sobremesa",
