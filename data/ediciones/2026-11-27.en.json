@@ -1,0 +1,200 @@
+{
+  "fecha": "2026-11-27",
+  "idioma": "en",
+  "foco": "ingenieria",
+  "concepto": "package-held-text-scam",
+  "titulo": "No package gets released by paying through a text message link",
+  "subtitulo": "Why your phone fills up with \"package on hold\" texts during the biggest shopping week of the year, what that $2 fee is really after, and the one rule that keeps you out of it.",
+  "dispositivos": ["smartphone", "tablet"],
+  "lectura": {"basico": 3, "fondo": 8},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-27-mitel-micollab", "2026-11-27-juniper-session-smart-conductor"]
+  },
+  "basico": {
+    "parrafos": [
+      "It's Black Friday, and half the country is waiting on a delivery. That's exactly why this is the best week for the classic text: **\"Your package is on hold. Pay a small fee to schedule delivery,\"** followed by a link.",
+      "According to the FTC, fake package delivery texts were the most commonly reported text scam in 2024, a year in which people reported losing $470 million to text scams overall. The fee is tiny on purpose, because **nobody stops to think over two dollars**. But the scammers don't want two dollars: they want **your full card details** and, often, the code your bank sends you.",
+      "The rule that protects you is simple: **a delivery is never managed or paid for through a link in a text**. If you're expecting a package, go to the store's or carrier's app or website yourself, by typing the address or opening the app you already have."
+    ],
+    "esencial": [
+      "Never pay or enter card details through a link you got by text.",
+      "Check your delivery status in the store's app or website, navigating there yourself.",
+      "The code your bank texts you never goes into a website you reached from a message.",
+      "If you already entered your card, call your bank and lock it right away."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "alto", "texto": "These texts go out in bulk to any number, with no idea whether you ordered anything. During Black Friday and the holidays, they land with far more people who are expecting a package."},
+    "impacto": {"nivel": "medio", "texto": "You can lose money to fraudulent charges and have your card loaded onto someone else's phone. It can usually be stopped if you tell your bank quickly, but the hassle is guaranteed."}
+  },
+  "fondo": [
+    {
+      "titulo": "Why it works so well",
+      "parrafos": [
+        "Package [[smishing|smishing]] plays on three things at once: **expectation** (you're waiting for something), **urgency** (pay or it gets sent back), and **a laughably small amount**. None of them invites you to double-check.",
+        "The text doesn't need to know what you bought. It goes to thousands of numbers at once, and plenty of the people who get it are expecting a package that day. During Black Friday week, the odds shoot up."
+      ]
+    },
+    {
+      "titulo": "What happens when you tap the link",
+      "parrafos": [
+        "The FTC describes the pattern: the link takes you to a look-alike site that asks for personal or financial information. Spain's national cybersecurity institute, INCIBE, has documented the flow step by step: a page styled like the carrier, a \"continue\" or \"pay and continue\" button, and a form asking for **card number, expiration date, and security code**. Some versions also ask for your phone number, your card PIN, or a code \"we'll text you.\"",
+        "When you're done, many of these sites **redirect you to the real carrier's website**. So if anything felt off, the last thing you see is the genuine page, and you relax.",
+        "Just opening the text isn't the problem. If you tapped the link but didn't type anything, simply delete the message. The damage starts when you fill in the form."
+      ]
+    },
+    {
+      "titulo": "Your bank's code is the key piece",
+      "parrafos": [
+        "After your card, many of these sites ask for \"the verification code your bank just sent you.\" That [[otp|one-time code]] isn't for the $2 fee. As security journalist Brian Krebs has documented, the most widely used kits try to **enroll your card in an Apple or Google [[cartera|mobile wallet]]** on a phone the scammer controls, and the code is what your bank requires to approve it.",
+        "With your card on their phone, they can tap to pay in physical stores as if they were you. So **always read your bank's text in full**: it usually says what the code is for. If it mentions adding your card to a device and you aren't doing that, don't share it."
+      ]
+    },
+    {
+      "titulo": "A familiar sender name doesn't make it real",
+      "parrafos": [
+        "The FTC is blunt about it: legitimate companies won't ask for information about your account by text. The sender name or number you see is not proof of who sent the message; a business-style [[alias|sender name]] is just text chosen by whoever sends it.",
+        "Some countries are tightening this. Spain, for example, has required carriers since June 7, 2026, to block texts using sender names that aren't in a national registry. But that doesn't cover texts from ordinary phone numbers, email, or messaging apps. **The link rule is still what protects you.**"
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "They rent the kit", "texto": "The scammer doesn't write any code: they pay a subscription for a [[kit|phishing kit]] that comes with carrier templates, a control panel, and ready-to-clone sites."},
+    {"titulo": "Mass sending", "texto": "They blast out thousands of texts with a short link or a domain that looks like the real one, timed for heavy shipping periods: Black Friday, the holidays, big sales."},
+    {"titulo": "The cloned site", "texto": "Whoever taps sees a page identical to the carrier's, with an \"unpaid fee\" notice for a dollar or two and a payment form."},
+    {"titulo": "The harvest", "texto": "Card details hit the scammer's panel instantly. If the site asks for the bank code, someone on the other end uses it right away to enroll the card in their mobile wallet before it expires."},
+    {"titulo": "The cash-out", "texto": "With the card on their phone or the full details in hand, they shop or resell. Krebs reports they often wait several days before using it, so it isn't tied back to the text."}
+  ],
+  "atacante": {
+    "puede": [
+      "Send you a text that looks like it's from a carrier, with a link to a near-identical site.",
+      "Run up charges on your card if you give them the number, expiration date, and security code.",
+      "Add your card to their own mobile wallet if you give them the code your bank sends you.",
+      "Contact you again posing as your bank to \"reverse\" the charge and get even more details."
+    ],
+    "no_puede": [
+      "Hold or release any real package of yours: it has nothing to do with your shipment.",
+      "Get into your phone just because you received or opened the text, as long as you don't fill anything in.",
+      "Enroll your card in their mobile wallet without your bank's verification code.",
+      "Know whether you bought anything: they're firing blind and hitting by sheer numbers."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Follow the link rule",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "habit", "para": "todos",
+      "texto": "Any delivery notice, whether it says on hold, fee due, or \"wrong address,\" gets checked outside the message. As the FTC puts it: if you get an unexpected text about a package, don't click on any links.",
+      "pasos": {
+        "Always": ["Don't tap the link. If you already did, **don't type anything** and close the page.", "Open the app or website of the store you bought from and check tracking there.", "If you want to contact the carrier, use a phone number or website you know is real."]
+      }
+    },
+    {
+      "titulo": "Use your bank's code only for what you're doing",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "habit", "para": "todos",
+      "texto": "It's the last key before your card ends up on someone else's phone. Once you hand it over, the scammer needs nothing else.",
+      "pasos": {
+        "Always": ["Read your bank's whole text before copying the code: it usually names the amount, the merchant, or whether it's for adding your card to a device.", "If it doesn't match what you're doing, **don't enter it anywhere**.", "No one from your bank will ask you for that code over the phone."]
+      }
+    },
+    {
+      "titulo": "Report the text as spam",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Reporting helps filters stop the same campaign for other people. Then delete it.",
+      "pasos": {
+        "Android (Google Messages)": ["Touch and hold the conversation.", "Tap **Block**, check **Report spam**, then tap **OK**."],
+        "iPhone / iPad": ["In Messages, use the option to report junk that appears under a message from an unknown sender, then delete the conversation."],
+        "Any phone": ["Copy the message and forward it to **7726 (SPAM)** so your carrier can block similar texts.", "Report it to the FTC at **ReportFraud.ftc.gov**."]
+      }
+    },
+    {
+      "titulo": "Screen unknown senders",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "Sending texts from numbers that aren't in your contacts to a separate list takes away the urgency: you look at them when you choose, not when your phone buzzes.",
+      "pasos": {
+        "iPhone / iPad": ["Open **Messages** and, in the conversation list, tap **Filter** > **Manage Filtering**.", "Turn on **Screen Unknown Senders**."],
+        "Android (Google Messages)": ["Tap your profile picture or initials at the top right.", "Go to **Messages settings** > **Protection & Safety** > **Spam and scam protection** and make sure protection is on (Standard is the default)."]
+      }
+    },
+    {
+      "titulo": "If you already entered your card",
+      "impacto": "alto", "esfuerzo": "medio", "tiempo": "15 min", "para": "todos",
+      "texto": "The faster you act, the easier it is to stop the charges and undo any mobile wallet enrollment.",
+      "pasos": {
+        "Right now": ["Call your bank or open its app and **lock the card**.", "Review your transactions and dispute anything you don't recognize. Ask whether your card was added to any device.", "Save screenshots of the text, the site, and the charges.", "Report it at **ReportFraud.ftc.gov**."]
+      }
+    },
+    {
+      "titulo": "A card just for online shopping",
+      "impacto": "medio", "esfuerzo": "medio", "tiempo": "10 min", "para": "avanzado",
+      "texto": "If you shop online a lot, using a virtual card or one with a low limit means a slip-up costs little. Also turn on alerts for every card transaction in your bank's app so you find out instantly.",
+      "pasos": {
+        "In your bank's app": ["Look for virtual card numbers or online spending limits.", "Turn on notifications for every card transaction."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "Your order's real tracking", "texto": "In the store's app or website, under \"Your orders,\" you'll find the tracking number and carrier. If there's no problem or unpaid fee listed there, the text is fake."},
+    {"titulo": "Where the link takes you", "texto": "If you already tapped, look at the address bar: fake domains mimic the real one with extra letters, hyphens, or odd endings. Even so, don't rely on this alone; the padlock doesn't guarantee anything either."},
+    {"titulo": "The devices on your card", "texto": "Many banking apps show which mobile wallets each card is loaded on. If you see a device that isn't yours, lock the card and call your bank."}
+  ],
+  "innecesario": [
+    {"titulo": "Distrusting every delivery text", "texto": "Carriers do send genuine delivery updates. You don't need to ignore them: just don't pay or enter details through their link, and check in the store's app instead."},
+    {"titulo": "Changing your phone number", "texto": "These texts go to random numbers or bulk lists. A new number would start getting them too."},
+    {"titulo": "Paying for \"anti-scam\" apps", "texto": "The filters built into iPhone and Google Messages, plus the link rule, cover this case."},
+    {"titulo": "Giving up online shopping", "texto": "The risk isn't shopping; it's paying outside the store you bought from. Always pay inside the store's own website or app."}
+  ],
+  "mito": {
+    "mito": "\"If the text arrives right when I'm expecting a package, it must be real.\"",
+    "realidad": "That's exactly the point. These texts go to thousands of people at once and always hit someone who's waiting on a delivery, especially around Black Friday. Fake package delivery texts topped the FTC's list of reported text scams in 2024. **Matching your order proves nothing.**",
+    "fuente": {"titulo": "FTC: new data show top text message scams of 2024", "url": "https://www.ftc.gov/news-events/news/press-releases/2025/04/new-ftc-data-show-top-text-message-scams-2024-overall-losses-text-scams-hit-470-million"}
+  },
+  "tecnico": [
+    {
+      "titulo": "Phishing as a service: the Lighthouse case",
+      "parrafos": [
+        "In November 2025, Google sued the operators of **Lighthouse** in federal court in New York. It's a smishing kit rented on a subscription basis and linked to the group known as the *Smishing Triad*, behind waves of fake USPS and unpaid-toll texts. According to the complaint, about 200,000 fake websites were created with it in just 20 days, and Google says it has harmed more than a million victims in 120 countries.",
+        "What matters for defense: these campaigns don't depend on a skilled scammer. They're an industry with templates, dashboards, and live operators, which is why the messages look polished and the domains change within hours."
+      ]
+    },
+    {
+      "titulo": "Tokenization: why they ask for the code",
+      "parrafos": [
+        "Adding a card to Apple Pay or Google Wallet generates a *token*, a number that stands in for the card number and is bound to that phone. To approve it, the bank usually texts a code to the cardholder.",
+        "The kits automate that enrollment as soon as the victim enters the card, then ask for the code on the fake site itself, with someone on the other end ready to use it before it expires. Takeaway for banks and developers: the code message should say **what it's for** (\"add your card to device X\"), not just \"your code is 123456.\""
+      ]
+    },
+    {
+      "titulo": "Sender names aren't authenticated",
+      "parrafos": [
+        "Business texts can use an alphanumeric sender name or a short code instead of a regular number, and the protocol doesn't authenticate who set that name. That's why scam texts can look official, and why the FTC advises verifying through a channel you already trust.",
+        "Some regulators now go further. Spain's CNMC created a sender-name registry, and since June 7, 2026, carriers there must block SMS, MMS, and RCS messages using unregistered names, sent without the name holder's authorization, or from unregistered providers. It doesn't cover messages from ordinary numbers or other channels, which is where fraud shifts."
+      ]
+    },
+    {
+      "titulo": "The final redirect to the real site",
+      "parrafos": [
+        "INCIBE notes that after harvesting the data, some of these sites redirect to the carrier's genuine page. It's a common kit technique: it erases the feeling of having been somewhere sketchy and delays the moment the victim calls the bank, which is exactly the window the scammers need to use the card."
+      ]
+    }
+  ],
+  "glosario": {
+    "smishing": ["Smishing", "SMS phishing: a text message that pretends to be from a company or agency to get you to tap a link or share your information."],
+    "otp": ["One-time code (OTP)", "A temporary code your bank or a service sends you to confirm a specific action. It expires within minutes."],
+    "cartera": ["Mobile wallet", "An app like Apple Pay or Google Wallet that stores your cards on your phone so you can tap to pay."],
+    "alias": ["Sender name", "The name that shows up as the sender of a text instead of a phone number, such as a company's name."],
+    "kit": ["Phishing kit", "A bundle of fake websites, templates, and a control panel that scammers buy or rent to run campaigns without coding skills."]
+  },
+  "fuentes": [
+    {"titulo": "FTC: new data show top text message scams of 2024", "url": "https://www.ftc.gov/news-events/news/press-releases/2025/04/new-ftc-data-show-top-text-message-scams-2024-overall-losses-text-scams-hit-470-million"},
+    {"titulo": "FTC: think that text message is from USPS? It could be a scam", "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/think-text-message-usps-it-could-be-scam"},
+    {"titulo": "FTC: heard about the waiting package phishing scam?", "url": "https://consumer.ftc.gov/consumer-alerts/2020/09/heard-about-waiting-package-phishing-scam"},
+    {"titulo": "FTC: how to recognize and report spam text messages", "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"},
+    {"titulo": "Google: report spam in Google Messages", "url": "https://support.google.com/messages/answer/9061432?hl=en"},
+    {"titulo": "Google: spam and scam protection in Google Messages", "url": "https://support.google.com/messages/answer/9327903?hl=en"},
+    {"titulo": "Apple: screen and filter text messages on iPhone", "url": "https://support.apple.com/guide/iphone/iph203ab0be4/ios"},
+    {"titulo": "INCIBE: smishing campaigns impersonating Spain's postal service (in Spanish)", "url": "https://www.incibe.es/ciudadania/avisos/campanas-de-smishing-que-suplantan-la-identidad-de-correos"},
+    {"titulo": "Krebs on Security: Google sues to disrupt Chinese SMS phishing triad", "url": "https://krebsonsecurity.com/2025/11/google-sues-to-disrupt-chinese-sms-phishing-triad/"},
+    {"titulo": "The Record: Google files lawsuit to disrupt Lighthouse scam", "url": "https://therecord.media/google-files-lawsuit-to-disrupt-lighthouse-scam"}
+  ]
+}

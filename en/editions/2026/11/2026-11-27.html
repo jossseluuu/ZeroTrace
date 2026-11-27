@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Why your phone fills up with &quot;package on hold&quot; texts during the biggest shopping week of the year, what that $2 fee is really after, and the one rule that keeps you out of it.">
+<title>No package gets released by paying through a text message link · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-27.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-27.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Friday, November 27, 2026 · 🎣 Social engineering</p>
+<h1>No package gets released by paying through a text message link</h1><p class="sub">Why your phone fills up with "package on hold" texts during the biggest shopping week of the year, what that $2 fee is really after, and the one rule that keeps you out of it.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 8 min</li><li>📱 Smartphone</li><li>📲 Tablet</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-27-mitel-micollab">
+<header><span class="pill amarillo">Heads-up</span><h3>Mitel MiCollab: five flaws in its conferencing component, one rated maximum severity, under attack</h3></header>
+<dl><dt>Who it affects</dt><dd>Organizations running <strong>Mitel MiCollab 10.3 (10.3.0.18) or earlier</strong>, specifically its Audio, Web and Video Conferencing (AWV) component. Your home devices aren't affected.</dd>
+<dt>What to do</dt><dd>If you manage MiCollab, apply the patch for <strong>10.3.0.18</strong> (Mitel article KB000129195) or move to a later release. Until then, Mitel says the risk can be reduced by <strong>restricting external access to the AWV component</strong>.</dd>
+<dt class="deep">Details</dt><dd class="deep">Mitel published advisory MISA-2026-0012 on November 16 and updated it on November 24 with CVE numbers. The most severe is an unauthenticated blind command injection (CVE-2026-133323, CVSS 10), followed by an XML injection that allows command execution (CVE-2026-133303, CVSS 9.0). Mitel's advisory doesn't mention exploitation, but CISA added all five flaws to its Known Exploited Vulnerabilities catalog on November 25, and Accenture has reported zero-day attacks that dropped a web shell and quickly stole credentials.<div class="cves"><code>CVE-2026-133323</code><code>CVE-2026-133303</code><code>CVE-2026-133275</code><code>CVE-2026-133311</code><code>CVE-2026-133324</code></div></dd></dl>
+<p class="src"><a href="https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012" rel="noopener noreferrer">Mitel: Product Security Advisory MISA-2026-0012</a> · <a href="https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html" rel="noopener noreferrer">The Hacker News: hackers exploit 10 vulnerabilities across Mitel, Juniper, Vates and Danfoss</a></p></article><article class="alerta amarillo" id="2026-11-27-juniper-session-smart-conductor">
+<header><span class="pill amarillo">Heads-up</span><h3>Juniper Session Smart Conductor: critical flaw grants root control, already exploited</h3></header>
+<dl><dt>Who it affects</dt><dd>Organizations managing their networks with <strong>Juniper Session Smart Conductor</strong> before 7.0.5, 7.1.0 through 7.1.6, or 7.2.0 through 7.2.2. Your home devices aren't affected.</dd>
+<dt>What to do</dt><dd>Update to <strong>7.0.5, 7.1.7, or 7.2.3</strong> or later. Juniper says <strong>there are no workarounds</strong>; while you update, limit who can reach the Conductor's management interface.</dd>
+<dt class="deep">Details</dt><dd class="deep">Juniper published bulletin JSA112183 on October 28, covering 18 flaws in Session Smart Router and Conductor. On November 24 it updated the bulletin to say at least one instance of malicious exploitation of CVE-2026-103406 has been reported: a command injection in the <em>AutomatedProvisioner</em> component that lets a remote attacker run commands as <em>root</em> using a crafted <em>salt minion</em> ID (CVSS 9.8). CISA added it to its Known Exploited Vulnerabilities catalog on November 25.<div class="cves"><code>CVE-2026-103406</code></div></dd></dl>
+<p class="src"><a href="https://supportportal.juniper.net/JSA112183" rel="noopener noreferrer">Juniper: security bulletin JSA112183</a> · <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-103406" rel="noopener noreferrer">NVD: CVE-2026-103406</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>It's Black Friday, and half the country is waiting on a delivery. That's exactly why this is the best week for the classic text: <strong>"Your package is on hold. Pay a small fee to schedule delivery,"</strong> followed by a link.</p><p>According to the FTC, fake package delivery texts were the most commonly reported text scam in 2024, a year in which people reported losing $470 million to text scams overall. The fee is tiny on purpose, because <strong>nobody stops to think over two dollars</strong>. But the scammers don't want two dollars: they want <strong>your full card details</strong> and, often, the code your bank sends you.</p><p>The rule that protects you is simple: <strong>a delivery is never managed or paid for through a link in a text</strong>. If you're expecting a package, go to the store's or carrier's app or website yourself, by typing the address or opening the app you already have.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>Never pay or enter card details through a link you got by text.</li><li>Check your delivery status in the store's app or website, navigating there yourself.</li><li>The code your bank texts you never goes into a website you reached from a message.</li><li>If you already entered your card, call your bank and lock it right away.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>These texts go out in bulk to any number, with no idea whether you ordered anything. During Black Friday and the holidays, they land with far more people who are expecting a package.</p></div><div class="medidor"><div class="top"><span>Impact: medium</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>You can lose money to fraudulent charges and have your card loaded onto someone else's phone. It can usually be stopped if you tell your bank quickly, but the hassle is guaranteed.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>Why it works so well</h3><p>Package <button type="button" class="term" popovertarget="g-smishing">smishing</button> plays on three things at once: <strong>expectation</strong> (you're waiting for something), <strong>urgency</strong> (pay or it gets sent back), and <strong>a laughably small amount</strong>. None of them invites you to double-check.</p><p>The text doesn't need to know what you bought. It goes to thousands of numbers at once, and plenty of the people who get it are expecting a package that day. During Black Friday week, the odds shoot up.</p><h3>What happens when you tap the link</h3><p>The FTC describes the pattern: the link takes you to a look-alike site that asks for personal or financial information. Spain's national cybersecurity institute, INCIBE, has documented the flow step by step: a page styled like the carrier, a "continue" or "pay and continue" button, and a form asking for <strong>card number, expiration date, and security code</strong>. Some versions also ask for your phone number, your card PIN, or a code "we'll text you."</p><p>When you're done, many of these sites <strong>redirect you to the real carrier's website</strong>. So if anything felt off, the last thing you see is the genuine page, and you relax.</p><p>Just opening the text isn't the problem. If you tapped the link but didn't type anything, simply delete the message. The damage starts when you fill in the form.</p><h3>Your bank's code is the key piece</h3><p>After your card, many of these sites ask for "the verification code your bank just sent you." That <button type="button" class="term" popovertarget="g-otp">one-time code</button> isn't for the $2 fee. As security journalist Brian Krebs has documented, the most widely used kits try to <strong>enroll your card in an Apple or Google <button type="button" class="term" popovertarget="g-cartera">mobile wallet</button></strong> on a phone the scammer controls, and the code is what your bank requires to approve it.</p><p>With your card on their phone, they can tap to pay in physical stores as if they were you. So <strong>always read your bank's text in full</strong>: it usually says what the code is for. If it mentions adding your card to a device and you aren't doing that, don't share it.</p><h3>A familiar sender name doesn't make it real</h3><p>The FTC is blunt about it: legitimate companies won't ask for information about your account by text. The sender name or number you see is not proof of who sent the message; a business-style <button type="button" class="term" popovertarget="g-alias">sender name</button> is just text chosen by whoever sends it.</p><p>Some countries are tightening this. Spain, for example, has required carriers since June 7, 2026, to block texts using sender names that aren't in a national registry. But that doesn't cover texts from ordinary phone numbers, email, or messaging apps. <strong>The link rule is still what protects you.</strong></p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>They rent the kit</strong><p>The scammer doesn't write any code: they pay a subscription for a <button type="button" class="term" popovertarget="g-kit">phishing kit</button> that comes with carrier templates, a control panel, and ready-to-clone sites.</p></li><li><strong>Mass sending</strong><p>They blast out thousands of texts with a short link or a domain that looks like the real one, timed for heavy shipping periods: Black Friday, the holidays, big sales.</p></li><li><strong>The cloned site</strong><p>Whoever taps sees a page identical to the carrier's, with an "unpaid fee" notice for a dollar or two and a payment form.</p></li><li><strong>The harvest</strong><p>Card details hit the scammer's panel instantly. If the site asks for the bank code, someone on the other end uses it right away to enroll the card in their mobile wallet before it expires.</p></li><li><strong>The cash-out</strong><p>With the card on their phone or the full details in hand, they shop or resell. Krebs reports they often wait several days before using it, so it isn't tied back to the text.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Send you a text that looks like it's from a carrier, with a link to a near-identical site.</li><li>Run up charges on your card if you give them the number, expiration date, and security code.</li><li>Add your card to their own mobile wallet if you give them the code your bank sends you.</li><li>Contact you again posing as your bank to "reverse" the charge and get even more details.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>Hold or release any real package of yours: it has nothing to do with your shipment.</li><li>Get into your phone just because you received or opened the text, as long as you don't fill anything in.</li><li>Enroll your card in their mobile wallet without your bank's verification code.</li><li>Know whether you bought anything: they're firing blind and hitting by sheer numbers.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Follow the link rule</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>Any delivery notice, whether it says on hold, fee due, or "wrong address," gets checked outside the message. As the FTC puts it: if you get an unexpected text about a package, don't click on any links.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>Don't tap the link. If you already did, <strong>don't type anything</strong> and close the page.</li><li>Open the app or website of the store you bought from and check tracking there.</li><li>If you want to contact the carrier, use a phone number or website you know is real.</li></ol></div></div></article><article class="medida"><h3>Use your bank's code only for what you're doing</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>It's the last key before your card ends up on someone else's phone. Once you hand it over, the scammer needs nothing else.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>Read your bank's whole text before copying the code: it usually names the amount, the merchant, or whether it's for adding your card to a device.</li><li>If it doesn't match what you're doing, <strong>don't enter it anywhere</strong>.</li><li>No one from your bank will ask you for that code over the phone.</li></ol></div></div></article><article class="medida"><h3>Report the text as spam</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: everyone</li></ul>
+<p>Reporting helps filters stop the same campaign for other people. Then delete it.</p><div class="plataformas"><div class="plataforma"><h4>Android (Google Messages)</h4><ol><li>Touch and hold the conversation.</li><li>Tap <strong>Block</strong>, check <strong>Report spam</strong>, then tap <strong>OK</strong>.</li></ol></div><div class="plataforma"><h4>iPhone / iPad</h4><ol><li>In Messages, use the option to report junk that appears under a message from an unknown sender, then delete the conversation.</li></ol></div><div class="plataforma"><h4>Any phone</h4><ol><li>Copy the message and forward it to <strong>7726 (SPAM)</strong> so your carrier can block similar texts.</li><li>Report it to the FTC at <strong>ReportFraud.ftc.gov</strong>.</li></ol></div></div></article><article class="medida"><h3>Screen unknown senders</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: everyone</li></ul>
+<p>Sending texts from numbers that aren't in your contacts to a separate list takes away the urgency: you look at them when you choose, not when your phone buzzes.</p><div class="plataformas"><div class="plataforma"><h4>iPhone / iPad</h4><ol><li>Open <strong>Messages</strong> and, in the conversation list, tap <strong>Filter</strong> &gt; <strong>Manage Filtering</strong>.</li><li>Turn on <strong>Screen Unknown Senders</strong>.</li></ol></div><div class="plataforma"><h4>Android (Google Messages)</h4><ol><li>Tap your profile picture or initials at the top right.</li><li>Go to <strong>Messages settings</strong> &gt; <strong>Protection &amp; Safety</strong> &gt; <strong>Spam and scam protection</strong> and make sure protection is on (Standard is the default).</li></ol></div></div></article><article class="medida"><h3>If you already entered your card</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: medium</li>
+<li>⏱ 15 min</li><li>For: everyone</li></ul>
+<p>The faster you act, the easier it is to stop the charges and undo any mobile wallet enrollment.</p><div class="plataformas"><div class="plataforma"><h4>Right now</h4><ol><li>Call your bank or open its app and <strong>lock the card</strong>.</li><li>Review your transactions and dispute anything you don't recognize. Ask whether your card was added to any device.</li><li>Save screenshots of the text, the site, and the charges.</li><li>Report it at <strong>ReportFraud.ftc.gov</strong>.</li></ol></div></div></article><article class="medida deep"><h3>A card just for online shopping<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: medium</li>
+<li>⏱ 10 min</li><li>For: advanced</li></ul>
+<p>If you shop online a lot, using a virtual card or one with a low limit means a slip-up costs little. Also turn on alerts for every card transaction in your bank's app so you find out instantly.</p><div class="plataformas"><div class="plataforma"><h4>In your bank&#x27;s app</h4><ol><li>Look for virtual card numbers or online spending limits.</li><li>Turn on notifications for every card transaction.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>Your order's real tracking</h3><p>In the store's app or website, under "Your orders," you'll find the tracking number and carrier. If there's no problem or unpaid fee listed there, the text is fake.</p></div><div class="fila"><h3>Where the link takes you</h3><p>If you already tapped, look at the address bar: fake domains mimic the real one with extra letters, hyphens, or odd endings. Even so, don't rely on this alone; the padlock doesn't guarantee anything either.</p></div><div class="fila"><h3>The devices on your card</h3><p>Many banking apps show which mobile wallets each card is loaded on. If you see a device that isn't yours, lock the card and call your bank.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Distrusting every delivery text</h3><p>Carriers do send genuine delivery updates. You don't need to ignore them: just don't pay or enter details through their link, and check in the store's app instead.</p></div><div class="fila"><h3>Changing your phone number</h3><p>These texts go to random numbers or bulk lists. A new number would start getting them too.</p></div><div class="fila"><h3>Paying for "anti-scam" apps</h3><p>The filters built into iPhone and Google Messages, plus the link rule, cover this case.</p></div><div class="fila"><h3>Giving up online shopping</h3><p>The risk isn't shopping; it's paying outside the store you bought from. Always pay inside the store's own website or app.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"If the text arrives right when I'm expecting a package, it must be real."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>That's exactly the point. These texts go to thousands of people at once and always hit someone who's waiting on a delivery, especially around Black Friday. Fake package delivery texts topped the FTC's list of reported text scams in 2024. <strong>Matching your order proves nothing.</strong></p><p class="src"><a href="https://www.ftc.gov/news-events/news/press-releases/2025/04/new-ftc-data-show-top-text-message-scams-2024-overall-losses-text-scams-hit-470-million" rel="noopener noreferrer">FTC: new data show top text message scams of 2024</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>Phishing as a service: the Lighthouse case</h3><p>In November 2025, Google sued the operators of <strong>Lighthouse</strong> in federal court in New York. It's a smishing kit rented on a subscription basis and linked to the group known as the <em>Smishing Triad</em>, behind waves of fake USPS and unpaid-toll texts. According to the complaint, about 200,000 fake websites were created with it in just 20 days, and Google says it has harmed more than a million victims in 120 countries.</p><p>What matters for defense: these campaigns don't depend on a skilled scammer. They're an industry with templates, dashboards, and live operators, which is why the messages look polished and the domains change within hours.</p><h3>Tokenization: why they ask for the code</h3><p>Adding a card to Apple Pay or Google Wallet generates a <em>token</em>, a number that stands in for the card number and is bound to that phone. To approve it, the bank usually texts a code to the cardholder.</p><p>The kits automate that enrollment as soon as the victim enters the card, then ask for the code on the fake site itself, with someone on the other end ready to use it before it expires. Takeaway for banks and developers: the code message should say <strong>what it's for</strong> ("add your card to device X"), not just "your code is 123456."</p><h3>Sender names aren't authenticated</h3><p>Business texts can use an alphanumeric sender name or a short code instead of a regular number, and the protocol doesn't authenticate who set that name. That's why scam texts can look official, and why the FTC advises verifying through a channel you already trust.</p><p>Some regulators now go further. Spain's CNMC created a sender-name registry, and since June 7, 2026, carriers there must block SMS, MMS, and RCS messages using unregistered names, sent without the name holder's authorization, or from unregistered providers. It doesn't cover messages from ordinary numbers or other channels, which is where fraud shifts.</p><h3>The final redirect to the real site</h3><p>INCIBE notes that after harvesting the data, some of these sites redirect to the carrier's genuine page. It's a common kit technique: it erases the feeling of having been somewhere sketchy and delays the moment the victim calls the bank, which is exactly the window the scammers need to use the card.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Smishing</dt><dd>SMS phishing: a text message that pretends to be from a company or agency to get you to tap a link or share your information.</dd><dt>One-time code (OTP)</dt><dd>A temporary code your bank or a service sends you to confirm a specific action. It expires within minutes.</dd><dt>Mobile wallet</dt><dd>An app like Apple Pay or Google Wallet that stores your cards on your phone so you can tap to pay.</dd><dt>Sender name</dt><dd>The name that shows up as the sender of a text instead of a phone number, such as a company&#x27;s name.</dd><dt>Phishing kit</dt><dd>A bundle of fake websites, templates, and a control panel that scammers buy or rent to run campaigns without coding skills.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://www.ftc.gov/news-events/news/press-releases/2025/04/new-ftc-data-show-top-text-message-scams-2024-overall-losses-text-scams-hit-470-million" rel="noopener noreferrer">FTC: new data show top text message scams of 2024</a></li><li><a href="https://consumer.ftc.gov/consumer-alerts/2025/04/think-text-message-usps-it-could-be-scam" rel="noopener noreferrer">FTC: think that text message is from USPS? It could be a scam</a></li><li><a href="https://consumer.ftc.gov/consumer-alerts/2020/09/heard-about-waiting-package-phishing-scam" rel="noopener noreferrer">FTC: heard about the waiting package phishing scam?</a></li><li><a href="https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages" rel="noopener noreferrer">FTC: how to recognize and report spam text messages</a></li><li><a href="https://support.google.com/messages/answer/9061432?hl=en" rel="noopener noreferrer">Google: report spam in Google Messages</a></li><li><a href="https://support.google.com/messages/answer/9327903?hl=en" rel="noopener noreferrer">Google: spam and scam protection in Google Messages</a></li><li><a href="https://support.apple.com/guide/iphone/iph203ab0be4/ios" rel="noopener noreferrer">Apple: screen and filter text messages on iPhone</a></li><li><a href="https://www.incibe.es/ciudadania/avisos/campanas-de-smishing-que-suplantan-la-identidad-de-correos" rel="noopener noreferrer">INCIBE: smishing campaigns impersonating Spain&#x27;s postal service (in Spanish)</a></li><li><a href="https://krebsonsecurity.com/2025/11/google-sues-to-disrupt-chinese-sms-phishing-triad/" rel="noopener noreferrer">Krebs on Security: Google sues to disrupt Chinese SMS phishing triad</a></li><li><a href="https://therecord.media/google-files-lawsuit-to-disrupt-lighthouse-scam" rel="noopener noreferrer">The Record: Google files lawsuit to disrupt Lighthouse scam</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-smishing" class="gl-pop"><strong>Smishing</strong>SMS phishing: a text message that pretends to be from a company or agency to get you to tap a link or share your information.</div><div popover id="g-otp" class="gl-pop"><strong>One-time code (OTP)</strong>A temporary code your bank or a service sends you to confirm a specific action. It expires within minutes.</div><div popover id="g-cartera" class="gl-pop"><strong>Mobile wallet</strong>An app like Apple Pay or Google Wallet that stores your cards on your phone so you can tap to pay.</div><div popover id="g-alias" class="gl-pop"><strong>Sender name</strong>The name that shows up as the sender of a text instead of a phone number, such as a company&#x27;s name.</div><div popover id="g-kit" class="gl-pop"><strong>Phishing kit</strong>A bundle of fake websites, templates, and a control panel that scammers buy or rent to run campaigns without coding skills.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+{
+  "fecha": "2026-11-27",
+  "idioma": "es",
+  "foco": "ingenieria",
+  "concepto": "sms-de-paquete-retenido",
+  "titulo": "Ningún paquete se libera pagando desde el enlace de un SMS",
+  "subtitulo": "Por qué en plena semana de compras te llegan mensajes de «paquete retenido», qué buscan de verdad con esos dos euros y la regla que te deja fuera del timo.",
+  "dispositivos": ["smartphone", "tablet"],
+  "lectura": {"basico": 3, "fondo": 8},
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": ["2026-11-27-mitel-micollab", "2026-11-27-juniper-session-smart-conductor"]
+  },
+  "basico": {
+    "parrafos": [
+      "Hoy es Black Friday y medio país espera algún paquete. Justo por eso es la mejor semana para el mensaje de siempre: **«Tu paquete está retenido. Paga 1,79 € de tasas para recibirlo»**, con un enlace.",
+      "INCIBE lleva años avisando de estas campañas que suplantan a Correos y a otras empresas de paquetería. Piden importes pequeños, de menos de 3 €, porque **nadie se para a pensar por dos euros**. Pero lo que quieren no son los dos euros: es **tu tarjeta completa** y, a menudo, el código que te envía tu banco.",
+      "La regla que te protege es sencilla: **un paquete nunca se gestiona ni se paga desde el enlace de un SMS**. Si esperas un envío, entra tú en la app o la web de la tienda o del transportista, escribiendo la dirección o abriendo la app que ya tienes."
+    ],
+    "esencial": [
+      "No pagues ni escribas datos de tu tarjeta desde un enlace recibido por SMS.",
+      "Comprueba el estado del envío en la app o la web de la tienda, entrando tú.",
+      "El código que te manda tu banco no se escribe en ninguna web a la que hayas llegado por un mensaje.",
+      "Si ya has metido la tarjeta, llama a tu banco y bloquéala en ese momento."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {"nivel": "alto", "texto": "Se envían de forma masiva a cualquier número, sin saber si esperas algo. En campañas como Black Friday y Navidad aciertan con mucha más gente."},
+    "impacto": {"nivel": "medio", "texto": "Puedes perder dinero con cargos en tu tarjeta y que la añadan a un móvil ajeno. Suele poder frenarse si avisas pronto al banco, pero el disgusto y el papeleo están asegurados."}
+  },
+  "fondo": [
+    {
+      "titulo": "Por qué funciona tan bien",
+      "parrafos": [
+        "El [[smishing|smishing]] de paquetería juega con tres cosas a la vez: **expectativa** (estás esperando algo), **urgencia** (si no pagas, lo devuelven) y **un importe ridículo** (1,79 €, 2,64 €, según los ejemplos recogidos por INCIBE). Ninguna de las tres te invita a comprobar nada.",
+        "El mensaje no necesita saber qué has comprado. Se envía a miles de números a la vez: entre todos los que lo reciben, muchos esperan un paquete ese día. En la semana de Black Friday, la proporción se dispara."
+      ]
+    },
+    {
+      "titulo": "Lo que pasa cuando pulsas el enlace",
+      "parrafos": [
+        "INCIBE ha descrito el recorrido de estas webs falsas: una página con el aspecto del transportista, un botón para «seguir» o «pagar y continuar», y un formulario que pide **número de tarjeta, caducidad y código CVV**. En algunas variantes piden además el número de móvil, el PIN de la tarjeta o un código que «te llegará por SMS».",
+        "Al terminar, muchas te **redirigen a la web real de Correos**. Así, si algo te escama, lo que ves al final es la página auténtica y te quedas tranquilo.",
+        "Solo abrir el mensaje no es el problema. Si pulsaste el enlace pero no escribiste nada, INCIBE recomienda simplemente borrar el SMS. El daño empieza cuando rellenas el formulario."
+      ]
+    },
+    {
+      "titulo": "El código del banco es la pieza clave",
+      "parrafos": [
+        "Muchas de estas webs, después de la tarjeta, te piden «el código de verificación que te ha enviado tu banco». Ese [[otp|código de un solo uso]] no sirve para pagar los dos euros: según ha documentado el investigador Brian Krebs, los kits más usados intentan **dar de alta tu tarjeta en una [[cartera|cartera móvil]] de Apple o Google** en un teléfono del estafador, y el código es lo que tu banco pide para autorizarlo.",
+        "Con tu tarjeta dentro de su móvil, pueden pagar en tiendas físicas como si fueras tú. Por eso **lee siempre el texto del SMS del banco**: suele decir para qué es el código. Si habla de añadir la tarjeta a un dispositivo y tú no lo estás haciendo, no lo des."
+      ]
+    },
+    {
+      "titulo": "Que el SMS aparezca junto a los de verdad no lo hace auténtico",
+      "parrafos": [
+        "El nombre que ves como remitente es un [[alias|alias]], un texto que elige quien envía. Durante años se podía falsificar, y los mensajes falsos acababan en la misma conversación que los auténticos de Correos o de tu banco.",
+        "Desde el **7/6/2026**, según la CNMC, los operadores españoles deben bloquear los SMS con alias que no estén inscritos en su registro. Ayuda mucho, pero no cubre los mensajes enviados desde un número de teléfono normal ni los que llegan por correo electrónico o apps de mensajería. **La regla del enlace sigue siendo la que te protege.**"
+      ]
+    }
+  ],
+  "ataque": [
+    {"titulo": "Alquilan el kit", "texto": "El estafador no programa nada: paga una cuota por un [[kit|kit de phishing]] que ya trae plantillas de transportistas, panel de control y webs listas para clonar."},
+    {"titulo": "Envío masivo", "texto": "Manda miles de SMS con un enlace corto o un dominio parecido al real. Aprovecha fechas con muchos envíos: Black Friday, Navidad, rebajas."},
+    {"titulo": "La web clonada", "texto": "Quien pulsa ve una página idéntica a la del transportista con un aviso de «tasas pendientes» de uno o dos euros y un formulario de pago."},
+    {"titulo": "La recogida", "texto": "Los datos de la tarjeta llegan al panel del estafador al momento. Si la web pide el código del banco, alguien al otro lado lo usa enseguida para dar de alta la tarjeta en su cartera móvil, antes de que caduque."},
+    {"titulo": "El uso", "texto": "Con la tarjeta en su móvil o con los datos completos, compran o revenden. Krebs describe que a menudo esperan unos días antes de usarla para que no se relacione con el SMS."}
+  ],
+  "atacante": {
+    "puede": [
+      "Enviarte un SMS que parezca del transportista, con un enlace a una web casi idéntica.",
+      "Cobrar cargos en tu tarjeta si le das el número, la caducidad y el CVV.",
+      "Añadir tu tarjeta a una cartera móvil suya si le das el código que te envía tu banco.",
+      "Volver a contactarte haciéndose pasar por tu banco para «anular» el cargo y sacarte más datos."
+    ],
+    "no_puede": [
+      "Retener ni liberar un paquete tuyo de verdad: no tiene nada que ver con tu envío.",
+      "Entrar en tu móvil solo porque hayas recibido o abierto el SMS, si no rellenas nada en la web.",
+      "Dar de alta tu tarjeta en su cartera móvil sin el código de verificación de tu banco.",
+      "Saber si has comprado algo: dispara a ciegas y acierta por estadística."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Aplica la regla del enlace",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "hábito", "para": "todos",
+      "texto": "Cualquier aviso de envío, retenido, con tasas o con «dirección incorrecta», se comprueba fuera del mensaje. INCIBE lo resume así: un SMS que pide pagar tasas a través de un enlace es un fraude.",
+      "pasos": {
+        "Siempre": ["No pulses el enlace. Si ya lo has hecho, **no escribas nada** y cierra la página.", "Abre tú la app o la web de la tienda donde compraste y mira allí el seguimiento.", "Si tienes dudas sobre un envío de Correos, usa su web oficial de atención al cliente."]
+      }
+    },
+    {
+      "titulo": "El código del banco, solo para lo que tú estás haciendo",
+      "impacto": "alto", "esfuerzo": "bajo", "tiempo": "hábito", "para": "todos",
+      "texto": "Es la última llave antes de que tu tarjeta acabe en el móvil de otro. Si lo das, el estafador ya no necesita nada más.",
+      "pasos": {
+        "Siempre": ["Lee el SMS del banco entero antes de copiar el código: suele decir el importe, el comercio o si es para añadir la tarjeta a un dispositivo.", "Si no coincide con lo que estás haciendo tú, **no lo escribas en ningún sitio**.", "Nadie de tu banco te pedirá ese código por teléfono."]
+      }
+    },
+    {
+      "titulo": "Denuncia el mensaje como spam",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "1 min", "para": "todos",
+      "texto": "Marcarlo ayuda a que los filtros frenen la misma campaña para otras personas. Después, bórralo.",
+      "pasos": {
+        "Android (Mensajes de Google)": ["Mantén pulsada la conversación.", "Toca **Bloquear**, marca **Marcar como spam** y pulsa **Aceptar**."],
+        "iPhone / iPad": ["En la app Mensajes, junto a un mensaje de un remitente desconocido aparece la opción para informar de que es no deseado. Úsala y borra la conversación."]
+      }
+    },
+    {
+      "titulo": "Separa a los desconocidos",
+      "impacto": "medio", "esfuerzo": "bajo", "tiempo": "2 min", "para": "todos",
+      "texto": "Que los SMS de números que no tienes en la agenda vayan a una lista aparte quita la urgencia: los miras cuando quieras, no cuando suena el móvil.",
+      "pasos": {
+        "iPhone / iPad": ["Abre **Mensajes** y, en la lista de conversaciones, toca **Filtrar** > **Gestionar filtrado**.", "Activa **Filtrar remitentes desconocidos**."],
+        "Android (Mensajes de Google)": ["La protección contra spam viene activada de serie en modo estándar. Compruébalo en los ajustes de Mensajes, desde tu foto de perfil, en el apartado de protección y seguridad."]
+      }
+    },
+    {
+      "titulo": "Si ya has metido la tarjeta",
+      "impacto": "alto", "esfuerzo": "medio", "tiempo": "15 min", "para": "todos",
+      "texto": "Cuanto antes actúes, más fácil es frenar los cargos y anular el alta en una cartera móvil.",
+      "pasos": {
+        "Ahora mismo": ["Llama a tu banco o entra en su app y **bloquea la tarjeta**.", "Revisa los movimientos y pide que anulen los cargos que no reconozcas. Pregunta también si se ha dado de alta tu tarjeta en algún dispositivo.", "Guarda capturas del SMS, de la web y de los cargos.", "Denuncia ante la Policía Nacional o la Guardia Civil. Si necesitas orientación, llama al **017** de INCIBE (gratuito y confidencial), o escribe por WhatsApp al 900 116 117."]
+      }
+    },
+    {
+      "titulo": "Una tarjeta solo para comprar por internet",
+      "impacto": "medio", "esfuerzo": "medio", "tiempo": "10 min", "para": "avanzado",
+      "texto": "Si compras mucho online, usar una tarjeta virtual o con un límite bajo hace que un despiste cueste poco. Activa además los avisos de cada cargo en la app del banco para enterarte en el momento.",
+      "pasos": {
+        "En la app de tu banco": ["Busca la opción de tarjeta virtual o de límites de compra por internet.", "Activa las notificaciones de cada operación con tarjeta."]
+      }
+    }
+  ],
+  "comprobar": [
+    {"titulo": "El seguimiento real de tu pedido", "texto": "En la app o la web de la tienda, en «Mis pedidos», tienes el número de seguimiento y el transportista. Si allí no hay ninguna incidencia ni ningún pago pendiente, el SMS es falso."},
+    {"titulo": "La dirección a la que te lleva", "texto": "Si ya has pulsado, mira la barra de direcciones: los dominios falsos imitan al real con letras de más, guiones o terminaciones raras. Aun así, no te fíes solo de esto; el candado tampoco garantiza nada."},
+    {"titulo": "Los dispositivos de tu tarjeta", "texto": "Muchas apps bancarias muestran en qué carteras móviles está dada de alta cada tarjeta. Si ves un dispositivo que no es tuyo, bloquéala y llama al banco."}
+  ],
+  "innecesario": [
+    {"titulo": "Desconfiar de todos los SMS de paquetería", "texto": "Los transportistas sí envían avisos auténticos de entrega. No hace falta ignorarlos: basta con no pagar ni dar datos desde su enlace y comprobarlo en la app de la tienda."},
+    {"titulo": "Cambiar de número de teléfono", "texto": "Estos mensajes llegan a números al azar o de listas masivas. Con un número nuevo te seguirían llegando."},
+    {"titulo": "Instalar apps «antitimos» de pago", "texto": "Los filtros que traen de serie iPhone y Mensajes de Google, más la regla del enlace, cubren este caso."},
+    {"titulo": "Dejar de comprar por internet", "texto": "El riesgo no está en comprar, sino en pagar fuera de la tienda donde compraste. Paga siempre dentro de la web o app de la tienda."}
+  ],
+  "mito": {
+    "mito": "«Si el SMS me llega justo cuando espero un paquete, será de verdad.»",
+    "realidad": "Es justo lo que buscan. Se envían a miles de personas a la vez y siempre aciertan con alguien que espera algo, sobre todo en Black Friday. INCIBE recoge ejemplos con importes de 1,79 € y 2,64 € que siguen el mismo patrón: paquete retenido, tasa mínima y enlace para pagar. **Que coincida con tu compra no prueba nada.**",
+    "fuente": {"titulo": "INCIBE: SMS fraudulentos que suplantan a Correos y Correos Express", "url": "https://www.incibe.es/ciudadania/avisos/suplantadas-por-sms-empresas-de-paqueteria-como-correos-y-correos-express"}
+  },
+  "tecnico": [
+    {
+      "titulo": "Phishing como servicio: el caso Lighthouse",
+      "parrafos": [
+        "En noviembre de 2025, Google demandó en Nueva York a los operadores de **Lighthouse**, un kit de smishing que se alquila por cuotas y está vinculado al grupo conocido como *Smishing Triad*. Según la demanda, en solo 20 días se crearon unas 200.000 webs falsas con él, y Google afirma que ha perjudicado a más de un millón de víctimas en 120 países.",
+        "Lo relevante para defenderse: estas campañas no dependen de un estafador hábil. Son una industria con plantillas, paneles y personal que atiende en directo, por eso los mensajes están bien hechos y cambian de dominio en cuestión de horas."
+      ]
+    },
+    {
+      "titulo": "Tokenización: por qué piden el código",
+      "parrafos": [
+        "Añadir una tarjeta a Apple Pay o Google Wallet genera un *token*, un número que sustituye al de la tarjeta y queda ligado a ese teléfono. Para autorizarlo, el banco suele enviar un código al titular.",
+        "Los kits automatizan ese alta en cuanto la víctima introduce la tarjeta y le piden el código en la propia web falsa, con alguien al otro lado listo para usarlo antes de que caduque. Defensa para bancos y desarrolladores: el texto del código debe decir **para qué es** («añadir tu tarjeta al dispositivo X»), no solo «tu código es 123456»."
+      ]
+    },
+    {
+      "titulo": "Alias de remitente y el registro de la CNMC",
+      "parrafos": [
+        "Los SMS de empresa usan un alias alfanumérico en lugar de un número. El protocolo no autentica ese texto, así que durante años cualquiera con acceso a una pasarela de envío podía poner «Correos» o el nombre de un banco.",
+        "La CNMC creó un registro de alias al amparo de la Orden TDF/149/2025. Desde el 7/6/2026, los operadores deben bloquear los SMS, MMS y RCS con alias no registrados, enviados sin autorización del titular o por proveedores no inscritos. No cubre los mensajes desde números ordinarios ni otros canales, que es por donde se desplaza el fraude."
+      ]
+    },
+    {
+      "titulo": "La redirección final a la web real",
+      "parrafos": [
+        "INCIBE describe que, tras recoger los datos, algunas de estas webs redirigen a la página auténtica del transportista. Es una técnica habitual de los kits: borra la sensación de haber estado en un sitio raro y retrasa el momento en que la víctima llama al banco, que es justo el tiempo que necesitan para usar la tarjeta."
+      ]
+    }
+  ],
+  "glosario": {
+    "smishing": ["Smishing", "Suplantación por SMS: un mensaje de texto que se hace pasar por una empresa o un organismo para que pulses un enlace o des tus datos."],
+    "otp": ["Código de un solo uso (OTP)", "Código temporal que te envía tu banco o un servicio para confirmar una operación concreta. Caduca en pocos minutos."],
+    "cartera": ["Cartera móvil", "App como Apple Pay o Google Wallet que guarda tus tarjetas en el teléfono para pagar acercándolo al datáfono."],
+    "alias": ["Alias de remitente", "Nombre que aparece como remitente de un SMS en lugar de un número, por ejemplo el de una empresa."],
+    "kit": ["Kit de phishing", "Paquete de webs falsas, plantillas y panel de control que los estafadores compran o alquilan para lanzar campañas sin saber programar."]
+  },
+  "fuentes": [
+    {"titulo": "INCIBE: campañas de smishing que suplantan la identidad de Correos", "url": "https://www.incibe.es/ciudadania/avisos/campanas-de-smishing-que-suplantan-la-identidad-de-correos"},
+    {"titulo": "INCIBE: SMS fraudulentos que suplantan a Correos solicitándote dinero", "url": "https://www.incibe.es/ciudadania/avisos/circulan-sms-fraudulentos-que-suplantan-correos-solicitandote-dinero"},
+    {"titulo": "INCIBE: suplantadas por SMS empresas de paquetería como Correos y Correos Express", "url": "https://www.incibe.es/ciudadania/avisos/suplantadas-por-sms-empresas-de-paqueteria-como-correos-y-correos-express"},
+    {"titulo": "CNMC: registro de alias contra la mensajería fraudulenta", "url": "https://www.cnmc.es/prensa/registro-alias-mensajeria-fraudulenta-20260327"},
+    {"titulo": "Google: denunciar spam en Mensajes de Google", "url": "https://support.google.com/messages/answer/9061432?hl=es"},
+    {"titulo": "Apple: filtrar mensajes de texto en el iPhone", "url": "https://support.apple.com/es-es/guide/iphone/iph203ab0be4/ios"},
+    {"titulo": "Krebs on Security: Google demanda a la tríada de smishing china (en inglés)", "url": "https://krebsonsecurity.com/2025/11/google-sues-to-disrupt-chinese-sms-phishing-triad/"},
+    {"titulo": "The Record: Google demanda para desmantelar Lighthouse (en inglés)", "url": "https://therecord.media/google-files-lawsuit-to-disrupt-lighthouse-scam"}
+  ]
+}

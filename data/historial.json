@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-26T10:08:57+01:00",
+  "actualizado": "2026-11-27T12:09:40+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "ingenieria",
     "tablets",
     "sobremesa",
     "habitos",
     "portatiles",
     "router",
-    "iot",
-    "copias"
+    "iot"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -79,6 +79,10 @@
       {
         "fecha": "2026-11-09",
         "concepto": "codigo-para-vincular-whatsapp"
+      },
+      {
+        "fecha": "2026-11-27",
+        "concepto": "sms-de-paquete-retenido"
       }
     ],
     "tablets": [
@@ -137,6 +141,16 @@
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-27",
+      "foco": "ingenieria",
+      "concepto": "sms-de-paquete-retenido",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-27-mitel-micollab",
+        "2026-11-27-juniper-session-smart-conductor"
+      ]
+    },
     {
       "fecha": "2026-11-26",
       "foco": "tablets",

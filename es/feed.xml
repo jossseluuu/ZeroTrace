@@ -6,7 +6,15 @@
   <atom:link href="https://jossseluuu.github.io/ZeroTrace/es/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Newsletter diaria de ciberseguridad: un concepto concreto cada día, para principiantes y para quien quiera profundizar.</description>
   <language>es-ES</language>
-  <lastBuildDate>Thu, 26 Nov 2026 10:08:57 +0100</lastBuildDate>
+  <lastBuildDate>Fri, 27 Nov 2026 12:09:40 +0100</lastBuildDate>
+  <item>
+    <title>Ningún paquete se libera pagando desde el enlace de un SMS</title>
+    <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-27.html</link>
+    <guid isPermaLink="true">https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-27.html</guid>
+    <pubDate>Fri, 27 Nov 2026 07:40:00 +0100</pubDate>
+    <category>Ingeniería social</category>
+    <description>Por qué en plena semana de compras te llegan mensajes de «paquete retenido», qué buscan de verdad con esos dos euros y la regla que te deja fuera del timo. — Atención: Mitel MiCollab: cinco fallos en las videoconferencias, uno con gravedad máxima, ya atacados | Atención: Juniper Session Smart Conductor: fallo crítico que da control como root, ya explotado</description>
+  </item>
   <item>
     <title>La tablet que usa toda la familia no debería llevar tu cuenta</title>
     <link>https://jossseluuu.github.io/ZeroTrace/es/ediciones/2026/11/2026-11-26.html</link>

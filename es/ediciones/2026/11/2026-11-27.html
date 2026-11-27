@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Por qué en plena semana de compras te llegan mensajes de «paquete retenido», qué buscan de verdad con esos dos euros y la regla que te deja fuera del timo.">
+<title>Ningún paquete se libera pagando desde el enlace de un SMS · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="en" href="../../../../en/editions/2026/11/2026-11-27.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Ediciones</a>
+<a href="../../../alertas.html">Registro de alertas</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Nivel de lectura"><button type="button" data-level-btn="basic" aria-pressed="true">Básico</button><button type="button" data-level-btn="deep" aria-pressed="false">A fondo</button></div>
+<div class="seg" role="group" aria-label="Tema">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automático">A<span class="sr"> Automático</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Claro">☀︎<span class="sr"> Claro</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Oscuro">☾<span class="sr"> Oscuro</span></button></div>
+<button type="button" class="btn" data-print title="Imprimir">⎙<span class="sr"> Imprimir</span></button>
+<a class="btn" href="../../../../en/editions/2026/11/2026-11-27.html" hreflang="en">English</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Viernes, 27 de noviembre de 2026 · 🎣 Ingeniería social</p>
+<h1>Ningún paquete se libera pagando desde el enlace de un SMS</h1><p class="sub">Por qué en plena semana de compras te llegan mensajes de «paquete retenido», qué buscan de verdad con esos dos euros y la regla que te deja fuera del timo.</p>
+<ul class="facts"><li>Lectura: 3 min · A fondo: 8 min</li><li>📱 Smartphone</li><li>📲 Tablet</li></ul></div>
+<div class="light" role="img" aria-label="Semáforo del día: Día de atención"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Día de atención</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Semáforo del día</h2><div class="alertas"><article class="alerta amarillo" id="2026-11-27-mitel-micollab">
+<header><span class="pill amarillo">Atención</span><h3>Mitel MiCollab: cinco fallos en las videoconferencias, uno con gravedad máxima, ya atacados</h3></header>
+<dl><dt>A quién afecta</dt><dd>Empresas que usan <strong>Mitel MiCollab 10.3 (10.3.0.18) o anterior</strong>, en concreto su componente de audio, web y videoconferencia (AWV). No afecta a tus dispositivos de casa.</dd>
+<dt>Qué hacer</dt><dd>Si administras MiCollab, aplica el parche para la <strong>10.3.0.18</strong> (artículo KB000129195 de Mitel) o pasa a una versión posterior. Mientras tanto, Mitel indica que el riesgo se reduce <strong>restringiendo el acceso externo al componente AWV</strong>.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Mitel publicó el 16/11 el aviso MISA-2026-0012 y lo actualizó el 24/11 con los números de CVE. El más grave es una inyección de comandos a ciegas sin autenticación (CVE-2026-133323, CVSS 10); le sigue una inyección XML que permite ejecutar comandos (CVE-2026-133303, CVSS 9,0). El aviso de Mitel no habla de explotación, pero CISA añadió los cinco fallos a su catálogo de vulnerabilidades explotadas el 25/11, y Accenture ha informado de ataques como día cero con instalación de una <em>web shell</em> y robo rápido de credenciales.<div class="cves"><code>CVE-2026-133323</code><code>CVE-2026-133303</code><code>CVE-2026-133275</code><code>CVE-2026-133311</code><code>CVE-2026-133324</code></div></dd></dl>
+<p class="src"><a href="https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012" rel="noopener noreferrer">Mitel: aviso de seguridad MISA-2026-0012 (en inglés)</a> · <a href="https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html" rel="noopener noreferrer">The Hacker News: CISA añade 10 fallos explotados, entre ellos los de MiCollab (en inglés)</a></p></article><article class="alerta amarillo" id="2026-11-27-juniper-session-smart-conductor">
+<header><span class="pill amarillo">Atención</span><h3>Juniper Session Smart Conductor: fallo crítico que da control como root, ya explotado</h3></header>
+<dl><dt>A quién afecta</dt><dd>Empresas que gestionan sus redes con <strong>Juniper Session Smart Conductor</strong> anterior a la 7.0.5, de la 7.1.0 a la 7.1.6 o de la 7.2.0 a la 7.2.2. No afecta a tus dispositivos de casa.</dd>
+<dt>Qué hacer</dt><dd>Actualiza a <strong>7.0.5, 7.1.7 o 7.2.3</strong> o posterior. Juniper indica que <strong>no hay medidas alternativas</strong>; mientras actualizas, limita quién puede llegar a la interfaz de gestión del Conductor.</dd>
+<dt class="deep">Detalle</dt><dd class="deep">Juniper publicó el 28/10 el boletín JSA112183, con 18 fallos en Session Smart Router y Conductor. El 24/11 lo actualizó para indicar que se ha comunicado al menos un caso de explotación maliciosa de CVE-2026-103406: una inyección de comandos en el componente <em>AutomatedProvisioner</em> que permite a un atacante remoto ejecutar órdenes como <em>root</em> con un identificador de <em>salt minion</em> manipulado (CVSS 9,8). CISA lo incluyó en su catálogo de vulnerabilidades explotadas el 25/11.<div class="cves"><code>CVE-2026-103406</code></div></dd></dl>
+<p class="src"><a href="https://supportportal.juniper.net/JSA112183" rel="noopener noreferrer">Juniper: boletín JSA112183 (en inglés)</a> · <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-103406" rel="noopener noreferrer">NVD: CVE-2026-103406 (en inglés)</a></p></article></div><p class="nota">El color del día refleja el impacto para el público general. Cada alerta lleva el suyo para las personas a las que afecta. <a href="../../../alertas.html">Ver todas las alertas notificadas</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">En pocas palabras</h2>
+<div class="resumen"><div class="prose"><p>Hoy es Black Friday y medio país espera algún paquete. Justo por eso es la mejor semana para el mensaje de siempre: <strong>«Tu paquete está retenido. Paga 1,79 € de tasas para recibirlo»</strong>, con un enlace.</p><p>INCIBE lleva años avisando de estas campañas que suplantan a Correos y a otras empresas de paquetería. Piden importes pequeños, de menos de 3 €, porque <strong>nadie se para a pensar por dos euros</strong>. Pero lo que quieren no son los dos euros: es <strong>tu tarjeta completa</strong> y, a menudo, el código que te envía tu banco.</p><p>La regla que te protege es sencilla: <strong>un paquete nunca se gestiona ni se paga desde el enlace de un SMS</strong>. Si esperas un envío, entra tú en la app o la web de la tienda o del transportista, escribiendo la dirección o abriendo la app que ya tienes.</p></div>
+<aside class="esencial"><h3>Lo esencial</h3><ul><li>No pagues ni escribas datos de tu tarjeta desde un enlace recibido por SMS.</li><li>Comprueba el estado del envío en la app o la web de la tienda, entrando tú.</li><li>El código que te manda tu banco no se escribe en ninguna web a la que hayas llegado por un mensaje.</li><li>Si ya has metido la tarjeta, llama a tu banco y bloquéala en ese momento.</li></ul></aside></div>
+<h3>Riesgo real</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Probabilidad: alta</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Se envían de forma masiva a cualquier número, sin saber si esperas algo. En campañas como Black Friday y Navidad aciertan con mucha más gente.</p></div><div class="medidor"><div class="top"><span>Impacto: medio</span>
+<span class="barras medio" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Puedes perder dinero con cargos en tu tarjeta y que la añadan a un móvil ajeno. Suele poder frenarse si avisas pronto al banco, pero el disgusto y el papeleo están asegurados.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">Cómo funciona</h2><div class="prose"><h3>Por qué funciona tan bien</h3><p>El <button type="button" class="term" popovertarget="g-smishing">smishing</button> de paquetería juega con tres cosas a la vez: <strong>expectativa</strong> (estás esperando algo), <strong>urgencia</strong> (si no pagas, lo devuelven) y <strong>un importe ridículo</strong> (1,79 €, 2,64 €, según los ejemplos recogidos por INCIBE). Ninguna de las tres te invita a comprobar nada.</p><p>El mensaje no necesita saber qué has comprado. Se envía a miles de números a la vez: entre todos los que lo reciben, muchos esperan un paquete ese día. En la semana de Black Friday, la proporción se dispara.</p><h3>Lo que pasa cuando pulsas el enlace</h3><p>INCIBE ha descrito el recorrido de estas webs falsas: una página con el aspecto del transportista, un botón para «seguir» o «pagar y continuar», y un formulario que pide <strong>número de tarjeta, caducidad y código CVV</strong>. En algunas variantes piden además el número de móvil, el PIN de la tarjeta o un código que «te llegará por SMS».</p><p>Al terminar, muchas te <strong>redirigen a la web real de Correos</strong>. Así, si algo te escama, lo que ves al final es la página auténtica y te quedas tranquilo.</p><p>Solo abrir el mensaje no es el problema. Si pulsaste el enlace pero no escribiste nada, INCIBE recomienda simplemente borrar el SMS. El daño empieza cuando rellenas el formulario.</p><h3>El código del banco es la pieza clave</h3><p>Muchas de estas webs, después de la tarjeta, te piden «el código de verificación que te ha enviado tu banco». Ese <button type="button" class="term" popovertarget="g-otp">código de un solo uso</button> no sirve para pagar los dos euros: según ha documentado el investigador Brian Krebs, los kits más usados intentan <strong>dar de alta tu tarjeta en una <button type="button" class="term" popovertarget="g-cartera">cartera móvil</button> de Apple o Google</strong> en un teléfono del estafador, y el código es lo que tu banco pide para autorizarlo.</p><p>Con tu tarjeta dentro de su móvil, pueden pagar en tiendas físicas como si fueras tú. Por eso <strong>lee siempre el texto del SMS del banco</strong>: suele decir para qué es el código. Si habla de añadir la tarjeta a un dispositivo y tú no lo estás haciendo, no lo des.</p><h3>Que el SMS aparezca junto a los de verdad no lo hace auténtico</h3><p>El nombre que ves como remitente es un <button type="button" class="term" popovertarget="g-alias">alias</button>, un texto que elige quien envía. Durante años se podía falsificar, y los mensajes falsos acababan en la misma conversación que los auténticos de Correos o de tu banco.</p><p>Desde el <strong>7/6/2026</strong>, según la CNMC, los operadores españoles deben bloquear los SMS con alias que no estén inscritos en su registro. Ayuda mucho, pero no cubre los mensajes enviados desde un número de teléfono normal ni los que llegan por correo electrónico o apps de mensajería. <strong>La regla del enlace sigue siendo la que te protege.</strong></p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">Así sería un ataque</h2><ol class="pasos-ataque"><li><strong>Alquilan el kit</strong><p>El estafador no programa nada: paga una cuota por un <button type="button" class="term" popovertarget="g-kit">kit de phishing</button> que ya trae plantillas de transportistas, panel de control y webs listas para clonar.</p></li><li><strong>Envío masivo</strong><p>Manda miles de SMS con un enlace corto o un dominio parecido al real. Aprovecha fechas con muchos envíos: Black Friday, Navidad, rebajas.</p></li><li><strong>La web clonada</strong><p>Quien pulsa ve una página idéntica a la del transportista con un aviso de «tasas pendientes» de uno o dos euros y un formulario de pago.</p></li><li><strong>La recogida</strong><p>Los datos de la tarjeta llegan al panel del estafador al momento. Si la web pide el código del banco, alguien al otro lado lo usa enseguida para dar de alta la tarjeta en su cartera móvil, antes de que caduque.</p></li><li><strong>El uso</strong><p>Con la tarjeta en su móvil o con los datos completos, compran o revenden. Krebs describe que a menudo esperan unos días antes de usarla para que no se relacione con el SMS.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">Qué puede y qué no puede hacer el atacante</h2>
+<div class="puede"><div class="si"><h3>Puede</h3><ul><li>Enviarte un SMS que parezca del transportista, con un enlace a una web casi idéntica.</li><li>Cobrar cargos en tu tarjeta si le das el número, la caducidad y el CVV.</li><li>Añadir tu tarjeta a una cartera móvil suya si le das el código que te envía tu banco.</li><li>Volver a contactarte haciéndose pasar por tu banco para «anular» el cargo y sacarte más datos.</li></ul></div><div class="no"><h3>No puede</h3><ul><li>Retener ni liberar un paquete tuyo de verdad: no tiene nada que ver con tu envío.</li><li>Entrar en tu móvil solo porque hayas recibido o abierto el SMS, si no rellenas nada en la web.</li><li>Dar de alta tu tarjeta en su cartera móvil sin el código de verificación de tu banco.</li><li>Saber si has comprado algo: dispara a ciegas y acierta por estadística.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">Qué hacer</h2><div class="medidas"><article class="medida"><h3>Aplica la regla del enlace</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ hábito</li><li>Para: todos</li></ul>
+<p>Cualquier aviso de envío, retenido, con tasas o con «dirección incorrecta», se comprueba fuera del mensaje. INCIBE lo resume así: un SMS que pide pagar tasas a través de un enlace es un fraude.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>No pulses el enlace. Si ya lo has hecho, <strong>no escribas nada</strong> y cierra la página.</li><li>Abre tú la app o la web de la tienda donde compraste y mira allí el seguimiento.</li><li>Si tienes dudas sobre un envío de Correos, usa su web oficial de atención al cliente.</li></ol></div></div></article><article class="medida"><h3>El código del banco, solo para lo que tú estás haciendo</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: bajo</li>
+<li>⏱ hábito</li><li>Para: todos</li></ul>
+<p>Es la última llave antes de que tu tarjeta acabe en el móvil de otro. Si lo das, el estafador ya no necesita nada más.</p><div class="plataformas"><div class="plataforma"><h4>Siempre</h4><ol><li>Lee el SMS del banco entero antes de copiar el código: suele decir el importe, el comercio o si es para añadir la tarjeta a un dispositivo.</li><li>Si no coincide con lo que estás haciendo tú, <strong>no lo escribas en ningún sitio</strong>.</li><li>Nadie de tu banco te pedirá ese código por teléfono.</li></ol></div></div></article><article class="medida"><h3>Denuncia el mensaje como spam</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 1 min</li><li>Para: todos</li></ul>
+<p>Marcarlo ayuda a que los filtros frenen la misma campaña para otras personas. Después, bórralo.</p><div class="plataformas"><div class="plataforma"><h4>Android (Mensajes de Google)</h4><ol><li>Mantén pulsada la conversación.</li><li>Toca <strong>Bloquear</strong>, marca <strong>Marcar como spam</strong> y pulsa <strong>Aceptar</strong>.</li></ol></div><div class="plataforma"><h4>iPhone / iPad</h4><ol><li>En la app Mensajes, junto a un mensaje de un remitente desconocido aparece la opción para informar de que es no deseado. Úsala y borra la conversación.</li></ol></div></div></article><article class="medida"><h3>Separa a los desconocidos</h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: bajo</li>
+<li>⏱ 2 min</li><li>Para: todos</li></ul>
+<p>Que los SMS de números que no tienes en la agenda vayan a una lista aparte quita la urgencia: los miras cuando quieras, no cuando suena el móvil.</p><div class="plataformas"><div class="plataforma"><h4>iPhone / iPad</h4><ol><li>Abre <strong>Mensajes</strong> y, en la lista de conversaciones, toca <strong>Filtrar</strong> &gt; <strong>Gestionar filtrado</strong>.</li><li>Activa <strong>Filtrar remitentes desconocidos</strong>.</li></ol></div><div class="plataforma"><h4>Android (Mensajes de Google)</h4><ol><li>La protección contra spam viene activada de serie en modo estándar. Compruébalo en los ajustes de Mensajes, desde tu foto de perfil, en el apartado de protección y seguridad.</li></ol></div></div></article><article class="medida"><h3>Si ya has metido la tarjeta</h3>
+<ul class="badges"><li class="alto">Impacto: alto</li><li>Esfuerzo: medio</li>
+<li>⏱ 15 min</li><li>Para: todos</li></ul>
+<p>Cuanto antes actúes, más fácil es frenar los cargos y anular el alta en una cartera móvil.</p><div class="plataformas"><div class="plataforma"><h4>Ahora mismo</h4><ol><li>Llama a tu banco o entra en su app y <strong>bloquea la tarjeta</strong>.</li><li>Revisa los movimientos y pide que anulen los cargos que no reconozcas. Pregunta también si se ha dado de alta tu tarjeta en algún dispositivo.</li><li>Guarda capturas del SMS, de la web y de los cargos.</li><li>Denuncia ante la Policía Nacional o la Guardia Civil. Si necesitas orientación, llama al <strong>017</strong> de INCIBE (gratuito y confidencial), o escribe por WhatsApp al 900 116 117.</li></ol></div></div></article><article class="medida deep"><h3>Una tarjeta solo para comprar por internet<span class="deep-tag">Nivel a fondo</span></h3>
+<ul class="badges"><li class="medio">Impacto: medio</li><li>Esfuerzo: medio</li>
+<li>⏱ 10 min</li><li>Para: avanzado</li></ul>
+<p>Si compras mucho online, usar una tarjeta virtual o con un límite bajo hace que un despiste cueste poco. Activa además los avisos de cada cargo en la app del banco para enterarte en el momento.</p><div class="plataformas"><div class="plataforma"><h4>En la app de tu banco</h4><ol><li>Busca la opción de tarjeta virtual o de límites de compra por internet.</li><li>Activa las notificaciones de cada operación con tarjeta.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Compruébalo tú</h2><div class="filas"><div class="fila"><h3>El seguimiento real de tu pedido</h3><p>En la app o la web de la tienda, en «Mis pedidos», tienes el número de seguimiento y el transportista. Si allí no hay ninguna incidencia ni ningún pago pendiente, el SMS es falso.</p></div><div class="fila"><h3>La dirección a la que te lleva</h3><p>Si ya has pulsado, mira la barra de direcciones: los dominios falsos imitan al real con letras de más, guiones o terminaciones raras. Aun así, no te fíes solo de esto; el candado tampoco garantiza nada.</p></div><div class="fila"><h3>Los dispositivos de tu tarjeta</h3><p>Muchas apps bancarias muestran en qué carteras móviles está dada de alta cada tarjeta. Si ves un dispositivo que no es tuyo, bloquéala y llama al banco.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">Lo que no hace falta que hagas</h2><div class="filas"><div class="fila"><h3>Desconfiar de todos los SMS de paquetería</h3><p>Los transportistas sí envían avisos auténticos de entrega. No hace falta ignorarlos: basta con no pagar ni dar datos desde su enlace y comprobarlo en la app de la tienda.</p></div><div class="fila"><h3>Cambiar de número de teléfono</h3><p>Estos mensajes llegan a números al azar o de listas masivas. Con un número nuevo te seguirían llegando.</p></div><div class="fila"><h3>Instalar apps «antitimos» de pago</h3><p>Los filtros que traen de serie iPhone y Mensajes de Google, más la regla del enlace, cubren este caso.</p></div><div class="fila"><h3>Dejar de comprar por internet</h3><p>El riesgo no está en comprar, sino en pagar fuera de la tienda donde compraste. Paga siempre dentro de la web o app de la tienda.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Mito y realidad</h2>
+<div class="mito"><div class="creencia"><h3>Lo que se cree</h3><p>«Si el SMS me llega justo cuando espero un paquete, será de verdad.»</p></div>
+<div class="hecho"><h3>Lo que ocurre</h3><p>Es justo lo que buscan. Se envían a miles de personas a la vez y siempre aciertan con alguien que espera algo, sobre todo en Black Friday. INCIBE recoge ejemplos con importes de 1,79 € y 2,64 € que siguen el mismo patrón: paquete retenido, tasa mínima y enlace para pagar. <strong>Que coincida con tu compra no prueba nada.</strong></p><p class="src"><a href="https://www.incibe.es/ciudadania/avisos/suplantadas-por-sms-empresas-de-paqueteria-como-correos-y-correos-express" rel="noopener noreferrer">INCIBE: SMS fraudulentos que suplantan a Correos y Correos Express</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">Para perfiles técnicos</h2><div class="tecnico prose"><h3>Phishing como servicio: el caso Lighthouse</h3><p>En noviembre de 2025, Google demandó en Nueva York a los operadores de <strong>Lighthouse</strong>, un kit de smishing que se alquila por cuotas y está vinculado al grupo conocido como <em>Smishing Triad</em>. Según la demanda, en solo 20 días se crearon unas 200.000 webs falsas con él, y Google afirma que ha perjudicado a más de un millón de víctimas en 120 países.</p><p>Lo relevante para defenderse: estas campañas no dependen de un estafador hábil. Son una industria con plantillas, paneles y personal que atiende en directo, por eso los mensajes están bien hechos y cambian de dominio en cuestión de horas.</p><h3>Tokenización: por qué piden el código</h3><p>Añadir una tarjeta a Apple Pay o Google Wallet genera un <em>token</em>, un número que sustituye al de la tarjeta y queda ligado a ese teléfono. Para autorizarlo, el banco suele enviar un código al titular.</p><p>Los kits automatizan ese alta en cuanto la víctima introduce la tarjeta y le piden el código en la propia web falsa, con alguien al otro lado listo para usarlo antes de que caduque. Defensa para bancos y desarrolladores: el texto del código debe decir <strong>para qué es</strong> («añadir tu tarjeta al dispositivo X»), no solo «tu código es 123456».</p><h3>Alias de remitente y el registro de la CNMC</h3><p>Los SMS de empresa usan un alias alfanumérico en lugar de un número. El protocolo no autentica ese texto, así que durante años cualquiera con acceso a una pasarela de envío podía poner «Correos» o el nombre de un banco.</p><p>La CNMC creó un registro de alias al amparo de la Orden TDF/149/2025. Desde el 7/6/2026, los operadores deben bloquear los SMS, MMS y RCS con alias no registrados, enviados sin autorización del titular o por proveedores no inscritos. No cubre los mensajes desde números ordinarios ni otros canales, que es por donde se desplaza el fraude.</p><h3>La redirección final a la web real</h3><p>INCIBE describe que, tras recoger los datos, algunas de estas webs redirigen a la página auténtica del transportista. Es una técnica habitual de los kits: borra la sensación de haber estado en un sitio raro y retrasa el momento en que la víctima llama al banco, que es justo el tiempo que necesitan para usar la tarjeta.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glosario</h2><dl class="glos"><dt>Smishing</dt><dd>Suplantación por SMS: un mensaje de texto que se hace pasar por una empresa o un organismo para que pulses un enlace o des tus datos.</dd><dt>Código de un solo uso (OTP)</dt><dd>Código temporal que te envía tu banco o un servicio para confirmar una operación concreta. Caduca en pocos minutos.</dd><dt>Cartera móvil</dt><dd>App como Apple Pay o Google Wallet que guarda tus tarjetas en el teléfono para pagar acercándolo al datáfono.</dd><dt>Alias de remitente</dt><dd>Nombre que aparece como remitente de un SMS en lugar de un número, por ejemplo el de una empresa.</dd><dt>Kit de phishing</dt><dd>Paquete de webs falsas, plantillas y panel de control que los estafadores compran o alquilan para lanzar campañas sin saber programar.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Fuentes</h2><ol class="fuentes"><li><a href="https://www.incibe.es/ciudadania/avisos/campanas-de-smishing-que-suplantan-la-identidad-de-correos" rel="noopener noreferrer">INCIBE: campañas de smishing que suplantan la identidad de Correos</a></li><li><a href="https://www.incibe.es/ciudadania/avisos/circulan-sms-fraudulentos-que-suplantan-correos-solicitandote-dinero" rel="noopener noreferrer">INCIBE: SMS fraudulentos que suplantan a Correos solicitándote dinero</a></li><li><a href="https://www.incibe.es/ciudadania/avisos/suplantadas-por-sms-empresas-de-paqueteria-como-correos-y-correos-express" rel="noopener noreferrer">INCIBE: suplantadas por SMS empresas de paquetería como Correos y Correos Express</a></li><li><a href="https://www.cnmc.es/prensa/registro-alias-mensajeria-fraudulenta-20260327" rel="noopener noreferrer">CNMC: registro de alias contra la mensajería fraudulenta</a></li><li><a href="https://support.google.com/messages/answer/9061432?hl=es" rel="noopener noreferrer">Google: denunciar spam en Mensajes de Google</a></li><li><a href="https://support.apple.com/es-es/guide/iphone/iph203ab0be4/ios" rel="noopener noreferrer">Apple: filtrar mensajes de texto en el iPhone</a></li><li><a href="https://krebsonsecurity.com/2025/11/google-sues-to-disrupt-chinese-sms-phishing-triad/" rel="noopener noreferrer">Krebs on Security: Google demanda a la tríada de smishing china (en inglés)</a></li><li><a href="https://therecord.media/google-files-lawsuit-to-disrupt-lighthouse-scam" rel="noopener noreferrer">The Record: Google demanda para desmantelar Lighthouse (en inglés)</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Ediciones</a> · <a href="../../../alertas.html">Registro de alertas</a> · <a href="../../../feed.xml">RSS</a></p><p>Contenido bajo CC BY 4.0. Código bajo MIT. Sin cookies, sin rastreadores y sin recursos de terceros.</p></div></footer>
+<div popover id="g-smishing" class="gl-pop"><strong>Smishing</strong>Suplantación por SMS: un mensaje de texto que se hace pasar por una empresa o un organismo para que pulses un enlace o des tus datos.</div><div popover id="g-otp" class="gl-pop"><strong>Código de un solo uso (OTP)</strong>Código temporal que te envía tu banco o un servicio para confirmar una operación concreta. Caduca en pocos minutos.</div><div popover id="g-cartera" class="gl-pop"><strong>Cartera móvil</strong>App como Apple Pay o Google Wallet que guarda tus tarjetas en el teléfono para pagar acercándolo al datáfono.</div><div popover id="g-alias" class="gl-pop"><strong>Alias de remitente</strong>Nombre que aparece como remitente de un SMS en lugar de un número, por ejemplo el de una empresa.</div><div popover id="g-kit" class="gl-pop"><strong>Kit de phishing</strong>Paquete de webs falsas, plantillas y panel de control que los estafadores compran o alquilan para lanzar campañas sin saber programar.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

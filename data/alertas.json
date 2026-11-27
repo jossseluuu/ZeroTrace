@@ -1210,5 +1210,89 @@
         "url": "https://my.f5.com/manage/s/article/K000163926"
       }
     ]
+  },
+  {
+    "id": "2026-11-27-mitel-micollab",
+    "fecha": "2026-11-27",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-133323",
+      "CVE-2026-133303",
+      "CVE-2026-133275",
+      "CVE-2026-133311",
+      "CVE-2026-133324"
+    ],
+    "dispositivos": [
+      "servidor",
+      "empresa"
+    ],
+    "es": {
+      "titulo": "Mitel MiCollab: cinco fallos en las videoconferencias, uno con gravedad máxima, ya atacados",
+      "afecta": "Empresas que usan **Mitel MiCollab 10.3 (10.3.0.18) o anterior**, en concreto su componente de audio, web y videoconferencia (AWV). No afecta a tus dispositivos de casa.",
+      "accion": "Si administras MiCollab, aplica el parche para la **10.3.0.18** (artículo KB000129195 de Mitel) o pasa a una versión posterior. Mientras tanto, Mitel indica que el riesgo se reduce **restringiendo el acceso externo al componente AWV**.",
+      "detalle": "Mitel publicó el 16/11 el aviso MISA-2026-0012 y lo actualizó el 24/11 con los números de CVE. El más grave es una inyección de comandos a ciegas sin autenticación (CVE-2026-133323, CVSS 10); le sigue una inyección XML que permite ejecutar comandos (CVE-2026-133303, CVSS 9,0). El aviso de Mitel no habla de explotación, pero CISA añadió los cinco fallos a su catálogo de vulnerabilidades explotadas el 25/11, y Accenture ha informado de ataques como día cero con instalación de una *web shell* y robo rápido de credenciales."
+    },
+    "en": {
+      "titulo": "Mitel MiCollab: five flaws in its conferencing component, one rated maximum severity, under attack",
+      "afecta": "Organizations running **Mitel MiCollab 10.3 (10.3.0.18) or earlier**, specifically its Audio, Web and Video Conferencing (AWV) component. Your home devices aren't affected.",
+      "accion": "If you manage MiCollab, apply the patch for **10.3.0.18** (Mitel article KB000129195) or move to a later release. Until then, Mitel says the risk can be reduced by **restricting external access to the AWV component**.",
+      "detalle": "Mitel published advisory MISA-2026-0012 on November 16 and updated it on November 24 with CVE numbers. The most severe is an unauthenticated blind command injection (CVE-2026-133323, CVSS 10), followed by an XML injection that allows command execution (CVE-2026-133303, CVSS 9.0). Mitel's advisory doesn't mention exploitation, but CISA added all five flaws to its Known Exploited Vulnerabilities catalog on November 25, and Accenture has reported zero-day attacks that dropped a web shell and quickly stole credentials."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Mitel: aviso de seguridad MISA-2026-0012 (en inglés)",
+          "en": "Mitel: Product Security Advisory MISA-2026-0012"
+        },
+        "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+      },
+      {
+        "titulo": {
+          "es": "The Hacker News: CISA añade 10 fallos explotados, entre ellos los de MiCollab (en inglés)",
+          "en": "The Hacker News: hackers exploit 10 vulnerabilities across Mitel, Juniper, Vates and Danfoss"
+        },
+        "url": "https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-27-juniper-session-smart-conductor",
+    "fecha": "2026-11-27",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-103406"
+    ],
+    "dispositivos": [
+      "servidor",
+      "empresa"
+    ],
+    "es": {
+      "titulo": "Juniper Session Smart Conductor: fallo crítico que da control como root, ya explotado",
+      "afecta": "Empresas que gestionan sus redes con **Juniper Session Smart Conductor** anterior a la 7.0.5, de la 7.1.0 a la 7.1.6 o de la 7.2.0 a la 7.2.2. No afecta a tus dispositivos de casa.",
+      "accion": "Actualiza a **7.0.5, 7.1.7 o 7.2.3** o posterior. Juniper indica que **no hay medidas alternativas**; mientras actualizas, limita quién puede llegar a la interfaz de gestión del Conductor.",
+      "detalle": "Juniper publicó el 28/10 el boletín JSA112183, con 18 fallos en Session Smart Router y Conductor. El 24/11 lo actualizó para indicar que se ha comunicado al menos un caso de explotación maliciosa de CVE-2026-103406: una inyección de comandos en el componente *AutomatedProvisioner* que permite a un atacante remoto ejecutar órdenes como *root* con un identificador de *salt minion* manipulado (CVSS 9,8). CISA lo incluyó en su catálogo de vulnerabilidades explotadas el 25/11."
+    },
+    "en": {
+      "titulo": "Juniper Session Smart Conductor: critical flaw grants root control, already exploited",
+      "afecta": "Organizations managing their networks with **Juniper Session Smart Conductor** before 7.0.5, 7.1.0 through 7.1.6, or 7.2.0 through 7.2.2. Your home devices aren't affected.",
+      "accion": "Update to **7.0.5, 7.1.7, or 7.2.3** or later. Juniper says **there are no workarounds**; while you update, limit who can reach the Conductor's management interface.",
+      "detalle": "Juniper published bulletin JSA112183 on October 28, covering 18 flaws in Session Smart Router and Conductor. On November 24 it updated the bulletin to say at least one instance of malicious exploitation of CVE-2026-103406 has been reported: a command injection in the *AutomatedProvisioner* component that lets a remote attacker run commands as *root* using a crafted *salt minion* ID (CVSS 9.8). CISA added it to its Known Exploited Vulnerabilities catalog on November 25."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Juniper: boletín JSA112183 (en inglés)",
+          "en": "Juniper: security bulletin JSA112183"
+        },
+        "url": "https://supportportal.juniper.net/JSA112183"
+      },
+      {
+        "titulo": {
+          "es": "NVD: CVE-2026-103406 (en inglés)",
+          "en": "NVD: CVE-2026-103406"
+        },
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103406"
+      }
+    ]
   }
 ]
