@@ -1,0 +1,353 @@
+{
+  "fecha": "2026-11-28",
+  "idioma": "es",
+  "foco": "identidad",
+  "concepto": "apps-con-acceso-a-tu-cuenta",
+  "titulo": "La app a la que diste permiso con tu cuenta de Google sigue entrando aunque ya no la uses",
+  "subtitulo": "Cada «Iniciar sesión con Google» o «Permitir acceso a tu Gmail» deja una llave puesta. Qué ve cada app, por qué cambiar la contraseña no siempre la quita y la revisión de cinco minutos que la cierra.",
+  "dispositivos": [
+    "smartphone",
+    "tablet",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-28-xen-orchestra",
+      "2026-11-28-geoserver",
+      "2026-11-28-1password"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "Esa app para organizar fotos que probaste en 2022, el juego que te pedía «entrar con Google», la extensión que ordenaba tu correo… Cada vez que pulsaste **Permitir**, tu cuenta le dio un permiso. Y ese permiso **no caduca porque dejes de usar la app**: sigue ahí hasta que lo quitas tú.",
+      "Hay dos tipos muy distintos. **Iniciar sesión con Google o con Apple** solo comparte lo básico: tu nombre, tu correo y tu foto. En cambio, cuando una app pide **acceso a tu cuenta** (leer tu Gmail, tu Drive, tus contactos o tu calendario), puede entrar en esos datos sin necesidad de tu contraseña.",
+      "La medida que de verdad cuenta es revisar de vez en cuando esa lista y **quitar lo que ya no uses**, sobre todo lo que tenga acceso a tu correo. Se hace en cinco minutos desde el móvil o el ordenador."
+    ],
+    "esencial": [
+      "Revisa las apps vinculadas a tu cuenta de Google, Apple y Microsoft al menos una vez al año.",
+      "Quita primero las que tienen acceso a tu correo, tus archivos o tus contactos y ya no usas.",
+      "Cambiar la contraseña no siempre corta ese acceso: hay que quitarlo desde la lista.",
+      "Antes de pulsar **Permitir**, lee qué pide la app. Si no cuadra con lo que hace, no lo des."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "bajo",
+      "texto": "La mayoría de las apps conectadas son legítimas. El riesgo aparece cuando una de ellas es maliciosa desde el principio o cuando la empresa que la hace sufre un ataque y le roban sus llaves."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "Una app con acceso a tu correo puede leer los mensajes de recuperación de tus otras cuentas. Si cae, el problema no se queda en esa app."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Iniciar sesión no es lo mismo que dar acceso",
+      "parrafos": [
+        "Google separa en su página de **aplicaciones vinculadas** dos cosas que en la pantalla de permiso parecen iguales. Con **Iniciar sesión con Google**, la app recibe tu [[perfil|perfil básico]] y Google te «abre la puerta» de esa web. Es cómodo y, de hecho, evita que reutilices contraseñas.",
+        "Con **Acceso a tu cuenta de Google**, la app pide permiso para entrar en productos concretos: Gmail, Drive, Calendar, Fotos o Contactos. Ese permiso funciona con una especie de pase, un [[token|token]], que la app guarda y renueva sola. Tú no vuelves a ver nada: la app entra cuando lo necesita.",
+        "Apple y Microsoft funcionan igual en lo esencial. En Apple, **Iniciar sesión con Apple** permite además ocultar tu correo real con una dirección de reenvío."
+      ]
+    },
+    {
+      "titulo": "Por qué se acumulan",
+      "parrafos": [
+        "Nadie vuelve a la lista después de pulsar **Permitir**. Pasan los años, la app deja de usarse, la empresa cambia de manos o cierra, y el permiso sigue concedido.",
+        "Según la documentación de Google para desarrolladores, el pase de una app deja de funcionar si **tú le quitas el acceso**, si la app **no lo usa durante seis meses** o si cambias la contraseña y el permiso incluía Gmail. Una app que se sincroniza de vez en cuando nunca llega a esos seis meses."
+      ]
+    },
+    {
+      "titulo": "Lo que cambiar la contraseña no arregla",
+      "parrafos": [
+        "Es la reacción natural cuando sospechas algo, pero estos permisos no dependen de tu contraseña. Google indica que el cambio de contraseña solo invalida los pases que incluyen acceso a Gmail; el resto siguen vivos.",
+        "Microsoft lo explica sin rodeos para el [[consentimiento|phishing de consentimiento]]: una vez que la app maliciosa tiene tu permiso, **restablecer la contraseña o exigir la verificación en dos pasos no sirve**, porque la app no entra con tus credenciales. Hay que quitarle el permiso."
+      ]
+    },
+    {
+      "titulo": "Quitar el acceso no borra lo que ya se llevó",
+      "parrafos": [
+        "Cuando quitas una app, deja de poder entrar en tu cuenta. Pero Google advierte que **puede que tengas que pedirle al desarrollador que elimine los datos que ya tenga**. Si una app tuvo acceso a tus contactos durante años, esa copia está en sus servidores.",
+        "Por eso conviene no dar permisos «por si acaso». La política de privacidad de la app y su opción para borrar la cuenta son el siguiente paso si te preocupa lo que guarda."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "La app con buena pinta",
+      "texto": "El atacante publica una app o extensión útil en apariencia (un organizador de correo, un lector de PDF) o compra una que ya tiene usuarios."
+    },
+    {
+      "titulo": "La pantalla de permiso real",
+      "texto": "Te llega un enlace y aparece la pantalla oficial de Google o Microsoft pidiendo, por ejemplo, «leer, redactar y enviar correos». No hay web falsa ni contraseña robada: el permiso lo das tú en la página auténtica."
+    },
+    {
+      "titulo": "El pase guardado",
+      "texto": "La app recibe un token y lo renueva sola. A partir de ahí puede leer lo que pediste aunque no vuelvas a abrirla."
+    },
+    {
+      "titulo": "La cosecha",
+      "texto": "Busca en tu correo enlaces de recuperación, facturas o claves enviadas por error. En el caso Salesloft Drift de 2025, los atacantes usaron pases robados de una app legítima para buscar credenciales en los datos a los que tenía acceso."
+    },
+    {
+      "titulo": "La permanencia",
+      "texto": "Aunque cambies la contraseña, la app sigue entrando hasta que alguien le quita el permiso o el proveedor la bloquea."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Leer, y a veces enviar o borrar, lo que el permiso le autorice: correos, archivos, contactos o calendario.",
+      "Seguir entrando aunque cambies la contraseña, si el permiso no incluía Gmail o no es de Google.",
+      "Usar tu correo para encontrar enlaces de recuperación de otras cuentas.",
+      "Aprovechar una app legítima si roban los pases a la empresa que la desarrolla."
+    ],
+    "no_puede": [
+      "Ver tu contraseña: la app nunca la recibe.",
+      "Entrar en partes de tu cuenta que no le diste: si solo pidió el perfil básico, no lee tu correo.",
+      "Pedir pases nuevos después de que le quites el acceso desde la lista.",
+      "Darse permisos a sí misma sin que tú pulses **Permitir** en la pantalla oficial."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Revisa las apps vinculadas a tu cuenta de Google",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "Es la lista más larga para casi todo el mundo. Empieza por el apartado de acceso a la cuenta: ahí están las que pueden leer tus datos.",
+      "pasos": {
+        "Desde cualquier navegador": [
+          "Entra en `myaccount.google.com/linkedapps` (la página de **aplicaciones vinculadas** de tu cuenta).",
+          "En **Acceso a tu cuenta de Google**, toca cada app que no reconozcas o ya no uses > **Ver detalles** > **Quitar acceso** > **Confirmar**.",
+          "En **Iniciar sesión con Google**, haz lo mismo con **Dejar de usar Iniciar sesión con Google** para las webs que ya no uses. Antes, asegúrate de que tienes otra forma de entrar si quieres conservar esa cuenta."
+        ]
+      }
+    },
+    {
+      "titulo": "Revisa Iniciar sesión con Apple",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Aquí aparecen las apps y webs en las que entraste con tu cuenta de Apple. Al eliminar una, se cierra la sesión en esa app.",
+      "pasos": {
+        "iPhone / iPad": [
+          "Abre **Ajustes** y toca tu nombre.",
+          "Toca **Iniciar sesión con Apple**.",
+          "Selecciona la app o el desarrollador y toca **Eliminar**."
+        ],
+        "Mac": [
+          "Menú Apple > **Ajustes del Sistema** > tu nombre > **Iniciar sesión con Apple**."
+        ],
+        "Web": [
+          "Inicia sesión en `account.apple.com` > **Inicio de sesión y seguridad** > **Iniciar sesión con Apple**."
+        ]
+      }
+    },
+    {
+      "titulo": "Revisa las apps con acceso a tu cuenta Microsoft",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "Si usas Outlook.com, Hotmail u OneDrive personal, tu cuenta Microsoft también tiene su lista de aplicaciones y servicios con permiso para acceder a tus datos.",
+      "pasos": {
+        "Desde cualquier navegador": [
+          "Abre las preguntas frecuentes de privacidad de Microsoft (`microsoft.com/es-es/privacy/faq`) y, en el apartado sobre cómo limitar los datos que recopila, sigue el enlace para gestionar las aplicaciones y servicios con permiso para acceder a tus datos.",
+          "Inicia sesión con tu cuenta Microsoft y quita los que no uses."
+        ]
+      }
+    },
+    {
+      "titulo": "Lee la pantalla de permiso antes de aceptar",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "hábito",
+      "para": "todos",
+      "texto": "La pantalla de Google, Apple o Microsoft es auténtica, pero lo que pide la app lo decide la app. Esa lista es tu oportunidad de decir que no.",
+      "pasos": {
+        "Siempre": [
+          "Si solo quieres registrarte, lo normal es que pida tu nombre, correo y foto.",
+          "Si una app de fotos o un juego pide **leer o enviar tus correos** o ver todos tus archivos, **no lo aceptes**.",
+          "Si llegaste a esa pantalla desde un enlace que no esperabas, ciérrala."
+        ]
+      }
+    },
+    {
+      "titulo": "Si sospechas de una app, quítale el acceso antes que nada",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "todos",
+      "texto": "El orden importa: primero el permiso, luego lo demás.",
+      "pasos": {
+        "En este orden": [
+          "Quita el acceso de la app desde la lista de tu cuenta.",
+          "Revisa en tu correo si hay reglas de reenvío o filtros que no creaste.",
+          "Cambia la contraseña y cierra sesión en los dispositivos que no reconozcas.",
+          "Pide a la app que borre tus datos, desde su web o su política de privacidad."
+        ]
+      }
+    },
+    {
+      "titulo": "Usa Ocultar mi correo electrónico con Apple",
+      "impacto": "bajo",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "avanzado",
+      "texto": "Si al iniciar sesión con Apple elegiste ocultar tu correo, cada app recibe una dirección distinta que reenvía a la tuya. Puedes cortar el reenvío de una app concreta sin tocar las demás.",
+      "pasos": {
+        "iPhone / iPad": [
+          "**Ajustes** > tu nombre > **iCloud** > **Ocultar mi correo electrónico**.",
+          "Elige la app o el desarrollador y desactiva **Reenviar a**."
+        ]
+      }
+    },
+    {
+      "titulo": "Una revisión en el calendario",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "avanzado",
+      "texto": "Pon un recordatorio cada seis meses para repasar las tres listas. Coincidir con el cambio de hora es una forma fácil de acordarse.",
+      "pasos": {
+        "En tu calendario": [
+          "Crea un evento repetido cada seis meses con el título «Revisar apps con acceso a mis cuentas».",
+          "Pon en la nota los enlaces de Google, Apple y Microsoft para tenerlos a mano."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "Cuántas apps pueden leer tu Gmail",
+      "texto": "En la página de aplicaciones vinculadas de Google puedes filtrar por **Acceso a** > **Producto de Google** y ver solo las que tienen permiso sobre Gmail, Drive o Contactos. Si hay alguna que no recuerdas, ese es el primer candidato."
+    },
+    {
+      "titulo": "La revisión de seguridad de Google",
+      "texto": "En `myaccount.google.com/security-checkup`, Google te guía por los puntos importantes de tu cuenta, incluido el acceso de terceros, en pocos minutos."
+    },
+    {
+      "titulo": "Reglas de reenvío en tu correo",
+      "texto": "En los ajustes de tu correo, mira los apartados de reenvío y filtros. Una regla que manda copias de tus correos a otra dirección es una señal clara de que alguien ha tenido acceso."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Dejar de usar Iniciar sesión con Google o con Apple",
+      "texto": "Para registrarte, suele ser más seguro que crear otra contraseña que acabarás repitiendo. El problema no es el botón, sino los permisos de más y las apps olvidadas."
+    },
+    {
+      "titulo": "Quitar las apps que usas a diario",
+      "texto": "Si tu gestor de calendario o tu app de correo necesita ese acceso y la usas, déjala. Se trata de limpiar lo que sobra, no de vaciar la lista."
+    },
+    {
+      "titulo": "Revisarlo cada semana",
+      "texto": "Con una o dos veces al año, y siempre que sospeches de algo, es suficiente para la mayoría de la gente."
+    },
+    {
+      "titulo": "Instalar una app que «limpie tus permisos»",
+      "texto": "Le estarías dando acceso a tu cuenta a otra app más. Las listas oficiales de Google, Apple y Microsoft son gratuitas y suficientes."
+    }
+  ],
+  "mito": {
+    "mito": "«Si cambio la contraseña, todas las apps pierden el acceso.»",
+    "realidad": "No necesariamente. La documentación de Google indica que un cambio de contraseña solo invalida los pases de las apps que tienen permisos sobre Gmail. Las demás siguen entrando hasta que les quitas el acceso, dejan de usarlo seis meses o cumplen otra condición técnica. **El permiso se quita desde la lista de apps vinculadas, no cambiando la contraseña.**",
+    "fuente": {
+      "titulo": "Google for Developers: uso de OAuth 2.0 y caducidad de los tokens (en inglés)",
+      "url": "https://developers.google.com/identity/protocols/oauth2"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "OAuth y los dos tipos de token",
+      "parrafos": [
+        "Estos permisos se conceden con [[oauth|OAuth 2.0]]. La app recibe un *access token* de vida corta, con el que llama a la API, y un *refresh token* con el que pide nuevos sin volver a molestarte. Es el *refresh token* el que convierte un clic de hace años en un acceso vigente hoy.",
+        "Google enumera cuándo deja de funcionar: si el usuario revoca el acceso, si no se usa en seis meses, si el usuario cambia la contraseña y el token incluye permisos de Gmail, si se supera el límite de tokens vivos (100 por cuenta y cliente OAuth) o si el acceso era temporal y ha vencido."
+      ]
+    },
+    {
+      "titulo": "Phishing de consentimiento: no hace falta robar la contraseña",
+      "parrafos": [
+        "Microsoft lo define como engañar al usuario para que conceda permisos a una aplicación maliciosa. La pantalla es la legítima del proveedor, así que las señales clásicas (dominio raro, falta de candado) no aparecen.",
+        "Microsoft señala que, cuando bloquea una app maliciosa, se deniegan las peticiones de nuevos tokens, pero **los access tokens ya emitidos siguen siendo válidos hasta que caducan**. La defensa útil para el usuario es la misma: revisar y revocar."
+      ]
+    },
+    {
+      "titulo": "El caso Salesloft Drift",
+      "parrafos": [
+        "Google Threat Intelligence y Mandiant documentaron en agosto de 2025 que el grupo UNC6395 usó tokens OAuth robados de la aplicación Drift para extraer datos de instancias de Salesforce de empresas, buscando claves y contraseñas. El 9/8/2025 usaron además tokens de la integración *Drift Email* para leer correo de un número muy pequeño de cuentas de Google Workspace.",
+        "No hubo contraseña robada ni fallo en Google o Salesforce: bastó con los pases que una app de confianza ya tenía. Su recomendación fue revocar y rotar las claves y tokens de las integraciones de terceros."
+      ]
+    },
+    {
+      "titulo": "Para quien desarrolla: pide lo mínimo",
+      "parrafos": [
+        "El RFC 9700 (BCP 240, enero de 2025), las buenas prácticas de seguridad de OAuth 2.0, pide limitar los privilegios de cada token al mínimo necesario y restringir su audiencia. Para clientes públicos, los *refresh tokens* deben estar ligados al remitente o rotar en cada uso.",
+        "En la práctica: si tu app solo necesita identificar al usuario, pide solo el perfil básico. Cada permiso extra es una razón para que el usuario desconfíe y un riesgo más si te roban los tokens."
+      ]
+    }
+  ],
+  "glosario": {
+    "perfil": [
+      "Perfil básico",
+      "Nombre, dirección de correo y foto de tu cuenta. Es lo que recibe una app cuando solo usas «Iniciar sesión con Google»."
+    ],
+    "token": [
+      "Token",
+      "Pase digital que recibe una app cuando le das permiso. Le permite entrar en tus datos sin conocer tu contraseña."
+    ],
+    "consentimiento": [
+      "Phishing de consentimiento",
+      "Engaño en el que una app maliciosa consigue que le des permiso desde la pantalla oficial de Google o Microsoft, sin robarte la contraseña."
+    ],
+    "oauth": [
+      "OAuth 2.0",
+      "Estándar que usan Google, Apple, Microsoft y muchos más para que una app acceda a parte de tu cuenta sin recibir tu contraseña."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Google: gestionar las vinculaciones entre tu cuenta de Google y aplicaciones de otros desarrolladores",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=es"
+    },
+    {
+      "titulo": "Google: compartir el acceso a parte de los datos de tu cuenta con aplicaciones de terceros",
+      "url": "https://support.google.com/accounts/answer/14012355?hl=es"
+    },
+    {
+      "titulo": "Apple: gestionar tus apps con Iniciar sesión con Apple",
+      "url": "https://support.apple.com/es-es/102571"
+    },
+    {
+      "titulo": "Microsoft: preguntas frecuentes de privacidad",
+      "url": "https://www.microsoft.com/es-es/privacy/faq"
+    },
+    {
+      "titulo": "INCIBE: registrarte con tu cuenta de Google, Facebook o Twitter, ventajas e inconvenientes",
+      "url": "https://www.incibe.es/ciudadania/blog/registrarte-con-tu-cuenta-de-google-facebook-o-twitter-ventajas-e"
+    },
+    {
+      "titulo": "Google for Developers: uso de OAuth 2.0 (en inglés)",
+      "url": "https://developers.google.com/identity/protocols/oauth2"
+    },
+    {
+      "titulo": "Microsoft Learn: protegerse del phishing de consentimiento (en inglés)",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/protect-against-consent-phishing"
+    },
+    {
+      "titulo": "Google Threat Intelligence: robo de datos de Salesforce a través de Salesloft Drift (en inglés)",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/data-theft-salesforce-instances-via-salesloft-drift"
+    },
+    {
+      "titulo": "RFC 9700: buenas prácticas de seguridad de OAuth 2.0 (en inglés)",
+      "url": "https://www.rfc-editor.org/rfc/rfc9700.html"
+    }
+  ]
+}

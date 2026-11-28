@@ -4,6 +4,9 @@ Every alert published in the daily status, by date. Each vulnerability appears o
 
 | Date | Level | Alert | CVE |
 |---|---|---|---|
+| [11/28/2026](editions/2026/11/2026-11-28.md) | Critical | Xen Orchestra: an empty token grants admin access, already exploited | CVE-2026-133469 |
+| [11/28/2026](editions/2026/11/2026-11-28.md) | Heads-up | GeoServer: two flaws in a chain that leads to server takeover, already exploited | CVE-2026-120705, CVE-2026-129243 |
+| [11/28/2026](editions/2026/11/2026-11-28.md) | Heads-up | 1Password confirms customer data theft; your saved passwords aren't affected |  |
 | [11/27/2026](editions/2026/11/2026-11-27.md) | Heads-up | Mitel MiCollab: five flaws in its conferencing component, one rated maximum severity, under attack | CVE-2026-133323, CVE-2026-133303, CVE-2026-133275, CVE-2026-133311, CVE-2026-133324 |
 | [11/27/2026](editions/2026/11/2026-11-27.md) | Heads-up | Juniper Session Smart Conductor: critical flaw grants root control, already exploited | CVE-2026-103406 |
 | [11/26/2026](editions/2026/11/2026-11-26.md) | Heads-up | NGINX: HTTP/2 flaw with public exploit code, now under attack per Singapore's CSA | CVE-2026-123007 |

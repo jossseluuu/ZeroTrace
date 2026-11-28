@@ -1,0 +1,353 @@
+{
+  "fecha": "2026-11-28",
+  "idioma": "en",
+  "foco": "identidad",
+  "concepto": "apps-with-access-to-your-account",
+  "titulo": "The app you let into your Google account is still getting in, even if you stopped using it",
+  "subtitulo": "Every \"Sign in with Google\" or \"Allow access to your Gmail\" leaves a key in the door. What each app can see, why changing your password doesn't always revoke it, and the five-minute review that does.",
+  "dispositivos": [
+    "smartphone",
+    "tablet",
+    "portatil",
+    "sobremesa"
+  ],
+  "lectura": {
+    "basico": 3,
+    "fondo": 9
+  },
+  "semaforo": {
+    "nivel": "amarillo",
+    "alertas": [
+      "2026-11-28-xen-orchestra",
+      "2026-11-28-geoserver",
+      "2026-11-28-1password"
+    ]
+  },
+  "basico": {
+    "parrafos": [
+      "That photo organizer you tried in 2022, the game that wanted you to \"continue with Google,\" the extension that sorted your inbox... Every time you tapped **Allow**, your account handed out a permission. And that permission **doesn't expire just because you stopped using the app**: it stays until you remove it.",
+      "There are two very different kinds. **Sign in with Google or Apple** only shares the basics: your name, email address, and photo. But when an app asks for **access to your account** (reading your Gmail, Drive, contacts, or calendar), it can get into that data without ever needing your password.",
+      "The step that actually matters is to review that list now and then and **remove what you no longer use**, starting with anything that can read your email. It takes five minutes on your phone or computer."
+    ],
+    "esencial": [
+      "Review the apps linked to your Google, Apple, and Microsoft accounts at least once a year.",
+      "Start by removing apps you no longer use that can access your email, files, or contacts.",
+      "Changing your password doesn't always cut off that access: you have to remove it from the list.",
+      "Before you tap **Allow**, read what the app is asking for. If it doesn't match what the app does, say no."
+    ]
+  },
+  "riesgo": {
+    "probabilidad": {
+      "nivel": "bajo",
+      "texto": "Most connected apps are legitimate. The risk shows up when one is malicious from the start, or when the company behind it gets breached and its keys are stolen."
+    },
+    "impacto": {
+      "nivel": "alto",
+      "texto": "An app with access to your email can read the recovery messages for your other accounts. If it's compromised, the damage doesn't stay inside that one app."
+    }
+  },
+  "fondo": [
+    {
+      "titulo": "Signing in is not the same as granting access",
+      "parrafos": [
+        "On its **linked apps** page, Google separates two things that look alike on the permission screen. With **Sign in with Google**, the app gets your [[profile|basic profile]] and Google vouches for you on that site. It's convenient and, in fact, keeps you from reusing passwords.",
+        "With **Access to your Google Account**, the app asks to get into specific products: Gmail, Drive, Calendar, Photos, or Contacts. That permission works through a kind of pass, a [[token|token]], which the app stores and renews on its own. You never see anything again: the app simply gets in whenever it needs to.",
+        "Apple and Microsoft work the same way at heart. With **Sign in with Apple**, you can also hide your real email behind a forwarding address."
+      ]
+    },
+    {
+      "titulo": "Why they pile up",
+      "parrafos": [
+        "Nobody goes back to the list after tapping **Allow**. Years go by, the app falls out of use, the company changes hands or shuts down, and the permission is still granted.",
+        "According to Google's developer documentation, an app's pass stops working if **you revoke its access**, if the app **doesn't use it for six months**, or if you change your password and the permission included Gmail. An app that syncs every so often never hits that six-month mark."
+      ]
+    },
+    {
+      "titulo": "What changing your password doesn't fix",
+      "parrafos": [
+        "It's the natural reaction when something seems off, but these permissions don't depend on your password. Google says a password change only invalidates passes that include Gmail access; the rest keep working.",
+        "Microsoft is blunt about [[consent|consent phishing]]: once a malicious app has your permission, **resetting passwords or requiring multifactor authentication isn't effective**, because the app doesn't sign in with your credentials. You have to revoke the permission."
+      ]
+    },
+    {
+      "titulo": "Removing access doesn't erase what it already took",
+      "parrafos": [
+        "Once you remove an app, it can no longer get into your account. But Google warns that **you may need to contact the developer to ask them to delete the data they already have**. If an app could see your contacts for years, that copy lives on its servers.",
+        "That's why it pays not to grant permissions \"just in case.\" The app's privacy policy and its delete-account option are the next step if you're worried about what it keeps."
+      ]
+    }
+  ],
+  "ataque": [
+    {
+      "titulo": "The useful-looking app",
+      "texto": "The attacker publishes an app or extension that seems handy (an inbox organizer, a PDF reader) or buys one that already has users."
+    },
+    {
+      "titulo": "The real permission screen",
+      "texto": "You get a link and the official Google or Microsoft screen appears, asking to, say, \"read, compose, and send emails.\" No fake site, no stolen password: you grant the permission yourself on the genuine page."
+    },
+    {
+      "titulo": "The stored pass",
+      "texto": "The app receives a token and renews it on its own. From then on it can read what you approved, even if you never open it again."
+    },
+    {
+      "titulo": "The harvest",
+      "texto": "It searches your email for recovery links, invoices, or keys sent by mistake. In the 2025 Salesloft Drift case, attackers used stolen passes from a legitimate app to hunt for credentials in the data it could reach."
+    },
+    {
+      "titulo": "Staying in",
+      "texto": "Even if you change your password, the app keeps getting in until someone revokes the permission or the provider blocks it."
+    }
+  ],
+  "atacante": {
+    "puede": [
+      "Read, and sometimes send or delete, whatever the permission allows: email, files, contacts, or calendar.",
+      "Keep getting in after you change your password, if the permission didn't include Gmail or isn't from Google.",
+      "Use your inbox to find recovery links for your other accounts.",
+      "Ride on a legitimate app if the passes are stolen from the company that makes it."
+    ],
+    "no_puede": [
+      "See your password: the app never receives it.",
+      "Reach parts of your account you didn't grant: if it only asked for your basic profile, it can't read your email.",
+      "Get new passes after you revoke its access from the list.",
+      "Give itself permissions without you tapping **Allow** on the official screen."
+    ]
+  },
+  "medidas": [
+    {
+      "titulo": "Review the apps linked to your Google account",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "5 min",
+      "para": "todos",
+      "texto": "For most people, this is the longest list. Start with the account-access section: that's where the apps that can read your data live.",
+      "pasos": {
+        "From any browser": [
+          "Go to `myaccount.google.com/linkedapps` (your Google Account's **linked apps** page).",
+          "Under **Access to your Google Account**, tap any app you don't recognize or no longer use > **See details** > **Remove access** > **Confirm**.",
+          "Under **Sign in with Google**, do the same with **Stop using Sign in with Google** for sites you've abandoned. First make sure you have another way to sign in if you want to keep that account."
+        ]
+      }
+    },
+    {
+      "titulo": "Review Sign in with Apple",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "This lists the apps and sites you signed in to with your Apple Account. Deleting one signs you out of that app.",
+      "pasos": {
+        "iPhone / iPad": [
+          "Open **Settings** and tap your name.",
+          "Tap **Sign in with Apple**.",
+          "Select the app or developer, then tap **Delete**."
+        ],
+        "Mac": [
+          "Apple menu > **System Settings** > your name > **Sign in with Apple**."
+        ],
+        "Web": [
+          "Sign in at `account.apple.com` > **Sign-In & Security** > **Sign in with Apple**."
+        ]
+      }
+    },
+    {
+      "titulo": "Review apps with access to your Microsoft account",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "3 min",
+      "para": "todos",
+      "texto": "If you use Outlook.com, Hotmail, or personal OneDrive, your Microsoft account has its own list of apps and services with permission to access your data.",
+      "pasos": {
+        "From any browser": [
+          "Open Microsoft's privacy FAQ (`microsoft.com/en-us/privacy/faq`) and, in the answer on limiting the personal data Microsoft collects, follow the link to manage apps and services that have permission to access your data.",
+          "Sign in with your Microsoft account and remove the ones you don't use."
+        ]
+      }
+    },
+    {
+      "titulo": "Read the permission screen before you accept",
+      "impacto": "alto",
+      "esfuerzo": "bajo",
+      "tiempo": "habit",
+      "para": "todos",
+      "texto": "The Google, Apple, or Microsoft screen is genuine, but the app decides what to ask for. That list is your chance to say no.",
+      "pasos": {
+        "Always": [
+          "If you're just signing up, it normally asks for your name, email, and photo.",
+          "If a photo app or a game wants to **read or send your email** or see all your files, **don't accept**.",
+          "If you landed on that screen from a link you weren't expecting, close it."
+        ]
+      }
+    },
+    {
+      "titulo": "If you suspect an app, revoke its access first",
+      "impacto": "alto",
+      "esfuerzo": "medio",
+      "tiempo": "15 min",
+      "para": "todos",
+      "texto": "Order matters: permission first, everything else after.",
+      "pasos": {
+        "In this order": [
+          "Remove the app's access from your account's list.",
+          "Check your email for forwarding rules or filters you didn't create.",
+          "Change your password and sign out of devices you don't recognize.",
+          "Ask the app to delete your data, through its website or privacy policy."
+        ]
+      }
+    },
+    {
+      "titulo": "Use Hide My Email with Apple",
+      "impacto": "bajo",
+      "esfuerzo": "bajo",
+      "tiempo": "2 min",
+      "para": "avanzado",
+      "texto": "If you chose to hide your email when signing in with Apple, each app gets a different address that forwards to yours. You can cut off forwarding for one app without touching the others.",
+      "pasos": {
+        "iPhone / iPad": [
+          "**Settings** > your name > **iCloud** > **Hide My Email**.",
+          "Choose the app or developer and turn off **Forward To**."
+        ]
+      }
+    },
+    {
+      "titulo": "Put a review on your calendar",
+      "impacto": "medio",
+      "esfuerzo": "bajo",
+      "tiempo": "1 min",
+      "para": "avanzado",
+      "texto": "Set a reminder every six months to go through all three lists. Tying it to the daylight saving time change makes it easy to remember.",
+      "pasos": {
+        "In your calendar": [
+          "Create an event that repeats every six months titled \"Review apps with access to my accounts.\"",
+          "Put the Google, Apple, and Microsoft links in the notes so they're handy."
+        ]
+      }
+    }
+  ],
+  "comprobar": [
+    {
+      "titulo": "How many apps can read your Gmail",
+      "texto": "On Google's linked apps page you can filter by the Google product an app can access and see only those with permission over Gmail, Drive, or Contacts. Any you don't remember are the first candidates."
+    },
+    {
+      "titulo": "Google's Security Checkup",
+      "texto": "At `myaccount.google.com/security-checkup`, Google walks you through the key points of your account, including third-party access, in a few minutes."
+    },
+    {
+      "titulo": "Forwarding rules in your email",
+      "texto": "In your email settings, look at the forwarding and filter sections. A rule that sends copies of your mail to another address is a clear sign someone has had access."
+    }
+  ],
+  "innecesario": [
+    {
+      "titulo": "Giving up Sign in with Google or Apple",
+      "texto": "For signing up, it's usually safer than creating yet another password you'll end up reusing. The problem isn't the button; it's excess permissions and forgotten apps."
+    },
+    {
+      "titulo": "Removing apps you use every day",
+      "texto": "If your calendar manager or email app needs that access and you use it, keep it. The goal is to clear out what you don't need, not to empty the list."
+    },
+    {
+      "titulo": "Checking every week",
+      "texto": "Once or twice a year, plus any time something seems off, is enough for most people."
+    },
+    {
+      "titulo": "Installing an app that \"cleans up your permissions\"",
+      "texto": "You'd be giving yet another app access to your account. The official Google, Apple, and Microsoft lists are free and do the job."
+    }
+  ],
+  "mito": {
+    "mito": "\"If I change my password, every app loses access.\"",
+    "realidad": "Not necessarily. Google's documentation says a password change only invalidates passes for apps with Gmail permissions. The rest keep getting in until you revoke them, they go unused for six months, or another technical condition kicks in. **You revoke access from the linked apps list, not by changing your password.**",
+    "fuente": {
+      "titulo": "Google for Developers: Using OAuth 2.0 and refresh token expiration",
+      "url": "https://developers.google.com/identity/protocols/oauth2"
+    }
+  },
+  "tecnico": [
+    {
+      "titulo": "OAuth and the two kinds of token",
+      "parrafos": [
+        "These permissions are granted with [[oauth|OAuth 2.0]]. The app gets a short-lived *access token* to call the API and a *refresh token* to get new ones without bothering you again. The *refresh token* is what turns a click from years ago into live access today.",
+        "Google lists when it stops working: if the user revokes access, if it goes unused for six months, if the user changes passwords and the token contains Gmail scopes, if the limit of live tokens (100 per account per OAuth client) is exceeded, or if the access was time-based and has expired."
+      ]
+    },
+    {
+      "titulo": "Consent phishing: no password theft required",
+      "parrafos": [
+        "Microsoft defines it as tricking users into granting permissions to malicious cloud applications. The screen is the provider's legitimate one, so the classic red flags (odd domain, missing padlock) don't show up.",
+        "Microsoft notes that when it disables a malicious app, new token requests are denied, but **existing access tokens remain valid until they expire**. The useful defense for users is the same: review and revoke."
+      ]
+    },
+    {
+      "titulo": "The Salesloft Drift case",
+      "parrafos": [
+        "Google Threat Intelligence and Mandiant documented in August 2025 that the group UNC6395 used stolen OAuth tokens from the Drift app to pull data from companies' Salesforce instances, hunting for keys and passwords. On August 9, 2025, they also used tokens from the *Drift Email* integration to read email from a very small number of Google Workspace accounts.",
+        "No password was stolen and neither Google nor Salesforce was breached: the passes a trusted app already held were enough. Their advice was to revoke and rotate keys and tokens tied to third-party integrations."
+      ]
+    },
+    {
+      "titulo": "For developers: ask for the minimum",
+      "parrafos": [
+        "RFC 9700 (BCP 240, January 2025), the OAuth 2.0 security best current practice, says each token's privileges should be restricted to the minimum required and its audience restricted. For public clients, *refresh tokens* must be sender-constrained or rotated on each use.",
+        "In practice: if your app only needs to identify the user, request only the basic profile. Every extra scope is a reason for users to distrust you and one more risk if your tokens are stolen."
+      ]
+    }
+  ],
+  "glosario": {
+    "profile": [
+      "Basic profile",
+      "Your account's name, email address, and photo. It's what an app receives when you only use \"Sign in with Google.\""
+    ],
+    "token": [
+      "Token",
+      "A digital pass an app receives when you grant it permission. It lets the app reach your data without knowing your password."
+    ],
+    "consent": [
+      "Consent phishing",
+      "A scam where a malicious app gets you to grant it permission on Google's or Microsoft's official screen, without stealing your password."
+    ],
+    "oauth": [
+      "OAuth 2.0",
+      "The standard Google, Apple, Microsoft, and many others use so an app can access part of your account without receiving your password."
+    ]
+  },
+  "fuentes": [
+    {
+      "titulo": "Google: Manage links between your Google Account and apps from other developers",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+    },
+    {
+      "titulo": "Google: Share some access to your Google Account data with apps from other developers",
+      "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+    },
+    {
+      "titulo": "Apple: Manage your apps with Sign in with Apple",
+      "url": "https://support.apple.com/en-us/102571"
+    },
+    {
+      "titulo": "Microsoft: Privacy FAQ",
+      "url": "https://www.microsoft.com/en-us/privacy/faq"
+    },
+    {
+      "titulo": "CISA: Manage application permissions for privacy and security",
+      "url": "https://www.cisa.gov/resources-tools/training/manage-application-permissions-privacy-and-security"
+    },
+    {
+      "titulo": "Google for Developers: Using OAuth 2.0",
+      "url": "https://developers.google.com/identity/protocols/oauth2"
+    },
+    {
+      "titulo": "Microsoft Learn: Protect against consent phishing",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/protect-against-consent-phishing"
+    },
+    {
+      "titulo": "Google Threat Intelligence: Data theft from Salesforce instances via Salesloft Drift",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/data-theft-salesforce-instances-via-salesloft-drift"
+    },
+    {
+      "titulo": "RFC 9700: Best Current Practice for OAuth 2.0 Security",
+      "url": "https://www.rfc-editor.org/rfc/rfc9700.html"
+    }
+  ]
+}

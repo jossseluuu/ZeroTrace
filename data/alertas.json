@@ -1294,5 +1294,119 @@
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103406"
       }
     ]
+  },
+  {
+    "id": "2026-11-28-xen-orchestra",
+    "fecha": "2026-11-28",
+    "nivel": "rojo",
+    "cves": [
+      "CVE-2026-133469"
+    ],
+    "dispositivos": [
+      "servidor",
+      "empresa"
+    ],
+    "es": {
+      "titulo": "Xen Orchestra: un token vacío da acceso de administrador, ya explotado",
+      "afecta": "Empresas y administradores que gestionan sus servidores virtuales con **Xen Orchestra** de Vates sin actualizar. No afecta a tus dispositivos de casa.",
+      "accion": "Actualiza a **Xen Orchestra 6.9.2** (rama estable) o **6.10.1** (última), que corresponden a xo-server 5.211.2 y 5.213.1. Mientras tanto, no dejes la interfaz de Xen Orchestra accesible desde internet.",
+      "detalle": "Vates publicó el 10/11 el aviso VSA-2026-062 y lo actualizó el 25/11 para indicar que un actor malicioso está explotando activamente el fallo: el servidor acepta como válido un token de autenticación formado por un objeto JSON vacío, lo que da acceso de administrador sin credenciales. CISA lo incluyó en su catálogo de vulnerabilidades explotadas el 25/11."
+    },
+    "en": {
+      "titulo": "Xen Orchestra: an empty token grants admin access, already exploited",
+      "afecta": "Organizations and admins managing virtual servers with Vates **Xen Orchestra** that haven't updated. Your home devices aren't affected.",
+      "accion": "Update to **Xen Orchestra 6.9.2** (stable) or **6.10.1** (latest), which correspond to xo-server 5.211.2 and 5.213.1. In the meantime, don't leave the Xen Orchestra interface reachable from the internet.",
+      "detalle": "Vates published advisory VSA-2026-062 on November 10 and updated it on November 25 to say a threat actor is actively exploiting the flaw: the server accepts an authentication token made of an empty JSON object as valid, granting admin access without credentials. CISA added it to its Known Exploited Vulnerabilities catalog on November 25."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "Vates: aviso VSA-2026-062 (en inglés)",
+          "en": "Vates: security advisory VSA-2026-062"
+        },
+        "url": "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062/"
+      },
+      {
+        "titulo": {
+          "es": "CISA: catálogo de vulnerabilidades explotadas (en inglés)",
+          "en": "CISA: Known Exploited Vulnerabilities catalog"
+        },
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-28-geoserver",
+    "fecha": "2026-11-28",
+    "nivel": "amarillo",
+    "cves": [
+      "CVE-2026-120705",
+      "CVE-2026-129243"
+    ],
+    "dispositivos": [
+      "servidor",
+      "empresa"
+    ],
+    "es": {
+      "titulo": "GeoServer: dos fallos de una cadena que permite tomar el servidor, ya explotados",
+      "afecta": "Organizaciones y administraciones que publican mapas y datos geográficos con **GeoServer** sin actualizar. No afecta a tus dispositivos de casa.",
+      "accion": "Actualiza a **GeoServer 3.0.2, 2.28.6 o 2.27.7** o posterior. Si no puedes hacerlo ya, no expongas GeoServer a internet.",
+      "detalle": "El proyecto GeoServer publicó el 23/11 varias correcciones. CVE-2026-120705 es una inyección XML sin autenticación en la consulta almacenada GetFeatureById de WFS 2.0, que permite leer archivos del servidor y hacer peticiones en su nombre (SSRF). CVE-2026-129243 permite saltarse las comprobaciones de rol por servicio con un parámetro manipulado. Junto con otros fallos corregidos a la vez, forman una cadena que lleva a ejecutar código sin credenciales. CISA incluyó ambos en su catálogo de vulnerabilidades explotadas el 27/11."
+    },
+    "en": {
+      "titulo": "GeoServer: two flaws in a chain that leads to server takeover, already exploited",
+      "afecta": "Organizations and government agencies publishing maps and geospatial data with **GeoServer** that haven't updated. Your home devices aren't affected.",
+      "accion": "Update to **GeoServer 3.0.2, 2.28.6, or 2.27.7** or later. If you can't yet, don't expose GeoServer to the internet.",
+      "detalle": "The GeoServer project published several fixes on November 23. CVE-2026-120705 is an unauthenticated XML injection in the WFS 2.0 GetFeatureById stored query that allows reading server files and making requests on the server's behalf (SSRF). CVE-2026-129243 lets a crafted parameter bypass service-level role checks. Together with other flaws fixed at the same time, they form a chain leading to unauthenticated code execution. CISA added both to its Known Exploited Vulnerabilities catalog on November 27."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "GeoServer: actualización de vulnerabilidades del 23/11 (en inglés)",
+          "en": "GeoServer: November 23 vulnerability update"
+        },
+        "url": "https://geoserver.org/vulnerability/2026/11/23/cve-update.html"
+      },
+      {
+        "titulo": {
+          "es": "CISA: catálogo de vulnerabilidades explotadas (en inglés)",
+          "en": "CISA: Known Exploited Vulnerabilities catalog"
+        },
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-28-1password",
+    "fecha": "2026-11-28",
+    "nivel": "amarillo",
+    "cves": [],
+    "dispositivos": [
+      "smartphone",
+      "tablet",
+      "portatil",
+      "sobremesa"
+    ],
+    "es": {
+      "titulo": "1Password confirma un robo de datos de clientes; tus contraseñas guardadas no están afectadas",
+      "afecta": "Parte de los clientes de **1Password**. Según la empresa, no se ha accedido a las bóvedas, a las contraseñas de cuenta, a las claves secretas ni a las claves de recuperación.",
+      "accion": "1Password indica que **no hace falta cambiar nada** en tu cuenta. Espera correos falsos que usen su nombre: escribe tu contraseña o tu clave secreta solo en la app oficial o en una web que hayas abierto tú.",
+      "detalle": "1Password informó el 25/11 de que, desde alrededor del 19/11, un atacante usó la cuenta de GitHub comprometida de un empleado para subir código malicioso a servicios internos y descargar datos de una parte de los clientes: nombres, correos, identificadores de cuenta y de usuario, claves públicas, parámetros del protocolo SRP y códigos de algunos correos de invitación, alta y recuperación. También copió código fuente privado. La empresa no ha encontrado indicios de que se haya tomado ninguna cuenta y ha alargado los códigos de invitación y recuperación de 6 dígitos a 10 caracteres."
+    },
+    "en": {
+      "titulo": "1Password confirms customer data theft; your saved passwords aren't affected",
+      "afecta": "A subset of **1Password** customers. The company says vault contents, account passwords, Secret Keys, and recovery keys were not accessed.",
+      "accion": "1Password says **no account changes are required**. Expect phishing emails using its name: enter your password or Secret Key only in the official app or on a site you opened yourself.",
+      "detalle": "On November 25, 1Password disclosed that starting around November 19, an attacker used an employee's compromised GitHub account to push malicious code to backend services and download data for a subset of customers: names, emails, account and user IDs, public keys, SRP protocol parameters, and codes in some invitation, provisioning, and recovery emails. The attacker also copied private source code. The company found no evidence of account takeover and lengthened invitation and recovery codes from 6 digits to 10 characters."
+    },
+    "fuentes": [
+      {
+        "titulo": {
+          "es": "1Password: actualización sobre el incidente de seguridad de noviembre (en inglés)",
+          "en": "1Password: Update on the November 2026 security incident"
+        },
+        "url": "https://1password.com/blog/update-on-nov-2026-security-incident"
+      }
+    ]
   }
 ]

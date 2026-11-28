@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-fZdrHzD+3EXvMvYRCy3F7Uswl8Pn/SJBLml3OJDHNQM='; script-src 'sha256-oxRmiRzC5fbd4cIYwolb1oCJ0HBxeyts7gXYEEf06dw='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Every &quot;Sign in with Google&quot; or &quot;Allow access to your Gmail&quot; leaves a key in the door. What each app can see, why changing your password doesn&#x27;t always revoke it, and the five-minute review that does.">
+<title>The app you let into your Google account is still getting in, even if you stopped using it · ZeroTrace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%279%27 width=%2714%27 height=%2732%27 rx=%277%27 fill=%27%231a2233%27/%3E%3Ccircle cx=%2716%27 cy=%277%27 r=%274%27 fill=%27%23e0402f%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27 fill=%27%23f0a817%27/%3E%3Ccircle cx=%2716%27 cy=%2725%27 r=%274%27 fill=%27%232fbf78%27/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="../../../../es/ediciones/2026/11/2026-11-28.html">
+<link rel="alternate" type="application/rss+xml" title="ZeroTrace" href="../../../feed.xml">
+<style>
+:root{--paper:#f2f4f7;--surface:#fff;--sunken:#e8ecf2;--ink:#1a2233;--muted:#5a6578;--line:#d9dee6;
+--accent:#2445c8;--accent-soft:#e3e8fb;--rojo:#c33b2e;--rojo-soft:#fae6e3;--amarillo:#a86d00;--amarillo-soft:#fbefd6;
+--verde:#23855a;--verde-soft:#ddf1e6;--lamp-off:#2b3446;--housing:#1a2233;
+--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1626;--surface:#172036;--sunken:#1d2740;
+--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;
+--amarillo:#f2be4e;--amarillo-soft:#3a2d14;--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1626;--surface:#172036;--sunken:#1d2740;--ink:#e7ebf3;--muted:#9aa6bc;--line:#2a3552;
+--accent:#93a8ff;--accent-soft:#1f2b52;--rojo:#ff8577;--rojo-soft:#3b1c22;--amarillo:#f2be4e;--amarillo-soft:#3a2d14;
+--verde:#5fd39a;--verde-soft:#123327;--lamp-off:#243049;--housing:#0a0f1b;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+code{font:.86em var(--mono);background:var(--sunken);padding:.12em .38em;border-radius:4px;white-space:nowrap}
+strong{font-weight:650}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.measure{max-width:44rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);
+backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.brand i{display:inline-grid;grid-auto-flow:row;gap:2px;padding:3px;border-radius:5px;background:var(--housing)}
+.brand i b{width:5px;height:5px;border-radius:50%;background:var(--lamp-off)}
+.brand i b.on{background:var(--amarillo)}
+.nav{display:flex;gap:14px;font-size:.88rem;margin-right:6px}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--sans);padding:5px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .8rem var(--sans);
+padding:6px 10px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+
+/* cabecera de la edición */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding:48px 0 28px}
+.hero .date{color:var(--muted);font-size:.92rem;margin:0}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:12px 0 14px;text-wrap:balance}
+.hero .sub{font:1.2rem/1.5 var(--serif);color:var(--muted);margin:0 0 18px;max-width:38rem;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.88rem;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:6px;align-items:center}
+
+/* el semáforo: la pieza característica */
+.light{display:flex;flex-direction:column;align-items:center;gap:12px}
+.housing{background:var(--housing);border-radius:28px;padding:14px;display:grid;gap:12px;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 18px 40px -18px rgba(10,20,40,.55)}
+.lamp{width:46px;height:46px;border-radius:50%;background:var(--lamp-off)}
+.lamp.on.rojo{background:radial-gradient(circle at 35% 35%,#ffb3a8,#e0402f 60%,#a5281c);box-shadow:0 0 22px 4px rgba(224,64,47,.55)}
+.lamp.on.amarillo{background:radial-gradient(circle at 35% 35%,#ffe7a6,#f0a817 60%,#b97800);box-shadow:0 0 22px 4px rgba(240,168,23,.5)}
+.lamp.on.verde{background:radial-gradient(circle at 35% 35%,#b7f5d2,#2fbf78 60%,#1a8150);box-shadow:0 0 22px 4px rgba(47,191,120,.45)}
+.light .label{font-weight:700;font-size:.95rem;text-align:center}
+
+/* secciones */
+main section{padding:30px 0;border-top:1px solid var(--line)}
+main section:first-of-type{border-top:0}
+h2{font-size:1.4rem;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.lede{color:var(--muted);margin:0 0 18px;max-width:44rem}
+h3{font-size:1.08rem;letter-spacing:-.01em;margin:24px 0 6px;font-weight:700}
+.prose p{font:1.075rem/1.72 var(--serif);margin:0 0 14px;max-width:44rem;text-wrap:pretty}
+.deep-tag{display:inline-block;font:600 .72rem var(--sans);color:var(--accent);background:var(--accent-soft);
+border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+[data-level="basic"] .deep{display:none!important}
+
+/* alertas */
+.alertas{display:grid;gap:12px}
+.alerta{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:6px 12px 12px 6px;padding:16px 20px}
+.alerta.rojo{border-left-color:var(--rojo)}.alerta.amarillo{border-left-color:var(--amarillo)}.alerta.verde{border-left-color:var(--verde)}
+.alerta header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.alerta h3{margin:0;font-size:1.05rem}
+.pill{font:700 .72rem var(--sans);padding:2px 8px;border-radius:99px}
+.pill.rojo{background:var(--rojo-soft);color:var(--rojo)}.pill.amarillo{background:var(--amarillo-soft);color:var(--amarillo)}
+.pill.verde{background:var(--verde-soft);color:var(--verde)}
+.alerta dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.alerta dt{color:var(--muted)}.alerta dd{margin:0}
+.cves{display:flex;flex-wrap:wrap;gap:4px}
+.src{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.src a{color:var(--muted)}
+.calma{background:var(--verde-soft);border-radius:12px;padding:18px 20px}
+.calma p{margin:4px 0}
+.nota{font-size:.85rem;color:var(--muted);margin:14px 0 0}
+
+/* en pocas palabras */
+.resumen{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.esencial{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.esencial h3{margin:0 0 10px}
+.esencial ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.esencial li{padding-left:28px;position:relative;font-weight:600;line-height:1.45}
+.esencial li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;
+background:var(--verde-soft);box-shadow:inset 0 0 0 5px var(--verde)}
+.riesgo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.medidor{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.medidor .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.barras{display:grid;grid-template-columns:repeat(3,22px);gap:3px}
+.barras i{height:8px;border-radius:2px;background:var(--sunken)}
+.barras.bajo i:nth-child(-n+1),.barras.medio i:nth-child(-n+2),.barras.alto i{background:var(--ink)}
+.medidor p{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* ataque paso a paso (es una secuencia real) */
+.pasos-ataque{list-style:none;margin:0;padding:0;counter-reset:p;max-width:44rem}
+.pasos-ataque li{counter-increment:p;position:relative;padding:0 0 20px 52px}
+.pasos-ataque li::before{content:counter(p);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+display:grid;place-items:center;font-weight:800;background:var(--surface);border:2px solid var(--rojo);color:var(--rojo)}
+.pasos-ataque li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.pasos-ataque strong{display:block;margin-bottom:2px}
+.pasos-ataque p{margin:0;font:1rem/1.65 var(--serif)}
+
+.puede{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.puede > div{border-radius:12px;padding:16px 20px}
+.puede .si{background:var(--rojo-soft)}.puede .no{background:var(--verde-soft)}
+.puede h3{margin:0 0 8px}
+.puede ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* medidas */
+.medidas{display:grid;gap:14px}
+.medida{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.medida h3{margin:0 0 6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.badges li{font-size:.78rem;border-radius:4px;padding:2px 8px;background:var(--sunken);color:var(--muted)}
+.badges li.alto{background:var(--accent-soft);color:var(--accent);font-weight:650}
+.medida > p{margin:0 0 12px;max-width:44rem}
+.plataformas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plataforma{background:var(--sunken);border-radius:8px;padding:10px 14px}
+.plataforma h4{margin:0 0 4px;font-size:.84rem;color:var(--muted)}
+.plataforma ol{margin:0;padding-left:20px;font-size:.94rem;display:grid;gap:3px}
+
+.filas{display:grid;gap:0;max-width:52rem}
+.fila{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila h3{margin:0;font-size:1rem}.fila p{margin:0}
+
+.mito{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mito > div{border-radius:12px;padding:16px 20px;background:var(--surface);border:1px solid var(--line)}
+.mito h3{margin:0 0 6px;font-size:.9rem;color:var(--muted);font-weight:600}
+.mito .creencia p{font:italic 1.15rem/1.5 var(--serif);margin:0}
+.mito .hecho{border-color:var(--verde)}
+
+.tecnico{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:6px}
+.tecnico h3:first-child{margin-top:0}
+
+/* glosario */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:1.5px dotted var(--accent);line-height:inherit}
+[popover].gl-pop{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;
+padding:16px 18px;max-width:min(360px,calc(100vw - 32px));box-shadow:0 18px 50px rgba(0,0,0,.3);font-size:.96rem;line-height:1.5}
+[popover].gl-pop::backdrop{background:rgba(10,15,27,.2)}
+.gl-pop strong{display:block;margin-bottom:4px}
+dl.glos{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 18px;margin:0;max-width:52rem}
+dl.glos dt{font-weight:700}dl.glos dd{margin:0;color:var(--muted)}
+.fuentes{padding-left:20px;font-size:.93rem;display:grid;gap:4px}
+
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 0 44px;font-size:.84rem;color:var(--muted)}
+footer p{margin:4px 0}
+
+/* archivo y registro */
+.page-head{padding:44px 0 18px}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 10px;font-weight:800}
+.page-head p{color:var(--muted);margin:0;max-width:40rem;font:1.1rem/1.5 var(--serif)}
+.contadores{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.contadores li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;font-size:.88rem}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.rojo{background:var(--rojo)}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+.filters{display:grid;gap:10px;margin:18px 0 8px;grid-template-columns:minmax(0,1fr) auto}
+.filters input,.filters select{width:100%;font:inherit;font-size:.95rem;padding:10px 14px;border-radius:10px;
+border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;
+padding:5px 12px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lista{display:grid;gap:12px;padding:0;margin:14px 0;list-style:none}
+.lista a.entrada{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;text-decoration:none;color:var(--ink);
+background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.lista a.entrada:hover{border-color:var(--accent)}
+.mini{background:var(--housing);border-radius:10px;padding:5px;display:grid;gap:4px}
+.mini b{width:12px;height:12px;border-radius:50%;background:var(--lamp-off)}
+.mini b.on.rojo{background:#e0402f}.mini b.on.amarillo{background:#f0a817}.mini b.on.verde{background:#2fbf78}
+.lista h2{font-size:1.15rem;margin:2px 0 4px}
+.lista p{margin:0;color:var(--muted);font-size:.94rem}
+.lista .meta{font-size:.84rem;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.grupo{margin:22px 0 0}
+.grupo > h2{font-size:1rem;color:var(--muted);font-weight:650;margin:0 0 10px}
+.vacio{color:var(--muted);padding:30px 0}
+.langs{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:24px 0 40px}
+.langs a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.langs a:hover{border-color:var(--accent)}
+.langs strong{font-size:1.5rem;display:block}.langs span{color:var(--muted)}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
+.light{flex-direction:row;justify-content:flex-start}.housing{grid-auto-flow:column;border-radius:22px;padding:10px}
+.lamp{width:30px;height:30px}.resumen{grid-template-columns:1fr}.fila{grid-template-columns:1fr;gap:4px}
+dl.glos{grid-template-columns:1fr;gap:2px}dl.glos dd{margin-bottom:10px}.filters{grid-template-columns:1fr}
+.nav{order:3;width:100%}.controls{flex-wrap:nowrap;gap:4px;width:100%}.seg button{padding:5px 8px}.btn{padding:6px 8px}.alerta dl{grid-template-columns:1fr}.alerta dd{margin-bottom:6px}}
+@media print{.topbar,.controls,.no-print,[popover],.filters{display:none!important}
+:root{--paper:#fff;--surface:#fff;--sunken:#f1f1f1}body{font-size:10.5pt;color:#000}
+[data-level="basic"] .deep{display:block!important}
+.medida,.alerta,.esencial,.medidor,.puede > div,.mito > div,.tecnico{break-inside:avoid;box-shadow:none}
+.lamp.on{box-shadow:none}a{color:#000}.fuentes a::after,.src a::after{content:" (" attr(href) ")";font-size:8.5pt;word-break:break-all}
+.term{border:0}main section{padding:14px 0}}
+</style>
+</head>
+<body data-level="basic">
+<div class="topbar"><div class="wrap">
+<a class="brand" href="../../../index.html"><i aria-hidden="true"><b></b><b class="on"></b><b></b></i>ZeroTrace</a>
+<nav class="nav" aria-label="ZeroTrace"><a href="../../../index.html">Editions</a>
+<a href="../../../alerts.html">Alert log</a></nav>
+<div class="controls"><div class="seg" role="group" aria-label="Reading level"><button type="button" data-level-btn="basic" aria-pressed="true">Basic</button><button type="button" data-level-btn="deep" aria-pressed="false">Deep dive</button></div>
+<div class="seg" role="group" aria-label="Theme">
+<button type="button" data-theme-btn="auto" aria-pressed="true" title="Automatic">A<span class="sr"> Automatic</span></button>
+<button type="button" data-theme-btn="light" aria-pressed="false" title="Light">☀︎<span class="sr"> Light</span></button>
+<button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark">☾<span class="sr"> Dark</span></button></div>
+<button type="button" class="btn" data-print title="Print">⎙<span class="sr"> Print</span></button>
+<a class="btn" href="../../../../es/ediciones/2026/11/2026-11-28.html" hreflang="es">Español</a>
+</div></div></div>
+<main class="wrap">
+<header class="hero">
+<div><p class="date">Saturday, November 28, 2026 · 🔑 Identity and accounts</p>
+<h1>The app you let into your Google account is still getting in, even if you stopped using it</h1><p class="sub">Every "Sign in with Google" or "Allow access to your Gmail" leaves a key in the door. What each app can see, why changing your password doesn't always revoke it, and the five-minute review that does.</p>
+<ul class="facts"><li>Reading time: 3 min · Deep dive: 9 min</li><li>📱 Smartphone</li><li>📲 Tablet</li><li>💻 Laptop</li><li>🖥️ Desktop</li></ul></div>
+<div class="light" role="img" aria-label="Today's status: Heads-up day"><div class="housing"><div class="lamp rojo"></div><div class="lamp amarillo on"></div><div class="lamp verde"></div></div>
+<div class="label">Heads-up day</div></div>
+</header>
+
+<section aria-labelledby="s-sem"><h2 id="s-sem">Today's status</h2><div class="alertas"><article class="alerta rojo" id="2026-11-28-xen-orchestra">
+<header><span class="pill rojo">Critical</span><h3>Xen Orchestra: an empty token grants admin access, already exploited</h3></header>
+<dl><dt>Who it affects</dt><dd>Organizations and admins managing virtual servers with Vates <strong>Xen Orchestra</strong> that haven't updated. Your home devices aren't affected.</dd>
+<dt>What to do</dt><dd>Update to <strong>Xen Orchestra 6.9.2</strong> (stable) or <strong>6.10.1</strong> (latest), which correspond to xo-server 5.211.2 and 5.213.1. In the meantime, don't leave the Xen Orchestra interface reachable from the internet.</dd>
+<dt class="deep">Details</dt><dd class="deep">Vates published advisory VSA-2026-062 on November 10 and updated it on November 25 to say a threat actor is actively exploiting the flaw: the server accepts an authentication token made of an empty JSON object as valid, granting admin access without credentials. CISA added it to its Known Exploited Vulnerabilities catalog on November 25.<div class="cves"><code>CVE-2026-133469</code></div></dd></dl>
+<p class="src"><a href="https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062/" rel="noopener noreferrer">Vates: security advisory VSA-2026-062</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noopener noreferrer">CISA: Known Exploited Vulnerabilities catalog</a></p></article><article class="alerta amarillo" id="2026-11-28-geoserver">
+<header><span class="pill amarillo">Heads-up</span><h3>GeoServer: two flaws in a chain that leads to server takeover, already exploited</h3></header>
+<dl><dt>Who it affects</dt><dd>Organizations and government agencies publishing maps and geospatial data with <strong>GeoServer</strong> that haven't updated. Your home devices aren't affected.</dd>
+<dt>What to do</dt><dd>Update to <strong>GeoServer 3.0.2, 2.28.6, or 2.27.7</strong> or later. If you can't yet, don't expose GeoServer to the internet.</dd>
+<dt class="deep">Details</dt><dd class="deep">The GeoServer project published several fixes on November 23. CVE-2026-120705 is an unauthenticated XML injection in the WFS 2.0 GetFeatureById stored query that allows reading server files and making requests on the server's behalf (SSRF). CVE-2026-129243 lets a crafted parameter bypass service-level role checks. Together with other flaws fixed at the same time, they form a chain leading to unauthenticated code execution. CISA added both to its Known Exploited Vulnerabilities catalog on November 27.<div class="cves"><code>CVE-2026-120705</code><code>CVE-2026-129243</code></div></dd></dl>
+<p class="src"><a href="https://geoserver.org/vulnerability/2026/11/23/cve-update.html" rel="noopener noreferrer">GeoServer: November 23 vulnerability update</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noopener noreferrer">CISA: Known Exploited Vulnerabilities catalog</a></p></article><article class="alerta amarillo" id="2026-11-28-1password">
+<header><span class="pill amarillo">Heads-up</span><h3>1Password confirms customer data theft; your saved passwords aren't affected</h3></header>
+<dl><dt>Who it affects</dt><dd>A subset of <strong>1Password</strong> customers. The company says vault contents, account passwords, Secret Keys, and recovery keys were not accessed.</dd>
+<dt>What to do</dt><dd>1Password says <strong>no account changes are required</strong>. Expect phishing emails using its name: enter your password or Secret Key only in the official app or on a site you opened yourself.</dd>
+<dt class="deep">Details</dt><dd class="deep">On November 25, 1Password disclosed that starting around November 19, an attacker used an employee's compromised GitHub account to push malicious code to backend services and download data for a subset of customers: names, emails, account and user IDs, public keys, SRP protocol parameters, and codes in some invitation, provisioning, and recovery emails. The attacker also copied private source code. The company found no evidence of account takeover and lengthened invitation and recovery codes from 6 digits to 10 characters.<div class="cves"></div></dd></dl>
+<p class="src"><a href="https://1password.com/blog/update-on-nov-2026-security-incident" rel="noopener noreferrer">1Password: Update on the November 2026 security incident</a></p></article></div><p class="nota">The day's color reflects the impact on the general public. Each alert has its own color for the people it affects. <a href="../../../alerts.html">See every alert we've issued</a>.</p></section>
+
+<section aria-labelledby="s-b"><h2 id="s-b">In a nutshell</h2>
+<div class="resumen"><div class="prose"><p>That photo organizer you tried in 2022, the game that wanted you to "continue with Google," the extension that sorted your inbox... Every time you tapped <strong>Allow</strong>, your account handed out a permission. And that permission <strong>doesn't expire just because you stopped using the app</strong>: it stays until you remove it.</p><p>There are two very different kinds. <strong>Sign in with Google or Apple</strong> only shares the basics: your name, email address, and photo. But when an app asks for <strong>access to your account</strong> (reading your Gmail, Drive, contacts, or calendar), it can get into that data without ever needing your password.</p><p>The step that actually matters is to review that list now and then and <strong>remove what you no longer use</strong>, starting with anything that can read your email. It takes five minutes on your phone or computer.</p></div>
+<aside class="esencial"><h3>The essentials</h3><ul><li>Review the apps linked to your Google, Apple, and Microsoft accounts at least once a year.</li><li>Start by removing apps you no longer use that can access your email, files, or contacts.</li><li>Changing your password doesn't always cut off that access: you have to remove it from the list.</li><li>Before you tap <strong>Allow</strong>, read what the app is asking for. If it doesn't match what the app does, say no.</li></ul></aside></div>
+<h3>Real-world risk</h3><div class="riesgo"><div class="medidor"><div class="top"><span>Likelihood: low</span>
+<span class="barras bajo" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Most connected apps are legitimate. The risk shows up when one is malicious from the start, or when the company behind it gets breached and its keys are stolen.</p></div><div class="medidor"><div class="top"><span>Impact: high</span>
+<span class="barras alto" aria-hidden="true"><i></i><i></i><i></i></span></div><p>An app with access to your email can read the recovery messages for your other accounts. If it's compromised, the damage doesn't stay inside that one app.</p></div></div></section>
+
+<section class="deep" aria-labelledby="s-c"><h2 id="s-c">How it works</h2><div class="prose"><h3>Signing in is not the same as granting access</h3><p>On its <strong>linked apps</strong> page, Google separates two things that look alike on the permission screen. With <strong>Sign in with Google</strong>, the app gets your <button type="button" class="term" popovertarget="g-profile">basic profile</button> and Google vouches for you on that site. It's convenient and, in fact, keeps you from reusing passwords.</p><p>With <strong>Access to your Google Account</strong>, the app asks to get into specific products: Gmail, Drive, Calendar, Photos, or Contacts. That permission works through a kind of pass, a <button type="button" class="term" popovertarget="g-token">token</button>, which the app stores and renews on its own. You never see anything again: the app simply gets in whenever it needs to.</p><p>Apple and Microsoft work the same way at heart. With <strong>Sign in with Apple</strong>, you can also hide your real email behind a forwarding address.</p><h3>Why they pile up</h3><p>Nobody goes back to the list after tapping <strong>Allow</strong>. Years go by, the app falls out of use, the company changes hands or shuts down, and the permission is still granted.</p><p>According to Google's developer documentation, an app's pass stops working if <strong>you revoke its access</strong>, if the app <strong>doesn't use it for six months</strong>, or if you change your password and the permission included Gmail. An app that syncs every so often never hits that six-month mark.</p><h3>What changing your password doesn't fix</h3><p>It's the natural reaction when something seems off, but these permissions don't depend on your password. Google says a password change only invalidates passes that include Gmail access; the rest keep working.</p><p>Microsoft is blunt about <button type="button" class="term" popovertarget="g-consent">consent phishing</button>: once a malicious app has your permission, <strong>resetting passwords or requiring multifactor authentication isn't effective</strong>, because the app doesn't sign in with your credentials. You have to revoke the permission.</p><h3>Removing access doesn't erase what it already took</h3><p>Once you remove an app, it can no longer get into your account. But Google warns that <strong>you may need to contact the developer to ask them to delete the data they already have</strong>. If an app could see your contacts for years, that copy lives on its servers.</p><p>That's why it pays not to grant permissions "just in case." The app's privacy policy and its delete-account option are the next step if you're worried about what it keeps.</p></div></section>
+
+<section class="deep" aria-labelledby="s-a"><h2 id="s-a">What an attack looks like</h2><ol class="pasos-ataque"><li><strong>The useful-looking app</strong><p>The attacker publishes an app or extension that seems handy (an inbox organizer, a PDF reader) or buys one that already has users.</p></li><li><strong>The real permission screen</strong><p>You get a link and the official Google or Microsoft screen appears, asking to, say, "read, compose, and send emails." No fake site, no stolen password: you grant the permission yourself on the genuine page.</p></li><li><strong>The stored pass</strong><p>The app receives a token and renews it on its own. From then on it can read what you approved, even if you never open it again.</p></li><li><strong>The harvest</strong><p>It searches your email for recovery links, invoices, or keys sent by mistake. In the 2025 Salesloft Drift case, attackers used stolen passes from a legitimate app to hunt for credentials in the data it could reach.</p></li><li><strong>Staying in</strong><p>Even if you change your password, the app keeps getting in until someone revokes the permission or the provider blocks it.</p></li></ol></section>
+
+<section class="deep" aria-labelledby="s-p"><h2 id="s-p">What an attacker can and can't do</h2>
+<div class="puede"><div class="si"><h3>Can</h3><ul><li>Read, and sometimes send or delete, whatever the permission allows: email, files, contacts, or calendar.</li><li>Keep getting in after you change your password, if the permission didn't include Gmail or isn't from Google.</li><li>Use your inbox to find recovery links for your other accounts.</li><li>Ride on a legitimate app if the passes are stolen from the company that makes it.</li></ul></div><div class="no"><h3>Can't</h3><ul><li>See your password: the app never receives it.</li><li>Reach parts of your account you didn't grant: if it only asked for your basic profile, it can't read your email.</li><li>Get new passes after you revoke its access from the list.</li><li>Give itself permissions without you tapping <strong>Allow</strong> on the official screen.</li></ul></div></div></section>
+
+<section aria-labelledby="s-m"><h2 id="s-m">What to do</h2><div class="medidas"><article class="medida"><h3>Review the apps linked to your Google account</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ 5 min</li><li>For: everyone</li></ul>
+<p>For most people, this is the longest list. Start with the account-access section: that's where the apps that can read your data live.</p><div class="plataformas"><div class="plataforma"><h4>From any browser</h4><ol><li>Go to <code>myaccount.google.com/linkedapps</code> (your Google Account's <strong>linked apps</strong> page).</li><li>Under <strong>Access to your Google Account</strong>, tap any app you don't recognize or no longer use &gt; <strong>See details</strong> &gt; <strong>Remove access</strong> &gt; <strong>Confirm</strong>.</li><li>Under <strong>Sign in with Google</strong>, do the same with <strong>Stop using Sign in with Google</strong> for sites you've abandoned. First make sure you have another way to sign in if you want to keep that account.</li></ol></div></div></article><article class="medida"><h3>Review Sign in with Apple</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>This lists the apps and sites you signed in to with your Apple Account. Deleting one signs you out of that app.</p><div class="plataformas"><div class="plataforma"><h4>iPhone / iPad</h4><ol><li>Open <strong>Settings</strong> and tap your name.</li><li>Tap <strong>Sign in with Apple</strong>.</li><li>Select the app or developer, then tap <strong>Delete</strong>.</li></ol></div><div class="plataforma"><h4>Mac</h4><ol><li>Apple menu &gt; <strong>System Settings</strong> &gt; your name &gt; <strong>Sign in with Apple</strong>.</li></ol></div><div class="plataforma"><h4>Web</h4><ol><li>Sign in at <code>account.apple.com</code> &gt; <strong>Sign-In &amp; Security</strong> &gt; <strong>Sign in with Apple</strong>.</li></ol></div></div></article><article class="medida"><h3>Review apps with access to your Microsoft account</h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 3 min</li><li>For: everyone</li></ul>
+<p>If you use Outlook.com, Hotmail, or personal OneDrive, your Microsoft account has its own list of apps and services with permission to access your data.</p><div class="plataformas"><div class="plataforma"><h4>From any browser</h4><ol><li>Open Microsoft's privacy FAQ (<code>microsoft.com/en-us/privacy/faq</code>) and, in the answer on limiting the personal data Microsoft collects, follow the link to manage apps and services that have permission to access your data.</li><li>Sign in with your Microsoft account and remove the ones you don't use.</li></ol></div></div></article><article class="medida"><h3>Read the permission screen before you accept</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: low</li>
+<li>⏱ habit</li><li>For: everyone</li></ul>
+<p>The Google, Apple, or Microsoft screen is genuine, but the app decides what to ask for. That list is your chance to say no.</p><div class="plataformas"><div class="plataforma"><h4>Always</h4><ol><li>If you're just signing up, it normally asks for your name, email, and photo.</li><li>If a photo app or a game wants to <strong>read or send your email</strong> or see all your files, <strong>don't accept</strong>.</li><li>If you landed on that screen from a link you weren't expecting, close it.</li></ol></div></div></article><article class="medida"><h3>If you suspect an app, revoke its access first</h3>
+<ul class="badges"><li class="alto">Impact: high</li><li>Effort: medium</li>
+<li>⏱ 15 min</li><li>For: everyone</li></ul>
+<p>Order matters: permission first, everything else after.</p><div class="plataformas"><div class="plataforma"><h4>In this order</h4><ol><li>Remove the app's access from your account's list.</li><li>Check your email for forwarding rules or filters you didn't create.</li><li>Change your password and sign out of devices you don't recognize.</li><li>Ask the app to delete your data, through its website or privacy policy.</li></ol></div></div></article><article class="medida deep"><h3>Use Hide My Email with Apple<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="bajo">Impact: low</li><li>Effort: low</li>
+<li>⏱ 2 min</li><li>For: advanced</li></ul>
+<p>If you chose to hide your email when signing in with Apple, each app gets a different address that forwards to yours. You can cut off forwarding for one app without touching the others.</p><div class="plataformas"><div class="plataforma"><h4>iPhone / iPad</h4><ol><li><strong>Settings</strong> &gt; your name &gt; <strong>iCloud</strong> &gt; <strong>Hide My Email</strong>.</li><li>Choose the app or developer and turn off <strong>Forward To</strong>.</li></ol></div></div></article><article class="medida deep"><h3>Put a review on your calendar<span class="deep-tag">Deep-dive level</span></h3>
+<ul class="badges"><li class="medio">Impact: medium</li><li>Effort: low</li>
+<li>⏱ 1 min</li><li>For: advanced</li></ul>
+<p>Set a reminder every six months to go through all three lists. Tying it to the daylight saving time change makes it easy to remember.</p><div class="plataformas"><div class="plataforma"><h4>In your calendar</h4><ol><li>Create an event that repeats every six months titled "Review apps with access to my accounts."</li><li>Put the Google, Apple, and Microsoft links in the notes so they're handy.</li></ol></div></div></article></div></section>
+
+<section aria-labelledby="s-v"><h2 id="s-v">Check it yourself</h2><div class="filas"><div class="fila"><h3>How many apps can read your Gmail</h3><p>On Google's linked apps page you can filter by the Google product an app can access and see only those with permission over Gmail, Drive, or Contacts. Any you don't remember are the first candidates.</p></div><div class="fila"><h3>Google's Security Checkup</h3><p>At <code>myaccount.google.com/security-checkup</code>, Google walks you through the key points of your account, including third-party access, in a few minutes.</p></div><div class="fila"><h3>Forwarding rules in your email</h3><p>In your email settings, look at the forwarding and filter sections. A rule that sends copies of your mail to another address is a clear sign someone has had access.</p></div></div></section>
+
+<section class="innecesario" aria-labelledby="s-n"><h2 id="s-n">What you don't need to do</h2><div class="filas"><div class="fila"><h3>Giving up Sign in with Google or Apple</h3><p>For signing up, it's usually safer than creating yet another password you'll end up reusing. The problem isn't the button; it's excess permissions and forgotten apps.</p></div><div class="fila"><h3>Removing apps you use every day</h3><p>If your calendar manager or email app needs that access and you use it, keep it. The goal is to clear out what you don't need, not to empty the list.</p></div><div class="fila"><h3>Checking every week</h3><p>Once or twice a year, plus any time something seems off, is enough for most people.</p></div><div class="fila"><h3>Installing an app that "cleans up your permissions"</h3><p>You'd be giving yet another app access to your account. The official Google, Apple, and Microsoft lists are free and do the job.</p></div></div></section>
+
+<section aria-labelledby="s-mi"><h2 id="s-mi">Myth and reality</h2>
+<div class="mito"><div class="creencia"><h3>What people think</h3><p>"If I change my password, every app loses access."</p></div>
+<div class="hecho"><h3>What actually happens</h3><p>Not necessarily. Google's documentation says a password change only invalidates passes for apps with Gmail permissions. The rest keep getting in until you revoke them, they go unused for six months, or another technical condition kicks in. <strong>You revoke access from the linked apps list, not by changing your password.</strong></p><p class="src"><a href="https://developers.google.com/identity/protocols/oauth2" rel="noopener noreferrer">Google for Developers: Using OAuth 2.0 and refresh token expiration</a></p></div></div></section>
+
+<section class="deep" aria-labelledby="s-t"><h2 id="s-t">For technical readers</h2><div class="tecnico prose"><h3>OAuth and the two kinds of token</h3><p>These permissions are granted with <button type="button" class="term" popovertarget="g-oauth">OAuth 2.0</button>. The app gets a short-lived <em>access token</em> to call the API and a <em>refresh token</em> to get new ones without bothering you again. The <em>refresh token</em> is what turns a click from years ago into live access today.</p><p>Google lists when it stops working: if the user revokes access, if it goes unused for six months, if the user changes passwords and the token contains Gmail scopes, if the limit of live tokens (100 per account per OAuth client) is exceeded, or if the access was time-based and has expired.</p><h3>Consent phishing: no password theft required</h3><p>Microsoft defines it as tricking users into granting permissions to malicious cloud applications. The screen is the provider's legitimate one, so the classic red flags (odd domain, missing padlock) don't show up.</p><p>Microsoft notes that when it disables a malicious app, new token requests are denied, but <strong>existing access tokens remain valid until they expire</strong>. The useful defense for users is the same: review and revoke.</p><h3>The Salesloft Drift case</h3><p>Google Threat Intelligence and Mandiant documented in August 2025 that the group UNC6395 used stolen OAuth tokens from the Drift app to pull data from companies' Salesforce instances, hunting for keys and passwords. On August 9, 2025, they also used tokens from the <em>Drift Email</em> integration to read email from a very small number of Google Workspace accounts.</p><p>No password was stolen and neither Google nor Salesforce was breached: the passes a trusted app already held were enough. Their advice was to revoke and rotate keys and tokens tied to third-party integrations.</p><h3>For developers: ask for the minimum</h3><p>RFC 9700 (BCP 240, January 2025), the OAuth 2.0 security best current practice, says each token's privileges should be restricted to the minimum required and its audience restricted. For public clients, <em>refresh tokens</em> must be sender-constrained or rotated on each use.</p><p>In practice: if your app only needs to identify the user, request only the basic profile. Every extra scope is a reason for users to distrust you and one more risk if your tokens are stolen.</p></div></section>
+
+<section class="deep" id="glosario" aria-labelledby="s-g"><h2 id="s-g">Glossary</h2><dl class="glos"><dt>Basic profile</dt><dd>Your account&#x27;s name, email address, and photo. It&#x27;s what an app receives when you only use &quot;Sign in with Google.&quot;</dd><dt>Token</dt><dd>A digital pass an app receives when you grant it permission. It lets the app reach your data without knowing your password.</dd><dt>Consent phishing</dt><dd>A scam where a malicious app gets you to grant it permission on Google&#x27;s or Microsoft&#x27;s official screen, without stealing your password.</dd><dt>OAuth 2.0</dt><dd>The standard Google, Apple, Microsoft, and many others use so an app can access part of your account without receiving your password.</dd></dl></section>
+
+<section aria-labelledby="s-s"><h2 id="s-s">Sources</h2><ol class="fuentes"><li><a href="https://support.google.com/accounts/answer/13533235?hl=en" rel="noopener noreferrer">Google: Manage links between your Google Account and apps from other developers</a></li><li><a href="https://support.google.com/accounts/answer/14012355?hl=en" rel="noopener noreferrer">Google: Share some access to your Google Account data with apps from other developers</a></li><li><a href="https://support.apple.com/en-us/102571" rel="noopener noreferrer">Apple: Manage your apps with Sign in with Apple</a></li><li><a href="https://www.microsoft.com/en-us/privacy/faq" rel="noopener noreferrer">Microsoft: Privacy FAQ</a></li><li><a href="https://www.cisa.gov/resources-tools/training/manage-application-permissions-privacy-and-security" rel="noopener noreferrer">CISA: Manage application permissions for privacy and security</a></li><li><a href="https://developers.google.com/identity/protocols/oauth2" rel="noopener noreferrer">Google for Developers: Using OAuth 2.0</a></li><li><a href="https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/protect-against-consent-phishing" rel="noopener noreferrer">Microsoft Learn: Protect against consent phishing</a></li><li><a href="https://cloud.google.com/blog/topics/threat-intelligence/data-theft-salesforce-instances-via-salesloft-drift" rel="noopener noreferrer">Google Threat Intelligence: Data theft from Salesforce instances via Salesloft Drift</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9700.html" rel="noopener noreferrer">RFC 9700: Best Current Practice for OAuth 2.0 Security</a></li></ol></section>
+</main>
+<footer><div class="wrap"><p>ZeroTrace · <a href="../../../index.html">Editions</a> · <a href="../../../alerts.html">Alert log</a> · <a href="../../../feed.xml">RSS</a></p><p>Content under CC BY 4.0. Code under MIT. No cookies, no trackers, and no third-party resources.</p></div></footer>
+<div popover id="g-profile" class="gl-pop"><strong>Basic profile</strong>Your account&#x27;s name, email address, and photo. It&#x27;s what an app receives when you only use &quot;Sign in with Google.&quot;</div><div popover id="g-token" class="gl-pop"><strong>Token</strong>A digital pass an app receives when you grant it permission. It lets the app reach your data without knowing your password.</div><div popover id="g-consent" class="gl-pop"><strong>Consent phishing</strong>A scam where a malicious app gets you to grant it permission on Google&#x27;s or Microsoft&#x27;s official screen, without stealing your password.</div><div popover id="g-oauth" class="gl-pop"><strong>OAuth 2.0</strong>The standard Google, Apple, Microsoft, and many others use so an app can access part of your account without receiving your password.</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function tema(t){if(t==="light"||t==="dark"){d.setAttribute("data-theme",t)}else{d.removeAttribute("data-theme")}
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-theme-btn")===(t||"auto")))})}
+  tema(get("zt-theme")||"auto");
+  document.querySelectorAll("[data-theme-btn]").forEach(function(b){b.addEventListener("click",function(){
+    var t=b.getAttribute("data-theme-btn");set("zt-theme",t);tema(t)})});
+  document.querySelectorAll("[data-print]").forEach(function(b){b.addEventListener("click",function(){window.print()})});
+  window.ZT={get:get,set:set};
+})();
+
+(function(){
+  var b=document.body;
+  function nivel(n){b.setAttribute("data-level",n);
+    document.querySelectorAll("[data-level-btn]").forEach(function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-level-btn")===n))})}
+  nivel(window.ZT.get("zt-level")==="deep"?"deep":"basic");
+  document.querySelectorAll("[data-level-btn]").forEach(function(x){x.addEventListener("click",function(){
+    var n=x.getAttribute("data-level-btn");window.ZT.set("zt-level",n);nivel(n)})});
+  if(!HTMLElement.prototype.hasOwnProperty("popover")){document.querySelectorAll(".term").forEach(function(t){
+    t.addEventListener("click",function(){nivel("deep");var g=document.getElementById("glosario");if(g)g.scrollIntoView()})})}
+})();
+</script>
+</body>
+</html>

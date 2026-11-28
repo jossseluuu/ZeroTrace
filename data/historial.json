@@ -1,14 +1,14 @@
 {
-  "actualizado": "2026-11-27T12:09:40+01:00",
+  "actualizado": "2026-11-28T11:15:48+01:00",
   "regla": "El foco de cada día se elige al azar entre los que no aparezcan en las 7 ediciones anteriores.",
   "focos_recientes": [
+    "identidad",
     "ingenieria",
     "tablets",
     "sobremesa",
     "habitos",
     "portatiles",
-    "router",
-    "iot"
+    "router"
   ],
   "conceptos_por_foco": {
     "smart-tv": [
@@ -119,6 +119,10 @@
       {
         "fecha": "2026-11-14",
         "concepto": "llave-de-acceso-en-tu-correo"
+      },
+      {
+        "fecha": "2026-11-28",
+        "concepto": "apps-con-acceso-a-tu-cuenta"
       }
     ],
     "programacion": [
@@ -141,6 +145,17 @@
     ]
   },
   "ediciones": [
+    {
+      "fecha": "2026-11-28",
+      "foco": "identidad",
+      "concepto": "apps-con-acceso-a-tu-cuenta",
+      "semaforo": "amarillo",
+      "alertas": [
+        "2026-11-28-xen-orchestra",
+        "2026-11-28-geoserver",
+        "2026-11-28-1password"
+      ]
+    },
     {
       "fecha": "2026-11-27",
       "foco": "ingenieria",

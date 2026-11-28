@@ -4,6 +4,9 @@ Todas las alertas publicadas en el semáforo, por fecha. Cada vulnerabilidad apa
 
 | Fecha | Nivel | Alerta | CVE |
 |---|---|---|---|
+| [28/11/2026](ediciones/2026/11/2026-11-28.md) | Crítico | Xen Orchestra: un token vacío da acceso de administrador, ya explotado | CVE-2026-133469 |
+| [28/11/2026](ediciones/2026/11/2026-11-28.md) | Atención | GeoServer: dos fallos de una cadena que permite tomar el servidor, ya explotados | CVE-2026-120705, CVE-2026-129243 |
+| [28/11/2026](ediciones/2026/11/2026-11-28.md) | Atención | 1Password confirma un robo de datos de clientes; tus contraseñas guardadas no están afectadas |  |
 | [27/11/2026](ediciones/2026/11/2026-11-27.md) | Atención | Mitel MiCollab: cinco fallos en las videoconferencias, uno con gravedad máxima, ya atacados | CVE-2026-133323, CVE-2026-133303, CVE-2026-133275, CVE-2026-133311, CVE-2026-133324 |
 | [27/11/2026](ediciones/2026/11/2026-11-27.md) | Atención | Juniper Session Smart Conductor: fallo crítico que da control como root, ya explotado | CVE-2026-103406 |
 | [26/11/2026](ediciones/2026/11/2026-11-26.md) | Atención | NGINX: fallo en HTTP/2 con exploit público, ya atacado según el CSA de Singapur | CVE-2026-123007 |
